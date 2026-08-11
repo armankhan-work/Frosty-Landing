@@ -1,0 +1,28 @@
+'use client';
+
+import React from 'react';
+import InteractiveDashboard from './InteractiveDashboard';
+
+export default function WhatIsFrostySection() {
+    return (
+        <section id="what-is-frosty" className="relative pt-12 sm:pt-16 lg:pt-24 pb-8 lg:pb-12 bg-transparent overflow-hidden">
+            <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 flex flex-col lg:flex-row items-center gap-8 sm:gap-12 lg:gap-8">
+                <div className="w-full lg:w-[50%] flex flex-col justify-center relative z-20 xl:pr-10 lg:-translate-y-12">
+                    <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#5F23C8] flex items-center mb-4 sm:mb-6 before:content-[''] before:inline-block before:w-[16px] sm:before:w-[22px] before:h-[1.5px] before:rounded-[1px] before:bg-current before:opacity-45 before:align-middle before:mr-[8px] sm:before:mr-[10px] after:content-[''] after:inline-block after:w-[16px] sm:after:w-[22px] after:h-[1.5px] after:rounded-[1px] after:bg-current after:opacity-45 after:align-middle after:ml-[8px] sm:after:ml-[10px]">PRODUCT OVERVIEW</span>
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-white leading-[1.1] tracking-tight text-balance max-w-[20ch]" style={{ marginTop: '1.5rem', marginBottom: '2rem' }}>
+                        What is Frosty?
+                    </h2>
+                    <p className="text-sm md:text-base text-slate-400 leading-relaxed max-w-2xl mx-auto">
+                        Frosty is a production-grade autonomous AI agent platform built for businesses that want to convert website visitors and WhatsApp leads into real customers - without adding headcount. It combines omnichannel deployment, frontier AI models, a RAG-powered knowledge engine, and a human takeover console - all managed from a single dashboard.
+                    </p>
+                </div>
+
+                <div className="w-full lg:w-[50%] relative overflow-hidden">
+                    <div className="w-full flex justify-center lg:justify-end">
+                        <InteractiveDashboard />
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}
