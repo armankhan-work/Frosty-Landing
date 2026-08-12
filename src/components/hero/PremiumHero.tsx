@@ -1,9 +1,10 @@
 import { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Play, Sparkles } from 'lucide-react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { ArrowRight, ChevronRight, Play, Star, Sparkles, CheckCircle2, Bot, MessagesSquare, LayoutGrid } from 'lucide-react';
 import {
   Globe, MessageCircle, CalendarDays, BarChart3,
 } from 'lucide-react';
+import FrostyIcon from '@/components/FrostyIcon';
 
 /* ─── Feature pills ─── */
 const featurePills = [
@@ -366,12 +367,9 @@ export default function PremiumHero() {
                 {/* Inner shine */}
                 <div className="hero-orb-shine" />
                 {/* Logo */}
-                <img
-                  src="/logonew.png"
-                  alt="Frosty"
-                  className="hero-orb-logo"
-                  draggable={false}
-                />
+                <div className="hero-orb-logo flex items-center justify-center">
+                  <FrostyIcon size={40} glow={0} />
+                </div>
               </div>
             </motion.div>
 

@@ -64,17 +64,18 @@ export default function ProblemSection() {
             </div>
 
             {/* Top Section Grid - Uses 50/50 split on large screens to prevent text squishing */}
-            <div className="max-w-[1400px] w-full mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-[45%_55%] gap-12 lg:gap-8 items-center z-10 relative">
+            <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-[45%_55%] gap-12 lg:gap-8 items-center z-10 relative">
                 
                 {/* TOP LEFT: The Core Problem Statement */}
-                <div className="flex flex-col items-center text-center lg:items-start lg:text-left w-full z-20">
+                <div className="flex flex-col items-start text-left w-full z-20">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
+                        className="w-full text-left"
                     >
-                        <h4 className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#5F23C8] mb-6">
+                        <h4 className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#5F23C8] mb-8 block">
                             THE PROBLEM
                         </h4>
                     </motion.div>
@@ -84,7 +85,8 @@ export default function ProblemSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-white leading-[1.1] tracking-tight mb-4 sm:mb-6"
+                        className="w-full text-left text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-white leading-[1.1] tracking-tight"
+                        style={{ marginBottom: '2rem' }}
                     >
                         Your customers <br />
                         are already reaching out. <br />
@@ -96,7 +98,8 @@ export default function ProblemSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.4 }}
-                        className="text-sm md:text-base text-slate-400 leading-relaxed max-w-2xl mx-auto lg:mx-0"
+                        className="w-full text-left text-sm md:text-base text-slate-400 leading-relaxed max-w-2xl"
+                        style={{ marginBottom: '3.5rem' }}
                     >
                         Every enquiry starts a journey.<br />
                         Too many get lost in the gap between<br />

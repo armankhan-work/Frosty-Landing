@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Sparkles, MapPin, ExternalLink } from 'lucide-react';
+import FrostyIcon from '@/components/FrostyIcon';
 
 // Stubbing the missing FlipText component
 const FlipText = ({ children, className }: { children: React.ReactNode, className?: string }) => (
@@ -160,56 +161,42 @@ const FooterSection = () => {
 
       <footer
         ref={footerRef}
-        className={`border-t pt-8 pb-4 transition-colors duration-300 font-sans ${isVisible ? 'footer-revealed' : 'opacity-0'} bg-transparent border-white/10 relative z-10`}
+        className={`border-t pt-4 pb-2 transition-colors duration-300 font-sans ${isVisible ? 'footer-revealed' : 'opacity-0'} bg-transparent border-white/10 relative z-10`}
       >
         <div className="container mx-auto px-4 md:px-6 max-w-[1400px]">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 mb-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 mb-2">
             
-            <div className="lg:col-span-3 space-y-6">
-              <div className="space-y-4">
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-3 group">
-                  <Link href="/" className="flex items-center gap-1">
-                    <img src="/logonew.png" alt="Frostrek AI Logo" className="h-9 w-auto transition-transform group-hover:scale-110 drop-shadow-[0_0_10px_rgba(95,35,200,0.5)]" loading="lazy" width={512} height={512} />
-                    <FlipText className="text-[1.35rem] font-black font-sans font-bold text-white">
-                      frostrek
-                    </FlipText>
-                  </Link>
-                </div>
-
-                <div className="pt-0 flex flex-col gap-1 text-[13px] text-slate-400 font-medium" itemScope itemType="https://schema.org/LocalBusiness">
-                  <span itemProp="name" className="sr-only">Frostrek AI</span>
-                  <div className="flex items-start gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 flex-shrink-0 text-[#8B5CF6]"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
-                    <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
-                      <span itemProp="streetAddress">4th Floor, Jmd Empire, 455, Golf Course Ext Rd, Sector 62</span>,<br />
-                      <span itemProp="addressLocality">Gurugram</span>, <span itemProp="addressRegion">Haryana</span> <span itemProp="postalCode">122102</span>, <span itemProp="addressCountry">India</span>
-                    </span>
+            <div className="lg:col-span-3 flex flex-col space-y-3">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-3 group">
+                <Link href="/" className="flex items-center gap-2 group cursor-pointer">
+                  <div className="transition-transform group-hover:scale-110 drop-shadow-[0_0_10px_rgba(95,35,200,0.5)]">
+                    <FrostyIcon size={32} glow={0} />
                   </div>
-                  <div className="flex items-center gap-2 mt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 text-[#8B5CF6]"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
-                    <span itemProp="telephone">+91 6399999955</span>
-                  </div>
-                  <div className="flex items-center gap-2 mt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 text-[#8B5CF6]"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
-                    <a href={`mailto:${COMPANY_INFO.contact}`} className="hover:text-white transition-colors">{COMPANY_INFO.contact}</a>
-                  </div>
-                </div>
+                  <FlipText className="text-[1.3rem] font-black font-sans font-bold text-white">
+                    frostrek
+                  </FlipText>
+                </Link>
               </div>
 
-              <div className="flex flex-col w-full max-w-[340px] space-y-8">
+              <div className="flex flex-col w-full max-w-[340px] gap-4">
                 <div className="flex items-center justify-between w-full opacity-70">
-                  <a href={COMPANY_INFO.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn page" className="w-10 h-10 rounded-full flex items-center justify-center transition-all text-[#8B5CF6] hover:-translate-y-1 hover:text-white"><img src="/linkedin.png" alt="Linkedin" className="w-6 h-6 object-contain transition-all hover:scale-110" loading="lazy" width={512} height={512} /></a>
-                  <a href={COMPANY_INFO.socials.instagram} target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram page" className="w-10 h-10 rounded-full flex items-center justify-center transition-all text-[#8B5CF6] hover:-translate-y-1 hover:text-white"><img src="/instagram.png" alt="Instagram" className="w-6 h-6 object-contain transition-all hover:scale-110" loading="lazy" width={512} height={512} /></a>
-                  <a href={COMPANY_INFO.socials.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp" className="w-10 h-10 rounded-full flex items-center justify-center transition-all text-[#8B5CF6] hover:-translate-y-1 hover:text-white"><img src="/whatsapp.png" alt="WhatsApp" className="w-6 h-6 object-contain transition-all hover:scale-110" loading="lazy" width={512} height={512} /></a>
-                  <a href={`mailto:${COMPANY_INFO.contact}`} aria-label="Send us an email" className="w-10 h-10 rounded-full flex items-center justify-center transition-all text-[#8B5CF6] hover:-translate-y-1 hover:text-white"><img src="/gmail.png" alt="Gmail" className="w-8 h-8 object-contain transition-all hover:scale-110" loading="lazy" width={512} height={512} /></a>
-                  <a href={COMPANY_INFO.socials.facebook} target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page" className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:-translate-y-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" className="transition-all hover:scale-110">
+                  <a href={COMPANY_INFO.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn page" className="w-9 h-9 rounded-full flex items-center justify-center transition-all text-[#8B5CF6] hover:-translate-y-1 hover:text-white"><img src="/linkedin.png" alt="Linkedin" className="w-5 h-5 object-contain transition-all hover:scale-110" loading="lazy" width={512} height={512} /></a>
+                  <a href={COMPANY_INFO.socials.instagram} target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram page" className="w-9 h-9 rounded-full flex items-center justify-center transition-all text-[#8B5CF6] hover:-translate-y-1 hover:text-white"><img src="/instagram.png" alt="Instagram" className="w-5 h-5 object-contain transition-all hover:scale-110" loading="lazy" width={512} height={512} /></a>
+                  <a href={COMPANY_INFO.socials.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp" className="w-9 h-9 rounded-full flex items-center justify-center transition-all text-[#8B5CF6] hover:-translate-y-1 hover:text-white"><img src="/whatsapp.png" alt="WhatsApp" className="w-5 h-5 object-contain transition-all hover:scale-110" loading="lazy" width={512} height={512} /></a>
+                  <a href="tel:+916399999955" aria-label="Call us" className="w-9 h-9 rounded-full flex items-center justify-center transition-all text-[#8B5CF6] hover:-translate-y-1 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" className="transition-all hover:scale-110">
+                      <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="#1877F2"/>
+                    </svg>
+                  </a>
+                  <a href={`mailto:${COMPANY_INFO.contact}`} aria-label="Send us an email" className="w-9 h-9 rounded-full flex items-center justify-center transition-all text-[#8B5CF6] hover:-translate-y-1 hover:text-white"><img src="/gmail.png" alt="Gmail" className="w-7 h-7 object-contain transition-all hover:scale-110" loading="lazy" width={512} height={512} /></a>
+                  <a href={COMPANY_INFO.socials.facebook} target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page" className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:-translate-y-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" className="transition-all hover:scale-110">
                       <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#1877F2" />
                       <path d="M16.671 15.542l.532-3.469h-3.328v-2.25c0-.949.465-1.874 1.956-1.874h1.514V5.006s-1.375-.235-2.686-.235c-2.741 0-4.533 1.662-4.533 4.669v2.633H7.078v3.469h3.047v8.385a12.09 12.09 0 003.75 0v-8.385h2.796z" fill="#FFF" />
                     </svg>
                   </a>
-                  <a href={COMPANY_INFO.socials.youtube} target="_blank" rel="noopener noreferrer" aria-label="Visit our YouTube channel" className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:-translate-y-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" className="transition-all hover:scale-110">
+                  <a href={COMPANY_INFO.socials.youtube} target="_blank" rel="noopener noreferrer" aria-label="Visit our YouTube channel" className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:-translate-y-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" className="transition-all hover:scale-110">
                       <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z" fill="#FF0000" />
                       <path d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="#FFF" />
                     </svg>
@@ -217,19 +204,19 @@ const FooterSection = () => {
                 </div>
 
                 <div className="flex items-center justify-between w-full">
-                  <img src="/ISO 27001.png" alt="ISO 27001:2022 certified — information security management" className="h-[38px] w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform" loading="lazy" />
-                  <img src="/gdpr logo.jpg" alt="GDPR compliant — European data protection standards" className="h-[34px] w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform" loading="lazy" />
-                  <img src="/ISO_9001-2015.svg.webp" alt="ISO 9001:2015 certified — quality management systems" className="h-[34px] w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform" loading="lazy" />
-                  <img src="/hipaa-compliance-logo-health-insurance-260nw-1647036358.webp" alt="HIPAA compliant — health information privacy" className="h-[36px] w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform bg-white rounded-md" loading="lazy" />
-                  <img src="/soc-2-compliant-certificate-badge-icon-clean-modern-design-symbolizing-verified-data.webp" alt="SOC 2 Type II compliant — data security and privacy" className="h-[38px] w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform bg-white rounded-md" loading="lazy" />
+                  <img src="/ISO 27001.png" alt="ISO 27001:2022 certified — information security management" className="h-[34px] w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform" loading="lazy" />
+                  <img src="/gdpr logo.jpg" alt="GDPR compliant — European data protection standards" className="h-[30px] w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform" loading="lazy" />
+                  <img src="/ISO_9001-2015.svg.webp" alt="ISO 9001:2015 certified — quality management systems" className="h-[30px] w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform" loading="lazy" />
+                  <img src="/hipaa-compliance-logo-health-insurance-260nw-1647036358.webp" alt="HIPAA compliant — health information privacy" className="h-[32px] w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform bg-white rounded-md" loading="lazy" />
+                  <img src="/soc-2-compliant-certificate-badge-icon-clean-modern-design-symbolizing-verified-data.webp" alt="SOC 2 Type II compliant — data security and privacy" className="h-[34px] w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform bg-white rounded-md" loading="lazy" />
                 </div>
               </div>
             </div>
 
-            <div className="lg:col-span-9 grid grid-cols-2 md:grid-cols-4 gap-8">
-              <div className="space-y-4">
+            <div className="lg:col-span-9 grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="space-y-3">
                 <h3 className="section-title font-bold text-[10px] uppercase tracking-widest text-[#5F23C8]">Products</h3>
-                <ul className="space-y-1.5">
+                <ul className="space-y-1">
                   {NAV_ITEMS.find(n => n.label === 'Products')?.megaMenu?.flatMap(s => s.items).slice(0, 7).map(item => (
                     <li key={item.name}>
                       <Link href={item.href} className="footer-link text-[13px] font-medium text-slate-400 hover:text-white group">
@@ -240,9 +227,9 @@ const FooterSection = () => {
                 </ul>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <h3 className="section-title font-bold text-[10px] uppercase tracking-widest text-[#5F23C8]">Solutions</h3>
-                <ul className="space-y-1.5">
+                <ul className="space-y-1">
                   {NAV_ITEMS.find(n => n.label === 'Solutions')?.megaMenu?.flatMap(s => s.items).map(item => (
                     <li key={item.name}>
                       <Link href={item.href} className="footer-link text-[13px] font-medium text-slate-400 hover:text-white group">
@@ -253,9 +240,9 @@ const FooterSection = () => {
                 </ul>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <h3 className="section-title font-bold text-[10px] uppercase tracking-widest text-[#5F23C8]">Company</h3>
-                <ul className="space-y-1.5">
+                <ul className="space-y-1">
                   <li><Link href="https://www.frostrek.ai/about" className="footer-link text-[13px] font-medium text-slate-400 hover:text-white group"><FlipText>About Us</FlipText></Link></li>
                   <li><Link href="https://www.frostrek.ai/experience" className="footer-link text-[13px] font-medium text-slate-400 hover:text-white group"><FlipText>Experience</FlipText></Link></li>
                   <li><Link href="https://www.frostrek.ai/resources/case-studies" className="footer-link text-[13px] font-medium text-slate-400 hover:text-white group"><FlipText>Case Studies</FlipText></Link></li>
@@ -266,15 +253,17 @@ const FooterSection = () => {
                 </ul>
               </div>
 
-              <div className="space-y-4">
-                <h3 className="font-bold text-[10px] uppercase tracking-widest text-[#5F23C8]">Location</h3>
+              <div className="space-y-3">
+                <div className="text-center">
+                  <h3 className="section-title font-bold text-[10px] uppercase tracking-widest text-[#5F23C8]">Location</h3>
+                </div>
                 <div
                   ref={locationRef}
                   onClick={handleLocationClick}
                   role="button"
                   tabIndex={0}
                   onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleLocationClick(); }}
-                  className="relative w-full h-40 md:h-48 rounded-2xl overflow-hidden shadow-sm border border-white/5 bg-[#0A0A14]/80 cursor-pointer transition-all duration-300 group hover:border-[#5F23C8]/30 select-none"
+                  className="relative w-full h-36 md:h-44 mx-auto rounded-2xl overflow-hidden shadow-sm border border-white/5 bg-[#0A0A14]/80 cursor-pointer transition-all duration-300 group hover:border-[#5F23C8]/30 select-none"
                 >
                   <svg className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity duration-300" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
                     <rect width="400" height="200" fill="#05050A" />
@@ -315,7 +304,7 @@ const FooterSection = () => {
               </div>
             </div>
           </div>
-          <div className="text-center pt-4 border-t border-white/10 text-sm font-medium text-slate-500">
+          <div className="text-center pt-2 border-t border-white/10 text-[11px] font-medium text-slate-500">
             &copy; {currentYear} {COMPANY_INFO.name}. All rights reserved.
           </div>
         </div>

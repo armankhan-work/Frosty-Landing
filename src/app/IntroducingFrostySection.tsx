@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useInView, useAnimation } from 'framer-motion';
-import { Globe, MessageCircle, BookOpen, Users, Activity, Sparkles, MessageSquare, Zap } from 'lucide-react';
+import { Globe, MessageCircle, BookOpen, Users, Activity, Sparkles, MessageSquare, Zap, Filter } from 'lucide-react';
 import FrostyIcon from '@/components/FrostyIcon';
 
 type NodeData = {
@@ -35,12 +35,12 @@ const NODES: NodeData[] = [
         delayOffset: 1.2
     },
     {
-        id: 'knowledge',
-        title: 'Knowledge',
-        subtitle: 'Base',
-        icon: <BookOpen className="w-5 h-5 text-white" />,
+        id: 'unified',
+        title: 'Unified',
+        subtitle: 'Agent',
+        icon: <Sparkles className="w-5 h-5 text-white" />,
         iconColor: 'bg-[#5F23C8]/40 border-[#8B5CF6]/40',
-        position: { x: 15, y: 70 },
+        position: { x: 15, y: 55 },
         delayOffset: 2.5
     },
     {
@@ -49,8 +49,17 @@ const NODES: NodeData[] = [
         subtitle: '& Integrations',
         icon: <Users className="w-5 h-5 text-white" />,
         iconColor: 'bg-[#5F23C8]/40 border-[#8B5CF6]/40',
-        position: { x: 85, y: 70 },
+        position: { x: 85, y: 55 },
         delayOffset: 3.8
+    },
+    {
+        id: 'lead',
+        title: 'Lead',
+        subtitle: 'Segregation',
+        icon: <Filter className="w-5 h-5 text-white" />,
+        iconColor: 'bg-[#5F23C8]/40 border-[#8B5CF6]/40',
+        position: { x: 15, y: 95 },
+        delayOffset: 4.5
     },
     {
         id: 'analytics',
@@ -58,7 +67,7 @@ const NODES: NodeData[] = [
         subtitle: '& Insights',
         icon: <Activity className="w-5 h-5 text-white" />,
         iconColor: 'bg-[#5F23C8]/40 border-[#8B5CF6]/40',
-        position: { x: 50, y: 95 },
+        position: { x: 85, y: 95 },
         delayOffset: 5.1
     }
 ];
@@ -382,12 +391,13 @@ export default function IntroducingFrostySection() {
                             // Unique micro-motions based on node id
                             const isWeb = node.id === 'website';
                             const isWA = node.id === 'whatsapp';
-                            const isKB = node.id === 'knowledge';
+                            const isUnified = node.id === 'unified';
                             const isCRM = node.id === 'crm';
+                            const isLead = node.id === 'lead';
                             
-                            const floatY = isWeb ? 3 : isKB ? 4 : isCRM ? 2 : 2.5;
-                            const floatX = isWA ? 3 : isCRM ? 2 : 1;
-                            const floatDur = isWeb ? 5.5 : isWA ? 6.2 : isKB ? 7.1 : isCRM ? 5.8 : 8.0;
+                            const floatY = isWeb ? 3 : isUnified ? 4 : isCRM ? 2 : isLead ? 3.5 : 2.5;
+                            const floatX = isWA ? 3 : isCRM ? 2 : isLead ? -2 : 1;
+                            const floatDur = isWeb ? 5.5 : isWA ? 6.2 : isUnified ? 7.1 : isCRM ? 5.8 : isLead ? 6.5 : 8.0;
                             
                             return (
                                 <motion.div
@@ -513,7 +523,7 @@ export default function IntroducingFrostySection() {
                                                 animate={coreGlowControls}
                                                 whileHover={{ rotate: 90, scale: 1.1 }}
                                             >
-                                                <FrostyIcon size={60} glow={burstActive ? 1.8 : 1.2} />
+                                                <FrostyIcon size={60} glow={0} />
                                             </motion.div>
                                         </motion.div>
                                     </div>

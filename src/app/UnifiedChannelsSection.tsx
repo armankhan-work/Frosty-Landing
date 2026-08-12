@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef, type JSX } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import FrostyIcon from '@/components/FrostyIcon';
 
 export default function UnifiedChannelsSection() {
   const [step, setStep] = useState(0);
@@ -306,8 +307,10 @@ export default function UnifiedChannelsSection() {
                    )}
                    {step >= 4 && (
                       <motion.div key="web-msg2" initial={{ opacity: 0, y: 10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} className="flex flex-col max-w-[90%] self-start items-start relative mt-1">
+                         <div className="w-5 h-5 rounded-full bg-[#10B981]/20 flex items-center justify-center shrink-0 border border-[#10B981]/30">
+                            <FrostyIcon size={12} glow={0} />
+                         </div>
                          <div className="px-3 py-2 text-[11px] bg-[#2D1B54] text-white rounded-2xl rounded-tl-sm border border-[#5F23C8]/30 flex items-center gap-1.5">
-                            <img src="/logonew.png" className="w-3.5 h-3.5 object-contain" />
                             <span>I can help! We have bulk discounts. Need a quote?</span>
                          </div>
                       </motion.div>
@@ -316,7 +319,9 @@ export default function UnifiedChannelsSection() {
 
                  {step === 3 && (
                     <motion.div key="web-typing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="self-start mt-1 px-3 py-1 flex items-center gap-2 text-[10px] text-white/40">
-                       <img src="/logonew.png" className="w-3 h-3 object-contain opacity-50" />
+                       <div className="w-5 h-5 rounded-full bg-[#5F23C8]/40 border border-[#5F23C8] flex items-center justify-center absolute -bottom-1 -right-1 shadow-sm">
+                          <FrostyIcon size={10} glow={0} />
+                       </div>
                        Frosty is typing...
                        <div className="flex gap-0.5 ml-1">
                           {[0,1,2].map(i => <motion.div key={i} animate={{ opacity: [0.3,1,0.3] }} transition={{ repeat: Infinity, duration: 1, delay: i*0.2 }} className="w-1 h-1 rounded-full bg-[#8B5CF6]" />)}
@@ -380,7 +385,9 @@ export default function UnifiedChannelsSection() {
                     </AnimatePresence>
                     {step === 7 && (
                        <motion.div key="wa-typing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="self-start mt-1 px-3 py-1 flex items-center gap-2 text-[10px] text-[#25D366]">
-                          <img src="/logonew.png" className="w-3 h-3 object-contain opacity-80" />
+                       <div className="w-5 h-5 rounded-full bg-[#5F23C8]/40 border border-[#5F23C8] flex items-center justify-center">
+                          <FrostyIcon size={10} glow={0} />
+                       </div>
                           Frosty is replying...
                           <div className="flex gap-0.5 ml-1">
                              {[0,1,2].map(i => <motion.div key={i} animate={{ opacity: [0.3,1,0.3] }} transition={{ repeat: Infinity, duration: 1, delay: i*0.2 }} className="w-1 h-1 rounded-full bg-[#25D366]" />)}
@@ -520,7 +527,9 @@ export default function UnifiedChannelsSection() {
                  animate={{ opacity: [0.6, 1, 0.6] }}
                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               />
-              <img src="/logonew.png" alt="Frosty Core" className="w-[50px] h-[50px] object-contain relative z-10 mb-2 drop-shadow-[0_0_15px_#ffffff]" />
+              <div className="mb-2 relative z-10 flex items-center justify-center drop-shadow-[0_0_15px_#ffffff]">
+                 <FrostyIcon size={44} glow={0} />
+              </div>
               <span className="text-[16px] font-bold text-white relative z-10 tracking-widest drop-shadow-[0_2px_10px_#ffffff]">Frosty</span>
               <span className="text-[10px] text-[#E9D5FF] relative z-10 tracking-wider drop-shadow-[0_2px_5px_#A78BFA]">Unified Agent</span>
            </motion.div>
@@ -556,7 +565,7 @@ export default function UnifiedChannelsSection() {
            
            <div className="p-5 flex gap-4">
               <div className="w-10 h-10 rounded-full bg-[#1A1D2D] border border-white/10 flex items-center justify-center shrink-0">
-                 <img src="/logonew.png" className="w-5 h-5 object-contain" />
+                 <FrostyIcon size={20} />
               </div>
               <div className="flex-1">
                  <p className="text-white text-[14px] font-bold mb-1.5">Hi James! 👋</p>

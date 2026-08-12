@@ -647,7 +647,7 @@ export default function PinnedFeaturesSection() {
           marginBottom: 24, boxShadow: '0 0 20px rgba(99, 90, 128, 0.05)'
         }}>
           <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '10px' }}>
-            <FrostyIcon size={20} glow={0.6} />
+            <FrostyIcon size={20} glow={0} />
           </div>
           <span style={{ 
             fontSize: 10, letterSpacing: '2px', color: 'rgba(255,255,255,0.6)', 
@@ -736,7 +736,7 @@ export default function PinnedFeaturesSection() {
             <div style={{ background: 'var(--bg-layer-3)', borderRadius: 16, border: '1px solid var(--border)', overflow: 'hidden' }}>
               <div style={{ background: 'var(--panel-header)', padding: '10px 16px', display: 'flex', alignItems: 'center', gap: 10, borderBottom: '1px solid var(--border)' }}>
                 <div style={{ flexShrink: 0, padding: '2px', marginRight: '8px' }}>
-                  <FrostyIcon size={14} glow={0.6} />
+                  <FrostyIcon size={14} glow={0} />
                 </div>
                 <div>
                   <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-primary)' }}>Frosty Assistant</div>

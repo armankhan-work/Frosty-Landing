@@ -305,7 +305,7 @@ export default function IgnitionCTA() {
         <div className="w-full pt-12 flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B1221]/80 border border-white/10 backdrop-blur-md mb-8 cursor-default select-none">
             <div className="text-sm drop-shadow-[0_0_8px_rgba(99, 90, 128,0.6)]">
-              <FrostyIcon size={14} glow={0.8} />
+              <FrostyIcon size={14} glow={0} />
             </div>
             <span className="text-white font-bold tracking-tight text-sm">Frosty</span>
             <span className="text-slate-500 text-sm font-bold tracking-[0.2em] uppercase ml-1 border-l border-white/10 pl-3 py-0.5">By Frostrek LLP</span>

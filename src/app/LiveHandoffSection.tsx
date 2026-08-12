@@ -317,7 +317,7 @@ export default function LiveHandoffSection() {
           position: 'relative',
           borderBottom: '1px solid var(--border)' }}>
           <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '4px' }}>
-            <FrostyIcon size={20} glow={0.6} />
+            <FrostyIcon size={20} glow={0} />
           </div>
           <div>
             <div style={{ fontSize: 13, fontWeight: 700, color: '#fff' }}>Frosty</div>
@@ -354,7 +354,7 @@ export default function LiveHandoffSection() {
           {/* AI Typing Indicator */}
           <motion.div className="ai-typing" style={{ opacity: 0, display: 'none', alignItems: 'flex-start', gap: 10, marginBottom: 16 }}>
             <div style={{ flexShrink: 0, padding: '2px', marginRight: '6px' }}>
-                <FrostyIcon size={14} glow={0.6} />
+                <FrostyIcon size={14} glow={0} />
               </div>
             <div style={{
               display: 'flex', alignItems: 'center', gap: 5,
@@ -370,7 +370,7 @@ export default function LiveHandoffSection() {
           <motion.div className="ai-bubble" style={{ opacity: 0, display: 'none', justifyContent: 'flex-start', marginBottom: 16 }}>
             <div style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
               <div style={{ flexShrink: 0, padding: '2px', marginRight: '6px' }}>
-                <FrostyIcon size={14} glow={0.6} />
+                <FrostyIcon size={14} glow={0} />
               </div>
               <div style={{
                 maxWidth: '85%', padding: '10px 14px', borderRadius: '4px 18px 18px 18px',

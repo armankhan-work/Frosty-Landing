@@ -67,8 +67,8 @@ export default function FAQPage() {
 
     // Filter FAQs based on search
     const filteredGroups = FAQ_GROUPS.map(([groupName, faqs]) => {
-        const filteredFaqs = faqs.filter(([q, a]) => 
-            q.toLowerCase().includes(searchQuery.toLowerCase()) || 
+        const filteredFaqs = faqs.filter(([q, a]) =>
+            q.toLowerCase().includes(searchQuery.toLowerCase()) ||
             a.toLowerCase().includes(searchQuery.toLowerCase())
         );
         return [groupName, filteredFaqs] as [string, [string, string][]];
@@ -137,90 +137,114 @@ export default function FAQPage() {
                     )}
                 </AnimatePresence>
 
-                {/* MAIN CONTENT - FAQ Section Redesign */}
-                <main className="min-h-screen pt-32 pb-24 px-4 sm:px-6 md:px-8 lg:px-12 w-full max-w-[1600px] mx-auto flex flex-col relative z-10">
-                    
-                    {/* Back Button */}
-                    <Link href="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-12 w-fit">
-                        <ArrowLeft className="w-4 h-4" />
-                        <span className="text-sm font-medium">Back to Home</span>
-                    </Link>
+                <main className="w-full flex flex-col relative z-10">
+                    <section className="min-h-[90vh] w-full flex flex-col items-center justify-center px-4 sm:px-6 relative">
+                        <Link href="/" className="absolute top-32 left-4 md:left-12 inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors w-fit">
+                            <ArrowLeft className="w-4 h-4" />
+                            <span className="text-sm font-medium">Back to Home</span>
+                        </Link>
 
-                    {/* Hero Header */}
-                    <div className="flex flex-col items-center text-center mb-16">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#10B981]/10 border border-[#10B981]/20 mb-6">
-                            <div className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
-                            <span className="text-[10px] font-bold tracking-widest text-[#34D399] uppercase">Help Center</span>
+                        <div className="flex flex-col items-center text-center max-w-3xl mx-auto w-full">
+                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#10B981]/10 border border-[#10B981]/20 mb-10">
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
+                                <span className="text-[10px] font-bold tracking-widest text-[#34D399] uppercase">Help Center</span>
+                            </div>
+
+                            <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif font-medium text-white">
+                                Frequently Asked Questions
+                            </h1>
+
+                            <p className="text-slate-400 text-lg md:text-xl max-w-2xl" style={{ marginTop: '32px', marginBottom: '32px' }}>
+                                Everything you need to know about our AI solutions, security, pricing, and technical capabilities.
+                            </p>
+
+                            <div className="relative w-full max-w-xl mx-auto">
+                                <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
+                                    <Search className="h-5 w-5 text-slate-400" />
+                                </div>
+                                <input
+                                    type="text"
+                                    className="block w-full pl-12 pr-6 py-4 bg-[#0A0A14]/80 backdrop-blur-xl border border-white/10 rounded-2xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#5F23C8]/50 focus:border-[#5F23C8] transition-all shadow-[0_8px_32px_rgba(0,0,0,0.2)] text-lg"
+                                    placeholder="Search for answers..."
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                />
+                            </div>
                         </div>
-                        
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-white mb-6">
-                            Frequently Asked Questions
-                        </h1>
-                        
-                        <p className="text-slate-400 text-lg md:text-xl max-w-2xl">
-                            Everything you need to know about our AI solutions, security, pricing, and technical capabilities.
-                        </p>
-                    </div>
+                    </section>
 
-                    {/* FAQ Categories */}
-                    <div className="flex flex-col gap-24 lg:gap-32 w-full mt-8">
-                        {FAQ_GROUPS.map(([group, qs], gIdx) => {
-                            const isEven = gIdx % 2 === 1; // 0 is Image Left, 1 is Image Right
+                    <div className="flex flex-col gap-24 lg:gap-32 w-full mt-16 px-4 sm:px-6 md:px-8 lg:px-12 max-w-[1600px] mx-auto pb-24">
+                        {filteredGroups.map(([group, qs], gIdx) => {
+                            const isEven = gIdx % 2 === 1;
                             const imageNames = ["faq_about.png", "faq_setup.png", "faq_daily.png", "faq_trust.png"];
 
                             return (
-                                <motion.div 
-                                    key={group} 
-                                    initial={{ opacity: 0, y: 80 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true, margin: "-100px" }}
-                                    transition={{ duration: 0.8, ease: "easeOut" }}
-                                    className={`flex flex-col md:flex-row items-center gap-12 lg:gap-20 w-full ${isEven ? 'md:flex-row-reverse' : ''}`}
-                                >
+                                <div key={group} className={`flex flex-col md:flex-row items-center gap-12 lg:gap-20 w-full ${isEven ? 'md:flex-row-reverse' : ''}`}>
                                     {/* Image Side */}
-                                    <motion.div 
-                                        initial={{ opacity: 0, x: isEven ? 50 : -50 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
-                                        viewport={{ once: true, margin: "-100px" }}
-                                        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                                        className="w-full md:w-[55%] relative group"
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.95 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        viewport={{ once: false, margin: "-100px" }}
+                                        transition={{ duration: 0.8, ease: "easeOut" }}
+                                        className="w-full md:w-[50%] relative group flex justify-center items-center"
                                     >
-                                        <div className="relative w-full aspect-[16/10] xl:aspect-[21/10] rounded-[2rem] overflow-hidden bg-[#0A0A14] border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] group-hover:border-[#5F23C8]/50 transition-all duration-500">
-                                            <img 
-                                                src={`/images/${imageNames[gIdx % 4]}`} 
-                                                alt={group} 
+                                        <div className="relative w-full max-w-md aspect-[4/5] rounded-[2rem] overflow-hidden bg-[#0A0A14] border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] group-hover:border-[#5F23C8]/50 transition-all duration-500">
+                                            <img
+                                                src={`/images/${imageNames[gIdx % 4]}`}
+                                                alt={group}
                                                 className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                                             />
-                                            {/* Subtle gradient overlay to blend into dark theme */}
                                             <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A14] via-transparent to-transparent opacity-80"></div>
                                         </div>
                                     </motion.div>
-                                    
+
                                     {/* FAQ Side */}
-                                    <motion.div 
-                                        initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
-                                        viewport={{ once: true, margin: "-100px" }}
-                                        transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-                                        className="w-full md:w-[45%] flex flex-col"
-                                    >
-                                        <h3 className="text-3xl md:text-4xl font-serif font-bold text-white mb-8 border-b border-white/10 pb-6">
+                                    <div className="w-full md:w-[50%] flex flex-col">
+                                        <motion.h3
+                                            initial={{ opacity: 0, x: -30 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            viewport={{ once: false }}
+                                            transition={{ duration: 0.6 }}
+                                            className="text-3xl md:text-4xl font-serif font-bold text-white mb-8 border-b border-white/10 pb-6"
+                                        >
                                             {group}
-                                        </h3>
-                                        
+                                        </motion.h3>
+
                                         <div className="flex flex-col gap-4">
                                             {qs.map(([q, a], i) => {
                                                 const globalIndex = FAQ_GROUPS.slice(0, gIdx).reduce((acc, [, faqs]) => acc + faqs.length, 0) + i;
                                                 const key = `${gIdx}-${i}`;
                                                 const isActive = openFaq === key;
                                                 const theme = FAQ_THEMES[globalIndex % FAQ_THEMES.length];
-                                                
+
+                                                const textContainer = {
+                                                    hidden: { opacity: 0 },
+                                                    visible: {
+                                                        opacity: 1,
+                                                        transition: { staggerChildren: 0.02, delayChildren: 0.1 }
+                                                    }
+                                                };
+
+                                                const textWord: any = {
+                                                    hidden: { opacity: 0, y: 15, rotateX: 45, filter: "blur(4px)" },
+                                                    visible: {
+                                                        opacity: 1,
+                                                        y: 0,
+                                                        rotateX: 0,
+                                                        filter: "blur(0px)",
+                                                        transition: { type: "spring", damping: 12, stiffness: 200 }
+                                                    }
+                                                };
+
                                                 return (
-                                                    <div 
-                                                        key={key} 
-                                                        className={`w-full rounded-[20px] transition-all duration-300 overflow-hidden ${
-                                                            isActive ? `bg-white/[0.04] ${theme.border} border` : 'bg-white/[0.02] border border-white/5 hover:border-white/10 hover:bg-white/[0.03]'
-                                                        }`}
+                                                    <motion.div
+                                                        key={key}
+                                                        initial={{ opacity: 0, x: -40 }}
+                                                        whileInView={{ opacity: 1, x: 0 }}
+                                                        viewport={{ once: false, margin: "-10px" }}
+                                                        transition={{ duration: 0.6, ease: "easeOut" }}
+                                                        className={`w-full rounded-[20px] transition-all duration-300 overflow-hidden ${isActive ? `bg-white/[0.04] ${theme.border} border` : 'bg-white/[0.02] border border-white/5 hover:border-white/10 hover:bg-white/[0.03]'
+                                                            }`}
                                                     >
                                                         <button
                                                             onClick={() => setOpenFaq(isActive ? null : key)}
@@ -230,17 +254,26 @@ export default function FAQPage() {
                                                                 <div className={`w-10 h-10 shrink-0 rounded-xl flex items-center justify-center font-bold text-sm ${theme.numberBg} ${theme.text}`}>
                                                                     {String(globalIndex + 1).padStart(2, '0')}
                                                                 </div>
-                                                                <span className={`text-[15px] font-medium leading-snug transition-colors pr-2 ${isActive ? theme.text : 'text-slate-200'}`}>
-                                                                    {q}
-                                                                </span>
+                                                                <motion.span
+                                                                    variants={textContainer}
+                                                                    initial="hidden"
+                                                                    whileInView="visible"
+                                                                    viewport={{ once: false }}
+                                                                    className={`text-[15px] font-medium leading-snug transition-colors pr-2 flex flex-wrap gap-[0.25em] ${isActive ? theme.text : 'text-slate-200'}`}
+                                                                >
+                                                                    {q.split(" ").map((word, wIdx) => (
+                                                                        <motion.span key={wIdx} variants={textWord} className="inline-block origin-bottom">
+                                                                            {word}
+                                                                        </motion.span>
+                                                                    ))}
+                                                                </motion.span>
                                                             </div>
-                                                            <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center border transition-all duration-300 ${
-                                                                isActive ? `${theme.numberBg} ${theme.border} ${theme.text} rotate-180` : 'bg-transparent border-white/10 text-slate-400'
-                                                            }`}>
+                                                            <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center border transition-all duration-300 ${isActive ? `${theme.numberBg} ${theme.border} ${theme.text} rotate-180` : 'bg-transparent border-white/10 text-slate-400'
+                                                                }`}>
                                                                 {isActive ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                                                             </div>
                                                         </button>
-                                                        
+
                                                         <AnimatePresence>
                                                             {isActive && (
                                                                 <motion.div
@@ -248,25 +281,29 @@ export default function FAQPage() {
                                                                     animate={{ height: 'auto', opacity: 1 }}
                                                                     exit={{ height: 0, opacity: 0 }}
                                                                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                                                                    className="overflow-hidden"
                                                                 >
-                                                                    <div className="px-4 pb-5 pt-1 pl-[4.5rem] text-[14px] leading-relaxed text-slate-400">
+                                                                    <div className="px-4 md:px-5 pb-5 pt-1 text-[14px] leading-relaxed text-slate-400 pl-[4.5rem]">
                                                                         {a}
                                                                     </div>
                                                                 </motion.div>
                                                             )}
                                                         </AnimatePresence>
-                                                    </div>
+                                                    </motion.div>
                                                 );
                                             })}
                                         </div>
-                                    </motion.div>
-                                </motion.div>
+                                    </div>
+                                </div>
                             );
                         })}
+                        {filteredGroups.length === 0 && (
+                            <div className="text-center py-12 text-slate-400 w-full">
+                                No questions found matching "{searchQuery}"
+                            </div>
+                        )}
                     </div>
                 </main>
-                
+
                 <FooterSection />
             </div>
         </div>

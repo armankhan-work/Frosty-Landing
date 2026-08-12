@@ -1,4 +1,5 @@
 // @ts-nocheck — legacy component; imports reference deleted modules
+// @ts-nocheck
 'use client';
 // src/app/dashboard/knowledge/page.tsx
 
@@ -383,7 +384,7 @@ export function KnowledgeBaseContent() {
   const statsTrends = useMemo(() => {
     const now = Date.now(); const week = 7 * 24 * 60 * 60 * 1000;
     const calc = (items: KnowledgeDoc[], unique = false) => {
-      let tw = new Set<string>(); let lw = new Set<string>(); let twc = 0; let lwc = 0;
+      const tw = new Set<string>(); const lw = new Set<string>(); let twc = 0; let lwc = 0;
       items.forEach(d => { const ms = new Date(d.upload_date).getTime(); const inTW = now - ms <= week; const inLW = now - ms > week && now - ms <= week * 2; if (unique) { if (inTW) tw.add(d.filename); else if (inLW) lw.add(d.filename); } else { if (inTW) twc++; else if (inLW) lwc++; } });
       const c1 = unique ? tw.size : twc; const c2 = unique ? lw.size : lwc;
       if (c2 === 0) return c1 > 0 ? '+100% this week' : '0% this week';

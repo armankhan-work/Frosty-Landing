@@ -60,11 +60,8 @@ export default function CrypticFreezeText({
     setHasStarted(true);
 
     const scrambleInterval = 30; // ms between scramble ticks
-    let scrambleTimer: ReturnType<typeof setInterval>;
     let elapsed = 0;
-
-    // Start scramble phase
-    scrambleTimer = setInterval(() => {
+    const scrambleTimer = setInterval(() => {
       elapsed += scrambleInterval;
       setDisplayChars(
         chars.map((c, i) => {

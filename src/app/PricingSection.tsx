@@ -42,14 +42,17 @@ export default function PricingSection() {
         {
             tag: "SCALING",
             name: "Growth",
+            subtitle: "For businesses starting their AI journey",
             price: "₹4,999",
             period: "/month",
-            badge: "MOST POPULAR",
+            originalPrice: "₹10,000/month standard price",
+            badge: "SAVE 50%",
             features: [
-                { text: "Unified Inbox", included: true },
-                { text: "WhatsApp API", included: true },
-                { text: "Advanced AI", included: true },
-                { text: "Priority Support", included: true }
+                { text: "300 conversations included / month", included: true },
+                { text: "1 Website + 1 WhatsApp channel", included: true },
+                { text: "Overage at ₹20 / conversation", included: true },
+                { text: "Advanced AI Analytics not included", included: false },
+                { text: "One-time setup: ₹10,000", included: true }
             ],
             cta: "Choose Growth",
             highlighted: true
@@ -57,12 +60,17 @@ export default function PricingSection() {
         {
             tag: "EXPANSION",
             name: "Dominance",
-            price: "₹12,499",
+            subtitle: "For businesses scaling conversation volume",
+            price: "₹8,999",
             period: "/month",
+            originalPrice: "₹18,000/month standard price",
+            badge: "MOST POPULAR",
             features: [
-                { text: "Everything in Growth", included: true },
-                { text: "Custom Branding", included: true },
-                { text: "Multi-agent Support", included: true }
+                { text: "600 conversations / month (2x Growth)", included: true },
+                { text: "1 Website + 1 WhatsApp channel", included: true },
+                { text: "Lower overage at ₹18 / conversation", included: true },
+                { text: "Advanced AI Analytics included", included: true },
+                { text: "One-time setup: ₹10,000", included: true }
             ],
             cta: "Select Plan",
             highlighted: false
@@ -138,11 +146,21 @@ export default function PricingSection() {
                                 <div className={`text-[10px] md:text-[11px] font-bold tracking-widest uppercase mb-3 ${plan.highlighted ? 'text-[#A78BFA]' : 'text-slate-500'}`}>
                                     {plan.tag}
                                 </div>
-                                <h3 className="text-2xl font-bold text-white mb-4 font-serif">{plan.name}</h3>
+                                <h3 className="text-2xl font-bold text-white mb-2 font-serif">{plan.name}</h3>
+                                {/* @ts-ignore */}
+                                {plan.subtitle && (
+                                    <p className="text-sm text-slate-400 mb-4">{plan.subtitle}</p>
+                                )}
                                 <div className="flex items-baseline gap-1">
                                     <span className="text-4xl font-extrabold text-white tracking-tight">{plan.price}</span>
                                     {plan.period && <span className="text-sm text-slate-400 font-medium">{plan.period}</span>}
                                 </div>
+                                {/* @ts-ignore */}
+                                {plan.originalPrice && (
+                                    <div className="text-sm text-slate-400/60 line-through mt-1">
+                                        {plan.originalPrice}
+                                    </div>
+                                )}
                             </div>
 
                             {/* Divider */}

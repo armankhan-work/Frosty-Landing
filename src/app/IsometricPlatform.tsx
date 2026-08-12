@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import FrostyIcon from '@/components/FrostyIcon';
 import { Cpu, Database, Users } from 'lucide-react';
 
 /* ---------- Under the Hood — Interactive Isometric Platform ---------- */
@@ -255,14 +256,17 @@ export default function IsometricPlatform() {
                         }}
                         style={{ transformOrigin: `260px 140px`, pointerEvents: 'none' }}
                     >
-                        <image 
-                            href="/logonew.png" 
+                        <foreignObject 
                             x={260 - 26} 
                             y={140 - 26} 
                             width={52} 
                             height={52} 
                             style={{ filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))' }}
-                        />
+                        >
+                            <div className="w-full h-full flex items-center justify-center brightness-[0.3] saturate-150">
+                                <FrostyIcon size={40} glow={0} />
+                            </div>
+                        </foreignObject>
                     </motion.g>
                 </g>
 

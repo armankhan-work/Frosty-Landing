@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Users } from 'lucide-react';
+import { Users, CheckCircle2, ChevronRight, BarChart3, Database, MessageSquare, PhoneCall, Globe2, ShieldCheck, Zap } from 'lucide-react';
+import FrostyIcon from '@/components/FrostyIcon';
 
 function Icon({ n }: { n: string }) {
     const p: Record<string, React.ReactNode> = {
@@ -116,8 +117,10 @@ function RadialIndustryHub() {
                         <div className="w-28 h-32 xl:w-32 xl:h-36 bg-gradient-to-b from-[#121212] to-[#121212] backdrop-blur-md flex items-center justify-center shadow-[0_0_50px_rgba(95, 35, 200,0.3)] border-2 border-[#5F23C8]/40 transition-transform duration-500 hover:scale-110 group-hover:border-[#5F23C8]/70 relative overflow-hidden"
                             style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}>
                             <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                            <div className="flex flex-col items-center justify-center p-3 relative z-10">
-                                <img src="/logonew.png" alt="Frosty" className="w-14 h-14 xl:w-16 xl:h-16 object-contain drop-shadow-[0_0_15px_rgba(95, 35, 200,0.5)] animate-[pulse_3s_ease-in-out_infinite]" draggable={false} />
+                            <div className="absolute inset-0 flex flex-col items-center justify-center -mt-2">
+                                <div className="drop-shadow-[0_0_15px_rgba(95,35,200,0.5)] animate-[pulse_3s_ease-in-out_infinite]">
+                                  <FrostyIcon size={60} glow={0} />
+                                </div>
                             </div>
                         </div>
                     </div>

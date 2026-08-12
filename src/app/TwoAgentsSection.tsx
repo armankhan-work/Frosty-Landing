@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Globe, MessageSquare, Brain, User } from 'lucide-react';
+import FrostyIcon from '@/components/FrostyIcon';
 
 export default function TwoAgentsSection() {
   const [active, setActive] = useState<'outbound' | 'inbound' | null>(null);
@@ -129,7 +130,9 @@ export default function TwoAgentsSection() {
               whileDrag={{ scale: 1.1, cursor: "grabbing" }}
               className="w-24 h-24 bg-white/[0.05] backdrop-blur-md rounded-full flex items-center justify-center border border-white/[0.15] shadow-[0_12px_40px_-10px_rgba(0,0,0,0.5)] pointer-events-auto relative z-50"
             >
-              <img src="/logonew.png" alt="Frosty Logo" className="w-14 h-14 object-contain pointer-events-none" />
+              <div className="flex items-center justify-center w-full h-full pointer-events-none drop-shadow-[0_0_15px_rgba(95,35,200,0.5)]">
+                <FrostyIcon size={40} glow={0} />
+              </div>
             </motion.div>
           </motion.div>
         )}

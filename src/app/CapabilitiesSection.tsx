@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Settings, Database, Zap, Wrench, UserCheck, ShieldCheck } from 'lucide-react';
 import IsometricPlatform from './IsometricPlatform';
+import CarouselStacked from '@/components/ui/carousel-07';
 
 export default function CapabilitiesSection() {
     return (
@@ -18,8 +19,9 @@ export default function CapabilitiesSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-8 relative group"
+                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full relative group"
                             style={{
+                                marginBottom: '2rem',
                                 background: 'rgba(255, 255, 255, 0.05)',
                                 backdropFilter: 'blur(12px)',
                                 WebkitBackdropFilter: 'blur(12px)',
@@ -38,10 +40,10 @@ export default function CapabilitiesSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
-                            className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-white leading-[1.1] tracking-tight mb-10"
+                            className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-white leading-[1.1] tracking-tight"
+                            style={{ marginBottom: '2rem' }}
                         >
                             Enterprise-grade.<br />
-                            <div style={{ height: '0.25em' }} />
                             <span style={{ color: '#5F23C8' }}>Engineered</span><br />
                             from the ground up.
                         </motion.h2>
@@ -52,7 +54,8 @@ export default function CapabilitiesSection() {
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
-                            className="text-sm md:text-base text-slate-400 leading-relaxed max-w-2xl mb-14"
+                            className="text-sm md:text-base text-slate-400 leading-relaxed max-w-2xl"
+                            style={{ marginBottom: '3.5rem' }}
                         >
                             Every request flows through a purpose-built AI architecture that crawls, understands, retrieves and reasons before generating enterprise-grade responses.
                         </motion.p>
@@ -63,51 +66,8 @@ export default function CapabilitiesSection() {
                     </div>
                 </div>
 
-                <div className="flex overflow-x-auto snap-x snap-mandatory sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mt-6 sm:mt-8 lg:mt-16 pb-6 sm:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:mx-0 sm:px-0">
-                    <div className="flex-none w-[85vw] sm:w-auto snap-center col-span-1 sm:col-span-2 rounded-[20px] sm:rounded-[32px] p-5 sm:p-8 md:p-10 relative overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 group border border-[rgba(255,255,255,0.08)] bg-white/[0.02] backdrop-blur-md">
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#10B981]/10 via-transparent to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        <div className="relative z-10 font-sans">
-                            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl mb-4 sm:mb-8 border border-[#10B981]/20 bg-[#10B981]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500"><Database size={24} className="text-[#34D399] w-5 h-5 sm:w-6 sm:h-6" strokeWidth={1.5} /></div>
-                            <h3 className="tracking-tighter font-bold text-xl sm:text-2xl mb-2 sm:mb-4 text-white">RAG knowledge engine</h3>
-                            <p className="text-slate-400 leading-relaxed max-w-[95%] text-[14px] sm:text-[15px] md:text-[16px] font-medium">We feed Frosty your PDFs and crawl up to 200 pages of your site. It chunks, embeds and indexes them into a semantic brain - so answers are grounded in your content, never generic.</p>
-                        </div>
-                    </div>
-                    
-                    <div className="flex-none w-[85vw] sm:w-auto snap-center col-span-1 md:col-span-1 lg:col-span-1 rounded-[20px] sm:rounded-[32px] p-5 sm:p-8 md:p-10 relative overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 group border border-[rgba(255,255,255,0.08)] bg-white/[0.02] backdrop-blur-md">
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#5F23C8]/10 via-transparent to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        <div className="relative z-10 font-sans">
-                            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl mb-4 sm:mb-8 border border-[#5F23C8]/20 bg-[#5F23C8]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500"><Zap size={24} className="text-[#5F23C8] w-5 h-5 sm:w-6 sm:h-6" strokeWidth={1.5} /></div>
-                            <h3 className="tracking-tighter font-bold text-xl sm:text-2xl mb-2 sm:mb-4 text-white">The right model for every task</h3>
-                            <p className="text-slate-400 leading-relaxed text-[14px] sm:text-[15px] md:text-[16px] font-medium">Multi-model under the hood - Gemini and GPT-4o. Our team picks and tunes the best model for each job.</p>
-                        </div>
-                    </div>
-
-                    <div className="flex-none w-[85vw] sm:w-auto snap-center col-span-1 md:col-span-1 lg:col-span-1 rounded-[20px] sm:rounded-[32px] p-5 sm:p-8 md:p-10 relative overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 group border border-[rgba(255,255,255,0.08)] bg-white/[0.02] backdrop-blur-md">
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#F59E0B]/10 via-transparent to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        <div className="relative z-10 font-sans">
-                            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl mb-4 sm:mb-8 border border-[#F59E0B]/20 bg-[#F59E0B]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500"><Wrench size={24} className="text-[#FBBF24] w-5 h-5 sm:w-6 sm:h-6" strokeWidth={1.5} /></div>
-                            <h3 className="tracking-tighter font-bold text-xl sm:text-2xl mb-2 sm:mb-4 text-white">Acts through your tools</h3>
-                            <p className="text-slate-400 leading-relaxed text-[14px] sm:text-[15px] md:text-[16px] font-medium">Calendar for bookings, Gmail for follow-ups, Slack for alerts, WhatsApp for chat.</p>
-                        </div>
-                    </div>
-
-                    <div className="flex-none w-[85vw] sm:w-auto snap-center col-span-1 sm:col-span-2 rounded-[20px] sm:rounded-[32px] p-5 sm:p-8 md:p-10 relative overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 group border border-[rgba(255,255,255,0.08)] bg-white/[0.02] backdrop-blur-md">
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#8B5CF6]/10 via-transparent to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        <div className="relative z-10 font-sans">
-                            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl mb-4 sm:mb-8 border border-[#8B5CF6]/20 bg-[#8B5CF6]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500"><UserCheck size={24} className="text-[#A78BFA] w-5 h-5 sm:w-6 sm:h-6" strokeWidth={1.5} /></div>
-                            <h3 className="tracking-tighter font-bold text-xl sm:text-2xl mb-2 sm:mb-4 text-white">Human-in-the-loop</h3>
-                            <p className="text-slate-400 leading-relaxed text-[14px] sm:text-[15px] md:text-[16px] font-medium">Pause the agent in one click, take over live, auto-resume when you're done.</p>
-                        </div>
-                    </div>
-
-                    <div className="flex-none w-[85vw] sm:w-auto snap-center col-span-1 sm:col-span-2 rounded-[20px] sm:rounded-[32px] p-5 sm:p-8 md:p-10 relative overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 group border border-[rgba(255,255,255,0.08)] bg-white/[0.02] backdrop-blur-md">
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#EF4444]/10 via-transparent to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        <div className="relative z-10 font-sans">
-                            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl mb-4 sm:mb-8 border border-[#EF4444]/20 bg-[#EF4444]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500"><ShieldCheck size={24} className="text-[#F87171] w-5 h-5 sm:w-6 sm:h-6" strokeWidth={1.5} /></div>
-                            <h3 className="tracking-tighter font-bold text-xl sm:text-2xl mb-2 sm:mb-4 text-white">Secure &amp; certified</h3>
-                            <p className="text-slate-400 leading-relaxed text-[14px] sm:text-[15px] md:text-[16px] font-medium">ISO 27001 &amp; ISO 9001 certified, GDPR-ready. Your content trains only your own agent.</p>
-                        </div>
-                    </div>
+                <div className="w-full mt-6 sm:mt-8 lg:mt-16">
+                    <CarouselStacked />
                 </div>
             </div>
         </section>

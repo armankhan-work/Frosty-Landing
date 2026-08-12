@@ -1,24 +1,25 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Globe, MessageSquare, Brain, User } from 'lucide-react';
+import FrostyIcon from '@/components/FrostyIcon';
 
 export default function PremiumTwoAgents() {
   const [active, setActive] = useState<'outbound' | 'inbound' | null>(null);
-  
+
   // Mouse tracking for whole section spotlight
   const sectionRef = useRef<HTMLElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const springX = useSpring(mouseX, { stiffness: 40, damping: 20 });
   const springY = useSpring(mouseY, { stiffness: 40, damping: 20 });
-  
+
   // Drag coordinates for the logo thread
   const logoDragX = useMotionValue(0);
   const logoDragY = useMotionValue(0);
   // Transform coordinates so the line connects to the top center of the logo
   const threadX2 = useTransform(logoDragX, x => x + 48);
   const threadY2 = useTransform(logoDragY, y => y + 80);
-  
+
   const [isHoveringSection, setIsHoveringSection] = useState(false);
   const [logoDropped, setLogoDropped] = useState(false);
   const [isGlowing, setIsGlowing] = useState(false);
@@ -27,7 +28,7 @@ export default function PremiumTwoAgents() {
   const handleBrainClick = () => {
     const newDropped = !logoDropped;
     setLogoDropped(newDropped);
-    
+
     if (newDropped) {
       setIsGlowing(true);
       if (glowTimeoutRef.current) clearTimeout(glowTimeoutRef.current);
@@ -57,9 +58,9 @@ export default function PremiumTwoAgents() {
   }, [mouseX, mouseY]);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
-      className="relative pt-8 lg:pt-12 pb-24 lg:pb-32 overflow-hidden" 
+      className="relative pt-8 lg:pt-12 pb-24 lg:pb-32 overflow-hidden"
       style={{ background: '#FFFFFF' }}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHoveringSection(true)}
@@ -68,7 +69,7 @@ export default function PremiumTwoAgents() {
         setActive(null);
       }}
     >
-      
+
       {/* Interactive Section-Wide Spotlight */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <motion.div
@@ -85,10 +86,10 @@ export default function PremiumTwoAgents() {
             background: active === 'outbound'
               ? 'radial-gradient(circle, rgba(2,132,199,0.06) 0%, transparent 70%)'
               : active === 'inbound'
-              ? 'radial-gradient(circle, rgba(22,101,52,0.06) 0%, transparent 70%)'
-              : isHoveringSection 
-              ? 'radial-gradient(circle, rgba(124,58,237,0.03) 0%, transparent 70%)'
-              : 'radial-gradient(circle, rgba(124,58,237,0) 0%, transparent 70%)',
+                ? 'radial-gradient(circle, rgba(22,101,52,0.06) 0%, transparent 70%)'
+                : isHoveringSection
+                  ? 'radial-gradient(circle, rgba(124,58,237,0.03) 0%, transparent 70%)'
+                  : 'radial-gradient(circle, rgba(124,58,237,0) 0%, transparent 70%)',
             scale: isHoveringSection ? 1 : 0.8,
           }}
           transition={{ duration: 0.5 }}
@@ -107,18 +108,18 @@ export default function PremiumTwoAgents() {
           >
             {/* Dynamic stretchy thread */}
             <svg className="absolute top-0 left-0 w-full h-[500px] pointer-events-none z-0" style={{ overflow: 'visible' }}>
-              <motion.line 
-                x1={48} 
-                y1={0} 
-                x2={threadX2} 
-                y2={threadY2} 
+              <motion.line
+                x1={48}
+                y1={0}
+                x2={threadX2}
+                y2={threadY2}
                 stroke="#2D6A4F"
                 strokeWidth="2.5"
                 strokeOpacity="0.4"
                 strokeLinecap="round"
               />
             </svg>
-            <motion.div 
+            <motion.div
               drag
               dragSnapToOrigin={true}
               dragElastic={0.6}
@@ -126,7 +127,9 @@ export default function PremiumTwoAgents() {
               whileDrag={{ scale: 1.1, cursor: "grabbing" }}
               className="w-24 h-24 bg-[#E8F5EE] rounded-full flex items-center justify-center border border-[#2D6A4F]/15 shadow-[0_12px_40px_-10px_rgba(45,106,79,0.2)] pointer-events-auto relative z-50"
             >
-              <img src="/logonew.png" alt="Frosty Logo" className="w-14 h-14 object-contain pointer-events-none" />
+              <div className="flex items-center justify-center w-full h-full pointer-events-none">
+                <FrostyIcon size={40} glow={0} />
+              </div>
             </motion.div>
           </motion.div>
         )}
@@ -142,7 +145,7 @@ export default function PremiumTwoAgents() {
             className="absolute -top-4 right-4 lg:right-10 z-50 w-[360px] pointer-events-none hidden md:block"
           >
             <div className="relative w-[360px] h-[340px] mx-auto pointer-events-none">
-              
+
               {/* SVG Connecting Lines */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ overflow: 'visible' }}>
                 {/* Line 1: User to Website */}
@@ -157,7 +160,7 @@ export default function PremiumTwoAgents() {
                   animate={{ pathLength: 1, opacity: 1 }}
                   transition={{ duration: 1.5, delay: 1 }}
                 />
-                
+
                 {/* Line 2: Website to Brain (Syncing context) */}
                 <motion.line
                   x1="300" y1="80" x2="300" y2="260"
@@ -183,7 +186,7 @@ export default function PremiumTwoAgents() {
                   animate={{ pathLength: 1, opacity: 1 }}
                   transition={{ duration: 1, delay: 4.5 }}
                 />
-                
+
                 {/* Line 4: WhatsApp to User */}
                 <motion.line
                   x1="60" y1="260" x2="60" y2="80"
@@ -199,10 +202,10 @@ export default function PremiumTwoAgents() {
               </svg>
 
               {/* Node 1: User (Top Left) */}
-              <motion.div 
+              <motion.div
                 className="absolute top-[56px] left-[36px] w-12 h-12 bg-gradient-to-tr from-gray-100 to-white rounded-full flex items-center justify-center border border-gray-200 z-10 cursor-pointer pointer-events-auto"
-                initial={{ scale: 0 }} 
-                animate={{ scale: 1, boxShadow: "0px 4px 6px -1px rgba(0, 0, 0, 0.1)" }} 
+                initial={{ scale: 0 }}
+                animate={{ scale: 1, boxShadow: "0px 4px 6px -1px rgba(0, 0, 0, 0.1)" }}
                 transition={{ delay: 0.2, type: 'spring' }}
                 whileHover={{ scale: 1.25, rotate: -10, boxShadow: "0px 20px 40px -5px rgba(0, 0, 0, 0.4)" }}
               >
@@ -210,10 +213,10 @@ export default function PremiumTwoAgents() {
               </motion.div>
 
               {/* Node 2: Website (Top Right) */}
-              <motion.div 
+              <motion.div
                 className="absolute top-[56px] left-[276px] w-12 h-12 bg-gradient-to-tr from-blue-100 to-blue-50 rounded-full flex items-center justify-center border border-blue-200 z-10 cursor-pointer pointer-events-auto"
-                initial={{ scale: 0 }} 
-                animate={{ scale: 1, boxShadow: "0px 4px 6px -1px rgba(0, 0, 0, 0.1)" }} 
+                initial={{ scale: 0 }}
+                animate={{ scale: 1, boxShadow: "0px 4px 6px -1px rgba(0, 0, 0, 0.1)" }}
                 transition={{ delay: 0.4, type: 'spring' }}
                 whileHover={{ scale: 1.25, rotate: 10, boxShadow: "0px 20px 40px -5px rgba(59, 130, 246, 0.8)" }}
               >
@@ -221,10 +224,10 @@ export default function PremiumTwoAgents() {
               </motion.div>
 
               {/* Node 3: Brain (Bottom Right) */}
-              <motion.div 
+              <motion.div
                 className="absolute top-[236px] left-[276px] w-12 h-12 bg-gradient-to-tr from-purple-100 to-purple-50 rounded-full flex items-center justify-center border border-purple-200 z-10 shadow-[0_0_15px_rgba(124,58,237,0.3)] cursor-pointer pointer-events-auto"
-                initial={{ scale: 0 }} 
-                animate={{ scale: 1, boxShadow: "0px 4px 6px -1px rgba(0, 0, 0, 0.1)" }} 
+                initial={{ scale: 0 }}
+                animate={{ scale: 1, boxShadow: "0px 4px 6px -1px rgba(0, 0, 0, 0.1)" }}
                 transition={{ delay: 0.6, type: 'spring' }}
                 whileHover={{ scale: 1.25, rotate: -10, boxShadow: "0px 20px 40px -5px rgba(168, 85, 247, 0.8)" }}
               >
@@ -232,16 +235,16 @@ export default function PremiumTwoAgents() {
               </motion.div>
 
               {/* Node 4: WhatsApp (Bottom Left) */}
-              <motion.div 
+              <motion.div
                 className="absolute top-[236px] left-[36px] w-12 h-12 bg-white rounded-full flex items-center justify-center border border-gray-100 z-10 p-2.5 cursor-pointer pointer-events-auto"
-                initial={{ scale: 0 }} 
-                animate={{ scale: 1, boxShadow: "0px 4px 6px -1px rgba(0, 0, 0, 0.1)" }} 
+                initial={{ scale: 0 }}
+                animate={{ scale: 1, boxShadow: "0px 4px 6px -1px rgba(0, 0, 0, 0.1)" }}
                 transition={{ delay: 0.8, type: 'spring' }}
                 whileHover={{ scale: 1.25, rotate: 10, boxShadow: "0px 20px 40px -5px rgba(34, 197, 94, 0.8)" }}
               >
                 <img src="/whatsapp.png" alt="WhatsApp" className="w-full h-full object-contain" />
               </motion.div>
-              
+
               {/* Message Bubble 1: User to Website */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8, x: "-50%", y: "-50%" }}
@@ -251,7 +254,7 @@ export default function PremiumTwoAgents() {
               >
                 "plz tell me about ur service on wp on this no 769292XXXX"
               </motion.div>
-              
+
               {/* Message Bubble 2: Website to Brain (Syncing) */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8, x: "-50%", y: "-50%" }}
@@ -288,7 +291,7 @@ export default function PremiumTwoAgents() {
       </AnimatePresence>
 
       <div className="w-full max-w-[1300px] mx-auto px-6 lg:px-10 relative z-10">
-        
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -301,7 +304,7 @@ export default function PremiumTwoAgents() {
             Two agents.<br />
             One <span className="relative">
               <span className="relative z-10 italic text-[#7C3AED]">conversation.</span>
-              <motion.div 
+              <motion.div
                 className="absolute bottom-1 left-0 right-0 h-3 bg-[#EDE9FE] -z-10 rounded-sm"
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
@@ -318,14 +321,14 @@ export default function PremiumTwoAgents() {
 
         {/* ── Cards Layout ── */}
         <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_240px_1fr] gap-6 lg:gap-0 items-stretch">
-          
+
           {/* Animated Connecting Lines (Desktop) */}
           <div className="hidden lg:block absolute inset-0 pointer-events-none z-0">
             <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid meet" fill="none">
               {/* Left dashed line */}
-              <motion.line 
-                x1="30%" y1="50%" x2="43%" y2="50%" 
-                stroke={active === 'outbound' || isGlowing ? '#0284C7' : '#E5E7EB'} 
+              <motion.line
+                x1="30%" y1="50%" x2="43%" y2="50%"
+                stroke={active === 'outbound' || isGlowing ? '#0284C7' : '#E5E7EB'}
                 strokeWidth={isGlowing ? "2.5" : "1.5"}
                 strokeDasharray="4 4"
                 animate={{
@@ -335,11 +338,11 @@ export default function PremiumTwoAgents() {
                 transition={{ strokeDashoffset: { duration: isGlowing ? 0.5 : 1, repeat: Infinity, ease: 'linear' }, opacity: { duration: 0.4 } }}
               />
               {/* Right dashed line */}
-              <motion.line 
-                x1="57%" y1="50%" x2="70%" y2="50%" 
-                stroke={active === 'inbound' || isGlowing ? '#166534' : '#E5E7EB'} 
-                strokeWidth={isGlowing ? "2.5" : "1.5"} 
-                strokeDasharray="4 4" 
+              <motion.line
+                x1="57%" y1="50%" x2="70%" y2="50%"
+                stroke={active === 'inbound' || isGlowing ? '#166534' : '#E5E7EB'}
+                strokeWidth={isGlowing ? "2.5" : "1.5"}
+                strokeDasharray="4 4"
                 animate={{
                   strokeDashoffset: active === 'inbound' || isGlowing ? [40, 0] : 0,
                   opacity: active === 'inbound' || isGlowing ? 1 : 0.4
@@ -360,27 +363,27 @@ export default function PremiumTwoAgents() {
             onMouseLeave={() => setActive(null)}
           >
             {/* 3D Tilt Wrapper */}
-            <motion.div 
+            <motion.div
               className="h-full rounded-2xl p-8 flex flex-col transition-all duration-500 overflow-hidden relative bg-white"
               whileHover={{ scale: 1.02, rotateY: 2, rotateX: 2 }}
               style={{
                 background: '#F4F9FE',
                 border: `1px solid ${active === 'outbound' || isGlowing ? '#BAE6FD' : '#E0F2FE'}`,
-                boxShadow: isGlowing 
+                boxShadow: isGlowing
                   ? '0 0 40px rgba(2,132,199,0.3), 0 0 0 4px rgba(2,132,199,0.15)'
-                  : active === 'outbound' 
-                  ? '0 32px 64px -16px rgba(2,132,199,0.12), 0 0 0 4px rgba(2,132,199,0.05)' 
-                  : '0 8px 24px -8px rgba(2,132,199,0.06)',
+                  : active === 'outbound'
+                    ? '0 32px 64px -16px rgba(2,132,199,0.12), 0 0 0 4px rgba(2,132,199,0.05)'
+                    : '0 8px 24px -8px rgba(2,132,199,0.06)',
               }}
             >
               {/* Inner Glow Gradient on Hover */}
-              <div 
-                className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#E0F2FE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none" 
+              <div
+                className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#E0F2FE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none"
               />
 
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-8">
-                  <motion.div 
+                  <motion.div
                     className="w-10 h-10 rounded-full bg-white border border-[#E0F2FE] flex items-center justify-center shadow-sm"
                     animate={{ scale: active === 'outbound' ? 1.1 : 1 }}
                     transition={{ type: 'spring', stiffness: 300 }}
@@ -418,7 +421,7 @@ export default function PremiumTwoAgents() {
             onMouseEnter={() => setActive(active ? null : 'outbound')} // Mini interaction: hovering brain pulses
             onClick={handleBrainClick}
           >
-            <motion.div 
+            <motion.div
               className="relative w-28 h-28 rounded-full flex items-center justify-center mb-4 transition-all duration-500"
               whileHover={{ scale: 1.05 }}
               style={{
@@ -427,10 +430,10 @@ export default function PremiumTwoAgents() {
                 boxShadow: isGlowing
                   ? '0 0 50px rgba(124,58,237,0.4), 0 0 0 6px rgba(124,58,237,0.2)'
                   : active === 'outbound'
-                  ? '0 12px 32px -8px rgba(2,132,199,0.5)'
-                  : active === 'inbound'
-                  ? '0 12px 32px -8px rgba(22,101,52,0.5)'
-                  : '0 0 0 4px rgba(245,243,255,0.5)',
+                    ? '0 12px 32px -8px rgba(2,132,199,0.5)'
+                    : active === 'inbound'
+                      ? '0 12px 32px -8px rgba(22,101,52,0.5)'
+                      : '0 0 0 4px rgba(245,243,255,0.5)',
               }}
             >
               <AnimatePresence>
@@ -443,13 +446,13 @@ export default function PremiumTwoAgents() {
                   />
                 )}
               </AnimatePresence>
-              <Brain 
-                className="w-12 h-12 relative z-10 transition-colors duration-500" 
-                strokeWidth={2.5} 
+              <Brain
+                className="w-12 h-12 relative z-10 transition-colors duration-500"
+                strokeWidth={2.5}
                 style={{ color: 'black' }}
               />
             </motion.div>
-            
+
             <span className="text-[11px] font-bold text-[#2D6A4F] text-center leading-tight max-w-[14ch]">
               Shared contextual memory
             </span>
@@ -466,7 +469,7 @@ export default function PremiumTwoAgents() {
             onMouseLeave={() => setActive(null)}
           >
             {/* 3D Tilt Wrapper */}
-            <motion.div 
+            <motion.div
               className="h-full rounded-2xl p-8 flex flex-col transition-all duration-500 overflow-hidden relative bg-white"
               whileHover={{ scale: 1.02, rotateY: -2, rotateX: 2 }}
               style={{
@@ -474,19 +477,19 @@ export default function PremiumTwoAgents() {
                 border: `1px solid ${active === 'inbound' || isGlowing ? '#BBF7D0' : '#DCFCE7'}`,
                 boxShadow: isGlowing
                   ? '0 0 40px rgba(22,101,52,0.3), 0 0 0 4px rgba(22,101,52,0.15)'
-                  : active === 'inbound' 
-                  ? '0 32px 64px -16px rgba(22,101,52,0.12), 0 0 0 4px rgba(22,101,52,0.05)' 
-                  : '0 8px 24px -8px rgba(22,101,52,0.06)',
+                  : active === 'inbound'
+                    ? '0 32px 64px -16px rgba(22,101,52,0.12), 0 0 0 4px rgba(22,101,52,0.05)'
+                    : '0 8px 24px -8px rgba(22,101,52,0.06)',
               }}
             >
               {/* Inner Glow Gradient on Hover */}
-              <div 
-                className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-[#DCFCE7] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full blur-3xl -ml-20 -mt-20 pointer-events-none" 
+              <div
+                className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-[#DCFCE7] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full blur-3xl -ml-20 -mt-20 pointer-events-none"
               />
 
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-8">
-                  <motion.div 
+                  <motion.div
                     className="w-10 h-10 rounded-full bg-white border border-[#DCFCE7] flex items-center justify-center shadow-sm"
                     animate={{ scale: active === 'inbound' ? 1.1 : 1 }}
                     transition={{ type: 'spring', stiffness: 300 }}

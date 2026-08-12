@@ -39,7 +39,7 @@ export default function ProblemConclusion() {
                 <span className="inline-block md:mt-2 mb-16">
                     <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">The</motion.span>
                     <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">business</motion.span>
-                    <motion.span variants={wordVariants} className="inline-block text-[#8B5CF6] font-semibold drop-shadow-[0_0_15px_rgba(139,92,246,0.3)]">wasn't.</motion.span>
+                    <motion.span variants={wordVariants} className="inline-block text-[#F43F5E] font-semibold drop-shadow-[0_0_15px_rgba(244,63,94,0.4)]">wasn't.</motion.span>
                 </span>
             </motion.h3>
 

@@ -2,6 +2,8 @@
 
 import { useState, useEffect, type JSX } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
+import FrostyIcon from '@/components/FrostyIcon';
 
 // --- CountUp Component for animated digits ---
 function CountUp({ to, duration = 1.5, decimals = 0 }: { to: number; duration?: number; decimals?: number }) {
@@ -542,7 +544,7 @@ export default function InteractiveDashboard() {
         {/* Sidebar */}
         <div className="w-[48px] sm:w-[56px] bg-[#171527] flex flex-col items-center py-4 sm:py-5 gap-4 sm:gap-5 shrink-0 border-r border-[#171527]">
           <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-[10px] sm:rounded-xl bg-[#2A2640] shadow-sm flex items-center justify-center mb-1 sm:mb-2 p-1 border border-white/5">
-            <img src="/logonew.png" alt="frosty logo" className="w-full h-full object-contain" />
+            <FrostyIcon size={20} />
           </div>
           {(['home', 'chart', 'chat', 'calendar', 'users'] as const).map((icon) => (
             <div

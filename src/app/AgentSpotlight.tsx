@@ -226,7 +226,7 @@ export default function AgentSpotlight() {
           ref={hubRef}
           className="absolute z-30 w-32 h-32 md:w-44 md:h-44 flex items-center justify-center"
         >
-          <FrostyIcon size={120} rotation={iconRotation} glow={1.5} />
+          <FrostyIcon size={120} rotation={iconRotation} glow={0} />
         </div>
 
         {/* Connection Lines (SVG) */}
