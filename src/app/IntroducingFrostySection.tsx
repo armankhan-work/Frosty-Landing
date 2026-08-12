@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useEffect, useState } from 'react';
-import { motion, useInView, useAnimation } from 'framer-motion';
+import { motion, useInView, useAnimation, AnimatePresence } from 'framer-motion';
 import { Globe, MessageCircle, BookOpen, Users, Activity, Sparkles, MessageSquare, Zap, Filter } from 'lucide-react';
 import FrostyIcon from '@/components/FrostyIcon';
 
@@ -21,7 +21,7 @@ const NODES: NodeData[] = [
         title: 'Website',
         subtitle: 'Agent',
         icon: <Globe className="w-5 h-5 text-white" />,
-        iconColor: 'bg-[#5F23C8]/40 border-[#8B5CF6]/40',
+        iconColor: 'sm:bg-[#5F23C8]/40 sm:border-[#8B5CF6]/40',
         position: { x: 15, y: 15 },
         delayOffset: 0
     },
@@ -30,7 +30,7 @@ const NODES: NodeData[] = [
         title: 'WhatsApp',
         subtitle: 'Agent',
         icon: <MessageCircle className="w-5 h-5 text-white" />,
-        iconColor: 'bg-green-500/40 border-green-400/40',
+        iconColor: 'sm:bg-green-500/40 sm:border-green-400/40',
         position: { x: 85, y: 15 },
         delayOffset: 1.2
     },
@@ -39,7 +39,7 @@ const NODES: NodeData[] = [
         title: 'Unified',
         subtitle: 'Agent',
         icon: <Sparkles className="w-5 h-5 text-white" />,
-        iconColor: 'bg-[#5F23C8]/40 border-[#8B5CF6]/40',
+        iconColor: 'sm:bg-[#5F23C8]/40 sm:border-[#8B5CF6]/40',
         position: { x: 15, y: 55 },
         delayOffset: 2.5
     },
@@ -48,7 +48,7 @@ const NODES: NodeData[] = [
         title: 'CRM',
         subtitle: '& Integrations',
         icon: <Users className="w-5 h-5 text-white" />,
-        iconColor: 'bg-[#5F23C8]/40 border-[#8B5CF6]/40',
+        iconColor: 'sm:bg-[#5F23C8]/40 sm:border-[#8B5CF6]/40',
         position: { x: 85, y: 55 },
         delayOffset: 3.8
     },
@@ -57,7 +57,7 @@ const NODES: NodeData[] = [
         title: 'Lead',
         subtitle: 'Segregation',
         icon: <Filter className="w-5 h-5 text-white" />,
-        iconColor: 'bg-[#5F23C8]/40 border-[#8B5CF6]/40',
+        iconColor: 'sm:bg-[#5F23C8]/40 sm:border-[#8B5CF6]/40',
         position: { x: 15, y: 95 },
         delayOffset: 4.5
     },
@@ -66,7 +66,7 @@ const NODES: NodeData[] = [
         title: 'Analytics',
         subtitle: '& Insights',
         icon: <Activity className="w-5 h-5 text-white" />,
-        iconColor: 'bg-[#5F23C8]/40 border-[#8B5CF6]/40',
+        iconColor: 'sm:bg-[#5F23C8]/40 sm:border-[#8B5CF6]/40',
         position: { x: 85, y: 95 },
         delayOffset: 5.1
     }
@@ -86,6 +86,7 @@ export default function IntroducingFrostySection() {
     const [nodeGlowState, setNodeGlowState] = useState<Record<string, number>>({});
 
     // Click Interaction Controls
+    const [hoveredNode, setHoveredNode] = useState<string | null>(null);
     const nodeTiltControls = useAnimation();
     const coreGlowControls = useAnimation();
 
@@ -244,7 +245,7 @@ export default function IntroducingFrostySection() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
                     
                     {/* Left Copy Column */}
-                    <div className="flex flex-col justify-center order-2 lg:order-1 mt-10 lg:mt-0 lg:-translate-y-16">
+                    <div className="flex flex-col justify-center mt-10 lg:mt-0 lg:-translate-y-16">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -300,7 +301,7 @@ export default function IntroducingFrostySection() {
                     </div>
 
                     {/* Right Visual Column */}
-                    <div className="relative w-full aspect-square max-w-[500px] mx-auto order-1 lg:order-2 mt-8 lg:mt-0">
+                    <div className="relative w-full aspect-square max-w-[500px] mx-auto mt-8 lg:mt-0">
                         
                         {/* Layer 4: Magnetic Rings */}
                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
@@ -402,14 +403,16 @@ export default function IntroducingFrostySection() {
                             return (
                                 <motion.div
                                     key={node.id}
-                                    className="absolute z-20 flex items-center gap-3 bg-[#0C0F1A]/85 backdrop-blur-md border border-white/5 rounded-xl p-3 pr-5 shadow-xl"
+                                    onHoverStart={() => setHoveredNode(node.id)}
+                                    onHoverEnd={() => setHoveredNode(null)}
+                                    onClick={() => setHoveredNode(hoveredNode === node.id ? null : node.id)}
+                                    className={`absolute flex items-center justify-center sm:justify-start w-12 h-12 sm:w-auto sm:h-auto sm:gap-3 sm:bg-[#0C0F1A]/85 sm:backdrop-blur-md sm:border sm:border-white/5 sm:rounded-xl sm:p-3 sm:pr-5 sm:shadow-xl cursor-pointer group ${hoveredNode === node.id ? 'z-50' : 'z-20'} sm:z-20`}
                                     style={{
                                         left: `${node.position.x}%`,
                                         top: `${node.position.y}%`,
                                         transform: 'translate(-50%, -50%)',
                                     }}
                                     animate={isInView ? {
-                                        // Magnetic Node Floating + Micro Orbital Drift
                                         y: [`calc(-50% + 0px)`, `calc(-50% - ${floatY}px)`, `calc(-50% + ${floatY}px)`, `calc(-50% + 0px)`],
                                         x: [`calc(-50% + 0px)`, `calc(-50% + ${floatX}px)`, `calc(-50% - ${floatX}px)`, `calc(-50% + 0px)`],
                                         boxShadow: burstActive 
@@ -423,13 +426,13 @@ export default function IntroducingFrostySection() {
                                     }}
                                 >
                                     <motion.div 
-                                        className="flex items-center gap-3 relative w-full h-full"
+                                        className="relative w-full h-full flex items-center justify-center sm:justify-start"
                                         animate={nodeTiltControls}
                                     >
+                                        {/* Mobile: Plain Icon Container (No Border) / Desktop: Colored Icon Box */}
                                         <motion.div 
-                                            className={`flex items-center justify-center w-10 h-10 rounded-lg border ${node.iconColor} relative`}
+                                            className={`flex items-center justify-center w-full h-full sm:w-10 sm:h-10 rounded-xl sm:rounded-lg sm:border ${node.iconColor} relative`}
                                             animate={isInView ? {
-                                                // Icon Micro-rotation
                                                 rotate: isWeb ? [0, 2, -1, 0] : isWA ? [0, -2, 1, 0] : [0, 1, -1, 0],
                                                 borderColor: burstActive ? 'rgba(196,181,253,0.6)' : 'rgba(139,92,246,0.4)',
                                             } : {}}
@@ -440,19 +443,38 @@ export default function IntroducingFrostySection() {
                                         >
                                             {/* Icon subtle glow on burst or simulated pulse arrival */}
                                             <motion.div
-                                                className="absolute inset-0 bg-[#C4B5FD] rounded-lg blur-md"
+                                                className="absolute inset-0 bg-[#C4B5FD] blur-md sm:rounded-lg"
                                                 animate={{ opacity: burstActive ? 0.4 : 0 }}
                                                 transition={{ duration: 0.4 }}
                                             />
-                                            <div className="relative z-10">
+                                            <div className="relative z-10 scale-110 sm:scale-100 drop-shadow-md sm:drop-shadow-none">
                                                 {node.icon}
                                             </div>
                                         </motion.div>
-                                        <div>
+                                        
+                                        {/* Desktop Text */}
+                                        <div className="hidden sm:block ml-3">
                                             <div className="text-white font-medium text-sm leading-tight whitespace-nowrap">{node.title}</div>
                                             <div className="text-zinc-400 text-xs whitespace-nowrap">{node.subtitle}</div>
                                         </div>
                                     </motion.div>
+                                    
+                                    {/* Mobile Tooltip */}
+                                    <AnimatePresence>
+                                        {hoveredNode === node.id && (
+                                            <motion.div
+                                                initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                                                animate={{ opacity: 1, y: 0, scale: 1 }}
+                                                exit={{ opacity: 0, y: 5, scale: 0.95 }}
+                                                transition={{ duration: 0.2 }}
+                                                className="absolute sm:hidden top-full mt-3 left-1/2 -translate-x-1/2 bg-[#1A1D2D] border border-white/10 text-white py-2 px-3 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.8)] whitespace-nowrap z-50 flex flex-col items-center pointer-events-none"
+                                            >
+                                                <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#1A1D2D] border-t border-l border-white/10 rotate-45 rounded-sm" />
+                                                <div className="text-white font-bold text-[13px] leading-tight relative z-10">{node.title}</div>
+                                                <div className="text-[#A78BFA] text-[10px] uppercase tracking-widest font-bold mt-0.5 relative z-10">{node.subtitle}</div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
                                     
                                     {/* Localized node response (purple halo) synced via state */}
                                     {nodeGlowState[node.id] && (
@@ -479,7 +501,7 @@ export default function IntroducingFrostySection() {
                         })}
 
                         {/* Layer 8: Central Frosty Core */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 flex flex-col items-center justify-center">
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 flex flex-col items-center justify-center scale-[0.6] sm:scale-100 transition-transform duration-300">
                             
                             <div className="relative flex items-center justify-center w-[140px] h-[140px]">
                                 {/* Outer atmospheric glow (Heartbeat driven) */}

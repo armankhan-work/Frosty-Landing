@@ -98,8 +98,7 @@ export default function CrypticFreezeText({
         }, freezeStagger);
       }
     }, scrambleInterval);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasStarted]);
+  }, [chars, freezeStagger, hasStarted, scrambleDuration, totalLen]);
 
   useEffect(() => {
     if (isInView && ready && !hasStarted) {

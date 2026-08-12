@@ -120,7 +120,6 @@ function OrbShaderPlane() {
       uScrollSpeed: { value: 0 },
       uResolution: { value: new THREE.Vector2(size.width, size.height) },
     }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 

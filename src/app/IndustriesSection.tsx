@@ -111,7 +111,7 @@ function RadialIndustryHub() {
                 </div>
 
                 {/* Center hub */}
-                <div className="absolute left-1/2 top-[46%] -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center justify-center scale-75 sm:scale-100">
+                <div className="absolute left-1/2 top-[46%] -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center justify-center scale-50 sm:scale-100">
                     <div className="relative group cursor-pointer">
                         <div className="absolute -inset-6 bg-[#5F23C8]/30 rounded-full blur-2xl opacity-80 group-hover:opacity-100 group-hover:bg-[#5F23C8]/50 animate-[pulse_4s_ease-in-out_infinite] transition-all duration-500" />
                         <div className="w-28 h-32 xl:w-32 xl:h-36 bg-gradient-to-b from-[#121212] to-[#121212] backdrop-blur-md flex items-center justify-center shadow-[0_0_50px_rgba(95, 35, 200,0.3)] border-2 border-[#5F23C8]/40 transition-transform duration-500 hover:scale-110 group-hover:border-[#5F23C8]/70 relative overflow-hidden"
@@ -132,18 +132,18 @@ function RadialIndustryHub() {
                     const isMobileVisible = index === 1 || index === 3 || index === 4 || index === 8;
                     return (
                         <div key={item.id} onMouseEnter={() => setActiveId(item.id)} onClick={() => setActiveId(item.id)}
-                            className={`absolute z-20 cursor-pointer group ${isMobileVisible ? 'block' : 'hidden sm:block'}`}
-                            style={{ left: `${item.x}%`, top: `${item.y}%`, transform: 'translate(-50%, -50%)', width: isActive ? '94px' : '84px' }}>
+                            className={`absolute z-20 cursor-pointer group flex justify-center ${isMobileVisible ? 'block' : 'hidden sm:block'}`}
+                            style={{ left: `${item.x}%`, top: `${item.y}%`, transform: 'translate(-50%, -50%)' }}>
                             <motion.div animate={{ y: [0, -5, 0] }}
                                 transition={{ duration: 3 + (index % 3), repeat: Infinity, ease: "easeInOut" }}
-                                className={`flex flex-col items-center justify-center bg-gradient-to-b from-[#121212]/90 to-[#121212]/90 backdrop-blur-md border shadow-[0_4px_16px_rgba(0,0,0,0.3)] hover:shadow-lg rounded-[14px] p-1.5 xl:p-2 transition-all duration-300 ${
-                                    isActive ? 'scale-110 z-30 shadow-[0_0_30px_rgba(0,0,0,0.5)] border-2' : 'border-[#334155] hover:border-[#5F23C8]/40 hover:scale-105 hover:bg-[#121212]/90'
+                                className={`flex flex-col items-center justify-center bg-gradient-to-b from-[#121212]/90 to-[#121212]/90 backdrop-blur-md border shadow-[0_4px_16px_rgba(0,0,0,0.3)] hover:shadow-lg rounded-[14px] p-1.5 xl:p-2 transition-all duration-300 w-[44px] sm:w-[84px] group-hover:w-[84px] ${
+                                    isActive ? 'scale-110 z-30 shadow-[0_0_30px_rgba(0,0,0,0.5)] border-2 !w-[84px] sm:!w-[94px]' : 'border-[#334155] hover:border-[#5F23C8]/40 hover:scale-105 hover:bg-[#121212]/90'
                                 }`}
                                 style={{ 
                                     borderColor: isActive ? item.color : undefined,
                                     boxShadow: isActive ? `0 10px 30px -10px ${item.color}80` : undefined
                                 }}>
-                                <div className="relative flex items-center justify-center mb-1">
+                                <div className={`relative flex items-center justify-center ${isActive ? 'mb-1' : 'mb-0 sm:mb-1 group-hover:mb-1'}`}>
                                     {isActive && (
                                         <>
                                             <div className="absolute inset-0 rounded-full border-2 border-current animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite] opacity-40" style={{ color: item.color }} />
@@ -161,7 +161,7 @@ function RadialIndustryHub() {
                                         <span className="w-4 h-4 flex items-center justify-center"><Icon n={item.id} /></span>
                                     </div>
                                 </div>
-                                <span className="text-[10px] xl:text-[11px] font-bold text-center tracking-tight leading-tight transition-colors duration-300 truncate w-full px-0.5"
+                                <span className={`text-[10px] xl:text-[11px] font-bold text-center tracking-tight leading-tight transition-colors duration-300 truncate w-full px-0.5 ${isActive ? 'block' : 'hidden sm:block group-hover:block'}`}
                                     style={{ color: isActive ? item.color : '#CBD5E1' }}>
                                     {item.label}
                                 </span>
