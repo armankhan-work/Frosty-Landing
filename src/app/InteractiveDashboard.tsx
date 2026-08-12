@@ -58,7 +58,7 @@ function DashboardPanel() {
       
       <div className="flex-1 px-4 sm:px-6 pb-5 overflow-y-auto flex flex-col gap-4 min-w-0">
         {/* KPI Grid */}
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           <div className="bg-white rounded-[14px] p-3 border border-[#F0E7FF] shadow-[0_2px_10px_rgba(139,92,246,0.03)] flex flex-col justify-between h-[86px]">
             <div className="w-6 h-6 rounded-md bg-[#F3E8FF] text-[#8B5CF6] flex items-center justify-center shrink-0 mb-1">
               <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
@@ -121,7 +121,7 @@ function DashboardPanel() {
                   <span>4</span>
                 </div>
                 {/* Complex Curve SVG Graph */}
-                <svg className="absolute inset-0 w-[calc(100%-8px)] h-full overflow-visible ml-2" preserveAspectRatio="none">
+                <svg viewBox="0 0 320 110" className="absolute inset-0 w-[calc(100%-8px)] h-full overflow-visible ml-2" preserveAspectRatio="none">
                   <motion.path 
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
@@ -155,7 +155,59 @@ function DashboardPanel() {
   )
 }
 
+const ANALYTICS_DATA = {
+  '7d': {
+    kpi: { conv: 8, msg: 0, leads: 1, convRate: 13 },
+    yAxis: [52, 39, 26, 13, 0],
+    path: "M 0,100 L 50,100 L 100,100 L 150,100 L 200,100 L 250,100 L 300,90 L 350,10",
+    fill: "M 0,100 L 50,100 L 100,100 L 150,100 L 200,100 L 250,100 L 300,90 L 350,10 L 350,100 Z",
+    dots: [
+      { cx: 0, cy: 100 }, { cx: 50, cy: 100 }, { cx: 100, cy: 100 }, { cx: 150, cy: 100 },
+      { cx: 200, cy: 100 }, { cx: 250, cy: 100 }, { cx: 300, cy: 90 }, { cx: 350, cy: 10 }
+    ],
+    xLabels: ['08/04', '08/06', '08/08', '08/10', '08/11']
+  },
+  '14d': {
+    kpi: { conv: 24, msg: 12, leads: 3, convRate: 12 },
+    yAxis: [100, 75, 50, 25, 0],
+    path: "M 0,100 L 50,80 L 100,85 L 150,60 L 200,40 L 250,50 L 300,20 L 350,5",
+    fill: "M 0,100 L 50,80 L 100,85 L 150,60 L 200,40 L 250,50 L 300,20 L 350,5 L 350,100 Z",
+    dots: [
+      { cx: 0, cy: 100 }, { cx: 50, cy: 80 }, { cx: 100, cy: 85 }, { cx: 150, cy: 60 },
+      { cx: 200, cy: 40 }, { cx: 250, cy: 50 }, { cx: 300, cy: 20 }, { cx: 350, cy: 5 }
+    ],
+    xLabels: ['07/28', '08/01', '08/04', '08/08', '08/11']
+  },
+  '30d': {
+    kpi: { conv: 142, msg: 89, leads: 22, convRate: 15 },
+    yAxis: [500, 375, 250, 125, 0],
+    path: "M 0,90 L 50,70 L 100,40 L 150,45 L 200,20 L 250,25 L 300,10 L 350,0",
+    fill: "M 0,90 L 50,70 L 100,40 L 150,45 L 200,20 L 250,25 L 300,10 L 350,0 L 350,100 Z",
+    dots: [
+      { cx: 0, cy: 90 }, { cx: 50, cy: 70 }, { cx: 100, cy: 40 }, { cx: 150, cy: 45 },
+      { cx: 200, cy: 20 }, { cx: 250, cy: 25 }, { cx: 300, cy: 10 }, { cx: 350, cy: 0 }
+    ],
+    xLabels: ['07/11', '07/18', '07/25', '08/01', '08/11']
+  },
+  '90d': {
+    kpi: { conv: 520, msg: 410, leads: 95, convRate: 18 },
+    yAxis: [2000, 1500, 1000, 500, 0],
+    path: "M 0,80 L 50,75 L 100,60 L 150,55 L 200,40 L 250,30 L 300,15 L 350,5",
+    fill: "M 0,80 L 50,75 L 100,60 L 150,55 L 200,40 L 250,30 L 300,15 L 350,5 L 350,100 Z",
+    dots: [
+      { cx: 0, cy: 80 }, { cx: 50, cy: 75 }, { cx: 100, cy: 60 }, { cx: 150, cy: 55 },
+      { cx: 200, cy: 40 }, { cx: 250, cy: 30 }, { cx: 300, cy: 15 }, { cx: 350, cy: 5 }
+    ],
+    xLabels: ['May', 'Jun', 'Jul', 'Aug', 'Sep']
+  }
+} as const;
+
+type TimeFilter = keyof typeof ANALYTICS_DATA;
+
 function AnalyticsPanelV2() {
+  const [timeFilter, setTimeFilter] = useState<TimeFilter>('7d');
+  const data = ANALYTICS_DATA[timeFilter];
+
   return (
     <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-[#F8F5FF] overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
       <div className="px-4 sm:px-6 pt-5 pb-3 shrink-0">
@@ -166,7 +218,7 @@ function AnalyticsPanelV2() {
       <div className="flex-1 px-4 sm:px-6 pb-5 overflow-y-auto flex flex-col gap-4 min-w-0">
         {/* Top Hero Metrics Card (Now exactly 4 metrics) */}
         <div className="bg-white rounded-[14px] border border-[#F0E7FF] shadow-[0_2px_10px_rgba(139,92,246,0.03)] p-4 flex flex-col gap-4">
-           <div className="flex justify-between items-center pb-3 border-b border-[#F0E7FF]">
+           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0 pb-3 border-b border-[#F0E7FF]">
              <div className="flex items-center gap-2">
                <div className="w-7 h-7 rounded bg-[#F3E8FF] text-[#8B5CF6] flex items-center justify-center shadow-sm">
                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 20V10M12 20V4M6 20v-6" /></svg>
@@ -177,8 +229,14 @@ function AnalyticsPanelV2() {
                </div>
              </div>
              <div className="flex bg-white border border-slate-200 rounded-lg p-0.5 shadow-sm">
-               {['7d', '14d', '30d', '90d'].map(d => (
-                 <span key={d} className={`text-[9px] font-bold px-2.5 py-1 rounded-md cursor-pointer ${d === '7d' ? 'bg-[#8B5CF6] text-white shadow-sm' : '!text-slate-500 hover:bg-slate-50'}`}>{d}</span>
+               {(['7d', '14d', '30d', '90d'] as TimeFilter[]).map(d => (
+                 <span 
+                   key={d} 
+                   onClick={() => setTimeFilter(d)}
+                   className={`text-[9px] font-bold px-2.5 py-1 rounded-md cursor-pointer transition-colors ${d === timeFilter ? 'bg-[#8B5CF6] text-white shadow-sm' : '!text-slate-500 hover:bg-slate-50'}`}
+                 >
+                   {d}
+                 </span>
                ))}
                <span className="!text-slate-500 px-1.5 py-1 flex items-center justify-center cursor-pointer hover:bg-slate-50 rounded-md">
                  <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="5" r="1" /><circle cx="12" cy="19" r="1" /></svg>
@@ -186,13 +244,13 @@ function AnalyticsPanelV2() {
              </div>
            </div>
            
-           <div className="grid grid-cols-4 gap-2">
+           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-2">
              <div className="flex flex-col items-start justify-center">
                <div className="flex items-center gap-1.5 mb-1">
                  <div className="w-5 h-5 rounded bg-[#F3E8FF] text-[#8B5CF6] flex items-center justify-center"><svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg></div>
                  <p className="text-[7px] font-bold !text-slate-500 uppercase tracking-wider">Conversations</p>
                </div>
-               <p className="text-[18px] font-extrabold !text-slate-900 leading-none mb-0.5 mt-0.5"><CountUp to={8} /></p>
+               <p className="text-[18px] font-extrabold !text-slate-900 leading-none mb-0.5 mt-0.5"><CountUp to={data.kpi.conv} key={data.kpi.conv} /></p>
                <p className="text-[8px] font-medium !text-slate-500">sessions</p>
              </div>
              <div className="flex flex-col items-start justify-center">
@@ -200,7 +258,7 @@ function AnalyticsPanelV2() {
                  <div className="w-5 h-5 rounded bg-[#F3E8FF] text-[#8B5CF6] flex items-center justify-center"><svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="3" y="11" width="18" height="10" rx="2" /><circle cx="12" cy="5" r="2" /><path d="M12 7v4" /><line x1="8" y1="16" x2="8" y2="16" /><line x1="16" y1="16" x2="16" y2="16" /></svg></div>
                  <p className="text-[7px] font-bold !text-slate-500 uppercase tracking-wider">Messages</p>
                </div>
-               <p className="text-[18px] font-extrabold !text-slate-900 leading-none mb-0.5 mt-0.5"><CountUp to={0} /></p>
+               <p className="text-[18px] font-extrabold !text-slate-900 leading-none mb-0.5 mt-0.5"><CountUp to={data.kpi.msg} key={data.kpi.msg} /></p>
                <p className="text-[8px] font-medium !text-slate-500">exchanged</p>
              </div>
              <div className="flex flex-col items-start justify-center">
@@ -208,7 +266,7 @@ function AnalyticsPanelV2() {
                  <div className="w-5 h-5 rounded bg-[#F3E8FF] text-[#8B5CF6] flex items-center justify-center"><svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg></div>
                  <p className="text-[7px] font-bold !text-slate-500 uppercase tracking-wider">Leads</p>
                </div>
-               <p className="text-[18px] font-extrabold !text-slate-900 leading-none mb-0.5 mt-0.5"><CountUp to={1} /></p>
+               <p className="text-[18px] font-extrabold !text-slate-900 leading-none mb-0.5 mt-0.5"><CountUp to={data.kpi.leads} key={data.kpi.leads} /></p>
                <p className="text-[8px] font-medium !text-slate-500">captured</p>
              </div>
              <div className="flex flex-col items-start justify-center">
@@ -216,7 +274,7 @@ function AnalyticsPanelV2() {
                  <div className="w-5 h-5 rounded bg-[#E6F4F1] text-[#0D9488] flex items-center justify-center"><svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg></div>
                  <p className="text-[7px] font-bold !text-slate-500 uppercase tracking-wider">Conversion</p>
                </div>
-               <p className="text-[18px] font-extrabold !text-slate-900 leading-none mb-0.5 mt-0.5"><CountUp to={13} />%</p>
+               <p className="text-[18px] font-extrabold !text-slate-900 leading-none mb-0.5 mt-0.5"><CountUp to={data.kpi.convRate} key={data.kpi.convRate} />%</p>
                <p className="text-[8px] font-medium !text-slate-500">lead rate</p>
              </div>
            </div>
@@ -224,75 +282,64 @@ function AnalyticsPanelV2() {
 
         {/* Full Width Line Chart */}
         <div className="flex-1 bg-white rounded-[14px] border border-[#F0E7FF] shadow-[0_2px_10px_rgba(139,92,246,0.03)] p-4 flex flex-col relative overflow-hidden min-h-[160px]">
-          <div className="flex items-center justify-between mb-4 z-10">
+          <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-2 xl:gap-0 mb-4 z-10">
              <h4 className="text-[12px] font-bold !text-slate-900">Conversations & Messages</h4>
              <div className="flex items-center gap-3 text-[9px] font-semibold !text-slate-500">
                 <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-[#7C3AED]" /> Conversations</span>
                 <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-[#8B5CF6]" /> Messages</span>
              </div>
           </div>
-          <div className="flex-1 relative w-full flex items-end ml-4">
+          <div className="flex-1 relative w-[calc(100%-1.25rem)] flex items-end ml-5">
             {/* Y Axis */}
             <div className="absolute left-[-24px] top-0 bottom-6 flex flex-col justify-between text-[8px] font-medium !text-slate-400">
-              <span>52</span>
-              <span>39</span>
-              <span>26</span>
-              <span>13</span>
-              <span>0</span>
+              {data.yAxis.map((y, i) => <span key={i}>{y}</span>)}
             </div>
             {/* Horizontal Grid */}
             <div className="absolute inset-0 flex flex-col justify-between pointer-events-none pb-6 opacity-30">
               {[1,2,3,4,5].map(i => <div key={i} className="w-full h-px bg-slate-300 border-b border-dashed border-slate-300" />)}
             </div>
             {/* SVG paths animating in */}
-            <svg className="absolute inset-0 w-full h-[calc(100%-24px)] overflow-visible" preserveAspectRatio="none">
-              <motion.path 
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
-                transition={{ duration: 1.5, ease: 'easeInOut' }}
-                d="M 0,100 L 50,100 L 100,100 L 150,100 L 200,100 L 250,100 L 300,90 L 350,10" 
-                fill="none" stroke="#7C3AED" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-              />
-              <motion.path 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.5 }}
-                d="M 0,100 L 50,100 L 100,100 L 150,100 L 200,100 L 250,100 L 300,90 L 350,10 L 350,100 Z" 
-                fill="#F3E8FF" 
-              />
-              {/* Data Dots appearing sequentially */}
-              {[
-                { cx: 0, cy: 100 },
-                { cx: 50, cy: 100 },
-                { cx: 100, cy: 100 },
-                { cx: 150, cy: 100 },
-                { cx: 200, cy: 100 },
-                { cx: 250, cy: 100 },
-                { cx: 300, cy: 90 },
-                { cx: 350, cy: 10 }
-              ].map((pt, i) => (
-                <motion.circle 
-                  key={i}
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.5 + (i * 0.1), type: "spring" }}
-                  cx={pt.cx} 
-                  cy={pt.cy} 
-                  r="2.5" 
-                  fill="#7C3AED" 
+            <svg viewBox="0 0 355 110" className="absolute inset-0 w-[calc(100%-5px)] h-[calc(100%-24px)] overflow-visible" preserveAspectRatio="none">
+              <AnimatePresence mode="popLayout">
+                <motion.path 
+                  key={`path-${timeFilter}`}
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: 1, opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1.5, ease: 'easeInOut' }}
+                  d={data.path}
+                  fill="none" stroke="#7C3AED" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                 />
-              ))}
+                <motion.path 
+                  key={`fill-${timeFilter}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1, delay: 0.5 }}
+                  d={data.fill}
+                  fill="#F3E8FF" 
+                />
+                {/* Data Dots appearing sequentially */}
+                {data.dots.map((pt, i) => (
+                  <motion.circle 
+                    key={`dot-${timeFilter}-${i}`}
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    exit={{ scale: 0 }}
+                    transition={{ delay: 0.5 + (i * 0.1), type: "spring" }}
+                    cx={pt.cx} 
+                    cy={pt.cy} 
+                    r="2.5" 
+                    fill="#7C3AED" 
+                  />
+                ))}
+              </AnimatePresence>
             </svg>
             {/* X Labels */}
             <div className="absolute bottom-1 left-0 right-0 flex justify-between text-[8px] font-medium !text-slate-400 translate-x-[-10px]">
-              <span>08/04</span>
-              <span>08/05</span>
-              <span>08/06</span>
-              <span>08/07</span>
-              <span>08/08</span>
-              <span>08/09</span>
-              <span>08/10</span>
-              <span>08/11</span>
+              {data.xLabels.map((lbl, i) => (
+                <span key={i}>{lbl}</span>
+              ))}
             </div>
           </div>
         </div>
@@ -397,7 +444,7 @@ function TeamPanel() {
 
       <div className="flex-1 px-4 sm:px-6 pb-5 flex flex-col gap-4 overflow-y-auto overflow-x-hidden min-w-0">
         {/* Stats Row */}
-        <div className="grid grid-cols-4 gap-2 sm:gap-3 shrink-0">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 shrink-0">
            <div className="bg-white rounded-[14px] p-2.5 sm:p-3 border border-[#F0E7FF] shadow-[0_2px_10px_rgba(139,92,246,0.03)] flex flex-col justify-between">
               <p className="text-[7px] font-bold !text-slate-500 uppercase tracking-wider mb-2 truncate">Total Members</p>
               <p className="text-[18px] sm:text-[20px] font-serif font-bold !text-slate-900 leading-none mb-2"><CountUp to={4} /></p>
@@ -432,8 +479,6 @@ function TeamPanel() {
                <h4 className="text-[11px] sm:text-[13px] font-serif font-bold !text-slate-900">Teammates</h4>
                <div className="flex gap-1 overflow-x-auto scrollbar-hide">
                   <span className="text-[8px] sm:text-[9px] bg-[#F3E8FF] text-[#8B5CF6] font-bold px-2 py-1 rounded-full cursor-pointer whitespace-nowrap">All</span>
-                  <span className="text-[8px] sm:text-[9px] !text-slate-500 font-semibold px-2 py-1 cursor-pointer hover:bg-[#F3E8FF] rounded-full transition-colors whitespace-nowrap">Agents</span>
-                  <span className="text-[8px] sm:text-[9px] !text-slate-500 font-semibold px-2 py-1 cursor-pointer hover:bg-[#F3E8FF] rounded-full transition-colors whitespace-nowrap">Pending</span>
                </div>
             </div>
             <a href="#" className="text-[8px] sm:text-[9px] font-bold text-[#7C3AED] flex items-center gap-1 hover:underline whitespace-nowrap shrink-0">
