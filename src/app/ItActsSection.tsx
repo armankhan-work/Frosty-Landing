@@ -9,52 +9,53 @@ import BooksMeetingsFlow from './BooksMeetingsFlow';
 import ProposalsQuotesFlow from './ProposalsQuotesFlow';
 import CapturesLeadFlow from './CapturesLeadFlow';
 import HandsOffFlow from './HandsOffFlow';
-
-function Icon({ n }: { n: string }) {
-    const p: Record<string, React.ReactNode> = {
-        snow: <path d="M12 2v20M12 2l-3 3M12 2l3 3M12 22l-3-3M12 22l3-3M3.3 7l17.4 10M3.3 7l1.1 4.1M3.3 7l4.1-1.1M20.7 17l-4.1 1.1M20.7 17l-1.1-4.1M20.7 7L3.3 17M20.7 7l-4.1-1.1M20.7 7l-1.1 4.1M3.3 17l4.1 1.1M3.3 17l1.1-4.1" />,
-        arrow: <path d="M5 12h14M13 6l6 6-6 6" />,
-        chat: <path d="M4 5h16v11H8l-4 4V5z" />,
-        wa: <path d="M4 20l1.4-4A8 8 0 1112 20a8 8 0 01-6.6-3.5M9 10.5c.4 2 2.5 4.1 4.5 4.5.7.1 1.3-.5 1.5-1l-1.6-1-1 .7c-.8-.4-1.4-1-1.8-1.8l.7-1-1-1.6c-.5.2-1.1.8-1 1.5z" />,
-        brain: <path d="M9 4a3 3 0 00-3 3 3 3 0 00-1 5.8A3 3 0 007 18a3 3 0 003 2V4zM15 4a3 3 0 013 3 3 3 0 011 5.8A3 3 0 0117 18a3 3 0 01-3 2V4z" />,
-        cal: <path d="M4 6h16v14H4V6zM4 10h16M8 3v4M16 3v4M9 14h2M14 14h2" />,
-        doc: <path d="M7 3h7l4 4v14H7V3zM14 3v4h4M9 12h7M9 16h7" />,
-        user: <path d="M12 12a4 4 0 100-8 4 4 0 000 8zM5 20a7 7 0 0114 0" />,
-        hand: <path d="M12 12a4 4 0 100-8 4 4 0 000 8zM5 20a7 7 0 0111.5-5.5M17 15l2 2 3-3" />,
-        bolt: <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" />,
-        layers: <path d="M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5M3 17l9 5 9-5" />,
-        model: <path d="M12 3a9 9 0 100 18 9 9 0 000-18zM12 7v10M7 12h10M8.5 8.5l7 7M15.5 8.5l-7 7" />,
-        plug: <path d="M9 3v6M15 3v6M7 9h10v3a5 5 0 01-10 0V9zM12 17v4" />,
-        shield: <path d="M12 3l8 3v6c0 4.5-3.2 7.6-8 9-4.8-1.4-8-4.5-8-9V6l8-3zM9 12l2 2 4-4" />,
-        infinity: <path d="M6 9a3 3 0 100 6c2 0 3-2 6-3s4-3 6-3a3 3 0 110 6c-2 0-3-2-6-3S8 9 6 9z" />,
-        chart: <path d="M4 20V4M4 20h16M8 16l3-4 3 2 4-6" />,
-        check: <path d="M4 12l5 5L20 6" />,
-        spark: <path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6L12 3z" />,
-        globe: <path d="M12 3a9 9 0 100 18 9 9 0 000-18zM3 12h18M12 3c2.5 2.5 3.5 6 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-6-3.5-9s1-6.5 3.5-9z" />
-    };
-    return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{p[n]}</svg>;
-}
+import { MessageSquare, Calendar, FileText, TrendingUp, Headphones, Brain, Check } from 'lucide-react';
 
 const ACTS = [
     {
-        i: "/icons/chat.png", h: "Answers & qualifies", p: "Understands the question and asks the right ones back.",
-        q: "Do you work with clinics like ours?", via: "Website", out: "Intent understood · tagged WARM", c: "act-purple"
+        icon: MessageSquare,
+        h: "Answers & qualifies", 
+        p: "Understands the question and asks the right ones back.",
+        q: "Do you work with clinics like ours?", 
+        via: "Website", 
+        out: "Intent understood · tagged WARM", 
+        c: "act-purple"
     },
     {
-        i: "/icons/email.png", h: "Books meetings", p: "Drops a slot straight onto your team's calendar.",
-        q: "Can someone walk me through it this week?", via: "WA", out: "Meeting booked · Thu 4:30 PM", c: "act-blue"
+        icon: Calendar, 
+        h: "Books meetings", 
+        p: "Drops a slot straight onto your team's calendar.",
+        q: "Can someone walk me through it this week?", 
+        via: "WA", 
+        out: "Meeting booked · Thu 4:30 PM", 
+        c: "act-blue"
     },
     {
-        i: "/icons/innovation.png", h: "Sends proposals & quotes", p: "Shares the right document at the right moment.",
-        q: "Send me pricing for 50 seats.", via: "Website", out: "Quotation #218 sent on WA", c: "act-orange"
+        icon: FileText, 
+        h: "Sends proposals & quotes", 
+        p: "Shares the right document at the right moment.",
+        q: "Send me pricing for 50 seats.", 
+        via: "Website", 
+        out: "Quotation #218 sent on WA", 
+        c: "act-orange"
     },
     {
-        i: "/icons/data-analytics.png", h: "Captures the lead", p: "Pulls contact and intent from a natural chat.",
-        q: "I'm interested - here's my number.", via: "WA", out: "Lead saved · synced to your CRM", c: "act-green"
+        icon: TrendingUp, 
+        h: "Captures the lead", 
+        p: "Pulls contact and intent from a natural chat.",
+        q: "I'm interested - here's my number.", 
+        via: "WA", 
+        out: "Lead saved · synced to your CRM", 
+        c: "act-green"
     },
     {
-        i: "/icons/advisors.png", h: "Hands off to a human", p: "Escalates to your team with the full history.",
-        q: "I'd rather speak to a person.", via: "Website", out: "Live chat handed to your team", c: "act-rose"
+        icon: Headphones, 
+        h: "Hands off to a human", 
+        p: "Escalates to your team with the full history.",
+        q: "I'd rather speak to a person.", 
+        via: "Website", 
+        out: "Live chat handed to your team", 
+        c: "act-rose"
     }
 ];
 
@@ -121,29 +122,38 @@ function ActsDiagram({ active, onSelect, setHeld }: { active: number, onSelect: 
                     </div>
 
                     <div className="fx-brain">
-                        <div className="node" ref={core}><img src="/icons/ai.png" alt="Brain" className="w-8 h-8 object-contain" /></div>
+                        <div className="node" ref={core}>
+                            <Brain className="w-8 h-8 text-[#5F23C8]" strokeWidth={1.75} />
+                        </div>
                         <small>Reads intent</small>
                     </div>
 
                     <div className="fx-act-list">
-                        {ACTS.map((a, i) => (
-                            <button
-                                key={a.h}
-                                ref={(n) => { nodes.current[i] = n; }}
-                                className={`fx-act ${a.c}` + (i === active ? " on" : "")}
-                                aria-pressed={i === active}
-                                onClick={() => { onSelect(i); setHeld(true); }}
-                                onMouseEnter={() => { onSelect(i); setHeld(true); }}
-                                onMouseLeave={() => setHeld(false)}
-                                onFocus={() => { onSelect(i); setHeld(true); }}
-                                onBlur={() => setHeld(false)}
-                            >
-                                <span className="ic"><img src={a.i} alt="" className="w-5 h-5 object-contain" /></span>
-                                <b>{a.h}</b>
-                                <span className="fx-sr">. {a.p} Example: “{a.q}” - {a.out}.</span>
-                                <span className="tick"><Icon n="check" /></span>
-                            </button>
-                        ))}
+                        {ACTS.map((a, i) => {
+                            const IconComponent = a.icon;
+                            return (
+                                <button
+                                    key={a.h}
+                                    ref={(n) => { nodes.current[i] = n; }}
+                                    className={`fx-act ${a.c}` + (i === active ? " on" : "")}
+                                    aria-pressed={i === active}
+                                    onClick={() => { onSelect(i); setHeld(true); }}
+                                    onMouseEnter={() => { onSelect(i); setHeld(true); }}
+                                    onMouseLeave={() => setHeld(false)}
+                                    onFocus={() => { onSelect(i); setHeld(true); }}
+                                    onBlur={() => setHeld(false)}
+                                >
+                                    <span className="ic">
+                                        <IconComponent className="w-4 h-4" strokeWidth={1.75} />
+                                    </span>
+                                    <b>{a.h}</b>
+                                    <span className="fx-sr">. {a.p} Example: “{a.q}” - {a.out}.</span>
+                                    <span className="tick">
+                                        <Check className="w-4 h-4" strokeWidth={2.5} />
+                                    </span>
+                                </button>
+                            );
+                        })}
                     </div>
                 </div>
             </div>
@@ -222,21 +232,21 @@ function FeatureShowcase() {
     };
 
     return (
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-16 mt-6 sm:mt-12 w-full">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-20 xl:gap-28 mt-6 sm:mt-12 w-full max-w-[1440px] mx-auto">
             {/* Mobile: Tabs on top */}
             <MobileTabs active={active} onSelect={setActive} setHeld={setHeld} />
 
             {/* Desktop: Full diagram on left */}
-            <div className="hidden lg:block lg:w-[48%]"
+            <div className="hidden lg:block lg:w-[45%] xl:w-[43%]"
               onMouseEnter={() => setHeld(true)}
               onMouseLeave={() => setHeld(false)}
             >
                 <ActsDiagram active={active} onSelect={setActive} setHeld={setHeld} />
             </div>
 
-            {/* Flow Animations — responsive container */}
-            <div className="w-full lg:w-[48%] flex items-center justify-center overflow-hidden">
-                <div className="w-full max-w-[400px] lg:max-w-none aspect-square lg:aspect-auto lg:min-h-[460px] flex items-center justify-center">
+            {/* Flow Animations — responsive container with comfortable spacing */}
+            <div className="w-full lg:w-[50%] xl:w-[52%] flex items-center justify-center overflow-hidden lg:pl-6 xl:pl-10">
+                <div className="w-full max-w-[440px] lg:max-w-none aspect-square lg:aspect-auto lg:min-h-[460px] flex items-center justify-center">
                     {active === 0 && <AnswersQualifiesFlow onComplete={handleComplete} />}
                     {active === 1 && <BooksMeetingsFlow onComplete={handleComplete} />}
                     {active === 2 && <ProposalsQuotesFlow onComplete={handleComplete} />}
@@ -250,7 +260,7 @@ function FeatureShowcase() {
 
 export default function ItActsSection() {
     return (
-        <section className="relative pt-4 sm:pt-8 lg:pt-12 pb-12 sm:pb-16 lg:pb-24 overflow-hidden bg-transparent" id="how">
+        <section className="relative pt-4 sm:pt-8 pb-8 sm:pb-12 lg:pb-14 overflow-hidden bg-transparent" id="how">
             <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 relative z-10">
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.7 }} className="text-center mx-auto flex flex-col items-center" style={{ maxWidth: 640 }}>
                     <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#5F23C8] flex items-center mb-3 sm:mb-4">Not a chatbot</span>

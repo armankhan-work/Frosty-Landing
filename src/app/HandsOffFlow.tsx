@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { User, Globe, Brain, Headphones } from 'lucide-react';
 
 export default function HandsOffFlow({ onComplete }: { onComplete?: () => void }) {
   const [started, setStarted] = useState(false);
@@ -22,10 +23,10 @@ export default function HandsOffFlow({ onComplete }: { onComplete?: () => void }
             transition={{ duration: 0.5 }}
           >
             {/* Dashed background lines (square) */}
-            <line x1="100" y1="80" x2="400" y2="80" stroke="#CBD5E1" strokeWidth="2" strokeDasharray="4 4" />
-            <line x1="400" y1="80" x2="400" y2="380" stroke="#CBD5E1" strokeWidth="2" strokeDasharray="4 4" />
-            <line x1="400" y1="380" x2="100" y2="380" stroke="#CBD5E1" strokeWidth="2" strokeDasharray="4 4" />
-            <line x1="100" y1="380" x2="100" y2="80" stroke="#CBD5E1" strokeWidth="2" strokeDasharray="4 4" />
+            <line x1="100" y1="80" x2="400" y2="80" stroke="#E2E8F0" strokeWidth="2" strokeDasharray="4 4" />
+            <line x1="400" y1="80" x2="400" y2="380" stroke="#E2E8F0" strokeWidth="2" strokeDasharray="4 4" />
+            <line x1="400" y1="380" x2="100" y2="380" stroke="#E2E8F0" strokeWidth="2" strokeDasharray="4 4" />
+            <line x1="100" y1="380" x2="100" y2="80" stroke="#E2E8F0" strokeWidth="2" strokeDasharray="4 4" />
 
             {/* Animated lines */}
             <motion.line x1="100" y1="80" x2="400" y2="80" stroke="#5F23C8" strokeWidth="2.5" strokeDasharray="4 4"
@@ -39,26 +40,42 @@ export default function HandsOffFlow({ onComplete }: { onComplete?: () => void }
 
             {/* Node: User (top left) */}
             <motion.g initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.2, type: 'spring' }}>
-              <circle cx="100" cy="80" r="24" fill="#FFFFFF" stroke="#CBD5E1" strokeWidth="1.5" />
-              <text x="100" y="85" textAnchor="middle" fill="#0F172A" fontSize="20">👤</text>
+              <circle cx="100" cy="80" r="24" fill="#F8FAFC" stroke="#CBD5E1" strokeWidth="1.5" />
+              <foreignObject x="88" y="68" width="24" height="24" className="overflow-visible pointer-events-none">
+                <div className="w-6 h-6 flex items-center justify-center text-slate-700">
+                  <User className="w-5 h-5" strokeWidth={1.75} />
+                </div>
+              </foreignObject>
             </motion.g>
 
             {/* Node: Website (top right) */}
             <motion.g initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.4, type: 'spring' }}>
               <circle cx="400" cy="80" r="24" fill="#FAF5FF" stroke="#5F23C8" strokeWidth="1.5" />
-              <text x="400" y="85" textAnchor="middle" fill="#5F23C8" fontSize="20">🌐</text>
+              <foreignObject x="388" y="68" width="24" height="24" className="overflow-visible pointer-events-none">
+                <div className="w-6 h-6 flex items-center justify-center text-[#5F23C8]">
+                  <Globe className="w-5 h-5" strokeWidth={1.75} />
+                </div>
+              </foreignObject>
             </motion.g>
 
             {/* Node: Brain (bottom right) */}
             <motion.g initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.6, type: 'spring' }}>
               <circle cx="400" cy="380" r="24" fill="#FAF5FF" stroke="#8B5CF6" strokeWidth="1.5" />
-              <text x="400" y="385" textAnchor="middle" fill="#5F23C8" fontSize="20">🧠</text>
+              <foreignObject x="388" y="368" width="24" height="24" className="overflow-visible pointer-events-none">
+                <div className="w-6 h-6 flex items-center justify-center text-[#8B5CF6]">
+                  <Brain className="w-5 h-5" strokeWidth={1.75} />
+                </div>
+              </foreignObject>
             </motion.g>
 
             {/* Node: Headset/Human (bottom left) */}
             <motion.g initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.8, type: 'spring' }}>
               <circle cx="100" cy="380" r="24" fill="#FFF7ED" stroke="#EA580C" strokeWidth="1.5" />
-              <text x="100" y="385" textAnchor="middle" fill="#EA580C" fontSize="20">🎧</text>
+              <foreignObject x="88" y="368" width="24" height="24" className="overflow-visible pointer-events-none">
+                <div className="w-6 h-6 flex items-center justify-center text-[#EA580C]">
+                  <Headphones className="w-5 h-5" strokeWidth={1.75} />
+                </div>
+              </foreignObject>
             </motion.g>
 
             {/* Bubble 1: User request */}

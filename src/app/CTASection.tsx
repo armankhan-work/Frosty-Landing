@@ -13,7 +13,7 @@ function Icon({ n }: { n: string }) {
 
 export default function CTASection() {
     return (
-        <section className="relative pt-16 pb-24 bg-transparent">
+        <section className="relative pt-8 sm:pt-12 pb-12 sm:pb-16 bg-transparent">
             <div className="w-full max-w-[1600px] mx-auto px-6 lg:px-10 xl:px-12 relative z-10">
                 <div className="relative rounded-[32px] overflow-hidden px-8 py-10 md:px-16 md:py-14 text-center bg-white/95 backdrop-blur-md border border-slate-200 shadow-[0_20px_60px_rgba(0,0,0,0.06)] flex flex-col justify-center">
                     {/* Decorative glows */}

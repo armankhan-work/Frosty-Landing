@@ -21,13 +21,13 @@ export default function ProblemConclusion() {
     };
 
     return (
-        <section className="relative w-full flex flex-col items-center text-center pt-24 pb-20 bg-transparent z-10 overflow-hidden ">
+        <section className="relative w-full flex flex-col items-center text-center pt-10 sm:pt-14 pb-8 sm:pb-10 bg-transparent z-10 overflow-hidden ">
             <motion.h3
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ margin: "-100px", once: true }}
-                className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight mb-6"
+                className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight mb-4"
             >
                 <span className="inline-block">
                     <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">The</motion.span>
@@ -36,7 +36,7 @@ export default function ProblemConclusion() {
                     <motion.span variants={wordVariants} className="inline-block text-[#5F23C8] font-bold">ready.</motion.span>
                 </span>
                 <br className="hidden md:block" />
-                <span className="inline-block md:mt-2 mb-16">
+                <span className="inline-block md:mt-2 mb-4">
                     <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">The</motion.span>
                     <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">business</motion.span>
                     <motion.span variants={wordVariants} className="inline-block text-[#E11D48] font-bold">wasn't.</motion.span>

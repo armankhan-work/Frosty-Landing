@@ -75,7 +75,7 @@ export default function ProblemSection() {
                         transition={{ duration: 0.6 }}
                         className="w-full text-left"
                     >
-                        <h4 className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#5F23C8] mb-8 block">
+                        <h4 className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#5F23C8] mb-8 block -ml-[1px] md:-ml-[2px]">
                             THE PROBLEM
                         </h4>
                     </motion.div>
@@ -88,9 +88,9 @@ export default function ProblemSection() {
                         className="w-full text-left text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight"
                         style={{ marginBottom: '2rem' }}
                     >
-                        Your customers <br />
-                        are already reaching out. <br />
-                        <span className="text-[#5F23C8] font-semibold">They just aren't waiting.</span>
+                        You're losing hot leads. <br />
+                        Simply because you can't <br />
+                        <span className="text-[#5F23C8] font-semibold">reply fast enough.</span>
                     </motion.h2>
 
                     <motion.p
@@ -98,12 +98,12 @@ export default function ProblemSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.4 }}
-                        className="w-full text-left text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl"
+                        className="w-full text-left text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl -ml-[1px] md:-ml-[2px]"
                         style={{ marginBottom: '3.5rem' }}
                     >
-                        Every enquiry starts a journey.<br />
-                        Too many get lost in the gap between<br />
-                        interest and action.
+                        Every inbound enquiry is a fleeting opportunity.<br />
+                        Too many slip through the cracks while they sit in<br />
+                        inboxes waiting for a human response.
                     </motion.p>
                 </div>
 

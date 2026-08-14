@@ -20,54 +20,54 @@ const NODES: NodeData[] = [
         id: 'website',
         title: 'Website',
         subtitle: 'Agent',
-        icon: <Globe className="w-5 h-5 text-[#5F23C8]" />,
+        icon: <Globe className="w-4 h-4 sm:w-5 sm:h-5 text-[#5F23C8]" />,
         iconColor: 'bg-[#5F23C8]/10 border-[#5F23C8]/25',
-        position: { x: 15, y: 15 },
+        position: { x: 18, y: 16 },
         delayOffset: 0
     },
     {
         id: 'whatsapp',
         title: 'WhatsApp',
         subtitle: 'Agent',
-        icon: <MessageCircle className="w-5 h-5 text-green-600" />,
+        icon: <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-600" />,
         iconColor: 'bg-green-50 border-green-200',
-        position: { x: 85, y: 15 },
+        position: { x: 82, y: 16 },
         delayOffset: 1.2
     },
     {
         id: 'unified',
         title: 'Unified',
         subtitle: 'Agent',
-        icon: <Sparkles className="w-5 h-5 text-[#5F23C8]" />,
+        icon: <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[#5F23C8]" />,
         iconColor: 'bg-[#5F23C8]/10 border-[#5F23C8]/25',
-        position: { x: 15, y: 55 },
+        position: { x: 14, y: 50 },
         delayOffset: 2.5
     },
     {
         id: 'crm',
         title: 'CRM',
         subtitle: '& Integrations',
-        icon: <Users className="w-5 h-5 text-blue-600" />,
+        icon: <Users className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />,
         iconColor: 'bg-blue-50 border-blue-200',
-        position: { x: 85, y: 55 },
+        position: { x: 86, y: 50 },
         delayOffset: 3.8
     },
     {
         id: 'lead',
         title: 'Lead',
         subtitle: 'Segregation',
-        icon: <Filter className="w-5 h-5 text-amber-600" />,
+        icon: <Filter className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600" />,
         iconColor: 'bg-amber-50 border-amber-200',
-        position: { x: 15, y: 95 },
+        position: { x: 18, y: 84 },
         delayOffset: 4.5
     },
     {
         id: 'analytics',
         title: 'Analytics',
         subtitle: '& Insights',
-        icon: <Activity className="w-5 h-5 text-[#5F23C8]" />,
+        icon: <Activity className="w-4 h-4 sm:w-5 sm:h-5 text-[#5F23C8]" />,
         iconColor: 'bg-[#5F23C8]/10 border-[#5F23C8]/25',
-        position: { x: 85, y: 95 },
+        position: { x: 82, y: 84 },
         delayOffset: 5.1
     }
 ];
@@ -197,7 +197,7 @@ export default function IntroducingFrostySection() {
     }, [isInView]);
 
     return (
-        <section ref={sectionRef} className="relative w-full min-h-screen py-24 md:py-32 overflow-hidden bg-transparent">
+        <section ref={sectionRef} className="relative w-full py-12 sm:py-16 lg:py-20 flex flex-col justify-center overflow-hidden bg-transparent">
             
             {/* Atmospheric Glow & Bottom Wave Field */}
             <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
@@ -244,7 +244,7 @@ export default function IntroducingFrostySection() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
                     
                     {/* Left Copy Column */}
-                    <div className="flex flex-col justify-center mt-10 lg:mt-0 lg:-translate-y-16">
+                    <div className="flex flex-col justify-center mt-6 lg:mt-0">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -300,7 +300,7 @@ export default function IntroducingFrostySection() {
                     </div>
 
                     {/* Right Visual Column */}
-                    <div className="relative w-full aspect-square max-w-[500px] mx-auto mt-8 lg:mt-0">
+                    <div className="relative w-full aspect-square max-w-[390px] sm:max-w-[420px] lg:max-w-[450px] mx-auto mt-4 lg:mt-0">
                         
                         {/* Magnetic Rings */}
                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
@@ -404,7 +404,7 @@ export default function IntroducingFrostySection() {
                                     onHoverStart={() => setHoveredNode(node.id)}
                                     onHoverEnd={() => setHoveredNode(null)}
                                     onClick={() => setHoveredNode(hoveredNode === node.id ? null : node.id)}
-                                    className={`absolute flex items-center justify-center sm:justify-start w-12 h-12 sm:w-auto sm:h-auto sm:gap-3 sm:bg-white/95 sm:backdrop-blur-md sm:border sm:border-slate-200/80 sm:rounded-xl sm:p-3 sm:pr-5 sm:shadow-[0_4px_20px_rgba(0,0,0,0.06)] cursor-pointer group ${hoveredNode === node.id ? 'z-50' : 'z-20'} sm:z-20`}
+                                    className={`absolute flex items-center justify-center sm:justify-start w-11 h-11 sm:w-auto sm:h-auto sm:gap-2.5 sm:bg-white/95 sm:backdrop-blur-md sm:border sm:border-slate-200/80 sm:rounded-xl sm:p-2 sm:pr-3.5 sm:shadow-[0_4px_18px_rgba(0,0,0,0.06)] cursor-pointer group ${hoveredNode === node.id ? 'z-50' : 'z-20'} sm:z-20`}
                                     style={{
                                         left: `${node.position.x}%`,
                                         top: `${node.position.y}%`,
@@ -415,7 +415,7 @@ export default function IntroducingFrostySection() {
                                         x: [`calc(-50% + 0px)`, `calc(-50% + ${floatX}px)`, `calc(-50% - ${floatX}px)`, `calc(-50% + 0px)`],
                                         boxShadow: burstActive 
                                             ? "0 0 25px rgba(95,35,200,0.15)" 
-                                            : "0 4px 20px rgba(0,0,0,0.06)"
+                                            : "0 4px 18px rgba(0,0,0,0.06)"
                                     } : {}}
                                     transition={{
                                         y: { duration: floatDur, repeat: Infinity, ease: "easeInOut" },
@@ -429,7 +429,7 @@ export default function IntroducingFrostySection() {
                                     >
                                         {/* Colored Icon Box */}
                                         <motion.div 
-                                            className={`flex items-center justify-center w-full h-full sm:w-10 sm:h-10 rounded-xl sm:rounded-lg sm:border ${node.iconColor} relative`}
+                                            className={`flex items-center justify-center w-full h-full sm:w-9 sm:h-9 rounded-xl sm:rounded-lg sm:border ${node.iconColor} relative`}
                                             animate={isInView ? {
                                                 rotate: isWeb ? [0, 2, -1, 0] : isWA ? [0, -2, 1, 0] : [0, 1, -1, 0],
                                                 borderColor: burstActive ? 'rgba(95,35,200,0.5)' : 'rgba(95,35,200,0.2)',
@@ -445,15 +445,15 @@ export default function IntroducingFrostySection() {
                                                 animate={{ opacity: burstActive ? 0.2 : 0 }}
                                                 transition={{ duration: 0.4 }}
                                             />
-                                            <div className="relative z-10 scale-110 sm:scale-100 drop-shadow-sm sm:drop-shadow-none">
+                                            <div className="relative z-10 scale-105 sm:scale-100 drop-shadow-sm sm:drop-shadow-none">
                                                 {node.icon}
                                             </div>
                                         </motion.div>
                                         
                                         {/* Desktop Text */}
-                                        <div className="hidden sm:block ml-3">
-                                            <div className="text-slate-900 font-bold text-sm leading-tight whitespace-nowrap">{node.title}</div>
-                                            <div className="text-slate-500 text-xs whitespace-nowrap font-medium">{node.subtitle}</div>
+                                        <div className="hidden sm:block ml-2.5">
+                                            <div className="text-slate-900 font-bold text-[13px] leading-tight whitespace-nowrap">{node.title}</div>
+                                            <div className="text-slate-500 text-[11px] whitespace-nowrap font-medium">{node.subtitle}</div>
                                         </div>
                                     </motion.div>
                                     
@@ -499,15 +499,15 @@ export default function IntroducingFrostySection() {
                         })}
 
                         {/* Central Frosty Core */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 flex flex-col items-center justify-center scale-[0.6] sm:scale-100 transition-transform duration-300">
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 flex flex-col items-center justify-center scale-[0.65] sm:scale-95 transition-transform duration-300">
                             
-                            <div className="relative flex items-center justify-center w-[140px] h-[140px]">
+                            <div className="relative flex items-center justify-center w-[125px] h-[125px]">
                                 {/* Outer atmospheric glow */}
                                 <motion.div 
-                                    className="absolute rounded-full bg-[#5F23C8]/15 blur-[40px]"
+                                    className="absolute rounded-full bg-[#5F23C8]/15 blur-[35px]"
                                     animate={isInView ? {
-                                        width: burstActive ? 240 : [200, 220, 200],
-                                        height: burstActive ? 240 : [200, 220, 200],
+                                        width: burstActive ? 210 : [170, 190, 170],
+                                        height: burstActive ? 210 : [170, 190, 170],
                                         opacity: burstActive ? 0.6 : [0.3, 0.5, 0.3]
                                     } : {}}
                                     transition={burstActive ? { duration: 0.4, ease: "easeOut" } : { duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
@@ -515,21 +515,21 @@ export default function IntroducingFrostySection() {
                                 
                                 {/* Inner bright rim */}
                                 <motion.div 
-                                    className="absolute w-[140px] h-[140px] rounded-full border-[2px] border-[#5F23C8]/30 bg-white/95 backdrop-blur-sm flex items-center justify-center"
+                                    className="absolute w-[125px] h-[125px] rounded-full border-[2px] border-[#5F23C8]/30 bg-white/95 backdrop-blur-sm flex items-center justify-center"
                                     animate={isInView ? {
                                         scale: burstActive ? 1.05 : [1, 1.015, 1],
                                         boxShadow: burstActive 
-                                            ? "0 0 60px rgba(95,35,200,0.3), inset 0 0 20px rgba(95,35,200,0.15)"
+                                            ? "0 0 50px rgba(95,35,200,0.3), inset 0 0 18px rgba(95,35,200,0.15)"
                                             : [
-                                                "0 0 30px rgba(95,35,200,0.15), inset 0 0 10px rgba(95,35,200,0.05)", 
-                                                "0 0 50px rgba(95,35,200,0.25), inset 0 0 20px rgba(95,35,200,0.1)", 
-                                                "0 0 30px rgba(95,35,200,0.15), inset 0 0 10px rgba(95,35,200,0.05)"
+                                                "0 0 25px rgba(95,35,200,0.15), inset 0 0 10px rgba(95,35,200,0.05)", 
+                                                "0 0 40px rgba(95,35,200,0.25), inset 0 0 18px rgba(95,35,200,0.1)", 
+                                                "0 0 25px rgba(95,35,200,0.15), inset 0 0 10px rgba(95,35,200,0.05)"
                                             ]
                                     } : {}}
                                     transition={burstActive ? { duration: 0.4, ease: "easeOut" } : { duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
                                 >
                                     <div 
-                                        className="absolute w-[120px] h-[120px] rounded-full bg-gradient-to-br from-white via-[#FAF5FF] to-[#EDE9FE] border border-slate-100 flex items-center justify-center cursor-pointer shadow-inner"
+                                        className="absolute w-[105px] h-[105px] rounded-full bg-gradient-to-br from-white via-[#FAF5FF] to-[#EDE9FE] border border-slate-100 flex items-center justify-center cursor-pointer shadow-inner"
                                         onClick={handleCoreClick}
                                     >
                                         <motion.div
@@ -543,7 +543,7 @@ export default function IntroducingFrostySection() {
                                                 animate={coreGlowControls}
                                                 whileHover={{ rotate: 90, scale: 1.1 }}
                                             >
-                                                <FrostyIcon size={60} glow={0.6} />
+                                                <FrostyIcon size={50} glow={0.6} />
                                             </motion.div>
                                         </motion.div>
                                     </div>
@@ -551,7 +551,7 @@ export default function IntroducingFrostySection() {
                             </div>
                             
                             <motion.div 
-                                className="absolute -bottom-8 text-slate-900 font-bold text-lg tracking-wide z-40"
+                                className="absolute -bottom-7 text-slate-900 font-bold text-base tracking-wide z-40"
                                 animate={{ opacity: burstActive ? 1 : 0.9 }}
                             >
                                 Frosty

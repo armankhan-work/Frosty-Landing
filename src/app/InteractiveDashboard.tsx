@@ -544,10 +544,26 @@ function TeamPanel() {
   );
 }
 
+const TABS = ['home', 'chart', 'chat', 'calendar', 'users'] as const;
+type TabType = typeof TABS[number];
+
 export default function InteractiveDashboard() {
-  const [activeTab, setActiveTab] = useState<'home' | 'chart' | 'chat' | 'calendar' | 'users'>('home');
+  const [activeTab, setActiveTab] = useState<TabType>('home');
   const [visibleMsgs, setVisibleMsgs] = useState<typeof chatScript>([]);
   const [typing, setTyping] = useState(false);
+
+  // Auto-switch tab every 3 seconds, reset whenever activeTab changes
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveTab((prev) => {
+        const currentIndex = TABS.indexOf(prev);
+        const nextIndex = (currentIndex + 1) % TABS.length;
+        return TABS[nextIndex];
+      });
+    }, 3000);
+
+    return () => clearInterval(timer);
+  }, [activeTab]);
 
   useEffect(() => {
     let step = 0;
@@ -557,25 +573,25 @@ export default function InteractiveDashboard() {
 
     if (activeTab === 'chat') {
       (async () => {
-        await wait(500);
+        await wait(150);
         while (alive) {
-          setVisibleMsgs([]);
+          setVisibleMsgs([chatScript[0]]);
           setTyping(false);
-          step = 0;
-          await wait(400);
+          step = 1;
+          await wait(300);
           for (; step < chatScript.length && alive; step++) {
             const m = chatScript[step];
             if (!m) continue;
             if (m.role === 'bot') {
               setTyping(true);
-              await wait(1100);
+              await wait(600);
               setTyping(false);
             }
             if (!alive) break;
             setVisibleMsgs((prev) => [...prev, m]);
-            await wait(m.role === 'bot' ? 1800 : 1200);
+            await wait(m.role === 'bot' ? 1200 : 800);
           }
-          await wait(3500);
+          await wait(2500);
         }
       })();
     }

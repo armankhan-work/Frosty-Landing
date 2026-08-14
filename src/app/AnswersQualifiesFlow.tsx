@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { User, Globe, Brain } from 'lucide-react';
 
 export default function AnswersQualifiesFlow({ onComplete }: { onComplete?: () => void }) {
   const [started, setStarted] = useState(false);
@@ -22,9 +23,9 @@ export default function AnswersQualifiesFlow({ onComplete }: { onComplete?: () =
             transition={{ duration: 0.5 }}
           >
             {/* Dashed background lines */}
-            <line x1="250" y1="80" x2="420" y2="380" stroke="#CBD5E1" strokeWidth="2" strokeDasharray="4 4" />
-            <line x1="420" y1="380" x2="80" y2="380" stroke="#CBD5E1" strokeWidth="2" strokeDasharray="4 4" />
-            <line x1="80" y1="380" x2="250" y2="80" stroke="#CBD5E1" strokeWidth="2" strokeDasharray="4 4" />
+            <line x1="250" y1="80" x2="420" y2="380" stroke="#E2E8F0" strokeWidth="2" strokeDasharray="4 4" />
+            <line x1="420" y1="380" x2="80" y2="380" stroke="#E2E8F0" strokeWidth="2" strokeDasharray="4 4" />
+            <line x1="80" y1="380" x2="250" y2="80" stroke="#E2E8F0" strokeWidth="2" strokeDasharray="4 4" />
 
             {/* Animated lines */}
             <motion.line x1="250" y1="80" x2="420" y2="380" stroke="#5F23C8" strokeWidth="2.5" strokeDasharray="4 4"
@@ -36,20 +37,32 @@ export default function AnswersQualifiesFlow({ onComplete }: { onComplete?: () =
 
             {/* Node: User (top center) */}
             <motion.g initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.2, type: 'spring' }}>
-              <circle cx="250" cy="80" r="24" fill="#FFFFFF" stroke="#CBD5E1" strokeWidth="1.5" />
-              <text x="250" y="85" textAnchor="middle" fill="#0F172A" fontSize="20">👤</text>
+              <circle cx="250" cy="80" r="24" fill="#F8FAFC" stroke="#CBD5E1" strokeWidth="1.5" />
+              <foreignObject x="238" y="68" width="24" height="24" className="overflow-visible pointer-events-none">
+                <div className="w-6 h-6 flex items-center justify-center text-slate-700">
+                  <User className="w-5 h-5" strokeWidth={1.75} />
+                </div>
+              </foreignObject>
             </motion.g>
 
             {/* Node: Website (bottom right) */}
             <motion.g initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.4, type: 'spring' }}>
               <circle cx="420" cy="380" r="24" fill="#FAF5FF" stroke="#5F23C8" strokeWidth="1.5" />
-              <text x="420" y="385" textAnchor="middle" fill="#5F23C8" fontSize="20">🌐</text>
+              <foreignObject x="408" y="368" width="24" height="24" className="overflow-visible pointer-events-none">
+                <div className="w-6 h-6 flex items-center justify-center text-[#5F23C8]">
+                  <Globe className="w-5 h-5" strokeWidth={1.75} />
+                </div>
+              </foreignObject>
             </motion.g>
 
             {/* Node: Brain (bottom left) */}
             <motion.g initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.6, type: 'spring' }}>
               <circle cx="80" cy="380" r="24" fill="#FAF5FF" stroke="#8B5CF6" strokeWidth="1.5" />
-              <text x="80" y="385" textAnchor="middle" fill="#5F23C8" fontSize="20">🧠</text>
+              <foreignObject x="68" y="368" width="24" height="24" className="overflow-visible pointer-events-none">
+                <div className="w-6 h-6 flex items-center justify-center text-[#8B5CF6]">
+                  <Brain className="w-5 h-5" strokeWidth={1.75} />
+                </div>
+              </foreignObject>
             </motion.g>
 
             {/* Bubble 1: User question */}

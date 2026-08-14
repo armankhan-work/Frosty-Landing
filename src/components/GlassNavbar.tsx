@@ -71,7 +71,7 @@ export default function GlassNavbar({ ready = true }: GlassNavbarProps) {
           </Link>
           <Link
             href="/login?mode=register"
-            className="inline-flex items-center justify-center text-[14px] lg:text-[15px] font-semibold text-white px-5 py-2.5 rounded-full transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
+            className="inline-flex items-center justify-center text-[14px] lg:text-[15px] font-semibold !text-white px-5 py-2.5 rounded-full transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
             style={{
               background: 'linear-gradient(135deg, #6D28D9 0%, #5F23C8 100%)',
               boxShadow: '0 4px 14px rgba(95, 35, 200, 0.25)',
@@ -173,7 +173,7 @@ export default function GlassNavbar({ ready = true }: GlassNavbarProps) {
             <Link
               href="/login?mode=register"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-[15px] font-semibold text-white px-4 py-2.5 rounded-xl text-center shadow-md shadow-[#5F23C8]/25 transition-transform active:scale-[0.98]"
+              className="text-[15px] font-semibold !text-white px-4 py-2.5 rounded-xl text-center shadow-md shadow-[#5F23C8]/25 transition-transform active:scale-[0.98]"
               style={{
                 background: 'linear-gradient(135deg, #6D28D9 0%, #5F23C8 100%)',
               }}

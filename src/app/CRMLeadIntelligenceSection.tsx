@@ -156,7 +156,7 @@ export default function CRMLeadIntelligenceSection() {
   }, [inView]);
 
   return (
-    <section ref={containerRef} className="relative w-full py-24 overflow-hidden z-10 flex flex-col items-center bg-transparent font-sans">
+    <section ref={containerRef} className="relative w-full pt-16 pb-8 lg:pt-20 lg:pb-12 overflow-hidden z-10 flex flex-col items-center bg-transparent font-sans">
       
       {/* Background Ambience */}
       <div className="absolute inset-0 pointer-events-none z-0 flex justify-center overflow-hidden">
@@ -510,55 +510,6 @@ export default function CRMLeadIntelligenceSection() {
 
         </motion.div>
 
-        {/* BOTTOM STATS BAR */}
-        <div className="relative z-10 w-full max-w-[1000px] mx-auto px-6 mt-12 hidden md:block">
-           <div className="bg-white/80 backdrop-blur-md rounded-2xl border border-slate-200 py-5 px-8 flex justify-between items-center shadow-sm">
-             
-             <div className="flex items-center gap-4">
-               <div className="w-10 h-10 rounded-full border border-[#5F23C8]/30 bg-[#5F23C8]/10 flex items-center justify-center text-[#5F23C8]">
-                  <User className="w-5 h-5" />
-               </div>
-               <div>
-                 <div className="text-slate-900 font-bold text-[19px] leading-tight">2,453</div>
-                 <div className="text-slate-500 text-[10px] uppercase tracking-wider font-bold">Total Customers</div>
-               </div>
-             </div>
-             <div className="w-px h-12 bg-slate-200" />
-             
-             <div className="flex items-center gap-4">
-               <div className="w-10 h-10 rounded-full border border-[#5F23C8]/30 bg-[#5F23C8]/10 flex items-center justify-center text-[#5F23C8]">
-                  <ArrowRight className="w-5 h-5 rotate-[-45deg]" />
-               </div>
-               <div>
-                 <div className="text-slate-900 font-bold text-[19px] leading-tight">312</div>
-                 <div className="text-slate-500 text-[10px] uppercase tracking-wider font-bold">Active Conversations</div>
-               </div>
-             </div>
-             <div className="w-px h-12 bg-slate-200" />
-
-             <div className="flex items-center gap-4">
-               <div className="w-10 h-10 rounded-full border border-[#5F23C8]/30 bg-[#5F23C8]/10 flex items-center justify-center text-[#5F23C8]">
-                  <Globe className="w-5 h-5" />
-               </div>
-               <div>
-                 <div className="text-slate-900 font-bold text-[19px] leading-tight">24.7%</div>
-                 <div className="text-slate-500 text-[10px] uppercase tracking-wider font-bold">Lead to Deal Conversion</div>
-               </div>
-             </div>
-             <div className="w-px h-12 bg-slate-200" />
-
-             <div className="flex items-center gap-4">
-               <div className="w-10 h-10 rounded-full border border-[#5F23C8]/30 bg-[#5F23C8]/10 flex items-center justify-center text-[#5F23C8]">
-                  <AlertCircle className="w-5 h-5" />
-               </div>
-               <div>
-                 <div className="text-slate-900 font-bold text-[19px] leading-tight">~60%</div>
-                 <div className="text-slate-500 text-[10px] uppercase tracking-wider font-bold">Faster Follow-ups</div>
-               </div>
-             </div>
-
-           </div>
-        </div>
       </div>
 
     </section>

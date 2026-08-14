@@ -94,7 +94,7 @@ export default function DoneForYou() {
     };
 
     return (
-        <section id="setup" className="relative w-full overflow-hidden font-sans pt-16 sm:pt-24 pb-20 sm:pb-32 bg-transparent">
+        <section id="setup" className="relative w-full overflow-hidden font-sans pt-6 sm:pt-10 pb-8 sm:pb-12 bg-transparent">
             {/* Background elements */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden -z-10">
                 <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-[#5F23C8]/[0.03] blur-[120px]" />
@@ -152,7 +152,7 @@ export default function DoneForYou() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false, amount: 0.2 }}
                         transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
-                        className="text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl mb-12 space-y-4"
+                        className="text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl mb-8 space-y-4"
                     >
                         <p>
                             We customize and train the agent around your business and deploy it on your website and WhatsApp, so there is nothing for you to build or code.
@@ -208,7 +208,7 @@ export default function DoneForYou() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false, amount: 0.2 }}
                         transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
-                        className="mt-14 pt-8 border-t border-slate-200 w-full relative"
+                        className="mt-8 pt-6 border-t border-slate-200 w-full relative"
                     >
                         <div className="flex items-start w-full relative px-2 sm:px-4">
                             <div className="absolute top-2 left-[16.66%] right-[16.66%] h-[2px] bg-slate-200" />
@@ -310,7 +310,7 @@ export default function DoneForYou() {
                                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                                 viewport={{ once: false, amount: 0.15 }}
                                 transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-                                className="bg-white/95 rounded-[28px] p-5 sm:p-6 lg:p-8 shadow-[0_15px_50px_-12px_rgba(0,0,0,0.06)] border border-slate-200 relative z-20 flex flex-col justify-between hover:shadow-[0_25px_60px_-12px_rgba(95,35,200,0.1)] transition-all duration-500 min-h-[350px] lg:h-[470px] w-full"
+                                className="bg-white/95 rounded-[28px] p-5 sm:p-6 lg:p-8 shadow-[0_15px_50px_-12px_rgba(0,0,0,0.06)] border border-slate-200 relative z-20 flex flex-col justify-between hover:shadow-[0_25px_60px_-12px_rgba(95,35,200,0.1)] transition-all duration-500 min-h-[300px] lg:min-h-[320px] w-full"
                             >
                                 <AnimatePresence mode="wait">
                                     <motion.div
@@ -319,7 +319,7 @@ export default function DoneForYou() {
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: -10 }}
                                         transition={{ duration: 0.25, ease: "easeInOut" }}
-                                        className="flex flex-col flex-grow"
+                                        className="flex flex-col flex-grow justify-center"
                                     >
                                         {/* Studio Header */}
                                         <div className="flex items-center justify-between mb-4 shrink-0">
@@ -330,15 +330,11 @@ export default function DoneForYou() {
                                                     {isCompleted ? <Check className="w-4 h-4" strokeWidth={3} /> : activeStep.stepNumber}
                                                 </div>
                                                 <div>
-                                                    <span className="text-[10px] font-bold tracking-widest text-slate-500 uppercase block leading-none mb-1">{activeStep.stepLabel}</span>
-                                                    <span className="text-[11px] font-bold text-[#5F23C8] flex items-center gap-1.5 leading-none">
-                                                        <span className="w-1.5 h-1.5 rounded-full bg-[#5F23C8] animate-ping" />
-                                                        {isCompleted ? "All 3 Steps Verified Complete ✓" : "Active Sandbox"}
-                                                    </span>
+                                                    <span className="text-[10px] font-bold tracking-widest text-slate-500 uppercase block leading-none">{activeStep.stepLabel}</span>
                                                 </div>
                                             </div>
                                             
-                                            {isCompleted ? (
+                                            {isCompleted && (
                                                 <button 
                                                     onClick={() => { setIsCompleted(false); setCurrentStep(0); }} 
                                                     className="flex items-center gap-1.5 bg-purple-50 hover:bg-purple-100 text-[#5F23C8] px-3 py-1.5 rounded-xl border border-purple-200 text-[11px] font-bold transition-all duration-300 cursor-pointer shadow-sm shrink-0"
@@ -346,21 +342,12 @@ export default function DoneForYou() {
                                                     <span>Restart</span>
                                                     <span className="text-[12px] leading-none">↻</span>
                                                 </button>
-                                            ) : (
-                                                <div className="hidden sm:flex items-center gap-1.5 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-200 text-[10px] font-mono font-semibold text-[#5F23C8] shrink-0">
-                                                    <span className="w-1.5 h-1.5 rounded-full bg-[#5F23C8]" />
-                                                    FROSTY_AI // V2.4
-                                                </div>
                                             )}
                                         </div>
                                         
-                                        <h3 className="text-xl lg:text-2xl font-serif font-bold text-slate-900 mb-2 leading-tight shrink-0 line-clamp-2">
+                                        <h3 className="text-xl lg:text-2xl font-serif font-bold text-slate-900 mb-6 leading-tight shrink-0 line-clamp-2">
                                             {activeStep.title}
                                         </h3>
-                                        
-                                        <p className="text-[13px] text-slate-600 mb-4 leading-relaxed line-clamp-2 shrink-0 min-h-[38px]">
-                                            {activeStep.description}
-                                        </p>
                                         
                                         {/* Checklist Grid */}
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-4 shrink-0">
@@ -385,7 +372,6 @@ export default function DoneForYou() {
                                             ))}
                                         </div>
 
-                                        {renderCompactPreview(currentStep)}
                                     </motion.div>
                                 </AnimatePresence>
                                 

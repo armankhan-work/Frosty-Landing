@@ -147,7 +147,7 @@ function RadialIndustryHub() {
 
 export default function IndustriesSection() {
     return (
-        <section id="who-its-for" className="relative w-full overflow-hidden font-sans pt-16 sm:pt-24 pb-20 sm:pb-32 bg-transparent">
+        <section id="who-its-for" className="relative w-full overflow-hidden font-sans pt-8 sm:pt-12 pb-8 sm:pb-12 bg-transparent">
             <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 relative z-10">
                 <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8 w-full relative z-10">
                     {/* Left Column */}
@@ -170,9 +170,9 @@ export default function IndustriesSection() {
                             transition={{ duration: 0.6, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
                             className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight mb-4"
                         >
-                            If you live on inbound,<br />
-                            <span className="text-[#5F23C8] font-bold">Frosty pays</span><br />
-                            for itself.
+                            If your business relies on leads,<br />
+                            <span className="text-[#5F23C8] font-bold">Frosty turns them</span><br />
+                            into customers 24/7.
                         </motion.h2>
 
                         <motion.div

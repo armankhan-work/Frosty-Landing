@@ -4,13 +4,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Settings } from 'lucide-react';
 import IsometricPlatform from './IsometricPlatform';
-import CarouselStacked from '@/components/ui/carousel-07';
 
 export default function CapabilitiesSection() {
     return (
-        <section id="under-the-hood" className="relative pt-12 pb-24 lg:pb-32 bg-transparent overflow-hidden">
+        <section id="under-the-hood" className="relative pt-12 pb-8 lg:pb-12 bg-transparent overflow-hidden">
             <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 relative z-10">
-                <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8 w-full relative mb-12">
+                <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8 w-full relative">
                     {/* Left: text */}
                     <div className="w-full lg:w-[45%] flex flex-col items-start text-left lg:pr-8 xl:pr-12">
                         {/* Premium Badge */}
@@ -58,9 +57,6 @@ export default function CapabilitiesSection() {
                     </div>
                 </div>
 
-                <div className="w-full mt-6 sm:mt-8 lg:mt-16">
-                    <CarouselStacked />
-                </div>
             </div>
         </section>
     );
