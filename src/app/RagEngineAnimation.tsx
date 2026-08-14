@@ -327,7 +327,7 @@ export default function RagEngineAnimation() {
           </div>
           <div style={{ fontSize: 15, fontWeight: 700, color: '#0F172A', marginBottom: 8 }}>8-Category Detection</div>
           <p style={{ fontSize: 12.5, color: '#475569', lineHeight: 1.7, marginBottom: 20 }}>
-            Queries mapped to categories before retrieval — sharper results, fewer hallucinations.
+            Queries mapped to categories before retrieval — sharper results, grounded strictly in your verified content.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
             {['Pricing', 'Support', 'Booking', 'Contact', 'Product', 'General', 'Complaint', 'FAQ'].map((cat) => (

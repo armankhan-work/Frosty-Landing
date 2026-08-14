@@ -45,11 +45,47 @@ export default function CapabilitiesSection() {
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
-                            className="text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl"
-                            style={{ marginBottom: '3.5rem' }}
+                            className="text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl mb-6"
                         >
                             Every request flows through a purpose-built AI architecture that crawls, understands, retrieves and reasons before generating enterprise-grade responses.
                         </motion.p>
+
+                        {/* Key Pillars */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 15 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.4 }}
+                            className="flex flex-col gap-3 w-full max-w-lg"
+                        >
+                            <div className="flex items-center gap-3 p-3 rounded-xl bg-white/90 border border-slate-200 shadow-2xs">
+                                <div className="w-8 h-8 rounded-lg bg-purple-50 text-[#5F23C8] flex items-center justify-center shrink-0 border border-purple-100">
+                                    <span className="text-xs font-bold font-mono">01</span>
+                                </div>
+                                <div>
+                                    <h4 className="text-[13px] font-bold text-slate-900 leading-tight">Isolated Knowledge Layer</h4>
+                                    <p className="text-[11px] text-slate-500 leading-tight mt-0.5">Your proprietary data is vector-embedded into isolated client boundaries.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3 p-3 rounded-xl bg-white/90 border border-slate-200 shadow-2xs">
+                                <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-100">
+                                    <span className="text-xs font-bold font-mono">02</span>
+                                </div>
+                                <div>
+                                    <h4 className="text-[13px] font-bold text-slate-900 leading-tight">Deterministic Guardrails</h4>
+                                    <p className="text-[11px] text-slate-500 leading-tight mt-0.5">Removes invented prices, phone numbers, and links before reaching the customer.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3 p-3 rounded-xl bg-white/90 border border-slate-200 shadow-2xs">
+                                <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center shrink-0 border border-blue-100">
+                                    <span className="text-xs font-bold font-mono">03</span>
+                                </div>
+                                <div>
+                                    <h4 className="text-[13px] font-bold text-slate-900 leading-tight">Real-Time CRM & Webhooks</h4>
+                                    <p className="text-[11px] text-slate-500 leading-tight mt-0.5">Syncs qualified intents and message transcripts straight into your toolstack.</p>
+                                </div>
+                            </div>
+                        </motion.div>
                     </div>
                     {/* Right: isometric illustration */}
                     <div className="w-full lg:w-[50%] flex justify-center items-center">

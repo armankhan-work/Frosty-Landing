@@ -405,7 +405,7 @@ export default function UnifiedChannelsSection() {
               </div>
               <div>
                  <h5 className="text-[12.5px] font-bold text-slate-900 leading-tight">All channels connected</h5>
-                 <p className="text-[10.5px] text-slate-500 leading-snug mt-0.5">Website, WhatsApp, Instagram DM and more.</p>
+                 <p className="text-[10.5px] text-slate-500 leading-snug mt-0.5">Website, WhatsApp, and custom portals.</p>
               </div>
            </div>
            <div className="flex gap-3 items-start">
@@ -609,9 +609,17 @@ export default function UnifiedChannelsSection() {
 
       </div>
 
-      {/* MOBILE FALLBACK */}
-      <div className="relative w-full max-w-sm mx-auto px-6 py-4 flex flex-col gap-6 lg:hidden">
-         <p className="text-slate-500 text-center text-[12px] italic">Please view on a larger screen for the full interactive visualization.</p>
+      {/* MOBILE RESPONSIVE CHANNELS VIEW */}
+      <div className="relative w-full max-w-sm mx-auto px-4 py-4 flex flex-col gap-3 lg:hidden z-10">
+         <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-purple-50 text-[#5F23C8] flex items-center justify-center shrink-0 border border-purple-100 font-bold">
+               <FrostyIcon size={20} />
+            </div>
+            <div>
+               <h5 className="text-[13px] font-bold text-slate-900">Unified Memory</h5>
+               <p className="text-[11px] text-slate-500">Every interaction across Web & WhatsApp stays in real-time context.</p>
+            </div>
+         </div>
       </div>
 
     </section>

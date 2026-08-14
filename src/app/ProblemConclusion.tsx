@@ -29,7 +29,7 @@ export default function ProblemConclusion() {
                 viewport={{ margin: "-100px", once: true }}
                 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight mb-4"
             >
-                <span className="inline-block">
+                <span className="inline-block mr-2 md:mr-0">
                     <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">The</motion.span>
                     <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">customer</motion.span>
                     <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">was</motion.span>

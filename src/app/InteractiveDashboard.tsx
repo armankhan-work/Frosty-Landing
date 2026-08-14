@@ -51,9 +51,14 @@ function SidebarIcon({ type, active }: { type: string; active?: boolean }) {
 function DashboardPanel() {
   return (
     <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-[#F8F5FF] overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
-      <div className="px-4 sm:px-6 pt-5 pb-3 shrink-0">
-        <h2 className="text-[22px] font-serif font-bold !text-slate-900">Dashboard Overview</h2>
-        <p className="text-[11px] font-medium !text-slate-500">Welcome back to your workspace overview</p>
+      <div className="px-4 sm:px-6 pt-5 pb-3 shrink-0 flex items-start justify-between">
+        <div>
+          <h2 className="text-[22px] font-serif font-bold !text-slate-900">Dashboard Overview</h2>
+          <p className="text-[11px] font-medium !text-slate-500">Welcome back to your workspace overview</p>
+        </div>
+        <span className="text-[9.5px] font-semibold text-slate-500 bg-purple-50/80 border border-purple-200/60 px-2 py-0.5 rounded-full mt-1">
+          Product preview · sample data
+        </span>
       </div>
       
       <div className="flex-1 px-4 sm:px-6 pb-5 overflow-y-auto flex flex-col gap-4 min-w-0">
@@ -64,7 +69,7 @@ function DashboardPanel() {
               <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
             </div>
             <div>
-              <p className="text-[20px] font-bold !text-slate-900 leading-none mb-1"><CountUp to={6} /></p>
+              <p className="text-[20px] font-bold !text-slate-900 leading-none mb-1"><CountUp to={284} /></p>
               <p className="text-[7px] font-bold !text-slate-500 uppercase tracking-wider">Conversations</p>
             </div>
           </div>
@@ -74,7 +79,7 @@ function DashboardPanel() {
               <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
             </div>
             <div>
-              <p className="text-[20px] font-bold !text-slate-900 leading-none mb-1"><CountUp to={24} /></p>
+              <p className="text-[20px] font-bold !text-slate-900 leading-none mb-1"><CountUp to={1420} /></p>
               <p className="text-[7px] font-bold !text-slate-500 uppercase tracking-wider">Messages</p>
             </div>
           </div>
@@ -84,7 +89,7 @@ function DashboardPanel() {
               <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></svg>
             </div>
             <div>
-              <p className="text-[20px] font-bold !text-slate-900 leading-none mb-1"><CountUp to={0} /></p>
+              <p className="text-[20px] font-bold !text-slate-900 leading-none mb-1"><CountUp to={48} /></p>
               <p className="text-[7px] font-bold !text-slate-500 uppercase tracking-wider">Leads Captured</p>
             </div>
           </div>
@@ -94,12 +99,12 @@ function DashboardPanel() {
                <div className="w-6 h-6 rounded-md bg-[#FFEDD5] text-[#F97316] flex items-center justify-center shrink-0">
                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="6" width="20" height="12" rx="2" /><circle cx="12" cy="12" r="2" /><path d="M6 12h.01M18 12h.01" /></svg>
                </div>
-               <span className="text-[7px] font-bold text-[#F59E0B] bg-[#FEF3C7] px-1.5 py-0.5 rounded flex items-center gap-0.5">
-                 <span className="w-1 h-1 rounded-full bg-[#F59E0B]"></span> $0.00
+               <span className="text-[7px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded flex items-center gap-0.5 border border-emerald-200">
+                 <span className="w-1 h-1 rounded-full bg-emerald-600"></span> 98.4% Valid
                </span>
             </div>
             <div>
-              <p className="text-[20px] font-bold !text-slate-900 leading-none mb-1"><CountUp to={50} /></p>
+              <p className="text-[20px] font-bold !text-slate-900 leading-none mb-1"><CountUp to={1850} /></p>
               <p className="text-[7px] font-bold !text-slate-500 uppercase tracking-wider">Credits Left</p>
             </div>
           </div>

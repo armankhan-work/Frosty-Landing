@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
@@ -179,6 +180,12 @@ export default function CRMLeadIntelligenceSection() {
 
       <div className="w-full flex flex-col items-center transform scale-[0.85] origin-top -mb-[100px] mt-4">
         
+        <div className="mb-4">
+          <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-slate-500 bg-white/90 border border-slate-200 px-3 py-1 rounded-full shadow-2xs">
+            Product preview · sample data
+          </span>
+        </div>
+
         {/* DYNAMIC COLUMN LAYOUT */}
         <motion.div 
           layout

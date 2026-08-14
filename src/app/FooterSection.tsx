@@ -16,10 +16,10 @@ const NAV_ITEMS = [
     megaMenu: [
       {
         items: [
-          { name: 'Frosty Agent', href: 'https://www.frostrek.ai/products/frosty-agent' },
-          { name: 'VettEdge', href: 'https://www.frostrek.ai/products/vettedge' },
-          { name: 'Vedashi Ecommerce', href: 'https://www.frostrek.ai/products/vedashi-ecommerce' },
-          { name: 'Hiyring', href: 'https://www.frostrek.ai/products/hiyring' }
+          { name: 'Frosty Web Agent', href: '/#two-agents' },
+          { name: 'Frosty WhatsApp Agent', href: '/#two-agents' },
+          { name: 'Unified Channels', href: '/#unified-channels' },
+          { name: 'CRM & Lead Intelligence', href: '/#crm' }
         ]
       }
     ]
@@ -44,13 +44,13 @@ const NAV_ITEMS = [
 const COMPANY_INFO = {
   name: "Frostrek",
   address: "4th Floor, Jmd Empire, 455, Golf Course Ext Rd, Sector 62, Gurugram, Haryana 122102, India",
-  contact: "contact@frostrek.com",
+  contact: "contact@frostrek.ai",
   socials: {
     linkedin: "https://www.linkedin.com/company/frostrek/",
     instagram: "https://www.instagram.com/frostrekai",
-    whatsapp: "#",
+    whatsapp: "https://wa.me/916399999955",
     facebook: "https://www.facebook.com/people/Frostrek-Ai/pfbid0VrxpmzPP7zNRjztYScYUHgSVp1vYcryckLy7hY2jbe9jRnLXoC2KgSJWDzAD9irWl/",
-    youtube: "#"
+    youtube: "https://www.youtube.com/@frostrekai"
   }
 };
 
@@ -189,12 +189,10 @@ const FooterSection = () => {
                   </a>
                 </div>
 
-                <div className="flex items-center justify-between w-full">
-                  <img src="/ISO 27001.png" alt="ISO 27001:2022 certified" className="h-[32px] w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform" loading="lazy" />
-                  <img src="/gdpr logo.jpg" alt="GDPR compliant" className="h-[28px] w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform rounded" loading="lazy" />
-                  <img src="/ISO_9001-2015.svg.webp" alt="ISO 9001:2015 certified" className="h-[28px] w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform" loading="lazy" />
-                  <img src="/hipaa-compliance-logo-health-insurance-260nw-1647036358.webp" alt="HIPAA compliant" className="h-[30px] w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform bg-white rounded-md" loading="lazy" />
-                  <img src="/soc-2-compliant-certificate-badge-icon-clean-modern-design-symbolizing-verified-data.webp" alt="SOC 2 Type II compliant" className="h-[32px] w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform bg-white rounded-md" loading="lazy" />
+                <div className="flex items-center gap-3.5 w-full">
+                  <img src="/ISO 27001.png" alt="ISO 27001:2022 certified" className="h-[30px] w-auto object-contain drop-shadow-xs hover:scale-105 transition-transform" loading="lazy" />
+                  <img src="/gdpr logo.jpg" alt="GDPR compliant" className="h-[26px] w-auto object-contain drop-shadow-xs hover:scale-105 transition-transform rounded" loading="lazy" />
+                  <img src="/ISO_9001-2015.svg.webp" alt="ISO 9001:2015 certified" className="h-[26px] w-auto object-contain drop-shadow-xs hover:scale-105 transition-transform" loading="lazy" />
                 </div>
               </div>
             </div>

@@ -3,9 +3,9 @@ import './FrostyPage.css';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Frosty — The AI That Converts Visitors Into Customers',
+  title: 'Frosty — AI Conversion Engine for Web & WhatsApp',
   description:
-    'Frosty deploys intelligent chatbots on your website and WhatsApp — capturing leads, booking meetings, and closing deals 24/7.',
+    'Frosty deploys AI agents across your website and WhatsApp that remember context, qualify leads, schedule meetings, and answer queries 24/7 with answers grounded strictly in your own content.',
 };
 
 export default function RootLayout({

@@ -249,7 +249,7 @@ export default function TwoAgentsSection() {
                 transition={{ duration: 0.5, delay: 1.5 }}
                 className="absolute top-[80px] left-[180px] bg-white text-slate-800 text-[10px] p-2 rounded-2xl shadow-lg w-[130px] z-20 leading-tight text-center border border-slate-200 font-medium"
               >
-                "plz tell me about ur service on wp on this no 769292XXXX"
+                "plz tell me about ur service on wp on +91 98765 43210"
               </motion.div>
               
               <motion.div
@@ -344,7 +344,7 @@ export default function TwoAgentsSection() {
             </svg>
           </div>
 
-          {/* LEFT: OUTBOUND CARD */}
+          {/* LEFT: WEB AGENT CARD */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -376,21 +376,21 @@ export default function TwoAgentsSection() {
                     <Globe className="w-5 h-5 text-[#5F23C8]" strokeWidth={2.5} />
                   </motion.div>
                   <div className="px-3 py-1 rounded-full bg-[#5F23C8]/10 text-[10px] font-bold text-[#5F23C8] tracking-wider uppercase border border-[#5F23C8]/20">
-                    OUTBOUND
+                    WEB AGENT
                   </div>
                 </div>
 
                 <h3 className="text-base md:text-lg font-bold text-[#5F23C8] mb-3">
-                  Sales and Outreach Calling
+                  Website Conversion Agent
                 </h3>
                 <p className="text-sm md:text-base text-slate-600 leading-relaxed mb-6 sm:mb-8">
-                  Upload your lead list or connect your CRM. The agent dials, pitches, qualifies, and books. It runs hundreds of conversations in parallel while your reps focus on closing.
+                  Engages visitors instantly, answers complex product questions from your verified knowledge base, qualifies intent, and books meetings into your calendar.
                 </p>
               </div>
 
               <div className="mt-auto pt-4 border-t border-slate-100 relative z-10">
                 <p className="text-[11px] font-bold tracking-wider uppercase text-slate-500">
-                  FOR: REAL ESTATE • FINANCE • SALES TEAMS
+                  FOR: WEBSITE VISITORS • INBOUND LEADS • E-COMMERCE
                 </p>
               </div>
             </motion.div>
@@ -428,7 +428,7 @@ export default function TwoAgentsSection() {
             </span>
           </motion.div>
 
-          {/* RIGHT: INBOUND CARD */}
+          {/* RIGHT: WHATSAPP AGENT CARD */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -460,21 +460,21 @@ export default function TwoAgentsSection() {
                     <MessageSquare className="w-5 h-5 text-green-600" strokeWidth={2.5} />
                   </motion.div>
                   <div className="px-3 py-1 rounded-full bg-green-50 text-[10px] font-bold text-green-700 tracking-wider uppercase border border-green-200">
-                    INBOUND
+                    WHATSAPP AGENT
                   </div>
                 </div>
 
                 <h3 className="text-base md:text-lg font-bold text-green-700 mb-3">
-                  Support and Query Resolution
+                  WhatsApp Conversation Agent
                 </h3>
                 <p className="text-sm md:text-base text-slate-600 leading-relaxed mb-6 sm:mb-8">
-                  Every inbound call is answered instantly. The agent resolves common queries, collects information, and escalates only what truly needs a human, with full context handed over.
+                  Picks up with full context, handles voice notes, and understands romanised Hinglish the way customers actually type.
                 </p>
               </div>
 
               <div className="mt-auto pt-4 border-t border-slate-100 relative z-10">
                 <p className="text-[11px] font-bold tracking-wider uppercase text-slate-500">
-                  FOR: CUSTOMER SUPPORT • FINANCE • REAL ESTATE
+                  FOR: 24/7 WHATSAPP ENGAGEMENT • LEAD NURTURE • SUPPORT
                 </p>
               </div>
             </motion.div>

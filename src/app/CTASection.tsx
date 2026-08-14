@@ -46,7 +46,7 @@ export default function CTASection() {
                             </a>
                             
                             <a 
-                                href="https://wa.me/17574722491"
+                                href="https://wa.me/916399999955"
                                 className="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full font-semibold text-slate-800 hover:text-[#5F23C8] text-sm bg-slate-50 hover:bg-slate-100 border border-slate-200 shadow-sm transition-all duration-300 hover:scale-105 active:scale-95 whitespace-nowrap"
                                 style={{ textDecoration: 'none' }}
                             >

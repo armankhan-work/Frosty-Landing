@@ -252,7 +252,7 @@ export default function PremiumTwoAgents() {
                 transition={{ duration: 0.5, delay: 1.5 }}
                 className="absolute top-[80px] left-[180px] bg-blue-500 text-white text-[10px] p-2 rounded-2xl shadow-xl w-[130px] z-20 leading-tight text-center border border-blue-400"
               >
-                "plz tell me about ur service on wp on this no 769292XXXX"
+                "plz tell me about ur service on wp on +91 98765 43210"
               </motion.div>
 
               {/* Message Bubble 2: Website to Brain (Syncing) */}
@@ -391,21 +391,21 @@ export default function PremiumTwoAgents() {
                     <Globe className="w-5 h-5 text-black" strokeWidth={2.5} />
                   </motion.div>
                   <div className="px-3 py-1 rounded-full bg-[#E0F2FE] text-[10px] font-bold text-[#0284C7] tracking-wider uppercase">
-                    OUTBOUND
+                    WEB AGENT
                   </div>
                 </div>
 
                 <h3 className="text-[26px] font-bold text-[#0284C7] mb-3 font-serif leading-tight">
-                  Sales and Outreach Calling
+                  Website Conversion Agent
                 </h3>
                 <p className="text-[14px] text-[#5B6B63] leading-[1.6] mb-8">
-                  Upload your lead list or connect your CRM. The agent dials, pitches, qualifies, and books. It runs hundreds of conversations in parallel while your reps focus on closing.
+                  Engages visitors instantly, answers complex product questions from your verified knowledge base, qualifies intent, and books meetings into your calendar.
                 </p>
               </div>
 
               <div className="mt-auto pt-4 border-t border-[#E0F2FE] relative z-10">
                 <p className="text-[11px] font-bold tracking-wider uppercase text-[#5B6B63]">
-                  FOR: REAL ESTATE • FINANCE • SALES TEAMS
+                  FOR: WEBSITE VISITORS • INBOUND LEADS • E-COMMERCE
                 </p>
               </div>
             </motion.div>
@@ -497,21 +497,21 @@ export default function PremiumTwoAgents() {
                     <MessageSquare className="w-5 h-5 text-black" strokeWidth={2.5} />
                   </motion.div>
                   <div className="px-3 py-1 rounded-full bg-[#DCFCE7] text-[10px] font-bold text-[#166534] tracking-wider uppercase">
-                    INBOUND
+                    WHATSAPP AGENT
                   </div>
                 </div>
 
                 <h3 className="text-[26px] font-bold text-[#166534] mb-3 font-serif leading-tight">
-                  Support and Query Resolution
+                  WhatsApp Conversation Agent
                 </h3>
                 <p className="text-[14px] text-[#5B6B63] leading-[1.6] mb-8">
-                  Every inbound call is answered instantly. The agent resolves common queries, collects information, and escalates only what truly needs a human, with full context handed over.
+                  Picks up with full context, handles voice notes, and understands romanised Hinglish the way customers actually type.
                 </p>
               </div>
 
               <div className="mt-auto pt-4 border-t border-[#DCFCE7] relative z-10">
                 <p className="text-[11px] font-bold tracking-wider uppercase text-[#5B6B63]">
-                  FOR: CUSTOMER SUPPORT • FINANCE • REAL ESTATE
+                  FOR: 24/7 WHATSAPP ENGAGEMENT • LEAD NURTURE • SUPPORT
                 </p>
               </div>
             </motion.div>
