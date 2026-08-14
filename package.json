@@ -51,15 +51,5 @@
     "eslint-config-next": "15.3.6",
     "tailwindcss": "^4",
     "typescript": "^5"
-  },
-  "pnpm": {
-    "approvedBuilds": [
-      "sharp",
-      "unrs-resolver"
-    ],
-    "onlyBuiltDependencies": [
-      "sharp",
-      "unrs-resolver"
-    ]
   }
 }
