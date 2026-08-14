@@ -1,11 +1,8 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { motion, AnimatePresence } from 'framer-motion';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
 import FooterSection from './FooterSection';
 import SplashScreen from './SplashScreen';
 import ProblemSection from './ProblemSection';
@@ -27,7 +24,6 @@ import './FrostyPage.css';
 
 const FrostyEngineHero = dynamic(() => import('@/components/FrostyEngineHero'), { ssr: false });
 import LandingPageAura from '@/components/LandingPageAura';
-import TubesBackground from '@/components/TubesBackground';
 import { ParallaxStarfield } from '@/components/FrostyEngineHero';
 
 /* ─── useScrollReveal hook ────────────────────────────────────── */
@@ -54,26 +50,8 @@ function useScrollReveal() {
 
 export default function LandingPage() {
     const [showSplash, setShowSplash] = useState(true);
-    const heroBackgroundRef = useRef<HTMLDivElement>(null);
 
-    useGSAP(() => {
-        if (!heroBackgroundRef.current) return;
 
-        gsap.registerPlugin(ScrollTrigger);
-
-        gsap.to(heroBackgroundRef.current, {
-            scrollTrigger: {
-                trigger: ".frosty-root",
-                start: "top top",
-                end: "800px top",
-                scrub: true,
-            },
-            opacity: 0,
-            scale: 1.1,
-            filter: "blur(20px)",
-            ease: "none"
-        });
-    }, { scope: heroBackgroundRef });
 
     useScrollReveal();
 
@@ -103,9 +81,7 @@ export default function LandingPage() {
                     visibility: showSplash ? 'hidden' : 'visible'
                 }}
             >
-                <div ref={heroBackgroundRef} className="fixed inset-0 pointer-events-none z-0">
-                    <TubesBackground className="w-full h-full" enableClickInteraction={true} />
-                </div>
+
                 <ParallaxStarfield />
                 <LandingPageAura />
 
@@ -113,7 +89,7 @@ export default function LandingPage() {
                     {/* PREMIUM GLASSMORPHISM NAVBAR */}
                     <GlassNavbar ready={!showSplash} />
 
-                    <motion.div style={{ paddingTop: 60, position: 'relative', zIndex: 20 }}>
+                    <motion.div style={{ paddingTop: 72, position: 'relative', zIndex: 20 }}>
                         <FrostyEngineHero />
                         <ProblemSection />
                         <CostOfSlowSection />

@@ -66,6 +66,26 @@
 .fx-menu-btn{ display:none; background:none; border:0; cursor:pointer; padding:8px; }
 .fx-menu-btn span{ display:block; width:24px; height:2px; background:var(--ink); margin:5px 0; border-radius:2px; transition:transform .25s var(--ease), opacity .2s; }
 
+/* ─── Hero Two-Column Grid ───────────────────────────────── */
+.frosty-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .frosty-hero-grid {
+    grid-template-columns: 0.88fr 1.25fr;
+    gap: 40px;
+  }
+}
+@media (min-width: 1280px) {
+  .frosty-hero-grid {
+    grid-template-columns: 0.85fr 1.3fr;
+    gap: 48px;
+  }
+}
+
 .fx-hero{ position:relative; min-height:100dvh; display:flex; align-items:center; padding:150px 0 80px; overflow:hidden; }
 .fx-hero-bg{ position:absolute; inset:0; background:
    radial-gradient(60% 50% at 82% 12%, rgba(95,35,200,.06), transparent 70%),
