@@ -69,35 +69,35 @@ const fragmentShader = `
     float n1 = snoise(p * 1.5 + t + uMouse * 0.3) * distort;
     float n2 = snoise(p * 2.0 - t * 1.3 + uMouse.yx * 0.2) * distort * 0.8;
 
-    // Orb 1: Deep navy (#0B132B)
+    // Orb 1: Soft Frost Violet (#5F23C8 / #8B5CF6)
     vec2 orb1Pos = vec2(-0.3 + sin(t * 0.7) * 0.15, 0.1 + cos(t * 0.5) * 0.1);
     float d1 = length(p - orb1Pos + vec2(n1, n2) * 0.3);
-    float orb1 = smoothstep(0.6, 0.0, d1);
-    vec3 col1 = vec3(0.043, 0.075, 0.169); // #0B132B
+    float orb1 = smoothstep(0.65, 0.0, d1);
+    vec3 col1 = vec3(0.372, 0.137, 0.784); // #5F23C8
 
-    // Orb 2: Cyan (#00FFFF)
+    // Orb 2: Warm Amber Accent (#D97706)
     vec2 orb2Pos = vec2(0.25 + cos(t * 0.6) * 0.12, -0.15 + sin(t * 0.8) * 0.1);
     float d2 = length(p - orb2Pos + vec2(n2, n1) * 0.25);
-    float orb2 = smoothstep(0.55, 0.0, d2);
-    vec3 col2 = vec3(0.0, 1.0, 1.0); // #00FFFF
+    float orb2 = smoothstep(0.6, 0.0, d2);
+    vec3 col2 = vec3(0.851, 0.467, 0.024); // #D97706
 
-    // Orb 3: Blue (#1D4ED8)
+    // Orb 3: Light Sky Cyan (#38BDF8)
     vec2 orb3Pos = vec2(0.0 + sin(t * 0.9) * 0.1, 0.25 + cos(t * 0.4) * 0.15);
     float d3 = length(p - orb3Pos + vec2(n1 * 0.5, n2 * 0.5) * 0.2);
-    float orb3 = smoothstep(0.5, 0.0, d3);
-    vec3 col3 = vec3(0.114, 0.306, 0.847); // #1D4ED8
+    float orb3 = smoothstep(0.55, 0.0, d3);
+    vec3 col3 = vec3(0.220, 0.741, 0.973); // #38BDF8
 
-    // Composite — very blurred, low opacity
-    vec3 color = vec3(0.0); // pure black base
-    color += col1 * orb1 * 0.7;
-    color += col2 * orb2 * 0.12;  // cyan very subtle
-    color += col3 * orb3 * 0.35;
+    // Composite — ultra-light white-shade fluid radiance
+    vec3 color = vec3(0.988, 0.984, 0.976); // #FCFBF9 ultra-light white base
+    color = mix(color, col1, orb1 * 0.06);
+    color = mix(color, col2, orb2 * 0.04);
+    color = mix(color, col3, orb3 * 0.03);
 
-    // Overall opacity fade at edges
-    float vignette = 1.0 - smoothstep(0.3, 1.0, length(p));
-    color *= vignette;
+    // Overall subtle vignette
+    float vignette = 1.0 - smoothstep(0.4, 1.2, length(p));
+    float alpha = clamp((orb1 * 0.10 + orb2 * 0.06 + orb3 * 0.06) * vignette, 0.0, 0.25);
 
-    gl_FragColor = vec4(color, 1.0);
+    gl_FragColor = vec4(color, alpha);
   }
 `;
 

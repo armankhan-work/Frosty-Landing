@@ -37,7 +37,7 @@ const chatScript = [
 ];
 
 function SidebarIcon({ type, active }: { type: string; active?: boolean }) {
-  const cls = `w-[18px] h-[18px] ${active ? 'text-white' : 'text-white/50'}`;
+  const cls = `w-[18px] h-[18px] ${active ? 'text-white' : 'text-slate-500'}`;
   const icons: Record<string, JSX.Element> = {
     home: <svg className={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>,
     chat: <svg className={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>,
@@ -584,11 +584,11 @@ export default function InteractiveDashboard() {
   }, [activeTab]);
 
   return (
-    <div className="relative w-full max-w-[720px] mx-auto bg-[#0F172A] rounded-[20px] sm:rounded-[28px] shadow-[0_30px_80px_rgba(0,0,0,.5)] border border-[rgba(255,255,255,.08)] overflow-hidden">
+    <div className="relative w-full max-w-[720px] mx-auto bg-white rounded-[20px] sm:rounded-[28px] shadow-[0_20px_60px_rgba(0,0,0,.08)] border border-slate-200/80 overflow-hidden">
       <div className="flex">
         {/* Sidebar */}
-        <div className="w-[48px] sm:w-[56px] bg-[#171527] flex flex-col items-center py-4 sm:py-5 gap-4 sm:gap-5 shrink-0 border-r border-[#171527]">
-          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-[10px] sm:rounded-xl bg-[#2A2640] shadow-sm flex items-center justify-center mb-1 sm:mb-2 p-1 border border-white/5">
+        <div className="w-[48px] sm:w-[56px] bg-[#F8FAFC] flex flex-col items-center py-4 sm:py-5 gap-4 sm:gap-5 shrink-0 border-r border-slate-200">
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-[10px] sm:rounded-xl bg-white shadow-sm flex items-center justify-center mb-1 sm:mb-2 p-1 border border-slate-200">
             <FrostyIcon size={20} />
           </div>
           {(['home', 'chart', 'chat', 'calendar', 'users'] as const).map((icon) => (
@@ -596,7 +596,7 @@ export default function InteractiveDashboard() {
               key={icon}
               onClick={() => setActiveTab(icon)}
               className={`w-8 h-8 sm:w-9 sm:h-9 rounded-[10px] sm:rounded-xl flex items-center justify-center transition-all cursor-pointer ${
-                activeTab === icon ? 'bg-[#8B5CF6] shadow-inner text-white' : 'hover:bg-white/5 text-[#8B5CF6]/50'
+                activeTab === icon ? 'bg-[#5F23C8] shadow-sm text-white' : 'hover:bg-slate-200/60 text-slate-500'
               }`}
             >
               <SidebarIcon type={icon} active={activeTab === icon} />
@@ -640,7 +640,7 @@ export default function InteractiveDashboard() {
                     >
                       <div className={`px-3.5 py-2.5 text-[12px] sm:text-[13px] font-medium leading-[1.5] rounded-2xl shadow-sm ${
                         msg?.role === 'user'
-                          ? 'bg-[#8B5CF6] text-white rounded-tr-md'
+                          ? 'bg-[#5F23C8] text-white rounded-tr-md'
                           : 'bg-white border border-slate-200 !text-slate-900 rounded-tl-md'
                       }`}>
                         {typeof msg?.text === 'string' ? (msg.text as string).split('\n').map((line, li) => (

@@ -34,7 +34,6 @@ export function TubesBackground({
       if (isIdleRef.current) return;
       isIdleRef.current = true;
 
-      // Smoothly drift to center before leaving to avoid jerky jump
       import('gsap').then(({ gsap }) => {
         gsap.to(lastPosRef.current, {
           x: window.innerWidth / 2,
@@ -51,7 +50,6 @@ export function TubesBackground({
             (e as any).__synthetic = true;
             canvas.dispatchEvent(e);
 
-            // Also pointermove for modern libs
             const pe = new PointerEvent('pointermove', {
               clientX: lastPosRef.current.x,
               clientY: lastPosRef.current.y,
@@ -93,7 +91,6 @@ export function TubesBackground({
       idleTimerRef.current = setTimeout(enterIdle, IDLE_DELAY);
     };
 
-    // Filter: ignore synthetic events we might dispatch
     const onMouseMove = (e: MouseEvent) => {
       if ((e as any).__synthetic) return;
       lastPosRef.current = { x: e.clientX, y: e.clientY };
@@ -102,14 +99,13 @@ export function TubesBackground({
     };
 
     window.addEventListener('mousemove', onMouseMove);
-    scheduleIdle(); // start idle immediately on mount
+    scheduleIdle();
 
     return () => {
       window.removeEventListener('mousemove', onMouseMove);
       if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
     };
   }, [isLoaded]);
-  // ──────────────────────────────────────────────────────────────
 
   useEffect(() => {
     let mounted = true;
@@ -123,24 +119,40 @@ export function TubesBackground({
         if (!mounted) return;
 
         const app = TubesCursor(canvasRef.current, {
-          bloom: {
-            threshold: 0.2,
-            strength: 0.6,
-            radius: 0.4
-          },
+          bloom: false,
+          sleepRadiusX: 300,
+          sleepRadiusY: 150,
+          sleepTimeScale1: 1,
+          sleepTimeScale2: 2,
           tubes: {
-            colors: ["#4338CA", "#7C3AED", "#A78BFA", "#DDD6FE", "#F5F3FF"],
+            count: 16,
+            // Single solid darkest shade: Deep Royal Violet (#6D28D9)
+            colors: ["#6D28D9", "#6D28D9", "#6D28D9"],
+            minRadius: 0.005,
+            maxRadius: 0.05,
+            minTubularSegments: 32,
+            maxTubularSegments: 128,
+            material: {
+              metalness: 0.25,
+              roughness: 0.35,
+            },
             lights: {
-              intensity: 200,
-              colors: ["#7C3AED", "#A78BFA", "#4338CA", "#6D28D9"]
-            }
+              intensity: 220,
+              colors: ["#FFFFFF", "#DDD6FE", "#FFFFFF", "#C4B5FD"]
+            },
+            lerp: 0.5,
+            noise: 0.05
           }
         });
+
+        // Ensure canvas renderer clear color is transparent
+        if (app && app.three && app.three.renderer) {
+          app.three.renderer.setClearColor(0x000000, 0);
+        }
 
         tubesRef.current = app;
         setIsLoaded(true);
 
-        // Instantly force idle state on mount to prevent the initial freeze and subsequent jerk
         setTimeout(() => {
           if (canvasRef.current) {
              canvasRef.current.dispatchEvent(new PointerEvent('pointerleave', { bubbles: true, cancelable: true }));
@@ -167,10 +179,8 @@ export function TubesBackground({
 
   const handleClick = () => {
     if (!enableClickInteraction || !tubesRef.current) return;
-    const frostyColors = ["#4338CA", "#7C3AED", "#A78BFA", "#DDD6FE", "#F5F3FF"];
-    const rand = () => frostyColors[Math.floor(Math.random() * frostyColors.length)];
-    tubesRef.current.tubes.setColors([rand(), rand(), rand()]);
-    tubesRef.current.tubes.setLightsColors([rand(), rand(), rand(), rand()]);
+    tubesRef.current.tubes.setColors(["#6D28D9", "#6D28D9", "#6D28D9"]);
+    tubesRef.current.tubes.setLightsColors(["#FFFFFF", "#DDD6FE", "#FFFFFF", "#C4B5FD"]);
   };
 
   return (
@@ -184,13 +194,13 @@ export function TubesBackground({
         className={`overflow-hidden ${className || "relative w-full h-full min-h-[400px]"}`}
         onClick={handleClick}
         style={{
-          maskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 100%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 100%)' }}
+          background: 'transparent'
+        }}
       >
         <canvas
           ref={canvasRef}
           className="absolute inset-0 w-full h-full block"
-          style={{ touchAction: 'none' }}
+          style={{ touchAction: 'none', background: 'transparent' }}
         />
         <div className="relative z-10 w-full h-full pointer-events-none">
           {children}

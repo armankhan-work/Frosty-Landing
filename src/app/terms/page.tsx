@@ -4,43 +4,48 @@ import BrandLogo from '../BrandLogo';
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-[#030712] text-slate-300 font-sans selection:bg-[#635A80]/30">
-      <nav className="w-full p-6 border-b border-white/[0.06] flex items-center justify-between sticky top-0 bg-[#030712]/80 backdrop-blur-xl z-50">
+    <main className="min-h-screen bg-[#FCFBF9] text-stone-700 font-sans selection:bg-[#5F23C8]/20">
+      <nav className="w-full p-6 border-b border-stone-200 flex items-center justify-between sticky top-0 bg-white/80 backdrop-blur-xl z-50">
         <Link href="/">
           <BrandLogo />
         </Link>
-        <Link href="/" className="text-sm font-bold text-slate-400 hover:text-white transition-colors">
+        <Link href="/" className="text-sm font-bold text-stone-600 hover:text-stone-900 transition-colors">
           Back to Home
         </Link>
       </nav>
 
-      <section className="relative w-full py-24 px-6 flex flex-col items-center justify-center border-b border-white/[0.06] overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#635A80]/5 blur-[120px] rounded-full pointer-events-none" />
+      <section className="relative w-full py-24 px-6 flex flex-col items-center justify-center border-b border-stone-200 overflow-hidden bg-white/50">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#5F23C8]/5 blur-[120px] rounded-full pointer-events-none" />
         <div className="relative z-10 text-center max-w-3xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tighter mb-6">
+          <h1 className="text-4xl md:text-6xl font-serif font-bold text-stone-900 tracking-tight mb-4">
             Terms of Service
           </h1>
-          <p className="text-lg text-slate-500 font-medium">
-            Frosty Platform Documentation & Policies
+          <p className="text-stone-600 text-lg">
+            Last updated: February 2025. Please review our service terms and operating guidelines.
           </p>
         </div>
       </section>
 
-      <section className="w-full py-24 px-6">
-        <div className="max-w-3xl mx-auto text-base text-slate-300 leading-relaxed">
-          <p className="mb-6">By accessing and using the Frosty platform, you agree to comply with and be bound by the following terms and conditions. Please read them carefully.</p>
-          <h2 className="text-2xl font-bold text-white mb-4 mt-12">1. Service Provision</h2>
-          <p className="mb-6">Frosty provides AI-driven agent automation software. We grant you a non-exclusive, non-transferable license to use our platform in accordance with your subscription plan.</p>
-          <h2 className="text-2xl font-bold text-white mb-4 mt-12">2. Acceptable Use</h2>
-          <p className="mb-6">You agree not to use Frosty agents to distribute spam, engage in illegal activities, or violate the terms of service of connected platforms (such as Meta/WhatsApp or Slack).</p>
-          <h2 className="text-2xl font-bold text-white mb-4 mt-12">3. API & Usage Limits</h2>
-          <p className="mb-6">Usage is billed based on token consumption and message limits. Frosty reserves the right to throttle or suspend accounts that exceed their allocated bandwidth or violate API abuse policies.</p>
+      <section className="max-w-4xl mx-auto py-16 px-6 space-y-12">
+        <div>
+          <h2 className="text-2xl font-bold text-stone-900 mb-4">1. Agreement to Terms</h2>
+          <p className="leading-relaxed">
+            By accessing or using Frosty’s autonomous pipelines and intelligence engines, you agree to be bound by these Terms. If you disagree with any part, you may not access the service.
+          </p>
+        </div>
+        <div>
+          <h2 className="text-2xl font-bold text-stone-900 mb-4">2. Autonomous Actions & Verification</h2>
+          <p className="leading-relaxed">
+            Frosty acts on behalf of your pipeline to answer inquiries and book meetings. You maintain governance over knowledge bounds and integration permissions.
+          </p>
+        </div>
+        <div>
+          <h2 className="text-2xl font-bold text-stone-900 mb-4">3. Termination</h2>
+          <p className="leading-relaxed">
+            We reserve the right to suspend or terminate accounts that violate our API terms, acceptable use policies, or deploy hostile automated traffic.
+          </p>
         </div>
       </section>
-      
-      <footer className="w-full py-12 border-t border-white/[0.06] text-center text-sm text-slate-600 font-medium">
-        © 2021 Frostrek LLP. All rights reserved.
-      </footer>
     </main>
   );
 }

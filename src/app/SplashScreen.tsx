@@ -30,7 +30,7 @@ const sp = (f: number, delay: number, fps: number, cfg = { d: 12, s: 130 }) => {
 const SNOW = Array.from({ length: 24 }, (_, i) => ({
   angle: (i * 137.5) * (Math.PI / 180),
   radius: 24 + (i % 5) * 8, 
-  size: 0.8 + (i % 3) * .6, 
+  size: 1.0 + (i % 3) * .6, 
   speed: .6 + (i % 4) * .2,
   startF: 5 + (i % 20) * 1.5,
   life: 25 + (i % 8) * 3,
@@ -51,22 +51,22 @@ function drawSnowflake(cx: CanvasRenderingContext2D, x: number, y: number, size:
   cx.translate(x, y); cx.rotate(rotation); cx.globalAlpha = alpha;
   if (glowI > 0.01) {
     const grad = cx.createRadialGradient(0, 0, 0, 0, 0, size * 1.8);
-    grad.addColorStop(0, `rgba(96,165,250,${glowI * .25})`);
-    grad.addColorStop(.5, `rgba(56,189,248,${glowI * .1})`);
-    grad.addColorStop(1, 'rgba(0,168,204,0)');
+    grad.addColorStop(0, `rgba(95,35,200,${glowI * .25})`);
+    grad.addColorStop(.5, `rgba(2,132,199,${glowI * .12})`);
+    grad.addColorStop(1, 'rgba(95,35,200,0)');
     cx.fillStyle = grad;
     cx.fillRect(-size * 2, -size * 2, size * 4, size * 4);
   }
   const sg = cx.createLinearGradient(-size, -size, size, size);
-  sg.addColorStop(0, '#BFDBFE'); sg.addColorStop(.5, '#5F23C8'); sg.addColorStop(1, '#38BDF8');
+  sg.addColorStop(0, '#5F23C8'); sg.addColorStop(.5, '#8B5CF6'); sg.addColorStop(1, '#0284C7');
   cx.save();
-  cx.shadowColor = '#5F23C8'; cx.shadowBlur = glowI * 18;
-  cx.strokeStyle = 'rgba(96,165,250,0.5)';
-  cx.lineWidth = size * .03; cx.lineCap = 'round';
+  cx.shadowColor = 'rgba(95,35,200,0.3)'; cx.shadowBlur = glowI * 14;
+  cx.strokeStyle = 'rgba(95,35,200,0.7)';
+  cx.lineWidth = size * .036; cx.lineCap = 'round';
   cx.beginPath();
   for (let i = 0; i < 6; i++) { cx.save(); cx.rotate(i * Math.PI / 3); drawArm(cx, size * .48); cx.restore(); }
   cx.stroke(); cx.restore();
-  cx.strokeStyle = sg; cx.lineWidth = size * .032; cx.lineCap = 'round';
+  cx.strokeStyle = sg; cx.lineWidth = size * .038; cx.lineCap = 'round';
   cx.beginPath();
   for (let i = 0; i < 6; i++) { cx.save(); cx.rotate(i * Math.PI / 3); drawArm(cx, size * .48); cx.restore(); }
   cx.stroke();
@@ -75,11 +75,11 @@ function drawSnowflake(cx: CanvasRenderingContext2D, x: number, y: number, size:
     cx.beginPath();
     cx.moveTo(Math.cos(rad) * size * .13, Math.sin(rad) * size * .13);
     cx.lineTo(Math.cos(rad + Math.PI) * size * .13, Math.sin(rad + Math.PI) * size * .13);
-    cx.strokeStyle = 'rgba(168,240,236,0.45)'; cx.lineWidth = size * .02;
+    cx.strokeStyle = 'rgba(95,35,200,0.5)'; cx.lineWidth = size * .024;
     cx.stroke();
   });
   const cg = cx.createRadialGradient(0, 0, 0, 0, 0, size * .08);
-  cg.addColorStop(0, '#ffffff'); cg.addColorStop(.4, '#BFDBFE'); cg.addColorStop(1, '#5F23C8');
+  cg.addColorStop(0, '#ffffff'); cg.addColorStop(.4, '#DDD6FE'); cg.addColorStop(1, '#5F23C8');
   cx.beginPath(); cx.arc(0, 0, size * .065, 0, Math.PI * 2);
   cx.fillStyle = cg; cx.fill();
   cx.restore();
@@ -121,17 +121,17 @@ export default function SplashScreen({ isLoading = true, onComplete }: { isLoadi
       const H = window.innerHeight;
       
       const bgG = cx.createRadialGradient(W / 2, H * .44, 0, W / 2, H * .44, Math.sqrt(W * W + H * H) * .5);
-      bgG.addColorStop(0, '#0E1117'); bgG.addColorStop(.55, '#0A0D14'); bgG.addColorStop(1, '#121212');
+      bgG.addColorStop(0, '#FFFFFF'); bgG.addColorStop(.55, '#FCFBF9'); bgG.addColorStop(1, '#F8F7F4');
       
       const amb = lerp(f, 0, 20, 0, 1) * lerp(f, 40, 60, 1, 0); 
       
       const aG1 = cx.createRadialGradient(W * .38, H * .5, 0, W * .38, H * .5, W * .38);
-      aG1.addColorStop(0, `rgba(96,165,250,${.05 + amb * .07})`);
-      aG1.addColorStop(1, 'rgba(96,165,250,0)'); 
+      aG1.addColorStop(0, `rgba(95,35,200,${.06 + amb * .05})`);
+      aG1.addColorStop(1, 'rgba(95,35,200,0)'); 
       cx.fillStyle = aG1; cx.fillRect(0, 0, W, H);
       const aG2 = cx.createRadialGradient(W * .72, H * .52, 0, W * .72, H * .52, W * .35);
-      aG2.addColorStop(0, `rgba(56,189,248,${.02 + amb * .03})`);
-      aG2.addColorStop(1, 'rgba(56,189,248,0)');
+      aG2.addColorStop(0, `rgba(2,132,199,${.04 + amb * .04})`);
+      aG2.addColorStop(1, 'rgba(2,132,199,0)');
       cx.fillStyle = aG2; cx.fillRect(0, 0, W, H);
       const sfSize = 56; 
       const textHeight = 48; 
@@ -189,7 +189,7 @@ export default function SplashScreen({ isLoading = true, onComplete }: { isLoadi
           else mop = lerp(progress, .8, 1, .7, 0);
           
           cx.beginPath(); cx.arc(px, py, p.size * (1 - progress * .3), 0, Math.PI * 2);
-          cx.fillStyle = p.cyan ? `rgba(168,240,236,${mop * introOP})` : `rgba(0,168,204,${mop * introOP})`;
+          cx.fillStyle = p.cyan ? `rgba(95,35,200,${mop * introOP * 0.7})` : `rgba(2,132,199,${mop * introOP * 0.7})`;
           cx.fill();
         });
       }
@@ -205,9 +205,9 @@ export default function SplashScreen({ isLoading = true, onComplete }: { isLoadi
       const divOp = lerp(f, 10, 20, 0, .5) * exitOp;
       if (divH > 0) {
         const dg = cx.createLinearGradient(0, cy2 - divH / 2, 0, cy2 + divH / 2);
-        dg.addColorStop(0, 'rgba(96,165,250,0)'); 
-        dg.addColorStop(.5, 'rgba(96,165,250,1)'); 
-        dg.addColorStop(1, 'rgba(96,165,250,0)');
+        dg.addColorStop(0, 'rgba(95,35,200,0)'); 
+        dg.addColorStop(.5, 'rgba(95,35,200,0.8)'); 
+        dg.addColorStop(1, 'rgba(95,35,200,0)'); 
         cx.fillStyle = dg; cx.globalAlpha = divOp; cx.fillRect(divX, cy2 - divH / 2, 1.5, divH); cx.globalAlpha = 1;
       }
       
@@ -227,11 +227,10 @@ export default function SplashScreen({ isLoading = true, onComplete }: { isLoadi
           cx.globalAlpha = cOp;
           cx.font = `700 ${textHeight}px "Inter", "Segoe UI", sans-serif`;
           const charGrad = cx.createLinearGradient(-charX, -textHeight, textStrW - charX, 0);
-          charGrad.addColorStop(0, '#BFDBFE');
-          charGrad.addColorStop(.28, '#5F23C8');
-          charGrad.addColorStop(.55, '#FFFFFF');
-          charGrad.addColorStop(.8, '#38BDF8');
-          charGrad.addColorStop(1, '#1E40AF');
+          charGrad.addColorStop(0, '#0F172A');
+          charGrad.addColorStop(.35, '#5F23C8');
+          charGrad.addColorStop(.7, '#0284C7');
+          charGrad.addColorStop(1, '#0F172A');
           cx.fillStyle = charGrad;
           cx.fillText(ch, charX, cY - 2);
           cx.restore();
@@ -245,11 +244,11 @@ export default function SplashScreen({ isLoading = true, onComplete }: { isLoadi
         cx.save();
         cx.globalAlpha = exitOp;
         const sg2 = cx.createLinearGradient(shimX - 100, 0, shimX + 100, 0);
-        sg2.addColorStop(0, 'rgba(255,255,255,0)');
-        sg2.addColorStop(.35, 'rgba(255,255,255,0)');
-        sg2.addColorStop(.5, 'rgba(255,255,255,0.25)'); 
-        sg2.addColorStop(.65, 'rgba(255,255,255,0)');
-        sg2.addColorStop(1, 'rgba(255,255,255,0)');
+        sg2.addColorStop(0, 'rgba(95,35,200,0)');
+        sg2.addColorStop(.35, 'rgba(95,35,200,0)');
+        sg2.addColorStop(.5, 'rgba(95,35,200,0.15)'); 
+        sg2.addColorStop(.65, 'rgba(95,35,200,0)');
+        sg2.addColorStop(1, 'rgba(95,35,200,0)');
         cx.fillStyle = sg2;
         cx.fillRect(-10, -textHeight - 10, textStrW + 20, textHeight + 20);
         cx.restore();
@@ -259,8 +258,8 @@ export default function SplashScreen({ isLoading = true, onComplete }: { isLoadi
       if (ulW > 0) {
         const ulg = cx.createLinearGradient(0, 12, ulW, 12);
         ulg.addColorStop(0, '#5F23C8'); 
-        ulg.addColorStop(.6, 'rgba(56,189,248,.5)'); 
-        ulg.addColorStop(1, 'rgba(56,189,248,0)');
+        ulg.addColorStop(.6, 'rgba(2,132,199,.5)'); 
+        ulg.addColorStop(1, 'rgba(2,132,199,0)');
         cx.fillStyle = ulg; cx.globalAlpha = exitOp; cx.fillRect(0, 12, ulW, 1.5); cx.globalAlpha = 1;
       }
       cx.restore(); 
@@ -299,7 +298,7 @@ export default function SplashScreen({ isLoading = true, onComplete }: { isLoadi
         position: 'fixed',
         inset: 0,
         zIndex: 9999,
-        background: '#0E1117' }}
+        background: '#FCFBF9' }}
     >
       <canvas
         ref={canvasRef}

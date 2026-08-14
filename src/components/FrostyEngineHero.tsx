@@ -3,35 +3,45 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-
 export function ParallaxStarfield() {
   const [mounted, setMounted] = React.useState(false);
   const [layers, setLayers] = React.useState<{
-    layer1: { left: string, top: string }[],
-    layer2: { left: string, top: string }[],
-    layer3: { left: string, top: string }[]
+    layer1: { left: string, top: string, color: string }[],
+    layer2: { left: string, top: string, color: string }[],
+    layer3: { left: string, top: string, color: string }[]
   }>({ layer1: [], layer2: [], layer3: [] });
 
   React.useEffect(() => {
+    // Pure monochromatic shades of lavender
+    const palette = ['#7C3AED', '#8B5CF6', '#A78BFA', '#C4B5FD', '#DDD6FE'];
     const generateStars = (count: number) => Array.from({ length: count }).map(() => ({
       left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`
+      top: `${Math.random() * 100}%`,
+      color: palette[Math.floor(Math.random() * palette.length)]
     }));
 
     setLayers({
-      layer1: generateStars(120), // Increased density
-      layer2: generateStars(80),
-      layer3: generateStars(40)
+      layer1: generateStars(110),
+      layer2: generateStars(70),
+      layer3: generateStars(35)
     });
     setMounted(true);
   }, []);
 
   if (!mounted) return null;
 
-  const renderStars = (stars: { left: string, top: string }[], className: string) => (
+  const renderStars = (stars: { left: string, top: string, color: string }[], className: string) => (
     <>
       {stars.map((pos, i) => (
-        <div key={i} className={`absolute bg-[#5F23C8] dark:bg-white rounded-full ${className}`} style={{ left: pos.left, top: pos.top }} />
+        <div
+          key={i}
+          className={`absolute rounded-full ${className}`}
+          style={{
+            left: pos.left,
+            top: pos.top,
+            backgroundColor: pos.color
+          }}
+        />
       ))}
     </>
   );
@@ -40,49 +50,48 @@ export function ParallaxStarfield() {
     <div className="fixed inset-0 z-[1] overflow-hidden pointer-events-none flex items-center justify-center">
       {/* 
          Rotate the entire field to transform vertical motion into diagonal motion (Top-Right to Bottom-Left).
-         We use a container larger than the viewport to avoid empty corners during rotation.
       */}
       <div className="relative w-[150vmax] h-[150vmax] rotate-[15deg] flex-shrink-0">
 
-        {/* Layer 1 - Deep Background - Slowest */}
+        {/* Layer 1 - Deep Background Micro-Texture - Slowest */}
         <motion.div
           className="absolute inset-0 w-full h-full"
           animate={{ y: ["0%", "100%"] }}
-          transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+          transition={{ duration: 45, repeat: Infinity, ease: 'linear' }}
         >
           <div className="absolute inset-0 w-full h-full">
-            {renderStars(layers.layer1, "w-[1px] h-[1px] opacity-30")}
+            {renderStars(layers.layer1, "w-[2.5px] h-[2.5px] opacity-25")}
           </div>
           <div className="absolute inset-0 w-full h-full" style={{ top: "-100%" }}>
-            {renderStars(layers.layer1, "w-[1px] h-[1px] opacity-30")}
+            {renderStars(layers.layer1, "w-[2.5px] h-[2.5px] opacity-25")}
           </div>
         </motion.div>
 
-        {/* Layer 2 - Midground - Medium Speed */}
+        {/* Layer 2 - Midground Subtle Specks - Medium Speed */}
         <motion.div
           className="absolute inset-0 w-full h-full"
           animate={{ y: ["0%", "100%"] }}
-          transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+          transition={{ duration: 28, repeat: Infinity, ease: 'linear' }}
         >
           <div className="absolute inset-0 w-full h-full">
-            {renderStars(layers.layer2, "w-[1.5px] h-[1.5px] opacity-50")}
+            {renderStars(layers.layer2, "w-[3.5px] h-[3.5px] opacity-35")}
           </div>
           <div className="absolute inset-0 w-full h-full" style={{ top: "-100%" }}>
-            {renderStars(layers.layer2, "w-[1.5px] h-[1.5px] opacity-50")}
+            {renderStars(layers.layer2, "w-[3.5px] h-[3.5px] opacity-35")}
           </div>
         </motion.div>
 
-        {/* Layer 3 - Foreground - Fastest */}
+        {/* Layer 3 - Foreground Gentle Glowing Motes - Fastest */}
         <motion.div
           className="absolute inset-0 w-full h-full"
           animate={{ y: ["0%", "100%"] }}
-          transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
+          transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
         >
           <div className="absolute inset-0 w-full h-full">
-            {renderStars(layers.layer3, "w-[2px] h-[2px] opacity-80 shadow-[0_0_5px_rgba(255,255,255,0.4)]")}
+            {renderStars(layers.layer3, "w-[4.5px] h-[4.5px] opacity-45 shadow-[0_0_8px_rgba(139,92,246,0.25)]")}
           </div>
           <div className="absolute inset-0 w-full h-full" style={{ top: "-100%" }}>
-            {renderStars(layers.layer3, "w-[2px] h-[2px] opacity-80 shadow-[0_0_5px_rgba(255,255,255,0.4)]")}
+            {renderStars(layers.layer3, "w-[4.5px] h-[4.5px] opacity-45 shadow-[0_0_8px_rgba(139,92,246,0.25)]")}
           </div>
         </motion.div>
 
@@ -91,24 +100,24 @@ export function ParallaxStarfield() {
   );
 }
 
-
-
 export default function FrostyEngineHero() {
-
   return (
     <motion.div className="relative w-full min-h-screen overflow-hidden flex flex-col items-center justify-center z-0 pt-16 md:pt-24 pb-24">
 
-      {/* Top Center Soft Icy Blue Aura Gradient */}
-      <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse_at_top,rgba(95, 35, 200,0.1)_0%,rgba(95, 35, 200,0.05)_40%,transparent_70%)] dark:bg-[radial-gradient(ellipse_at_top,rgba(95, 35, 200,0.12)_0%,rgba(95, 35, 200,0.02)_40%,transparent_70%)] rounded-full blur-[80px] pointer-events-none z-0 mix-blend-multiply dark:mix-blend-screen" />
+      {/* Top Center Soft Lavender Aura */}
+      <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[850px] h-[450px] bg-[radial-gradient(ellipse_at_top,rgba(139,92,246,0.06)_0%,rgba(196,181,253,0.035)_35%,rgba(221,214,254,0.015)_60%,transparent_75%)] rounded-full blur-[90px] pointer-events-none z-0" />
 
       {/* Hero Typography — Centered */}
       <div
         className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center justify-center text-center px-6"
         style={{ marginBottom: '40px' }}
       >
+        {/* Soft atmospheric depth scrim behind headline to guarantee 100% crystal-clear readability */}
+        <div className="absolute inset-0 -m-8 bg-[radial-gradient(ellipse_at_center,rgba(252,251,249,0.70)_0%,rgba(252,251,249,0.30)_50%,transparent_75%)] pointer-events-none -z-10 rounded-full blur-xl" />
+
         {/* ANIMATED HEADLINE */}
         <motion.h1
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-medium leading-[1.1] tracking-tight text-center mt-0 mb-4 sm:mb-6 flex flex-col items-center justify-center gap-1 sm:gap-2"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-medium leading-[1.1] tracking-tight text-center mt-0 mb-4 sm:mb-6 flex flex-col items-center justify-center gap-1 sm:gap-2 relative z-10"
           variants={{
             initial: { opacity: 0 },
             animate: {
@@ -122,7 +131,7 @@ export default function FrostyEngineHero() {
             {["Intelligence", "Engineered"].map((word, i) => (
               <motion.span
                 key={i}
-                className="text-white drop-shadow-sm"
+                className="text-[#18181B] drop-shadow-sm font-semibold"
                 variants={{
                   initial: { opacity: 0, y: 30, filter: "blur(12px)" },
                   animate: {
@@ -138,12 +147,12 @@ export default function FrostyEngineHero() {
             ))}
           </div>
 
-          {/* Bottom Line (Gradient) */}
+          {/* Bottom Line (Solid Theme Lavender Color) */}
           <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mt-1 sm:mt-2">
             {["For", "Your", "Pipeline."].map((word, i) => (
               <motion.span
                 key={i}
-                className="bg-clip-text text-transparent bg-gradient-to-b from-white to-[#5F23C8] drop-shadow-md"
+                className="text-[#5F23C8] font-bold drop-shadow-sm"
                 variants={{
                   initial: { opacity: 0, y: 30, filter: "blur(12px)" },
                   animate: {
@@ -161,7 +170,7 @@ export default function FrostyEngineHero() {
         </motion.h1>
 
         <motion.p
-          className="text-sm md:text-base text-slate-400 leading-relaxed max-w-2xl mx-auto mt-3 sm:mt-4 text-center px-2"
+          className="text-sm md:text-base text-[#52525B] leading-relaxed max-w-2xl mx-auto mt-3 sm:mt-4 text-center px-2 font-normal relative z-10"
           variants={{
             initial: { opacity: 0, y: 20 },
             animate: { opacity: 1, y: 0, transition: { duration: 1.2, delay: 0.6 } }
@@ -179,10 +188,10 @@ export default function FrostyEngineHero() {
           }}
           className="mt-8 sm:mt-12 md:mt-16 flex flex-col items-center gap-3 relative z-50 cursor-pointer"
         >
-          <span className="text-sm text-slate-500 dark:text-slate-400 tracking-[0.2em] uppercase">Scroll to explore</span>
+          <span className="text-sm text-[#71717A] tracking-[0.2em] uppercase font-semibold">Scroll to explore</span>
 
           {/* Mouse Outline */}
-          <div className="w-5 h-8 border border-slate-400/30 dark:border-white/20 rounded-full flex justify-center p-1 bg-slate-200/50 dark:bg-white/5 backdrop-blur-sm">
+          <div className="w-5 h-8 border border-stone-300/80 rounded-full flex justify-center p-1 bg-white/90 shadow-sm backdrop-blur-sm">
 
             {/* Bouncing Wheel */}
             <motion.div
@@ -195,7 +204,7 @@ export default function FrostyEngineHero() {
                 duration: 1.5,
                 ease: "easeInOut"
               }}
-              className="w-1 h-1.5 bg-[#5F23C8] dark:bg-[#5F23C8] rounded-full shadow-[0_0_5px_rgba(95, 35, 200,0.6)] dark:shadow-[0_0_5px_#5F23C8]"
+              className="w-1 h-1.5 bg-[#5F23C8] rounded-full shadow-[0_0_5px_rgba(95,35,200,0.4)]"
             />
 
           </div>

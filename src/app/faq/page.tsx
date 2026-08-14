@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus, Search, ArrowLeft } from 'lucide-react';
-import BrandLogo from '../BrandLogo';
 import FooterSection from '../FooterSection';
 import { ParallaxStarfield } from '@/components/FrostyEngineHero';
+import GlassNavbar from '@/components/GlassNavbar';
 import '../FrostyPage.css';
 
 const FAQ_GROUPS: [string, [string, string][]][] = [
@@ -44,28 +44,18 @@ const FAQ_GROUPS: [string, [string, string][]][] = [
     ]],
 ];
 
-// Replicating the screenshot's subtle colored themes for different FAQs but in a dark-mode premium style
 const FAQ_THEMES = [
-    { border: 'border-[#3B82F6]/20', bgActive: 'bg-[#3B82F6]/5', text: 'text-[#60A5FA]', numberBg: 'bg-[#3B82F6]/10' },
-    { border: 'border-[#10B981]/20', bgActive: 'bg-[#10B981]/5', text: 'text-[#34D399]', numberBg: 'bg-[#10B981]/10' },
-    { border: 'border-[#EC4899]/20', bgActive: 'bg-[#EC4899]/5', text: 'text-[#F472B6]', numberBg: 'bg-[#EC4899]/10' },
-    { border: 'border-[#F59E0B]/20', bgActive: 'bg-[#F59E0B]/5', text: 'text-[#FBBF24]', numberBg: 'bg-[#F59E0B]/10' },
-    { border: 'border-[#8B5CF6]/20', bgActive: 'bg-[#8B5CF6]/5', text: 'text-[#A78BFA]', numberBg: 'bg-[#8B5CF6]/10' },
+    { border: 'border-[#5F23C8]/30', bgActive: 'bg-[#5F23C8]/5', text: 'text-[#5F23C8]', numberBg: 'bg-[#5F23C8]/10' },
+    { border: 'border-[#10B981]/30', bgActive: 'bg-[#10B981]/5', text: 'text-[#10B981]', numberBg: 'bg-[#10B981]/10' },
+    { border: 'border-[#EC4899]/30', bgActive: 'bg-[#EC4899]/5', text: 'text-[#EC4899]', numberBg: 'bg-[#EC4899]/10' },
+    { border: 'border-[#F59E0B]/30', bgActive: 'bg-[#F59E0B]/5', text: 'text-[#D97706]', numberBg: 'bg-[#F59E0B]/10' },
+    { border: 'border-[#0284C7]/30', bgActive: 'bg-[#0284C7]/5', text: 'text-[#0284C7]', numberBg: 'bg-[#0284C7]/10' },
 ];
 
 export default function FAQPage() {
-    const [scrolled, setScrolled] = useState(false);
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [openFaq, setOpenFaq] = useState<string | null>(null);
 
-    useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 30);
-        window.addEventListener("scroll", onScroll, { passive: true });
-        return () => window.removeEventListener("scroll", onScroll);
-    }, []);
-
-    // Filter FAQs based on search
     const filteredGroups = FAQ_GROUPS.map(([groupName, faqs]) => {
         const filteredFaqs = faqs.filter(([q, a]) =>
             q.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -75,96 +65,48 @@ export default function FAQPage() {
     }).filter(([_, faqs]) => faqs.length > 0);
 
     return (
-        <div className="frosty-root dark" style={{
-            background: 'radial-gradient(circle 800px at 100% 0%, rgba(255, 255, 255, 0.04) 0%, rgba(59, 130, 246, 0.12) 30%, transparent 100%), radial-gradient(circle 800px at 0% 100%, rgba(255, 255, 255, 0.04) 0%, rgba(59, 130, 246, 0.12) 30%, transparent 100%), #000000',
+        <div className="frosty-root" style={{
+            background: 'radial-gradient(circle 800px at 100% 0%, rgba(95, 35, 200, 0.035) 0%, rgba(245, 158, 11, 0.018) 30%, transparent 100%), #FCFBF9',
             backgroundAttachment: 'fixed',
             minHeight: '100vh',
-            color: '#fff',
+            color: '#18181B',
             overflowX: 'hidden',
             position: 'relative'
         }}>
-            {/* Global Backgrounds */}
             <ParallaxStarfield />
 
             <div className="relative z-10">
-                {/* NAVBAR */}
-                <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 flex justify-center pointer-events-none">
-                    <div className="pointer-events-auto transition-all duration-500 w-full" style={{
-                        background: scrolled ? 'rgba(10, 15, 30, 0.65)' : 'rgba(10, 15, 30, 0.25)',
-                        backdropFilter: 'blur(24px)',
-                        WebkitBackdropFilter: 'blur(24px)',
-                        borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-                        padding: '14px 24px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        boxShadow: scrolled ? '0 12px 40px rgba(0, 0, 0, 0.2)' : 'none'
-                    }}>
-                        <BrandLogo ready={true} />
-
-                        {/* Desktop Nav */}
-                        <div className="hidden md:flex" style={{ gap: 14, alignItems: 'center' }}>
-                            <Link href="/login" style={{ fontSize: 15, color: '#fff', fontWeight: 600, padding: '10px 18px', borderRadius: 10, transition: 'background 0.2s' }} className="hover:bg-white/10">Log in</Link>
-                            <Link href="/login?mode=register" style={{ background: '#5F23C8', padding: '10px 24px', borderRadius: 10, fontSize: 15, color: '#fff', fontWeight: 600, boxShadow: '0 4px 14px rgba(95, 35, 200,0.3)' }} className="hover:scale-105 transition-transform duration-200">Get started free</Link>
-                        </div>
-
-                        {/* Mobile Hamburger */}
-                        <button
-                            className="flex md:hidden flex-col gap-[5px] p-2 rounded-lg pointer-events-auto"
-                            style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
-                            onClick={() => setMobileMenuOpen(v => !v)}
-                            aria-label="Toggle menu"
-                        >
-                            <span className="w-5 h-0.5 bg-white transition-all" style={{ transform: mobileMenuOpen ? 'rotate(45deg) translate(4px, 4px)' : 'none' }} />
-                            <span className="w-5 h-0.5 bg-white transition-all" style={{ opacity: mobileMenuOpen ? 0 : 1 }} />
-                            <span className="w-5 h-0.5 bg-white transition-all" style={{ transform: mobileMenuOpen ? 'rotate(-45deg) translate(4px, -4px)' : 'none' }} />
-                        </button>
-                    </div>
-                </nav>
-
-                {/* Mobile Menu Dropdown */}
-                <AnimatePresence>
-                    {mobileMenuOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            className="fixed top-[68px] left-0 right-0 z-40 bg-[#0A0F1E]/95 backdrop-blur-xl border-b border-white/10 p-6 flex flex-col gap-4 shadow-2xl md:hidden pointer-events-auto"
-                        >
-                            <Link href="/login" className="px-4 py-3 rounded-xl bg-white/5 font-semibold text-center text-white" onClick={() => setMobileMenuOpen(false)}>Log in</Link>
-                            <Link href="/login?mode=register" className="px-4 py-3 rounded-xl bg-[#5F23C8] font-semibold text-center text-white" onClick={() => setMobileMenuOpen(false)}>Get started free</Link>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+                {/* PREMIUM GLASSMORPHISM NAVBAR */}
+                <GlassNavbar ready={true} />
 
                 <main className="w-full flex flex-col relative z-10">
-                    <section className="min-h-[90vh] w-full flex flex-col items-center justify-center px-4 sm:px-6 relative">
-                        <Link href="/" className="absolute top-32 left-4 md:left-12 inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors w-fit">
+                    <section className="min-h-[80vh] w-full flex flex-col items-center justify-center px-4 sm:px-6 relative pt-24">
+                        <Link href="/" className="absolute top-28 left-4 md:left-12 inline-flex items-center gap-2 text-stone-500 hover:text-stone-900 transition-colors w-fit">
                             <ArrowLeft className="w-4 h-4" />
                             <span className="text-sm font-medium">Back to Home</span>
                         </Link>
 
                         <div className="flex flex-col items-center text-center max-w-3xl mx-auto w-full">
-                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#10B981]/10 border border-[#10B981]/20 mb-10">
-                                <div className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
-                                <span className="text-[10px] font-bold tracking-widest text-[#34D399] uppercase">Help Center</span>
+                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-50 border border-purple-200 mb-8">
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#5F23C8]" />
+                                <span className="text-[10px] font-bold tracking-widest text-[#5F23C8] uppercase">Help Center</span>
                             </div>
 
-                            <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif font-medium text-white">
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-stone-900">
                                 Frequently Asked Questions
                             </h1>
 
-                            <p className="text-slate-400 text-lg md:text-xl max-w-2xl" style={{ marginTop: '32px', marginBottom: '32px' }}>
+                            <p className="text-stone-600 text-base md:text-lg max-w-2xl" style={{ marginTop: '24px', marginBottom: '32px' }}>
                                 Everything you need to know about our AI solutions, security, pricing, and technical capabilities.
                             </p>
 
                             <div className="relative w-full max-w-xl mx-auto">
                                 <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-                                    <Search className="h-5 w-5 text-slate-400" />
+                                    <Search className="h-5 w-5 text-stone-400" />
                                 </div>
                                 <input
                                     type="text"
-                                    className="block w-full pl-12 pr-6 py-4 bg-[#0A0A14]/80 backdrop-blur-xl border border-white/10 rounded-2xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#5F23C8]/50 focus:border-[#5F23C8] transition-all shadow-[0_8px_32px_rgba(0,0,0,0.2)] text-lg"
+                                    className="block w-full pl-12 pr-6 py-4 bg-white border border-stone-200 rounded-2xl text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#5F23C8]/30 focus:border-[#5F23C8] transition-all shadow-sm text-base"
                                     placeholder="Search for answers..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
@@ -173,7 +115,7 @@ export default function FAQPage() {
                         </div>
                     </section>
 
-                    <div className="flex flex-col gap-24 lg:gap-32 w-full mt-16 px-4 sm:px-6 md:px-8 lg:px-12 max-w-[1600px] mx-auto pb-24">
+                    <div className="flex flex-col gap-24 lg:gap-32 w-full mt-8 px-4 sm:px-6 md:px-8 lg:px-12 max-w-[1600px] mx-auto pb-24">
                         {filteredGroups.map(([group, qs], gIdx) => {
                             const isEven = gIdx % 2 === 1;
                             const imageNames = ["faq_about.png", "faq_setup.png", "faq_daily.png", "faq_trust.png"];
@@ -188,13 +130,12 @@ export default function FAQPage() {
                                         transition={{ duration: 0.8, ease: "easeOut" }}
                                         className="w-full md:w-[50%] relative group flex justify-center items-center"
                                     >
-                                        <div className="relative w-full max-w-md aspect-[4/5] rounded-[2rem] overflow-hidden bg-[#0A0A14] border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] group-hover:border-[#5F23C8]/50 transition-all duration-500">
+                                        <div className="relative w-full max-w-md aspect-[4/5] rounded-[2rem] overflow-hidden bg-stone-100 border border-stone-200 shadow-md group-hover:border-[#5F23C8]/40 transition-all duration-500">
                                             <img
                                                 src={`/images/${imageNames[gIdx % 4]}`}
                                                 alt={group}
-                                                className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                                                className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
                                             />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A14] via-transparent to-transparent opacity-80"></div>
                                         </div>
                                     </motion.div>
 
@@ -205,7 +146,7 @@ export default function FAQPage() {
                                             whileInView={{ opacity: 1, x: 0 }}
                                             viewport={{ once: false }}
                                             transition={{ duration: 0.6 }}
-                                            className="text-3xl md:text-4xl font-serif font-bold text-white mb-8 border-b border-white/10 pb-6"
+                                            className="text-3xl md:text-4xl font-serif font-bold text-stone-900 mb-8 border-b border-stone-200 pb-6"
                                         >
                                             {group}
                                         </motion.h3>
@@ -217,25 +158,6 @@ export default function FAQPage() {
                                                 const isActive = openFaq === key;
                                                 const theme = FAQ_THEMES[globalIndex % FAQ_THEMES.length];
 
-                                                const textContainer = {
-                                                    hidden: { opacity: 0 },
-                                                    visible: {
-                                                        opacity: 1,
-                                                        transition: { staggerChildren: 0.02, delayChildren: 0.1 }
-                                                    }
-                                                };
-
-                                                const textWord: any = {
-                                                    hidden: { opacity: 0, y: 15, rotateX: 45, filter: "blur(4px)" },
-                                                    visible: {
-                                                        opacity: 1,
-                                                        y: 0,
-                                                        rotateX: 0,
-                                                        filter: "blur(0px)",
-                                                        transition: { type: "spring", damping: 12, stiffness: 200 }
-                                                    }
-                                                };
-
                                                 return (
                                                     <motion.div
                                                         key={key}
@@ -243,7 +165,7 @@ export default function FAQPage() {
                                                         whileInView={{ opacity: 1, x: 0 }}
                                                         viewport={{ once: false, margin: "-10px" }}
                                                         transition={{ duration: 0.6, ease: "easeOut" }}
-                                                        className={`w-full rounded-[20px] transition-all duration-300 overflow-hidden ${isActive ? `bg-white/[0.04] ${theme.border} border` : 'bg-white/[0.02] border border-white/5 hover:border-white/10 hover:bg-white/[0.03]'
+                                                        className={`w-full rounded-[20px] transition-all duration-300 overflow-hidden ${isActive ? `bg-purple-50/40 ${theme.border} border shadow-sm` : 'bg-white border border-stone-200 hover:border-stone-300 shadow-xs'
                                                             }`}
                                                     >
                                                         <button
@@ -254,21 +176,11 @@ export default function FAQPage() {
                                                                 <div className={`w-10 h-10 shrink-0 rounded-xl flex items-center justify-center font-bold text-sm ${theme.numberBg} ${theme.text}`}>
                                                                     {String(globalIndex + 1).padStart(2, '0')}
                                                                 </div>
-                                                                <motion.span
-                                                                    variants={textContainer}
-                                                                    initial="hidden"
-                                                                    whileInView="visible"
-                                                                    viewport={{ once: false }}
-                                                                    className={`text-[15px] font-medium leading-snug transition-colors pr-2 flex flex-wrap gap-[0.25em] ${isActive ? theme.text : 'text-slate-200'}`}
-                                                                >
-                                                                    {q.split(" ").map((word, wIdx) => (
-                                                                        <motion.span key={wIdx} variants={textWord} className="inline-block origin-bottom">
-                                                                            {word}
-                                                                        </motion.span>
-                                                                    ))}
-                                                                </motion.span>
+                                                                <span className={`text-[15px] font-semibold leading-snug transition-colors pr-2 ${isActive ? theme.text : 'text-stone-900'}`}>
+                                                                    {q}
+                                                                </span>
                                                             </div>
-                                                            <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center border transition-all duration-300 ${isActive ? `${theme.numberBg} ${theme.border} ${theme.text} rotate-180` : 'bg-transparent border-white/10 text-slate-400'
+                                                            <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center border transition-all duration-300 ${isActive ? `${theme.numberBg} ${theme.border} ${theme.text} rotate-180` : 'bg-stone-50 border-stone-200 text-stone-500'
                                                                 }`}>
                                                                 {isActive ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                                                             </div>
@@ -282,7 +194,7 @@ export default function FAQPage() {
                                                                     exit={{ height: 0, opacity: 0 }}
                                                                     transition={{ duration: 0.3, ease: "easeInOut" }}
                                                                 >
-                                                                    <div className="px-4 md:px-5 pb-5 pt-1 text-[14px] leading-relaxed text-slate-400 pl-[4.5rem]">
+                                                                    <div className="px-4 md:px-5 pb-5 pt-1 text-[14px] leading-relaxed text-stone-600 pl-[4.5rem]">
                                                                         {a}
                                                                     </div>
                                                                 </motion.div>
@@ -297,7 +209,7 @@ export default function FAQPage() {
                             );
                         })}
                         {filteredGroups.length === 0 && (
-                            <div className="text-center py-12 text-slate-400 w-full">
+                            <div className="text-center py-12 text-stone-500 w-full">
                                 No questions found matching "{searchQuery}"
                             </div>
                         )}

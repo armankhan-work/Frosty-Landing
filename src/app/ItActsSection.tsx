@@ -108,9 +108,9 @@ function ActsDiagram({ active, onSelect, setHeld }: { active: number, onSelect: 
             <div className="fx-acts-3d" ref={tilt}>
                 <div className="fx-acts-grid" ref={wrap}>
                     <svg className={`fx-acts-svg ${cur.c}`} aria-hidden="true">
-                        {feed && <path className="fx-link on" d={feed} style={{ stroke: '#8B5CF6' }} />}
+                        {feed && <path className="fx-link on" d={feed} style={{ stroke: '#5F23C8' }} />}
                         {paths.map((d, i) => d && <path key={i} className={"fx-link" + (i === active ? " on" : "")} d={d} />)}
-                        {feed && <path className="fx-pulse" d={feed} pathLength="100" style={{ stroke: '#8B5CF6' }} />}
+                        {feed && <path className="fx-pulse" d={feed} pathLength="100" style={{ stroke: '#5F23C8' }} />}
                         {paths[active] && <path className="fx-pulse lag" d={paths[active]} pathLength="100" />}
                     </svg>
 
@@ -121,7 +121,7 @@ function ActsDiagram({ active, onSelect, setHeld }: { active: number, onSelect: 
                     </div>
 
                     <div className="fx-brain">
-                        <div className="node" ref={core}><img src="/icons/ai.png" alt="Brain" className="w-8 h-8 object-contain" style={{ filter: 'brightness(0) invert(1)' }} /></div>
+                        <div className="node" ref={core}><img src="/icons/ai.png" alt="Brain" className="w-8 h-8 object-contain" /></div>
                         <small>Reads intent</small>
                     </div>
 
@@ -138,7 +138,7 @@ function ActsDiagram({ active, onSelect, setHeld }: { active: number, onSelect: 
                                 onFocus={() => { onSelect(i); setHeld(true); }}
                                 onBlur={() => setHeld(false)}
                             >
-                                <span className="ic"><img src={a.i} alt="" className="w-5 h-5 object-contain" style={{ filter: 'brightness(0) invert(1)' }} /></span>
+                                <span className="ic"><img src={a.i} alt="" className="w-5 h-5 object-contain" /></span>
                                 <b>{a.h}</b>
                                 <span className="fx-sr">. {a.p} Example: “{a.q}” - {a.out}.</span>
                                 <span className="tick"><Icon n="check" /></span>
@@ -152,19 +152,19 @@ function ActsDiagram({ active, onSelect, setHeld }: { active: number, onSelect: 
 }
 
 const ACTIVE_TAB_STYLES = [
-  "border-[#8B5CF6] text-[#C4B5FD] bg-[#8B5CF6]/15",
-  "border-[#5F23C8] text-[#5F23C8] bg-[#5F23C8]/15",
-  "border-[#F59E0B] text-[#FBBF24] bg-[#F59E0B]/15",
-  "border-[#10B981] text-[#34D399] bg-[#10B981]/15",
-  "border-[#F43F5E] text-[#FB7185] bg-[#F43F5E]/15",
+  "border-[#5F23C8] text-[#5F23C8] bg-purple-50",
+  "border-[#0284C7] text-[#0284C7] bg-sky-50",
+  "border-[#D97706] text-[#D97706] bg-amber-50",
+  "border-[#16A34A] text-[#16A34A] bg-green-50",
+  "border-[#E11D48] text-[#E11D48] bg-rose-50",
 ];
 
 const TAB_DOT_COLORS = [
-  "bg-[#8B5CF6]",
   "bg-[#5F23C8]",
-  "bg-[#F59E0B]",
-  "bg-[#10B981]",
-  "bg-[#F43F5E]",
+  "bg-[#0284C7]",
+  "bg-[#D97706]",
+  "bg-[#16A34A]",
+  "bg-[#E11D48]",
 ];
 
 function MobileTabs({ active, onSelect, setHeld }: { active: number; onSelect: (i: number) => void; setHeld: (h: boolean) => void }) {
@@ -198,10 +198,10 @@ function MobileTabs({ active, onSelect, setHeld }: { active: number; onSelect: (
               className={`snap-center flex-none flex items-center gap-2 px-3 py-2 rounded-lg text-[11px] font-semibold border transition-all duration-300 ${
                 isActive
                   ? ACTIVE_TAB_STYLES[i]
-                  : 'bg-white/[0.03] text-slate-500 border-white/[0.06]'
+                  : 'bg-white text-slate-600 border-slate-200 shadow-sm'
               }`}
             >
-              <span className={`w-1.5 h-1.5 rounded-full flex-none ${isActive ? TAB_DOT_COLORS[i] : 'bg-slate-600'}`} />
+              <span className={`w-1.5 h-1.5 rounded-full flex-none ${isActive ? TAB_DOT_COLORS[i] : 'bg-slate-300'}`} />
               <span className="whitespace-nowrap">{a.h}</span>
             </button>
           );
@@ -254,10 +254,10 @@ export default function ItActsSection() {
             <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 relative z-10">
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.7 }} className="text-center mx-auto flex flex-col items-center" style={{ maxWidth: 640 }}>
                     <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#5F23C8] flex items-center mb-3 sm:mb-4">Not a chatbot</span>
-                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-white leading-[1.1] tracking-tight mb-3 sm:mb-6">
-                        It doesn&apos;t just chat. <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5F23C8] to-[#5F23C8]">It acts.</span>
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight mb-3 sm:mb-6">
+                        It doesn&apos;t just chat. <span className="text-[#5F23C8] font-bold">It acts.</span>
                     </h2>
-                    <p className="text-sm md:text-base text-slate-400 leading-relaxed max-w-2xl px-2 sm:px-0">
+                    <p className="text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl px-2 sm:px-0">
                         Rule-based bots frustrate people with scripts. Frosty understands intent and takes the next step on its own.
                     </p>
                 </motion.div>

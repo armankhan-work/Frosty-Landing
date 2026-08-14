@@ -81,7 +81,7 @@ export default function BrandLogo({ ready = true, collapsed = false, forceLight 
         className="text-reveal-container overflow-hidden flex items-center"
         style={{ width: 0, opacity: 0 }}
       >
-        <span className={`frosty-text font-sans font-bold text-2xl tracking-tight block pl-2 ${forceLight ? 'text-white shadow-[0_0_10px_rgba(255,255,255,0.2)]' : 'text-foreground'}`} style={{ whiteSpace: 'nowrap' }}>
+        <span className="frosty-text font-sans font-bold text-2xl tracking-tight block pl-2 text-[#18181B]" style={{ whiteSpace: 'nowrap' }}>
           Frosty
         </span>
       </div>
@@ -89,4 +89,3 @@ export default function BrandLogo({ ready = true, collapsed = false, forceLight 
     </div>
   );
 }
-

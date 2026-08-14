@@ -16,30 +16,37 @@ function drawSnowflake(cx: CanvasRenderingContext2D, x: number, y: number, size:
   cx.save();
   cx.translate(x, y); cx.rotate(rotation); cx.globalAlpha = alpha;
 
-  // Neon Glow Layer
+  // Soft Vibrant Aura Layer
   if (glowI > 0.01) {
     const grad = cx.createRadialGradient(0, 0, 0, 0, 0, size * 1.8);
-    grad.addColorStop(0, `rgba(202,232,185,${glowI * .35})`);
-    grad.addColorStop(.5, `rgba(154,188,133,${glowI * .15})`);
-    grad.addColorStop(1, 'rgba(154,188,133,0)');
+    grad.addColorStop(0, `rgba(95,35,200,${glowI * .25})`);
+    grad.addColorStop(.5, `rgba(2,132,199,${glowI * .12})`);
+    grad.addColorStop(1, 'rgba(95,35,200,0)');
     cx.fillStyle = grad;
     cx.fillRect(-size * 2, -size * 2, size * 4, size * 4);
   }
 
-  // Base Structural Gradients
+  // Base Structural Gradients - Vibrant Frost Purple & Sky Blue
   const sg = cx.createLinearGradient(-size, -size, size, size);
-  sg.addColorStop(0, '#F0F5EB'); sg.addColorStop(.5, '#CAE8B9'); sg.addColorStop(1, '#9ABC85');
+  sg.addColorStop(0, '#5F23C8');
+  sg.addColorStop(.5, '#8B5CF6');
+  sg.addColorStop(1, '#0284C7');
   
   cx.save();
-  cx.shadowColor = '#CAE8B9'; cx.shadowBlur = glowI * 18;
-  cx.strokeStyle = 'rgba(202,232,185,0.8)';
-  cx.lineWidth = size * .03; cx.lineCap = 'round';
+  cx.shadowColor = 'rgba(95,35,200,0.35)';
+  cx.shadowBlur = glowI * 12;
+  cx.strokeStyle = 'rgba(95,35,200,0.85)';
+  cx.lineWidth = size * .036;
+  cx.lineCap = 'round';
   cx.beginPath();
   for (let i = 0; i < 6; i++) { cx.save(); cx.rotate(i * Math.PI / 3); drawArm(cx, size * .48); cx.restore(); }
-  cx.stroke(); cx.restore();
+  cx.stroke();
+  cx.restore();
 
   // Top Layer Details
-  cx.strokeStyle = sg; cx.lineWidth = size * .032; cx.lineCap = 'round';
+  cx.strokeStyle = sg;
+  cx.lineWidth = size * .038;
+  cx.lineCap = 'round';
   cx.beginPath();
   for (let i = 0; i < 6; i++) { cx.save(); cx.rotate(i * Math.PI / 3); drawArm(cx, size * .48); cx.restore(); }
   cx.stroke();
@@ -50,15 +57,20 @@ function drawSnowflake(cx: CanvasRenderingContext2D, x: number, y: number, size:
     cx.beginPath();
     cx.moveTo(Math.cos(rad) * size * .13, Math.sin(rad) * size * .13);
     cx.lineTo(Math.cos(rad + Math.PI) * size * .13, Math.sin(rad + Math.PI) * size * .13);
-    cx.strokeStyle = 'rgba(240,245,235,0.7)'; cx.lineWidth = size * .02;
+    cx.strokeStyle = 'rgba(95,35,200,0.6)';
+    cx.lineWidth = size * .024;
     cx.stroke();
   });
 
   // Core Center Pearl
   const cg = cx.createRadialGradient(0, 0, 0, 0, 0, size * .08);
-  cg.addColorStop(0, '#ffffff'); cg.addColorStop(.4, '#F0F5EB'); cg.addColorStop(1, '#9ABC85');
-  cx.beginPath(); cx.arc(0, 0, size * .065, 0, Math.PI * 2);
-  cx.fillStyle = cg; cx.fill();
+  cg.addColorStop(0, '#FFFFFF');
+  cg.addColorStop(.4, '#DDD6FE');
+  cg.addColorStop(1, '#5F23C8');
+  cx.beginPath();
+  cx.arc(0, 0, size * .07, 0, Math.PI * 2);
+  cx.fillStyle = cg;
+  cx.fill();
 
   cx.restore();
 }
@@ -67,7 +79,7 @@ function drawSnowflake(cx: CanvasRenderingContext2D, x: number, y: number, size:
 export default function FrostyIcon({
   size = 28,      // Core size of the snowflake
   rotation = 0,   // Current rotation in radians
-  glow = 1,       // Intensity of the neon cyan aura
+  glow = 1,       // Intensity of the neon aura
   alpha = 1,      // Overall opacity
   className = ""  // For passing Tailwind utility classes
 }: {

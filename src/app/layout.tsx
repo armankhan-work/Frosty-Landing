@@ -18,7 +18,7 @@ export default function RootLayout({
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body className="antialiased" style={{ background: '#000', color: '#fff', margin: 0 }}>
+      <body className="antialiased bg-[#FCFBF9] text-[#18181B]" style={{ background: '#FCFBF9', color: '#18181B', margin: 0 }}>
         {children}
       </body>
     </html>

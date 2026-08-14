@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Settings, Database, Zap, Wrench, UserCheck, ShieldCheck } from 'lucide-react';
+import { Settings } from 'lucide-react';
 import IsometricPlatform from './IsometricPlatform';
 import CarouselStacked from '@/components/ui/carousel-07';
 
@@ -19,17 +19,9 @@ export default function CapabilitiesSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full relative group"
-                            style={{
-                                marginBottom: '2rem',
-                                background: 'rgba(255, 255, 255, 0.05)',
-                                backdropFilter: 'blur(12px)',
-                                WebkitBackdropFilter: 'blur(12px)',
-                                border: '1px solid rgba(255, 255, 255, 0.1)',
-                                boxShadow: '0 4px 12px rgba(0,0,0,0.5)'
-                            }}
+                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full relative group bg-[#5F23C8]/10 border border-[#5F23C8]/25 shadow-sm"
+                            style={{ marginBottom: '2rem' }}
                         >
-                            <div className="absolute inset-0 rounded-full bg-[#5F23C8]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             <Settings className="w-3.5 h-3.5 text-[#5F23C8] animate-[spin_4s_linear_infinite]" />
                             <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#5F23C8]">Under the hood</span>
                         </motion.div>
@@ -40,11 +32,11 @@ export default function CapabilitiesSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
-                            className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-white leading-[1.1] tracking-tight"
+                            className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight"
                             style={{ marginBottom: '2rem' }}
                         >
                             Enterprise-grade.<br />
-                            <span style={{ color: '#5F23C8' }}>Engineered</span><br />
+                            <span className="text-[#5F23C8] font-bold">Engineered</span><br />
                             from the ground up.
                         </motion.h2>
 
@@ -54,7 +46,7 @@ export default function CapabilitiesSection() {
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
-                            className="text-sm md:text-base text-slate-400 leading-relaxed max-w-2xl"
+                            className="text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl"
                             style={{ marginBottom: '3.5rem' }}
                         >
                             Every request flows through a purpose-built AI architecture that crawls, understands, retrieves and reasons before generating enterprise-grade responses.

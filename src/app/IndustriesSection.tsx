@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Users, CheckCircle2, ChevronRight, BarChart3, Database, MessageSquare, PhoneCall, Globe2, ShieldCheck, Zap } from 'lucide-react';
+import { Users } from 'lucide-react';
 import FrostyIcon from '@/components/FrostyIcon';
 
 function Icon({ n }: { n: string }) {
@@ -25,25 +25,24 @@ function Icon({ n }: { n: string }) {
 }
 
 const HUB_ITEMS = [
-    { id: "bag", label: "E-commerce", x: 25, y: 15, desc: "Handles order tracking, returns & sizing FAQs instantly", color: "#8B5CF6", darkBg: "rgba(139, 92, 246, 0.15)" },
-    { id: "house", label: "Real estate", x: 50, y: 10, desc: "Qualifies buyers, schedules viewings & shares property brochures", color: "#8B5CF6", darkBg: "rgba(139, 92, 246, 0.15)" },
-    { id: "cross", label: "Healthcare", x: 75, y: 15, desc: "Books appointments, triage questions & clinic hours 24/7", color: "#8B5CF6", darkBg: "rgba(139, 92, 246, 0.15)" },
-    { id: "cap", label: "Education", x: 12, y: 36, desc: "Answers course queries, fee structures & application deadlines", color: "#8B5CF6", darkBg: "rgba(139, 92, 246, 0.15)" },
-    { id: "car", label: "Automobile", x: 88, y: 36, desc: "Schedules test drives, service bookings & financing queries", color: "#8B5CF6", darkBg: "rgba(139, 92, 246, 0.15)" },
-    { id: "horn", label: "Marketing", x: 12, y: 58, desc: "Qualifies agency leads, shares case studies & books calls", color: "#8B5CF6", darkBg: "rgba(139, 92, 246, 0.15)" },
-    { id: "bank", label: "Finance", x: 88, y: 58, desc: "Answers loan queries, KYC guidance & account FAQs", color: "#8B5CF6", darkBg: "rgba(139, 92, 246, 0.15)" },
-    { id: "tools", label: "Home services", x: 24, y: 78, desc: "Dispatches technicians, provides instant quotes & books jobs", color: "#8B5CF6", darkBg: "rgba(139, 92, 246, 0.15)" },
-    { id: "plane", label: "Travel", x: 50, y: 82, desc: "Handles flight/hotel bookings, vacation itineraries & support 24/7", color: "#8B5CF6", darkBg: "rgba(139, 92, 246, 0.15)" },
-    { id: "scales", label: "Legal", x: 76, y: 78, desc: "Collects case details, qualifies retainers & schedules consultations", color: "#8B5CF6", darkBg: "rgba(139, 92, 246, 0.15)" },
+    { id: "bag", label: "E-commerce", x: 25, y: 15, desc: "Handles order tracking, returns & sizing FAQs instantly", color: "#5F23C8", lightBg: "#FAF5FF" },
+    { id: "house", label: "Real estate", x: 50, y: 10, desc: "Qualifies buyers, schedules viewings & shares property brochures", color: "#5F23C8", lightBg: "#FAF5FF" },
+    { id: "cross", label: "Healthcare", x: 75, y: 15, desc: "Books appointments, triage questions & clinic hours 24/7", color: "#5F23C8", lightBg: "#FAF5FF" },
+    { id: "cap", label: "Education", x: 12, y: 36, desc: "Answers course queries, fee structures & application deadlines", color: "#5F23C8", lightBg: "#FAF5FF" },
+    { id: "car", label: "Automobile", x: 88, y: 36, desc: "Schedules test drives, service bookings & financing queries", color: "#5F23C8", lightBg: "#FAF5FF" },
+    { id: "horn", label: "Marketing", x: 12, y: 58, desc: "Qualifies agency leads, shares case studies & books calls", color: "#5F23C8", lightBg: "#FAF5FF" },
+    { id: "bank", label: "Finance", x: 88, y: 58, desc: "Answers loan queries, KYC guidance & account FAQs", color: "#5F23C8", lightBg: "#FAF5FF" },
+    { id: "tools", label: "Home services", x: 24, y: 78, desc: "Dispatches technicians, provides instant quotes & books jobs", color: "#5F23C8", lightBg: "#FAF5FF" },
+    { id: "plane", label: "Travel", x: 50, y: 82, desc: "Handles flight/hotel bookings, vacation itineraries & support 24/7", color: "#5F23C8", lightBg: "#FAF5FF" },
+    { id: "scales", label: "Legal", x: 76, y: 78, desc: "Collects case details, qualifies retainers & schedules consultations", color: "#5F23C8", lightBg: "#FAF5FF" },
 ];
 
 function RadialIndustryHub() {
     const [activeId, setActiveId] = useState("plane");
-    const activeItem = HUB_ITEMS.find(i => i.id === activeId) || HUB_ITEMS[8];
 
     return (
         <div className="w-full relative flex flex-col items-center justify-center">
-            {/* Radial Hub (Responsive) */}
+            {/* Radial Hub */}
             <div className="relative w-full max-w-[780px] h-[380px] sm:h-[460px] xl:h-[520px] mx-auto select-none my-2 overflow-hidden sm:overflow-visible">
                 <style>{`
                     @keyframes dash-flow {
@@ -52,34 +51,15 @@ function RadialIndustryHub() {
                     .animate-dash-flow {
                         animation: dash-flow 1.5s linear infinite;
                     }
-                    @keyframes scan-radar {
-                        from { transform: rotate(0deg); }
-                        to { transform: rotate(360deg); }
-                    }
-                    .animate-scan {
-                        animation: scan-radar 8s linear infinite;
-                        transform-origin: 50% 46%;
-                    }
                 `}</style>
                 <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
                     <defs>
-                        <radialGradient id="hubGlowDark" cx="50%" cy="46%" r="42%">
-                            <stop offset="0%" stopColor="#5F23C8" stopOpacity="0.15" />
+                        <radialGradient id="hubGlowLight" cx="50%" cy="46%" r="42%">
+                            <stop offset="0%" stopColor="#5F23C8" stopOpacity="0.06" />
                             <stop offset="100%" stopColor="#5F23C8" stopOpacity="0" />
                         </radialGradient>
-                        <filter id="glowLine" x="-20%" y="-20%" width="140%" height="140%">
-                            <feGaussianBlur stdDeviation="2.5" result="blur" />
-                            <feMerge>
-                                <feMergeNode in="blur" />
-                                <feMergeNode in="blur" />
-                                <feMergeNode in="SourceGraphic" />
-                            </feMerge>
-                        </filter>
                     </defs>
-                    <rect width="100%" height="100%" fill="url(#hubGlowDark)" />
-                    
-                    {/* Sweeping Radar Effect */}
-                    <path d="M 50% 46% L 50% 0% A 46% 46% 0 0 1 100% 46% Z" fill="url(#hubGlowDark)" className="animate-scan opacity-30" />
+                    <rect width="100%" height="100%" fill="url(#hubGlowLight)" />
 
                     {HUB_ITEMS.map((item, index) => {
                         const isActive = activeId === item.id;
@@ -87,14 +67,12 @@ function RadialIndustryHub() {
                         return (
                             <g key={item.id} className={isMobileVisible ? '' : 'hidden sm:block'}>
                                 <line x1="50%" y1="46%" x2={`${item.x}%`} y2={`${item.y}%`}
-                                    stroke={isActive ? item.color : "#334155"} strokeWidth={isActive ? "2.5" : "1"}
+                                    stroke={isActive ? item.color : "#CBD5E1"} strokeWidth={isActive ? "2.5" : "1"}
                                     strokeDasharray={isActive ? "6 6" : "3 3"} 
-                                    strokeOpacity={isActive ? "1" : "0.4"}
-                                    filter={isActive ? "url(#glowLine)" : ""}
+                                    strokeOpacity={isActive ? "1" : "0.5"}
                                     className={`transition-all duration-300 ${isActive ? 'animate-dash-flow' : ''}`} />
                                 <circle cx={`${50 + (item.x - 50) * 0.45}%`} cy={`${46 + (item.y - 46) * 0.45}%`}
-                                    r={isActive ? "4" : "2"} fill={isActive ? item.color : "#64748B"}
-                                    filter={isActive ? "url(#glowLine)" : ""}
+                                    r={isActive ? "4" : "2"} fill={isActive ? item.color : "#94A3B8"}
                                     fillOpacity={isActive ? "1" : "0.5"} className="transition-all duration-300" />
                             </g>
                         );
@@ -103,23 +81,22 @@ function RadialIndustryHub() {
 
                 {/* Wireframe rings */}
                 <div className="absolute left-1/2 top-[46%] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10 flex items-center justify-center scale-75 sm:scale-100">
-                    <div className="w-[240px] h-[270px] xl:w-[280px] xl:h-[310px] border border-[#5F23C8]/20 animate-[pulse_4s_ease-in-out_infinite]"
+                    <div className="w-[240px] h-[270px] xl:w-[280px] xl:h-[310px] border border-[#5F23C8]/15 animate-[pulse_4s_ease-in-out_infinite]"
                         style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }} />
                     <div className="absolute w-[360px] h-[360px] xl:w-[400px] xl:h-[400px] rounded-full border border-[#5F23C8]/10" />
-                    <div className="absolute w-[360px] h-[360px] xl:w-[400px] xl:h-[400px] rounded-full border border-[#5F23C8]/20 animate-ping opacity-25" style={{ animationDuration: '5s' }} />
-                    <div className="absolute w-[180px] h-[180px] rounded-full bg-[#5F23C8]/10 blur-lg" />
+                    <div className="absolute w-[360px] h-[360px] xl:w-[400px] xl:h-[400px] rounded-full border border-[#5F23C8]/15 animate-ping opacity-25" style={{ animationDuration: '5s' }} />
+                    <div className="absolute w-[180px] h-[180px] rounded-full bg-[#5F23C8]/5 blur-lg" />
                 </div>
 
                 {/* Center hub */}
                 <div className="absolute left-1/2 top-[46%] -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center justify-center scale-50 sm:scale-100">
                     <div className="relative group cursor-pointer">
-                        <div className="absolute -inset-6 bg-[#5F23C8]/30 rounded-full blur-2xl opacity-80 group-hover:opacity-100 group-hover:bg-[#5F23C8]/50 animate-[pulse_4s_ease-in-out_infinite] transition-all duration-500" />
-                        <div className="w-28 h-32 xl:w-32 xl:h-36 bg-gradient-to-b from-[#121212] to-[#121212] backdrop-blur-md flex items-center justify-center shadow-[0_0_50px_rgba(95, 35, 200,0.3)] border-2 border-[#5F23C8]/40 transition-transform duration-500 hover:scale-110 group-hover:border-[#5F23C8]/70 relative overflow-hidden"
+                        <div className="absolute -inset-6 bg-[#5F23C8]/15 rounded-full blur-2xl opacity-80 group-hover:opacity-100 group-hover:bg-[#5F23C8]/25 animate-[pulse_4s_ease-in-out_infinite] transition-all duration-500" />
+                        <div className="w-28 h-32 xl:w-32 xl:h-36 bg-white shadow-[0_10px_35px_rgba(95,35,200,0.15)] flex items-center justify-center border-2 border-[#5F23C8]/40 transition-transform duration-500 hover:scale-110 group-hover:border-[#5F23C8] relative overflow-hidden"
                             style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}>
-                            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             <div className="absolute inset-0 flex flex-col items-center justify-center -mt-2">
-                                <div className="drop-shadow-[0_0_15px_rgba(95,35,200,0.5)] animate-[pulse_3s_ease-in-out_infinite]">
-                                  <FrostyIcon size={60} glow={0} />
+                                <div className="drop-shadow-[0_2px_10px_rgba(95,35,200,0.3)] animate-[pulse_3s_ease-in-out_infinite]">
+                                  <FrostyIcon size={60} glow={0.6} />
                                 </div>
                             </div>
                         </div>
@@ -136,33 +113,27 @@ function RadialIndustryHub() {
                             style={{ left: `${item.x}%`, top: `${item.y}%`, transform: 'translate(-50%, -50%)' }}>
                             <motion.div animate={{ y: [0, -5, 0] }}
                                 transition={{ duration: 3 + (index % 3), repeat: Infinity, ease: "easeInOut" }}
-                                className={`flex flex-col items-center justify-center bg-gradient-to-b from-[#121212]/90 to-[#121212]/90 backdrop-blur-md border shadow-[0_4px_16px_rgba(0,0,0,0.3)] hover:shadow-lg rounded-[14px] p-1.5 xl:p-2 transition-all duration-300 w-[44px] sm:w-[84px] group-hover:w-[84px] ${
-                                    isActive ? 'scale-110 z-30 shadow-[0_0_30px_rgba(0,0,0,0.5)] border-2 !w-[84px] sm:!w-[94px]' : 'border-[#334155] hover:border-[#5F23C8]/40 hover:scale-105 hover:bg-[#121212]/90'
+                                className={`flex flex-col items-center justify-center bg-white/95 backdrop-blur-md border shadow-sm hover:shadow-md rounded-[14px] p-1.5 xl:p-2 transition-all duration-300 w-[44px] sm:w-[84px] group-hover:w-[84px] ${
+                                    isActive ? 'scale-110 z-30 shadow-[0_10px_30px_rgba(95,35,200,0.15)] border-2 !w-[84px] sm:!w-[94px]' : 'border-slate-200 hover:border-[#5F23C8]/40 hover:scale-105 hover:bg-white'
                                 }`}
                                 style={{ 
                                     borderColor: isActive ? item.color : undefined,
-                                    boxShadow: isActive ? `0 10px 30px -10px ${item.color}80` : undefined
                                 }}>
                                 <div className={`relative flex items-center justify-center ${isActive ? 'mb-1' : 'mb-0 sm:mb-1 group-hover:mb-1'}`}>
                                     {isActive && (
-                                        <>
-                                            <div className="absolute inset-0 rounded-full border-2 border-current animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite] opacity-40" style={{ color: item.color }} />
-                                            <div className="absolute -inset-3 bg-current opacity-20 blur-md rounded-full animate-pulse" style={{ color: item.color }} />
-                                            <div className="absolute -inset-1 animate-pulse duration-1000 opacity-90 blur-[3px]"
-                                                style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)', backgroundColor: item.color }} />
-                                        </>
+                                        <div className="absolute inset-0 rounded-full border-2 border-[#5F23C8] animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite] opacity-30" />
                                     )}
-                                    <div className="relative z-10 w-8 h-9 xl:w-9 xl:h-10 flex items-center justify-center transition-all duration-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+                                    <div className="relative z-10 w-8 h-9 xl:w-9 xl:h-10 flex items-center justify-center transition-all duration-300"
                                         style={{
                                             clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
-                                            backgroundColor: isActive ? item.color : item.darkBg,
+                                            backgroundColor: isActive ? item.color : item.lightBg,
                                             color: isActive ? '#ffffff' : item.color,
                                         }}>
                                         <span className="w-4 h-4 flex items-center justify-center"><Icon n={item.id} /></span>
                                     </div>
                                 </div>
                                 <span className={`text-[10px] xl:text-[11px] font-bold text-center tracking-tight leading-tight transition-colors duration-300 truncate w-full px-0.5 ${isActive ? 'block' : 'hidden sm:block group-hover:block'}`}
-                                    style={{ color: isActive ? item.color : '#CBD5E1' }}>
+                                    style={{ color: isActive ? item.color : '#334155' }}>
                                     {item.label}
                                 </span>
                             </motion.div>
@@ -170,8 +141,6 @@ function RadialIndustryHub() {
                     );
                 })}
             </div>
-
-
         </div>
     );
 }
@@ -188,16 +157,10 @@ export default function IndustriesSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-                            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full mb-3 relative group"
-                            style={{
-                                background: 'rgba(255, 255, 255, 0.05)',
-                                backdropFilter: 'blur(12px)',
-                                border: '1px solid rgba(255, 255, 255, 0.1)',
-                                boxShadow: '0 2px 8px rgba(0,0,0,0.4)'
-                            }}
+                            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full mb-3 relative group bg-[#5F23C8]/10 border border-[#5F23C8]/25 shadow-sm"
                         >
                             <Users className="w-3.5 h-3.5 text-[#5F23C8]" />
-                            <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-white/50">Who is Frosty for?</span>
+                            <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#5F23C8]">Who is Frosty for?</span>
                         </motion.div>
 
                         <motion.h2
@@ -205,10 +168,10 @@ export default function IndustriesSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
-                            className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-white leading-[1.1] tracking-tight mb-4"
+                            className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight mb-4"
                         >
                             If you live on inbound,<br />
-                            <span style={{ color: '#5F23C8' }}>Frosty pays</span><br />
+                            <span className="text-[#5F23C8] font-bold">Frosty pays</span><br />
                             for itself.
                         </motion.h2>
 
@@ -225,7 +188,7 @@ export default function IndustriesSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
-                            className="text-sm md:text-base text-slate-400 leading-relaxed max-w-2xl"
+                            className="text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl"
                         >
                             From e-commerce to clinics to car showrooms — if your leads arrive through a website or WhatsApp, Frosty can answer them, qualify them, and act on them automatically 24/7.
                         </motion.p>
@@ -243,10 +206,10 @@ export default function IndustriesSection() {
                                 { icon: "bolt", stat: "Instant", label: "Lead qualification" },
                             ].map((s, i) => (
                                 <div key={i} className="group cursor-default">
-                                    <div className="w-12 h-12 rounded-[16px] bg-transparent border border-[#334155] flex items-center justify-center mb-3 text-[#5F23C8] shadow-xs group-hover:scale-105 group-hover:border-[#5F23C8]/40 transition-all duration-300">
+                                    <div className="w-12 h-12 rounded-[16px] bg-purple-50 border border-purple-200 flex items-center justify-center mb-3 text-[#5F23C8] shadow-xs group-hover:scale-105 group-hover:border-[#5F23C8] transition-all duration-300">
                                         <span className="w-6 h-6 flex items-center justify-center"><Icon n={s.icon} /></span>
                                     </div>
-                                    <h4 className="text-[17px] font-extrabold text-white leading-tight">{s.stat}</h4>
+                                    <h4 className="text-[17px] font-bold text-slate-900 leading-tight">{s.stat}</h4>
                                     <p className="text-[13px] text-slate-500 font-medium mt-0.5">{s.label}</p>
                                 </div>
                             ))}

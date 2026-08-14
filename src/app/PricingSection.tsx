@@ -92,9 +92,9 @@ export default function PricingSection() {
 
     return (
         <section className="relative w-full overflow-hidden pt-24 pb-32 bg-transparent" id="pricing">
-            {/* Background Glows matching Hero Section */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#5F23C8]/10 rounded-full blur-[120px] pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#5F23C8]/5 rounded-full blur-[100px] pointer-events-none" />
+            {/* Background Glows */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#5F23C8]/5 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#0284C7]/5 rounded-full blur-[100px] pointer-events-none" />
             
             <div className="w-full max-w-7xl mx-auto px-6 relative z-10">
                 {/* Header */}
@@ -103,7 +103,7 @@ export default function PricingSection() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-white leading-[1.1] tracking-tight mb-4"
+                        className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight mb-4"
                     >
                         Scale your reach globally
                     </motion.h2>
@@ -112,7 +112,7 @@ export default function PricingSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-slate-400 text-lg"
+                        className="text-slate-600 text-lg"
                     >
                         Select a plan that aligns with your merchant volume. Upgrade or downgrade anytime as your business evolves.
                     </motion.p>
@@ -126,54 +126,52 @@ export default function PricingSection() {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            whileHover={{ y: -12 }}
+                            whileHover={{ y: -8 }}
                             transition={{ delay: index * 0.1, duration: 0.5 }}
                             className={`relative flex flex-col rounded-[24px] p-8 h-full ${
                                 plan.highlighted 
-                                    ? 'bg-gradient-to-b from-[#5F23C8]/10 to-transparent border-2 border-[#5F23C8]/50 shadow-[0_0_40px_rgba(95,35,200,0.15)]' 
-                                    : 'bg-white/[0.02] border border-white/10 backdrop-blur-sm'
+                                    ? 'bg-white border-2 border-[#5F23C8] shadow-[0_20px_50px_rgba(95,35,200,0.12)]' 
+                                    : 'bg-white/95 border border-slate-200 shadow-sm'
                             }`}
                         >
                             {/* Most Popular Badge */}
                             {plan.badge && (
-                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#5F23C8] to-[#A78BFA] text-white text-[9px] font-bold tracking-widest uppercase px-4 py-1.5 rounded-full shadow-[0_0_15px_rgba(95,35,200,0.5)]">
+                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#5F23C8] text-white text-[9px] font-bold tracking-widest uppercase px-4 py-1.5 rounded-full shadow-sm">
                                     {plan.badge}
                                 </div>
                             )}
 
                             {/* Plan Header */}
                             <div className="mb-8">
-                                <div className={`text-[10px] md:text-[11px] font-bold tracking-widest uppercase mb-3 ${plan.highlighted ? 'text-[#A78BFA]' : 'text-slate-500'}`}>
+                                <div className={`text-[10px] md:text-[11px] font-bold tracking-widest uppercase mb-3 ${plan.highlighted ? 'text-[#5F23C8]' : 'text-slate-500'}`}>
                                     {plan.tag}
                                 </div>
-                                <h3 className="text-2xl font-bold text-white mb-2 font-serif">{plan.name}</h3>
-                                {/* @ts-ignore */}
+                                <h3 className="text-2xl font-bold text-slate-900 mb-2 font-serif">{plan.name}</h3>
                                 {plan.subtitle && (
-                                    <p className="text-sm text-slate-400 mb-4">{plan.subtitle}</p>
+                                    <p className="text-sm text-slate-500 mb-4">{plan.subtitle}</p>
                                 )}
                                 <div className="flex items-baseline gap-1">
-                                    <span className="text-4xl font-extrabold text-white tracking-tight">{plan.price}</span>
-                                    {plan.period && <span className="text-sm text-slate-400 font-medium">{plan.period}</span>}
+                                    <span className="text-4xl font-extrabold text-slate-900 tracking-tight">{plan.price}</span>
+                                    {plan.period && <span className="text-sm text-slate-500 font-medium">{plan.period}</span>}
                                 </div>
-                                {/* @ts-ignore */}
                                 {plan.originalPrice && (
-                                    <div className="text-sm text-slate-400/60 line-through mt-1">
+                                    <div className="text-sm text-slate-400 line-through mt-1">
                                         {plan.originalPrice}
                                     </div>
                                 )}
                             </div>
 
                             {/* Divider */}
-                            <div className={`w-full h-px mb-8 ${plan.highlighted ? 'bg-gradient-to-r from-[#5F23C8]/50 to-transparent' : 'bg-white/10'}`} />
+                            <div className={`w-full h-px mb-8 ${plan.highlighted ? 'bg-[#5F23C8]/30' : 'bg-slate-100'}`} />
 
                             {/* Features */}
                             <ul className="flex flex-col gap-4 mb-10 flex-1">
                                 {plan.features.map((feature, i) => (
                                     <li key={i} className="flex items-center gap-3">
-                                        <div className={`shrink-0 flex items-center justify-center w-5 h-5 rounded-full ${feature.included ? (plan.highlighted ? 'bg-[#5F23C8]/30 text-[#A78BFA]' : 'bg-white/5 text-slate-300') : 'text-slate-600'}`}>
+                                        <div className={`shrink-0 flex items-center justify-center w-5 h-5 rounded-full ${feature.included ? (plan.highlighted ? 'bg-purple-50 text-[#5F23C8]' : 'bg-slate-100 text-slate-700') : 'text-slate-300'}`}>
                                             <Icon n={feature.included ? 'check' : 'x'} className="w-3.5 h-3.5" />
                                         </div>
-                                        <span className={`text-[14px] ${feature.included ? 'text-slate-300' : 'text-slate-500'}`}>
+                                        <span className={`text-[14px] ${feature.included ? 'text-slate-700 font-medium' : 'text-slate-400'}`}>
                                             {feature.text}
                                         </span>
                                     </li>
@@ -183,8 +181,8 @@ export default function PricingSection() {
                             {/* CTA Button */}
                             <button className={`w-full py-4 rounded-xl font-bold text-[14px] transition-all duration-300 mt-auto ${
                                 plan.highlighted 
-                                    ? 'bg-[#5F23C8] text-white hover:bg-[#7029ed] shadow-[0_0_20px_rgba(95,35,200,0.4)] hover:shadow-[0_0_30px_rgba(95,35,200,0.6)]' 
-                                    : 'bg-white/[0.05] border border-white/10 text-white hover:bg-white/10'
+                                    ? 'bg-[#5F23C8] text-white hover:bg-[#4C1D95] shadow-md hover:shadow-lg' 
+                                    : 'bg-slate-50 border border-slate-200 text-slate-800 hover:bg-slate-100'
                             }`}>
                                 {plan.cta}
                             </button>

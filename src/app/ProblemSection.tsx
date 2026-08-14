@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Globe, MessageCircle, User, Users, Clock, UserCircle, X } from 'lucide-react';
 
 export default function ProblemSection() {
@@ -59,11 +59,11 @@ export default function ProblemSection() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 2, ease: "easeOut" }}
-                    className="w-[800px] h-[800px] bg-[#5F23C8]/10 rounded-full blur-[150px]" 
+                    className="w-[800px] h-[800px] bg-[#5F23C8]/5 rounded-full blur-[150px]" 
                 />
             </div>
 
-            {/* Top Section Grid - Uses 50/50 split on large screens to prevent text squishing */}
+            {/* Top Section Grid - Uses 50/50 split on large screens */}
             <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-[45%_55%] gap-12 lg:gap-8 items-center z-10 relative">
                 
                 {/* TOP LEFT: The Core Problem Statement */}
@@ -85,12 +85,12 @@ export default function ProblemSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="w-full text-left text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-white leading-[1.1] tracking-tight"
+                        className="w-full text-left text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight"
                         style={{ marginBottom: '2rem' }}
                     >
                         Your customers <br />
                         are already reaching out. <br />
-                        <span className="text-[#8B5CF6]">They just aren't waiting.</span>
+                        <span className="text-[#5F23C8] font-semibold">They just aren't waiting.</span>
                     </motion.h2>
 
                     <motion.p
@@ -98,7 +98,7 @@ export default function ProblemSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.4 }}
-                        className="w-full text-left text-sm md:text-base text-slate-400 leading-relaxed max-w-2xl"
+                        className="w-full text-left text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl"
                         style={{ marginBottom: '3.5rem' }}
                     >
                         Every enquiry starts a journey.<br />
@@ -127,8 +127,8 @@ export default function ProblemSection() {
                                 <svg viewBox="0 0 800 500" className="absolute inset-0 w-full h-full pointer-events-none z-0">
                                     <defs>
                                         <linearGradient id="glowLine" x1="0%" y1="0%" x2="100%" y2="0%">
-                                            <stop offset="0%" stopColor="#8B5CF6" stopOpacity="1" />
-                                            <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0" />
+                                            <stop offset="0%" stopColor="#5F23C8" stopOpacity="1" />
+                                            <stop offset="100%" stopColor="#5F23C8" stopOpacity="0" />
                                         </linearGradient>
                                     </defs>
                                     
@@ -140,7 +140,7 @@ export default function ProblemSection() {
                                         onAnimationStart={() => setMsgIndex(0)}
                                         transition={{ duration: 1.2, delay: SEQ.webWire, ease: "easeInOut" }}
                                         d="M 180 80 Q 250 80 250 145 T 280 210" 
-                                        fill="none" stroke="#8B5CF6" strokeOpacity="0.3" strokeWidth="1.5"
+                                        fill="none" stroke="#5F23C8" strokeOpacity="0.4" strokeWidth="1.8"
                                     />
                                     {/* Website to Center - Live Signal */}
                                     <motion.path 
@@ -164,9 +164,9 @@ export default function ProblemSection() {
                                         onAnimationStart={() => setMsgIndex(1)}
                                         transition={{ duration: 0.6, delay: SEQ.waWire, ease: "easeOut" }}
                                         d="M 180 180 Q 230 180 250 195" 
-                                        fill="none" stroke="#475569" strokeWidth="1.5" strokeDasharray="4 4"
+                                        fill="none" stroke="#94A3B8" strokeWidth="1.5" strokeDasharray="4 4"
                                     />
-                                    <motion.text x="225" y="184" fill="#ef4444" fontSize="14" fontWeight="bold" initial={{opacity:0, scale:0}} whileInView={{opacity:1, scale:1}} viewport={{once:true}} transition={{type:"spring", delay: SEQ.waWire + 0.6}}>X</motion.text>
+                                    <motion.text x="225" y="184" fill="#EF4444" fontSize="14" fontWeight="bold" initial={{opacity:0, scale:0}} whileInView={{opacity:1, scale:1}} viewport={{once:true}} transition={{type:"spring", delay: SEQ.waWire + 0.6}}>X</motion.text>
                                     
                                     {/* Lead */}
                                     <motion.path 
@@ -176,9 +176,9 @@ export default function ProblemSection() {
                                         onAnimationStart={() => setMsgIndex(2)}
                                         transition={{ duration: 0.6, delay: SEQ.leadWire, ease: "easeOut" }}
                                         d="M 180 280 Q 230 280 250 265" 
-                                        fill="none" stroke="#475569" strokeWidth="1.5" strokeDasharray="4 4"
+                                        fill="none" stroke="#94A3B8" strokeWidth="1.5" strokeDasharray="4 4"
                                     />
-                                    <motion.text x="238" y="284" fill="#ef4444" fontSize="14" fontWeight="bold" initial={{opacity:0, scale:0}} whileInView={{opacity:1, scale:1}} viewport={{once:true}} transition={{type:"spring", delay: SEQ.leadWire + 0.6}}>X</motion.text>
+                                    <motion.text x="238" y="284" fill="#EF4444" fontSize="14" fontWeight="bold" initial={{opacity:0, scale:0}} whileInView={{opacity:1, scale:1}} viewport={{once:true}} transition={{type:"spring", delay: SEQ.leadWire + 0.6}}>X</motion.text>
                                     
                                     {/* Team */}
                                     <motion.path 
@@ -188,9 +188,9 @@ export default function ProblemSection() {
                                         onAnimationStart={() => setMsgIndex(3)}
                                         transition={{ duration: 0.6, delay: SEQ.teamWire, ease: "easeOut" }}
                                         d="M 180 380 Q 250 380 250 315 T 280 250" 
-                                        fill="none" stroke="#475569" strokeWidth="1.5" strokeDasharray="4 4"
+                                        fill="none" stroke="#94A3B8" strokeWidth="1.5" strokeDasharray="4 4"
                                     />
-                                    <motion.text x="225" y="384" fill="#ef4444" fontSize="14" fontWeight="bold" initial={{opacity:0, scale:0}} whileInView={{opacity:1, scale:1}} viewport={{once:true}} transition={{type:"spring", delay: SEQ.teamWire + 0.6}}>X</motion.text>
+                                    <motion.text x="225" y="384" fill="#EF4444" fontSize="14" fontWeight="bold" initial={{opacity:0, scale:0}} whileInView={{opacity:1, scale:1}} viewport={{once:true}} transition={{type:"spring", delay: SEQ.teamWire + 0.6}}>X</motion.text>
 
                                     {/* Center to Timeline (Waiting) */}
                                     <motion.path 
@@ -199,7 +199,7 @@ export default function ProblemSection() {
                                         viewport={{ once: true }}
                                         transition={{ duration: 1, delay: SEQ.waitWire, ease: "easeInOut" }}
                                         d="M 580 230 Q 640 230 640 180 T 680 130" 
-                                        fill="none" stroke="#475569" strokeWidth="1.5" strokeDasharray="4 4"
+                                        fill="none" stroke="#94A3B8" strokeWidth="1.5" strokeDasharray="4 4"
                                     />
                                     
                                     {/* Vertical Timeline Lines */}
@@ -209,7 +209,7 @@ export default function ProblemSection() {
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.5, delay: SEQ.followWire }}
                                         x1="680" y1="150" x2="680" y2="230"
-                                        stroke="#475569" strokeWidth="1.5" strokeDasharray="4 4"
+                                        stroke="#CBD5E1" strokeWidth="1.5" strokeDasharray="4 4"
                                     />
                                     <motion.line 
                                         initial={{ pathLength: 0, opacity: 0 }}
@@ -217,14 +217,14 @@ export default function ProblemSection() {
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.5, delay: SEQ.noRespWire }}
                                         x1="680" y1="270" x2="680" y2="350"
-                                        stroke="#475569" strokeWidth="1.5" strokeDasharray="4 4"
+                                        stroke="#CBD5E1" strokeWidth="1.5" strokeDasharray="4 4"
                                     />
 
                                     {/* Dots and Crosses on Timeline */}
-                                    <motion.circle cx="680" cy="180" r="3" fill="#8B5CF6" initial={{opacity:0, scale:0}} whileInView={{opacity:1, scale:1}} viewport={{once:true}} transition={{delay:SEQ.waitCard}} />
-                                    <motion.circle cx="680" cy="280" r="3" fill="#8B5CF6" initial={{opacity:0, scale:0}} whileInView={{opacity:1, scale:1}} viewport={{once:true}} transition={{delay:SEQ.followCard}} />
-                                    <motion.text x="635" y="334" fill="#ef4444" fontSize="14" fontWeight="bold" initial={{opacity:0, scale:0}} whileInView={{opacity:1, scale:1}} viewport={{once:true}} transition={{type:"spring", delay: SEQ.noRespCard + 0.3}}>X</motion.text>
-                                    <motion.path d="M 645 330 Q 660 330 680 340" fill="none" stroke="#475569" strokeWidth="1.5" strokeDasharray="4 4" initial={{pathLength:0}} whileInView={{pathLength:1}} viewport={{once:true}} transition={{delay: SEQ.noRespCard}}/>
+                                    <motion.circle cx="680" cy="180" r="3.5" fill="#5F23C8" initial={{opacity:0, scale:0}} whileInView={{opacity:1, scale:1}} viewport={{once:true}} transition={{delay:SEQ.waitCard}} />
+                                    <motion.circle cx="680" cy="280" r="3.5" fill="#5F23C8" initial={{opacity:0, scale:0}} whileInView={{opacity:1, scale:1}} viewport={{once:true}} transition={{delay:SEQ.followCard}} />
+                                    <motion.text x="635" y="334" fill="#EF4444" fontSize="14" fontWeight="bold" initial={{opacity:0, scale:0}} whileInView={{opacity:1, scale:1}} viewport={{once:true}} transition={{type:"spring", delay: SEQ.noRespCard + 0.3}}>X</motion.text>
+                                    <motion.path d="M 645 330 Q 660 330 680 340" fill="none" stroke="#94A3B8" strokeWidth="1.5" strokeDasharray="4 4" initial={{pathLength:0}} whileInView={{pathLength:1}} viewport={{once:true}} transition={{delay: SEQ.noRespCard}}/>
                                 </svg>
 
                                 {/* TOUCHPOINTS (Left Column) */}
@@ -235,15 +235,15 @@ export default function ProblemSection() {
                                         whileInView={{ opacity: 1, x: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.6, delay: SEQ.website }}
-                                        className="bg-[#050510]/80 border border-[#8B5CF6]/30 rounded-[12px] p-3 flex items-center gap-3 relative overflow-hidden shadow-[0_0_15px_rgba(139,92,246,0.1)]"
+                                        className="bg-white border border-[#5F23C8]/30 rounded-[12px] p-3 flex items-center gap-3 relative overflow-hidden shadow-[0_4px_20px_rgba(95,35,200,0.08)]"
                                     >
-                                        <div className="w-8 h-8 rounded-full border border-[#8B5CF6]/20 bg-[#8B5CF6]/10 flex items-center justify-center shrink-0">
-                                            <Globe size={14} className="text-[#8B5CF6]" />
+                                        <div className="w-8 h-8 rounded-full border border-[#5F23C8]/20 bg-[#5F23C8]/10 flex items-center justify-center shrink-0">
+                                            <Globe size={14} className="text-[#5F23C8]" />
                                         </div>
                                         <div className="flex flex-col">
-                                            <span className="text-[10px] font-bold text-white tracking-wide">WEBSITE</span>
-                                            <span className="text-[9px] text-slate-400">New enquiry</span>
-                                            <span className="text-[9px] text-[#8B5CF6] mt-0.5">10:42 AM</span>
+                                            <span className="text-[10px] font-bold text-slate-900 tracking-wide">WEBSITE</span>
+                                            <span className="text-[9px] text-slate-500">New enquiry</span>
+                                            <span className="text-[9px] text-[#5F23C8] font-semibold mt-0.5">10:42 AM</span>
                                         </div>
                                     </motion.div>
 
@@ -253,15 +253,15 @@ export default function ProblemSection() {
                                         whileInView={{ opacity: 1, x: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.6, delay: SEQ.whatsapp }}
-                                        className="bg-[#050510]/80 border border-white/5 rounded-[12px] p-3 flex items-center gap-3"
+                                        className="bg-white/90 border border-slate-200/80 rounded-[12px] p-3 flex items-center gap-3 shadow-sm"
                                     >
-                                        <div className="w-8 h-8 rounded-full border border-[#22c55e]/20 bg-[#22c55e]/10 flex items-center justify-center shrink-0">
-                                            <MessageCircle size={14} className="text-[#22c55e]" />
+                                        <div className="w-8 h-8 rounded-full border border-green-500/20 bg-green-50 flex items-center justify-center shrink-0">
+                                            <MessageCircle size={14} className="text-green-600" />
                                         </div>
                                         <div className="flex flex-col">
-                                            <span className="text-[10px] font-bold text-white tracking-wide">WHATSAPP</span>
-                                            <span className="text-[9px] text-slate-400">New message</span>
-                                            <span className="text-[9px] text-slate-500 mt-0.5">10:43 AM</span>
+                                            <span className="text-[10px] font-bold text-slate-900 tracking-wide">WHATSAPP</span>
+                                            <span className="text-[9px] text-slate-500">New message</span>
+                                            <span className="text-[9px] text-slate-400 mt-0.5">10:43 AM</span>
                                         </div>
                                     </motion.div>
 
@@ -271,15 +271,15 @@ export default function ProblemSection() {
                                         whileInView={{ opacity: 1, x: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.6, delay: SEQ.lead }}
-                                        className="bg-[#050510]/80 border border-white/5 rounded-[12px] p-3 flex items-center gap-3"
+                                        className="bg-white/90 border border-slate-200/80 rounded-[12px] p-3 flex items-center gap-3 shadow-sm"
                                     >
-                                        <div className="w-8 h-8 rounded-full border border-blue-400/20 bg-blue-400/10 flex items-center justify-center shrink-0">
-                                            <User size={14} className="text-blue-400" />
+                                        <div className="w-8 h-8 rounded-full border border-blue-500/20 bg-blue-50 flex items-center justify-center shrink-0">
+                                            <User size={14} className="text-blue-600" />
                                         </div>
                                         <div className="flex flex-col">
-                                            <span className="text-[10px] font-bold text-white tracking-wide">LEAD</span>
-                                            <span className="text-[9px] text-slate-400">New contact</span>
-                                            <span className="text-[9px] text-slate-500 mt-0.5">10:45 AM</span>
+                                            <span className="text-[10px] font-bold text-slate-900 tracking-wide">LEAD</span>
+                                            <span className="text-[9px] text-slate-500">New contact</span>
+                                            <span className="text-[9px] text-slate-400 mt-0.5">10:45 AM</span>
                                         </div>
                                     </motion.div>
 
@@ -289,15 +289,15 @@ export default function ProblemSection() {
                                         whileInView={{ opacity: 1, x: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.6, delay: SEQ.team }}
-                                        className="bg-[#050510]/80 border border-white/5 rounded-[12px] p-3 flex items-center gap-3"
+                                        className="bg-white/90 border border-slate-200/80 rounded-[12px] p-3 flex items-center gap-3 shadow-sm"
                                     >
-                                        <div className="w-8 h-8 rounded-full border border-slate-400/20 bg-slate-400/10 flex items-center justify-center shrink-0">
-                                            <Users size={14} className="text-slate-300" />
+                                        <div className="w-8 h-8 rounded-full border border-slate-300 bg-slate-100 flex items-center justify-center shrink-0">
+                                            <Users size={14} className="text-slate-600" />
                                         </div>
                                         <div className="flex flex-col">
-                                            <span className="text-[10px] font-bold text-white tracking-wide">TEAM</span>
-                                            <span className="text-[9px] text-slate-400">Follow-up pending</span>
-                                            <span className="text-[9px] text-slate-500 mt-0.5">-- : --</span>
+                                            <span className="text-[10px] font-bold text-slate-900 tracking-wide">TEAM</span>
+                                            <span className="text-[9px] text-slate-500">Follow-up pending</span>
+                                            <span className="text-[9px] text-slate-400 mt-0.5">-- : --</span>
                                         </div>
                                     </motion.div>
                                 </div>
@@ -308,19 +308,19 @@ export default function ProblemSection() {
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.6, delay: SEQ.centerCard }}
-                                    className="absolute left-[280px] top-1/2 -translate-y-1/2 w-[300px] bg-[#050510]/95 backdrop-blur-md border border-[#8B5CF6]/30 shadow-[0_0_40px_rgba(139,92,246,0.15)] rounded-2xl p-5 z-20"
+                                    className="absolute left-[280px] top-1/2 -translate-y-1/2 w-[300px] bg-white backdrop-blur-md border border-[#5F23C8]/30 shadow-[0_12px_40px_rgba(95,35,200,0.1)] rounded-2xl p-5 z-20"
                                 >
                                     <div className="flex items-center justify-between mb-5">
                                         <div className="flex items-center gap-3">
-                                            <div className="w-8 h-8 rounded-full border border-[#8B5CF6]/30 flex items-center justify-center bg-[#8B5CF6]/10">
-                                                <User size={14} className="text-white" />
+                                            <div className="w-8 h-8 rounded-full border border-[#5F23C8]/30 flex items-center justify-center bg-[#5F23C8]/10">
+                                                <User size={14} className="text-[#5F23C8]" />
                                             </div>
-                                            <span className="text-sm font-medium text-white">Visitor</span>
+                                            <span className="text-sm font-semibold text-slate-900">Visitor</span>
                                         </div>
-                                        <span className="text-[10px] text-slate-400 font-mono">10:42 AM</span>
+                                        <span className="text-[10px] text-slate-500 font-mono">10:42 AM</span>
                                     </div>
                                     
-                                    <div className="bg-[#0f0f1b] border border-[#8B5CF6]/20 rounded-xl rounded-tl-sm p-4 text-sm text-slate-200 mb-6 shadow-inner leading-relaxed min-h-[72px] flex items-center">
+                                    <div className="bg-slate-50 border border-slate-200/80 rounded-xl rounded-tl-sm p-4 text-sm text-slate-800 mb-6 shadow-sm leading-relaxed min-h-[72px] flex items-center">
                                         <AnimatePresence mode="wait">
                                             <motion.div
                                                 key={msgIndex}
@@ -328,20 +328,20 @@ export default function ProblemSection() {
                                                 animate={{ opacity: 1, y: 0 }}
                                                 exit={{ opacity: 0, y: -5 }}
                                                 transition={{ duration: 0.2 }}
-                                                className="whitespace-pre-line"
+                                                className="whitespace-pre-line font-medium"
                                             >
                                                 {messages[msgIndex]}
                                             </motion.div>
                                         </AnimatePresence>
                                     </div>
 
-                                    <div className="flex justify-center items-center gap-3 pt-3 bg-[#0a0a14] rounded-lg border border-white/5 p-2">
+                                    <div className="flex justify-center items-center gap-3 pt-3 bg-slate-50 rounded-lg border border-slate-200/80 p-2">
                                         <div className="flex gap-1.5">
-                                            <motion.div className="w-1.5 h-1.5 rounded-full bg-[#8B5CF6]" animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1.5, delay: 0 }} />
-                                            <motion.div className="w-1.5 h-1.5 rounded-full bg-[#8B5CF6]" animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1.5, delay: 0.2 }} />
-                                            <motion.div className="w-1.5 h-1.5 rounded-full bg-[#8B5CF6]" animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1.5, delay: 0.4 }} />
+                                            <motion.div className="w-1.5 h-1.5 rounded-full bg-[#5F23C8]" animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1.5, delay: 0 }} />
+                                            <motion.div className="w-1.5 h-1.5 rounded-full bg-[#5F23C8]" animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1.5, delay: 0.2 }} />
+                                            <motion.div className="w-1.5 h-1.5 rounded-full bg-[#5F23C8]" animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1.5, delay: 0.4 }} />
                                         </div>
-                                        <span className="text-[9px] font-bold text-slate-400 tracking-widest uppercase">WAITING FOR RESPONSE</span>
+                                        <span className="text-[9px] font-bold text-slate-600 tracking-widest uppercase">WAITING FOR RESPONSE</span>
                                     </div>
                                 </motion.div>
 
@@ -356,17 +356,17 @@ export default function ProblemSection() {
                                         transition={{ duration: 0.5, delay: SEQ.waitCard }}
                                         className="flex items-center gap-4"
                                     >
-                                        <div className="w-9 h-9 rounded-full border border-[#8B5CF6]/50 bg-[#8B5CF6]/10 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(139,92,246,0.2)] relative">
+                                        <div className="w-9 h-9 rounded-full border border-[#5F23C8]/40 bg-[#5F23C8]/10 flex items-center justify-center shrink-0 shadow-[0_2px_10px_rgba(95,35,200,0.12)] relative">
                                             <motion.div
                                                 animate={{ rotate: 360 }}
                                                 transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
                                             >
-                                                <Clock size={14} className="text-[#8B5CF6]" />
+                                                <Clock size={14} className="text-[#5F23C8]" />
                                             </motion.div>
                                         </div>
                                         <div className="flex flex-col">
-                                            <span className="text-[10px] font-bold text-white tracking-widest uppercase">WAITING</span>
-                                            <span className="text-[9px] text-slate-400">Enquiry received</span>
+                                            <span className="text-[10px] font-bold text-slate-900 tracking-widest uppercase">WAITING</span>
+                                            <span className="text-[9px] text-slate-500">Enquiry received</span>
                                         </div>
                                     </motion.div>
 
@@ -378,12 +378,12 @@ export default function ProblemSection() {
                                         transition={{ duration: 0.5, delay: SEQ.followCard }}
                                         className="flex items-center gap-4"
                                     >
-                                        <div className="w-9 h-9 rounded-full border border-white/20 bg-white/5 flex items-center justify-center shrink-0">
-                                            <UserCircle size={14} className="text-white" />
+                                        <div className="w-9 h-9 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center shrink-0">
+                                            <UserCircle size={14} className="text-slate-600" />
                                         </div>
                                         <div className="flex flex-col">
-                                            <span className="text-[10px] font-bold text-white tracking-widest uppercase">FOLLOW-UP PENDING</span>
-                                            <span className="text-[9px] text-slate-400">Not yet assigned</span>
+                                            <span className="text-[10px] font-bold text-slate-900 tracking-widest uppercase">FOLLOW-UP PENDING</span>
+                                            <span className="text-[9px] text-slate-500">Not yet assigned</span>
                                         </div>
                                     </motion.div>
 
@@ -408,12 +408,12 @@ export default function ProblemSection() {
                                             }
                                         }}
                                     >
-                                        <div className="w-9 h-9 rounded-full border border-[#8B5CF6]/30 bg-[#8B5CF6]/5 flex items-center justify-center shrink-0">
-                                            <X size={14} className="text-slate-400" />
+                                        <div className="w-9 h-9 rounded-full border border-red-200 bg-red-50 shadow-sm flex items-center justify-center shrink-0">
+                                            <X size={14} className="text-red-500" />
                                         </div>
                                         <div className="flex flex-col">
-                                            <span className="text-[10px] font-bold text-white tracking-widest uppercase">NO RESPONSE</span>
-                                            <span className="text-[9px] text-slate-400">Opportunity at risk</span>
+                                            <span className="text-[10px] font-bold text-slate-900 tracking-widest uppercase">NO RESPONSE</span>
+                                            <span className="text-[9px] text-slate-500">Opportunity at risk</span>
                                         </div>
                                     </motion.div>
 

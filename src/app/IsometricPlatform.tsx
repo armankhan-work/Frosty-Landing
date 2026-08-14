@@ -147,8 +147,8 @@ function Dots() {
         <>
             {pts.map(([x, y], i) => (
                 <motion.circle
-                    key={i} cx={x} cy={y} r={2 + (i % 3)} fill="#FFFFFF"
-                    animate={{ opacity: [0.15, 0.45, 0.15] }}
+                    key={i} cx={x} cy={y} r={2 + (i % 3)} fill="#5F23C8"
+                    animate={{ opacity: [0.1, 0.35, 0.1] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: i * 0.25 }}
                 />
             ))}
@@ -212,9 +212,9 @@ export default function IsometricPlatform() {
                         <motion.line key={`line-${i}`}
                             className="hidden lg:block"
                             x1={tileCx} y1={tileCy} x2={t.lineX} y2={t.lineY}
-                            stroke="#FFFFFF" strokeWidth={hovered === i ? 1.5 : 1}
+                            stroke={hovered === i ? "#5F23C8" : "#CBD5E1"} strokeWidth={hovered === i ? 1.5 : 1}
                             strokeDasharray="4 4"
-                            opacity={hovered === i ? 0.8 : 0.35}
+                            opacity={hovered === i ? 0.9 : 0.6}
                             style={{ transition: 'opacity 0.3s, stroke-width 0.3s' }}
                             animate={{
                                 strokeDashoffset: hovered === i ? [0, -24] : 0
@@ -322,9 +322,9 @@ export default function IsometricPlatform() {
                                 width: 60,
                                 height: 60,
                                 borderRadius: 18,
-                                backgroundColor: hovered === i ? '#2D6A4F' : 'white',
-                                boxShadow: hovered === i ? '0 16px 32px rgba(45,106,79,0.25)' : '0 8px 24px rgba(0,0,0,0.06)',
-                                border: `1px solid ${hovered === i ? '#2D6A4F' : 'rgba(0,0,0,0.05)'}`,
+                                backgroundColor: hovered === i ? '#5F23C8' : 'white',
+                                boxShadow: hovered === i ? '0 16px 32px rgba(95,35,200,0.25)' : '0 8px 24px rgba(0,0,0,0.06)',
+                                border: `1px solid ${hovered === i ? '#5F23C8' : 'rgba(0,0,0,0.08)'}`,
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                                 transition: 'background-color 0.3s ease, box-shadow 0.3s ease, border 0.3s ease',
                             }}
