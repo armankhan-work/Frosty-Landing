@@ -68,12 +68,12 @@ export default function BrandLogo({ ready = true, collapsed = false, forceLight 
   return (
     <div ref={containerRef} className="flex items-center cursor-pointer group select-none">
       
-      {/* The Mechanical Snowflake Emoji */}
+      {/* The Brand Logo Image */}
       <div 
         className="frost-icon flex-shrink-0 z-10 relative flex items-center justify-center translate-y-[-1px] mr-2"
         style={{ opacity: 0 }}
       >
-        <FrostyIcon size={24} glow={forceLight ? 1.5 : 0.8} />
+        <img src="/logonew.png" alt="Frosty Logo" className="w-8 h-8 object-contain" />
       </div>
 
       {/* The Hidden Text Drawer */}

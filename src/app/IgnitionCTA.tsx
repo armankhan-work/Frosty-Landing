@@ -77,7 +77,7 @@ function MagneticButton() {
 function FannedCards() {
   const cards = [
     { 
-      label: 'Website', color: '#5F23C8', 
+      label: 'Website', color: '#0396A6', 
       desc: 'Automates visitor queries, captures leads, and schedules meetings instantly. Click the card to awaken.',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
@@ -97,7 +97,7 @@ function FannedCards() {
       )
     },
     { 
-      label: 'Unified', color: '#5F23C8', 
+      label: 'Unified', color: '#0396A6', 
       desc: 'The central nervous system. Syncs all agents into a single dashboard. Click the card to awaken.',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
@@ -235,13 +235,13 @@ function FannedCards() {
         <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible" style={{ zIndex: 1, opacity: 0.2 }}>
           {[...Array(3)].map((_, i) => (
             <motion.circle
-              key={i} r="1" fill="#5F23C8"
+              key={i} r="1" fill="#0396A6"
               initial={{ offsetDistance: "0%" }}
               animate={{ offsetDistance: "100%" }}
               transition={{ duration: 3 + i, repeat: Infinity, ease: "linear", delay: i * 0.8 }}
               style={{ 
                 offsetPath: `path('M ${100 + i * 50} 300 Q 150 150 ${200 - i * 50} -100')`,
-                filter: 'blur(1px) drop-shadow(0 0 5px #5F23C8)'
+                filter: 'blur(1px) drop-shadow(0 0 5px #0396A6)'
               }}
             />
           ))}
@@ -281,7 +281,7 @@ export default function IgnitionCTA() {
     >
       <div className="text-center mb-6 relative z-10 flex flex-col items-center">
         <div className="ignition-reveal inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] mb-6" style={{ opacity: 0 }}>
-          <span className="w-1.5 h-1.5 rounded-full bg-[#5F23C8] animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#0396A6] animate-pulse" />
           <span className="text-sm font-bold tracking-[0.2em] text-slate-400 uppercase">Final Pipeline</span>
         </div>
         <h2 className="ignition-reveal text-5xl md:text-7xl font-extrabold text-white tracking-tighter leading-[0.95] mb-6" style={{ opacity: 0 }}>
@@ -316,7 +316,7 @@ export default function IgnitionCTA() {
           </div>
         </div>
 
-        <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-[#5F23C8]/5 blur-3xl rounded-full -z-10" />
+        <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-[#0396A6]/5 blur-3xl rounded-full -z-10" />
         <div className="absolute -top-10 -left-10 w-48 h-48 bg-blue-500/5 blur-3xl rounded-full -z-10" />
       </div>
     </section>

@@ -46,8 +46,8 @@ export default function RagEngineAnimation() {
         resetPulse('pulse-4');
         await Promise.all([
             safeAnimate('.node-1', { scale: 1, boxShadow: '0 0 0px rgba(0,0,0,0)' }, { duration: 0 }),
-            safeAnimate('.node-2', { scale: 1, boxShadow: '0 0 0px rgba(95, 35, 200,0)', borderColor: '#5F23C8' }, { duration: 0 }),
-            safeAnimate('.node-phase1', { scale: 1, boxShadow: '0 0 0px rgba(95, 35, 200,0)', borderColor: '#5F23C8' }, { duration: 0 }),
+            safeAnimate('.node-2', { scale: 1, boxShadow: '0 0 0px rgba(3, 150, 166,0)', borderColor: '#0396A6' }, { duration: 0 }),
+            safeAnimate('.node-phase1', { scale: 1, boxShadow: '0 0 0px rgba(3, 150, 166,0)', borderColor: '#0396A6' }, { duration: 0 }),
             safeAnimate('.node-4', { scale: 1, boxShadow: '0 0 0px rgba(234,88,12,0)', borderColor: '#EA580C' }, { duration: 0 }),
             safeAnimate('.node-5', { scale: 1, boxShadow: '0 0 0px rgba(22,163,74,0)', borderColor: '#16A34A' }, { duration: 0 }),
             safeAnimate('.svg-root', { pathLength: 0, opacity: 0 }, { duration: 0 }),
@@ -59,23 +59,23 @@ export default function RagEngineAnimation() {
         await new Promise(resolve => setTimeout(resolve, 500));
 
         // Pulse 1: User Query → detect_category
-        safeAnimate('.node-1', { scale: 1.05, boxShadow: '0 0 16px rgba(95,35,200,0.15)' }, { duration: 0.3, type: "tween", ease: "easeInOut" });
+        safeAnimate('.node-1', { scale: 1.05, boxShadow: '0 0 16px rgba(3, 150, 166,0.15)' }, { duration: 0.3, type: "tween", ease: "easeInOut" });
         await firePulse('pulse-1');
         safeAnimate('.node-1', { scale: 1, boxShadow: '0 0 0px rgba(0,0,0,0)' }, { duration: 0.4, type: "tween", ease: "easeInOut" });
 
         // Node 2 glow
-        safeAnimate('.node-2', { scale: 1.05, boxShadow: '0 0 20px 2px rgba(95, 35, 200,0.25)', borderColor: '#5F23C8' }, { duration: 0.3, type: "tween", ease: "easeInOut" });
+        safeAnimate('.node-2', { scale: 1.05, boxShadow: '0 0 20px 2px rgba(3, 150, 166,0.25)', borderColor: '#0396A6' }, { duration: 0.3, type: "tween", ease: "easeInOut" });
         await new Promise(resolve => setTimeout(resolve, 200));
 
         // Pulse 2: detect_category → Phase 1
-        safeAnimate('.node-2', { scale: 1, boxShadow: '0 0 0px rgba(95, 35, 200,0)', borderColor: '#5F23C8' }, { duration: 0.4, type: "tween", ease: "easeInOut" });
+        safeAnimate('.node-2', { scale: 1, boxShadow: '0 0 0px rgba(3, 150, 166,0)', borderColor: '#0396A6' }, { duration: 0.4, type: "tween", ease: "easeInOut" });
         await firePulse('pulse-2');
 
         // Phase 1 Retrieve
         safeAnimate('.node-phase1', { 
             scale: 1.05, 
-            boxShadow: '0 0 20px 2px rgba(95, 35, 200,0.25)', 
-            borderColor: '#5F23C8' 
+            boxShadow: '0 0 20px 2px rgba(3, 150, 166,0.25)', 
+            borderColor: '#0396A6' 
         }, { duration: 0.3, type: "tween", ease: "easeInOut" });
 
         await new Promise(resolve => setTimeout(resolve, 100));
@@ -98,8 +98,8 @@ export default function RagEngineAnimation() {
 
         // Card Reaction
         safeAnimate('.card-border', { 
-            borderColor: 'rgba(95, 35, 200, 0.4)',
-            boxShadow: '0 0 20px rgba(95,35,200,0.1)'
+            borderColor: 'rgba(3, 150, 166, 0.4)',
+            boxShadow: '0 0 20px rgba(3, 150, 166,0.1)'
         }, { duration: 0.3, type: "tween", ease: "easeInOut" }).then(() => {
             safeAnimate('.card-border', { borderColor: 'rgba(0, 0, 0, 0.08)', boxShadow: '0 0 0px rgba(0,0,0,0)' }, { duration: 0.8, type: "tween", ease: "easeInOut" });
         });
@@ -122,7 +122,7 @@ export default function RagEngineAnimation() {
         });
         await Promise.all(particleReturnPromises);
 
-        safeAnimate('.node-phase1', { scale: 1, boxShadow: '0 0 0px rgba(95,35,200,0)', borderColor: '#5F23C8' }, { duration: 0.5, type: "tween", ease: "easeInOut" });
+        safeAnimate('.node-phase1', { scale: 1, boxShadow: '0 0 0px rgba(3, 150, 166,0)', borderColor: '#0396A6' }, { duration: 0.5, type: "tween", ease: "easeInOut" });
         safeAnimate('.svg-root', { opacity: 0 }, { duration: 0.5, type: "tween", ease: "easeInOut" });
 
         // Pulse 3: Phase 1 → Fallback
@@ -154,7 +154,7 @@ export default function RagEngineAnimation() {
           <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', borderTop: '1px dashed rgba(0,0,0,0.15)' }} />
           <motion.div className={`${pulseClass} ${pulseClass}-w${wireIdx}`} style={{
             position: 'absolute', top: -1, width: 20, height: 2, borderRadius: '100%',
-            background: '#5F23C8', boxShadow: '0 0 8px 1px #5F23C8',
+            background: '#0396A6', boxShadow: '0 0 8px 1px #0396A6',
             opacity: 0, left: 0, transform: 'translateX(-100%)', zIndex: 10
           }} />
         </div>
@@ -191,7 +191,7 @@ export default function RagEngineAnimation() {
         </motion.div>
         {triWireConnector('pulse-1')}
         
-        <motion.div className="node-2" style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 20px', borderRadius: 100, whiteSpace: 'nowrap', background: 'rgba(95, 35, 200, 0.08)', border: '1px solid #5F23C8', fontSize: 13, fontWeight: 600, color: '#5F23C8', flexShrink: 0 }}>
+        <motion.div className="node-2" style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 20px', borderRadius: 100, whiteSpace: 'nowrap', background: 'rgba(3, 150, 166, 0.08)', border: '1px solid #0396A6', fontSize: 13, fontWeight: 600, color: '#0396A6', flexShrink: 0 }}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
           </svg>
@@ -199,7 +199,7 @@ export default function RagEngineAnimation() {
         </motion.div>
         {triWireConnector('pulse-2')}
         
-        <motion.div className="node-phase1" style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 20px', borderRadius: 100, whiteSpace: 'nowrap', background: 'rgba(95, 35, 200, 0.06)', border: '1px solid #5F23C8', fontSize: 13, fontWeight: 600, color: '#5F23C8', flexShrink: 0, position: 'relative', zIndex: 30 }}>
+        <motion.div className="node-phase1" style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 20px', borderRadius: 100, whiteSpace: 'nowrap', background: 'rgba(3, 150, 166, 0.06)', border: '1px solid #0396A6', fontSize: 13, fontWeight: 600, color: '#0396A6', flexShrink: 0, position: 'relative', zIndex: 30 }}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
             <circle cx="11" cy="11" r="8" />
             <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -243,17 +243,17 @@ export default function RagEngineAnimation() {
           <motion.path className="svg-root" d="M 503,0 C 503,60 836,40 836,100" stroke="rgba(0,0,0,0.06)" strokeWidth="1" vectorEffect="non-scaling-stroke" fill="transparent" />
 
           {/* Energy Particles */}
-          <motion.path className="data-particle data-particle-l0" d="M 497,0 C 497,60 163,40 163,100" stroke="#5F23C8" strokeWidth="3" vectorEffect="non-scaling-stroke" fill="transparent" strokeLinecap="round" strokeDasharray="3 500" />
-          <motion.path className="data-particle data-particle-l1" d="M 500,0 C 500,60 166,40 166,100" stroke="#5F23C8" strokeWidth="4" vectorEffect="non-scaling-stroke" fill="transparent" strokeLinecap="round" strokeDasharray="3 500" />
-          <motion.path className="data-particle data-particle-l2" d="M 503,0 C 503,60 169,40 169,100" stroke="#5F23C8" strokeWidth="3" vectorEffect="non-scaling-stroke" fill="transparent" strokeLinecap="round" strokeDasharray="3 500" />
+          <motion.path className="data-particle data-particle-l0" d="M 497,0 C 497,60 163,40 163,100" stroke="#0396A6" strokeWidth="3" vectorEffect="non-scaling-stroke" fill="transparent" strokeLinecap="round" strokeDasharray="3 500" />
+          <motion.path className="data-particle data-particle-l1" d="M 500,0 C 500,60 166,40 166,100" stroke="#0396A6" strokeWidth="4" vectorEffect="non-scaling-stroke" fill="transparent" strokeLinecap="round" strokeDasharray="3 500" />
+          <motion.path className="data-particle data-particle-l2" d="M 503,0 C 503,60 169,40 169,100" stroke="#0396A6" strokeWidth="3" vectorEffect="non-scaling-stroke" fill="transparent" strokeLinecap="round" strokeDasharray="3 500" />
 
-          <motion.path className="data-particle data-particle-c0" d="M 497,0 L 497,100" stroke="#5F23C8" strokeWidth="3" vectorEffect="non-scaling-stroke" fill="transparent" strokeLinecap="round" strokeDasharray="3 500" />
-          <motion.path className="data-particle data-particle-c1" d="M 500,0 L 500,100" stroke="#5F23C8" strokeWidth="4" vectorEffect="non-scaling-stroke" fill="transparent" strokeLinecap="round" strokeDasharray="3 500" />
-          <motion.path className="data-particle data-particle-c2" d="M 503,0 L 503,100" stroke="#5F23C8" strokeWidth="3" vectorEffect="non-scaling-stroke" fill="transparent" strokeLinecap="round" strokeDasharray="3 500" />
+          <motion.path className="data-particle data-particle-c0" d="M 497,0 L 497,100" stroke="#0396A6" strokeWidth="3" vectorEffect="non-scaling-stroke" fill="transparent" strokeLinecap="round" strokeDasharray="3 500" />
+          <motion.path className="data-particle data-particle-c1" d="M 500,0 L 500,100" stroke="#0396A6" strokeWidth="4" vectorEffect="non-scaling-stroke" fill="transparent" strokeLinecap="round" strokeDasharray="3 500" />
+          <motion.path className="data-particle data-particle-c2" d="M 503,0 L 503,100" stroke="#0396A6" strokeWidth="3" vectorEffect="non-scaling-stroke" fill="transparent" strokeLinecap="round" strokeDasharray="3 500" />
 
-          <motion.path className="data-particle data-particle-r0" d="M 497,0 C 497,60 830,40 830,100" stroke="#5F23C8" strokeWidth="3" vectorEffect="non-scaling-stroke" fill="transparent" strokeLinecap="round" strokeDasharray="3 500" />
-          <motion.path className="data-particle data-particle-r1" d="M 500,0 C 500,60 833,40 833,100" stroke="#5F23C8" strokeWidth="4" vectorEffect="non-scaling-stroke" fill="transparent" strokeLinecap="round" strokeDasharray="3 500" />
-          <motion.path className="data-particle data-particle-r2" d="M 503,0 C 503,60 836,40 836,100" stroke="#5F23C8" strokeWidth="3" vectorEffect="non-scaling-stroke" fill="transparent" strokeLinecap="round" strokeDasharray="3 500" />
+          <motion.path className="data-particle data-particle-r0" d="M 497,0 C 497,60 830,40 830,100" stroke="#0396A6" strokeWidth="3" vectorEffect="non-scaling-stroke" fill="transparent" strokeLinecap="round" strokeDasharray="3 500" />
+          <motion.path className="data-particle data-particle-r1" d="M 500,0 C 500,60 833,40 833,100" stroke="#0396A6" strokeWidth="4" vectorEffect="non-scaling-stroke" fill="transparent" strokeLinecap="round" strokeDasharray="3 500" />
+          <motion.path className="data-particle data-particle-r2" d="M 503,0 C 503,60 836,40 836,100" stroke="#0396A6" strokeWidth="3" vectorEffect="non-scaling-stroke" fill="transparent" strokeLinecap="round" strokeDasharray="3 500" />
         </svg>
       </div>
 
@@ -261,7 +261,7 @@ export default function RagEngineAnimation() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, marginTop: 0, position: 'relative', zIndex: 20 }}>
         {/* Card A: PDF Ingestion */}
         <motion.div className="card-border" style={{ background: '#FFFFFF', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: 20, padding: 28, boxShadow: '0 4px 20px rgba(0,0,0,0.03)' }}>
-          <div style={{ marginBottom: 12, color: '#5F23C8' }}>
+          <div style={{ marginBottom: 12, color: '#0396A6' }}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
               <polyline points="14 2 14 8 20 8" />
@@ -275,7 +275,7 @@ export default function RagEngineAnimation() {
             Upload your documents. Frosty chunks, embeds, and indexes them into knowledge_base_gemini instantly.
           </p>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center' }}>
-            <div style={{ width: 36, height: 44, borderRadius: 6, background: '#FAF5FF', border: '1.5px solid #E9D5FF', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#5F23C8' }}>
+            <div style={{ width: 36, height: 44, borderRadius: 6, background: '#FAF5FF', border: '1.5px solid #E9D5FF', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0396A6' }}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                 <polyline points="14 2 14 8 20 8" />
@@ -283,19 +283,19 @@ export default function RagEngineAnimation() {
             </div>
             <div style={{ display: 'flex', gap: 3 }}>
               {[0, 0.3, 0.6].map((d) => (
-                <div key={d} style={{ width: 5, height: 5, borderRadius: '50%', background: '#5F23C8', opacity: 0.6 }} />
+                <div key={d} style={{ width: 5, height: 5, borderRadius: '50%', background: '#0396A6', opacity: 0.6 }} />
               ))}
             </div>
             <div style={{ textAlign: 'center' }}>
               <div style={{ width: 38, height: 14, borderRadius: '50%', background: '#FAF5FF', border: '1.5px solid #E9D5FF', marginBottom: 0 }} />
-              <div style={{ width: 38, height: 30, background: '#F5F3FF', border: '1.5px solid #E9D5FF', borderTop: 'none', borderRadius: '0 0 4px 4px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 700, color: '#5F23C8' }}>DB</div>
+              <div style={{ width: 38, height: 30, background: '#F5F3FF', border: '1.5px solid #E9D5FF', borderTop: 'none', borderRadius: '0 0 4px 4px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 700, color: '#0396A6' }}>DB</div>
             </div>
           </div>
         </motion.div>
 
         {/* Card B: Web Scraper */}
         <motion.div className="card-border" style={{ background: '#FFFFFF', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: 20, padding: 28, boxShadow: '0 4px 20px rgba(0,0,0,0.03)' }}>
-          <div style={{ marginBottom: 12, color: '#5F23C8' }}>
+          <div style={{ marginBottom: 12, color: '#0396A6' }}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
               <path d="M12 2v10" />
               <path d="M18.4 4.6a10 10 0 1 1-12.8 0" />
@@ -317,7 +317,7 @@ export default function RagEngineAnimation() {
 
         {/* Card C: 8 Categories */}
         <motion.div className="card-border" style={{ background: '#FFFFFF', border: '1px solid rgba(0, 0, 0, 0.08)', borderRadius: 20, padding: 28, boxShadow: '0 4px 20px rgba(0,0,0,0.03)' }}>
-          <div style={{ marginBottom: 12, color: '#5F23C8' }}>
+          <div style={{ marginBottom: 12, color: '#0396A6' }}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
               <rect x="3" y="3" width="7" height="7" />
               <rect x="14" y="3" width="7" height="7" />

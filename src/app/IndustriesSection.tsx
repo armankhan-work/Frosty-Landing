@@ -25,16 +25,16 @@ function Icon({ n }: { n: string }) {
 }
 
 const HUB_ITEMS = [
-    { id: "bag", label: "E-commerce", x: 25, y: 15, desc: "Handles order tracking, returns & sizing FAQs instantly", color: "#5F23C8", lightBg: "#FAF5FF" },
-    { id: "house", label: "Real estate", x: 50, y: 10, desc: "Qualifies buyers, schedules viewings & shares property brochures", color: "#5F23C8", lightBg: "#FAF5FF" },
-    { id: "cross", label: "Healthcare", x: 75, y: 15, desc: "Books appointments, triage questions & clinic hours 24/7", color: "#5F23C8", lightBg: "#FAF5FF" },
-    { id: "cap", label: "Education", x: 12, y: 36, desc: "Answers course queries, fee structures & application deadlines", color: "#5F23C8", lightBg: "#FAF5FF" },
-    { id: "car", label: "Automobile", x: 88, y: 36, desc: "Schedules test drives, service bookings & financing queries", color: "#5F23C8", lightBg: "#FAF5FF" },
-    { id: "horn", label: "Marketing", x: 12, y: 58, desc: "Qualifies agency leads, shares case studies & books calls", color: "#5F23C8", lightBg: "#FAF5FF" },
-    { id: "bank", label: "Finance", x: 88, y: 58, desc: "Answers loan queries, KYC guidance & account FAQs", color: "#5F23C8", lightBg: "#FAF5FF" },
-    { id: "tools", label: "Home services", x: 24, y: 74, desc: "Dispatches technicians, provides instant quotes & books jobs", color: "#5F23C8", lightBg: "#FAF5FF" },
-    { id: "plane", label: "Travel", x: 50, y: 76, desc: "Handles flight/hotel bookings, vacation itineraries & support 24/7", color: "#5F23C8", lightBg: "#FAF5FF" },
-    { id: "scales", label: "Legal", x: 76, y: 74, desc: "Collects case details, qualifies retainers & schedules consultations", color: "#5F23C8", lightBg: "#FAF5FF" },
+    { id: "bag", label: "E-commerce", x: 25, y: 15, desc: "Handles order tracking, returns & sizing FAQs instantly", color: "#0396A6", lightBg: "#FAF5FF" },
+    { id: "house", label: "Real estate", x: 50, y: 10, desc: "Qualifies buyers, schedules viewings & shares property brochures", color: "#0396A6", lightBg: "#FAF5FF" },
+    { id: "cross", label: "Healthcare", x: 75, y: 15, desc: "Books appointments, triage questions & clinic hours 24/7", color: "#0396A6", lightBg: "#FAF5FF" },
+    { id: "cap", label: "Education", x: 12, y: 36, desc: "Answers course queries, fee structures & application deadlines", color: "#0396A6", lightBg: "#FAF5FF" },
+    { id: "car", label: "Automobile", x: 88, y: 36, desc: "Schedules test drives, service bookings & financing queries", color: "#0396A6", lightBg: "#FAF5FF" },
+    { id: "horn", label: "Marketing", x: 12, y: 58, desc: "Qualifies agency leads, shares case studies & books calls", color: "#0396A6", lightBg: "#FAF5FF" },
+    { id: "bank", label: "Finance", x: 88, y: 58, desc: "Answers loan queries, KYC guidance & account FAQs", color: "#0396A6", lightBg: "#FAF5FF" },
+    { id: "tools", label: "Home services", x: 24, y: 74, desc: "Dispatches technicians, provides instant quotes & books jobs", color: "#0396A6", lightBg: "#FAF5FF" },
+    { id: "plane", label: "Travel", x: 50, y: 76, desc: "Handles flight/hotel bookings, vacation itineraries & support 24/7", color: "#0396A6", lightBg: "#FAF5FF" },
+    { id: "scales", label: "Legal", x: 76, y: 74, desc: "Collects case details, qualifies retainers & schedules consultations", color: "#0396A6", lightBg: "#FAF5FF" },
 ];
 
 function RadialIndustryHub() {
@@ -55,8 +55,8 @@ function RadialIndustryHub() {
                 <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
                     <defs>
                         <radialGradient id="hubGlowLight" cx="50%" cy="46%" r="42%">
-                            <stop offset="0%" stopColor="#5F23C8" stopOpacity="0.06" />
-                            <stop offset="100%" stopColor="#5F23C8" stopOpacity="0" />
+                            <stop offset="0%" stopColor="#0396A6" stopOpacity="0.06" />
+                            <stop offset="100%" stopColor="#0396A6" stopOpacity="0" />
                         </radialGradient>
                     </defs>
                     <rect width="100%" height="100%" fill="url(#hubGlowLight)" />
@@ -81,21 +81,21 @@ function RadialIndustryHub() {
 
                 {/* Wireframe rings */}
                 <div className="absolute left-1/2 top-[46%] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10 flex items-center justify-center scale-75 sm:scale-100">
-                    <div className="w-[240px] h-[270px] xl:w-[280px] xl:h-[310px] border border-[#5F23C8]/15 animate-[pulse_4s_ease-in-out_infinite]"
+                    <div className="w-[240px] h-[270px] xl:w-[280px] xl:h-[310px] border border-[#0396A6]/15 animate-[pulse_4s_ease-in-out_infinite]"
                         style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }} />
-                    <div className="absolute w-[360px] h-[360px] xl:w-[400px] xl:h-[400px] rounded-full border border-[#5F23C8]/10" />
-                    <div className="absolute w-[360px] h-[360px] xl:w-[400px] xl:h-[400px] rounded-full border border-[#5F23C8]/15 animate-ping opacity-25" style={{ animationDuration: '5s' }} />
-                    <div className="absolute w-[180px] h-[180px] rounded-full bg-[#5F23C8]/5 blur-lg" />
+                    <div className="absolute w-[360px] h-[360px] xl:w-[400px] xl:h-[400px] rounded-full border border-[#0396A6]/10" />
+                    <div className="absolute w-[360px] h-[360px] xl:w-[400px] xl:h-[400px] rounded-full border border-[#0396A6]/15 animate-ping opacity-25" style={{ animationDuration: '5s' }} />
+                    <div className="absolute w-[180px] h-[180px] rounded-full bg-[#0396A6]/5 blur-lg" />
                 </div>
 
                 {/* Center hub */}
                 <div className="absolute left-1/2 top-[46%] -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center justify-center scale-50 sm:scale-100">
                     <div className="relative group cursor-pointer">
-                        <div className="absolute -inset-6 bg-[#5F23C8]/15 rounded-full blur-2xl opacity-80 group-hover:opacity-100 group-hover:bg-[#5F23C8]/25 animate-[pulse_4s_ease-in-out_infinite] transition-all duration-500" />
-                        <div className="w-28 h-32 xl:w-32 xl:h-36 bg-white shadow-[0_10px_35px_rgba(95,35,200,0.15)] flex items-center justify-center border-2 border-[#5F23C8]/40 transition-transform duration-500 hover:scale-110 group-hover:border-[#5F23C8] relative overflow-hidden"
+                        <div className="absolute -inset-6 bg-[#0396A6]/15 rounded-full blur-2xl opacity-80 group-hover:opacity-100 group-hover:bg-[#0396A6]/25 animate-[pulse_4s_ease-in-out_infinite] transition-all duration-500" />
+                        <div className="w-28 h-32 xl:w-32 xl:h-36 bg-white shadow-[0_10px_35px_rgba(3, 150, 166,0.15)] flex items-center justify-center border-2 border-[#0396A6]/40 transition-transform duration-500 hover:scale-110 group-hover:border-[#0396A6] relative overflow-hidden"
                             style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}>
                             <div className="absolute inset-0 flex flex-col items-center justify-center -mt-2">
-                                <div className="drop-shadow-[0_2px_10px_rgba(95,35,200,0.3)] animate-[pulse_3s_ease-in-out_infinite]">
+                                <div className="drop-shadow-[0_2px_10px_rgba(3, 150, 166,0.3)] animate-[pulse_3s_ease-in-out_infinite]">
                                   <FrostyIcon size={60} glow={0.6} />
                                 </div>
                             </div>
@@ -114,14 +114,14 @@ function RadialIndustryHub() {
                             <motion.div animate={{ y: [0, -5, 0] }}
                                 transition={{ duration: 3 + (index % 3), repeat: Infinity, ease: "easeInOut" }}
                                 className={`flex flex-col items-center justify-center bg-white/95 backdrop-blur-md border shadow-sm hover:shadow-md rounded-[14px] p-1.5 xl:p-2 transition-all duration-300 w-[44px] sm:w-[84px] group-hover:w-[84px] ${
-                                    isActive ? 'scale-110 z-30 shadow-[0_10px_30px_rgba(95,35,200,0.15)] border-2 !w-[84px] sm:!w-[94px]' : 'border-slate-200 hover:border-[#5F23C8]/40 hover:scale-105 hover:bg-white'
+                                    isActive ? 'scale-110 z-30 shadow-[0_10px_30px_rgba(3, 150, 166,0.15)] border-2 !w-[84px] sm:!w-[94px]' : 'border-slate-200 hover:border-[#0396A6]/40 hover:scale-105 hover:bg-white'
                                 }`}
                                 style={{ 
                                     borderColor: isActive ? item.color : undefined,
                                 }}>
                                 <div className={`relative flex items-center justify-center ${isActive ? 'mb-1' : 'mb-0 sm:mb-1 group-hover:mb-1'}`}>
                                     {isActive && (
-                                        <div className="absolute inset-0 rounded-full border-2 border-[#5F23C8] animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite] opacity-30" />
+                                        <div className="absolute inset-0 rounded-full border-2 border-[#0396A6] animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite] opacity-30" />
                                     )}
                                     <div className="relative z-10 w-8 h-9 xl:w-9 xl:h-10 flex items-center justify-center transition-all duration-300"
                                         style={{
@@ -157,10 +157,10 @@ export default function IndustriesSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-                            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full mb-3 relative group bg-[#5F23C8]/10 border border-[#5F23C8]/25 shadow-sm"
+                            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full mb-3 relative group bg-[#0396A6]/10 border border-[#0396A6]/25 shadow-sm"
                         >
-                            <Users className="w-3.5 h-3.5 text-[#5F23C8]" />
-                            <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#5F23C8]">Who is Frosty for?</span>
+                            <Users className="w-3.5 h-3.5 text-[#0396A6]" />
+                            <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">Who is Frosty for?</span>
                         </motion.div>
 
                         <motion.h2
@@ -171,7 +171,7 @@ export default function IndustriesSection() {
                             className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight mb-4"
                         >
                             If your business relies on leads,<br />
-                            <span className="text-[#5F23C8] font-bold">Frosty turns them</span><br />
+                            <span className="text-[#0396A6] font-bold">Frosty turns them</span><br />
                             into customers 24/7.
                         </motion.h2>
 
@@ -180,7 +180,7 @@ export default function IndustriesSection() {
                             whileInView={{ width: '48px', opacity: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.25, ease: 'easeOut' }}
-                            className="h-[2px] bg-[#5F23C8]/60 mb-6"
+                            className="h-[2px] bg-[#0396A6]/60 mb-6"
                         />
 
                         <motion.p
@@ -206,7 +206,7 @@ export default function IndustriesSection() {
                                 { icon: "bolt", stat: "Instant", label: "Lead qualification" },
                             ].map((s, i) => (
                                 <div key={i} className="group cursor-default">
-                                    <div className="w-12 h-12 rounded-[16px] bg-purple-50 border border-purple-200 flex items-center justify-center mb-3 text-[#5F23C8] shadow-xs group-hover:scale-105 group-hover:border-[#5F23C8] transition-all duration-300">
+                                    <div className="w-12 h-12 rounded-[16px] bg-teal-50 border border-teal-200 flex items-center justify-center mb-3 text-[#0396A6] shadow-xs group-hover:scale-105 group-hover:border-[#0396A6] transition-all duration-300">
                                         <span className="w-6 h-6 flex items-center justify-center"><Icon n={s.icon} /></span>
                                     </div>
                                     <h4 className="text-[17px] font-bold text-slate-900 leading-tight">{s.stat}</h4>

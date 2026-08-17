@@ -79,7 +79,7 @@ export default function MagneticCTA({ onClick }: MagneticCTAProps) {
         .magnetic-cta {
           position: relative;
           overflow: hidden;
-          background: #5F23C8;
+          background: #0396A6;
           border: none;
           border-radius: 8px;
           padding: 14px 32px;
@@ -92,7 +92,7 @@ export default function MagneticCTA({ onClick }: MagneticCTAProps) {
           transition: box-shadow 0.3s;
         }
         .magnetic-cta:hover {
-          box-shadow: 0 0 30px rgba(0,255,255,0.25), 0 4px 20px rgba(95, 35, 200,0.3);
+          box-shadow: 0 0 30px rgba(0,255,255,0.25), 0 4px 20px rgba(3, 150, 166,0.3);
         }
         .liquid-fill {
           position: absolute;
@@ -100,7 +100,7 @@ export default function MagneticCTA({ onClick }: MagneticCTAProps) {
           left: 0;
           right: 0;
           height: 100%;
-          background: linear-gradient(0deg, #00FFFF 0%, #06B6D4 40%, #5F23C8 100%);
+          background: linear-gradient(0deg, #00FFFF 0%, #06B6D4 40%, #0396A6 100%);
           transform-origin: bottom center;
           border-radius: inherit;
           z-index: 0;

@@ -109,9 +109,9 @@ function ActsDiagram({ active, onSelect, setHeld }: { active: number, onSelect: 
             <div className="fx-acts-3d" ref={tilt}>
                 <div className="fx-acts-grid" ref={wrap}>
                     <svg className={`fx-acts-svg ${cur.c}`} aria-hidden="true">
-                        {feed && <path className="fx-link on" d={feed} style={{ stroke: '#5F23C8' }} />}
+                        {feed && <path className="fx-link on" d={feed} style={{ stroke: '#0396A6' }} />}
                         {paths.map((d, i) => d && <path key={i} className={"fx-link" + (i === active ? " on" : "")} d={d} />)}
-                        {feed && <path className="fx-pulse" d={feed} pathLength="100" style={{ stroke: '#5F23C8' }} />}
+                        {feed && <path className="fx-pulse" d={feed} pathLength="100" style={{ stroke: '#0396A6' }} />}
                         {paths[active] && <path className="fx-pulse lag" d={paths[active]} pathLength="100" />}
                     </svg>
 
@@ -123,7 +123,7 @@ function ActsDiagram({ active, onSelect, setHeld }: { active: number, onSelect: 
 
                     <div className="fx-brain">
                         <div className="node" ref={core}>
-                            <Brain className="w-8 h-8 text-[#5F23C8]" strokeWidth={1.75} />
+                            <Brain className="w-8 h-8 text-[#0396A6]" strokeWidth={1.75} />
                         </div>
                         <small>Reads intent</small>
                     </div>
@@ -162,16 +162,16 @@ function ActsDiagram({ active, onSelect, setHeld }: { active: number, onSelect: 
 }
 
 const ACTIVE_TAB_STYLES = [
-  "border-[#5F23C8] text-[#5F23C8] bg-purple-50",
-  "border-[#0284C7] text-[#0284C7] bg-sky-50",
+  "border-[#0396A6] text-[#0396A6] bg-teal-50",
+  "border-[#FF7A5E] text-[#FF7A5E] bg-sky-50",
   "border-[#D97706] text-[#D97706] bg-amber-50",
   "border-[#16A34A] text-[#16A34A] bg-green-50",
   "border-[#E11D48] text-[#E11D48] bg-rose-50",
 ];
 
 const TAB_DOT_COLORS = [
-  "bg-[#5F23C8]",
-  "bg-[#0284C7]",
+  "bg-[#0396A6]",
+  "bg-[#FF7A5E]",
   "bg-[#D97706]",
   "bg-[#16A34A]",
   "bg-[#E11D48]",
@@ -263,9 +263,9 @@ export default function ItActsSection() {
         <section className="relative pt-4 sm:pt-8 pb-8 sm:pb-12 lg:pb-14 overflow-hidden bg-transparent" id="how">
             <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 relative z-10">
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.7 }} className="text-center mx-auto flex flex-col items-center" style={{ maxWidth: 640 }}>
-                    <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#5F23C8] flex items-center mb-3 sm:mb-4">Not a chatbot</span>
+                    <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6] flex items-center mb-3 sm:mb-4">Not a chatbot</span>
                     <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight mb-3 sm:mb-6">
-                        It doesn&apos;t just chat. <span className="text-[#5F23C8] font-bold">It acts.</span>
+                        It doesn&apos;t just chat. <span className="text-[#0396A6] font-bold">It acts.</span>
                     </h2>
                     <p className="text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl px-2 sm:px-0">
                         Rule-based bots frustrate people with scripts. Frosty understands intent and takes the next step on its own.

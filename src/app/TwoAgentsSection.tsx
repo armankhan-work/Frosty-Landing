@@ -85,12 +85,12 @@ export default function TwoAgentsSection() {
           }}
           animate={{
             background: active === 'outbound'
-              ? 'radial-gradient(circle, rgba(95, 35, 200,0.08) 0%, transparent 70%)'
+              ? 'radial-gradient(circle, rgba(3, 150, 166,0.08) 0%, transparent 70%)'
               : active === 'inbound'
               ? 'radial-gradient(circle, rgba(16,185,129,0.08) 0%, transparent 70%)'
               : isHoveringSection 
-              ? 'radial-gradient(circle, rgba(95, 35, 200,0.05) 0%, transparent 70%)'
-              : 'radial-gradient(circle, rgba(95, 35, 200,0) 0%, transparent 70%)',
+              ? 'radial-gradient(circle, rgba(3, 150, 166,0.05) 0%, transparent 70%)'
+              : 'radial-gradient(circle, rgba(3, 150, 166,0) 0%, transparent 70%)',
             scale: isHoveringSection ? 1 : 0.8,
           }}
           transition={{ duration: 0.5 }}
@@ -114,7 +114,7 @@ export default function TwoAgentsSection() {
                 y1={0} 
                 x2={threadX2} 
                 y2={threadY2} 
-                stroke="#5F23C8"
+                stroke="#0396A6"
                 strokeWidth="2.5"
                 strokeOpacity="0.4"
                 strokeLinecap="round"
@@ -155,7 +155,7 @@ export default function TwoAgentsSection() {
                 />
                 <motion.line
                   x1="60" y1="80" x2="300" y2="80"
-                  stroke="#5F23C8" strokeWidth="2" strokeDasharray="4 4"
+                  stroke="#0396A6" strokeWidth="2" strokeDasharray="4 4"
                   initial={{ pathLength: 0, opacity: 0 }}
                   animate={{ pathLength: 1, opacity: 1 }}
                   transition={{ duration: 1.5, delay: 1 }}
@@ -167,7 +167,7 @@ export default function TwoAgentsSection() {
                 />
                 <motion.line
                   x1="300" y1="80" x2="300" y2="260"
-                  stroke="#8B5CF6" strokeWidth="2" strokeDasharray="4 4"
+                  stroke="#14B8A6" strokeWidth="2" strokeDasharray="4 4"
                   initial={{ pathLength: 0, opacity: 0 }}
                   animate={{ pathLength: 1, opacity: 1 }}
                   transition={{ duration: 1, delay: 3 }}
@@ -211,24 +211,24 @@ export default function TwoAgentsSection() {
 
               {/* Node 2: Website (Top Right) */}
               <motion.div 
-                className="absolute top-[56px] left-[276px] w-12 h-12 bg-[#FAF5FF] rounded-full flex items-center justify-center border border-[#5F23C8]/30 z-10 cursor-pointer pointer-events-auto shadow-md"
+                className="absolute top-[56px] left-[276px] w-12 h-12 bg-[#FAF5FF] rounded-full flex items-center justify-center border border-[#0396A6]/30 z-10 cursor-pointer pointer-events-auto shadow-md"
                 initial={{ scale: 0 }} 
                 animate={{ scale: 1 }} 
                 transition={{ delay: 0.4, type: 'spring' }}
                 whileHover={{ scale: 1.2, rotate: 10 }}
               >
-                <Globe className="w-6 h-6 text-[#5F23C8]" />
+                <Globe className="w-6 h-6 text-[#0396A6]" />
               </motion.div>
 
               {/* Node 3: Brain (Bottom Right) */}
               <motion.div 
-                className="absolute top-[236px] left-[276px] w-12 h-12 bg-purple-50 rounded-full flex items-center justify-center border border-purple-200 z-10 shadow-md cursor-pointer pointer-events-auto"
+                className="absolute top-[236px] left-[276px] w-12 h-12 bg-teal-50 rounded-full flex items-center justify-center border border-teal-200 z-10 shadow-md cursor-pointer pointer-events-auto"
                 initial={{ scale: 0 }} 
                 animate={{ scale: 1 }} 
                 transition={{ delay: 0.6, type: 'spring' }}
                 whileHover={{ scale: 1.2, rotate: -10 }}
               >
-                <Brain className="w-6 h-6 text-[#5F23C8]" />
+                <Brain className="w-6 h-6 text-[#0396A6]" />
               </motion.div>
 
               {/* Node 4: WhatsApp (Bottom Left) */}
@@ -256,7 +256,7 @@ export default function TwoAgentsSection() {
                 initial={{ opacity: 0, scale: 0.8, x: "-50%", y: "-50%" }}
                 animate={{ opacity: 1, scale: 1, x: "-50%", y: "-50%" }}
                 transition={{ duration: 0.4, delay: 3.5 }}
-                className="absolute top-[170px] left-[300px] bg-purple-50 text-[#5F23C8] text-[10px] font-bold px-3 py-1 rounded-full border border-purple-200 z-20 shadow-sm"
+                className="absolute top-[170px] left-[300px] bg-teal-50 text-[#0396A6] text-[10px] font-bold px-3 py-1 rounded-full border border-teal-200 z-20 shadow-sm"
               >
                 Syncing Context...
               </motion.div>
@@ -297,9 +297,9 @@ export default function TwoAgentsSection() {
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight mb-4 sm:mb-6">
             Two agents.<br />
             One <span className="relative">
-              <span className="relative z-10 font-bold text-[#5F23C8]">conversation.</span>
+              <span className="relative z-10 font-bold text-[#0396A6]">conversation.</span>
               <motion.div 
-                className="absolute bottom-1 left-0 right-0 h-3 bg-[#5F23C8]/10 -z-10 rounded-sm"
+                className="absolute bottom-1 left-0 right-0 h-3 bg-[#0396A6]/10 -z-10 rounded-sm"
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
@@ -321,7 +321,7 @@ export default function TwoAgentsSection() {
             <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid meet" fill="none">
               <motion.line 
                 x1="30%" y1="50%" x2="43%" y2="50%" 
-                stroke={active === 'outbound' || isGlowing ? '#5F23C8' : '#CBD5E1'} 
+                stroke={active === 'outbound' || isGlowing ? '#0396A6' : '#CBD5E1'} 
                 strokeWidth={isGlowing ? "2.5" : "1.5"}
                 strokeDasharray="4 4"
                 animate={{
@@ -358,29 +358,29 @@ export default function TwoAgentsSection() {
               className="h-full rounded-2xl p-5 sm:p-8 flex flex-col transition-all duration-500 overflow-hidden relative bg-white/95 backdrop-blur-xl border border-slate-200 shadow-[0_10px_30px_rgba(0,0,0,0.04)]"
               whileHover={{ scale: 1.02, rotateY: 2, rotateX: 2 }}
               style={{
-                borderColor: active === 'outbound' || isGlowing ? '#5F23C8' : '#E2E8F0',
+                borderColor: active === 'outbound' || isGlowing ? '#0396A6' : '#E2E8F0',
                 boxShadow: isGlowing 
-                  ? '0 0 40px rgba(95, 35, 200,0.15), 0 0 0 4px rgba(95, 35, 200,0.08)'
+                  ? '0 0 40px rgba(3, 150, 166,0.15), 0 0 0 4px rgba(3, 150, 166,0.08)'
                   : active === 'outbound' 
-                  ? '0 20px 40px -10px rgba(95, 35, 200,0.12), 0 0 0 4px rgba(95, 35, 200,0.06)' 
+                  ? '0 20px 40px -10px rgba(3, 150, 166,0.12), 0 0 0 4px rgba(3, 150, 166,0.06)' 
                   : '0 4px 20px rgba(0,0,0,0.03)',
               }}
             >
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-8">
                   <motion.div 
-                    className="w-10 h-10 rounded-full bg-purple-50 border border-purple-200 flex items-center justify-center shadow-sm"
+                    className="w-10 h-10 rounded-full bg-teal-50 border border-teal-200 flex items-center justify-center shadow-sm"
                     animate={{ scale: active === 'outbound' ? 1.1 : 1 }}
                     transition={{ type: 'spring', stiffness: 300 }}
                   >
-                    <Globe className="w-5 h-5 text-[#5F23C8]" strokeWidth={2.5} />
+                    <Globe className="w-5 h-5 text-[#0396A6]" strokeWidth={2.5} />
                   </motion.div>
-                  <div className="px-3 py-1 rounded-full bg-[#5F23C8]/10 text-[10px] font-bold text-[#5F23C8] tracking-wider uppercase border border-[#5F23C8]/20">
+                  <div className="px-3 py-1 rounded-full bg-[#0396A6]/10 text-[10px] font-bold text-[#0396A6] tracking-wider uppercase border border-[#0396A6]/20">
                     WEB AGENT
                   </div>
                 </div>
 
-                <h3 className="text-base md:text-lg font-bold text-[#5F23C8] mb-3">
+                <h3 className="text-base md:text-lg font-bold text-[#0396A6] mb-3">
                   Website Conversion Agent
                 </h3>
                 <p className="text-sm md:text-base text-slate-600 leading-relaxed mb-6 sm:mb-8">
@@ -411,14 +411,14 @@ export default function TwoAgentsSection() {
               className="relative w-28 h-28 rounded-full flex items-center justify-center mb-4 transition-all duration-500 bg-white shadow-md"
               whileHover={{ scale: 1.05 }}
               style={{
-                border: `2px solid ${isGlowing || active ? '#5F23C8' : '#CBD5E1'}`,
+                border: `2px solid ${isGlowing || active ? '#0396A6' : '#CBD5E1'}`,
                 boxShadow: isGlowing || active
-                  ? '0 0 35px rgba(95, 35, 200,0.25), inset 0 0 15px rgba(95, 35, 200,0.1)'
+                  ? '0 0 35px rgba(3, 150, 166,0.25), inset 0 0 15px rgba(3, 150, 166,0.1)'
                   : '0 4px 20px rgba(0,0,0,0.06)',
               }}
             >
               <Brain 
-                className="w-12 h-12 relative z-10 transition-colors duration-500 text-[#5F23C8]" 
+                className="w-12 h-12 relative z-10 transition-colors duration-500 text-[#0396A6]" 
                 strokeWidth={2.5} 
               />
             </motion.div>

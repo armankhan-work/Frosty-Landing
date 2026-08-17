@@ -31,7 +31,7 @@ export default function CapturesLeadFlow({ onComplete }: { onComplete?: () => vo
             {/* Animated lines */}
             <motion.line x1="100" y1="80" x2="400" y2="80" stroke="#16A34A" strokeWidth="2.5" strokeDasharray="4 4"
               initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1, delay: 0.8 }} />
-            <motion.line x1="400" y1="80" x2="400" y2="380" stroke="#8B5CF6" strokeWidth="2.5" strokeDasharray="4 4"
+            <motion.line x1="400" y1="80" x2="400" y2="380" stroke="#14B8A6" strokeWidth="2.5" strokeDasharray="4 4"
               initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1.2, delay: 2.2 }} />
             <motion.line x1="400" y1="380" x2="100" y2="380" stroke="#E11D48" strokeWidth="2.5" strokeDasharray="4 4"
               initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1, delay: 4 }} />
@@ -60,9 +60,9 @@ export default function CapturesLeadFlow({ onComplete }: { onComplete?: () => vo
 
             {/* Node: Brain (bottom right) */}
             <motion.g initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.6, type: 'spring' }}>
-              <circle cx="400" cy="380" r="24" fill="#FAF5FF" stroke="#8B5CF6" strokeWidth="1.5" />
+              <circle cx="400" cy="380" r="24" fill="#FAF5FF" stroke="#14B8A6" strokeWidth="1.5" />
               <foreignObject x="388" y="368" width="24" height="24" className="overflow-visible pointer-events-none">
-                <div className="w-6 h-6 flex items-center justify-center text-[#8B5CF6]">
+                <div className="w-6 h-6 flex items-center justify-center text-[#14B8A6]">
                   <Brain className="w-5 h-5" strokeWidth={1.75} />
                 </div>
               </foreignObject>
@@ -87,8 +87,8 @@ export default function CapturesLeadFlow({ onComplete }: { onComplete?: () => vo
 
             {/* Bubble 2: Extracting */}
             <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 3, duration: 0.4 }}>
-              <rect x="300" y="215" width="175" height="28" rx="14" fill="#FFFFFF" stroke="#5F23C8" strokeWidth="1" />
-              <text x="387" y="234" textAnchor="middle" fill="#5F23C8" fontSize="11" fontWeight="700">Extracting contact info…</text>
+              <rect x="300" y="215" width="175" height="28" rx="14" fill="#FFFFFF" stroke="#0396A6" strokeWidth="1" />
+              <text x="387" y="234" textAnchor="middle" fill="#0396A6" fontSize="11" fontWeight="700">Extracting contact info…</text>
             </motion.g>
 
             {/* Bubble 3: High intent lead */}

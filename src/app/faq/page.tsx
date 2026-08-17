@@ -45,11 +45,11 @@ const FAQ_GROUPS: [string, [string, string][]][] = [
 ];
 
 const FAQ_THEMES = [
-    { border: 'border-[#5F23C8]/30', bgActive: 'bg-[#5F23C8]/5', text: 'text-[#5F23C8]', numberBg: 'bg-[#5F23C8]/10' },
+    { border: 'border-[#0396A6]/30', bgActive: 'bg-[#0396A6]/5', text: 'text-[#0396A6]', numberBg: 'bg-[#0396A6]/10' },
     { border: 'border-[#10B981]/30', bgActive: 'bg-[#10B981]/5', text: 'text-[#10B981]', numberBg: 'bg-[#10B981]/10' },
     { border: 'border-[#EC4899]/30', bgActive: 'bg-[#EC4899]/5', text: 'text-[#EC4899]', numberBg: 'bg-[#EC4899]/10' },
     { border: 'border-[#F59E0B]/30', bgActive: 'bg-[#F59E0B]/5', text: 'text-[#D97706]', numberBg: 'bg-[#F59E0B]/10' },
-    { border: 'border-[#0284C7]/30', bgActive: 'bg-[#0284C7]/5', text: 'text-[#0284C7]', numberBg: 'bg-[#0284C7]/10' },
+    { border: 'border-[#FF7A5E]/30', bgActive: 'bg-[#FF7A5E]/5', text: 'text-[#FF7A5E]', numberBg: 'bg-[#FF7A5E]/10' },
 ];
 
 export default function FAQPage() {
@@ -66,7 +66,7 @@ export default function FAQPage() {
 
     return (
         <div className="frosty-root" style={{
-            background: 'radial-gradient(circle 800px at 100% 0%, rgba(95, 35, 200, 0.035) 0%, rgba(245, 158, 11, 0.018) 30%, transparent 100%), #FCFBF9',
+            background: 'radial-gradient(circle 800px at 100% 0%, rgba(3, 150, 166, 0.035) 0%, rgba(245, 158, 11, 0.018) 30%, transparent 100%), #FCFBF9',
             backgroundAttachment: 'fixed',
             minHeight: '100vh',
             color: '#18181B',
@@ -87,9 +87,9 @@ export default function FAQPage() {
                         </Link>
 
                         <div className="flex flex-col items-center text-center max-w-3xl mx-auto w-full">
-                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-50 border border-purple-200 mb-8">
-                                <div className="w-1.5 h-1.5 rounded-full bg-[#5F23C8]" />
-                                <span className="text-[10px] font-bold tracking-widest text-[#5F23C8] uppercase">Help Center</span>
+                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-50 border border-teal-200 mb-8">
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#0396A6]" />
+                                <span className="text-[10px] font-bold tracking-widest text-[#0396A6] uppercase">Help Center</span>
                             </div>
 
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-stone-900">
@@ -106,7 +106,7 @@ export default function FAQPage() {
                                 </div>
                                 <input
                                     type="text"
-                                    className="block w-full pl-12 pr-6 py-4 bg-white border border-stone-200 rounded-2xl text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#5F23C8]/30 focus:border-[#5F23C8] transition-all shadow-sm text-base"
+                                    className="block w-full pl-12 pr-6 py-4 bg-white border border-stone-200 rounded-2xl text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#0396A6]/30 focus:border-[#0396A6] transition-all shadow-sm text-base"
                                     placeholder="Search for answers..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
@@ -130,7 +130,7 @@ export default function FAQPage() {
                                         transition={{ duration: 0.8, ease: "easeOut" }}
                                         className="w-full md:w-[50%] relative group flex justify-center items-center"
                                     >
-                                        <div className="relative w-full max-w-md aspect-[4/5] rounded-[2rem] overflow-hidden bg-stone-100 border border-stone-200 shadow-md group-hover:border-[#5F23C8]/40 transition-all duration-500">
+                                        <div className="relative w-full max-w-md aspect-[4/5] rounded-[2rem] overflow-hidden bg-stone-100 border border-stone-200 shadow-md group-hover:border-[#0396A6]/40 transition-all duration-500">
                                             <img
                                                 src={`/images/${imageNames[gIdx % 4]}`}
                                                 alt={group}
@@ -165,7 +165,7 @@ export default function FAQPage() {
                                                         whileInView={{ opacity: 1, x: 0 }}
                                                         viewport={{ once: false, margin: "-10px" }}
                                                         transition={{ duration: 0.6, ease: "easeOut" }}
-                                                        className={`w-full rounded-[20px] transition-all duration-300 overflow-hidden ${isActive ? `bg-purple-50/40 ${theme.border} border shadow-sm` : 'bg-white border border-stone-200 hover:border-stone-300 shadow-xs'
+                                                        className={`w-full rounded-[20px] transition-all duration-300 overflow-hidden ${isActive ? `bg-teal-50/40 ${theme.border} border shadow-sm` : 'bg-white border border-stone-200 hover:border-stone-300 shadow-xs'
                                                             }`}
                                                     >
                                                         <button

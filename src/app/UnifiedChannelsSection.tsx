@@ -84,12 +84,12 @@ export default function UnifiedChannelsSection() {
       
       {/* BACKGROUND PARTICLES & GLOW */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden flex justify-center">
-         <div className="absolute top-[10%] w-[1000px] h-[500px] bg-[#5F23C8]/5 rounded-[100%] blur-[120px]" />
-         <div className="absolute top-[50%] w-[1000px] h-[500px] bg-[#5F23C8]/4 rounded-[100%] blur-[140px]" />
+         <div className="absolute top-[10%] w-[1000px] h-[500px] bg-[#0396A6]/5 rounded-[100%] blur-[120px]" />
+         <div className="absolute top-[50%] w-[1000px] h-[500px] bg-[#0396A6]/4 rounded-[100%] blur-[140px]" />
          
          {/* Floating 3D Cubes */}
          <motion.div animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }} transition={{ duration: 6, repeat: Infinity }} className="absolute left-[10%] top-[8%] w-16 h-16 opacity-30">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full text-[#5F23C8]"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full text-[#0396A6]"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
          </motion.div>
          <motion.div animate={{ y: [0, 15, 0], rotate: [0, -5, 0] }} transition={{ duration: 7, repeat: Infinity }} className="absolute right-[12%] top-[6%] w-12 h-12 opacity-25">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full text-[#10B981]"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
@@ -105,7 +105,7 @@ export default function UnifiedChannelsSection() {
            initial={{ opacity: 0, y: 20 }}
            whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
-           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#5F23C8]/30 bg-[#5F23C8]/10 text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#5F23C8] mb-2.5 shadow-sm"
+           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#0396A6]/30 bg-[#0396A6]/10 text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6] mb-2.5 shadow-sm"
         >
           CHANNELS. UNIFIED.
         </motion.div>
@@ -117,7 +117,7 @@ export default function UnifiedChannelsSection() {
            transition={{ delay: 0.1 }}
            className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight mb-2"
         >
-          Website. WhatsApp. <span className="text-[#5F23C8] font-bold">Unified.</span>
+          Website. WhatsApp. <span className="text-[#0396A6] font-bold">Unified.</span>
         </motion.h2>
         
         <motion.p 
@@ -137,7 +137,7 @@ export default function UnifiedChannelsSection() {
         {/* Core Connections SVG - Spans continuously from Card Bottoms down into Core, Profile & Conversation */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 1360 740" preserveAspectRatio="none">
            {/* THICK GLOWS */}
-           <path d="M 350,250 C 350,330 540,365 680,410" fill="none" stroke="#5F23C8" strokeWidth="6" filter="blur(6px)" className="opacity-20" />
+           <path d="M 350,250 C 350,330 540,365 680,410" fill="none" stroke="#0396A6" strokeWidth="6" filter="blur(6px)" className="opacity-20" />
            <path d="M 680,230 L 680,410" fill="none" stroke="#10B981" strokeWidth="6" filter="blur(6px)" className="opacity-20" />
            <path d="M 1010,250 C 1010,330 820,365 680,410" fill="none" stroke="#EA4335" strokeWidth="6" filter="blur(6px)" className="opacity-20" />
 
@@ -165,7 +165,7 @@ export default function UnifiedChannelsSection() {
            <motion.path 
               d="M 680,475 C 680,500 570,505 570,520" 
               fill="none" 
-              stroke="#5F23C8" 
+              stroke="#0396A6" 
               strokeWidth="2" 
               strokeDasharray="4 4"
               className="opacity-40"
@@ -173,27 +173,27 @@ export default function UnifiedChannelsSection() {
            <motion.path 
               d="M 745,410 C 850,410 930,390 1005,390" 
               fill="none" 
-              stroke="#5F23C8" 
+              stroke="#0396A6" 
               strokeWidth="2" 
               strokeDasharray="4 4"
               className="opacity-40"
            />
 
            {/* DOTTED CONNECTIONS TO BADGES */}
-           <path d="M 680,410 Q 590,385 520,375" fill="none" stroke="#5F23C8" strokeWidth="1.5" strokeDasharray="3 6" className="opacity-40" />
-           <circle cx="520" cy="375" r="2.5" fill="#5F23C8" />
+           <path d="M 680,410 Q 590,385 520,375" fill="none" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 6" className="opacity-40" />
+           <circle cx="520" cy="375" r="2.5" fill="#0396A6" />
 
-           <path d="M 680,410 Q 580,440 510,450" fill="none" stroke="#5F23C8" strokeWidth="1.5" strokeDasharray="3 6" className="opacity-40" />
-           <circle cx="510" cy="450" r="2.5" fill="#5F23C8" />
+           <path d="M 680,410 Q 580,440 510,450" fill="none" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 6" className="opacity-40" />
+           <circle cx="510" cy="450" r="2.5" fill="#0396A6" />
 
-           <path d="M 680,410 Q 770,385 840,375" fill="none" stroke="#5F23C8" strokeWidth="1.5" strokeDasharray="3 6" className="opacity-40" />
-           <circle cx="840" cy="375" r="2.5" fill="#5F23C8" />
+           <path d="M 680,410 Q 770,385 840,375" fill="none" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 6" className="opacity-40" />
+           <circle cx="840" cy="375" r="2.5" fill="#0396A6" />
 
-           <path d="M 680,410 Q 780,440 850,450" fill="none" stroke="#5F23C8" strokeWidth="1.5" strokeDasharray="3 6" className="opacity-40" />
-           <circle cx="850" cy="450" r="2.5" fill="#5F23C8" />
+           <path d="M 680,410 Q 780,440 850,450" fill="none" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 6" className="opacity-40" />
+           <circle cx="850" cy="450" r="2.5" fill="#0396A6" />
 
            {/* ANIMATED DATA PULSES */}
-           <motion.circle r="4.5" fill="#5F23C8" filter="drop-shadow(0 0 4px #5F23C8)">
+           <motion.circle r="4.5" fill="#0396A6" filter="drop-shadow(0 0 4px #0396A6)">
               <animateMotion dur="1s" path="M 350,250 C 350,330 540,365 680,410" begin={step === 4 ? "0s" : "indefinite"} fill="freeze" />
               <animate attributeName="opacity" values="0;1;0" dur="1s" begin={step === 4 ? "0s" : "indefinite"} />
            </motion.circle>
@@ -203,20 +203,20 @@ export default function UnifiedChannelsSection() {
               <animate attributeName="opacity" values="0;1;0" dur="1s" begin={step === 8 ? "0s" : "indefinite"} />
            </motion.circle>
 
-           <motion.circle r="5" fill="#5F23C8" filter="drop-shadow(0 0 4px #5F23C8)">
+           <motion.circle r="5" fill="#0396A6" filter="drop-shadow(0 0 4px #0396A6)">
               <animateMotion dur="0.9s" path="M 680,475 C 680,500 570,505 570,520" begin={step === 9 ? "0s" : "indefinite"} fill="freeze" />
               <animate attributeName="opacity" values="0;1;0" dur="0.9s" begin={step === 9 ? "0s" : "indefinite"} />
            </motion.circle>
            
-           <motion.circle r="5" fill="#5F23C8" filter="drop-shadow(0 0 4px #5F23C8)">
+           <motion.circle r="5" fill="#0396A6" filter="drop-shadow(0 0 4px #0396A6)">
               <animateMotion dur="1s" path="M 745,410 C 850,410 930,390 1005,390" begin={step === 9 ? "0s" : "indefinite"} fill="freeze" />
               <animate attributeName="opacity" values="0;1;0" dur="1s" begin={step === 9 ? "0s" : "indefinite"} />
            </motion.circle>
 
            <defs>
               <linearGradient id="lineGradient1" x1="0" y1="0" x2="1" y2="1">
-                 <stop offset="0%" stopColor="#5F23C8" stopOpacity="0.8" />
-                 <stop offset="100%" stopColor="#5F23C8" stopOpacity="0.3" />
+                 <stop offset="0%" stopColor="#0396A6" stopOpacity="0.8" />
+                 <stop offset="100%" stopColor="#0396A6" stopOpacity="0.3" />
               </linearGradient>
               <linearGradient id="lineGradient2" gradientUnits="userSpaceOnUse" x1="680" y1="230" x2="680" y2="410">
                  <stop offset="0%" stopColor="#10B981" stopOpacity="0.8" />
@@ -224,21 +224,21 @@ export default function UnifiedChannelsSection() {
               </linearGradient>
               <linearGradient id="lineGradient3" x1="1" y1="0" x2="0" y2="1">
                  <stop offset="0%" stopColor="#EA4335" stopOpacity="0.8" />
-                 <stop offset="100%" stopColor="#5F23C8" stopOpacity="0.3" />
+                 <stop offset="100%" stopColor="#0396A6" stopOpacity="0.3" />
               </linearGradient>
            </defs>
         </svg>
 
         {/* 1. TOP LEFT: WEBSITE CARD */}
         <div className="absolute left-1/2 ml-[-460px] top-[10px] z-20">
-           <div className="absolute -left-3 -top-3 w-9 h-9 bg-gradient-to-br from-[#5F23C8] to-[#7C3AED] rounded-xl flex items-center justify-center text-white shadow-[0_10px_25px_rgba(95,35,200,0.35)] z-30 transform -rotate-6">
+           <div className="absolute -left-3 -top-3 w-9 h-9 bg-gradient-to-br from-[#0396A6] to-[#26B3AA] rounded-xl flex items-center justify-center text-white shadow-[0_10px_25px_rgba(3, 150, 166,0.35)] z-30 transform -rotate-6">
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
            </div>
            
            <motion.div 
               className="w-[260px] bg-white/95 backdrop-blur-xl border border-slate-200 rounded-[20px] shadow-[0_20px_40px_rgba(0,0,0,0.06)] overflow-hidden"
               initial={{ rotate: -4 }}
-              whileHover={{ scale: 1.02, rotate: -2, boxShadow: '0 25px 50px rgba(95,35,200,0.12)' }}
+              whileHover={{ scale: 1.02, rotate: -2, boxShadow: '0 25px 50px rgba(3, 150, 166,0.12)' }}
            >
               <div className="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between">
                  <div className="flex items-center gap-2 pl-3">
@@ -246,10 +246,10 @@ export default function UnifiedChannelsSection() {
                  </div>
                  <div className="flex items-center gap-1.5">
                     <span className="relative flex h-2 w-2">
-                      {step >= 1 && step <= 4 && <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#5F23C8] opacity-75"></span>}
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-[#5F23C8]"></span>
+                      {step >= 1 && step <= 4 && <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0396A6] opacity-75"></span>}
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0396A6]"></span>
                     </span>
-                    <span className="text-[10px] text-[#5F23C8] font-semibold">Live</span>
+                    <span className="text-[10px] text-[#0396A6] font-semibold">Live</span>
                  </div>
               </div>
               
@@ -270,7 +270,7 @@ export default function UnifiedChannelsSection() {
                    )}
                    {step >= 4 && (
                       <motion.div key="web-msg2" initial={{ opacity: 0, y: 10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} className="flex flex-col max-w-[90%] self-start items-start relative mt-0.5">
-                         <div className="px-3 py-1.5 text-[11px] bg-[#5F23C8] text-white rounded-2xl rounded-tl-sm shadow-sm flex items-center gap-1.5">
+                         <div className="px-3 py-1.5 text-[11px] bg-[#0396A6] text-white rounded-2xl rounded-tl-sm shadow-sm flex items-center gap-1.5">
                             <span>I can help! We have bulk discounts. Need a quote?</span>
                          </div>
                       </motion.div>
@@ -278,10 +278,10 @@ export default function UnifiedChannelsSection() {
                  </AnimatePresence>
 
                  {step === 3 && (
-                    <motion.div key="web-typing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="self-start mt-0.5 px-3 py-1 flex items-center gap-2 text-[10px] text-[#5F23C8] font-medium">
+                    <motion.div key="web-typing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="self-start mt-0.5 px-3 py-1 flex items-center gap-2 text-[10px] text-[#0396A6] font-medium">
                        Frosty is typing...
                        <div className="flex gap-0.5 ml-1">
-                          {[0,1,2].map(i => <motion.div key={i} animate={{ opacity: [0.3,1,0.3] }} transition={{ repeat: Infinity, duration: 1, delay: i*0.2 }} className="w-1 h-1 rounded-full bg-[#5F23C8]" />)}
+                          {[0,1,2].map(i => <motion.div key={i} animate={{ opacity: [0.3,1,0.3] }} transition={{ repeat: Infinity, duration: 1, delay: i*0.2 }} className="w-1 h-1 rounded-full bg-[#0396A6]" />)}
                        </div>
                     </motion.div>
                  )}
@@ -400,7 +400,7 @@ export default function UnifiedChannelsSection() {
         {/* 4. LEFT FEATURES LIST */}
         <div className="absolute left-[15px] top-[320px] w-[250px] flex flex-col gap-3.5 z-10">
            <div className="flex gap-3 items-start">
-              <div className="w-8 h-8 rounded-xl bg-white border border-slate-200 flex items-center justify-center shrink-0 text-[#5F23C8] shadow-sm mt-0.5">
+              <div className="w-8 h-8 rounded-xl bg-white border border-slate-200 flex items-center justify-center shrink-0 text-[#0396A6] shadow-sm mt-0.5">
                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
               </div>
               <div>
@@ -409,7 +409,7 @@ export default function UnifiedChannelsSection() {
               </div>
            </div>
            <div className="flex gap-3 items-start">
-              <div className="w-8 h-8 rounded-xl bg-white border border-slate-200 flex items-center justify-center shrink-0 text-[#5F23C8] shadow-sm mt-0.5">
+              <div className="w-8 h-8 rounded-xl bg-white border border-slate-200 flex items-center justify-center shrink-0 text-[#0396A6] shadow-sm mt-0.5">
                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               </div>
               <div>
@@ -418,7 +418,7 @@ export default function UnifiedChannelsSection() {
               </div>
            </div>
            <div className="flex gap-3 items-start">
-              <div className="w-8 h-8 rounded-xl bg-white border border-slate-200 flex items-center justify-center shrink-0 text-[#5F23C8] shadow-sm mt-0.5">
+              <div className="w-8 h-8 rounded-xl bg-white border border-slate-200 flex items-center justify-center shrink-0 text-[#0396A6] shadow-sm mt-0.5">
                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
               </div>
               <div>
@@ -427,7 +427,7 @@ export default function UnifiedChannelsSection() {
               </div>
            </div>
            <div className="flex gap-3 items-start">
-              <div className="w-8 h-8 rounded-xl bg-white border border-slate-200 flex items-center justify-center shrink-0 text-[#5F23C8] shadow-sm mt-0.5">
+              <div className="w-8 h-8 rounded-xl bg-white border border-slate-200 flex items-center justify-center shrink-0 text-[#0396A6] shadow-sm mt-0.5">
                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               </div>
               <div>
@@ -442,13 +442,13 @@ export default function UnifiedChannelsSection() {
            
            {/* Elliptical base rings */}
            <motion.div 
-              className="absolute top-[50%] left-1/2 ml-[-175px] w-[350px] h-[100px] border-[2px] border-[#5F23C8]/40 rounded-[100%] pointer-events-none"
+              className="absolute top-[50%] left-1/2 ml-[-175px] w-[350px] h-[100px] border-[2px] border-[#0396A6]/40 rounded-[100%] pointer-events-none"
               style={{ transform: 'translateY(-50%) perspective(500px) rotateX(70deg)' }}
               animate={step >= 4 ? { opacity: [0.6, 0.9, 0.6], scale: [1, 1.04, 1] } : { opacity: 0.4 }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
            />
            <motion.div 
-              className="absolute top-[50%] left-1/2 ml-[-225px] w-[450px] h-[130px] border border-[#5F23C8]/25 rounded-[100%] pointer-events-none"
+              className="absolute top-[50%] left-1/2 ml-[-225px] w-[450px] h-[130px] border border-[#0396A6]/25 rounded-[100%] pointer-events-none"
               style={{ transform: 'translateY(-50%) perspective(500px) rotateX(70deg)' }}
               animate={step >= 4 ? { opacity: [0.3, 0.6, 0.3], scale: [1, 1.02, 1] } : { opacity: 0.2 }}
               transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut", delay: 0.1 }}
@@ -456,7 +456,7 @@ export default function UnifiedChannelsSection() {
 
            {/* Core Glow */}
            <motion.div 
-              className="absolute inset-[-40px] bg-[#5F23C8]/10 rounded-full blur-[70px] z-0 pointer-events-none"
+              className="absolute inset-[-40px] bg-[#0396A6]/10 rounded-full blur-[70px] z-0 pointer-events-none"
               animate={
                  (step === 4 || step === 8 || step === 9) 
                  ? { opacity: 0.6, scale: 1.2 } 
@@ -466,11 +466,11 @@ export default function UnifiedChannelsSection() {
            />
            
            <motion.div 
-              className="relative w-[130px] h-[130px] rounded-full bg-white/95 backdrop-blur-2xl border-[3px] border-[#5F23C8]/30 shadow-[0_10px_35px_rgba(95,35,200,0.15)] flex flex-col items-center justify-center overflow-hidden z-20"
+              className="relative w-[130px] h-[130px] rounded-full bg-white/95 backdrop-blur-2xl border-[3px] border-[#0396A6]/30 shadow-[0_10px_35px_rgba(3, 150, 166,0.15)] flex flex-col items-center justify-center overflow-hidden z-20"
               animate={
                  (step === 4 || step === 8 || step === 9) 
-                 ? { scale: 1.08, borderColor: '#5F23C8', boxShadow: '0 15px 45px rgba(95,35,200,0.25)' } 
-                 : { scale: 1, borderColor: 'rgba(95,35,200,0.3)' }
+                 ? { scale: 1.08, borderColor: '#0396A6', boxShadow: '0 15px 45px rgba(3, 150, 166,0.25)' } 
+                 : { scale: 1, borderColor: 'rgba(3, 150, 166,0.3)' }
               }
               transition={{ duration: 0.4 }}
            >
@@ -478,7 +478,7 @@ export default function UnifiedChannelsSection() {
                  <FrostyIcon size={40} glow={0.5} />
               </div>
               <span className="text-[13px] font-bold text-slate-900 relative z-10 tracking-wider">Frosty</span>
-              <span className="text-[8.5px] font-semibold text-[#5F23C8] relative z-10 uppercase tracking-widest">Unified Agent</span>
+              <span className="text-[8.5px] font-semibold text-[#0396A6] relative z-10 uppercase tracking-widest">Unified Agent</span>
            </motion.div>
 
            {/* Floating Badges */}
@@ -493,12 +493,12 @@ export default function UnifiedChannelsSection() {
         <motion.div 
            className="absolute right-[15px] top-[270px] w-[340px] xl:w-[360px] bg-white/95 backdrop-blur-xl border border-slate-200 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.08)] overflow-hidden z-20"
            initial={{ opacity: 0, y: 20 }}
-           animate={step >= 10 ? { opacity: 1, y: 0, boxShadow: '0 15px 40px rgba(95,35,200,0.08)', pointerEvents: 'auto' } : { opacity: 0, y: 20, boxShadow: 'none', pointerEvents: 'none' }}
+           animate={step >= 10 ? { opacity: 1, y: 0, boxShadow: '0 15px 40px rgba(3, 150, 166,0.08)', pointerEvents: 'auto' } : { opacity: 0, y: 20, boxShadow: 'none', pointerEvents: 'none' }}
            transition={{ duration: 0.5 }}
         >
            <div className="px-5 py-3 border-b border-slate-100 flex items-center justify-between">
               <span className="text-slate-800 text-[13px] font-bold">Customer Profile</span>
-              <span className="text-[#5F23C8] text-[11px] font-semibold hover:underline cursor-pointer">View full</span>
+              <span className="text-[#0396A6] text-[11px] font-semibold hover:underline cursor-pointer">View full</span>
            </div>
            <div className="p-4 sm:p-5">
               <div className="flex items-center gap-3 mb-3.5">
@@ -509,7 +509,7 @@ export default function UnifiedChannelsSection() {
                     <div className="text-slate-900 text-[13.5px] font-bold flex items-center gap-2">
                        James Carter 
                        <motion.span 
-                          className="text-[9px] bg-purple-50 border border-[#5F23C8]/30 px-2 py-0.5 rounded text-[#5F23C8] font-bold uppercase tracking-wider"
+                          className="text-[9px] bg-teal-50 border border-[#0396A6]/30 px-2 py-0.5 rounded text-[#0396A6] font-bold uppercase tracking-wider"
                           animate={step >= 10 ? { opacity: 1 } : { opacity: 0.4 }}
                        >
                           High Intent
@@ -522,7 +522,7 @@ export default function UnifiedChannelsSection() {
               <div className="flex flex-wrap gap-1.5 mb-4">
                  <span className="text-[9.5px] bg-slate-100 px-2.5 py-1 rounded-md text-slate-700 font-medium">Pricing page visited</span>
                  <span className="text-[9.5px] bg-slate-100 px-2.5 py-1 rounded-md text-slate-700 font-medium">Asked about bulk order</span>
-                 <span className="text-[9.5px] bg-purple-50 text-[#5F23C8] px-2.5 py-1 rounded-md font-medium border border-[#5F23C8]/20">100 units quote</span>
+                 <span className="text-[9.5px] bg-teal-50 text-[#0396A6] px-2.5 py-1 rounded-md font-medium border border-[#0396A6]/20">100 units quote</span>
               </div>
 
               <div className="pt-3 border-t border-slate-100">
@@ -534,7 +534,7 @@ export default function UnifiedChannelsSection() {
                           <motion.path 
                              d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" 
                              fill="none" 
-                             stroke={step >= 10 ? "#5F23C8" : "#94A3B8"} 
+                             stroke={step >= 10 ? "#0396A6" : "#94A3B8"} 
                              strokeWidth="3.5" 
                              strokeDasharray="100, 100" 
                              initial={{ strokeDashoffset: 50 }}
@@ -570,7 +570,7 @@ export default function UnifiedChannelsSection() {
         <motion.div 
            className="absolute left-[280px] xl:left-[300px] top-[530px] w-[540px] xl:w-[580px] bg-white/95 backdrop-blur-xl border border-slate-200 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.08)] overflow-hidden z-20"
            initial={{ opacity: 0, y: 20 }}
-           animate={step >= 9 ? { opacity: 1, y: 0, boxShadow: '0 15px 40px rgba(95,35,200,0.1)', pointerEvents: 'auto' } : { opacity: 0, y: 20, boxShadow: 'none', pointerEvents: 'none' }}
+           animate={step >= 9 ? { opacity: 1, y: 0, boxShadow: '0 15px 40px rgba(3, 150, 166,0.1)', pointerEvents: 'auto' } : { opacity: 0, y: 20, boxShadow: 'none', pointerEvents: 'none' }}
            transition={{ duration: 0.5 }}
         >
            <div className="px-5 py-2.5 border-b border-slate-100 flex items-center justify-between">
@@ -580,15 +580,15 @@ export default function UnifiedChannelsSection() {
               </div>
               <div className="flex items-center gap-1.5">
                  <span className="relative flex h-2 w-2">
-                   {step >= 12 && <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#5F23C8] opacity-75"></span>}
-                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#5F23C8]"></span>
+                   {step >= 12 && <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0396A6] opacity-75"></span>}
+                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0396A6]"></span>
                  </span>
-                 <span className="text-[9.5px] text-[#5F23C8] font-semibold">Live</span>
+                 <span className="text-[9.5px] text-[#0396A6] font-semibold">Live</span>
               </div>
            </div>
            
            <div className="p-4 flex gap-3.5">
-              <div className="w-10 h-10 rounded-full bg-[#FAF5FF] border border-[#5F23C8]/20 flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-full bg-[#FAF5FF] border border-[#0396A6]/20 flex items-center justify-center shrink-0">
                  <FrostyIcon size={20} />
               </div>
               <div className="flex-1">
@@ -599,7 +599,7 @@ export default function UnifiedChannelsSection() {
                     Would you like me to share a quote or connect you with our sales team?
                  </p>
                  <div className="flex flex-wrap gap-2 mt-3">
-                    <button className="px-3.5 py-1.5 bg-[#5F23C8] text-white text-[11px] font-bold rounded-lg shadow-sm hover:bg-[#4C1D95] transition-colors">Share quote</button>
+                    <button className="px-3.5 py-1.5 bg-[#0396A6] text-white text-[11px] font-bold rounded-lg shadow-sm hover:bg-[#0A1A2F] transition-colors">Share quote</button>
                     <button className="px-3.5 py-1.5 bg-slate-50 border border-slate-200 text-slate-700 text-[11px] font-semibold rounded-lg hover:bg-slate-100 transition-colors">Connect to sales</button>
                     <button className="px-3.5 py-1.5 bg-slate-50 border border-slate-200 text-slate-700 text-[11px] font-semibold rounded-lg hover:bg-slate-100 transition-colors">More details</button>
                  </div>
@@ -612,7 +612,7 @@ export default function UnifiedChannelsSection() {
       {/* MOBILE RESPONSIVE CHANNELS VIEW */}
       <div className="relative w-full max-w-sm mx-auto px-4 py-4 flex flex-col gap-3 lg:hidden z-10">
          <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-purple-50 text-[#5F23C8] flex items-center justify-center shrink-0 border border-purple-100 font-bold">
+            <div className="w-9 h-9 rounded-xl bg-teal-50 text-[#0396A6] flex items-center justify-center shrink-0 border border-teal-100 font-bold">
                <FrostyIcon size={20} />
             </div>
             <div>

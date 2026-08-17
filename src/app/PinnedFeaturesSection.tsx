@@ -107,11 +107,11 @@ function AnimatedChat({ channel, isActive = true }: { channel: 'website' | 'what
               maxWidth: '85%', padding: '8px 12px', borderRadius: 10, fontSize: 11.5, 
               background: msg.from === 'bot' 
                 ? 'var(--panel-header)' 
-                : (channel === 'whatsapp' ? 'rgba(37,211,102,0.18)' : 'rgba(95, 35, 200,0.2)'),
+                : (channel === 'whatsapp' ? 'rgba(37,211,102,0.18)' : 'rgba(3, 150, 166,0.2)'),
               color: msg.from === 'bot' ? 'var(--text-body)' : 'var(--text-primary)', 
               border: `1px solid ${msg.from === 'bot' 
                 ? 'var(--border)' 
-                : (channel === 'whatsapp' ? 'rgba(37,211,102,0.25)' : 'rgba(95, 35, 200,0.3)')}` 
+                : (channel === 'whatsapp' ? 'rgba(37,211,102,0.25)' : 'rgba(3, 150, 166,0.3)')}` 
             }}>
               {msg.text}
             </div>
@@ -174,12 +174,12 @@ function AnimatedModelCard({ isActive = true }: { isActive?: boolean }) {
               padding: '6px 18px', borderRadius: 100, fontSize: 12, fontWeight: 700,
               cursor: 'pointer', border: 'none', transition: 'all 0.2s',
               background: 'transparent',
-              color: activeModel === m ? '#93C5FD' : 'var(--text-muted)', letterSpacing: '0.05em' }}
+              color: activeModel === m ? '#FFB09F' : 'var(--text-muted)', letterSpacing: '0.05em' }}
           >
             {activeModel === m && (
               <motion.div 
                 layoutId="model_pill_bg"
-                style={{ position: 'absolute', inset: 0, background: 'rgba(95, 35, 200,0.2)', borderRadius: 100, zIndex: 0 }} 
+                style={{ position: 'absolute', inset: 0, background: 'rgba(3, 150, 166,0.2)', borderRadius: 100, zIndex: 0 }} 
               />
             )}
             <span style={{ position: 'relative', zIndex: 1 }}>
@@ -203,7 +203,7 @@ function AnimatedModelCard({ isActive = true }: { isActive?: boolean }) {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -20, opacity: 0 }}
                   transition={{ duration: 0.4, type: 'spring', bounce: 0.2 }}
-                  style={{ fontSize: 15, fontWeight: 700, color: '#93C5FD', display: 'flex', alignItems: 'center', position: 'absolute', top: 0, left: 0 }}
+                  style={{ fontSize: 15, fontWeight: 700, color: '#FFB09F', display: 'flex', alignItems: 'center', position: 'absolute', top: 0, left: 0 }}
                 >
                   {s.val}
                 </motion.div>
@@ -342,7 +342,7 @@ function AnimatedToolsCard({ isActive = true }: { isActive?: boolean }) {
             }}
           >
             <div className="tool-icon" style={{ fontSize: 28, marginBottom: 12, display: 'inline-block' }}>{tool.icon}</div>
-            <div style={{ fontSize: 14, fontWeight: 800, color: '#5F23C8', marginBottom: 4, letterSpacing: '0.5px' }}>{tool.name}</div>
+            <div style={{ fontSize: 14, fontWeight: 800, color: '#0396A6', marginBottom: 4, letterSpacing: '0.5px' }}>{tool.name}</div>
             <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>{tool.desc}</div>
           </div>
         ))}
@@ -412,8 +412,8 @@ function AnimatedLeadCard({ isActive = true }: { isActive?: boolean }) {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 8 }}
               >
-                <div style={{ background: 'rgba(95, 35, 200,0.2)', color: 'var(--text-primary)', border: '1px solid rgba(95, 35, 200,0.3)', padding: '8px 12px', borderRadius: 10, fontSize: 11.5 }}>
-                  Yes, please call me at <span style={{ color: '#5F23C8', fontWeight: 600 }}>555-0192</span> to discuss the enterprise plan.
+                <div style={{ background: 'rgba(3, 150, 166,0.2)', color: 'var(--text-primary)', border: '1px solid rgba(3, 150, 166,0.3)', padding: '8px 12px', borderRadius: 10, fontSize: 11.5 }}>
+                  Yes, please call me at <span style={{ color: '#0396A6', fontWeight: 600 }}>555-0192</span> to discuss the enterprise plan.
                 </div>
               </motion.div>
             )}
@@ -437,13 +437,13 @@ function AnimatedLeadCard({ isActive = true }: { isActive?: boolean }) {
           <motion.div 
              animate={{ opacity: step === 3 ? [0.2, 1, 0.2] : 0.2, scale: step === 3 ? [1, 1.2, 1] : 1 }}
              transition={{ duration: 0.6, repeat: step === 3 ? Infinity : 0 }}
-             style={{ width: '100%', height: 2, background: step >= 4 ? '#22c55e' : '#5F23C8', position: 'absolute' }} 
+             style={{ width: '100%', height: 2, background: step >= 4 ? '#22c55e' : '#0396A6', position: 'absolute' }} 
           />
           <motion.div 
              initial={{ x: -10, opacity: 0 }}
              animate={step === 3 ? { x: 10, opacity: [0, 1, 0] } : { x: 0, opacity: 0 }}
              transition={{ duration: 0.8, repeat: step === 3 ? Infinity : 0 }}
-             style={{ position: 'absolute', fontSize: 18, color: '#5F23C8' }}
+             style={{ position: 'absolute', fontSize: 18, color: '#0396A6' }}
           >
             ▶
           </motion.div>
@@ -664,7 +664,7 @@ export default function PinnedFeaturesSection() {
           <span style={{ 
             color: 'transparent', 
             backgroundClip: 'text', WebkitBackgroundClip: 'text',
-            backgroundImage: 'linear-gradient(90deg, #0066FF, #5F23C8)'
+            backgroundImage: 'linear-gradient(90deg, #0066FF, #0396A6)'
           }}>
             Execute. Convert.
           </span>

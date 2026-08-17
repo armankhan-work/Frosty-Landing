@@ -36,7 +36,7 @@ export function UserMenu({ me }: { me: Me }) {
             
             <DropdownMenu.Item 
               onClick={() => router.push("/settings")}
-              className="relative flex cursor-pointer select-none items-center rounded-md px-2.5 py-2 text-sm font-medium text-[#111318] outline-none transition-colors hover:bg-[#F0EAFF] hover:text-[#5F23C8] focus:bg-[#F0EAFF] focus:text-[#5F23C8] data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+              className="relative flex cursor-pointer select-none items-center rounded-md px-2.5 py-2 text-sm font-medium text-[#111318] outline-none transition-colors hover:bg-[#F0EAFF] hover:text-[#0396A6] focus:bg-[#F0EAFF] focus:text-[#0396A6] data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
             >
               <Settings className="mr-2.5 h-4 w-4 text-[#6B6970]" />
               <span>Settings</span>

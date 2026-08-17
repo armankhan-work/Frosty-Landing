@@ -69,8 +69,8 @@ export default function PreferencesModal({ show, onClose, onSaved }: Preferences
               <h4 className="font-bold text-white mb-1">Essential Cookies</h4>
               <p className="text-white/50 text-xs">Necessary for the website to function correctly. Cannot be disabled.</p>
             </div>
-            <div className="w-12 h-6 rounded-full bg-[#3b82f6]/20 border border-[#3b82f6]/30 flex items-center px-1">
-              <div className="w-4 h-4 rounded-full bg-[#3b82f6] flex items-center justify-center ml-auto">
+            <div className="w-12 h-6 rounded-full bg-[#FF7A5E]/20 border border-[#FF7A5E]/30 flex items-center px-1">
+              <div className="w-4 h-4 rounded-full bg-[#FF7A5E] flex items-center justify-center ml-auto">
                 <Check size={10} className="text-white" />
               </div>
             </div>

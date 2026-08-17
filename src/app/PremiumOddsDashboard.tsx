@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 const ODDS = [
   {
-    t: "5 min", v: 100, color: "#5F23C8", label: "100",
+    t: "5 min", v: 100, color: "#0396A6", label: "100",
     head: "The window is open.",
     body: "The study's baseline. Every other number here is measured against this moment.",
     quote: null

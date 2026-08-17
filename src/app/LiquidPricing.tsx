@@ -43,7 +43,7 @@ export default function LiquidPricing() {
             className="rounded-3xl border border-white/10 bg-white/[0.03] p-8"
           >
             <h3 className="text-2xl font-bold text-white">{plan.name}</h3>
-            <p className="text-3xl font-extrabold text-[#5F23C8] mt-2">
+            <p className="text-3xl font-extrabold text-[#0396A6] mt-2">
               ₹{plan.retainer.toLocaleString()}
               <span className="text-sm text-slate-500 font-normal">/month</span>
             </p>

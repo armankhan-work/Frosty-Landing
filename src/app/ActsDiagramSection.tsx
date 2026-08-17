@@ -14,8 +14,8 @@ const ACTS = [
     question: "Do you work with clinics like ours?",
     via: "Website Widget",
     outcome: "Intent understood · Tagged WARM",
-    accent: "#5F23C8",
-    glow: "rgba(95, 35, 200, 0.2)"
+    accent: "#0396A6",
+    glow: "rgba(3, 150, 166, 0.2)"
   },
   {
     id: 'meetings',
@@ -25,7 +25,7 @@ const ACTS = [
     question: "Can someone walk me through it this week?",
     via: "WhatsApp",
     outcome: "Meeting booked · Thu 4:30 PM",
-    accent: "#5F23C8",
+    accent: "#0396A6",
     glow: "rgba(99, 90, 128, 0.2)"
   },
   {
@@ -84,7 +84,7 @@ export default function ActsDiagramSection() {
             INTERACT · THINK · EXECUTE · CONVERT
           </div>
           <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
-            Anatomy of an <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5F23C8] via-[#5F23C8] to-[#5F23C8]">Autonomous Action</span>
+            Anatomy of an <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0396A6] via-[#0396A6] to-[#0396A6]">Autonomous Action</span>
           </h2>
           <p className="text-slate-400 text-base md:text-lg leading-relaxed">
             Watch how Frosty routes logic through AI models, triggers your tech stack, and puts lead capture on autopilot. Select an action below to see live execution flow.

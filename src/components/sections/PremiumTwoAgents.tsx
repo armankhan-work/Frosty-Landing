@@ -84,12 +84,12 @@ export default function PremiumTwoAgents() {
           }}
           animate={{
             background: active === 'outbound'
-              ? 'radial-gradient(circle, rgba(2,132,199,0.06) 0%, transparent 70%)'
+              ? 'radial-gradient(circle, rgba(255, 122, 94,0.06) 0%, transparent 70%)'
               : active === 'inbound'
                 ? 'radial-gradient(circle, rgba(22,101,52,0.06) 0%, transparent 70%)'
                 : isHoveringSection
-                  ? 'radial-gradient(circle, rgba(124,58,237,0.03) 0%, transparent 70%)'
-                  : 'radial-gradient(circle, rgba(124,58,237,0) 0%, transparent 70%)',
+                  ? 'radial-gradient(circle, rgba(38, 179, 170,0.03) 0%, transparent 70%)'
+                  : 'radial-gradient(circle, rgba(38, 179, 170,0) 0%, transparent 70%)',
             scale: isHoveringSection ? 1 : 0.8,
           }}
           transition={{ duration: 0.5 }}
@@ -155,7 +155,7 @@ export default function PremiumTwoAgents() {
                 />
                 <motion.line
                   x1="60" y1="80" x2="300" y2="80"
-                  stroke="#3B82F6" strokeWidth="2" strokeDasharray="4 4"
+                  stroke="#FF7A5E" strokeWidth="2" strokeDasharray="4 4"
                   initial={{ pathLength: 0, opacity: 0 }}
                   animate={{ pathLength: 1, opacity: 1 }}
                   transition={{ duration: 1.5, delay: 1 }}
@@ -168,7 +168,7 @@ export default function PremiumTwoAgents() {
                 />
                 <motion.line
                   x1="300" y1="80" x2="300" y2="260"
-                  stroke="#8B5CF6" strokeWidth="2" strokeDasharray="4 4"
+                  stroke="#14B8A6" strokeWidth="2" strokeDasharray="4 4"
                   initial={{ pathLength: 0, opacity: 0 }}
                   animate={{ pathLength: 1, opacity: 1 }}
                   transition={{ duration: 1, delay: 3 }}
@@ -225,13 +225,13 @@ export default function PremiumTwoAgents() {
 
               {/* Node 3: Brain (Bottom Right) */}
               <motion.div
-                className="absolute top-[236px] left-[276px] w-12 h-12 bg-gradient-to-tr from-purple-100 to-purple-50 rounded-full flex items-center justify-center border border-purple-200 z-10 shadow-[0_0_15px_rgba(124,58,237,0.3)] cursor-pointer pointer-events-auto"
+                className="absolute top-[236px] left-[276px] w-12 h-12 bg-gradient-to-tr from-teal-100 to-teal-50 rounded-full flex items-center justify-center border border-teal-200 z-10 shadow-[0_0_15px_rgba(38, 179, 170,0.3)] cursor-pointer pointer-events-auto"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1, boxShadow: "0px 4px 6px -1px rgba(0, 0, 0, 0.1)" }}
                 transition={{ delay: 0.6, type: 'spring' }}
                 whileHover={{ scale: 1.25, rotate: -10, boxShadow: "0px 20px 40px -5px rgba(168, 85, 247, 0.8)" }}
               >
-                <Brain className="w-6 h-6 text-purple-600" />
+                <Brain className="w-6 h-6 text-teal-600" />
               </motion.div>
 
               {/* Node 4: WhatsApp (Bottom Left) */}
@@ -260,7 +260,7 @@ export default function PremiumTwoAgents() {
                 initial={{ opacity: 0, scale: 0.8, x: "-50%", y: "-50%" }}
                 animate={{ opacity: 1, scale: 1, x: "-50%", y: "-50%" }}
                 transition={{ duration: 0.4, delay: 3.5 }}
-                className="absolute top-[170px] left-[300px] bg-purple-100 text-purple-700 text-[10px] font-bold px-3 py-1 rounded-full border border-purple-200 z-20 shadow-sm"
+                className="absolute top-[170px] left-[300px] bg-teal-100 text-teal-700 text-[10px] font-bold px-3 py-1 rounded-full border border-teal-200 z-20 shadow-sm"
               >
                 Syncing Context...
               </motion.div>
@@ -303,7 +303,7 @@ export default function PremiumTwoAgents() {
           <h2 className="text-[40px] sm:text-[52px] lg:text-[64px] leading-[1.05] tracking-tight text-[#132A1F] mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             Two agents.<br />
             One <span className="relative">
-              <span className="relative z-10 italic text-[#7C3AED]">conversation.</span>
+              <span className="relative z-10 italic text-[#26B3AA]">conversation.</span>
               <motion.div
                 className="absolute bottom-1 left-0 right-0 h-3 bg-[#EDE9FE] -z-10 rounded-sm"
                 initial={{ scaleX: 0 }}
@@ -328,7 +328,7 @@ export default function PremiumTwoAgents() {
               {/* Left dashed line */}
               <motion.line
                 x1="30%" y1="50%" x2="43%" y2="50%"
-                stroke={active === 'outbound' || isGlowing ? '#0284C7' : '#E5E7EB'}
+                stroke={active === 'outbound' || isGlowing ? '#FF7A5E' : '#E5E7EB'}
                 strokeWidth={isGlowing ? "2.5" : "1.5"}
                 strokeDasharray="4 4"
                 animate={{
@@ -370,10 +370,10 @@ export default function PremiumTwoAgents() {
                 background: '#F4F9FE',
                 border: `1px solid ${active === 'outbound' || isGlowing ? '#BAE6FD' : '#E0F2FE'}`,
                 boxShadow: isGlowing
-                  ? '0 0 40px rgba(2,132,199,0.3), 0 0 0 4px rgba(2,132,199,0.15)'
+                  ? '0 0 40px rgba(255, 122, 94,0.3), 0 0 0 4px rgba(255, 122, 94,0.15)'
                   : active === 'outbound'
-                    ? '0 32px 64px -16px rgba(2,132,199,0.12), 0 0 0 4px rgba(2,132,199,0.05)'
-                    : '0 8px 24px -8px rgba(2,132,199,0.06)',
+                    ? '0 32px 64px -16px rgba(255, 122, 94,0.12), 0 0 0 4px rgba(255, 122, 94,0.05)'
+                    : '0 8px 24px -8px rgba(255, 122, 94,0.06)',
               }}
             >
               {/* Inner Glow Gradient on Hover */}
@@ -390,12 +390,12 @@ export default function PremiumTwoAgents() {
                   >
                     <Globe className="w-5 h-5 text-black" strokeWidth={2.5} />
                   </motion.div>
-                  <div className="px-3 py-1 rounded-full bg-[#E0F2FE] text-[10px] font-bold text-[#0284C7] tracking-wider uppercase">
+                  <div className="px-3 py-1 rounded-full bg-[#E0F2FE] text-[10px] font-bold text-[#FF7A5E] tracking-wider uppercase">
                     WEB AGENT
                   </div>
                 </div>
 
-                <h3 className="text-[26px] font-bold text-[#0284C7] mb-3 font-serif leading-tight">
+                <h3 className="text-[26px] font-bold text-[#FF7A5E] mb-3 font-serif leading-tight">
                   Website Conversion Agent
                 </h3>
                 <p className="text-[14px] text-[#5B6B63] leading-[1.6] mb-8">
@@ -425,12 +425,12 @@ export default function PremiumTwoAgents() {
               className="relative w-28 h-28 rounded-full flex items-center justify-center mb-4 transition-all duration-500"
               whileHover={{ scale: 1.05 }}
               style={{
-                background: isGlowing ? '#F5F3FF' : active === 'outbound' ? '#0284C7' : active === 'inbound' ? '#166534' : '#F5F3FF',
-                border: `1px solid ${isGlowing ? '#C4B5FD' : active === 'outbound' ? '#0284C7' : active === 'inbound' ? '#166534' : '#EDE9FE'}`,
+                background: isGlowing ? '#F5F3FF' : active === 'outbound' ? '#FF7A5E' : active === 'inbound' ? '#166534' : '#F5F3FF',
+                border: `1px solid ${isGlowing ? '#5EEAD4' : active === 'outbound' ? '#FF7A5E' : active === 'inbound' ? '#166534' : '#EDE9FE'}`,
                 boxShadow: isGlowing
-                  ? '0 0 50px rgba(124,58,237,0.4), 0 0 0 6px rgba(124,58,237,0.2)'
+                  ? '0 0 50px rgba(38, 179, 170,0.4), 0 0 0 6px rgba(38, 179, 170,0.2)'
                   : active === 'outbound'
-                    ? '0 12px 32px -8px rgba(2,132,199,0.5)'
+                    ? '0 12px 32px -8px rgba(255, 122, 94,0.5)'
                     : active === 'inbound'
                       ? '0 12px 32px -8px rgba(22,101,52,0.5)'
                       : '0 0 0 4px rgba(245,243,255,0.5)',

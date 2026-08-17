@@ -35,12 +35,12 @@ const CARDS = [
     {
         title: "Human-in-the-loop",
         desc: "Pause the agent in one click, take over live, auto-resume when you're done.",
-        icon: <UserCheck size={24} className="text-purple-700" strokeWidth={1.5} />,
-        bg: "bg-purple-50",
-        border: "border-purple-100",
+        icon: <UserCheck size={24} className="text-teal-700" strokeWidth={1.5} />,
+        bg: "bg-teal-50",
+        border: "border-teal-100",
         iconBg: "bg-white",
         span: "col-span-1 md:col-span-1 lg:col-span-1",
-        titleColor: "text-purple-900",
+        titleColor: "text-teal-900",
     },
     {
         title: "Secure & certified",

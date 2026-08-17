@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Brain, Zap, Target, CheckCircle2, Clock } from 'lucide-react';
 
 /* ─── ParallaxStarfield (Subtle background depth) ─────────────────── */
 export function ParallaxStarfield() {
@@ -12,7 +13,7 @@ export function ParallaxStarfield() {
   }>({ layer1: [], layer2: [] });
 
   React.useEffect(() => {
-    const palette = ['#7C3AED', '#8B5CF6', '#A78BFA', '#C4B5FD'];
+    const palette = ['#26B3AA', '#14B8A6', '#2DD4BF', '#5EEAD4'];
     const generateStars = (count: number) =>
       Array.from({ length: count }).map(() => ({
         left: `${Math.random() * 100}%`,
@@ -62,7 +63,7 @@ export function ParallaxStarfield() {
 }
 
 const EASE = [0.23, 1, 0.32, 1] as const;
-const PURPLE = '#4422AE';
+const PURPLE = '#0396A6';
 
 /* ─── Hand-Drawn Animated Two-Stroke SVG Underline Curve ────────── */
 function HandDrawnCurve() {
@@ -128,7 +129,7 @@ const INDUSTRY_DATA: IndustryConfig[] = [
     brand: 'TechMart',
     domainSuffix: '.in',
     tagline: 'Electronics & Audio Gear',
-    brandColor: '#0284C7',
+    brandColor: '#FF7A5E',
     chat: {
       q: 'Do you have these headphones in black?',
       a: 'Yes! The Sony WH-1000XM5 is available in Matte Black with same-day express delivery and 1-year official warranty.',
@@ -143,7 +144,7 @@ const INDUSTRY_DATA: IndustryConfig[] = [
     brand: 'Learnova',
     domainSuffix: '.in',
     tagline: 'Modern Tech Academy',
-    brandColor: '#2563EB',
+    brandColor: '#FF7A5E',
     chat: {
       q: 'Which course should I take for Data Science?',
       a: "For beginners, I recommend Data Science Foundations by Dr. Emily Chen (4.9★, 14.2k learners). It covers Python, statistics, and machine learning.",
@@ -263,21 +264,21 @@ function EcommerceLayout() {
       {/* Header */}
       <div style={{ background: '#0F172A', color: '#FFF', padding: '6px 12px', display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
         <div style={{ fontWeight: 800, fontSize: 12, display: 'flex', alignItems: 'center', gap: 4 }}>
-          <span style={{ color: '#0284C7' }}>⚡</span> TechMart
+          <span style={{ color: '#FF7A5E' }}>⚡</span> TechMart
         </div>
         <div style={{ flex: 1, background: '#FFFFFF', borderRadius: 4, padding: '2.5px 7px', display: 'flex', alignItems: 'center', gap: 4, maxWidth: 190 }}>
           <span style={{ color: '#94A3B8', fontSize: 7.5 }}>🔍 Search electronics...</span>
         </div>
         <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 6, fontSize: 7.5 }}>
           <span style={{ color: '#E2E8F0' }}>Deals</span>
-          <div style={{ background: '#0284C7', color: '#FFF', borderRadius: '50%', width: 14, height: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: 7 }}>
+          <div style={{ background: '#FF7A5E', color: '#FFF', borderRadius: '50%', width: 14, height: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: 7 }}>
             2
           </div>
         </div>
       </div>
 
       {/* Hero Banner */}
-      <div style={{ background: 'linear-gradient(135deg, #0284C7 0%, #0369A1 100%)', color: '#FFF', padding: '5px 12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexShrink: 0 }}>
+      <div style={{ background: 'linear-gradient(135deg, #FF7A5E 0%, #0396A6 100%)', color: '#FFF', padding: '5px 12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexShrink: 0 }}>
         <div>
           <div style={{ fontSize: 10.5, fontWeight: 800 }}>Everything you need. One smarter store.</div>
           <div style={{ fontSize: 7, opacity: 0.9 }}>Flash Sale ⏳ · Free Express 24h Shipping</div>
@@ -291,7 +292,7 @@ function EcommerceLayout() {
           <div key={p.title} style={{ background: '#FFFFFF', borderRadius: 7, border: '1px solid #E2E8F0', overflow: 'hidden', display: 'flex', flexDirection: 'column', position: 'relative', boxShadow: '0 1px 3px rgba(0,0,0,0.03)' }}>
             <div style={{ position: 'relative', flex: '1 1 auto', minHeight: 105, width: '100%', overflow: 'hidden' }}>
               <img src={p.image} alt={p.title} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
-              <div style={{ position: 'absolute', top: 4, left: 4, background: p.badge.includes('OFF') ? '#DC2626' : '#0284C7', color: '#FFF', fontSize: 6.5, fontWeight: 800, padding: '1.5px 5px', borderRadius: 2 }}>
+              <div style={{ position: 'absolute', top: 4, left: 4, background: p.badge.includes('OFF') ? '#DC2626' : '#FF7A5E', color: '#FFF', fontSize: 6.5, fontWeight: 800, padding: '1.5px 5px', borderRadius: 2 }}>
                 {p.badge}
               </div>
               <div style={{ position: 'absolute', top: 4, right: 4, background: 'rgba(0,0,0,0.65)', backdropFilter: 'blur(4px)', color: '#FFD700', fontSize: 6.5, fontWeight: 700, padding: '1.5px 5px', borderRadius: 2 }}>
@@ -308,7 +309,7 @@ function EcommerceLayout() {
                   <span style={{ fontSize: 9.5, fontWeight: 800, color: '#0F172A' }}>{p.price}</span>
                   <span style={{ fontSize: 6.5, color: '#94A3B8', textDecoration: 'line-through', marginLeft: 3 }}>{p.oldPrice}</span>
                 </div>
-                <div style={{ background: '#0284C7', color: '#FFF', padding: '2.5px 7px', borderRadius: 3, fontSize: 6.5, fontWeight: 700 }}>
+                <div style={{ background: '#FF7A5E', color: '#FFF', padding: '2.5px 7px', borderRadius: 3, fontSize: 6.5, fontWeight: 700 }}>
                   Add to Cart
                 </div>
               </div>
@@ -362,7 +363,7 @@ function EdTechLayout() {
   return (
     <div style={{ height: '100%', display: 'flex', flexDirection: 'column', background: '#F8FAFC', fontSize: 11, fontFamily: 'system-ui, sans-serif' }}>
       {/* Header */}
-      <div style={{ background: '#1E1B4B', color: '#FFF', padding: '6px 12px', display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
+      <div style={{ background: '#0A1A2F', color: '#FFF', padding: '6px 12px', display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
         <div style={{ fontWeight: 800, fontSize: 12, display: 'flex', alignItems: 'center', gap: 4 }}>
           <span style={{ color: '#38BDF8', fontSize: 13 }}>🎓</span> Learnova
         </div>
@@ -371,16 +372,16 @@ function EdTechLayout() {
           <span>Programs</span>
           <span>For Teams</span>
         </div>
-        <div style={{ marginLeft: 'auto', background: '#2563EB', color: '#FFF', padding: '2px 7px', borderRadius: 4, fontSize: 7.5, fontWeight: 700 }}>
+        <div style={{ marginLeft: 'auto', background: '#FF7A5E', color: '#FFF', padding: '2px 7px', borderRadius: 4, fontSize: 7.5, fontWeight: 700 }}>
           Explore Catalog
         </div>
       </div>
 
       {/* Hero Banner */}
-      <div style={{ background: 'linear-gradient(135deg, #1E1B4B 0%, #1E3A8A 100%)', color: '#FFF', padding: '5px 12px', flexShrink: 0, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div style={{ background: 'linear-gradient(135deg, #0A1A2F 0%, #0A1A2F 100%)', color: '#FFF', padding: '5px 12px', flexShrink: 0, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div>
           <div style={{ fontSize: 10.5, fontWeight: 800 }}>Build skills that move your career forward.</div>
-          <div style={{ fontSize: 7, color: '#93C5FD' }}>2,500+ verified courses in Data Science, AI & Fullstack</div>
+          <div style={{ fontSize: 7, color: '#FFB09F' }}>2,500+ verified courses in Data Science, AI & Fullstack</div>
         </div>
         <span style={{ background: 'rgba(255,255,255,0.12)', color: '#38BDF8', padding: '1.5px 5px', borderRadius: 3, fontSize: 6.5, fontWeight: 700 }}>
           Certified
@@ -393,7 +394,7 @@ function EdTechLayout() {
           <div key={c.title} style={{ background: '#FFFFFF', borderRadius: 7, border: '1px solid #E2E8F0', overflow: 'hidden', display: 'flex', flexDirection: 'column', position: 'relative', boxShadow: '0 1px 3px rgba(0,0,0,0.03)' }}>
             <div style={{ position: 'relative', flex: '1 1 auto', minHeight: 105, width: '100%', overflow: 'hidden' }}>
               <img src={c.image} alt={c.title} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
-              <div style={{ position: 'absolute', top: 4, left: 4, background: '#2563EB', color: '#FFF', fontSize: 6.5, fontWeight: 800, padding: '1.5px 5px', borderRadius: 2 }}>
+              <div style={{ position: 'absolute', top: 4, left: 4, background: '#FF7A5E', color: '#FFF', fontSize: 6.5, fontWeight: 800, padding: '1.5px 5px', borderRadius: 2 }}>
                 {c.badge}
               </div>
               <div style={{ position: 'absolute', top: 4, right: 4, background: 'rgba(0,0,0,0.65)', backdropFilter: 'blur(4px)', color: '#FFD700', fontSize: 6.5, fontWeight: 700, padding: '1.5px 5px', borderRadius: 2 }}>
@@ -404,7 +405,7 @@ function EdTechLayout() {
               <div style={{ fontSize: 8.5, fontWeight: 700, color: '#0F172A', lineHeight: 1.1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{c.title}</div>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <span style={{ fontSize: 6.8, color: '#64748B' }}>{c.meta}</span>
-                <span style={{ background: '#2563EB', color: '#FFF', padding: '2.5px 7px', borderRadius: 3, fontSize: 6.5, fontWeight: 700 }}>
+                <span style={{ background: '#FF7A5E', color: '#FFF', padding: '2.5px 7px', borderRadius: 3, fontSize: 6.5, fontWeight: 700 }}>
                   Start Learning
                 </span>
               </div>
@@ -577,7 +578,7 @@ function FinTechLayout() {
         <div style={{ background: '#1C2541', borderRadius: 7, border: '1px solid #2B3A67', padding: '7px 8px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span style={{ fontSize: 7.5, color: '#A0AEC0', fontWeight: 600 }}>Credit Score</span>
-            <span style={{ background: '#3B82F622', color: '#60A5FA', fontSize: 6.5, fontWeight: 800, padding: '1.5px 4px', borderRadius: 2 }}>
+            <span style={{ background: '#FF7A5E22', color: '#60A5FA', fontSize: 6.5, fontWeight: 800, padding: '1.5px 4px', borderRadius: 2 }}>
               Excellent
             </span>
           </div>
@@ -1040,7 +1041,7 @@ function FrostyIsolatedChat({
             {/* Header */}
             <div
               style={{
-                background: `linear-gradient(135deg, ${PURPLE} 0%, #5F23C8 100%)`,
+                background: `linear-gradient(135deg, ${PURPLE} 0%, #0396A6 100%)`,
                 color: '#FFFFFF',
                 padding: '9px 12px',
                 display: 'flex',
@@ -1273,7 +1274,7 @@ function FrostyIsolatedChat({
           width: 38,
           height: 38,
           borderRadius: '50%',
-          background: `linear-gradient(135deg, ${PURPLE} 0%, #5F23C8 100%)`,
+          background: `linear-gradient(135deg, ${PURPLE} 0%, #0396A6 100%)`,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -1835,9 +1836,9 @@ export default function FrostyEngineHero() {
               className="justify-center lg:justify-start"
             >
               {[
-                { icon: '🧠', label: 'Understands your business' },
-                { icon: '⚡', label: 'Replies instantly' },
-                { icon: '🎯', label: 'Converts conversations' },
+                { icon: <Brain size={14} strokeWidth={2.5} className="text-[#0396A6]" />, label: 'Understands your business' },
+                { icon: <Zap size={14} strokeWidth={2.5} className="text-[#0396A6]" />, label: 'Replies instantly' },
+                { icon: <Target size={14} strokeWidth={2.5} className="text-[#0396A6]" />, label: 'Converts conversations' },
               ].map((benefit) => (
                 <div
                   key={benefit.label}
@@ -1883,18 +1884,18 @@ export default function FrostyEngineHero() {
               className="justify-center lg:justify-start"
             >
               <span style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-                <span style={{ color: PURPLE }}>✓</span>
-                Trusted by <strong style={{ color: '#0F172A' }}>500+</strong> businesses
+                <span style={{ color: PURPLE }}><CheckCircle2 size={14} strokeWidth={2.5} /></span>
+                Trusted by <strong style={{ color: '#0A1A2F' }}>500+</strong> businesses
               </span>
               <span style={{ opacity: 0.25 }}>•</span>
               <span style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-                <span style={{ color: PURPLE }}>⚡</span>
-                <strong style={{ color: '#0F172A' }}>24/7</strong> automated
+                <span style={{ color: PURPLE }}><Zap size={14} strokeWidth={2.5} /></span>
+                <strong style={{ color: '#0A1A2F' }}>24/7</strong> automated
               </span>
               <span style={{ opacity: 0.25 }}>•</span>
               <span style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-                <span style={{ color: PURPLE }}>⏱</span>
-                Setup in <strong style={{ color: '#0F172A' }}>5 min</strong>
+                <span style={{ color: PURPLE }}><Clock size={14} strokeWidth={2.5} /></span>
+                Setup in <strong style={{ color: '#0A1A2F' }}>5 min</strong>
               </span>
             </motion.div>
           </motion.div>

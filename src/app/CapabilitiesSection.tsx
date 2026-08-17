@@ -18,11 +18,11 @@ export default function CapabilitiesSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full relative group bg-[#5F23C8]/10 border border-[#5F23C8]/25 shadow-sm"
+                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full relative group bg-[#0396A6]/10 border border-[#0396A6]/25 shadow-sm"
                             style={{ marginBottom: '2rem' }}
                         >
-                            <Settings className="w-3.5 h-3.5 text-[#5F23C8] animate-[spin_4s_linear_infinite]" />
-                            <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#5F23C8]">Under the hood</span>
+                            <Settings className="w-3.5 h-3.5 text-[#0396A6] animate-[spin_4s_linear_infinite]" />
+                            <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">Under the hood</span>
                         </motion.div>
 
                         {/* Editorial Heading */}
@@ -35,7 +35,7 @@ export default function CapabilitiesSection() {
                             style={{ marginBottom: '2rem' }}
                         >
                             Enterprise-grade.<br />
-                            <span className="text-[#5F23C8] font-bold">Engineered</span><br />
+                            <span className="text-[#0396A6] font-bold">Engineered</span><br />
                             from the ground up.
                         </motion.h2>
 
@@ -59,7 +59,7 @@ export default function CapabilitiesSection() {
                             className="flex flex-col gap-3 w-full max-w-lg"
                         >
                             <div className="flex items-center gap-3 p-3 rounded-xl bg-white/90 border border-slate-200 shadow-2xs">
-                                <div className="w-8 h-8 rounded-lg bg-purple-50 text-[#5F23C8] flex items-center justify-center shrink-0 border border-purple-100">
+                                <div className="w-8 h-8 rounded-lg bg-teal-50 text-[#0396A6] flex items-center justify-center shrink-0 border border-teal-100">
                                     <span className="text-xs font-bold font-mono">01</span>
                                 </div>
                                 <div>

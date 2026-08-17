@@ -69,11 +69,11 @@ const fragmentShader = `
     float n1 = snoise(p * 1.5 + t + uMouse * 0.3) * distort;
     float n2 = snoise(p * 2.0 - t * 1.3 + uMouse.yx * 0.2) * distort * 0.8;
 
-    // Orb 1: Soft Frost Violet (#5F23C8 / #8B5CF6)
+    // Orb 1: Soft Frost Violet (#0396A6 / #14B8A6)
     vec2 orb1Pos = vec2(-0.3 + sin(t * 0.7) * 0.15, 0.1 + cos(t * 0.5) * 0.1);
     float d1 = length(p - orb1Pos + vec2(n1, n2) * 0.3);
     float orb1 = smoothstep(0.65, 0.0, d1);
-    vec3 col1 = vec3(0.372, 0.137, 0.784); // #5F23C8
+    vec3 col1 = vec3(0.372, 0.137, 0.784); // #0396A6
 
     // Orb 2: Warm Amber Accent (#D97706)
     vec2 orb2Pos = vec2(0.25 + cos(t * 0.6) * 0.12, -0.15 + sin(t * 0.8) * 0.1);

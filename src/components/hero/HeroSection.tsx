@@ -107,7 +107,7 @@ function MiniProductCard({ color, name, price, rating }: {
       <div style={{ padding: '6px 8px 8px' }}>
         <div style={{ fontSize: 9, fontWeight: 600, color: '#1a1a2e', lineHeight: 1.3, fontFamily: "'DM Sans', sans-serif" }}>{name}</div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 3 }}>
-          <span style={{ fontSize: 9, fontWeight: 700, color: '#4422AE', fontFamily: "'DM Sans', sans-serif" }}>{price}</span>
+          <span style={{ fontSize: 9, fontWeight: 700, color: '#0396A6', fontFamily: "'DM Sans', sans-serif" }}>{price}</span>
           <span style={{ fontSize: 7, color: '#888', fontFamily: "'DM Sans', sans-serif" }}>★ {rating}</span>
         </div>
       </div>
@@ -136,7 +136,7 @@ function ChatBubble({ role, text, isTyping }: {
         lineHeight: 1.45,
         fontFamily: "'DM Sans', sans-serif",
         fontWeight: isUser ? 400 : 500,
-        background: isUser ? '#f0edf8' : '#4422AE',
+        background: isUser ? '#f0edf8' : '#0396A6',
         color: isUser ? '#2a2a3e' : '#fff',
         boxShadow: isUser
           ? '0 1px 3px rgba(0,0,0,0.04)'
@@ -307,7 +307,7 @@ function LiveProductDemo({ phase, q1Text, a1Text, q2Text, a2Text, isTypingQ1, is
           borderBottom: '1px solid rgba(0,0,0,0.04)',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-            <div style={{ width: 14, height: 14, borderRadius: 3, background: 'linear-gradient(135deg, #4422AE, #7c5fd6)' }} />
+            <div style={{ width: 14, height: 14, borderRadius: 3, background: 'linear-gradient(135deg, #0396A6, #7c5fd6)' }} />
             <span style={{ fontSize: 9, fontWeight: 700, color: '#1a1a2e', fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '-0.02em' }}>YourStore</span>
           </div>
           <div style={{ display: 'flex', gap: 12 }}>
@@ -362,7 +362,7 @@ function LiveProductDemo({ phase, q1Text, a1Text, q2Text, a2Text, isTypingQ1, is
                 bottom: 12, right: 12,
                 width: 36, height: 36,
                 borderRadius: '50%',
-                background: 'linear-gradient(135deg, #4422AE, #6644cc)',
+                background: 'linear-gradient(135deg, #0396A6, #6644cc)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 boxShadow: '0 4px 16px rgba(68,34,174,0.35)',
                 cursor: 'pointer',
@@ -411,7 +411,7 @@ function LiveProductDemo({ phase, q1Text, a1Text, q2Text, a2Text, isTypingQ1, is
               <div style={{
                 display: 'flex', alignItems: 'center', gap: 6,
                 padding: '8px 10px',
-                background: 'linear-gradient(135deg, #4422AE, #5533bb)',
+                background: 'linear-gradient(135deg, #0396A6, #5533bb)',
                 color: '#fff',
               }}>
                 <div style={{
@@ -458,7 +458,7 @@ function LiveProductDemo({ phase, q1Text, a1Text, q2Text, a2Text, isTypingQ1, is
                     display: 'flex', gap: 3,
                     padding: '6px 10px',
                     borderRadius: 10,
-                    background: '#4422AE',
+                    background: '#0396A6',
                   }}>
                     <span className="hero-typing-dot" style={{ animationDelay: '0ms' }} />
                     <span className="hero-typing-dot" style={{ animationDelay: '150ms' }} />
@@ -473,7 +473,7 @@ function LiveProductDemo({ phase, q1Text, a1Text, q2Text, a2Text, isTypingQ1, is
                     display: 'flex', gap: 3,
                     padding: '6px 10px',
                     borderRadius: 10,
-                    background: '#4422AE',
+                    background: '#0396A6',
                   }}>
                     <span className="hero-typing-dot" style={{ animationDelay: '0ms' }} />
                     <span className="hero-typing-dot" style={{ animationDelay: '150ms' }} />
@@ -498,7 +498,7 @@ function LiveProductDemo({ phase, q1Text, a1Text, q2Text, a2Text, isTypingQ1, is
                 </div>
                 <div style={{
                   width: 20, height: 20, borderRadius: '50%',
-                  background: '#4422AE', display: 'flex',
+                  background: '#0396A6', display: 'flex',
                   alignItems: 'center', justifyContent: 'center',
                 }}>
                   <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round">
@@ -659,12 +659,12 @@ export default function HeroSection() {
               fontSize: 12,
               fontWeight: 600,
               letterSpacing: '0.04em',
-              color: '#4422AE',
+              color: '#0396A6',
               fontFamily: "'DM Sans', sans-serif",
             }}>
               <span style={{
                 width: 6, height: 6, borderRadius: '50%',
-                background: '#4422AE',
+                background: '#0396A6',
                 boxShadow: '0 0 0 0 rgba(68,34,174,0.4)',
                 animation: 'hero-pulse 2.4s infinite',
               }} />
@@ -690,7 +690,7 @@ export default function HeroSection() {
           >
             Your AI agent that{' '}
             <span style={{
-              background: 'linear-gradient(135deg, #4422AE, #7c5fd6)',
+              background: 'linear-gradient(135deg, #0396A6, #7c5fd6)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -731,7 +731,7 @@ export default function HeroSection() {
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 padding: '14px 28px',
                 borderRadius: 12,
-                background: 'linear-gradient(135deg, #4422AE, #5533bb)',
+                background: 'linear-gradient(135deg, #0396A6, #5533bb)',
                 color: '#fff',
                 fontSize: 15,
                 fontWeight: 600,
@@ -756,7 +756,7 @@ export default function HeroSection() {
                 padding: '14px 28px',
                 borderRadius: 12,
                 background: 'transparent',
-                color: '#4422AE',
+                color: '#0396A6',
                 fontSize: 15,
                 fontWeight: 600,
                 fontFamily: "'DM Sans', sans-serif",

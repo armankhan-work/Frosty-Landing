@@ -5733,7 +5733,7 @@ export default function UnifiedBotDashboard({
                       className="p-8 rounded-[24px] border bg-white hover:shadow-xl transition-shadow"
                       style={{ borderColor: T.border }}
                     >
-                      <div className="w-14 h-14 rounded-[20px] bg-purple-50 text-purple-600 flex items-center justify-center mb-6">
+                      <div className="w-14 h-14 rounded-[20px] bg-teal-50 text-teal-600 flex items-center justify-center mb-6">
                         <ShieldCheck size={28} />
                       </div>
                       <h4
@@ -6020,7 +6020,7 @@ export default function UnifiedBotDashboard({
                       <div className="flex items-center gap-3 pt-4">
                         {[
                           "#000000",
-                          "#2563eb",
+                          "#FF7A5E",
                           "#16a34a",
                           "#dc2626",
                           "#9333ea",

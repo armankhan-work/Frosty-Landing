@@ -114,16 +114,16 @@ export default function LiveHandoffSection() {
           await sleep(600);
 
           animate('.fake-cursor', { scale: 0.85 }, { duration: 0.1 });
-          animate('.admin-btn', { scale: 0.96, background: 'rgba(95, 35, 200,0.3)', borderColor: 'rgba(95, 35, 200,0.5)' }, { duration: 0.1 });
+          animate('.admin-btn', { scale: 0.96, background: 'rgba(3, 150, 166,0.3)', borderColor: 'rgba(3, 150, 166,0.5)' }, { duration: 0.1 });
           await sleep(150);
 
           animate('.fake-cursor', { scale: 1 }, { duration: 0.1 });
           animate('.admin-btn', { 
             scale: 1,
-            background: 'rgba(95, 35, 200,0.15)', 
-            color: '#93C5FD', 
-            borderColor: 'rgba(95, 35, 200,0.5)',
-            boxShadow: '0 0 20px rgba(95, 35, 200,0.3)'
+            background: 'rgba(3, 150, 166,0.15)', 
+            color: '#FFB09F', 
+            borderColor: 'rgba(3, 150, 166,0.5)',
+            boxShadow: '0 0 20px rgba(3, 150, 166,0.3)'
           }, { duration: 0.2 });
           
           animate('.btn-state-takeover', { opacity: 0, display: 'none' }, { duration: 0 });
@@ -244,10 +244,10 @@ export default function LiveHandoffSection() {
               position: 'absolute', left: '50%', top: `calc(50% + ${(i - 1) * 8}px)`,
               transform: 'translate(-50%, -50%)',
               opacity: 0, display: 'none',
-              background: 'rgba(95, 35, 200,0.2)', border: '1px solid rgba(95, 35, 200,0.45)',
+              background: 'rgba(3, 150, 166,0.2)', border: '1px solid rgba(3, 150, 166,0.45)',
               borderRadius: 100, padding: i === 1 ? '4px 10px' : '3px 6px',
-              boxShadow: '0 0 16px rgba(95, 35, 200,0.35)',
-              color: '#93C5FD', fontSize: 9.5, fontWeight: 700,
+              boxShadow: '0 0 16px rgba(3, 150, 166,0.35)',
+              color: '#FFB09F', fontSize: 9.5, fontWeight: 700,
               backdropFilter: 'blur(4px)', whiteSpace: 'nowrap'
             }}>
             {i === 1 ? <span>→</span> : null}
@@ -359,10 +359,10 @@ export default function LiveHandoffSection() {
             <div style={{
               display: 'flex', alignItems: 'center', gap: 5,
               padding: '12px 16px', borderRadius: '4px 18px 18px 18px',
-              background: 'rgba(95, 35, 200,0.05)', border: '1px solid rgba(95, 35, 200,0.2)' }}>
-              <span className="typing-dot" style={{ background: '#5F23C8' }} />
-              <span className="typing-dot" style={{ background: '#5F23C8', animationDelay: '0.2s' }} />
-              <span className="typing-dot" style={{ background: '#5F23C8', animationDelay: '0.4s' }} />
+              background: 'rgba(3, 150, 166,0.05)', border: '1px solid rgba(3, 150, 166,0.2)' }}>
+              <span className="typing-dot" style={{ background: '#0396A6' }} />
+              <span className="typing-dot" style={{ background: '#0396A6', animationDelay: '0.2s' }} />
+              <span className="typing-dot" style={{ background: '#0396A6', animationDelay: '0.4s' }} />
             </div>
           </motion.div>
 
@@ -374,7 +374,7 @@ export default function LiveHandoffSection() {
               </div>
               <div style={{
                 maxWidth: '85%', padding: '10px 14px', borderRadius: '4px 18px 18px 18px',
-                background: 'rgba(95, 35, 200,0.05)', border: '1px solid rgba(95, 35, 200,0.2)',
+                background: 'rgba(3, 150, 166,0.05)', border: '1px solid rgba(3, 150, 166,0.2)',
                 fontSize: 13, color: 'var(--text-body)', lineHeight: 1.6 }}>
                 Sure! Let me pull up our enterprise options —
               </div>
@@ -407,10 +407,10 @@ export default function LiveHandoffSection() {
             fontSize: 13, color: 'var(--text-body)' }}>Type a message…</div>
           <div style={{
             width: 40, height: 40, borderRadius: 12,
-            background: 'linear-gradient(135deg, #5F23C8 0%, #2563EB 100%)',
+            background: 'linear-gradient(135deg, #0396A6 0%, #FF7A5E 100%)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             fontSize: 18, color: '#fff',
-            boxShadow: '0 4px 12px rgba(95, 35, 200,0.3)'
+            boxShadow: '0 4px 12px rgba(3, 150, 166,0.3)'
           }}>↑</div>
         </div>
       </div>
@@ -451,13 +451,13 @@ export default function LiveHandoffSection() {
                 marginBottom: 2, cursor: 'default' }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-                <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#5F23C8', display: 'inline-block', flexShrink: 0, boxShadow: '0 0 8px #5F23C8' }} />
+                <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#0396A6', display: 'inline-block', flexShrink: 0, boxShadow: '0 0 8px #0396A6' }} />
                 <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Ayush</span>
               </div>
               <motion.span className="status-ai" style={{
                 fontSize: 10, fontWeight: 800, padding: '3px 8px', borderRadius: 6,
-                background: 'rgba(95, 35, 200,0.1)', border: '1px solid rgba(95, 35, 200,0.3)',
-                color: '#93C5FD', letterSpacing: '0.05em' }}>AI AGENT</motion.span>
+                background: 'rgba(3, 150, 166,0.1)', border: '1px solid rgba(3, 150, 166,0.3)',
+                color: '#FFB09F', letterSpacing: '0.05em' }}>AI AGENT</motion.span>
               <motion.span className="status-human" style={{
                 fontSize: 10, fontWeight: 800, padding: '3px 8px', borderRadius: 6,
                 background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.4)',
@@ -480,7 +480,7 @@ export default function LiveHandoffSection() {
             {/* Bot msg (Initially hidden) */}
             <motion.div className="right-ai-msg" style={{ display: 'none', justifyContent: 'flex-end', marginTop: 12 }}>
               <div style={{ display: 'flex', gap: 8, alignItems: 'flex-end' }}>
-                <div className="status-ai" style={{ display: 'inline-block', background: 'rgba(95, 35, 200,0.1)', border: '1px solid rgba(95, 35, 200,0.3)', color: '#93C5FD', padding: '3px 8px', borderRadius: 6, fontSize: 10, fontWeight: 800 }}>AI</div>
+                <div className="status-ai" style={{ display: 'inline-block', background: 'rgba(3, 150, 166,0.1)', border: '1px solid rgba(3, 150, 166,0.3)', color: '#FFB09F', padding: '3px 8px', borderRadius: 6, fontSize: 10, fontWeight: 800 }}>AI</div>
                 <div style={{
                   maxWidth: '85%', padding: '8px 12px', borderRadius: 12, fontSize: 12.5, background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border)', color: 'var(--text-body)', lineHeight: 1.6
                 }}>

@@ -24,6 +24,7 @@ export default function GlassNavbar({ ready = true }: GlassNavbarProps) {
   const navLinks = [
     { name: 'Product', href: '/#what-is-frosty' },
     { name: 'How It Works', href: '/#how' },
+    { name: 'About', href: '/about' },
     { name: 'Pricing', href: '/#pricing' },
     { name: 'FAQ', href: '/faq' },
   ];
@@ -65,7 +66,7 @@ export default function GlassNavbar({ ready = true }: GlassNavbarProps) {
         <div className="hidden md:flex items-center gap-3">
           <Link
             href="/login"
-            className="text-[14px] lg:text-[15px] font-semibold text-stone-800 hover:text-[#5F23C8] px-4 py-2 rounded-full hover:bg-black/[0.04] transition-all duration-200"
+            className="text-[14px] lg:text-[15px] font-semibold text-stone-800 hover:text-[#0396A6] px-4 py-2 rounded-full hover:bg-black/[0.04] transition-all duration-200"
           >
             Log in
           </Link>
@@ -73,8 +74,8 @@ export default function GlassNavbar({ ready = true }: GlassNavbarProps) {
             href="/login?mode=register"
             className="inline-flex items-center justify-center text-[14px] lg:text-[15px] font-semibold !text-white px-5 py-2.5 rounded-full transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
             style={{
-              background: 'linear-gradient(135deg, #6D28D9 0%, #5F23C8 100%)',
-              boxShadow: '0 4px 14px rgba(95, 35, 200, 0.25)',
+              background: 'linear-gradient(135deg, #027D8A 0%, #0396A6 100%)',
+              boxShadow: '0 4px 14px rgba(3, 150, 166, 0.25)',
             }}
           >
             Start free trial
@@ -155,7 +156,7 @@ export default function GlassNavbar({ ready = true }: GlassNavbarProps) {
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-[16px] font-medium text-stone-800 hover:text-[#5F23C8] px-4 py-2.5 rounded-xl hover:bg-black/[0.04] transition-colors"
+                className="text-[16px] font-medium text-stone-800 hover:text-[#0396A6] px-4 py-2.5 rounded-xl hover:bg-black/[0.04] transition-colors"
               >
                 {link.name}
               </Link>
@@ -166,16 +167,16 @@ export default function GlassNavbar({ ready = true }: GlassNavbarProps) {
             <Link
               href="/login"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-[15px] font-semibold text-stone-800 hover:text-[#5F23C8] px-4 py-2.5 rounded-xl bg-black/[0.03] text-center"
+              className="text-[15px] font-semibold text-stone-800 hover:text-[#0396A6] px-4 py-2.5 rounded-xl bg-black/[0.03] text-center"
             >
               Log in
             </Link>
             <Link
               href="/login?mode=register"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-[15px] font-semibold !text-white px-4 py-2.5 rounded-xl text-center shadow-md shadow-[#5F23C8]/25 transition-transform active:scale-[0.98]"
+              className="text-[15px] font-semibold !text-white px-4 py-2.5 rounded-xl text-center shadow-md shadow-[#0396A6]/25 transition-transform active:scale-[0.98]"
               style={{
-                background: 'linear-gradient(135deg, #6D28D9 0%, #5F23C8 100%)',
+                background: 'linear-gradient(135deg, #027D8A 0%, #0396A6 100%)',
               }}
             >
               Start free trial

@@ -26,7 +26,7 @@ interface Lead {
 }
 
 const INITIAL_INTERACTIONS: Interaction[] = [
-  { id: '1', channel: 'Website', action: 'Visited pricing page', time: '10:24 AM', icon: <Globe className="w-4 h-4" />, color: 'text-[#5F23C8]', bgColor: 'bg-[#5F23C8]/10' },
+  { id: '1', channel: 'Website', action: 'Visited pricing page', time: '10:24 AM', icon: <Globe className="w-4 h-4" />, color: 'text-[#0396A6]', bgColor: 'bg-[#0396A6]/10' },
   { id: '2', channel: 'WhatsApp', action: 'Asked for bulk order discount', time: '10:26 AM', icon: <MessageCircle className="w-4 h-4" />, color: 'text-green-600', bgColor: 'bg-green-50' }
 ];
 
@@ -82,7 +82,7 @@ export default function CRMLeadIntelligenceSection() {
       
       setInteractions(prev => [
         ...prev, 
-        { id: '3', channel: 'Email', action: 'Requested proposal', time: '10:31 AM', icon: <Mail className="w-4 h-4" />, color: 'text-[#5F23C8]', bgColor: 'bg-[#5F23C8]/10' }
+        { id: '3', channel: 'Email', action: 'Requested proposal', time: '10:31 AM', icon: <Mail className="w-4 h-4" />, color: 'text-[#0396A6]', bgColor: 'bg-[#0396A6]/10' }
       ]);
       
       await wait(600);
@@ -161,17 +161,17 @@ export default function CRMLeadIntelligenceSection() {
       
       {/* Background Ambience */}
       <div className="absolute inset-0 pointer-events-none z-0 flex justify-center overflow-hidden">
-        <div className="absolute top-[-10%] right-[-10%] w-[1000px] h-[800px] bg-[#5F23C8]/5 rounded-[100%] blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[800px] h-[600px] bg-[#0284C7]/5 rounded-[100%] blur-[120px]" />
+        <div className="absolute top-[-10%] right-[-10%] w-[1000px] h-[800px] bg-[#0396A6]/5 rounded-[100%] blur-[120px]" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[800px] h-[600px] bg-[#FF7A5E]/5 rounded-[100%] blur-[120px]" />
       </div>
 
       {/* HEADER */}
       <div className="relative z-10 text-center mb-16 max-w-2xl px-6">
-        <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#5F23C8]/10 border border-[#5F23C8]/25 mb-6 shadow-sm">
-          <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#5F23C8]">CRM + Lead Intelligence</span>
+        <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#0396A6]/10 border border-[#0396A6]/25 mb-6 shadow-sm">
+          <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">CRM + Lead Intelligence</span>
         </div>
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight mb-4">
-          Know every customer. <span className="text-[#5F23C8] font-bold">Focus on the right ones.</span>
+          Know every customer. <span className="text-[#0396A6] font-bold">Focus on the right ones.</span>
         </h2>
         <p className="text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
           Frosty keeps every interaction in one place and automatically prioritizes the leads that matter most.
@@ -236,7 +236,7 @@ export default function CRMLeadIntelligenceSection() {
 
                 {/* Tabs */}
                 <div className="flex gap-6 border-b border-slate-200 mb-6 relative z-10">
-                  <div className="text-slate-900 text-[12px] font-bold pb-3 border-b-2 border-[#5F23C8]">Overview</div>
+                  <div className="text-slate-900 text-[12px] font-bold pb-3 border-b-2 border-[#0396A6]">Overview</div>
                   <div className="text-slate-500 hover:text-slate-700 text-[12px] font-semibold pb-3 cursor-pointer transition-colors">Conversations</div>
                   <div className="text-slate-500 hover:text-slate-700 text-[12px] font-semibold pb-3 cursor-pointer transition-colors">Notes</div>
                   <div className="text-slate-500 hover:text-slate-700 text-[12px] font-semibold pb-3 cursor-pointer transition-colors">Deals</div>
@@ -288,11 +288,11 @@ export default function CRMLeadIntelligenceSection() {
                         initial={{ opacity: 0, height: 0, marginTop: 0 }}
                         animate={{ opacity: 1, height: 'auto', marginTop: 24 }}
                         exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                        className="bg-[#FAF5FF] border border-[#5F23C8]/25 rounded-xl p-4 overflow-hidden relative"
+                        className="bg-[#FAF5FF] border border-[#0396A6]/25 rounded-xl p-4 overflow-hidden relative"
                       >
-                        <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#5F23C8]" />
+                        <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#0396A6]" />
                         <div className="flex items-center gap-2 mb-2 pl-2">
-                          <AlertCircle className="w-4 h-4 text-[#5F23C8]" />
+                          <AlertCircle className="w-4 h-4 text-[#0396A6]" />
                           <span className="text-slate-900 text-[12px] font-bold">AI Insight</span>
                         </div>
                         <p className="text-slate-600 text-[12px] leading-[1.6] pl-2">
@@ -305,7 +305,7 @@ export default function CRMLeadIntelligenceSection() {
                 </div>
 
                 <div className="flex gap-3 mt-8 relative z-10">
-                  <button className="flex-1 bg-[#5F23C8] hover:bg-[#4C1D95] text-white text-[12.5px] font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-sm">
+                  <button className="flex-1 bg-[#0396A6] hover:bg-[#0A1A2F] text-white text-[12.5px] font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-sm">
                     <MessageCircle className="w-4 h-4" /> Start Conversation
                   </button>
                   <button className="flex-1 bg-slate-50 border border-slate-200 hover:bg-slate-100 text-slate-800 text-[12.5px] font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
@@ -324,7 +324,7 @@ export default function CRMLeadIntelligenceSection() {
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                 <h3 className="text-slate-900 font-bold text-[15px]">Live Leads</h3>
               </div>
-              <div className="bg-purple-50 border border-[#5F23C8]/25 px-3 py-1 rounded-full text-[#5F23C8] text-[10px] font-bold tracking-wide">
+              <div className="bg-teal-50 border border-[#0396A6]/25 px-3 py-1 rounded-full text-[#0396A6] text-[10px] font-bold tracking-wide">
                 12 this hour
               </div>
             </div>
@@ -399,9 +399,9 @@ export default function CRMLeadIntelligenceSection() {
             
             <div className="flex items-center justify-between mb-8 px-2">
               <h3 className="text-slate-900 font-bold text-[15px]">Smart Lead Segregation</h3>
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#5F23C8]/10 border border-[#5F23C8]/25">
-                <span className="w-3 h-3 text-[#5F23C8]"><Flame className="w-full h-full" /></span>
-                <span className="text-[9px] text-[#5F23C8] font-bold uppercase tracking-wider">Auto prioritizing</span>
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0396A6]/10 border border-[#0396A6]/25">
+                <span className="w-3 h-3 text-[#0396A6]"><Flame className="w-full h-full" /></span>
+                <span className="text-[9px] text-[#0396A6] font-bold uppercase tracking-wider">Auto prioritizing</span>
               </div>
             </div>
 
@@ -438,7 +438,7 @@ export default function CRMLeadIntelligenceSection() {
                      <img className="w-6 h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=2" alt="avatar" />
                      <img className="w-6 h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=3" alt="avatar" />
                    </div>
-                   <div className="text-[#5F23C8] text-[10px] font-bold">+8</div>
+                   <div className="text-[#0396A6] text-[10px] font-bold">+8</div>
                 </div>
               </motion.div>
 
@@ -473,7 +473,7 @@ export default function CRMLeadIntelligenceSection() {
                      <img className="w-6 h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=5" alt="avatar" />
                      <img className="w-6 h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=6" alt="avatar" />
                    </div>
-                   <div className="text-[#5F23C8] text-[10px] font-bold">+24</div>
+                   <div className="text-[#0396A6] text-[10px] font-bold">+24</div>
                 </div>
               </motion.div>
 
@@ -496,7 +496,7 @@ export default function CRMLeadIntelligenceSection() {
                   <motion.div 
                     className="text-[32px] font-bold text-slate-900 leading-none"
                     key={coldCount}
-                    initial={{ scale: 1.3, color: '#2563EB' }}
+                    initial={{ scale: 1.3, color: '#FF7A5E' }}
                     animate={{ scale: 1, color: '#0F172A' }}
                   >
                     {coldCount}
@@ -508,7 +508,7 @@ export default function CRMLeadIntelligenceSection() {
                      <img className="w-6 h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=8" alt="avatar" />
                      <img className="w-6 h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=9" alt="avatar" />
                    </div>
-                   <div className="text-[#5F23C8] text-[10px] font-bold">+42</div>
+                   <div className="text-[#0396A6] text-[10px] font-bold">+42</div>
                 </div>
               </motion.div>
 

@@ -51,7 +51,7 @@ export default function IsometricPlatformSection() {
             UNDER THE HOOD · ARCHITECTURE
           </div>
           <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
-            Engineered for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5F23C8] via-[#5F23C8] to-[#5F23C8]">Enterprise AI Performance</span>
+            Engineered for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0396A6] via-[#0396A6] to-[#0396A6]">Enterprise AI Performance</span>
           </h2>
           <p className="text-slate-400 text-base md:text-lg leading-relaxed">
             Every request flows through a purpose-built AI architecture that crawls, understands, retrieves, and reasons before generating accurate responses.
@@ -118,13 +118,13 @@ export default function IsometricPlatformSection() {
 
           {/* Tile 4: Security & Compliance */}
           <div 
-            className="md:col-span-2 rounded-3xl p-8 bg-slate-950/70 border border-white/10 hover:border-indigo-500/30 transition-all duration-300 relative overflow-hidden backdrop-blur-xl group"
+            className="md:col-span-2 rounded-3xl p-8 bg-slate-950/70 border border-white/10 hover:border-slate-500/30 transition-all duration-300 relative overflow-hidden backdrop-blur-xl group"
             onMouseEnter={() => setHoveredIdx(3)}
             onMouseLeave={() => setHoveredIdx(null)}
           >
             <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
               <div>
-                <div className="w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 mb-6 group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 rounded-2xl bg-slate-500/10 border border-slate-500/30 flex items-center justify-center text-slate-400 mb-6 group-hover:scale-110 transition-transform">
                   <Shield className="w-7 h-7" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-3">Secure & ISO Certified Architecture</h3>

@@ -90,7 +90,7 @@ export function ActivityFeed() {
       case "lead": return <Zap className="w-4 h-4 text-orange-400" />;
       case "meeting": return <CheckCircle2 className="w-4 h-4 text-[#9B7FD4]" />;
       case "kb":
-      case "knowledge": return <FileText className="w-4 h-4 text-purple-400" />;
+      case "knowledge": return <FileText className="w-4 h-4 text-teal-400" />;
       case "handoff": return <User className="w-4 h-4 text-red-400" />;
       case "alert": return <AlertCircle className="w-4 h-4 text-amber-400" />;
       default: return <Shield className="w-4 h-4 text-primary" />;
