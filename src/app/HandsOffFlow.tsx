@@ -50,7 +50,7 @@ export default function HandsOffFlow({ onComplete }: { onComplete?: () => void }
 
             {/* Node: Website (top right) */}
             <motion.g initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.4, type: 'spring' }}>
-              <circle cx="400" cy="80" r="24" fill="#FAF5FF" stroke="#0396A6" strokeWidth="1.5" />
+              <circle cx="400" cy="80" r="24" fill="#F0FDFA" stroke="#0396A6" strokeWidth="1.5" />
               <foreignObject x="388" y="68" width="24" height="24" className="overflow-visible pointer-events-none">
                 <div className="w-6 h-6 flex items-center justify-center text-[#0396A6]">
                   <Globe className="w-5 h-5" strokeWidth={1.75} />
@@ -60,7 +60,7 @@ export default function HandsOffFlow({ onComplete }: { onComplete?: () => void }
 
             {/* Node: Brain (bottom right) */}
             <motion.g initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.6, type: 'spring' }}>
-              <circle cx="400" cy="380" r="24" fill="#FAF5FF" stroke="#14B8A6" strokeWidth="1.5" />
+              <circle cx="400" cy="380" r="24" fill="#F0FDFA" stroke="#14B8A6" strokeWidth="1.5" />
               <foreignObject x="388" y="368" width="24" height="24" className="overflow-visible pointer-events-none">
                 <div className="w-6 h-6 flex items-center justify-center text-[#14B8A6]">
                   <Brain className="w-5 h-5" strokeWidth={1.75} />

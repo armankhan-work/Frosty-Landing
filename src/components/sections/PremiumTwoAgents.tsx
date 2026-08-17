@@ -305,7 +305,7 @@ export default function PremiumTwoAgents() {
             One <span className="relative">
               <span className="relative z-10 italic text-[#26B3AA]">conversation.</span>
               <motion.div
-                className="absolute bottom-1 left-0 right-0 h-3 bg-[#EDE9FE] -z-10 rounded-sm"
+                className="absolute bottom-1 left-0 right-0 h-3 bg-[#CCFBF1] -z-10 rounded-sm"
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
@@ -425,8 +425,8 @@ export default function PremiumTwoAgents() {
               className="relative w-28 h-28 rounded-full flex items-center justify-center mb-4 transition-all duration-500"
               whileHover={{ scale: 1.05 }}
               style={{
-                background: isGlowing ? '#F5F3FF' : active === 'outbound' ? '#FF7A5E' : active === 'inbound' ? '#166534' : '#F5F3FF',
-                border: `1px solid ${isGlowing ? '#5EEAD4' : active === 'outbound' ? '#FF7A5E' : active === 'inbound' ? '#166534' : '#EDE9FE'}`,
+                background: isGlowing ? '#F0FDFA' : active === 'outbound' ? '#FF7A5E' : active === 'inbound' ? '#166534' : '#F0FDFA',
+                border: `1px solid ${isGlowing ? '#5EEAD4' : active === 'outbound' ? '#FF7A5E' : active === 'inbound' ? '#166534' : '#CCFBF1'}`,
                 boxShadow: isGlowing
                   ? '0 0 50px rgba(38, 179, 170,0.4), 0 0 0 6px rgba(38, 179, 170,0.2)'
                   : active === 'outbound'

@@ -27,7 +27,7 @@ const DX_STATS = [["CONVERSATIONS", "214", "sessions"], ["MESSAGES", "1,480", "e
 ["LEADS", "96", "captured"], ["CONVERSION", "45%", "lead rate"],
 ["AVG/SESSION", "6.9", "messages"], ["PEAK HOUR", "7pm", "Tue busiest"]];
 const DX_TOPICS: [string, number, string][] = [["Pricing", 11, "#0396A6"], ["Delivery", 9, "#0396A6"], ["Booking", 6, "#FFB09F"],
-["Sizing", 6, "#2DD4BF"], ["Warranty", 5, "#5EEAD4"], ["Other", 3, "#DDD6FE"]];
+["Sizing", 6, "#2DD4BF"], ["Warranty", 5, "#5EEAD4"], ["Other", 3, "#99F6E4"]];
 const DX_SESSIONS = [["A7", "Visitor #a7f2", "Could you share your email so we can stay in touch?", "03:19 PM"],
 ["4C", "Visitor #4c1a", "Do you deliver to Pune?", "02:59 PM"],
 ["9B", "Visitor #9be3", "What is included in the package?", "01:06 PM"],

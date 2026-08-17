@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import BrandLogo from '@/app/BrandLogo';
+import BrandLogo from '@/components/BrandLogo';
 
 interface GlassNavbarProps {
   ready?: boolean;
@@ -27,12 +27,13 @@ export default function GlassNavbar({ ready = true }: GlassNavbarProps) {
     { name: 'About', href: '/about' },
     { name: 'Pricing', href: '/#pricing' },
     { name: 'FAQ', href: '/faq' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full transition-colors duration-300">
       <nav
-        className="w-full flex items-center justify-between px-6 sm:px-8 md:px-12 lg:px-16 py-4 md:py-5 relative"
+        className="w-full flex items-center justify-between px-4 md:px-6 lg:px-8 py-2.5 md:py-3 relative"
         style={{
           background: 'transparent',
           backdropFilter: 'blur(8px)',
@@ -41,16 +42,18 @@ export default function GlassNavbar({ ready = true }: GlassNavbarProps) {
         }}
       >
         {/* ── Left: Brand Logo ── */}
+        <div className="flex flex-1 justify-start">
         <Link
           href="/"
           className="flex items-center group cursor-pointer focus:outline-none"
           aria-label="Frosty Homepage"
         >
           <BrandLogo ready={ready} />
-        </Link>
+          </Link>
+        </div>
 
         {/* ── Center: Desktop Navigation Links ── */}
-        <div className="hidden md:flex items-center gap-1 lg:gap-2">
+        <div className="hidden md:flex flex-none items-center justify-center gap-1 lg:gap-2">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -63,7 +66,7 @@ export default function GlassNavbar({ ready = true }: GlassNavbarProps) {
         </div>
 
         {/* ── Right: Auth & CTA Buttons ── */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex flex-1 justify-end items-center gap-3">
           <Link
             href="/login"
             className="text-[14px] lg:text-[15px] font-semibold text-stone-800 hover:text-[#0396A6] px-4 py-2 rounded-full hover:bg-black/[0.04] transition-all duration-200"

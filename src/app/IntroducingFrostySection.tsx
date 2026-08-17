@@ -529,7 +529,7 @@ export default function IntroducingFrostySection() {
                                     transition={burstActive ? { duration: 0.4, ease: "easeOut" } : { duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
                                 >
                                     <div 
-                                        className="absolute w-[105px] h-[105px] rounded-full bg-gradient-to-br from-white via-[#FAF5FF] to-[#EDE9FE] border border-slate-100 flex items-center justify-center cursor-pointer shadow-inner"
+                                        className="absolute w-[105px] h-[105px] rounded-full bg-gradient-to-br from-white via-[#F0FDFA] to-[#CCFBF1] border border-slate-100 flex items-center justify-center cursor-pointer shadow-inner"
                                         onClick={handleCoreClick}
                                     >
                                         <motion.div

@@ -50,7 +50,7 @@ function SidebarIcon({ type, active }: { type: string; active?: boolean }) {
 
 function DashboardPanel() {
   return (
-    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-[#F8F5FF] overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
+    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-[#F0FDFA] overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
       <div className="px-4 sm:px-6 pt-5 pb-3 shrink-0 flex items-start justify-between">
         <div>
           <h2 className="text-[22px] font-serif font-bold !text-slate-900">Dashboard Overview</h2>
@@ -64,8 +64,8 @@ function DashboardPanel() {
       <div className="flex-1 px-4 sm:px-6 pb-5 overflow-y-auto flex flex-col gap-4 min-w-0">
         {/* KPI Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <div className="bg-white rounded-[14px] p-3 border border-[#F0E7FF] shadow-[0_2px_10px_rgba(139,92,246,0.03)] flex flex-col justify-between h-[86px]">
-            <div className="w-6 h-6 rounded-md bg-[#F3E8FF] text-[#14B8A6] flex items-center justify-center shrink-0 mb-1">
+          <div className="bg-white rounded-[14px] p-3 border border-[#CCFBF1] shadow-[0_2px_10px_rgba(3, 150, 166,0.03)] flex flex-col justify-between h-[86px]">
+            <div className="w-6 h-6 rounded-md bg-[#CCFBF1] text-[#14B8A6] flex items-center justify-center shrink-0 mb-1">
               <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
             </div>
             <div>
@@ -74,7 +74,7 @@ function DashboardPanel() {
             </div>
           </div>
           
-          <div className="bg-white rounded-[14px] p-3 border border-[#F0E7FF] shadow-[0_2px_10px_rgba(139,92,246,0.03)] flex flex-col justify-between h-[86px]">
+          <div className="bg-white rounded-[14px] p-3 border border-[#CCFBF1] shadow-[0_2px_10px_rgba(3, 150, 166,0.03)] flex flex-col justify-between h-[86px]">
             <div className="w-6 h-6 rounded-md bg-[#FEF3C7] text-[#F59E0B] flex items-center justify-center shrink-0 mb-1">
               <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
             </div>
@@ -84,8 +84,8 @@ function DashboardPanel() {
             </div>
           </div>
           
-          <div className="bg-white rounded-[14px] p-3 border border-[#F0E7FF] shadow-[0_2px_10px_rgba(139,92,246,0.03)] flex flex-col justify-between h-[86px]">
-            <div className="w-6 h-6 rounded-md bg-[#F3E8FF] text-[#14B8A6] flex items-center justify-center shrink-0 mb-1">
+          <div className="bg-white rounded-[14px] p-3 border border-[#CCFBF1] shadow-[0_2px_10px_rgba(3, 150, 166,0.03)] flex flex-col justify-between h-[86px]">
+            <div className="w-6 h-6 rounded-md bg-[#CCFBF1] text-[#14B8A6] flex items-center justify-center shrink-0 mb-1">
               <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></svg>
             </div>
             <div>
@@ -94,7 +94,7 @@ function DashboardPanel() {
             </div>
           </div>
           
-          <div className="bg-white rounded-[14px] p-3 border border-[#F0E7FF] shadow-[0_2px_10px_rgba(139,92,246,0.03)] flex flex-col justify-between h-[86px]">
+          <div className="bg-white rounded-[14px] p-3 border border-[#CCFBF1] shadow-[0_2px_10px_rgba(3, 150, 166,0.03)] flex flex-col justify-between h-[86px]">
             <div className="flex justify-between items-start">
                <div className="w-6 h-6 rounded-md bg-[#FFEDD5] text-[#F97316] flex items-center justify-center shrink-0">
                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="6" width="20" height="12" rx="2" /><circle cx="12" cy="12" r="2" /><path d="M6 12h.01M18 12h.01" /></svg>
@@ -116,9 +116,9 @@ function DashboardPanel() {
              <svg className="w-4 h-4 text-[#14B8A6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 20V10M12 20V4M6 20v-6" /></svg>
              Custom Analytics Charts
            </h3>
-           <div className="bg-white rounded-[14px] p-4 border border-[#F0E7FF] shadow-[0_2px_10px_rgba(139,92,246,0.03)] flex-1 flex flex-col min-h-[140px]">
+           <div className="bg-white rounded-[14px] p-4 border border-[#CCFBF1] shadow-[0_2px_10px_rgba(3, 150, 166,0.03)] flex-1 flex flex-col min-h-[140px]">
               <h4 className="text-[11px] font-serif font-bold !text-slate-900 mb-3">Conversation Volume</h4>
-              <div className="flex-1 relative border-l border-b border-[#F3E8FF] flex items-end overflow-hidden pb-1">
+              <div className="flex-1 relative border-l border-b border-[#CCFBF1] flex items-end overflow-hidden pb-1">
                 {/* Y Axis labels */}
                 <div className="absolute left-[-16px] top-0 bottom-0 flex flex-col justify-between text-[8px] font-medium !text-slate-400 py-1">
                   <span>8</span>
@@ -214,7 +214,7 @@ function AnalyticsPanelV2() {
   const data = ANALYTICS_DATA[timeFilter];
 
   return (
-    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-[#F8F5FF] overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
+    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-[#F0FDFA] overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
       <div className="px-4 sm:px-6 pt-5 pb-3 shrink-0">
         <h2 className="text-[22px] font-serif font-bold !text-slate-900">Analytics</h2>
         <p className="text-[11px] font-medium !text-slate-500">Real-time insights and metrics</p>
@@ -222,10 +222,10 @@ function AnalyticsPanelV2() {
 
       <div className="flex-1 px-4 sm:px-6 pb-5 overflow-y-auto flex flex-col gap-4 min-w-0">
         {/* Top Hero Metrics Card (Now exactly 4 metrics) */}
-        <div className="bg-white rounded-[14px] border border-[#F0E7FF] shadow-[0_2px_10px_rgba(139,92,246,0.03)] p-4 flex flex-col gap-4">
-           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0 pb-3 border-b border-[#F0E7FF]">
+        <div className="bg-white rounded-[14px] border border-[#CCFBF1] shadow-[0_2px_10px_rgba(3, 150, 166,0.03)] p-4 flex flex-col gap-4">
+           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0 pb-3 border-b border-[#CCFBF1]">
              <div className="flex items-center gap-2">
-               <div className="w-7 h-7 rounded bg-[#F3E8FF] text-[#14B8A6] flex items-center justify-center shadow-sm">
+               <div className="w-7 h-7 rounded bg-[#CCFBF1] text-[#14B8A6] flex items-center justify-center shadow-sm">
                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 20V10M12 20V4M6 20v-6" /></svg>
                </div>
                <div>
@@ -252,7 +252,7 @@ function AnalyticsPanelV2() {
            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-2">
              <div className="flex flex-col items-start justify-center">
                <div className="flex items-center gap-1.5 mb-1">
-                 <div className="w-5 h-5 rounded bg-[#F3E8FF] text-[#14B8A6] flex items-center justify-center"><svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg></div>
+                 <div className="w-5 h-5 rounded bg-[#CCFBF1] text-[#14B8A6] flex items-center justify-center"><svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg></div>
                  <p className="text-[7px] font-bold !text-slate-500 uppercase tracking-wider">Conversations</p>
                </div>
                <p className="text-[18px] font-extrabold !text-slate-900 leading-none mb-0.5 mt-0.5"><CountUp to={data.kpi.conv} key={data.kpi.conv} /></p>
@@ -260,7 +260,7 @@ function AnalyticsPanelV2() {
              </div>
              <div className="flex flex-col items-start justify-center">
                <div className="flex items-center gap-1.5 mb-1">
-                 <div className="w-5 h-5 rounded bg-[#F3E8FF] text-[#14B8A6] flex items-center justify-center"><svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="3" y="11" width="18" height="10" rx="2" /><circle cx="12" cy="5" r="2" /><path d="M12 7v4" /><line x1="8" y1="16" x2="8" y2="16" /><line x1="16" y1="16" x2="16" y2="16" /></svg></div>
+                 <div className="w-5 h-5 rounded bg-[#CCFBF1] text-[#14B8A6] flex items-center justify-center"><svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="3" y="11" width="18" height="10" rx="2" /><circle cx="12" cy="5" r="2" /><path d="M12 7v4" /><line x1="8" y1="16" x2="8" y2="16" /><line x1="16" y1="16" x2="16" y2="16" /></svg></div>
                  <p className="text-[7px] font-bold !text-slate-500 uppercase tracking-wider">Messages</p>
                </div>
                <p className="text-[18px] font-extrabold !text-slate-900 leading-none mb-0.5 mt-0.5"><CountUp to={data.kpi.msg} key={data.kpi.msg} /></p>
@@ -268,7 +268,7 @@ function AnalyticsPanelV2() {
              </div>
              <div className="flex flex-col items-start justify-center">
                <div className="flex items-center gap-1.5 mb-1">
-                 <div className="w-5 h-5 rounded bg-[#F3E8FF] text-[#14B8A6] flex items-center justify-center"><svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg></div>
+                 <div className="w-5 h-5 rounded bg-[#CCFBF1] text-[#14B8A6] flex items-center justify-center"><svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg></div>
                  <p className="text-[7px] font-bold !text-slate-500 uppercase tracking-wider">Leads</p>
                </div>
                <p className="text-[18px] font-extrabold !text-slate-900 leading-none mb-0.5 mt-0.5"><CountUp to={data.kpi.leads} key={data.kpi.leads} /></p>
@@ -286,7 +286,7 @@ function AnalyticsPanelV2() {
         </div>
 
         {/* Full Width Line Chart */}
-        <div className="flex-1 bg-white rounded-[14px] border border-[#F0E7FF] shadow-[0_2px_10px_rgba(139,92,246,0.03)] p-4 flex flex-col relative overflow-hidden min-h-[160px]">
+        <div className="flex-1 bg-white rounded-[14px] border border-[#CCFBF1] shadow-[0_2px_10px_rgba(3, 150, 166,0.03)] p-4 flex flex-col relative overflow-hidden min-h-[160px]">
           <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-2 xl:gap-0 mb-4 z-10">
              <h4 className="text-[12px] font-bold !text-slate-900">Conversations & Messages</h4>
              <div className="flex items-center gap-3 text-[9px] font-semibold !text-slate-500">
@@ -322,7 +322,7 @@ function AnalyticsPanelV2() {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 1, delay: 0.5 }}
                   d={data.fill}
-                  fill="#F3E8FF" 
+                  fill="#CCFBF1" 
                 />
                 {/* Data Dots appearing sequentially */}
                 {data.dots.map((pt, i) => (
@@ -365,13 +365,13 @@ function CalendarPanel() {
   for (let d = 1; d <= daysInMonth; d++) days.push(d);
 
   return (
-    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-[#F8F5FF] overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
-      <div className="h-[46px] sm:h-[50px] border-b border-[#F0E7FF] px-3 sm:px-5 flex items-center justify-between bg-white shrink-0">
+    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-[#F0FDFA] overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
+      <div className="h-[46px] sm:h-[50px] border-b border-[#CCFBF1] px-3 sm:px-5 flex items-center justify-between bg-white shrink-0">
         <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
           <span className="text-[13px] sm:text-[14px] font-bold !text-slate-900 truncate">Scheduled Meetings</span>
           <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#14B8A6] shrink-0" />
         </div>
-        <span className="text-[9px] sm:text-[11px] font-bold text-[#14B8A6] bg-[#F3E8FF] px-2.5 py-1 rounded-md border border-[#E9D5FF] shrink-0 shadow-sm">{currentMonth}</span>
+        <span className="text-[9px] sm:text-[11px] font-bold text-[#14B8A6] bg-[#CCFBF1] px-2.5 py-1 rounded-md border border-[#CCFBF1] shrink-0 shadow-sm">{currentMonth}</span>
       </div>
 
       <div className="flex-1 px-3 sm:px-5 py-2 sm:py-3 flex flex-col justify-between overflow-y-auto bg-transparent min-w-0">
@@ -390,7 +390,7 @@ function CalendarPanel() {
                 key={i}
                 whileHover={day ? { scale: 1.05 } : {}}
                 className={`relative text-[11px] sm:text-[12px] font-semibold h-[32px] sm:h-[34px] flex items-center justify-center rounded-lg transition-all cursor-pointer select-none
-                  ${!day ? '' : isToday ? 'bg-[#14B8A6] text-white shadow-md shadow-[#14B8A6]/30' : hasMeeting ? 'bg-[#F3E8FF] text-[#26B3AA] border border-[#E9D5FF]' : '!text-slate-700 hover:bg-white border border-transparent hover:border-slate-200 hover:shadow-sm'}
+                  ${!day ? '' : isToday ? 'bg-[#14B8A6] text-white shadow-md shadow-[#14B8A6]/30' : hasMeeting ? 'bg-[#CCFBF1] text-[#26B3AA] border border-[#CCFBF1]' : '!text-slate-700 hover:bg-white border border-transparent hover:border-slate-200 hover:shadow-sm'}
                 `}
               >
                 {day}
@@ -402,14 +402,14 @@ function CalendarPanel() {
           })}
         </div>
 
-        <div className="pt-3 border-t border-[#F0E7FF] mt-2">
+        <div className="pt-3 border-t border-[#CCFBF1] mt-2">
           <p className="text-[9px] font-bold !text-slate-500 uppercase tracking-wider mb-2">Upcoming Meetings</p>
           <div className="flex flex-col sm:grid sm:grid-cols-2 gap-2">
             {[
               { time: '10:00 AM', title: 'Demo - Acme Corp', color: '#14B8A6' },
               { time: '2:30 PM', title: 'Follow-up - GrowthLabs', color: '#F59E0B' },
             ].map((m, i) => (
-              <div key={i} className="flex items-center gap-2 p-2 bg-white rounded-lg border border-[#F0E7FF] shadow-[0_2px_4px_rgba(0,0,0,0.02)] min-w-0">
+              <div key={i} className="flex items-center gap-2 p-2 bg-white rounded-lg border border-[#CCFBF1] shadow-[0_2px_4px_rgba(0,0,0,0.02)] min-w-0">
                 <div className="w-1 h-6 rounded-full shrink-0" style={{ background: m.color }} />
                 <div className="overflow-hidden min-w-0">
                   <p className="text-[10px] font-bold !text-slate-900 truncate leading-none">{m.title}</p>
@@ -432,7 +432,7 @@ function TeamPanel() {
   ];
 
   return (
-    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-[#F8F5FF] overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
+    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-[#F0FDFA] overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
       <div className="px-4 sm:px-6 pt-5 pb-3 shrink-0 flex items-center justify-between gap-2 overflow-hidden">
         <div className="min-w-0">
           <h2 className="text-[20px] sm:text-[22px] font-serif font-bold !text-slate-900 truncate">Team Management</h2>
@@ -450,17 +450,17 @@ function TeamPanel() {
       <div className="flex-1 px-4 sm:px-6 pb-5 flex flex-col gap-4 overflow-y-auto overflow-x-hidden min-w-0">
         {/* Stats Row */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 shrink-0">
-           <div className="bg-white rounded-[14px] p-2.5 sm:p-3 border border-[#F0E7FF] shadow-[0_2px_10px_rgba(139,92,246,0.03)] flex flex-col justify-between">
+           <div className="bg-white rounded-[14px] p-2.5 sm:p-3 border border-[#CCFBF1] shadow-[0_2px_10px_rgba(3, 150, 166,0.03)] flex flex-col justify-between">
               <p className="text-[7px] font-bold !text-slate-500 uppercase tracking-wider mb-2 truncate">Total Members</p>
               <p className="text-[18px] sm:text-[20px] font-serif font-bold !text-slate-900 leading-none mb-2"><CountUp to={4} /></p>
               <p className="text-[8px] font-bold text-[#26B3AA] flex items-center gap-1"><svg className="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg> <span className="truncate">4 active</span></p>
            </div>
-           <div className="bg-white rounded-[14px] p-2.5 sm:p-3 border border-[#F0E7FF] shadow-[0_2px_10px_rgba(139,92,246,0.03)] flex flex-col justify-between">
+           <div className="bg-white rounded-[14px] p-2.5 sm:p-3 border border-[#CCFBF1] shadow-[0_2px_10px_rgba(3, 150, 166,0.03)] flex flex-col justify-between">
               <p className="text-[7px] font-bold !text-slate-500 uppercase tracking-wider mb-2 truncate">Active Now</p>
               <p className="text-[18px] sm:text-[20px] font-serif font-bold !text-slate-900 leading-none mb-2"><CountUp to={4} /></p>
               <p className="text-[8px] font-bold text-[#F59E0B] flex items-center gap-1"><svg className="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg> <span className="truncate">4 pending invites</span></p>
            </div>
-           <div className="bg-white rounded-[14px] p-2.5 sm:p-3 border border-[#F0E7FF] shadow-[0_2px_10px_rgba(139,92,246,0.03)] flex flex-col justify-between">
+           <div className="bg-white rounded-[14px] p-2.5 sm:p-3 border border-[#CCFBF1] shadow-[0_2px_10px_rgba(3, 150, 166,0.03)] flex flex-col justify-between">
               <p className="text-[7px] font-bold !text-slate-500 uppercase tracking-wider mb-2 truncate">Roles in Use</p>
               <p className="text-[18px] sm:text-[20px] font-serif font-bold !text-slate-900 leading-none mb-2"><CountUp to={3} /></p>
               <p className="text-[8px] font-medium !text-slate-500 flex items-center gap-1"><svg className="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg> <span className="truncate">owner, agent...</span></p>
@@ -478,12 +478,12 @@ function TeamPanel() {
         </div>
 
         {/* Team Table */}
-        <div className="bg-white rounded-[14px] border border-[#F0E7FF] shadow-[0_2px_10px_rgba(139,92,246,0.03)] overflow-hidden flex-1 flex flex-col min-h-[160px] min-w-0">
-          <div className="px-3 sm:px-4 py-2 border-b border-[#F0E7FF] flex items-center justify-between bg-white overflow-hidden gap-2 shrink-0">
+        <div className="bg-white rounded-[14px] border border-[#CCFBF1] shadow-[0_2px_10px_rgba(3, 150, 166,0.03)] overflow-hidden flex-1 flex flex-col min-h-[160px] min-w-0">
+          <div className="px-3 sm:px-4 py-2 border-b border-[#CCFBF1] flex items-center justify-between bg-white overflow-hidden gap-2 shrink-0">
             <div className="flex items-center gap-2 sm:gap-4 shrink-0 min-w-0">
                <h4 className="text-[11px] sm:text-[13px] font-serif font-bold !text-slate-900">Teammates</h4>
                <div className="flex gap-1 overflow-x-auto scrollbar-hide">
-                  <span className="text-[8px] sm:text-[9px] bg-[#F3E8FF] text-[#14B8A6] font-bold px-2 py-1 rounded-full cursor-pointer whitespace-nowrap">All</span>
+                  <span className="text-[8px] sm:text-[9px] bg-[#CCFBF1] text-[#14B8A6] font-bold px-2 py-1 rounded-full cursor-pointer whitespace-nowrap">All</span>
                </div>
             </div>
             <a href="#" className="text-[8px] sm:text-[9px] font-bold text-[#26B3AA] flex items-center gap-1 hover:underline whitespace-nowrap shrink-0">
@@ -494,7 +494,7 @@ function TeamPanel() {
           <div className="flex-1 overflow-auto bg-white min-w-0">
              <table className="w-full text-left border-collapse whitespace-nowrap min-w-[500px]">
                 <thead>
-                   <tr className="border-b border-[#F0E7FF]">
+                   <tr className="border-b border-[#CCFBF1]">
                       <th className="px-3 sm:px-4 py-2 text-[7px] sm:text-[8px] font-bold !text-slate-400 uppercase tracking-wider">Name</th>
                       <th className="px-3 sm:px-4 py-2 text-[7px] sm:text-[8px] font-bold !text-slate-400 uppercase tracking-wider">Email</th>
                       <th className="px-3 sm:px-4 py-2 text-[7px] sm:text-[8px] font-bold !text-slate-400 uppercase tracking-wider">Role</th>
@@ -509,7 +509,7 @@ function TeamPanel() {
                       initial={{ opacity: 0, y: 10 }} 
                       animate={{ opacity: 1, y: 0 }} 
                       transition={{ delay: i * 0.1 }}
-                      className="border-b border-slate-50 hover:bg-[#F8F5FF] transition-colors cursor-pointer"
+                      className="border-b border-slate-50 hover:bg-[#F0FDFA] transition-colors cursor-pointer"
                     >
                       <td className="px-3 sm:px-4 py-2">
                          <div className="flex items-center gap-2 sm:gap-3">
@@ -527,7 +527,7 @@ function TeamPanel() {
                          <span className={`inline-block text-[7px] sm:text-[8px] font-bold px-2 py-0.5 rounded uppercase ${
                            u.role === 'Owner' ? 'text-[#F59E0B] bg-[#FEF3C7]' :
                            u.role === 'Agent' ? 'text-[#FF7A5E] bg-[#DBEAFE]' :
-                           'text-[#14B8A6] bg-[#F3E8FF]'
+                           'text-[#14B8A6] bg-[#CCFBF1]'
                          }`}>
                            {u.role}
                          </span>
@@ -638,8 +638,8 @@ export default function InteractiveDashboard() {
             {activeTab === 'home' && <DashboardPanel />}
             {activeTab === 'chart' && <AnalyticsPanelV2 />}
             {activeTab === 'chat' && (
-              <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-[#F8F5FF] overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
-                <div className="h-[46px] sm:h-[50px] border-b border-[#F0E7FF] px-3 sm:px-5 flex items-center justify-between bg-white shrink-0">
+              <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-[#F0FDFA] overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
+                <div className="h-[46px] sm:h-[50px] border-b border-[#CCFBF1] px-3 sm:px-5 flex items-center justify-between bg-white shrink-0">
                   <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
                     <span className="text-[13px] sm:text-[14px] font-bold !text-slate-900 truncate">New Lead</span>
                     <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#14B8A6] shrink-0" />

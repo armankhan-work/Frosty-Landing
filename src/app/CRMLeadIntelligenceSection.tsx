@@ -288,7 +288,7 @@ export default function CRMLeadIntelligenceSection() {
                         initial={{ opacity: 0, height: 0, marginTop: 0 }}
                         animate={{ opacity: 1, height: 'auto', marginTop: 24 }}
                         exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                        className="bg-[#FAF5FF] border border-[#0396A6]/25 rounded-xl p-4 overflow-hidden relative"
+                        className="bg-[#F0FDFA] border border-[#0396A6]/25 rounded-xl p-4 overflow-hidden relative"
                       >
                         <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#0396A6]" />
                         <div className="flex items-center gap-2 mb-2 pl-2">

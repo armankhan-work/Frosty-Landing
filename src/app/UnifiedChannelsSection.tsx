@@ -588,7 +588,7 @@ export default function UnifiedChannelsSection() {
            </div>
            
            <div className="p-4 flex gap-3.5">
-              <div className="w-10 h-10 rounded-full bg-[#FAF5FF] border border-[#0396A6]/20 flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-full bg-[#F0FDFA] border border-[#0396A6]/20 flex items-center justify-center shrink-0">
                  <FrostyIcon size={20} />
               </div>
               <div className="flex-1">

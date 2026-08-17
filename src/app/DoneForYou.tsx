@@ -59,7 +59,7 @@ export default function DoneForYou() {
     const renderCompactPreview = (stepIdx: number) => {
         if (stepIdx === 0) {
             return (
-                <div className="bg-[#FAF5FF] text-slate-900 rounded-xl px-3.5 h-[46px] mb-5 flex items-center justify-between text-[11px] shadow-sm border border-[#0396A6]/25 shrink-0">
+                <div className="bg-[#F0FDFA] text-slate-900 rounded-xl px-3.5 h-[46px] mb-5 flex items-center justify-between text-[11px] shadow-sm border border-[#0396A6]/25 shrink-0">
                     <div className="flex items-center gap-2 truncate pr-2">
                         <span className="flex h-2 w-2 relative shrink-0">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0396A6] opacity-75"></span>
@@ -72,7 +72,7 @@ export default function DoneForYou() {
             );
         } else if (stepIdx === 1) {
             return (
-                <div className="bg-[#FAF5FF] text-slate-900 rounded-xl px-3.5 h-[46px] mb-5 flex items-center justify-between text-[11px] shadow-sm border border-[#0396A6]/25 shrink-0">
+                <div className="bg-[#F0FDFA] text-slate-900 rounded-xl px-3.5 h-[46px] mb-5 flex items-center justify-between text-[11px] shadow-sm border border-[#0396A6]/25 shrink-0">
                     <div className="flex items-center gap-2 truncate pr-2">
                         <Sparkles className="w-3.5 h-3.5 text-[#0396A6] shrink-0" />
                         <span className="font-mono text-slate-700 truncate text-[10px] sm:text-[11px]"><strong className="text-[#0396A6] font-bold">Simulator Active:</strong> <span className="hidden sm:inline">Testing guardrails, quotes & replies</span></span>
@@ -82,7 +82,7 @@ export default function DoneForYou() {
             );
         } else {
             return (
-                <div className="bg-[#FAF5FF] text-slate-900 rounded-xl px-3.5 h-[46px] mb-5 flex items-center justify-between text-[11px] shadow-sm border border-[#0396A6]/25 shrink-0">
+                <div className="bg-[#F0FDFA] text-slate-900 rounded-xl px-3.5 h-[46px] mb-5 flex items-center justify-between text-[11px] shadow-sm border border-[#0396A6]/25 shrink-0">
                     <div className="flex items-center gap-2 truncate pr-2">
                         <Globe className="w-3.5 h-3.5 text-[#0396A6] shrink-0" />
                         <span className="font-mono text-slate-700 truncate text-[10px] sm:text-[11px]"><strong className="text-[#0396A6] font-bold">Live Omnichannel:</strong> <span className="hidden sm:inline">Active on Web Widget & WhatsApp</span></span>

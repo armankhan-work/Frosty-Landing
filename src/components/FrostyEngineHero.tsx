@@ -85,7 +85,7 @@ function HandDrawnCurve() {
         animate={{ pathLength: 1, opacity: 1 }}
         transition={{ duration: 1.3, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
         style={{
-          filter: 'drop-shadow(0 2px 8px rgba(68, 34, 174, 0.4))',
+          filter: 'drop-shadow(0 2px 8px rgba(3, 150, 166, 0.35))',
         }}
       />
       <motion.path
@@ -893,7 +893,7 @@ function DirectCursor({
               width: 14,
               height: 14,
               borderRadius: '50%',
-              background: 'rgba(68, 34, 174, 0.45)',
+              background: 'rgba(3, 150, 166, 0.45)',
             }}
           />
         )}
@@ -1033,9 +1033,9 @@ function FrostyIsolatedChat({
               background: 'rgba(255, 255, 255, 0.98)',
               backdropFilter: 'blur(24px)',
               WebkitBackdropFilter: 'blur(24px)',
-              border: '1px solid rgba(68, 34, 174, 0.18)',
+              border: '1px solid rgba(3, 150, 166, 0.18)',
               boxShadow:
-                '0 24px 60px rgba(68, 34, 174, 0.25), 0 8px 24px rgba(0,0,0,0.1)',
+                '0 24px 60px rgba(3, 150, 166, 0.25), 0 8px 24px rgba(0,0,0,0.1)',
             }}
           >
             {/* Header */}
@@ -1456,7 +1456,7 @@ function DominantInteractiveBrowser() {
           overflow: 'hidden',
           background: '#FFFFFF',
           boxShadow:
-            '0 32px 84px rgba(68, 34, 174, 0.13), 0 12px 32px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.06)',
+            '0 32px 84px rgba(3, 150, 166, 0.13), 0 12px 32px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.06)',
           position: 'relative',
         }}
       >
@@ -1657,7 +1657,7 @@ function DominantInteractiveBrowser() {
           transform: 'translate(-50%, -50%)',
           width: '120%',
           height: '120%',
-          background: 'radial-gradient(ellipse at center, rgba(68, 34, 174, 0.08) 0%, transparent 65%)',
+          background: 'radial-gradient(ellipse at center, rgba(3, 150, 166, 0.08) 0%, transparent 65%)',
           pointerEvents: 'none',
           zIndex: -1,
         }}
@@ -1690,7 +1690,7 @@ export default function FrostyEngineHero() {
           width: 950,
           height: 500,
           background:
-            'radial-gradient(ellipse at top, rgba(68, 34, 174, 0.05) 0%, rgba(196, 181, 253, 0.02) 45%, transparent 75%)',
+            'radial-gradient(ellipse at top, rgba(3, 150, 166, 0.05) 0%, rgba(196, 181, 253, 0.02) 45%, transparent 75%)',
           borderRadius: '50%',
           filter: 'blur(100px)',
           pointerEvents: 'none',
@@ -1731,8 +1731,8 @@ export default function FrostyEngineHero() {
                 fontSize: 11,
                 fontWeight: 700,
                 color: PURPLE,
-                background: 'rgba(68, 34, 174, 0.06)',
-                border: '1px solid rgba(68, 34, 174, 0.12)',
+                background: 'rgba(3, 150, 166, 0.08)',
+                border: '1px solid rgba(3, 150, 166, 0.2)',
                 padding: '4px 12px',
                 borderRadius: 999,
                 marginBottom: 16,
@@ -1751,12 +1751,10 @@ export default function FrostyEngineHero() {
                   transition: { staggerChildren: 0.1, delayChildren: 0.1 },
                 },
               }}
+              className="font-serif font-medium text-[#0F172A] tracking-tight"
               style={{
-                fontSize: 'clamp(36px, 4.8vw, 58px)',
-                fontWeight: 800,
-                lineHeight: 1.06,
-                letterSpacing: '-0.03em',
-                color: '#0F172A',
+                fontSize: 'clamp(42px, 5.5vw, 68px)',
+                lineHeight: 1.08,
                 margin: '0 0 18px',
               }}
             >
@@ -1772,7 +1770,7 @@ export default function FrostyEngineHero() {
                   },
                 }}
               >
-                Your website knows the business.
+                Your business.
               </motion.span>
               <motion.span
                 style={{ display: 'block', position: 'relative' }}
@@ -1786,7 +1784,7 @@ export default function FrostyEngineHero() {
                   },
                 }}
               >
-                Now it can{' '}
+                Now{' '}
                 <span
                   style={{
                     color: PURPLE,
@@ -1794,7 +1792,7 @@ export default function FrostyEngineHero() {
                     display: 'inline-block',
                   }}
                 >
-                  talk about it.
+                  powered by AI.
                   <HandDrawnCurve />
                 </span>
               </motion.span>
@@ -1810,11 +1808,10 @@ export default function FrostyEngineHero() {
                   transition: { duration: 0.8, delay: 0.2 },
                 },
               }}
-              className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-[44ch]"
+              className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-[48ch]"
               style={{ marginBottom: 20 }}
             >
-              Frosty Agent understands your business, answers customers in real time,
-              and turns conversations into conversions.
+              Frosty Agent understands your business, engages customers, manages leads, and takes action across every conversation — 24/7.
             </motion.p>
 
             {/* 3 Compact Capability Indicators */}
@@ -1846,8 +1843,8 @@ export default function FrostyEngineHero() {
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: 5.5,
-                    background: 'rgba(68, 34, 174, 0.04)',
-                    border: '1px solid rgba(68, 34, 174, 0.12)',
+                    background: 'rgba(3, 150, 166, 0.06)',
+                    border: '1px solid rgba(3, 150, 166, 0.18)',
                     padding: '4.5px 10.5px',
                     borderRadius: 999,
                     fontSize: 11.5,

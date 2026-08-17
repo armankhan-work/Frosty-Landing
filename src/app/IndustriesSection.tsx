@@ -25,16 +25,16 @@ function Icon({ n }: { n: string }) {
 }
 
 const HUB_ITEMS = [
-    { id: "bag", label: "E-commerce", x: 25, y: 15, desc: "Handles order tracking, returns & sizing FAQs instantly", color: "#0396A6", lightBg: "#FAF5FF" },
-    { id: "house", label: "Real estate", x: 50, y: 10, desc: "Qualifies buyers, schedules viewings & shares property brochures", color: "#0396A6", lightBg: "#FAF5FF" },
-    { id: "cross", label: "Healthcare", x: 75, y: 15, desc: "Books appointments, triage questions & clinic hours 24/7", color: "#0396A6", lightBg: "#FAF5FF" },
-    { id: "cap", label: "Education", x: 12, y: 36, desc: "Answers course queries, fee structures & application deadlines", color: "#0396A6", lightBg: "#FAF5FF" },
-    { id: "car", label: "Automobile", x: 88, y: 36, desc: "Schedules test drives, service bookings & financing queries", color: "#0396A6", lightBg: "#FAF5FF" },
-    { id: "horn", label: "Marketing", x: 12, y: 58, desc: "Qualifies agency leads, shares case studies & books calls", color: "#0396A6", lightBg: "#FAF5FF" },
-    { id: "bank", label: "Finance", x: 88, y: 58, desc: "Answers loan queries, KYC guidance & account FAQs", color: "#0396A6", lightBg: "#FAF5FF" },
-    { id: "tools", label: "Home services", x: 24, y: 74, desc: "Dispatches technicians, provides instant quotes & books jobs", color: "#0396A6", lightBg: "#FAF5FF" },
-    { id: "plane", label: "Travel", x: 50, y: 76, desc: "Handles flight/hotel bookings, vacation itineraries & support 24/7", color: "#0396A6", lightBg: "#FAF5FF" },
-    { id: "scales", label: "Legal", x: 76, y: 74, desc: "Collects case details, qualifies retainers & schedules consultations", color: "#0396A6", lightBg: "#FAF5FF" },
+    { id: "bag", label: "E-commerce", x: 25, y: 15, desc: "Handles order tracking, returns & sizing FAQs instantly", color: "#0396A6", lightBg: "#F0FDFA" },
+    { id: "house", label: "Real estate", x: 50, y: 10, desc: "Qualifies buyers, schedules viewings & shares property brochures", color: "#0396A6", lightBg: "#F0FDFA" },
+    { id: "cross", label: "Healthcare", x: 75, y: 15, desc: "Books appointments, triage questions & clinic hours 24/7", color: "#0396A6", lightBg: "#F0FDFA" },
+    { id: "cap", label: "Education", x: 12, y: 36, desc: "Answers course queries, fee structures & application deadlines", color: "#0396A6", lightBg: "#F0FDFA" },
+    { id: "car", label: "Automobile", x: 88, y: 36, desc: "Schedules test drives, service bookings & financing queries", color: "#0396A6", lightBg: "#F0FDFA" },
+    { id: "horn", label: "Marketing", x: 12, y: 58, desc: "Qualifies agency leads, shares case studies & books calls", color: "#0396A6", lightBg: "#F0FDFA" },
+    { id: "bank", label: "Finance", x: 88, y: 58, desc: "Answers loan queries, KYC guidance & account FAQs", color: "#0396A6", lightBg: "#F0FDFA" },
+    { id: "tools", label: "Home services", x: 24, y: 74, desc: "Dispatches technicians, provides instant quotes & books jobs", color: "#0396A6", lightBg: "#F0FDFA" },
+    { id: "plane", label: "Travel", x: 50, y: 76, desc: "Handles flight/hotel bookings, vacation itineraries & support 24/7", color: "#0396A6", lightBg: "#F0FDFA" },
+    { id: "scales", label: "Legal", x: 76, y: 74, desc: "Collects case details, qualifies retainers & schedules consultations", color: "#0396A6", lightBg: "#F0FDFA" },
 ];
 
 function RadialIndustryHub() {

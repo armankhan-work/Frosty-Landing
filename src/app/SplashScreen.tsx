@@ -79,7 +79,7 @@ function drawSnowflake(cx: CanvasRenderingContext2D, x: number, y: number, size:
     cx.stroke();
   });
   const cg = cx.createRadialGradient(0, 0, 0, 0, 0, size * .08);
-  cg.addColorStop(0, '#ffffff'); cg.addColorStop(.4, '#DDD6FE'); cg.addColorStop(1, '#0396A6');
+  cg.addColorStop(0, '#ffffff'); cg.addColorStop(.4, '#99F6E4'); cg.addColorStop(1, '#0396A6');
   cx.beginPath(); cx.arc(0, 0, size * .065, 0, Math.PI * 2);
   cx.fillStyle = cg; cx.fill();
   cx.restore();

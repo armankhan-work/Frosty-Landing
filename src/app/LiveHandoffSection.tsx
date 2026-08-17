@@ -263,9 +263,9 @@ export default function LiveHandoffSection() {
               position: 'absolute', left: '50%', top: `calc(50% + ${(i - 1) * 8}px)`,
               transform: 'translate(-50%, -50%)',
               opacity: 0, display: 'none',
-              background: 'rgba(99,102,241,0.2)', border: '1px solid rgba(99,102,241,0.45)',
+              background: 'rgba(3, 150, 166,0.2)', border: '1px solid rgba(3, 150, 166,0.45)',
               borderRadius: 100, padding: i === 1 ? '4px 10px' : '3px 6px',
-              boxShadow: '0 0 16px rgba(99,102,241,0.35)',
+              boxShadow: '0 0 16px rgba(3, 150, 166,0.35)',
               color: '#A5B4FC', fontSize: 9.5, fontWeight: 700,
               backdropFilter: 'blur(4px)', whiteSpace: 'nowrap'
             }}>
@@ -384,10 +384,10 @@ export default function LiveHandoffSection() {
           {/* Admin bubble (Pushed left) */}
           <motion.div className="admin-msg-left" style={{ opacity: 0, display: 'none', justifyContent: 'flex-start', marginBottom: 16 }}>
             <div style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
-              <div style={{ width: 28, height: 28, borderRadius: 8, background: 'rgba(99,102,241,0.15)', border: '1px solid rgba(99,102,241,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, flexShrink: 0, color: '#A5B4FC', fontWeight: 700 }}>R</div>
+              <div style={{ width: 28, height: 28, borderRadius: 8, background: 'rgba(3, 150, 166,0.15)', border: '1px solid rgba(3, 150, 166,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, flexShrink: 0, color: '#A5B4FC', fontWeight: 700 }}>R</div>
               <div style={{
                 maxWidth: '85%', padding: '10px 14px', borderRadius: '4px 18px 18px 18px',
-                background: 'rgba(99,102,241,0.05)', border: '1px solid rgba(99,102,241,0.3)',
+                background: 'rgba(3, 150, 166,0.05)', border: '1px solid rgba(3, 150, 166,0.3)',
                 fontSize: 13, color: '#A5B4FC', lineHeight: 1.6 }}>
                 Hi! I'm handling this personally. Let's talk enterprise—what's your team size?
               </div>
@@ -493,9 +493,9 @@ export default function LiveHandoffSection() {
             <motion.div className="admin-badge" style={{
               display: 'none', alignItems: 'center', gap: 10,
               padding: '10px 20px', borderRadius: 12,
-              background: 'rgba(99,102,241,0.15)', border: '1px solid rgba(99,102,241,0.4)',
+              background: 'rgba(3, 150, 166,0.15)', border: '1px solid rgba(3, 150, 166,0.4)',
               fontSize: 12, fontWeight: 700, color: '#A5B4FC',
-              alignSelf: 'center', boxShadow: '0 0 20px rgba(99,102,241,0.1)'
+              alignSelf: 'center', boxShadow: '0 0 20px rgba(3, 150, 166,0.1)'
             }}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
@@ -510,7 +510,7 @@ export default function LiveHandoffSection() {
 
             {/* Admin msg */}
             <motion.div className="admin-msg-right" style={{ display: 'none', justifyContent: 'flex-end' }}>
-              <div style={{ maxWidth: '85%', padding: '8px 12px', borderRadius: 12, fontSize: 12.5, background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.3)', color: '#A5B4FC', lineHeight: 1.6 }}>
+              <div style={{ maxWidth: '85%', padding: '8px 12px', borderRadius: 12, fontSize: 12.5, background: 'rgba(3, 150, 166,0.1)', border: '1px solid rgba(3, 150, 166,0.3)', color: '#A5B4FC', lineHeight: 1.6 }}>
                 Hi! I'm handling this personally. Let's talk enterprise—what's your team size?
               </div>
             </motion.div>

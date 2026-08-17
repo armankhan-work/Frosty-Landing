@@ -138,7 +138,7 @@ export function TubesBackground({
             },
             lights: {
               intensity: 220,
-              colors: ["#FFFFFF", "#DDD6FE", "#FFFFFF", "#5EEAD4"]
+              colors: ["#FFFFFF", "#99F6E4", "#FFFFFF", "#5EEAD4"]
             },
             lerp: 0.5,
             noise: 0.05
@@ -180,7 +180,7 @@ export function TubesBackground({
   const handleClick = () => {
     if (!enableClickInteraction || !tubesRef.current) return;
     tubesRef.current.tubes.setColors(["#027D8A", "#027D8A", "#027D8A"]);
-    tubesRef.current.tubes.setLightsColors(["#FFFFFF", "#DDD6FE", "#FFFFFF", "#5EEAD4"]);
+    tubesRef.current.tubes.setLightsColors(["#FFFFFF", "#99F6E4", "#FFFFFF", "#5EEAD4"]);
   };
 
   return (

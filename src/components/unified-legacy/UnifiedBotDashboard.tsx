@@ -6023,7 +6023,7 @@ export default function UnifiedBotDashboard({
                           "#FF7A5E",
                           "#16a34a",
                           "#dc2626",
-                          "#9333ea",
+                          "#0396A6",
                           "#ea580c",
                         ].map((c) => (
                           <button

@@ -159,39 +159,39 @@ function TypewriterUnderlined({
 /* ─── Timeline Data ─── */
 const TIMELINE_EVENTS = [
   {
-    year: '2021',
+    year: 'Feb 2026',
     badge: 'Foundation',
-    title: 'Inception & Core R&D',
-    description: 'Founded Frostrek to eliminate operational bottlenecks with custom enterprise AI architectures.',
+    title: 'Inception & Core Architecture',
+    description: 'Conceived Frosty to solve high-velocity sales qualification with specialized multi-agent swarms.',
     icon: <Sparkles className="w-4 h-4 text-[#0396A6]" />,
   },
   {
-    year: '2023',
+    year: 'Q1 2026',
     badge: 'Core Engine',
-    title: 'Multi-Agent Framework',
-    description: 'Engineered sub-second parallel reasoning engines with strict zero-hallucination guardrails.',
+    title: 'Autonomous Reasoning & RAG Mesh',
+    description: 'Engineered sub-second contextual response engine with tenant-isolated data guardrails.',
     icon: <Workflow className="w-4 h-4 text-[#0396A6]" />,
   },
   {
-    year: '2025',
-    badge: 'Milestone',
-    title: 'First Deployments',
-    description: 'Deployed autonomous agent platforms for high-growth commercial brands and enterprise partners.',
+    year: 'Present',
+    badge: 'Active Building',
+    title: 'Capability Expansion & Integrations',
+    description: 'Actively extending omnichannel sync (WhatsApp, Web, CRM), dynamic scheduling, and smart lead routing.',
+    icon: <Layers className="w-4 h-4 text-[#0396A6]" />,
+  },
+  {
+    year: 'Next',
+    badge: 'Upcoming',
+    title: 'Private Beta & Pilot Program',
+    description: 'Rolling out targeted pilot deployments with select enterprise partners to fine-tune conversation conversion.',
     icon: <Building2 className="w-4 h-4 text-[#0396A6]" />,
   },
   {
-    year: '2025',
-    badge: 'Expansion',
-    title: 'Global Presence & Frosty Launch',
-    description: 'Expanded across US, UK & India, officially launching Frosty for turn-key sales automation.',
+    year: 'Roadmap',
+    badge: 'Future Horizon',
+    title: 'Public Launch & Global Scale',
+    description: 'General availability rollout, self-serve onboarding, voice agent workflows, and global cloud clusters.',
     icon: <Globe className="w-4 h-4 text-[#0396A6]" />,
-  },
-  {
-    year: '2026+',
-    badge: 'Next Horizon',
-    title: 'Autonomous Ecosystems',
-    description: 'Scaling real-time voice agents and self-updating business knowledge graphs globally.',
-    icon: <Cpu className="w-4 h-4 text-[#0396A6]" />,
   },
 ];
 
@@ -497,7 +497,67 @@ export default function AboutPage() {
         </section>
 
         {/* ══════════════════════════════════════════════════════════════════
-            SECTION 2: ABOUT FROSTREK (THE COMPANY & STORY)
+            SECTION 2: FROSTY'S JOURNEY: VERTICAL TIMELINE
+        ══════════════════════════════════════════════════════════════════ */}
+        <section id="our-journey" className="px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto mb-28 md:mb-36 scroll-mt-24">
+          <div className="text-center max-w-2xl mx-auto mb-14 flex flex-col items-center">
+            <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6] flex items-center justify-center mb-3.5 before:content-[''] before:inline-block before:w-[18px] before:h-[1.5px] before:bg-current before:opacity-45 before:mr-[8px] after:content-[''] after:inline-block after:w-[18px] after:h-[1.5px] after:bg-current after:opacity-45 after:ml-[8px]">
+              PRODUCT EVOLUTION
+            </span>
+            <KineticBlurHeading
+              text="Frosty's Journey"
+              as="h2"
+              className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0A1A2F] leading-[1.15] tracking-tight justify-center text-center"
+            />
+            <p className="text-sm md:text-[15px] text-slate-600 leading-relaxed mt-6 sm:mt-7" style={{ marginTop: '24px' }}>
+              From initial architecture in Feb 2026 to actively expanding autonomous sales agent capabilities.
+            </p>
+          </div>
+
+          <div className="relative max-w-3xl mx-auto">
+            <div className="absolute left-4 md:left-1/2 top-4 bottom-4 w-0.5 bg-gradient-to-b from-[#0396A6]/0 via-[#0396A6]/35 to-[#0396A6]/0 md:-translate-x-1/2" />
+
+            <div className="space-y-6 md:space-y-8 relative">
+              {TIMELINE_EVENTS.map((event, idx) => {
+                const isEven = idx % 2 === 0;
+                return (
+                  <motion.div
+                    key={`${event.year}-${event.title}`}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-40px' }}
+                    transition={{ duration: 0.5, delay: idx * 0.08 }}
+                    className={`relative flex items-center gap-4 md:gap-8 ${
+                      isEven ? 'md:flex-row' : 'md:flex-row-reverse'
+                    }`}
+                  >
+                    <div className="absolute left-4 md:left-1/2 w-3.5 h-3.5 rounded-full bg-[#0396A6] border-2 border-white shadow-xs z-10 md:-translate-x-1/2 -translate-x-[6px]" />
+
+                    <div className={`ml-9 md:ml-0 flex-1 min-w-0 ${isEven ? 'md:pr-8 md:text-right' : 'md:pl-8 md:text-left'}`}>
+                      <div className="bg-white rounded-xl border border-slate-200/80 shadow-2xs hover:shadow-sm p-4 sm:p-5 transition-all">
+                        <div className={`flex flex-col gap-1.5 ${isEven ? 'md:items-end' : 'md:items-start'}`}>
+                          <div className="flex items-center gap-2">
+                            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#0396A6]/10 text-[#0396A6]">
+                              {event.year}
+                            </span>
+                            {event.icon}
+                          </div>
+                          <h3 className="text-sm sm:text-base font-bold text-[#0A1A2F]">{event.title}</h3>
+                          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">{event.description}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="hidden md:block flex-1 min-w-0" />
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════════════════════════════
+            SECTION 3: ABOUT FROSTREK (THE COMPANY & STORY)
         ══════════════════════════════════════════════════════════════════ */}
         <section id="about-frostrek" className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto mb-28 md:mb-36 scroll-mt-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -567,66 +627,6 @@ export default function AboutPage() {
               <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-600 leading-relaxed min-h-[75px] flex items-center">
                 {engineTabs[activeEngineTab].desc}
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ══════════════════════════════════════════════════════════════════
-            OUR JOURNEY: VERTICAL TIMELINE
-        ══════════════════════════════════════════════════════════════════ */}
-        <section id="our-journey" className="px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto mb-28 md:mb-36 scroll-mt-24">
-          <div className="text-center max-w-2xl mx-auto mb-14 flex flex-col items-center">
-            <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6] flex items-center justify-center mb-3.5 before:content-[''] before:inline-block before:w-[18px] before:h-[1.5px] before:bg-current before:opacity-45 before:mr-[8px] after:content-[''] after:inline-block after:w-[18px] after:h-[1.5px] after:bg-current after:opacity-45 after:ml-[8px]">
-              EVOLUTION
-            </span>
-            <KineticBlurHeading
-              text="Our Journey"
-              as="h2"
-              className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0A1A2F] leading-[1.15] tracking-tight justify-center text-center"
-            />
-            <p className="text-sm md:text-[15px] text-slate-600 leading-relaxed mt-6 sm:mt-7" style={{ marginTop: '24px' }}>
-              From a core R&amp;D initiative to a global trailblazer in Multi-Agent Enterprise systems.
-            </p>
-          </div>
-
-          <div className="relative max-w-3xl mx-auto">
-            <div className="absolute left-4 md:left-1/2 top-4 bottom-4 w-0.5 bg-gradient-to-b from-[#0396A6]/0 via-[#0396A6]/35 to-[#0396A6]/0 md:-translate-x-1/2" />
-
-            <div className="space-y-6 md:space-y-8 relative">
-              {TIMELINE_EVENTS.map((event, idx) => {
-                const isEven = idx % 2 === 0;
-                return (
-                  <motion.div
-                    key={`${event.year}-${event.title}`}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-40px' }}
-                    transition={{ duration: 0.5, delay: idx * 0.08 }}
-                    className={`relative flex items-center gap-4 md:gap-8 ${
-                      isEven ? 'md:flex-row' : 'md:flex-row-reverse'
-                    }`}
-                  >
-                    <div className="absolute left-4 md:left-1/2 w-3.5 h-3.5 rounded-full bg-[#0396A6] border-2 border-white shadow-xs z-10 md:-translate-x-1/2 -translate-x-[6px]" />
-
-                    <div className={`ml-9 md:ml-0 flex-1 min-w-0 ${isEven ? 'md:pr-8 md:text-right' : 'md:pl-8 md:text-left'}`}>
-                      <div className="bg-white rounded-xl border border-slate-200/80 shadow-2xs hover:shadow-sm p-4 sm:p-5 transition-all">
-                        <div className={`flex flex-col gap-1.5 ${isEven ? 'md:items-end' : 'md:items-start'}`}>
-                          <div className="flex items-center gap-2">
-                            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#0396A6]/10 text-[#0396A6]">
-                              {event.year}
-                            </span>
-                            {event.icon}
-                          </div>
-                          <h3 className="text-sm sm:text-base font-bold text-[#0A1A2F]">{event.title}</h3>
-                          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">{event.description}</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="hidden md:block flex-1 min-w-0" />
-                  </motion.div>
-                );
-              })}
             </div>
           </div>
         </section>
@@ -740,43 +740,43 @@ export default function AboutPage() {
         {/* ══════════════════════════════════════════════════════════════════
             HIGH-CONVERSION CTA (Synchronized Theme Gradient)
         ══════════════════════════════════════════════════════════════════ */}
-        <section className="px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto my-16 md:my-24">
+        <section className="px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto my-6 md:my-10">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="p-8 sm:p-12 md:p-16 rounded-3xl bg-[#0A1A2F] text-white shadow-xl border border-slate-800 flex flex-col items-center justify-center text-center relative overflow-hidden w-full"
+            className="py-6 sm:py-7 md:py-8 px-6 sm:px-8 md:px-12 rounded-2xl bg-[#0A1A2F] text-white shadow-lg border border-slate-800 flex flex-col items-center justify-center text-center relative overflow-hidden w-full"
           >
-            <div className="absolute top-0 right-0 w-72 h-72 bg-[#0396A6]/15 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-72 h-72 bg-[#FF7A5E]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-0 right-0 w-80 h-80 bg-[#0396A6]/15 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#FF7A5E]/10 rounded-full blur-3xl pointer-events-none" />
 
-            <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-2xl mx-auto w-full">
+            <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-3xl mx-auto w-full">
               <span 
-                className="text-[10px] font-bold uppercase tracking-widest bg-[#0396A6]/20 px-3.5 py-1 rounded-full border border-[#0396A6]/40 inline-block mb-4 text-center"
+                className="text-[10px] font-bold uppercase tracking-widest bg-[#0396A6]/20 px-3 py-0.5 rounded-full border border-[#0396A6]/40 inline-block mb-2 text-center"
                 style={{ color: '#4DEEE3' }}
               >
                 GET STARTED
               </span>
 
               <h2 
-                className="text-2xl sm:text-3xl md:text-4xl font-serif font-medium tracking-tight leading-tight mb-4 text-center !text-white w-full"
+                className="text-xl sm:text-2xl md:text-3xl font-serif font-medium tracking-tight leading-snug mb-2 text-center !text-white w-full"
                 style={{ color: '#FFFFFF', textAlign: 'center' }}
               >
                 Ready to deploy Frosty or build custom enterprise AI?
               </h2>
 
               <p 
-                className="text-xs sm:text-sm max-w-lg mx-auto mb-8 leading-relaxed text-center !text-slate-200 mt-5"
-                style={{ color: '#E2E8F0', textAlign: 'center', marginTop: '20px' }}
+                className="text-xs sm:text-[13px] max-w-2xl mx-auto leading-relaxed text-center !text-slate-200 mt-4 md:mt-5"
+                style={{ color: '#E2E8F0', textAlign: 'center', marginTop: '16px' }}
               >
                 Start your free trial with Frosty in minutes, or schedule an enterprise architecture consultation with the Frostrek engineering team.
               </p>
 
-              <div className="flex flex-wrap items-center justify-center gap-3.5 w-full">
+              <div className="flex flex-wrap items-center justify-center gap-3 w-full mt-7 md:mt-9" style={{ marginTop: '28px' }}>
                 <Link
                   href="/login?mode=register"
-                  className="px-6 py-3 rounded-full font-semibold text-xs md:text-sm bg-[#0396A6] hover:bg-[#027D8A] text-white shadow-md shadow-[#0396A6]/25 transition-all flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98]"
+                  className="px-5 py-2.5 rounded-full font-semibold text-xs sm:text-sm bg-[#0396A6] hover:bg-[#027D8A] text-white shadow-md shadow-[#0396A6]/25 transition-all flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <span>Start Free Trial with Frosty</span>
                   <ArrowRight size={14} />
@@ -785,7 +785,7 @@ export default function AboutPage() {
                   href="https://www.frostrek.ai/schedule-demo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-full font-semibold text-xs md:text-sm bg-white/10 hover:bg-white/15 text-white border border-white/20 transition-all flex items-center justify-center gap-2"
+                  className="px-5 py-2.5 rounded-full font-semibold text-xs sm:text-sm bg-white/10 hover:bg-white/15 text-white border border-white/20 transition-all flex items-center justify-center gap-2"
                 >
                   <span>Book Enterprise Demo</span>
                   <ExternalLink size={13} />

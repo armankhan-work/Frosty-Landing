@@ -65,7 +65,7 @@ function drawSnowflake(cx: CanvasRenderingContext2D, x: number, y: number, size:
   // Core Center Pearl
   const cg = cx.createRadialGradient(0, 0, 0, 0, 0, size * .08);
   cg.addColorStop(0, '#FFFFFF');
-  cg.addColorStop(.4, '#DDD6FE');
+  cg.addColorStop(.4, '#99F6E4');
   cg.addColorStop(1, '#0396A6');
   cx.beginPath();
   cx.arc(0, 0, size * .07, 0, Math.PI * 2);

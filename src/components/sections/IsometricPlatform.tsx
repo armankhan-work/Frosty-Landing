@@ -52,7 +52,7 @@ const THEMES: Record<ThemeColor, { top: [string, string], right: [string, string
         top: ['#eff6ff', '#dbeafe'], right: ['#bfdbfe', '#FFB09F'], left: ['#dbeafe', '#bfdbfe'], stroke: 'rgba(29,78,216,0.15)', text: '#0A1A2F'
     },
     purple: {
-        top: ['#faf5ff', '#f3e8ff'], right: ['#e9d5ff', '#d8b4fe'], left: ['#f3e8ff', '#e9d5ff'], stroke: 'rgba(126,34,206,0.15)', text: '#0A1A2F'
+        top: ['#F0FDFA', '#CCFBF1'], right: ['#CCFBF1', '#d8b4fe'], left: ['#CCFBF1', '#CCFBF1'], stroke: 'rgba(126,34,206,0.15)', text: '#0A1A2F'
     }
 };
 

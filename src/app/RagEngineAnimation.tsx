@@ -275,7 +275,7 @@ export default function RagEngineAnimation() {
             Upload your documents. Frosty chunks, embeds, and indexes them into knowledge_base_gemini instantly.
           </p>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center' }}>
-            <div style={{ width: 36, height: 44, borderRadius: 6, background: '#FAF5FF', border: '1.5px solid #E9D5FF', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0396A6' }}>
+            <div style={{ width: 36, height: 44, borderRadius: 6, background: '#F0FDFA', border: '1.5px solid #CCFBF1', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0396A6' }}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                 <polyline points="14 2 14 8 20 8" />
@@ -287,8 +287,8 @@ export default function RagEngineAnimation() {
               ))}
             </div>
             <div style={{ textAlign: 'center' }}>
-              <div style={{ width: 38, height: 14, borderRadius: '50%', background: '#FAF5FF', border: '1.5px solid #E9D5FF', marginBottom: 0 }} />
-              <div style={{ width: 38, height: 30, background: '#F5F3FF', border: '1.5px solid #E9D5FF', borderTop: 'none', borderRadius: '0 0 4px 4px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 700, color: '#0396A6' }}>DB</div>
+              <div style={{ width: 38, height: 14, borderRadius: '50%', background: '#F0FDFA', border: '1.5px solid #CCFBF1', marginBottom: 0 }} />
+              <div style={{ width: 38, height: 30, background: '#F0FDFA', border: '1.5px solid #CCFBF1', borderTop: 'none', borderRadius: '0 0 4px 4px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 700, color: '#0396A6' }}>DB</div>
             </div>
           </div>
         </motion.div>

@@ -116,21 +116,34 @@ const FooterSection = () => {
 
       <footer
         ref={footerRef}
-        className={`border-t pt-8 pb-6 transition-colors duration-300 font-sans ${isVisible ? 'footer-revealed' : 'opacity-0'} bg-white/70 backdrop-blur-md border-slate-200 relative z-10`}
+        className={`border-t pt-8 pb-3 transition-colors duration-300 font-sans ${isVisible ? 'footer-revealed' : 'opacity-0'} bg-white/70 backdrop-blur-md border-slate-200 relative z-10`}
       >
         <div className="container mx-auto px-4 md:px-6 max-w-[1400px]">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 mb-8">
-            
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 mb-4">
+
             <div className="lg:col-span-3 flex flex-col space-y-4">
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-3 group">
-                <Link href="/" className="flex items-center gap-2 group cursor-pointer">
+              <div className="flex items-center gap-2 group">
+                <Link href="/" className="flex items-center gap-2 cursor-pointer">
                   <div className="transition-transform group-hover:scale-110">
                     <FrostyIcon size={32} glow={0.5} />
                   </div>
-                  <FlipText className="text-[1.3rem] font-black font-sans font-bold text-slate-900">
-                    Frosty Agent
-                  </FlipText>
                 </Link>
+                <div className="flex flex-col justify-center">
+                  <Link href="/" className="cursor-pointer">
+                    <FlipText className="text-[1.3rem] font-black font-sans font-bold text-slate-900 leading-tight">
+                      Frosty Agent
+                    </FlipText>
+                  </Link>
+                  <a 
+                    href="https://www.frostrek.ai/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-[11px] font-medium !text-slate-500 hover:!text-[#0396A6] mt-0.5 transition-colors relative z-20"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    Powered by Frostrek
+                  </a>
+                </div>
               </div>
 
               <div className="flex flex-col w-full max-w-[340px] gap-4">
@@ -172,7 +185,7 @@ const FooterSection = () => {
                     className="w-9 h-9 rounded-full bg-white/90 border border-slate-200/80 hover:bg-[#1877F2]/10 hover:border-[#1877F2]/50 hover:shadow-[0_0_16px_rgba(24,119,242,0.35)] shadow-xs flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:scale-110 active:scale-95 group"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" className="transition-transform duration-300 group-hover:scale-110">
-                      <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="#1877F2"/>
+                      <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="#1877F2" />
                     </svg>
                   </a>
 
@@ -242,9 +255,9 @@ const FooterSection = () => {
             </div>
 
             <div className="lg:col-span-9 grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div className="space-y-3">
+              <div className="space-y-1">
                 <h3 className="section-title font-bold text-[10px] uppercase tracking-widest text-[#0396A6]">Products</h3>
-                <ul className="space-y-1.5">
+                <ul className="space-y-1">
                   {NAV_ITEMS.find(n => n.label === 'Products')?.megaMenu?.flatMap(s => s.items).slice(0, 7).map(item => (
                     <li key={item.name}>
                       <Link href={item.href} className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#0396A6] group">
@@ -255,9 +268,9 @@ const FooterSection = () => {
                 </ul>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-1">
                 <h3 className="section-title font-bold text-[10px] uppercase tracking-widest text-[#0396A6]">Solutions</h3>
-                <ul className="space-y-1.5">
+                <ul className="space-y-1">
                   {NAV_ITEMS.find(n => n.label === 'Solutions')?.megaMenu?.flatMap(s => s.items).map(item => (
                     <li key={item.name}>
                       <Link href={item.href} className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#0396A6] group">
@@ -268,20 +281,17 @@ const FooterSection = () => {
                 </ul>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-1">
                 <h3 className="section-title font-bold text-[10px] uppercase tracking-widest text-[#0396A6]">Company</h3>
-                <ul className="space-y-1.5">
+                <ul className="space-y-1">
                   <li><Link href="/about" className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#0396A6] group"><FlipText>About Us</FlipText></Link></li>
                   <li><Link href="https://www.frostrek.ai/experience" className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#0396A6] group"><FlipText>Experience</FlipText></Link></li>
-                  <li><Link href="https://www.frostrek.ai/resources/case-studies" className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#0396A6] group"><FlipText>Case Studies</FlipText></Link></li>
-                  <li><Link href="https://www.frostrek.ai/resources/blog" className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#0396A6] group"><FlipText>Blog</FlipText></Link></li>
                   <li><Link href="/faq" className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#0396A6] group"><FlipText>FAQ</FlipText></Link></li>
-                  <li><Link href="https://www.frostrek.ai/schedule-demo" className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#0396A6] group"><FlipText>Schedule Demo</FlipText></Link></li>
-                  <li><Link href="https://www.frostrek.ai/contact" className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#0396A6] group"><FlipText>Contact</FlipText></Link></li>
+                  <li><Link href="/contact" className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#0396A6] group"><FlipText>Book Demo & Contact</FlipText></Link></li>
                 </ul>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-1">
                 <div className="text-center">
                   <h3 className="section-title font-bold text-[10px] uppercase tracking-widest text-[#0396A6]">Location</h3>
                 </div>
@@ -329,7 +339,7 @@ const FooterSection = () => {
               </div>
             </div>
           </div>
-          <div className="text-center pt-4 border-t border-slate-200 text-[11px] font-medium text-slate-500">
+          <div className="text-center pt-2 border-t border-slate-200 text-[11px] font-medium text-slate-500">
             &copy; {currentYear} {COMPANY_INFO.name}. All rights reserved.
           </div>
         </div>

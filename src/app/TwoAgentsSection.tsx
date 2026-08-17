@@ -211,7 +211,7 @@ export default function TwoAgentsSection() {
 
               {/* Node 2: Website (Top Right) */}
               <motion.div 
-                className="absolute top-[56px] left-[276px] w-12 h-12 bg-[#FAF5FF] rounded-full flex items-center justify-center border border-[#0396A6]/30 z-10 cursor-pointer pointer-events-auto shadow-md"
+                className="absolute top-[56px] left-[276px] w-12 h-12 bg-[#F0FDFA] rounded-full flex items-center justify-center border border-[#0396A6]/30 z-10 cursor-pointer pointer-events-auto shadow-md"
                 initial={{ scale: 0 }} 
                 animate={{ scale: 1 }} 
                 transition={{ delay: 0.4, type: 'spring' }}

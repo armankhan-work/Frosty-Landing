@@ -140,7 +140,7 @@ function ChatBubble({ role, text, isTyping }: {
         color: isUser ? '#2a2a3e' : '#fff',
         boxShadow: isUser
           ? '0 1px 3px rgba(0,0,0,0.04)'
-          : '0 2px 8px rgba(68,34,174,0.25)',
+          : '0 2px 8px rgba(3, 150, 166,0.25)',
       }}
     >
       {text}
@@ -215,7 +215,7 @@ function AnimatedCursor({ phase }: { phase: AnimPhase }) {
                 top: 0, left: 0,
                 width: 16, height: 16,
                 borderRadius: '50%',
-                background: 'rgba(68,34,174,0.3)',
+                background: 'rgba(3, 150, 166,0.3)',
                 transform: 'translate(-50%, -50%)',
               }}
             />
@@ -257,8 +257,8 @@ function LiveProductDemo({ phase, q1Text, a1Text, q2Text, a2Text, isTypingQ1, is
         borderRadius: 16,
         overflow: 'hidden',
         background: '#f8f7fc',
-        boxShadow: '0 25px 80px -12px rgba(68,34,174,0.18), 0 8px 24px -4px rgba(0,0,0,0.08)',
-        border: '1px solid rgba(68,34,174,0.08)',
+        boxShadow: '0 25px 80px -12px rgba(3, 150, 166,0.18), 0 8px 24px -4px rgba(0,0,0,0.08)',
+        border: '1px solid rgba(3, 150, 166,0.08)',
         aspectRatio: '4 / 3',
       }}
     >
@@ -321,7 +321,7 @@ function LiveProductDemo({ phase, q1Text, a1Text, q2Text, a2Text, isTypingQ1, is
         <div style={{
           margin: '8px 10px',
           borderRadius: 8,
-          background: 'linear-gradient(135deg, #f3f0ff 0%, #ede9fe 50%, #e8e4fd 100%)',
+          background: 'linear-gradient(135deg, #f3f0ff 0%, #CCFBF1 50%, #e8e4fd 100%)',
           padding: '14px 16px',
           position: 'relative',
           overflow: 'hidden',
@@ -334,7 +334,7 @@ function LiveProductDemo({ phase, q1Text, a1Text, q2Text, a2Text, isTypingQ1, is
           </div>
           <div style={{
             position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)',
-            width: 32, height: 38, background: 'rgba(68,34,174,0.12)', borderRadius: 6,
+            width: 32, height: 38, background: 'rgba(3, 150, 166,0.12)', borderRadius: 6,
           }} />
         </div>
 
@@ -364,7 +364,7 @@ function LiveProductDemo({ phase, q1Text, a1Text, q2Text, a2Text, isTypingQ1, is
                 borderRadius: '50%',
                 background: 'linear-gradient(135deg, #0396A6, #6644cc)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                boxShadow: '0 4px 16px rgba(68,34,174,0.35)',
+                boxShadow: '0 4px 16px rgba(3, 150, 166,0.35)',
                 cursor: 'pointer',
                 zIndex: 30,
               }}
@@ -626,7 +626,7 @@ export default function HeroSection() {
       {/* Subtle warm background */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'radial-gradient(ellipse 80% 60% at 20% 50%, rgba(68,34,174,0.04), transparent 70%), radial-gradient(ellipse 60% 50% at 80% 30%, rgba(139,92,246,0.03), transparent 70%)',
+        background: 'radial-gradient(ellipse 80% 60% at 20% 50%, rgba(3, 150, 166,0.04), transparent 70%), radial-gradient(ellipse 60% 50% at 80% 30%, rgba(3, 150, 166,0.03), transparent 70%)',
         pointerEvents: 'none',
       }} />
 
@@ -654,8 +654,8 @@ export default function HeroSection() {
               display: 'inline-flex', alignItems: 'center', gap: 8,
               padding: '6px 14px',
               borderRadius: 999,
-              background: 'rgba(68,34,174,0.06)',
-              border: '1px solid rgba(68,34,174,0.1)',
+              background: 'rgba(3, 150, 166,0.06)',
+              border: '1px solid rgba(3, 150, 166,0.1)',
               fontSize: 12,
               fontWeight: 600,
               letterSpacing: '0.04em',
@@ -665,7 +665,7 @@ export default function HeroSection() {
               <span style={{
                 width: 6, height: 6, borderRadius: '50%',
                 background: '#0396A6',
-                boxShadow: '0 0 0 0 rgba(68,34,174,0.4)',
+                boxShadow: '0 0 0 0 rgba(3, 150, 166,0.4)',
                 animation: 'hero-pulse 2.4s infinite',
               }} />
               AI-Powered Customer Agent
@@ -737,7 +737,7 @@ export default function HeroSection() {
                 fontWeight: 600,
                 fontFamily: "'DM Sans', sans-serif",
                 textDecoration: 'none',
-                boxShadow: '0 8px 24px -4px rgba(68,34,174,0.35)',
+                boxShadow: '0 8px 24px -4px rgba(3, 150, 166,0.35)',
                 transition: 'transform 0.2s ease, box-shadow 0.2s ease',
                 cursor: 'pointer',
                 border: 'none',
@@ -761,7 +761,7 @@ export default function HeroSection() {
                 fontWeight: 600,
                 fontFamily: "'DM Sans', sans-serif",
                 textDecoration: 'none',
-                border: '1.5px solid rgba(68,34,174,0.2)',
+                border: '1.5px solid rgba(3, 150, 166,0.2)',
                 transition: 'transform 0.2s ease, border-color 0.2s ease, background 0.2s ease',
                 cursor: 'pointer',
               }}
