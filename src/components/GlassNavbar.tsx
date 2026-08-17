@@ -77,7 +77,7 @@ export default function GlassNavbar({ ready = true }: GlassNavbarProps) {
               boxShadow: '0 4px 14px rgba(95, 35, 200, 0.25)',
             }}
           >
-            Get started free
+            Start free trial
           </Link>
         </div>
 
@@ -178,7 +178,7 @@ export default function GlassNavbar({ ready = true }: GlassNavbarProps) {
                 background: 'linear-gradient(135deg, #6D28D9 0%, #5F23C8 100%)',
               }}
             >
-              Get started free
+              Start free trial
             </Link>
           </motion.div>
         )}

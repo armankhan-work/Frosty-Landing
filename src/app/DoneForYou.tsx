@@ -7,47 +7,47 @@ const STEPS_DATA = [
     {
         stepNumber: "01",
         stepLabel: "Step 1 of 3",
-        title: "Tell us about your business",
-        description: "A short onboarding session to understand your services, products, pricing, FAQs, and how you like to speak to your customers.",
+        title: "Connect your content & website",
+        description: "Drop your website URL, upload product PDFs, or paste your pricing and FAQs. Frosty Agent ingests your knowledge base in seconds.",
         items: [
-            "Your services & offerings",
-            "Pricing & common queries",
-            "Tone, rules & brand voice",
-            "Preferred platforms"
+            "One-click website URL scan",
+            "Upload PDFs, docs & brochures",
+            "Pricing rules & FAQ knowledge",
+            "Custom tone & brand guidelines"
         ],
-        time: "20-30 MIN",
-        summaryTitle: "Tell us about\nyour business",
-        summaryDesc: "A short onboarding session to understand your services, products, and FAQs."
+        time: "1-2 MIN",
+        summaryTitle: "Connect your content\n& website",
+        summaryDesc: "Drop your website URL, upload product PDFs, or paste pricing & FAQs."
     },
     {
         stepNumber: "02",
         stepLabel: "Step 2 of 3",
-        title: "We customize and train Frosty",
-        description: "Built around your content, tested against real customer questions. We tune AI guardrails and conversation flow to match your exact standards.",
+        title: "Customize & test in simulator",
+        description: "Test real customer scenarios in your live simulator. Set AI guardrails, customize chat widget colors, and configure booking & quotation rules.",
         items: [
-            "Custom knowledge base ingestion",
-            "Rigorous QA & test scenarios",
-            "Guardrails & fallback protocols",
-            "Brand voice refinement"
+            "Interactive chat playground",
+            "Strict guardrails — 0 hallucinations",
+            "Custom widget branding & colors",
+            "Calendar & quotation triggers"
         ],
-        time: "48-72 HOURS",
-        summaryTitle: "We customize\nand train Frosty",
-        summaryDesc: "Built around your content, tested against real customer questions."
+        time: "2 MIN",
+        summaryTitle: "Customize & test\nin simulator",
+        summaryDesc: "Set strict AI guardrails, customize branding, and test live chat scenarios."
     },
     {
         stepNumber: "03",
         stepLabel: "Step 3 of 3",
-        title: "We deploy – you convert",
-        description: "We launch Frosty on your website and WhatsApp and keep tuning it while you focus on closing. Continuous learning from real customer interactions.",
+        title: "Deploy & start converting",
+        description: "Paste a single line of code on your website and connect your WhatsApp Business number. Frosty Agent starts answering, qualifying, and booking 24/7.",
         items: [
-            "One-click website widget setup",
-            "Direct WhatsApp Business integration",
-            "Real-time analytics & transcript monitoring",
-            "Continuous optimization & tuning"
+            "One-line website embed snippet",
+            "Official WhatsApp Business connect",
+            "Unified lead capture dashboard",
+            "Instant live human takeover"
         ],
-        time: "GO LIVE FAST",
-        summaryTitle: "We deploy –\nyou convert",
-        summaryDesc: "We launch Frosty on your website and WhatsApp and keep tuning it while you focus on closing."
+        time: "INSTANT",
+        summaryTitle: "Deploy & start\nconverting",
+        summaryDesc: "Embed on your site, connect WhatsApp, and capture leads 24/7."
     }
 ];
 
@@ -65,7 +65,7 @@ export default function DoneForYou() {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#5F23C8] opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#5F23C8]"></span>
                         </span>
-                        <span className="font-mono text-slate-700 truncate text-[10px] sm:text-[11px]"><strong className="text-[#5F23C8] font-bold">Scanner Active:</strong> <span className="hidden sm:inline">Ingesting pricing, rules & FAQs...</span></span>
+                        <span className="font-mono text-slate-700 truncate text-[10px] sm:text-[11px]"><strong className="text-[#5F23C8] font-bold">Scanner Active:</strong> <span className="hidden sm:inline">Ingesting URLs, pricing, rules & FAQs...</span></span>
                     </div>
                     <span className="bg-[#5F23C8]/15 text-[#5F23C8] font-mono px-1.5 sm:px-2 py-0.5 rounded text-[9px] sm:text-[10px] shrink-0 border border-[#5F23C8]/30 font-bold">100% READY</span>
                 </div>
@@ -75,9 +75,9 @@ export default function DoneForYou() {
                 <div className="bg-[#FAF5FF] text-slate-900 rounded-xl px-3.5 h-[46px] mb-5 flex items-center justify-between text-[11px] shadow-sm border border-[#5F23C8]/25 shrink-0">
                     <div className="flex items-center gap-2 truncate pr-2">
                         <Sparkles className="w-3.5 h-3.5 text-[#5F23C8] shrink-0" />
-                        <span className="font-mono text-slate-700 truncate text-[10px] sm:text-[11px]"><strong className="text-[#5F23C8] font-bold">Neural QA:</strong> <span className="hidden sm:inline">Guardrails locked & tested against queries</span></span>
+                        <span className="font-mono text-slate-700 truncate text-[10px] sm:text-[11px]"><strong className="text-[#5F23C8] font-bold">Simulator Active:</strong> <span className="hidden sm:inline">Testing guardrails, quotes & replies</span></span>
                     </div>
-                    <span className="bg-[#5F23C8]/15 text-[#5F23C8] font-mono px-1.5 sm:px-2 py-0.5 rounded text-[9px] sm:text-[10px] shrink-0 border border-[#5F23C8]/30 font-bold">0 ERRORS</span>
+                    <span className="bg-[#5F23C8]/15 text-[#5F23C8] font-mono px-1.5 sm:px-2 py-0.5 rounded text-[9px] sm:text-[10px] shrink-0 border border-[#5F23C8]/30 font-bold">VERIFIED</span>
                 </div>
             );
         } else {
@@ -85,7 +85,7 @@ export default function DoneForYou() {
                 <div className="bg-[#FAF5FF] text-slate-900 rounded-xl px-3.5 h-[46px] mb-5 flex items-center justify-between text-[11px] shadow-sm border border-[#5F23C8]/25 shrink-0">
                     <div className="flex items-center gap-2 truncate pr-2">
                         <Globe className="w-3.5 h-3.5 text-[#5F23C8] shrink-0" />
-                        <span className="font-mono text-slate-700 truncate text-[10px] sm:text-[11px]"><strong className="text-[#5F23C8] font-bold">Omnichannel:</strong> <span className="hidden sm:inline">Live on Web Widget & WhatsApp API</span></span>
+                        <span className="font-mono text-slate-700 truncate text-[10px] sm:text-[11px]"><strong className="text-[#5F23C8] font-bold">Live Omnichannel:</strong> <span className="hidden sm:inline">Active on Web Widget & WhatsApp</span></span>
                     </div>
                     <span className="bg-[#5F23C8] text-white font-mono px-1.5 sm:px-2 py-0.5 rounded text-[9px] sm:text-[10px] shrink-0 font-bold animate-pulse">CONVERTING</span>
                 </div>
@@ -122,7 +122,7 @@ export default function DoneForYou() {
                         className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-8 relative w-max bg-[#5F23C8]/10 border border-[#5F23C8]/25 shadow-sm"
                     >
                         <Diamond className="w-3.5 h-3.5 text-[#5F23C8]" />
-                        <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#5F23C8]">Done for you</span>
+                        <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#5F23C8]">Self-Serve Setup</span>
                     </motion.div>
 
                     {/* Heading */}
@@ -133,8 +133,8 @@ export default function DoneForYou() {
                         transition={{ duration: 0.6, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
                         className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight mb-6"
                     >
-                        <span className="text-[#5F23C8] font-bold">The Frosty team</span><br />
-                        sets Frosty up for you.
+                        <span className="text-[#5F23C8] font-bold">Live in 5 minutes.</span><br />
+                        Set up Frosty Agent in 3 easy steps.
                     </motion.h2>
 
                     {/* Divider Line */}
@@ -155,10 +155,10 @@ export default function DoneForYou() {
                         className="text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl mb-8 space-y-4"
                     >
                         <p>
-                            We customize and train the agent around your business and deploy it on your website and WhatsApp, so there is nothing for you to build or code.
+                            Sign up, connect your website URL or documents, and let Frosty Agent build its knowledge base automatically.
                         </p>
                         <p>
-                            You tell us about your services, and we handle the rest during onboarding.
+                            Test your agent in a live simulator, embed a single line of code, and start converting visitors on Web & WhatsApp immediately.
                         </p>
                     </motion.div>
 
@@ -176,28 +176,28 @@ export default function DoneForYou() {
                                 <Clock className="w-5 h-5 text-[#5F23C8]" />
                             </div>
                             <div>
-                                <h4 className="text-[13px] font-bold text-slate-900 leading-tight">Quick onboarding</h4>
-                                <p className="text-[12px] text-slate-500 font-medium">20-30 minutes</p>
+                                <h4 className="text-[13px] font-bold text-slate-900 leading-tight">Setup in 5 min</h4>
+                                <p className="text-[12px] text-slate-500 font-medium">No coding required</p>
                             </div>
                         </div>
                         {/* Feature 2 */}
                         <div className="flex flex-row sm:flex-col lg:flex-row items-center sm:items-start lg:items-center gap-3 group">
                             <div className="w-10 h-10 rounded-xl bg-purple-50 border border-purple-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
-                                <ShieldCheck className="w-5 h-5 text-[#5F23C8]" />
+                                <Sparkles className="w-5 h-5 text-[#5F23C8]" />
                             </div>
                             <div>
-                                <h4 className="text-[13px] font-bold text-slate-900 leading-tight">100% handled</h4>
-                                <p className="text-[12px] text-slate-500 font-medium">by our team</p>
+                                <h4 className="text-[13px] font-bold text-slate-900 leading-tight">Auto-learning</h4>
+                                <p className="text-[12px] text-slate-500 font-medium">From URLs & docs</p>
                             </div>
                         </div>
                         {/* Feature 3 */}
                         <div className="flex flex-row sm:flex-col lg:flex-row items-center sm:items-start lg:items-center gap-3 group">
                             <div className="w-10 h-10 rounded-xl bg-purple-50 border border-purple-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
-                                <Sparkles className="w-5 h-5 text-[#5F23C8]" />
+                                <ShieldCheck className="w-5 h-5 text-[#5F23C8]" />
                             </div>
                             <div>
-                                <h4 className="text-[13px] font-bold text-slate-900 leading-tight">Go live fast</h4>
-                                <p className="text-[12px] text-slate-500 font-medium">with confidence</p>
+                                <h4 className="text-[13px] font-bold text-slate-900 leading-tight">Strict guardrails</h4>
+                                <p className="text-[12px] text-slate-500 font-medium">0 false promises</p>
                             </div>
                         </div>
                     </motion.div>
@@ -230,14 +230,14 @@ export default function DoneForYou() {
                                 </div>
                                 <h5 className={`text-[13px] font-bold transition-colors duration-300 mb-1 ${
                                     isCompleted || currentStep >= 0 ? 'text-[#5F23C8]' : 'text-slate-800 group-hover:text-[#5F23C8]'
-                                }`}>Discover</h5>
+                                }`}>Import</h5>
                                 <div className="text-[11px] text-center max-w-[130px] leading-tight">
                                     {isCompleted || currentStep > 0 ? (
                                         <span className="text-[#5F23C8] font-semibold flex items-center justify-center gap-1">✓ Completed</span>
                                     ) : currentStep === 0 ? (
                                         <span className="text-[#5F23C8] font-semibold">● In Progress</span>
                                     ) : (
-                                        <span className="text-slate-500">We learn about your business</span>
+                                        <span className="text-slate-500">Connect URLs & docs</span>
                                     )}
                                 </div>
                             </div>
@@ -255,14 +255,14 @@ export default function DoneForYou() {
                                 </div>
                                 <h5 className={`text-[13px] font-bold transition-colors duration-300 mb-1 ${
                                     isCompleted || currentStep >= 1 ? 'text-[#5F23C8]' : 'text-slate-800 group-hover:text-[#5F23C8]'
-                                }`}>Configure</h5>
+                                }`}>Customize</h5>
                                 <div className="text-[11px] text-center max-w-[130px] leading-tight">
                                     {isCompleted || currentStep > 1 ? (
                                         <span className="text-[#5F23C8] font-semibold flex items-center justify-center gap-1">✓ Completed</span>
                                     ) : currentStep === 1 ? (
                                         <span className="text-[#5F23C8] font-semibold">● In Progress</span>
                                     ) : (
-                                        <span className="text-slate-500">We build & train your AI agent</span>
+                                        <span className="text-slate-500">Test & set guardrails</span>
                                     )}
                                 </div>
                             </div>
@@ -287,7 +287,7 @@ export default function DoneForYou() {
                                     ) : currentStep === 2 ? (
                                         <span className="text-[#5F23C8] font-semibold">● In Progress</span>
                                     ) : (
-                                        <span className="text-slate-500">We go live and optimize</span>
+                                        <span className="text-slate-500">Live on Web & WhatsApp</span>
                                     )}
                                 </div>
                             </div>

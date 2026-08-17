@@ -83,8 +83,8 @@ export default function CostOfSlowSection() {
                                 <Trophy className="w-4 h-4 text-white" />
                             </div>
                             <div className="min-w-0">
-                                <div className="text-[13px] font-bold text-stone-900 leading-tight">Frosty replies in seconds - before this chart even starts.</div>
-                                <div className="text-[12px] text-stone-600 mt-0.5">While others respond, we convert.</div>
+                                <div className="text-[13px] font-bold text-stone-900 leading-tight">Frosty Agent replies in seconds - before this chart even starts.</div>
+                                <div className="text-[12px] text-stone-600 mt-0.5">While others respond, Frosty Agent converts.</div>
                             </div>
                         </div>
 

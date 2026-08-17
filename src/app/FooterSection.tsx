@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -112,45 +113,6 @@ const FooterSection = () => {
         .network-node:nth-child(4) { animation-delay: 1.8s; }
       `}</style>
 
-      {pathname !== '/contact' && (
-        <div id="footer-careers-cta" className="pt-4 pb-12 bg-transparent transition-colors duration-300 font-sans relative z-10">
-          <div className="container mx-auto px-4 md:px-6">
-            <Link href="https://www.frostrek.ai/contact" className="block max-w-4xl mx-auto">
-              <div className="careers-card border rounded-[2rem] p-8 md:p-10 cursor-pointer bg-white/95 backdrop-blur-md border-slate-200 hover:border-[#5F23C8]/50 shadow-sm hover:shadow-md">
-                <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 text-center md:text-left">
-                  <div className="flex-shrink-0">
-                    <svg className="careers-icon w-16 h-16 opacity-90 text-[#5F23C8]" viewBox="0 0 64 64" fill="none">
-                      <circle cx="32" cy="32" r="28" stroke="currentColor" strokeWidth="2" />
-                      <circle cx="32" cy="16" r="4" fill="currentColor" className="network-node" />
-                      <circle cx="16" cy="32" r="4" fill="currentColor" className="network-node" />
-                      <circle cx="48" cy="32" r="4" fill="currentColor" className="network-node" />
-                      <circle cx="32" cy="48" r="4" fill="currentColor" className="network-node" />
-                      <line x1="32" y1="20" x2="32" y2="28" stroke="currentColor" strokeWidth="2" />
-                      <line x1="20" y1="32" x2="28" y2="32" stroke="currentColor" strokeWidth="2" />
-                      <line x1="36" y1="32" x2="44" y2="32" stroke="currentColor" strokeWidth="2" />
-                      <line x1="32" y1="36" x2="32" y2="44" stroke="currentColor" strokeWidth="2" />
-                    </svg>
-                  </div>
-                  <div className="flex-grow">
-                    <h3 className="text-2xl font-serif font-bold mb-2 flex items-center justify-center md:justify-start gap-2 text-slate-900">
-                      Build the Future of AI at Frostrek
-                      <Sparkles className="w-5 h-5 text-[#5F23C8]" />
-                    </h3>
-                    <p className="text-base text-slate-600 font-medium">
-                      Join our team of innovators solving real-world problems.
-                    </p>
-                  </div>
-                  <div className="flex-shrink-0 mt-4 md:mt-0">
-                    <div className="w-14 h-14 rounded-full flex items-center justify-center bg-purple-50 text-[#5F23C8] font-bold text-2xl border border-purple-200 shadow-sm">
-                      →
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          </div>
-        </div>
-      )}
 
       <footer
         ref={footerRef}
@@ -166,33 +128,115 @@ const FooterSection = () => {
                     <FrostyIcon size={32} glow={0.5} />
                   </div>
                   <FlipText className="text-[1.3rem] font-black font-sans font-bold text-slate-900">
-                    frostrek
+                    Frosty Agent
                   </FlipText>
                 </Link>
               </div>
 
               <div className="flex flex-col w-full max-w-[340px] gap-4">
+                {/* Social Links Row */}
                 <div className="flex items-center justify-between w-full">
-                  <a href={COMPANY_INFO.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn page" className="w-9 h-9 rounded-full flex items-center justify-center transition-all text-[#5F23C8] hover:-translate-y-1 hover:text-[#4C1D95]"><img src="/linkedin.png" alt="Linkedin" className="w-5 h-5 object-contain transition-all hover:scale-110" loading="lazy" width={512} height={512} /></a>
-                  <a href={COMPANY_INFO.socials.instagram} target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram page" className="w-9 h-9 rounded-full flex items-center justify-center transition-all text-[#5F23C8] hover:-translate-y-1 hover:text-[#4C1D95]"><img src="/instagram.png" alt="Instagram" className="w-5 h-5 object-contain transition-all hover:scale-110" loading="lazy" width={512} height={512} /></a>
-                  <a href={COMPANY_INFO.socials.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp" className="w-9 h-9 rounded-full flex items-center justify-center transition-all text-[#5F23C8] hover:-translate-y-1 hover:text-[#4C1D95]"><img src="/whatsapp.png" alt="WhatsApp" className="w-5 h-5 object-contain transition-all hover:scale-110" loading="lazy" width={512} height={512} /></a>
-                  <a href="tel:+916399999955" aria-label="Call us" className="w-9 h-9 rounded-full flex items-center justify-center transition-all text-[#5F23C8] hover:-translate-y-1 hover:text-[#4C1D95]">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" className="transition-all hover:scale-110">
+                  <a
+                    href={COMPANY_INFO.socials.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="w-9 h-9 rounded-full bg-white/90 border border-slate-200/80 hover:bg-[#0077B5]/10 hover:border-[#0077B5]/50 hover:shadow-[0_0_16px_rgba(0,119,181,0.35)] shadow-xs flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:scale-110 active:scale-95 group"
+                  >
+                    <img src="/linkedin.png" alt="Linkedin" className="w-5 h-5 object-contain transition-transform duration-300 group-hover:scale-110" loading="lazy" width={512} height={512} />
+                  </a>
+
+                  <a
+                    href={COMPANY_INFO.socials.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    className="w-9 h-9 rounded-full bg-white/90 border border-slate-200/80 hover:bg-[#E4405F]/10 hover:border-[#E4405F]/50 hover:shadow-[0_0_16px_rgba(228,64,95,0.35)] shadow-xs flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:scale-110 active:scale-95 group"
+                  >
+                    <img src="/instagram.png" alt="Instagram" className="w-5 h-5 object-contain transition-transform duration-300 group-hover:scale-110" loading="lazy" width={512} height={512} />
+                  </a>
+
+                  <a
+                    href={COMPANY_INFO.socials.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp"
+                    className="w-9 h-9 rounded-full bg-white/90 border border-slate-200/80 hover:bg-[#25D366]/10 hover:border-[#25D366]/50 hover:shadow-[0_0_16px_rgba(37,211,102,0.35)] shadow-xs flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:scale-110 active:scale-95 group"
+                  >
+                    <img src="/whatsapp.png" alt="WhatsApp" className="w-5 h-5 object-contain transition-transform duration-300 group-hover:scale-110" loading="lazy" width={512} height={512} />
+                  </a>
+
+                  <a
+                    href="tel:+916399999955"
+                    aria-label="Call us"
+                    className="w-9 h-9 rounded-full bg-white/90 border border-slate-200/80 hover:bg-[#1877F2]/10 hover:border-[#1877F2]/50 hover:shadow-[0_0_16px_rgba(24,119,242,0.35)] shadow-xs flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:scale-110 active:scale-95 group"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" className="transition-transform duration-300 group-hover:scale-110">
                       <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="#1877F2"/>
                     </svg>
                   </a>
-                  <a href={`mailto:${COMPANY_INFO.contact}`} aria-label="Send us an email" className="w-9 h-9 rounded-full flex items-center justify-center transition-all text-[#5F23C8] hover:-translate-y-1 hover:text-[#4C1D95]"><img src="/gmail.png" alt="Gmail" className="w-7 h-7 object-contain transition-all hover:scale-110" loading="lazy" width={512} height={512} /></a>
-                  <a href={COMPANY_INFO.socials.facebook} target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page" className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:-translate-y-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" className="transition-all hover:scale-110">
+
+                  <a
+                    href={`mailto:${COMPANY_INFO.contact}`}
+                    aria-label="Email"
+                    className="w-9 h-9 rounded-full bg-white/90 border border-slate-200/80 hover:bg-[#EA4335]/10 hover:border-[#EA4335]/50 hover:shadow-[0_0_16px_rgba(234,67,53,0.35)] shadow-xs flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:scale-110 active:scale-95 group"
+                  >
+                    <img src="/gmail.png" alt="Gmail" className="w-6 h-6 object-contain transition-transform duration-300 group-hover:scale-110" loading="lazy" width={512} height={512} />
+                  </a>
+
+                  <a
+                    href={COMPANY_INFO.socials.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    className="w-9 h-9 rounded-full bg-white/90 border border-slate-200/80 hover:bg-[#1877F2]/10 hover:border-[#1877F2]/50 hover:shadow-[0_0_16px_rgba(24,119,242,0.35)] shadow-xs flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:scale-110 active:scale-95 group"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" className="transition-transform duration-300 group-hover:scale-110">
                       <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#1877F2" />
                     </svg>
                   </a>
                 </div>
 
-                <div className="flex items-center gap-3.5 w-full">
-                  <img src="/ISO 27001.png" alt="ISO 27001:2022 certified" className="h-[30px] w-auto object-contain drop-shadow-xs hover:scale-105 transition-transform" loading="lazy" />
-                  <img src="/gdpr logo.jpg" alt="GDPR compliant" className="h-[26px] w-auto object-contain drop-shadow-xs hover:scale-105 transition-transform rounded" loading="lazy" />
-                  <img src="/ISO_9001-2015.svg.webp" alt="ISO 9001:2015 certified" className="h-[26px] w-auto object-contain drop-shadow-xs hover:scale-105 transition-transform" loading="lazy" />
+                {/* ISO / Compliance Certifications Row */}
+                <div className="flex items-center gap-3 pt-0.5">
+                  <div
+                    aria-label="ISO 27001:2022 Certified"
+                    className="w-9 h-9 rounded-full bg-white/90 border border-slate-200/80 hover:bg-[#0070BA]/10 hover:border-[#0070BA]/50 hover:shadow-[0_0_16px_rgba(0,112,186,0.35)] shadow-xs flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:scale-110 active:scale-95 cursor-pointer group"
+                  >
+                    <img
+                      src="/ISO 27001.png"
+                      alt="ISO 27001"
+                      style={{ width: '24px', height: '24px', objectFit: 'contain' }}
+                      className="w-6 h-6 object-contain transition-transform duration-300 group-hover:scale-110 shrink-0"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div
+                    aria-label="GDPR-ready"
+                    className="w-9 h-9 rounded-full bg-white/90 border border-slate-200/80 hover:bg-[#003399]/10 hover:border-[#003399]/50 hover:shadow-[0_0_16px_rgba(0,51,153,0.35)] shadow-xs flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:scale-110 active:scale-95 cursor-pointer group"
+                  >
+                    <img
+                      src="/gdpr logo.jpg"
+                      alt="GDPR-ready"
+                      style={{ width: '24px', height: '24px', objectFit: 'cover' }}
+                      className="w-6 h-6 object-cover rounded-full transition-transform duration-300 group-hover:scale-110 shrink-0"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div
+                    aria-label="ISO 9001:2015 Certified"
+                    className="w-9 h-9 rounded-full bg-white/90 border border-slate-200/80 hover:bg-[#0070BA]/10 hover:border-[#0070BA]/50 hover:shadow-[0_0_16px_rgba(0,112,186,0.35)] shadow-xs flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:scale-110 active:scale-95 cursor-pointer group"
+                  >
+                    <img
+                      src="/ISO_9001-2015.svg.webp"
+                      alt="ISO 9001"
+                      style={{ width: '24px', height: '24px', objectFit: 'contain' }}
+                      className="w-6 h-6 object-contain transition-transform duration-300 group-hover:scale-110 shrink-0"
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -277,7 +321,7 @@ const FooterSection = () => {
                     <div className="px-3 py-1.5 rounded-lg shadow-sm backdrop-blur-md bg-white/95 border border-slate-200 text-slate-800 flex flex-col gap-0.5 group-hover:border-[#5F23C8]/50 transition-colors">
                       <div className="flex items-center gap-1.5">
                         <MapPin size={12} className="text-[#5F23C8]" />
-                        <span className="text-[11px] font-bold">JMD Empire, Sector 62</span>
+                        <span className="text-[11px] font-bold">JMD Empire, Sector 62, Gurugram, India</span>
                       </div>
                     </div>
                   </div>

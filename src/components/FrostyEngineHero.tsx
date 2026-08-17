@@ -1812,7 +1812,7 @@ export default function FrostyEngineHero() {
               className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-[44ch]"
               style={{ marginBottom: 20 }}
             >
-              Frosty understands your business, answers customers in real time,
+              Frosty Agent understands your business, answers customers in real time,
               and turns conversations into conversions.
             </motion.p>
 

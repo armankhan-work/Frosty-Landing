@@ -255,7 +255,7 @@ export default function IntroducingFrostySection() {
                                 animate={isInView ? { opacity: [0.8, 1, 0.8] } : {}}
                                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                             >
-                                INTRODUCING FROSTY
+                                INTRODUCING FROSTY AGENT
                             </motion.span>
                             <h2 
                                 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight"
@@ -266,7 +266,7 @@ export default function IntroducingFrostySection() {
                                     animate={isInView ? { textShadow: ["0 0 10px rgba(95,35,200,0.15)", "0 0 20px rgba(95,35,200,0.3)", "0 0 10px rgba(95,35,200,0.15)"] } : {}}
                                     transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
                                 >
-                                    Frosty.
+                                    Frosty Agent.
                                 </motion.span>
                             </h2>
                             <p 
@@ -551,10 +551,10 @@ export default function IntroducingFrostySection() {
                             </div>
                             
                             <motion.div 
-                                className="absolute -bottom-7 text-slate-900 font-bold text-base tracking-wide z-40"
+                                className="absolute -bottom-7 text-slate-900 font-bold text-base tracking-wide z-40 whitespace-nowrap"
                                 animate={{ opacity: burstActive ? 1 : 0.9 }}
                             >
-                                Frosty
+                                Frosty Agent
                             </motion.div>
                         </div>
 

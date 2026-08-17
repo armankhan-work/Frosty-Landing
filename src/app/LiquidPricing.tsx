@@ -57,7 +57,7 @@ export default function LiquidPricing() {
               href="/dashboard/billing"
               className="mt-8 inline-block rounded-full bg-white text-black px-6 py-2.5 text-sm font-semibold"
             >
-              Get started
+              Start free trial
             </a>
           </motion.div>
         ))}

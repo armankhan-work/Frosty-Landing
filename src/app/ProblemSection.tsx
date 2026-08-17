@@ -166,7 +166,10 @@ export default function ProblemSection() {
                                         d="M 180 180 Q 230 180 250 195" 
                                         fill="none" stroke="#94A3B8" strokeWidth="1.5" strokeDasharray="4 4"
                                     />
-                                    <motion.text x="225" y="184" fill="#EF4444" fontSize="14" fontWeight="bold" initial={{opacity:0, scale:0}} whileInView={{opacity:1, scale:1}} viewport={{once:true}} transition={{type:"spring", delay: SEQ.waWire + 0.6}}>X</motion.text>
+                                    <motion.g transform="translate(230, 180)" initial={{opacity:0, scale:0}} whileInView={{opacity:1, scale:1}} viewport={{once:true}} transition={{type:"spring", delay: SEQ.waWire + 0.6}} aria-hidden="true">
+                                        <line x1="-5" y1="-5" x2="5" y2="5" stroke="#EF4444" strokeWidth="2.2" strokeLinecap="round" />
+                                        <line x1="5" y1="-5" x2="-5" y2="5" stroke="#EF4444" strokeWidth="2.2" strokeLinecap="round" />
+                                    </motion.g>
                                     
                                     {/* Lead */}
                                     <motion.path 
@@ -178,7 +181,10 @@ export default function ProblemSection() {
                                         d="M 180 280 Q 230 280 250 265" 
                                         fill="none" stroke="#94A3B8" strokeWidth="1.5" strokeDasharray="4 4"
                                     />
-                                    <motion.text x="238" y="284" fill="#EF4444" fontSize="14" fontWeight="bold" initial={{opacity:0, scale:0}} whileInView={{opacity:1, scale:1}} viewport={{once:true}} transition={{type:"spring", delay: SEQ.leadWire + 0.6}}>X</motion.text>
+                                    <motion.g transform="translate(243, 280)" initial={{opacity:0, scale:0}} whileInView={{opacity:1, scale:1}} viewport={{once:true}} transition={{type:"spring", delay: SEQ.leadWire + 0.6}} aria-hidden="true">
+                                        <line x1="-5" y1="-5" x2="5" y2="5" stroke="#EF4444" strokeWidth="2.2" strokeLinecap="round" />
+                                        <line x1="5" y1="-5" x2="-5" y2="5" stroke="#EF4444" strokeWidth="2.2" strokeLinecap="round" />
+                                    </motion.g>
                                     
                                     {/* Team */}
                                     <motion.path 
@@ -190,7 +196,10 @@ export default function ProblemSection() {
                                         d="M 180 380 Q 250 380 250 315 T 280 250" 
                                         fill="none" stroke="#94A3B8" strokeWidth="1.5" strokeDasharray="4 4"
                                     />
-                                    <motion.text x="225" y="384" fill="#EF4444" fontSize="14" fontWeight="bold" initial={{opacity:0, scale:0}} whileInView={{opacity:1, scale:1}} viewport={{once:true}} transition={{type:"spring", delay: SEQ.teamWire + 0.6}}>X</motion.text>
+                                    <motion.g transform="translate(230, 380)" initial={{opacity:0, scale:0}} whileInView={{opacity:1, scale:1}} viewport={{once:true}} transition={{type:"spring", delay: SEQ.teamWire + 0.6}} aria-hidden="true">
+                                        <line x1="-5" y1="-5" x2="5" y2="5" stroke="#EF4444" strokeWidth="2.2" strokeLinecap="round" />
+                                        <line x1="5" y1="-5" x2="-5" y2="5" stroke="#EF4444" strokeWidth="2.2" strokeLinecap="round" />
+                                    </motion.g>
 
                                     {/* Center to Timeline (Waiting) */}
                                     <motion.path 
@@ -223,7 +232,10 @@ export default function ProblemSection() {
                                     {/* Dots and Crosses on Timeline */}
                                     <motion.circle cx="680" cy="180" r="3.5" fill="#5F23C8" initial={{opacity:0, scale:0}} whileInView={{opacity:1, scale:1}} viewport={{once:true}} transition={{delay:SEQ.waitCard}} />
                                     <motion.circle cx="680" cy="280" r="3.5" fill="#5F23C8" initial={{opacity:0, scale:0}} whileInView={{opacity:1, scale:1}} viewport={{once:true}} transition={{delay:SEQ.followCard}} />
-                                    <motion.text x="635" y="334" fill="#EF4444" fontSize="14" fontWeight="bold" initial={{opacity:0, scale:0}} whileInView={{opacity:1, scale:1}} viewport={{once:true}} transition={{type:"spring", delay: SEQ.noRespCard + 0.3}}>X</motion.text>
+                                    <motion.g transform="translate(640, 330)" initial={{opacity:0, scale:0}} whileInView={{opacity:1, scale:1}} viewport={{once:true}} transition={{type:"spring", delay: SEQ.noRespCard + 0.3}} aria-hidden="true">
+                                        <line x1="-5" y1="-5" x2="5" y2="5" stroke="#EF4444" strokeWidth="2.2" strokeLinecap="round" />
+                                        <line x1="5" y1="-5" x2="-5" y2="5" stroke="#EF4444" strokeWidth="2.2" strokeLinecap="round" />
+                                    </motion.g>
                                     <motion.path d="M 645 330 Q 660 330 680 340" fill="none" stroke="#94A3B8" strokeWidth="1.5" strokeDasharray="4 4" initial={{pathLength:0}} whileInView={{pathLength:1}} viewport={{once:true}} transition={{delay: SEQ.noRespCard}}/>
                                 </svg>
 

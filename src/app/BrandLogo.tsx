@@ -82,7 +82,7 @@ export default function BrandLogo({ ready = true, collapsed = false, forceLight 
         style={{ width: 0, opacity: 0 }}
       >
         <span className="frosty-text font-sans font-bold text-2xl tracking-tight block pl-2 text-[#18181B]" style={{ whiteSpace: 'nowrap' }}>
-          Frosty
+          Frosty Agent
         </span>
       </div>
 
