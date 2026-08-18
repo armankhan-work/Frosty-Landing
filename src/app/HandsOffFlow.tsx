@@ -32,11 +32,11 @@ export default function HandsOffFlow({ onComplete }: { onComplete?: () => void }
             <motion.line x1="100" y1="80" x2="400" y2="80" stroke="#0396A6" strokeWidth="2.5" strokeDasharray="4 4"
               initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1, delay: 0.8 }} />
             <motion.line x1="400" y1="80" x2="400" y2="380" stroke="#14B8A6" strokeWidth="2.5" strokeDasharray="4 4"
-              initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1.2, delay: 2.2 }} />
+              initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1, delay: 2.2 }} />
             <motion.line x1="400" y1="380" x2="100" y2="380" stroke="#EA580C" strokeWidth="2.5" strokeDasharray="4 4"
               initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1, delay: 4 }} />
             <motion.line x1="100" y1="380" x2="100" y2="80" stroke="#E11D48" strokeWidth="2.5" strokeDasharray="4 4"
-              initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1.2, delay: 5.5 }} />
+              initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1, delay: 5.5 }} />
 
             {/* Node: User (top left) */}
             <motion.g initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.2, type: 'spring' }}>

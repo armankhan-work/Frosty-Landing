@@ -322,7 +322,7 @@ export default function AboutPage() {
 
             {/* Harmonized Headline matching Landing Page hierarchy */}
             <div className="flex flex-col items-center max-w-4xl mx-auto text-center">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-[#0A1A2F] leading-[1.2] tracking-tight flex flex-col items-center text-center">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-[#0A1A2F] leading-[1.2] tracking-tight flex flex-col items-center text-center">
                 <KineticBlurHeading
                   text="Architecting the Future"
                   as="span"
@@ -438,7 +438,7 @@ export default function AboutPage() {
               <KineticBlurHeading
                 text="The Inception of Frosty"
                 as="h2"
-                className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0A1A2F] leading-[1.15] tracking-tight text-left"
+                className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-[#0A1A2F] leading-[1.15] tracking-tight text-left"
               />
               <div className="space-y-4 text-sm md:text-[15px] text-slate-600 leading-relaxed mt-6 sm:mt-7" style={{ marginTop: '24px' }}>
                 <p>
@@ -507,7 +507,7 @@ export default function AboutPage() {
             <KineticBlurHeading
               text="Frosty's Journey"
               as="h2"
-              className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0A1A2F] leading-[1.15] tracking-tight justify-center text-center"
+              className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-[#0A1A2F] leading-[1.15] tracking-tight justify-center text-center"
             />
             <p className="text-sm md:text-[15px] text-slate-600 leading-relaxed mt-6 sm:mt-7" style={{ marginTop: '24px' }}>
               From initial architecture in Feb 2026 to actively expanding autonomous sales agent capabilities.
@@ -569,7 +569,7 @@ export default function AboutPage() {
               <KineticBlurHeading
                 text="Accelerate growth at the new speed of business"
                 as="h2"
-                className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0A1A2F] leading-[1.15] tracking-tight text-left"
+                className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-[#0A1A2F] leading-[1.15] tracking-tight text-left"
               />
               <div className="space-y-4 text-slate-600 text-sm md:text-[15px] leading-relaxed mb-8 mt-6 sm:mt-7" style={{ marginTop: '24px' }}>
                 <p>
@@ -642,7 +642,7 @@ export default function AboutPage() {
             <KineticBlurHeading
               text="Core Values"
               as="h2"
-              className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0A1A2F] leading-[1.15] tracking-tight justify-center text-center"
+              className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-[#0A1A2F] leading-[1.15] tracking-tight justify-center text-center"
             />
             <p className="text-sm md:text-[15px] text-slate-600 leading-relaxed mt-6 sm:mt-7" style={{ marginTop: '24px' }}>
               The foundational tenets guiding our research, product roadmap, and client partnerships.
@@ -681,7 +681,7 @@ export default function AboutPage() {
             <KineticBlurHeading
               text="Our Global Offices"
               as="h2"
-              className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0A1A2F] leading-[1.15] tracking-tight justify-center text-center"
+              className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-[#0A1A2F] leading-[1.15] tracking-tight justify-center text-center"
             />
             <p className="text-sm md:text-[15px] text-slate-600 leading-relaxed mt-6 sm:mt-7" style={{ marginTop: '24px' }}>
               Operating internationally with strategic engineering and client success hubs.
@@ -760,7 +760,7 @@ export default function AboutPage() {
               </span>
 
               <h2 
-                className="text-xl sm:text-2xl md:text-3xl font-serif font-medium tracking-tight leading-snug mb-2 text-center !text-white w-full"
+                className="text-xl sm:text-2xl md:text-3xl font-serif font-bold tracking-tight leading-snug mb-2 text-center !text-white w-full"
                 style={{ color: '#FFFFFF', textAlign: 'center' }}
               >
                 Ready to deploy Frosty or build custom enterprise AI?

@@ -15,7 +15,7 @@ export default function WhatIsFrostySection() {
                         </span>
                         <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">PRODUCT OVERVIEW</span>
                     </div>
-                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight text-balance max-w-[20ch] m-0 mb-6">
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-[#0F172A] leading-[1.15] tracking-tight text-balance max-w-[20ch] m-0 mb-6">
                         What is Frosty Agent?
                     </h2>
                     <p className="text-sm md:text-base text-slate-600 font-normal leading-relaxed max-w-xl m-0 mb-6">

@@ -3,18 +3,18 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { 
-    Calendar, 
-    Database, 
-    ShieldCheck, 
-    FileText, 
-    Lock, 
-    Zap, 
-    Globe, 
-    Users, 
-    Sparkles, 
-    Info, 
-    Check, 
+import {
+    Calendar,
+    Database,
+    ShieldCheck,
+    FileText,
+    Lock,
+    Zap,
+    Globe,
+    Users,
+    Sparkles,
+    Info,
+    Check,
     ArrowRight,
     Headphones,
     MessageCircle,
@@ -61,7 +61,7 @@ export default function PricingSection() {
                 const params = new URLSearchParams(window.location.search);
                 const queryRegion = params.get('region')?.toLowerCase();
                 const queryCurrency = params.get('currency')?.toLowerCase();
-                
+
                 if (queryRegion === 'intl' || queryRegion === 'us' || queryRegion === 'global' || queryCurrency === 'usd') {
                     setRegion('INTL');
                     return;
@@ -409,7 +409,7 @@ export default function PricingSection() {
         <section className="relative w-full overflow-hidden pt-6 sm:pt-8 lg:pt-10 pb-10 sm:pb-12 bg-transparent" id="pricing">
             {/* Background Glows */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-[#0396A6]/4 rounded-full blur-[120px] pointer-events-none" />
-            
+
             <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 {/* Header */}
                 <div className="text-center max-w-3xl mx-auto mb-7 sm:mb-9">
@@ -428,15 +428,15 @@ export default function PricingSection() {
                         </span>
                     </motion.div>
 
-                    <motion.h2 
+                    <motion.h2
                         initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight m-0 mb-6"
+                        className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-[#0F172A] leading-[1.15] tracking-tight m-0 mb-6"
                     >
                         Simple, volume-based pricing.
                     </motion.h2>
-                    <motion.p 
+                    <motion.p
                         initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -452,16 +452,14 @@ export default function PricingSection() {
                             <button
                                 type="button"
                                 onClick={() => setTerm('annual')}
-                                className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
-                                    term === 'annual' 
-                                        ? 'bg-[#0396A6] text-white shadow-sm' 
+                                className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${term === 'annual'
+                                        ? 'bg-[#0396A6] text-white shadow-sm'
                                         : 'text-slate-600 hover:text-slate-900'
-                                }`}
+                                    }`}
                             >
                                 <span>Annual</span>
-                                <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${
-                                    term === 'annual' ? 'bg-white/20 text-white' : 'bg-emerald-100 text-emerald-800'
-                                }`}>
+                                <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${term === 'annual' ? 'bg-white/20 text-white' : 'bg-emerald-100 text-emerald-800'
+                                    }`}>
                                     Save 20%
                                 </span>
                             </button>
@@ -469,16 +467,14 @@ export default function PricingSection() {
                             <button
                                 type="button"
                                 onClick={() => setTerm('biannual')}
-                                className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
-                                    term === 'biannual' 
-                                        ? 'bg-[#0396A6] text-white shadow-sm' 
+                                className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${term === 'biannual'
+                                        ? 'bg-[#0396A6] text-white shadow-sm'
                                         : 'text-slate-600 hover:text-slate-900'
-                                }`}
+                                    }`}
                             >
                                 <span>6 Months</span>
-                                <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${
-                                    term === 'biannual' ? 'bg-white/20 text-white' : 'bg-emerald-100 text-emerald-800'
-                                }`}>
+                                <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${term === 'biannual' ? 'bg-white/20 text-white' : 'bg-emerald-100 text-emerald-800'
+                                    }`}>
                                     Save 15%
                                 </span>
                             </button>
@@ -486,16 +482,14 @@ export default function PricingSection() {
                             <button
                                 type="button"
                                 onClick={() => setTerm('quarterly')}
-                                className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
-                                    term === 'quarterly' 
-                                        ? 'bg-[#0396A6] text-white shadow-sm' 
+                                className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${term === 'quarterly'
+                                        ? 'bg-[#0396A6] text-white shadow-sm'
                                         : 'text-slate-600 hover:text-slate-900'
-                                }`}
+                                    }`}
                             >
                                 <span>Quarterly</span>
-                                <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${
-                                    term === 'quarterly' ? 'bg-white/20 text-white' : 'bg-emerald-100 text-emerald-800'
-                                }`}>
+                                <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${term === 'quarterly' ? 'bg-white/20 text-white' : 'bg-emerald-100 text-emerald-800'
+                                    }`}>
                                     Save 8%
                                 </span>
                             </button>
@@ -503,11 +497,10 @@ export default function PricingSection() {
                             <button
                                 type="button"
                                 onClick={() => setTerm('monthly')}
-                                className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
-                                    term === 'monthly' 
-                                        ? 'bg-[#0396A6] text-white shadow-sm' 
+                                className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${term === 'monthly'
+                                        ? 'bg-[#0396A6] text-white shadow-sm'
                                         : 'text-slate-600 hover:text-slate-900'
-                                }`}
+                                    }`}
                             >
                                 <span>Monthly</span>
                             </button>
@@ -528,13 +521,12 @@ export default function PricingSection() {
                                     exit={{ opacity: 0, y: -15 }}
                                     transition={{ delay: index * 0.05, duration: 0.3 }}
                                     whileHover={{ y: -5, transition: { duration: 0.18, ease: "easeOut" } }}
-                                    className={`relative flex flex-col rounded-[22px] p-5 lg:p-5 xl:p-6 h-full transition-all duration-200 ${
-                                        plan.highlighted 
-                                            ? 'bg-white border-2 border-[#0396A6] shadow-[0_8px_30px_rgba(3, 150, 166,0.1)] ring-1 ring-[#0396A6]/15' 
+                                    className={`relative flex flex-col rounded-[22px] p-5 lg:p-5 xl:p-6 h-full transition-all duration-200 ${plan.highlighted
+                                            ? 'bg-white border-2 border-[#0396A6] shadow-[0_8px_30px_rgba(3, 150, 166,0.1)] ring-1 ring-[#0396A6]/15'
                                             : plan.isEnterprise
                                                 ? 'bg-white border border-slate-300/80 shadow-xs hover:border-slate-400'
                                                 : 'bg-white border border-slate-200/90 shadow-xs hover:border-slate-300'
-                                    }`}
+                                        }`}
                                 >
                                     {/* Card Header: Plan Name (Left) & Savings Badge (Right) */}
                                     <div className="flex items-center justify-between gap-2 mb-3">
@@ -576,11 +568,10 @@ export default function PricingSection() {
                                     {/* Core Metrics: Volume & Seats */}
                                     <div className="flex flex-col gap-2.5 mb-4 flex-1">
                                         {/* Volume Box */}
-                                        <div className={`p-3 rounded-xl border flex flex-col gap-0.5 transition-colors duration-200 ${
-                                            plan.highlighted 
-                                                ? 'bg-teal-50/60 border-teal-200/70' 
+                                        <div className={`p-3 rounded-xl border flex flex-col gap-0.5 transition-colors duration-200 ${plan.highlighted
+                                                ? 'bg-teal-50/60 border-teal-200/70'
                                                 : 'bg-slate-50/80 border-slate-200/70'
-                                        }`}>
+                                            }`}>
                                             <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-slate-500">
                                                 <span>Volume</span>
                                                 <MessageCircle className="w-3 h-3 text-[#0396A6]" />
@@ -636,13 +627,12 @@ export default function PricingSection() {
                                     <div className="mt-auto pt-2 flex flex-col gap-2">
                                         <Link
                                             href={plan.ctaLink}
-                                            className={`w-full py-2.5 px-4 rounded-xl font-bold text-xs sm:text-[13px] transition-all duration-200 flex items-center justify-center gap-1.5 text-center group ${
-                                                plan.highlighted 
-                                                    ? 'bg-[#0396A6] !text-white hover:bg-[#0A1A2F] shadow-sm hover:shadow-md active:scale-[0.98]' 
+                                            className={`w-full py-2.5 px-4 rounded-xl font-bold text-xs sm:text-[13px] transition-all duration-200 flex items-center justify-center gap-1.5 text-center group ${plan.highlighted
+                                                    ? 'bg-[#0396A6] !text-white hover:bg-[#0A1A2F] shadow-sm hover:shadow-md active:scale-[0.98]'
                                                     : plan.isEnterprise
                                                         ? 'bg-slate-900 !text-white hover:bg-slate-800 shadow-sm active:scale-[0.98]'
                                                         : 'bg-stone-50 border border-slate-200 text-slate-800 hover:bg-white hover:border-[#0396A6]/40 hover:text-[#0396A6] active:scale-[0.98]'
-                                            }`}
+                                                }`}
                                         >
                                             <span>{plan.cta}</span>
                                             <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
@@ -690,7 +680,7 @@ export default function PricingSection() {
                             <Sparkles className="w-3.5 h-3.5 text-[#0396A6]" />
                             <span className="text-[10px] sm:text-[11px] font-bold tracking-widest text-[#0396A6] uppercase">Full Product Included</span>
                         </div>
-                        <h3 className="text-2xl sm:text-3xl font-serif font-medium text-slate-900 tracking-tight mb-2.5">
+                        <h3 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 tracking-tight mb-2.5">
                             Everything you need, included in every plan
                         </h3>
                         <p className="text-xs sm:text-sm text-slate-600">

@@ -32,7 +32,7 @@ export default function CapabilitiesSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
-                            className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight m-0 mb-6"
+                            className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-[#0F172A] leading-[1.15] tracking-tight m-0 mb-6"
                         >
                             Enterprise-grade.<br />
                             <span className="text-[#0396A6] font-bold" style={{ color: '#0396A6' }}>Engineered</span><br />

@@ -232,7 +232,7 @@ function FeatureShowcase() {
     };
 
     return (
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-20 xl:gap-28 mt-6 sm:mt-12 w-full max-w-[1440px] mx-auto">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16 xl:gap-24 mt-6 sm:mt-12 w-full max-w-[1520px] mx-auto">
             {/* Mobile: Tabs on top */}
             <MobileTabs active={active} onSelect={setActive} setHeld={setHeld} />
 
@@ -244,9 +244,9 @@ function FeatureShowcase() {
                 <ActsDiagram active={active} onSelect={setActive} setHeld={setHeld} />
             </div>
 
-            {/* Flow Animations — responsive container with comfortable spacing */}
-            <div className="w-full lg:w-[50%] xl:w-[52%] flex items-center justify-center overflow-hidden lg:pl-6 xl:pl-10">
-                <div className="w-full max-w-[440px] lg:max-w-none aspect-square lg:aspect-auto lg:min-h-[460px] flex items-center justify-center">
+            {/* Flow Animations — full original size, shifted right */}
+            <div className="w-full lg:w-[50%] xl:w-[52%] flex items-center justify-center lg:justify-end lg:translate-x-6 xl:translate-x-10">
+                <div className="w-full max-w-[500px] lg:max-w-none aspect-square lg:aspect-auto lg:min-h-[460px] flex items-center justify-center">
                     {active === 0 && <AnswersQualifiesFlow onComplete={handleComplete} />}
                     {active === 1 && <BooksMeetingsFlow onComplete={handleComplete} />}
                     {active === 2 && <ProposalsQuotesFlow onComplete={handleComplete} />}
@@ -264,7 +264,7 @@ export default function ItActsSection() {
             <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 relative z-10">
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.7 }} className="text-center mx-auto flex flex-col items-center" style={{ maxWidth: 640 }}>
                     <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6] flex items-center mb-3 sm:mb-4">Not a chatbot</span>
-                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight mb-3 sm:mb-6">
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-[#0F172A] leading-[1.15] tracking-tight mb-3 sm:mb-6">
                         It doesn&apos;t just chat. <span className="text-[#0396A6] font-bold">It acts.</span>
                     </h2>
                     <p className="text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl px-2 sm:px-0">

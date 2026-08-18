@@ -31,8 +31,8 @@ export default function CostOfSlowSection() {
                             </div>
 
                             {/* Heading */}
-                            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-medium text-[#18181B] leading-[1.12] tracking-tight mb-5">
-                                The first five minutes decide who they <span className="text-[#0396A6] font-semibold" style={{ color: '#0396A6' }}>talk to.</span>
+                            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#18181B] leading-[1.12] tracking-tight mb-5">
+                                The first five minutes decide who they <span className="text-[#0396A6] font-bold" style={{ color: '#0396A6' }}>talk to.</span>
                             </h2>
 
                             {/* Body */}

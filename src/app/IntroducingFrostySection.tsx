@@ -259,7 +259,7 @@ export default function IntroducingFrostySection() {
                             </div>
 
                             <h2
-                                className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight m-0 mb-6"
+                                className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-[#0F172A] leading-[1.15] tracking-tight m-0 mb-6"
                             >
                                 Meet <motion.span
                                     className="inline-block text-[#0396A6] font-bold"

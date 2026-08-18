@@ -58,7 +58,7 @@ h4,
 .fx-sec h2,
 .fx-sec h3 {
   font-family: var(--serif) !important;
-  font-weight: 500;
+  font-weight: 700 !important;
   line-height: 1.15;
   letter-spacing: -0.02em;
   text-wrap: balance;
