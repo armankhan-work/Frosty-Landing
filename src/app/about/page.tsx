@@ -288,7 +288,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="fx-root min-h-screen bg-[#FCFBF9] text-[#0A1A2F] selection:bg-[#0396A6]/15 selection:text-[#0396A6] relative overflow-hidden">
+    <div className="fx-root min-h-screen bg-[#FFFFFF] text-[#0A1A2F] selection:bg-[#0396A6]/15 selection:text-[#0396A6] relative overflow-hidden">
       {/* ── Ambient Background Depth ── */}
       <ParallaxStarfield />
       <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">

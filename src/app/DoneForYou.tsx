@@ -117,48 +117,41 @@ export default function DoneForYou() {
                     <motion.div
                         initial={{ opacity: 0, y: 16 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false, amount: 0.2 }}
+                        viewport={{ once: true }}
                         transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-8 relative w-max bg-[#0396A6]/10 border border-[#0396A6]/25 shadow-sm"
+                        className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-6 relative w-max bg-[#0396A6]/[0.08] border border-[#0396A6]/20 backdrop-blur-sm shadow-xs"
                     >
-                        <Diamond className="w-3.5 h-3.5 text-[#0396A6]" />
-                        <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">Self-Serve Setup</span>
+                        <span className="w-4 h-4 rounded-full bg-[#0396A6]/20 flex items-center justify-center">
+                            <Sparkles className="w-2.5 h-2.5 text-[#0396A6]" />
+                        </span>
+                        <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">SELF-SERVE SETUP</span>
                     </motion.div>
 
                     {/* Heading */}
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false, amount: 0.2 }}
+                        viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
-                        className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight mb-6"
+                        className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight m-0 mb-6"
                     >
-                        <span className="text-[#0396A6] font-bold">Live in 5 minutes.</span><br />
+                        <span className="text-[#0396A6] font-bold" style={{ color: '#0396A6' }}>Live in 5 minutes.</span><br />
                         Set up Frosty Agent in 3 easy steps.
                     </motion.h2>
-
-                    {/* Divider Line */}
-                    <motion.div
-                        initial={{ width: 0, opacity: 0 }}
-                        whileInView={{ width: '48px', opacity: 1 }}
-                        viewport={{ once: false, amount: 0.2 }}
-                        transition={{ duration: 0.6, delay: 0.25, ease: 'easeOut' }}
-                        className="h-[2px] bg-[#0396A6]/60 mb-8"
-                    />
 
                     {/* Paragraph */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false, amount: 0.2 }}
+                        viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
-                        className="text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl mb-8 space-y-4"
+                        className="text-sm md:text-base text-slate-600 font-normal leading-relaxed max-w-xl m-0 mb-6 space-y-3"
                     >
-                        <p>
+                        <p className="text-slate-600 font-normal">
                             Sign up, connect your website URL or documents, and let Frosty Agent build its knowledge base automatically.
                         </p>
-                        <p>
-                            Test your agent in a live simulator, embed a single line of code, and start converting visitors on Web & WhatsApp immediately.
+                        <p className="text-slate-600 font-normal">
+                            Customize your branding, test guardrails in the simulator, and paste one snippet to deploy. No complex onboarding required.
                         </p>
                     </motion.div>
 

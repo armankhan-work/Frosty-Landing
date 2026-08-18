@@ -1753,6 +1753,7 @@ export default function FrostyEngineHero() {
               }}
               className="font-serif font-medium text-[#0F172A] tracking-tight"
               style={{
+                fontFamily: "'Cormorant Garamond', Georgia, serif",
                 fontSize: 'clamp(42px, 5.5vw, 68px)',
                 lineHeight: 1.08,
                 margin: '0 0 18px',
@@ -1770,7 +1771,21 @@ export default function FrostyEngineHero() {
                   },
                 }}
               >
-                Your business.
+                Your business
+              </motion.span>
+              <motion.span
+                style={{ display: 'block', textAlign: 'center' }}
+                variants={{
+                  initial: { opacity: 0, y: 18, filter: 'blur(6px)' },
+                  animate: {
+                    opacity: 1,
+                    y: 0,
+                    filter: 'blur(0px)',
+                    transition: { duration: 0.9, ease: EASE },
+                  },
+                }}
+              >
+                Now
               </motion.span>
               <motion.span
                 style={{ display: 'block', position: 'relative' }}
@@ -1784,7 +1799,6 @@ export default function FrostyEngineHero() {
                   },
                 }}
               >
-                Now{' '}
                 <span
                   style={{
                     color: PURPLE,
@@ -1792,7 +1806,7 @@ export default function FrostyEngineHero() {
                     display: 'inline-block',
                   }}
                 >
-                  powered by AI.
+                  powered by AI
                   <HandDrawnCurve />
                 </span>
               </motion.span>

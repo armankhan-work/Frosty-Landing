@@ -4,7 +4,7 @@ import BrandLogo from '../BrandLogo';
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-[#FCFBF9] text-stone-700 font-sans selection:bg-[#0396A6]/20">
+    <main className="min-h-screen bg-[#FFFFFF] text-stone-700 font-sans selection:bg-[#0396A6]/20">
       <nav className="w-full p-6 border-b border-stone-200 flex items-center justify-between sticky top-0 bg-white/80 backdrop-blur-xl z-50">
         <Link href="/">
           <BrandLogo />

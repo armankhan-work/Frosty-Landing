@@ -121,7 +121,7 @@ export default function SplashScreen({ isLoading = true, onComplete }: { isLoadi
       const H = window.innerHeight;
       
       const bgG = cx.createRadialGradient(W / 2, H * .44, 0, W / 2, H * .44, Math.sqrt(W * W + H * H) * .5);
-      bgG.addColorStop(0, '#FFFFFF'); bgG.addColorStop(.55, '#FCFBF9'); bgG.addColorStop(1, '#F8F7F4');
+      bgG.addColorStop(0, '#FFFFFF'); bgG.addColorStop(.55, '#FFFFFF'); bgG.addColorStop(1, '#F8F7F4');
       
       const amb = lerp(f, 0, 20, 0, 1) * lerp(f, 40, 60, 1, 0); 
       
@@ -298,7 +298,7 @@ export default function SplashScreen({ isLoading = true, onComplete }: { isLoadi
         position: 'fixed',
         inset: 0,
         zIndex: 9999,
-        background: '#FCFBF9' }}
+        background: '#FFFFFF' }}
     >
       <canvas
         ref={canvasRef}

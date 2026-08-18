@@ -418,11 +418,13 @@ export default function PricingSection() {
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50/95 border border-teal-200 mb-3.5 shadow-xs"
+                        className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 mb-6 backdrop-blur-sm shadow-xs"
                     >
-                        <Sparkles className="w-3.5 h-3.5 text-[#0396A6]" />
-                        <span className="text-[11px] sm:text-xs font-bold tracking-wide text-[#0396A6]">
-                            Launch pricing, first 100 customers. Save a further 20% paying annually.
+                        <span className="w-4 h-4 rounded-full bg-[#0396A6]/20 flex items-center justify-center">
+                            <Sparkles className="w-2.5 h-2.5 text-[#0396A6]" />
+                        </span>
+                        <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">
+                            SIMPLE, VOLUME-BASED PRICING
                         </span>
                     </motion.div>
 
@@ -430,7 +432,7 @@ export default function PricingSection() {
                         initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight mb-2.5"
+                        className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight m-0 mb-6"
                     >
                         Simple, volume-based pricing.
                     </motion.h2>
@@ -439,7 +441,7 @@ export default function PricingSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.05 }}
-                        className="text-slate-600 text-xs sm:text-sm md:text-base max-w-xl mx-auto leading-relaxed"
+                        className="text-slate-600 font-normal text-xs sm:text-sm md:text-base max-w-xl mx-auto leading-relaxed m-0 mb-6"
                     >
                         Launch pricing for the first 100 customers. Your price stays fixed for as long as your subscription is active.
                     </motion.p>

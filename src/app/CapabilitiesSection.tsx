@@ -18,11 +18,12 @@ export default function CapabilitiesSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full relative group bg-[#0396A6]/10 border border-[#0396A6]/25 shadow-sm"
-                            style={{ marginBottom: '2rem' }}
+                            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-6 relative group bg-[#0396A6]/[0.08] border border-[#0396A6]/20 backdrop-blur-sm shadow-xs"
                         >
-                            <Settings className="w-3.5 h-3.5 text-[#0396A6] animate-[spin_4s_linear_infinite]" />
-                            <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">Under the hood</span>
+                            <span className="w-4 h-4 rounded-full bg-[#0396A6]/20 flex items-center justify-center">
+                                <Settings className="w-2.5 h-2.5 text-[#0396A6]" />
+                            </span>
+                            <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">UNDER THE HOOD</span>
                         </motion.div>
 
                         {/* Editorial Heading */}
@@ -31,11 +32,10 @@ export default function CapabilitiesSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
-                            className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight"
-                            style={{ marginBottom: '2rem' }}
+                            className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight m-0 mb-6"
                         >
                             Enterprise-grade.<br />
-                            <span className="text-[#0396A6] font-bold">Engineered</span><br />
+                            <span className="text-[#0396A6] font-bold" style={{ color: '#0396A6' }}>Engineered</span><br />
                             from the ground up.
                         </motion.h2>
 
@@ -45,7 +45,7 @@ export default function CapabilitiesSection() {
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
-                            className="text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl mb-6"
+                            className="text-sm md:text-base text-slate-600 font-normal leading-relaxed max-w-xl m-0 mb-6"
                         >
                             Every request flows through a purpose-built AI architecture that crawls, understands, retrieves and reasons before generating enterprise-grade responses.
                         </motion.p>

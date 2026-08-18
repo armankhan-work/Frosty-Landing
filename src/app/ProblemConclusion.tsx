@@ -21,13 +21,13 @@ export default function ProblemConclusion() {
     };
 
     return (
-        <section className="relative w-full flex flex-col items-center text-center pt-10 sm:pt-14 pb-8 sm:pb-10 bg-transparent z-10 overflow-hidden ">
+        <section suppressHydrationWarning className="relative w-full flex flex-col items-center text-center pt-10 sm:pt-14 pb-8 sm:pb-10 bg-transparent z-10 overflow-hidden">
             <motion.h3
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ margin: "-100px", once: true }}
-                className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight mb-4"
+                className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.12] tracking-tight m-0 mb-3.5"
             >
                 <span className="inline-block mr-2 md:mr-0">
                     <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">The</motion.span>
@@ -36,10 +36,10 @@ export default function ProblemConclusion() {
                     <motion.span variants={wordVariants} className="inline-block text-[#0396A6] font-bold">ready.</motion.span>
                 </span>
                 <br className="hidden md:block" />
-                <span className="inline-block md:mt-2 mb-4">
+                <span className="inline-block md:mt-2 mb-2">
                     <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">The</motion.span>
                     <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">business</motion.span>
-                    <motion.span variants={wordVariants} className="inline-block text-[#FF7A5E] font-bold">wasn't.</motion.span>
+                    <motion.span variants={wordVariants} className="inline-block text-[#FF7A5E] font-bold">wasn&apos;t.</motion.span>
                 </span>
             </motion.h3>
 
@@ -48,7 +48,7 @@ export default function ProblemConclusion() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ margin: "-100px", once: true }}
                 transition={{ duration: 0.8, delay: 1.8 }}
-                className="text-[#0396A6] text-sm md:text-base font-bold tracking-[0.3em] uppercase mb-16"
+                className="text-[#0396A6] text-xs sm:text-sm font-bold tracking-[0.2em] uppercase m-0 mb-8"
             >
                 There has to be a better way.
             </motion.p>

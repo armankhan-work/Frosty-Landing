@@ -64,6 +64,7 @@ export default function LandingPage() {
             </AnimatePresence>
 
             <motion.div
+                suppressHydrationWarning
                 initial="initial"
                 animate={showSplash ? "initial" : "animate"}
                 variants={{
@@ -73,7 +74,7 @@ export default function LandingPage() {
                 className="frosty-root"
                 style={{
                     backgroundImage: 'radial-gradient(circle 800px at 100% 0%, rgba(3, 150, 166, 0.035) 0%, rgba(245, 158, 11, 0.018) 30%, transparent 100%), radial-gradient(circle 800px at 0% 100%, rgba(3, 150, 166, 0.03) 0%, rgba(217, 119, 6, 0.018) 30%, transparent 100%)',
-                    backgroundColor: '#FCFBF9',
+                    backgroundColor: '#FFFFFF',
                     backgroundAttachment: 'fixed',
                     minHeight: '100vh',
                     color: '#18181B',
