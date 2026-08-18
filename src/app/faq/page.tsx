@@ -92,7 +92,7 @@ export default function FAQPage() {
                                 <span className="text-[10px] font-bold tracking-widest text-[#0396A6] uppercase">Help Center</span>
                             </div>
 
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-stone-900">
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-stone-900">
                                 Frequently Asked Questions
                             </h1>
 

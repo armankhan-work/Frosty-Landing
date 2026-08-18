@@ -62,7 +62,7 @@ export default function TwoAgentsSection() {
   return (
     <section 
       ref={sectionRef}
-      className="relative pt-8 lg:pt-12 pb-12 lg:pb-16 overflow-hidden bg-transparent"
+      className="relative py-4 sm:py-6 lg:py-8 overflow-hidden bg-transparent"
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHoveringSection(true)}
       onMouseLeave={() => {
@@ -284,7 +284,7 @@ export default function TwoAgentsSection() {
         )}
       </AnimatePresence>
 
-      <div className="w-full max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+      <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
         <motion.div
@@ -292,22 +292,22 @@ export default function TwoAgentsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10 max-w-[700px] mx-auto"
+          className="text-center mb-4 sm:mb-6 max-w-[650px] mx-auto"
         >
           {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 mb-6 backdrop-blur-sm shadow-xs">
-            <span className="w-4 h-4 rounded-full bg-[#0396A6]/20 flex items-center justify-center">
-              <Bot className="w-2.5 h-2.5 text-[#0396A6]" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 mb-2.5 backdrop-blur-sm shadow-xs">
+            <span className="w-3.5 h-3.5 rounded-full bg-[#0396A6]/20 flex items-center justify-center">
+              <Bot className="w-2 h-2 text-[#0396A6]" />
             </span>
-            <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">DUAL-CHANNEL ARCHITECTURE</span>
+            <span className="text-[9.5px] md:text-[10.5px] font-bold tracking-widest uppercase text-[#0396A6]">DUAL-CHANNEL ARCHITECTURE</span>
           </div>
 
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight m-0 mb-6">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-[#0F172A] leading-tight m-0 mb-2">
             Two agents.<br />
             One <span className="relative">
               <span className="relative z-10 font-bold text-[#0396A6]" style={{ color: '#0396A6' }}>conversation.</span>
               <motion.div 
-                className="absolute bottom-1 left-0 right-0 h-3 bg-[#0396A6]/10 -z-10 rounded-sm"
+                className="absolute bottom-0.5 left-0 right-0 h-2.5 bg-[#0396A6]/10 -z-10 rounded-sm"
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
@@ -316,13 +316,13 @@ export default function TwoAgentsSection() {
               />
             </span>
           </h2>
-          <p className="text-sm md:text-base text-slate-600 font-normal leading-relaxed max-w-xl mx-auto m-0 mb-6">
+          <p className="text-xs sm:text-[13px] text-slate-600 font-normal leading-normal max-w-xl mx-auto m-0">
             The web and WhatsApp agents share a single memory — so a visitor who starts on your site and finishes on WhatsApp never repeats themselves.
           </p>
         </motion.div>
 
         {/* Cards Layout */}
-        <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_240px_1fr] gap-6 lg:gap-0 items-stretch">
+        <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_180px_1fr] gap-3 lg:gap-0 items-stretch max-w-[1100px] mx-auto">
           
           {/* Animated Connecting Lines */}
           <div className="hidden lg:block absolute inset-0 pointer-events-none z-0">
@@ -358,12 +358,12 @@ export default function TwoAgentsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative z-10 lg:pr-6 group cursor-pointer perspective-1000"
+            className="relative z-10 lg:pr-4 group cursor-pointer perspective-1000"
             onMouseEnter={() => setActive('outbound')}
             onMouseLeave={() => setActive(null)}
           >
             <motion.div 
-              className="h-full rounded-2xl p-5 sm:p-8 flex flex-col transition-all duration-500 overflow-hidden relative bg-white/95 backdrop-blur-xl border border-slate-200 shadow-[0_10px_30px_rgba(0,0,0,0.04)]"
+              className="h-full rounded-xl p-3.5 sm:p-4 lg:p-4 flex flex-col transition-all duration-500 overflow-hidden relative bg-white/95 backdrop-blur-xl border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)]"
               whileHover={{ scale: 1.02, rotateY: 2, rotateX: 2 }}
               style={{
                 borderColor: active === 'outbound' || isGlowing ? '#0396A6' : '#E2E8F0',
@@ -375,29 +375,29 @@ export default function TwoAgentsSection() {
               }}
             >
               <div className="relative z-10">
-                <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center justify-between mb-2.5 sm:mb-3">
                   <motion.div 
-                    className="w-10 h-10 rounded-full bg-teal-50 border border-teal-200 flex items-center justify-center shadow-sm"
+                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-teal-50 border border-teal-200 flex items-center justify-center shadow-sm"
                     animate={{ scale: active === 'outbound' ? 1.1 : 1 }}
                     transition={{ type: 'spring', stiffness: 300 }}
                   >
-                    <Globe className="w-5 h-5 text-[#0396A6]" strokeWidth={2.5} />
+                    <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#0396A6]" strokeWidth={2.5} />
                   </motion.div>
-                  <div className="px-3 py-1 rounded-full bg-[#0396A6]/10 text-[10px] font-bold text-[#0396A6] tracking-wider uppercase border border-[#0396A6]/20">
+                  <div className="px-2 py-0.5 rounded-full bg-[#0396A6]/10 text-[9px] font-bold text-[#0396A6] tracking-wider uppercase border border-[#0396A6]/20">
                     WEB AGENT
                   </div>
                 </div>
 
-                <h3 className="text-base md:text-lg font-bold text-[#0396A6] mb-3">
+                <h3 className="text-sm sm:text-[15px] font-bold text-[#0396A6] mb-1">
                   Website Conversion Agent
                 </h3>
-                <p className="text-sm md:text-base text-slate-600 leading-relaxed mb-6 sm:mb-8">
+                <p className="text-[11.5px] sm:text-xs text-slate-600 leading-normal mb-2.5 sm:mb-3">
                   Engages visitors instantly, answers complex product questions from your verified knowledge base, qualifies intent, and books meetings into your calendar.
                 </p>
               </div>
 
-              <div className="mt-auto pt-4 border-t border-slate-100 relative z-10">
-                <p className="text-[11px] font-bold tracking-wider uppercase text-slate-500">
+              <div className="mt-auto pt-2 border-t border-slate-100 relative z-10">
+                <p className="text-[9px] font-bold tracking-wider uppercase text-slate-500">
                   FOR: WEBSITE VISITORS • INBOUND LEADS • E-COMMERCE
                 </p>
               </div>
@@ -410,13 +410,13 @@ export default function TwoAgentsSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative z-20 flex flex-col items-center justify-center py-4 lg:py-0 cursor-pointer"
+            className="relative z-20 flex flex-col items-center justify-center py-2 lg:py-0 cursor-pointer"
             onMouseEnter={() => setIsGlowing(true)}
             onMouseLeave={() => setIsGlowing(false)}
             onClick={handleBrainClick}
           >
             <motion.div 
-              className="relative w-28 h-28 rounded-full flex items-center justify-center mb-4 transition-all duration-500 bg-white shadow-md"
+              className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-full flex items-center justify-center mb-1.5 transition-all duration-500 bg-white shadow-md"
               whileHover={{ scale: 1.05 }}
               style={{
                 border: `2px solid ${isGlowing || active ? '#0396A6' : '#CBD5E1'}`,
@@ -426,12 +426,12 @@ export default function TwoAgentsSection() {
               }}
             >
               <Brain 
-                className="w-12 h-12 relative z-10 transition-colors duration-500 text-[#0396A6]" 
+                className="w-7 h-7 sm:w-8 sm:h-8 relative z-10 transition-colors duration-500 text-[#0396A6]" 
                 strokeWidth={2.5} 
               />
             </motion.div>
             
-            <span className="text-[11px] font-bold text-slate-700 text-center leading-tight max-w-[14ch] tracking-wider uppercase">
+            <span className="text-[9px] font-bold text-slate-700 text-center leading-tight max-w-[14ch] tracking-wider uppercase">
               Shared contextual memory
             </span>
           </motion.div>
@@ -442,12 +442,12 @@ export default function TwoAgentsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="relative z-10 lg:pl-6 group cursor-pointer perspective-1000"
+            className="relative z-10 lg:pl-4 group cursor-pointer perspective-1000"
             onMouseEnter={() => setActive('inbound')}
             onMouseLeave={() => setActive(null)}
           >
             <motion.div 
-              className="h-full rounded-2xl p-5 sm:p-8 flex flex-col transition-all duration-500 overflow-hidden relative bg-white/95 backdrop-blur-xl border border-slate-200 shadow-[0_10px_30px_rgba(0,0,0,0.04)]"
+              className="h-full rounded-xl p-3.5 sm:p-4 lg:p-4 flex flex-col transition-all duration-500 overflow-hidden relative bg-white/95 backdrop-blur-xl border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)]"
               whileHover={{ scale: 1.02, rotateY: -2, rotateX: 2 }}
               style={{
                 borderColor: active === 'inbound' || isGlowing ? '#10B981' : '#E2E8F0',
@@ -459,29 +459,29 @@ export default function TwoAgentsSection() {
               }}
             >
               <div className="relative z-10">
-                <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center justify-between mb-2.5 sm:mb-3">
                   <motion.div 
-                    className="w-10 h-10 rounded-full bg-green-50 border border-green-200 flex items-center justify-center shadow-sm"
+                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-green-50 border border-green-200 flex items-center justify-center shadow-sm"
                     animate={{ scale: active === 'inbound' ? 1.1 : 1 }}
                     transition={{ type: 'spring', stiffness: 300 }}
                   >
-                    <MessageSquare className="w-5 h-5 text-green-600" strokeWidth={2.5} />
+                    <MessageSquare className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-600" strokeWidth={2.5} />
                   </motion.div>
-                  <div className="px-3 py-1 rounded-full bg-green-50 text-[10px] font-bold text-green-700 tracking-wider uppercase border border-green-200">
+                  <div className="px-2 py-0.5 rounded-full bg-green-50 text-[9px] font-bold text-green-700 tracking-wider uppercase border border-green-200">
                     WHATSAPP AGENT
                   </div>
                 </div>
 
-                <h3 className="text-base md:text-lg font-bold text-green-700 mb-3">
+                <h3 className="text-sm sm:text-[15px] font-bold text-green-700 mb-1">
                   WhatsApp Conversation Agent
                 </h3>
-                <p className="text-sm md:text-base text-slate-600 leading-relaxed mb-6 sm:mb-8">
+                <p className="text-[11.5px] sm:text-xs text-slate-600 leading-normal mb-2.5 sm:mb-3">
                   Picks up with full context, handles voice notes, and understands romanised Hinglish the way customers actually type.
                 </p>
               </div>
 
-              <div className="mt-auto pt-4 border-t border-slate-100 relative z-10">
-                <p className="text-[11px] font-bold tracking-wider uppercase text-slate-500">
+              <div className="mt-auto pt-2 border-t border-slate-100 relative z-10">
+                <p className="text-[9px] font-bold tracking-wider uppercase text-slate-500">
                   FOR: 24/7 WHATSAPP ENGAGEMENT • LEAD NURTURE • SUPPORT
                 </p>
               </div>

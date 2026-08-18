@@ -38,7 +38,7 @@ export default function PremiumOddsDashboard() {
         
         {/* Header */}
         <div className="mb-6 sm:mb-8 text-center sm:text-left">
-          <h3 className="text-xl sm:text-2xl font-bold text-stone-900 leading-tight tracking-tight">
+          <h3 className="text-xl sm:text-2xl font-serif font-bold text-stone-900 leading-tight tracking-tight">
             Relative odds of qualifying a lead
           </h3>
         </div>

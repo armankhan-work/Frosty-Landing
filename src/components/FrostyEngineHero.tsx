@@ -64,6 +64,7 @@ export function ParallaxStarfield() {
 
 const EASE = [0.23, 1, 0.32, 1] as const;
 const PURPLE = '#0396A6';
+const CORAL_ORANGE = '#FF7A5E';
 
 /* ─── Hand-Drawn Animated Two-Stroke SVG Underline Curve ────────── */
 function HandDrawnCurve() {
@@ -1751,10 +1752,11 @@ export default function FrostyEngineHero() {
                   transition: { staggerChildren: 0.1, delayChildren: 0.1 },
                 },
               }}
-              className="font-serif font-medium text-[#0F172A] tracking-tight"
+              className="font-serif font-bold text-[#0F172A] tracking-tight"
               style={{
                 fontFamily: "'Cormorant Garamond', Georgia, serif",
                 fontSize: 'clamp(42px, 5.5vw, 68px)',
+                fontWeight: 700,
                 lineHeight: 1.08,
                 margin: '0 0 18px',
               }}
@@ -1771,7 +1773,7 @@ export default function FrostyEngineHero() {
                   },
                 }}
               >
-                Your business
+                Your Business.
               </motion.span>
               <motion.span
                 style={{ display: 'block', textAlign: 'center' }}
@@ -1806,7 +1808,7 @@ export default function FrostyEngineHero() {
                     display: 'inline-block',
                   }}
                 >
-                  powered by AI
+                  powered by <span style={{ color: CORAL_ORANGE }}>AI</span>
                   <HandDrawnCurve />
                 </span>
               </motion.span>

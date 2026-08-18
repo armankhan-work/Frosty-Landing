@@ -7,8 +7,8 @@ import { usePathname } from 'next/navigation';
 import { Sparkles, MapPin, ExternalLink } from 'lucide-react';
 import FrostyIcon from '@/components/FrostyIcon';
 
-const FlipText = ({ children, className }: { children: React.ReactNode, className?: string }) => (
-  <span className={className}>{children}</span>
+const FlipText = ({ children, className, style }: { children: React.ReactNode, className?: string, style?: React.CSSProperties }) => (
+  <span className={className} style={style}>{children}</span>
 );
 
 const NAV_ITEMS = [
@@ -106,11 +106,6 @@ const FooterSection = () => {
         .careers-card:active { transform: translateY(2px); }
         .careers-icon { transition: opacity 200ms ease-out; }
         .careers-card:hover .careers-icon { opacity: 1; }
-        .network-node { animation: networkPulse 3s ease-in-out infinite; }
-        .network-node:nth-child(1) { animation-delay: 0s; }
-        .network-node:nth-child(2) { animation-delay: 0.6s; }
-        .network-node:nth-child(3) { animation-delay: 1.2s; }
-        .network-node:nth-child(4) { animation-delay: 1.8s; }
       `}</style>
 
 
@@ -130,7 +125,7 @@ const FooterSection = () => {
                 </Link>
                 <div className="flex flex-col justify-center">
                   <Link href="/" className="cursor-pointer">
-                    <FlipText className="text-[1.3rem] font-black font-sans font-bold text-slate-900 leading-tight">
+                    <FlipText className="text-[1.65rem] font-serif font-bold text-slate-900 leading-tight" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                       Frosty Agent
                     </FlipText>
                   </Link>

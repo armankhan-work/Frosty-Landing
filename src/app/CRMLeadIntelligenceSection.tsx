@@ -173,7 +173,7 @@ export default function CRMLeadIntelligenceSection() {
           </span>
           <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">CRM + LEAD INTELLIGENCE</span>
         </div>
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight m-0 mb-6">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-[#0F172A] leading-[1.15] tracking-tight m-0 mb-6">
           Know every customer. <span className="text-[#0396A6] font-bold" style={{ color: '#0396A6' }}>Focus on the right ones.</span>
         </h2>
         <p className="text-sm md:text-base text-slate-600 font-normal leading-relaxed max-w-xl mx-auto m-0 mb-6">

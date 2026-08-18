@@ -115,7 +115,7 @@ export default function UnifiedChannelsSection() {
            whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
            transition={{ delay: 0.1 }}
-           className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight mb-2"
+           className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-[#0F172A] leading-[1.15] tracking-tight mb-2"
         >
           Website. WhatsApp. <span className="text-[#0396A6] font-bold">Unified.</span>
         </motion.h2>

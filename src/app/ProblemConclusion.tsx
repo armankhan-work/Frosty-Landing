@@ -27,7 +27,7 @@ export default function ProblemConclusion() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ margin: "-100px", once: true }}
-                className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.12] tracking-tight m-0 mb-3.5"
+                className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-[#0F172A] leading-[1.12] tracking-tight m-0 mb-3.5"
             >
                 <span className="inline-block mr-2 md:mr-0">
                     <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">The</motion.span>

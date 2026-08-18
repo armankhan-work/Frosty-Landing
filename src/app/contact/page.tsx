@@ -174,7 +174,7 @@ export default function ContactPage() {
             {/* Main Hero Headline */}
             <motion.h1
               variants={heroItem}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-serif font-medium text-[#0A1A2F] leading-[1.06] tracking-tight mb-7"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-serif font-bold text-[#0A1A2F] leading-[1.06] tracking-tight mb-7"
             >
               Let's Start With the <span className="text-[#0396A6] font-semibold">Problem.</span>
             </motion.h1>
@@ -238,7 +238,7 @@ export default function ContactPage() {
                 <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#0396A6] via-[#027D8A] to-[#FF7A5E]" />
 
                 <div className="mb-6">
-                  <h2 className="text-2xl sm:text-3xl font-serif font-medium text-[#0A1A2F] tracking-tight">
+                  <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#0A1A2F] tracking-tight">
                     Send us a message
                   </h2>
                   <p className="text-slate-500 text-xs sm:text-sm mt-1">

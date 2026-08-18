@@ -50,10 +50,10 @@ function SidebarIcon({ type, active }: { type: string; active?: boolean }) {
 
 function DashboardPanel() {
   return (
-    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-[#F0FDFA] overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
+    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-white overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
       <div className="px-4 sm:px-6 pt-5 pb-3 shrink-0 flex items-start justify-between">
         <div>
-          <h2 className="text-[22px] font-serif font-bold !text-slate-900">Dashboard Overview</h2>
+          <div className="text-[22px] font-sans font-bold !text-slate-900 leading-tight" style={{ fontFamily: "var(--sans, 'Outfit', sans-serif)" }}>Dashboard Overview</div>
           <p className="text-[11px] font-medium !text-slate-500">Welcome back to your workspace overview</p>
         </div>
         <span className="text-[9.5px] font-semibold text-slate-500 bg-teal-50/80 border border-teal-200/60 px-2 py-0.5 rounded-full mt-1">
@@ -112,12 +112,12 @@ function DashboardPanel() {
 
         {/* Charts Mock */}
         <div className="mt-2 flex-1 flex flex-col">
-           <h3 className="text-[14px] font-serif font-bold !text-slate-900 mb-2.5 flex items-center gap-1.5">
+           <div className="text-[14px] font-sans font-bold !text-slate-900 mb-2.5 flex items-center gap-1.5" style={{ fontFamily: "var(--sans, 'Outfit', sans-serif)" }}>
              <svg className="w-4 h-4 text-[#14B8A6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 20V10M12 20V4M6 20v-6" /></svg>
              Custom Analytics Charts
-           </h3>
+           </div>
            <div className="bg-white rounded-[14px] p-4 border border-[#CCFBF1] shadow-[0_2px_10px_rgba(3, 150, 166,0.03)] flex-1 flex flex-col min-h-[140px]">
-              <h4 className="text-[11px] font-serif font-bold !text-slate-900 mb-3">Conversation Volume</h4>
+              <div className="text-[11px] font-sans font-bold !text-slate-900 mb-3" style={{ fontFamily: "var(--sans, 'Outfit', sans-serif)" }}>Conversation Volume</div>
               <div className="flex-1 relative border-l border-b border-[#CCFBF1] flex items-end overflow-hidden pb-1">
                 {/* Y Axis labels */}
                 <div className="absolute left-[-16px] top-0 bottom-0 flex flex-col justify-between text-[8px] font-medium !text-slate-400 py-1">
@@ -214,9 +214,9 @@ function AnalyticsPanelV2() {
   const data = ANALYTICS_DATA[timeFilter];
 
   return (
-    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-[#F0FDFA] overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
+    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-white overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
       <div className="px-4 sm:px-6 pt-5 pb-3 shrink-0">
-        <h2 className="text-[22px] font-serif font-bold !text-slate-900">Analytics</h2>
+        <div className="text-[22px] font-sans font-bold !text-slate-900 leading-tight" style={{ fontFamily: "var(--sans, 'Outfit', sans-serif)" }}>Analytics</div>
         <p className="text-[11px] font-medium !text-slate-500">Real-time insights and metrics</p>
       </div>
 
@@ -288,7 +288,7 @@ function AnalyticsPanelV2() {
         {/* Full Width Line Chart */}
         <div className="flex-1 bg-white rounded-[14px] border border-[#CCFBF1] shadow-[0_2px_10px_rgba(3, 150, 166,0.03)] p-4 flex flex-col relative overflow-hidden min-h-[160px]">
           <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-2 xl:gap-0 mb-4 z-10">
-             <h4 className="text-[12px] font-bold !text-slate-900">Conversations & Messages</h4>
+             <div className="text-[12px] font-sans font-bold !text-slate-900" style={{ fontFamily: "var(--sans, 'Outfit', sans-serif)" }}>Conversations & Messages</div>
              <div className="flex items-center gap-3 text-[9px] font-semibold !text-slate-500">
                 <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-[#26B3AA]" /> Conversations</span>
                 <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-[#14B8A6]" /> Messages</span>
@@ -365,7 +365,7 @@ function CalendarPanel() {
   for (let d = 1; d <= daysInMonth; d++) days.push(d);
 
   return (
-    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-[#F0FDFA] overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
+    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-white overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
       <div className="h-[46px] sm:h-[50px] border-b border-[#CCFBF1] px-3 sm:px-5 flex items-center justify-between bg-white shrink-0">
         <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
           <span className="text-[13px] sm:text-[14px] font-bold !text-slate-900 truncate">Scheduled Meetings</span>
@@ -432,10 +432,10 @@ function TeamPanel() {
   ];
 
   return (
-    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-[#F0FDFA] overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
+    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-white overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
       <div className="px-4 sm:px-6 pt-5 pb-3 shrink-0 flex items-center justify-between gap-2 overflow-hidden">
         <div className="min-w-0">
-          <h2 className="text-[20px] sm:text-[22px] font-serif font-bold !text-slate-900 truncate">Team Management</h2>
+          <div className="text-[20px] sm:text-[22px] font-sans font-bold !text-slate-900 truncate" style={{ fontFamily: "var(--sans, 'Outfit', sans-serif)" }}>Team Management</div>
           <p className="text-[10px] sm:text-[11px] font-medium !text-slate-500 truncate">Manage your team members, assign roles...</p>
         </div>
         <div className="flex flex-col sm:flex-row gap-2 shrink-0">
@@ -452,26 +452,26 @@ function TeamPanel() {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 shrink-0">
            <div className="bg-white rounded-[14px] p-2.5 sm:p-3 border border-[#CCFBF1] shadow-[0_2px_10px_rgba(3, 150, 166,0.03)] flex flex-col justify-between">
               <p className="text-[7px] font-bold !text-slate-500 uppercase tracking-wider mb-2 truncate">Total Members</p>
-              <p className="text-[18px] sm:text-[20px] font-serif font-bold !text-slate-900 leading-none mb-2"><CountUp to={4} /></p>
+              <p className="text-[18px] sm:text-[20px] font-sans font-bold !text-slate-900 leading-none mb-2"><CountUp to={4} /></p>
               <p className="text-[8px] font-bold text-[#26B3AA] flex items-center gap-1"><svg className="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg> <span className="truncate">4 active</span></p>
            </div>
            <div className="bg-white rounded-[14px] p-2.5 sm:p-3 border border-[#CCFBF1] shadow-[0_2px_10px_rgba(3, 150, 166,0.03)] flex flex-col justify-between">
               <p className="text-[7px] font-bold !text-slate-500 uppercase tracking-wider mb-2 truncate">Active Now</p>
-              <p className="text-[18px] sm:text-[20px] font-serif font-bold !text-slate-900 leading-none mb-2"><CountUp to={4} /></p>
+              <p className="text-[18px] sm:text-[20px] font-sans font-bold !text-slate-900 leading-none mb-2"><CountUp to={4} /></p>
               <p className="text-[8px] font-bold text-[#F59E0B] flex items-center gap-1"><svg className="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg> <span className="truncate">4 pending invites</span></p>
            </div>
            <div className="bg-white rounded-[14px] p-2.5 sm:p-3 border border-[#CCFBF1] shadow-[0_2px_10px_rgba(3, 150, 166,0.03)] flex flex-col justify-between">
               <p className="text-[7px] font-bold !text-slate-500 uppercase tracking-wider mb-2 truncate">Roles in Use</p>
-              <p className="text-[18px] sm:text-[20px] font-serif font-bold !text-slate-900 leading-none mb-2"><CountUp to={3} /></p>
+              <p className="text-[18px] sm:text-[20px] font-sans font-bold !text-slate-900 leading-none mb-2"><CountUp to={3} /></p>
               <p className="text-[8px] font-medium !text-slate-500 flex items-center gap-1"><svg className="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg> <span className="truncate">owner, agent...</span></p>
            </div>
-           <div className="bg-[#26B3AA] rounded-[14px] p-2.5 sm:p-3 shadow-[0_4px_15px_rgba(38, 179, 170,0.3)] flex flex-col justify-between">
-              <p className="text-[7px] font-bold text-white/80 uppercase tracking-wider mb-2 truncate">Seat Usage</p>
-              <p className="text-[18px] sm:text-[20px] font-serif font-bold text-white leading-none mb-1"><CountUp to={8} /> <span className="text-white/60 text-[10px] sm:text-[12px] font-sans font-medium">/ 20</span></p>
-              <div className="w-full h-[3px] bg-black/20 rounded-full mb-1 overflow-hidden mt-1">
-                 <motion.div initial={{ width: 0 }} animate={{ width: '40%' }} transition={{ duration: 1.5 }} className="h-full bg-[#34D399] rounded-full" />
+           <div className="bg-white rounded-[14px] p-2.5 sm:p-3 border border-[#CCFBF1] shadow-[0_2px_10px_rgba(3, 150, 166,0.03)] flex flex-col justify-between">
+              <p className="text-[7px] font-bold !text-slate-500 uppercase tracking-wider mb-2 truncate">Seat Usage</p>
+              <p className="text-[18px] sm:text-[20px] font-sans font-bold !text-slate-900 leading-none mb-1"><CountUp to={8} /> <span className="text-slate-400 text-[10px] sm:text-[12px] font-sans font-medium">/ 20</span></p>
+              <div className="w-full h-[3px] bg-slate-100 rounded-full mb-1 overflow-hidden mt-1">
+                 <motion.div initial={{ width: 0 }} animate={{ width: '40%' }} transition={{ duration: 1.5 }} className="h-full bg-[#0396A6] rounded-full" />
               </div>
-              <div className="flex justify-between items-center text-[7px] font-medium text-white/80 mt-1">
+              <div className="flex justify-between items-center text-[7px] font-medium text-slate-500 mt-1">
                 <span className="truncate">40% utilized</span>
               </div>
            </div>
@@ -481,7 +481,7 @@ function TeamPanel() {
         <div className="bg-white rounded-[14px] border border-[#CCFBF1] shadow-[0_2px_10px_rgba(3, 150, 166,0.03)] overflow-hidden flex-1 flex flex-col min-h-[160px] min-w-0">
           <div className="px-3 sm:px-4 py-2 border-b border-[#CCFBF1] flex items-center justify-between bg-white overflow-hidden gap-2 shrink-0">
             <div className="flex items-center gap-2 sm:gap-4 shrink-0 min-w-0">
-               <h4 className="text-[11px] sm:text-[13px] font-serif font-bold !text-slate-900">Teammates</h4>
+               <div className="text-[11px] sm:text-[13px] font-sans font-bold !text-slate-900" style={{ fontFamily: "var(--sans, 'Outfit', sans-serif)" }}>Teammates</div>
                <div className="flex gap-1 overflow-x-auto scrollbar-hide">
                   <span className="text-[8px] sm:text-[9px] bg-[#CCFBF1] text-[#14B8A6] font-bold px-2 py-1 rounded-full cursor-pointer whitespace-nowrap">All</span>
                </div>
@@ -509,7 +509,7 @@ function TeamPanel() {
                       initial={{ opacity: 0, y: 10 }} 
                       animate={{ opacity: 1, y: 0 }} 
                       transition={{ delay: i * 0.1 }}
-                      className="border-b border-slate-50 hover:bg-[#F0FDFA] transition-colors cursor-pointer"
+                      className="border-b border-slate-50 hover:bg-slate-50 transition-colors cursor-pointer"
                     >
                       <td className="px-3 sm:px-4 py-2">
                          <div className="flex items-center gap-2 sm:gap-3">
@@ -638,7 +638,7 @@ export default function InteractiveDashboard() {
             {activeTab === 'home' && <DashboardPanel />}
             {activeTab === 'chart' && <AnalyticsPanelV2 />}
             {activeTab === 'chat' && (
-              <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-[#F0FDFA] overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
+              <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-white overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
                 <div className="h-[46px] sm:h-[50px] border-b border-[#CCFBF1] px-3 sm:px-5 flex items-center justify-between bg-white shrink-0">
                   <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
                     <span className="text-[13px] sm:text-[14px] font-bold !text-slate-900 truncate">New Lead</span>
