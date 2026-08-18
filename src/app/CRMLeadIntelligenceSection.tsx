@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Flame, Snowflake, Sun, Globe, Mail, MessageCircle, AlertCircle, User, ArrowRight, NotebookPen } from 'lucide-react';
+import { Flame, Snowflake, Sun, Globe, Mail, MessageCircle, AlertCircle, User, ArrowRight, NotebookPen, Users } from 'lucide-react';
 
 interface Interaction {
   id: string;
@@ -166,14 +166,17 @@ export default function CRMLeadIntelligenceSection() {
       </div>
 
       {/* HEADER */}
-      <div className="relative z-10 text-center mb-16 max-w-2xl px-6">
-        <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#0396A6]/10 border border-[#0396A6]/25 mb-6 shadow-sm">
-          <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">CRM + Lead Intelligence</span>
+      <div className="relative z-10 text-center mb-8 max-w-2xl px-6">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 mb-6 backdrop-blur-sm shadow-xs">
+          <span className="w-4 h-4 rounded-full bg-[#0396A6]/20 flex items-center justify-center">
+            <Users className="w-2.5 h-2.5 text-[#0396A6]" />
+          </span>
+          <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">CRM + LEAD INTELLIGENCE</span>
         </div>
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight mb-4">
-          Know every customer. <span className="text-[#0396A6] font-bold">Focus on the right ones.</span>
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight m-0 mb-6">
+          Know every customer. <span className="text-[#0396A6] font-bold" style={{ color: '#0396A6' }}>Focus on the right ones.</span>
         </h2>
-        <p className="text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
+        <p className="text-sm md:text-base text-slate-600 font-normal leading-relaxed max-w-xl mx-auto m-0 mb-6">
           Frosty keeps every interaction in one place and automatically prioritizes the leads that matter most.
         </p>
       </div>

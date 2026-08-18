@@ -88,7 +88,7 @@ const fragmentShader = `
     vec3 col3 = vec3(0.220, 0.741, 0.973); // #38BDF8
 
     // Composite — ultra-light white-shade fluid radiance
-    vec3 color = vec3(0.988, 0.984, 0.976); // #FCFBF9 ultra-light white base
+    vec3 color = vec3(0.988, 0.984, 0.976); // #FFFFFF ultra-light white base
     color = mix(color, col1, orb1 * 0.06);
     color = mix(color, col2, orb2 * 0.04);
     color = mix(color, col3, orb3 * 0.03);

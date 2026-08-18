@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Globe, MessageSquare, Brain, User } from 'lucide-react';
+import { Globe, MessageSquare, Brain, User, Bot } from 'lucide-react';
 import FrostyIcon from '@/components/FrostyIcon';
 
 export default function TwoAgentsSection() {
@@ -288,16 +288,24 @@ export default function TwoAgentsSection() {
         
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center mb-16 max-w-[700px] mx-auto"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-10 max-w-[700px] mx-auto"
         >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight mb-4 sm:mb-6">
+          {/* Eyebrow */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 mb-6 backdrop-blur-sm shadow-xs">
+            <span className="w-4 h-4 rounded-full bg-[#0396A6]/20 flex items-center justify-center">
+              <Bot className="w-2.5 h-2.5 text-[#0396A6]" />
+            </span>
+            <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">DUAL-CHANNEL ARCHITECTURE</span>
+          </div>
+
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight m-0 mb-6">
             Two agents.<br />
             One <span className="relative">
-              <span className="relative z-10 font-bold text-[#0396A6]">conversation.</span>
+              <span className="relative z-10 font-bold text-[#0396A6]" style={{ color: '#0396A6' }}>conversation.</span>
               <motion.div 
                 className="absolute bottom-1 left-0 right-0 h-3 bg-[#0396A6]/10 -z-10 rounded-sm"
                 initial={{ scaleX: 0 }}
@@ -308,7 +316,7 @@ export default function TwoAgentsSection() {
               />
             </span>
           </h2>
-          <p className="text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-sm md:text-base text-slate-600 font-normal leading-relaxed max-w-xl mx-auto m-0 mb-6">
             The web and WhatsApp agents share a single memory — so a visitor who starts on your site and finishes on WhatsApp never repeats themselves.
           </p>
         </motion.div>

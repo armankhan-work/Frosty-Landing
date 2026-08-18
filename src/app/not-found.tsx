@@ -3,7 +3,7 @@ import FrostyIcon from '@/components/FrostyIcon';
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-[#FCFBF9] text-[#18181B] px-6 text-center">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#FFFFFF] text-[#18181B] px-6 text-center">
       <div className="mb-4">
         <FrostyIcon size={48} />
       </div>

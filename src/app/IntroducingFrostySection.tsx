@@ -120,12 +120,12 @@ export default function IntroducingFrostySection() {
     // Core Heartbeat & Intelligence Burst Orchestration
     useEffect(() => {
         if (!isInView) return;
-        
+
         let beatCounter = 0;
         const beatInterval = setInterval(() => {
             beatCounter++;
             setCorePulse(prev => prev + 1);
-            
+
             // Trigger intelligence burst every 3rd or 4th beat (approx 9-12s)
             if (beatCounter % 3 === 0) {
                 setBurstActive(true);
@@ -139,23 +139,23 @@ export default function IntroducingFrostySection() {
     // Master Timer for Rays and Node Glows
     useEffect(() => {
         if (!isInView) return;
-        
+
         const intervals: NodeJS.Timeout[] = [];
         const timeouts: NodeJS.Timeout[] = [];
 
         NODES.forEach((node) => {
             const startDelay = node.delayOffset * 1000;
-            
+
             const startNodeLoop = () => {
                 let iteration = 0;
-                
+
                 const fireCycle = () => {
                     iteration++;
                     const now = Date.now();
-                    
+
                     // Fire outbound ray
                     setRayOutState(prev => ({ ...prev, [node.id]: now }));
-                    
+
                     // Glow EXACTLY when the 2nd ray hits (2.1s travel time)
                     if (iteration % 2 === 0) {
                         const tGlow = setTimeout(() => {
@@ -163,7 +163,7 @@ export default function IntroducingFrostySection() {
                         }, 2100);
                         timeouts.push(tGlow);
                     }
-                    
+
                     // Fire inbound ray slightly later
                     const tIn = setTimeout(() => {
                         setRayInState(prev => ({ ...prev, [node.id]: Date.now() }));
@@ -197,38 +197,38 @@ export default function IntroducingFrostySection() {
     }, [isInView]);
 
     return (
-        <section ref={sectionRef} className="relative w-full py-12 sm:py-16 lg:py-20 flex flex-col justify-center overflow-hidden bg-transparent">
-            
+        <section ref={sectionRef} className="relative w-full py-8 sm:py-12 lg:py-14 min-h-[85vh] lg:min-h-[88vh] flex flex-col justify-center overflow-hidden bg-transparent">
+
             {/* Atmospheric Glow & Bottom Wave Field */}
             <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
-                <motion.div 
+                <motion.div
                     animate={isInView ? { opacity: [0.15, 0.25, 0.15] } : {}}
                     transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                     className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#0396A6]/8 via-transparent to-transparent blur-3xl"
                 />
-                
+
                 {/* Abstract Electromagnetic Field Waves */}
                 <div className="absolute bottom-0 left-0 w-full h-[350px] overflow-hidden opacity-20">
-                    <motion.svg 
+                    <motion.svg
                         animate={isInView ? { x: [0, -1000] } : {}}
                         transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
                         width="300%" height="100%" viewBox="0 0 3000 300" preserveAspectRatio="none" className="absolute bottom-0"
                     >
                         <path d="M0,150 Q150,80 300,150 T600,150 T900,150 T1200,150 T1500,150 T1800,150 T2100,150 T2400,150 T2700,150 T3000,150" fill="none" stroke="url(#wave-grad)" strokeWidth="1.5" />
                     </motion.svg>
-                    <motion.svg 
+                    <motion.svg
                         animate={isInView ? { x: [0, -1000] } : {}}
                         transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
                         width="300%" height="100%" viewBox="0 0 3000 300" preserveAspectRatio="none" className="absolute bottom-0"
                     >
-                        <path d="M0,200 Q150,120 300,200 T600,200 T900,200 T1200,200 T1500,200 T1800,200 T2100,200 T2400,200 T2700,200 T3000,200" fill="none" stroke="url(#wave-grad)" strokeWidth="1" opacity="0.6"/>
+                        <path d="M0,200 Q150,120 300,200 T600,200 T900,200 T1200,200 T1500,200 T1800,200 T2100,200 T2400,200 T2700,200 T3000,200" fill="none" stroke="url(#wave-grad)" strokeWidth="1" opacity="0.6" />
                     </motion.svg>
-                    <motion.svg 
+                    <motion.svg
                         animate={isInView ? { x: [0, -1000] } : {}}
                         transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
                         width="300%" height="100%" viewBox="0 0 3000 300" preserveAspectRatio="none" className="absolute bottom-0"
                     >
-                        <path d="M0,250 Q150,180 300,250 T600,250 T900,250 T1200,250 T1500,250 T1800,250 T2100,250 T2400,250 T2700,250 T3000,250" fill="none" stroke="url(#wave-grad)" strokeWidth="2" opacity="0.3"/>
+                        <path d="M0,250 Q150,180 300,250 T600,250 T900,250 T1200,250 T1500,250 T1800,250 T2100,250 T2400,250 T2700,250 T3000,250" fill="none" stroke="url(#wave-grad)" strokeWidth="2" opacity="0.3" />
                         <defs>
                             <linearGradient id="wave-grad" x1="0%" y1="0%" x2="100%" y2="0%">
                                 <stop offset="0%" stopColor="#0396A6" stopOpacity="0" />
@@ -242,48 +242,48 @@ export default function IntroducingFrostySection() {
 
             <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
-                    
+
                     {/* Left Copy Column */}
                     <div className="flex flex-col justify-center mt-6 lg:mt-0">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            transition={{ duration: 0.6, ease: "easeOut" }}
                         >
-                            <motion.span 
-                                className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6] mb-8 block"
-                                animate={isInView ? { opacity: [0.8, 1, 0.8] } : {}}
-                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                            {/* Eyebrow */}
+                            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 mb-6 backdrop-blur-sm shadow-xs">
+                                <span className="w-4 h-4 rounded-full bg-[#0396A6]/20 flex items-center justify-center">
+                                    <Sparkles className="w-2.5 h-2.5 text-[#0396A6]" />
+                                </span>
+                                <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">INTRODUCING FROSTY AGENT</span>
+                            </div>
+
+                            <h2
+                                className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight m-0 mb-6"
                             >
-                                INTRODUCING FROSTY AGENT
-                            </motion.span>
-                            <h2 
-                                className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight"
-                                style={{ marginBottom: '2rem' }}
-                            >
-                                Meet <motion.span 
+                                Meet <motion.span
                                     className="inline-block text-[#0396A6] font-bold"
                                     animate={isInView ? { textShadow: ["0 0 10px rgba(3, 150, 166,0.15)", "0 0 20px rgba(3, 150, 166,0.3)", "0 0 10px rgba(3, 150, 166,0.15)"] } : {}}
                                     transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                                    style={{ color: '#0396A6' }}
                                 >
                                     Frosty Agent.
                                 </motion.span>
                             </h2>
-                            <p 
-                                className="text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl"
-                                style={{ marginBottom: '3.5rem' }}
+                            <p
+                                className="text-sm md:text-base text-slate-600 font-normal leading-relaxed max-w-xl m-0 mb-6"
                             >
                                 An AI workforce built to engage customers, qualify opportunities, and move conversations forward.
                             </p>
 
-                            <div className="flex flex-col" style={{ gap: '2rem' }}>
+                            <div className="flex flex-col gap-4 mb-6">
                                 {[
                                     { icon: <Sparkles className="w-5 h-5" />, text: "Understands your business" },
                                     { icon: <MessageSquare className="w-5 h-5" />, text: "Engages across every channel" },
                                     { icon: <Zap className="w-5 h-5" />, text: "Takes action that drives results" }
                                 ].map((item, i) => (
                                     <div key={i} className="flex items-center gap-4">
-                                        <motion.div 
+                                        <motion.div
                                             className={`flex-shrink-0 transition-colors duration-700 ${activeCapability === i ? 'text-[#0396A6]' : 'text-slate-400'}`}
                                             animate={activeCapability === i ? { scale: [1, 1.1, 1] } : {}}
                                             transition={{ duration: 1.5, ease: "easeInOut" }}
@@ -299,10 +299,10 @@ export default function IntroducingFrostySection() {
                         </motion.div>
                     </div>
 
-                    {/* Right Visual Column */}
-                    <div className="relative w-full aspect-square max-w-[390px] sm:max-w-[420px] lg:max-w-[450px] mx-auto mt-4 lg:mt-0">
-                        
-                        {/* Magnetic Rings */}
+                    {/* Right Visual Column - Scaled & Positioned Cleanly inside Viewport */}
+                    <div className="relative w-full aspect-square max-w-[340px] sm:max-w-[380px] lg:max-w-[420px] mx-auto mt-6 lg:mt-8 translate-y-3 lg:translate-y-6">
+
+                        {/* Magnetic Rings - Constrained to 105% max radius to stay fully inside Viewport */}
                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
                             {[1, 2, 3, 4].map((ring, i) => (
                                 <motion.div
@@ -310,16 +310,16 @@ export default function IntroducingFrostySection() {
                                     className="absolute rounded-full border border-[#0396A6]"
                                     style={{ width: '20%', height: '20%' }}
                                     animate={isInView ? {
-                                        width: ['20%', '150%'],
-                                        height: ['20%', '150%'],
-                                        opacity: [0.25, 0],
+                                        width: ['20%', '105%'],
+                                        height: ['20%', '105%'],
+                                        opacity: [0.22, 0],
                                         borderWidth: ['1.5px', '0.5px'],
-                                        borderRadius: ['50%', '48%', '50%'],
+                                        borderRadius: ['50%', '49%', '50%'],
                                     } : {}}
                                     transition={{
-                                        duration: 8,
+                                        duration: 7,
                                         repeat: Infinity,
-                                        delay: i * 2,
+                                        delay: i * 1.75,
                                         ease: "circOut"
                                     }}
                                 />
@@ -333,17 +333,17 @@ export default function IntroducingFrostySection() {
                                 return (
                                     <g key={`path-${node.id}`}>
                                         {/* Breathing Connection Line */}
-                                        <motion.path 
-                                            d={`M50,50 Q${(node.position.x + 50)/2},${node.position.y} ${node.position.x},${node.position.y}`}
-                                            fill="none" 
-                                            stroke="rgba(3, 150, 166,0.2)" 
+                                        <motion.path
+                                            d={`M50,50 Q${(node.position.x + 50) / 2},${node.position.y} ${node.position.x},${node.position.y}`}
+                                            fill="none"
+                                            stroke="rgba(3, 150, 166,0.2)"
                                             strokeWidth="0.3"
                                             animate={isInView ? {
                                                 opacity: isBurst ? 0.8 : [0.3, 0.6, 0.3],
                                             } : {}}
                                             transition={{ duration: 4 + (node.delayOffset % 2), repeat: Infinity, ease: "easeInOut" }}
                                         />
-                                        
+
                                         {/* Outbound Data Particle (Frosty -> Node) */}
                                         {rayOutState[node.id] && (
                                             <motion.circle
@@ -355,10 +355,10 @@ export default function IntroducingFrostySection() {
                                                 animate={{ opacity: [0, 1, 1, 0] }}
                                                 transition={{ duration: 2.1, times: [0, 0.1, 0.9, 1], ease: "linear" }}
                                             >
-                                                <animateMotion 
-                                                    dur="2.1s" 
+                                                <animateMotion
+                                                    dur="2.1s"
                                                     fill="freeze"
-                                                    path={`M50,50 Q${(node.position.x + 50)/2},${node.position.y} ${node.position.x},${node.position.y}`} 
+                                                    path={`M50,50 Q${(node.position.x + 50) / 2},${node.position.y} ${node.position.x},${node.position.y}`}
                                                 />
                                             </motion.circle>
                                         )}
@@ -374,10 +374,10 @@ export default function IntroducingFrostySection() {
                                                 animate={{ opacity: [0, 1, 1, 0] }}
                                                 transition={{ duration: 2.1, times: [0, 0.1, 0.9, 1], ease: "linear" }}
                                             >
-                                                <animateMotion 
-                                                    dur="2.1s" 
+                                                <animateMotion
+                                                    dur="2.1s"
                                                     fill="freeze"
-                                                    path={`M${node.position.x},${node.position.y} Q${(node.position.x + 50)/2},${node.position.y} 50,50`} 
+                                                    path={`M${node.position.x},${node.position.y} Q${(node.position.x + 50) / 2},${node.position.y} 50,50`}
                                                 />
                                             </motion.circle>
                                         )}
@@ -393,11 +393,11 @@ export default function IntroducingFrostySection() {
                             const isUnified = node.id === 'unified';
                             const isCRM = node.id === 'crm';
                             const isLead = node.id === 'lead';
-                            
+
                             const floatY = isWeb ? 3 : isUnified ? 4 : isCRM ? 2 : isLead ? 3.5 : 2.5;
                             const floatX = isWA ? 3 : isCRM ? 2 : isLead ? -2 : 1;
                             const floatDur = isWeb ? 5.5 : isWA ? 6.2 : isUnified ? 7.1 : isCRM ? 5.8 : isLead ? 6.5 : 8.0;
-                            
+
                             return (
                                 <motion.div
                                     key={node.id}
@@ -413,8 +413,8 @@ export default function IntroducingFrostySection() {
                                     animate={isInView ? {
                                         y: [`calc(-50% + 0px)`, `calc(-50% - ${floatY}px)`, `calc(-50% + ${floatY}px)`, `calc(-50% + 0px)`],
                                         x: [`calc(-50% + 0px)`, `calc(-50% + ${floatX}px)`, `calc(-50% - ${floatX}px)`, `calc(-50% + 0px)`],
-                                        boxShadow: burstActive 
-                                            ? "0 0 25px rgba(3, 150, 166,0.15)" 
+                                        boxShadow: burstActive
+                                            ? "0 0 25px rgba(3, 150, 166,0.15)"
                                             : "0 4px 18px rgba(0,0,0,0.06)"
                                     } : {}}
                                     transition={{
@@ -423,12 +423,12 @@ export default function IntroducingFrostySection() {
                                         boxShadow: { duration: 0.5, ease: "easeOut" }
                                     }}
                                 >
-                                    <motion.div 
+                                    <motion.div
                                         className="relative w-full h-full flex items-center justify-center sm:justify-start"
                                         animate={nodeTiltControls}
                                     >
                                         {/* Colored Icon Box */}
-                                        <motion.div 
+                                        <motion.div
                                             className={`flex items-center justify-center w-full h-full sm:w-9 sm:h-9 rounded-xl sm:rounded-lg sm:border ${node.iconColor} relative`}
                                             animate={isInView ? {
                                                 rotate: isWeb ? [0, 2, -1, 0] : isWA ? [0, -2, 1, 0] : [0, 1, -1, 0],
@@ -449,14 +449,14 @@ export default function IntroducingFrostySection() {
                                                 {node.icon}
                                             </div>
                                         </motion.div>
-                                        
+
                                         {/* Desktop Text */}
                                         <div className="hidden sm:block ml-2.5">
                                             <div className="text-slate-900 font-bold text-[13px] leading-tight whitespace-nowrap">{node.title}</div>
                                             <div className="text-slate-500 text-[11px] whitespace-nowrap font-medium">{node.subtitle}</div>
                                         </div>
                                     </motion.div>
-                                    
+
                                     {/* Mobile Tooltip */}
                                     <AnimatePresence>
                                         {hoveredNode === node.id && (
@@ -473,10 +473,10 @@ export default function IntroducingFrostySection() {
                                             </motion.div>
                                         )}
                                     </AnimatePresence>
-                                    
+
                                     {/* Localized node response halo */}
                                     {nodeGlowState[node.id] && (
-                                        <motion.div 
+                                        <motion.div
                                             key={`glow-${node.id}-${nodeGlowState[node.id]}`}
                                             className="absolute inset-0 rounded-xl border border-[#0396A6]/60 pointer-events-none"
                                             initial={{ opacity: 0 }}
@@ -484,10 +484,10 @@ export default function IntroducingFrostySection() {
                                             transition={{ duration: 1.5, ease: "easeOut" }}
                                         />
                                     )}
-                                    
+
                                     {/* Burst active halo */}
                                     {burstActive && (
-                                        <motion.div 
+                                        <motion.div
                                             className="absolute inset-0 rounded-xl border border-[#0396A6]/40 pointer-events-none"
                                             initial={{ opacity: 0 }}
                                             animate={{ opacity: [0, 0.4, 0] }}
@@ -500,10 +500,10 @@ export default function IntroducingFrostySection() {
 
                         {/* Central Frosty Core */}
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 flex flex-col items-center justify-center scale-[0.65] sm:scale-95 transition-transform duration-300">
-                            
+
                             <div className="relative flex items-center justify-center w-[125px] h-[125px]">
                                 {/* Outer atmospheric glow */}
-                                <motion.div 
+                                <motion.div
                                     className="absolute rounded-full bg-[#0396A6]/15 blur-[35px]"
                                     animate={isInView ? {
                                         width: burstActive ? 210 : [170, 190, 170],
@@ -512,23 +512,23 @@ export default function IntroducingFrostySection() {
                                     } : {}}
                                     transition={burstActive ? { duration: 0.4, ease: "easeOut" } : { duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
                                 />
-                                
+
                                 {/* Inner bright rim */}
-                                <motion.div 
+                                <motion.div
                                     className="absolute w-[125px] h-[125px] rounded-full border-[2px] border-[#0396A6]/30 bg-white/95 backdrop-blur-sm flex items-center justify-center"
                                     animate={isInView ? {
                                         scale: burstActive ? 1.05 : [1, 1.015, 1],
-                                        boxShadow: burstActive 
+                                        boxShadow: burstActive
                                             ? "0 0 50px rgba(3, 150, 166,0.3), inset 0 0 18px rgba(3, 150, 166,0.15)"
                                             : [
-                                                "0 0 25px rgba(3, 150, 166,0.15), inset 0 0 10px rgba(3, 150, 166,0.05)", 
-                                                "0 0 40px rgba(3, 150, 166,0.25), inset 0 0 18px rgba(3, 150, 166,0.1)", 
+                                                "0 0 25px rgba(3, 150, 166,0.15), inset 0 0 10px rgba(3, 150, 166,0.05)",
+                                                "0 0 40px rgba(3, 150, 166,0.25), inset 0 0 18px rgba(3, 150, 166,0.1)",
                                                 "0 0 25px rgba(3, 150, 166,0.15), inset 0 0 10px rgba(3, 150, 166,0.05)"
                                             ]
                                     } : {}}
                                     transition={burstActive ? { duration: 0.4, ease: "easeOut" } : { duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
                                 >
-                                    <div 
+                                    <div
                                         className="absolute w-[105px] h-[105px] rounded-full bg-gradient-to-br from-white via-[#F0FDFA] to-[#CCFBF1] border border-slate-100 flex items-center justify-center cursor-pointer shadow-inner"
                                         onClick={handleCoreClick}
                                     >
@@ -549,8 +549,8 @@ export default function IntroducingFrostySection() {
                                     </div>
                                 </motion.div>
                             </div>
-                            
-                            <motion.div 
+
+                            <motion.div
                                 className="absolute -bottom-7 text-slate-900 font-bold text-base tracking-wide z-40 whitespace-nowrap"
                                 animate={{ opacity: burstActive ? 1 : 0.9 }}
                             >
@@ -561,7 +561,7 @@ export default function IntroducingFrostySection() {
                     </div>
                 </div>
             </div>
-            
+
             {/* Ambient Particles around magnetic field */}
             <div className="absolute inset-0 pointer-events-none z-50">
                 {particles.map((p) => (
@@ -583,7 +583,7 @@ export default function IntroducingFrostySection() {
                     />
                 ))}
             </div>
-            
+
         </section>
     );
 }

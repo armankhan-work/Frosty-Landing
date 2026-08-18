@@ -66,7 +66,7 @@ export default function FAQPage() {
 
     return (
         <div className="frosty-root" style={{
-            background: 'radial-gradient(circle 800px at 100% 0%, rgba(3, 150, 166, 0.035) 0%, rgba(245, 158, 11, 0.018) 30%, transparent 100%), #FCFBF9',
+            background: 'radial-gradient(circle 800px at 100% 0%, rgba(3, 150, 166, 0.035) 0%, rgba(245, 158, 11, 0.018) 30%, transparent 100%), #FFFFFF',
             backgroundAttachment: 'fixed',
             minHeight: '100vh',
             color: '#18181B',

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Sparkles } from 'lucide-react';
 
 const DEMO = "https://www.frostrek.ai/schedule-demo";
 
@@ -21,10 +22,16 @@ export default function CTASection() {
                     <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-[#FF7A5E]/5 rounded-full blur-3xl pointer-events-none" />
                     
                     <div className="relative z-10 flex flex-col items-center justify-center">
-                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight mb-6">
+                        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 mb-6 backdrop-blur-sm shadow-xs">
+                            <span className="w-4 h-4 rounded-full bg-[#0396A6]/20 flex items-center justify-center">
+                                <Sparkles className="w-2.5 h-2.5 text-[#0396A6]" />
+                            </span>
+                            <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">GET STARTED</span>
+                        </div>
+                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-[#0F172A] leading-[1.15] tracking-tight m-0 mb-6">
                             Capture every enquiry — starting this week.
                         </h2>
-                        <p className="text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto mb-10">
+                        <p className="text-sm md:text-base text-slate-600 font-normal leading-relaxed max-w-xl mx-auto m-0 mb-6">
                             Book a 20-minute demo and we&apos;ll set Frosty up on your website and WhatsApp, trained on your own content. You&apos;ll see it answer a real enquiry before you decide.
                         </p>
                         <div className="flex flex-wrap items-center justify-center gap-5 pt-2">
