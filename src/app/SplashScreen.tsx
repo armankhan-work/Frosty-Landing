@@ -51,17 +51,17 @@ function drawSnowflake(cx: CanvasRenderingContext2D, x: number, y: number, size:
   cx.translate(x, y); cx.rotate(rotation); cx.globalAlpha = alpha;
   if (glowI > 0.01) {
     const grad = cx.createRadialGradient(0, 0, 0, 0, 0, size * 1.8);
-    grad.addColorStop(0, `rgba(95,35,200,${glowI * .25})`);
-    grad.addColorStop(.5, `rgba(2,132,199,${glowI * .12})`);
-    grad.addColorStop(1, 'rgba(95,35,200,0)');
+    grad.addColorStop(0, `rgba(3, 150, 166,${glowI * .25})`);
+    grad.addColorStop(.5, `rgba(255, 122, 94,${glowI * .12})`);
+    grad.addColorStop(1, 'rgba(3, 150, 166,0)');
     cx.fillStyle = grad;
     cx.fillRect(-size * 2, -size * 2, size * 4, size * 4);
   }
   const sg = cx.createLinearGradient(-size, -size, size, size);
-  sg.addColorStop(0, '#5F23C8'); sg.addColorStop(.5, '#8B5CF6'); sg.addColorStop(1, '#0284C7');
+  sg.addColorStop(0, '#0396A6'); sg.addColorStop(.5, '#14B8A6'); sg.addColorStop(1, '#FF7A5E');
   cx.save();
-  cx.shadowColor = 'rgba(95,35,200,0.3)'; cx.shadowBlur = glowI * 14;
-  cx.strokeStyle = 'rgba(95,35,200,0.7)';
+  cx.shadowColor = 'rgba(3, 150, 166,0.3)'; cx.shadowBlur = glowI * 14;
+  cx.strokeStyle = 'rgba(3, 150, 166,0.7)';
   cx.lineWidth = size * .036; cx.lineCap = 'round';
   cx.beginPath();
   for (let i = 0; i < 6; i++) { cx.save(); cx.rotate(i * Math.PI / 3); drawArm(cx, size * .48); cx.restore(); }
@@ -75,11 +75,11 @@ function drawSnowflake(cx: CanvasRenderingContext2D, x: number, y: number, size:
     cx.beginPath();
     cx.moveTo(Math.cos(rad) * size * .13, Math.sin(rad) * size * .13);
     cx.lineTo(Math.cos(rad + Math.PI) * size * .13, Math.sin(rad + Math.PI) * size * .13);
-    cx.strokeStyle = 'rgba(95,35,200,0.5)'; cx.lineWidth = size * .024;
+    cx.strokeStyle = 'rgba(3, 150, 166,0.5)'; cx.lineWidth = size * .024;
     cx.stroke();
   });
   const cg = cx.createRadialGradient(0, 0, 0, 0, 0, size * .08);
-  cg.addColorStop(0, '#ffffff'); cg.addColorStop(.4, '#DDD6FE'); cg.addColorStop(1, '#5F23C8');
+  cg.addColorStop(0, '#ffffff'); cg.addColorStop(.4, '#99F6E4'); cg.addColorStop(1, '#0396A6');
   cx.beginPath(); cx.arc(0, 0, size * .065, 0, Math.PI * 2);
   cx.fillStyle = cg; cx.fill();
   cx.restore();
@@ -126,12 +126,12 @@ export default function SplashScreen({ isLoading = true, onComplete }: { isLoadi
       const amb = lerp(f, 0, 20, 0, 1) * lerp(f, 40, 60, 1, 0); 
       
       const aG1 = cx.createRadialGradient(W * .38, H * .5, 0, W * .38, H * .5, W * .38);
-      aG1.addColorStop(0, `rgba(95,35,200,${.06 + amb * .05})`);
-      aG1.addColorStop(1, 'rgba(95,35,200,0)'); 
+      aG1.addColorStop(0, `rgba(3, 150, 166,${.06 + amb * .05})`);
+      aG1.addColorStop(1, 'rgba(3, 150, 166,0)'); 
       cx.fillStyle = aG1; cx.fillRect(0, 0, W, H);
       const aG2 = cx.createRadialGradient(W * .72, H * .52, 0, W * .72, H * .52, W * .35);
-      aG2.addColorStop(0, `rgba(2,132,199,${.04 + amb * .04})`);
-      aG2.addColorStop(1, 'rgba(2,132,199,0)');
+      aG2.addColorStop(0, `rgba(255, 122, 94,${.04 + amb * .04})`);
+      aG2.addColorStop(1, 'rgba(255, 122, 94,0)');
       cx.fillStyle = aG2; cx.fillRect(0, 0, W, H);
       const sfSize = 56; 
       const textHeight = 48; 
@@ -189,7 +189,7 @@ export default function SplashScreen({ isLoading = true, onComplete }: { isLoadi
           else mop = lerp(progress, .8, 1, .7, 0);
           
           cx.beginPath(); cx.arc(px, py, p.size * (1 - progress * .3), 0, Math.PI * 2);
-          cx.fillStyle = p.cyan ? `rgba(95,35,200,${mop * introOP * 0.7})` : `rgba(2,132,199,${mop * introOP * 0.7})`;
+          cx.fillStyle = p.cyan ? `rgba(3, 150, 166,${mop * introOP * 0.7})` : `rgba(255, 122, 94,${mop * introOP * 0.7})`;
           cx.fill();
         });
       }
@@ -205,9 +205,9 @@ export default function SplashScreen({ isLoading = true, onComplete }: { isLoadi
       const divOp = lerp(f, 10, 20, 0, .5) * exitOp;
       if (divH > 0) {
         const dg = cx.createLinearGradient(0, cy2 - divH / 2, 0, cy2 + divH / 2);
-        dg.addColorStop(0, 'rgba(95,35,200,0)'); 
-        dg.addColorStop(.5, 'rgba(95,35,200,0.8)'); 
-        dg.addColorStop(1, 'rgba(95,35,200,0)'); 
+        dg.addColorStop(0, 'rgba(3, 150, 166,0)'); 
+        dg.addColorStop(.5, 'rgba(3, 150, 166,0.8)'); 
+        dg.addColorStop(1, 'rgba(3, 150, 166,0)'); 
         cx.fillStyle = dg; cx.globalAlpha = divOp; cx.fillRect(divX, cy2 - divH / 2, 1.5, divH); cx.globalAlpha = 1;
       }
       
@@ -228,8 +228,8 @@ export default function SplashScreen({ isLoading = true, onComplete }: { isLoadi
           cx.font = `700 ${textHeight}px "Inter", "Segoe UI", sans-serif`;
           const charGrad = cx.createLinearGradient(-charX, -textHeight, textStrW - charX, 0);
           charGrad.addColorStop(0, '#0F172A');
-          charGrad.addColorStop(.35, '#5F23C8');
-          charGrad.addColorStop(.7, '#0284C7');
+          charGrad.addColorStop(.35, '#0396A6');
+          charGrad.addColorStop(.7, '#FF7A5E');
           charGrad.addColorStop(1, '#0F172A');
           cx.fillStyle = charGrad;
           cx.fillText(ch, charX, cY - 2);
@@ -244,11 +244,11 @@ export default function SplashScreen({ isLoading = true, onComplete }: { isLoadi
         cx.save();
         cx.globalAlpha = exitOp;
         const sg2 = cx.createLinearGradient(shimX - 100, 0, shimX + 100, 0);
-        sg2.addColorStop(0, 'rgba(95,35,200,0)');
-        sg2.addColorStop(.35, 'rgba(95,35,200,0)');
-        sg2.addColorStop(.5, 'rgba(95,35,200,0.15)'); 
-        sg2.addColorStop(.65, 'rgba(95,35,200,0)');
-        sg2.addColorStop(1, 'rgba(95,35,200,0)');
+        sg2.addColorStop(0, 'rgba(3, 150, 166,0)');
+        sg2.addColorStop(.35, 'rgba(3, 150, 166,0)');
+        sg2.addColorStop(.5, 'rgba(3, 150, 166,0.15)'); 
+        sg2.addColorStop(.65, 'rgba(3, 150, 166,0)');
+        sg2.addColorStop(1, 'rgba(3, 150, 166,0)');
         cx.fillStyle = sg2;
         cx.fillRect(-10, -textHeight - 10, textStrW + 20, textHeight + 20);
         cx.restore();
@@ -257,9 +257,9 @@ export default function SplashScreen({ isLoading = true, onComplete }: { isLoadi
       const ulW = lerp(f, 25, 40, 0, textStrW) * easeOutExp(lerp(f, 25, 40, 0, 1));
       if (ulW > 0) {
         const ulg = cx.createLinearGradient(0, 12, ulW, 12);
-        ulg.addColorStop(0, '#5F23C8'); 
-        ulg.addColorStop(.6, 'rgba(2,132,199,.5)'); 
-        ulg.addColorStop(1, 'rgba(2,132,199,0)');
+        ulg.addColorStop(0, '#0396A6'); 
+        ulg.addColorStop(.6, 'rgba(255, 122, 94,.5)'); 
+        ulg.addColorStop(1, 'rgba(255, 122, 94,0)');
         cx.fillStyle = ulg; cx.globalAlpha = exitOp; cx.fillRect(0, 12, ulW, 1.5); cx.globalAlpha = 1;
       }
       cx.restore(); 

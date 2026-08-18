@@ -7,8 +7,8 @@ import { Inbox, Book, FlaskConical, UserPlus, ArrowRight } from "lucide-react";
 export function QuickActions() {
   const actions = [
     { label: "Open Inbox", href: "/inbox", icon: <Inbox className="w-5 h-5 text-blue-400" />, desc: "Chat with live users" },
-    { label: "Add Knowledge", href: "/knowledge", icon: <Book className="w-5 h-5 text-purple-400" />, desc: "Train your agents" },
-    { label: "Open Sandbox", href: "/sandbox", icon: <FlaskConical className="w-5 h-5 text-violet-400" />, desc: "Test AI responses" },
+    { label: "Add Knowledge", href: "/knowledge", icon: <Book className="w-5 h-5 text-teal-400" />, desc: "Train your agents" },
+    { label: "Open Sandbox", href: "/sandbox", icon: <FlaskConical className="w-5 h-5 text-teal-400" />, desc: "Test AI responses" },
     { label: "Invite Team", href: "/team", icon: <UserPlus className="w-5 h-5 text-orange-400" />, desc: "Collaborate together" },
   ];
 

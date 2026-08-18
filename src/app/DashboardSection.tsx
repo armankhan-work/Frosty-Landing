@@ -26,8 +26,8 @@ const DX_ACTIVE = [3, 1, 1];
 const DX_STATS = [["CONVERSATIONS", "214", "sessions"], ["MESSAGES", "1,480", "exchanged"],
 ["LEADS", "96", "captured"], ["CONVERSION", "45%", "lead rate"],
 ["AVG/SESSION", "6.9", "messages"], ["PEAK HOUR", "7pm", "Tue busiest"]];
-const DX_TOPICS: [string, number, string][] = [["Pricing", 11, "#5F23C8"], ["Delivery", 9, "#5F23C8"], ["Booking", 6, "#93C5FD"],
-["Sizing", 6, "#A78BFA"], ["Warranty", 5, "#C4B5FD"], ["Other", 3, "#DDD6FE"]];
+const DX_TOPICS: [string, number, string][] = [["Pricing", 11, "#0396A6"], ["Delivery", 9, "#0396A6"], ["Booking", 6, "#FFB09F"],
+["Sizing", 6, "#2DD4BF"], ["Warranty", 5, "#5EEAD4"], ["Other", 3, "#99F6E4"]];
 const DX_SESSIONS = [["A7", "Visitor #a7f2", "Could you share your email so we can stay in touch?", "03:19 PM"],
 ["4C", "Visitor #4c1a", "Do you deliver to Pune?", "02:59 PM"],
 ["9B", "Visitor #9be3", "What is included in the package?", "01:06 PM"],
@@ -88,12 +88,12 @@ function DashboardPreview({ scrollTab }: { scrollTab?: number }) {
                                     <div className="fx-dx-ct">Conversations &amp; messages</div>
                                     <svg viewBox="0 0 320 92" width="100%" height="92" preserveAspectRatio="none" aria-hidden="true">
                                         {[18, 42, 66].map((y) => <line key={y} x1="0" y1={y} x2="320" y2={y} stroke="rgba(255,255,255,0.1)" strokeWidth="1" vectorEffect="non-scaling-stroke" />)}
-                                        <path d="M0,72 C42,44 72,24 112,31 C152,38 190,56 232,46 C262,39 292,25 320,20 L320,92 L0,92 Z" fill="rgba(95, 35, 200,0.15)" />
-                                        <path d="M0,72 C42,44 72,24 112,31 C152,38 190,56 232,46 C262,39 292,25 320,20" fill="none" stroke="#5F23C8" strokeWidth="2" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+                                        <path d="M0,72 C42,44 72,24 112,31 C152,38 190,56 232,46 C262,39 292,25 320,20 L320,92 L0,92 Z" fill="rgba(3, 150, 166,0.15)" />
+                                        <path d="M0,72 C42,44 72,24 112,31 C152,38 190,56 232,46 C262,39 292,25 320,20" fill="none" stroke="#0396A6" strokeWidth="2" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
                                         <path d="M0,84 C52,79 92,73 132,75 C182,77 222,69 262,65 C292,62 306,58 320,55" fill="none" stroke="#F59E0B" strokeWidth="1.6" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
                                     </svg>
                                     <div className="fx-dx-legend">
-                                        <span><i style={{ background: "#5F23C8" }} />Messages</span>
+                                        <span><i style={{ background: "#0396A6" }} />Messages</span>
                                         <span><i style={{ background: "#F59E0B" }} />Conversations</span>
                                     </div>
                                 </div>
@@ -147,13 +147,13 @@ function DashboardPreview({ scrollTab }: { scrollTab?: number }) {
                                 <div className="fx-dx-card" style={{ display: "flex", flexDirection: "column", background: 'rgba(255,255,255,0.03)', borderColor: 'rgba(255,255,255,0.05)' }}>
                                     <div style={{ display: "flex", gap: 6, marginBottom: 10, flexWrap: "wrap" }}>
                                         <span className="fx-dx-btn" style={{ background: "transparent", color: "var(--d-mut)", border: "1px solid var(--d-line)" }}>Lead</span>
-                                        <span className="fx-dx-btn" style={{ background: "#5F23C8", borderColor: "#5F23C8", color: "white" }}>Insights</span>
+                                        <span className="fx-dx-btn" style={{ background: "#0396A6", borderColor: "#0396A6", color: "white" }}>Insights</span>
                                         <span className="fx-dx-btn">AI mode</span>
                                     </div>
                                     <div className="fx-dx-bub u" style={{ background: '#1E293B' }}>hi</div>
-                                    <div className="fx-dx-bub b" style={{ background: '#5F23C8' }}>Hi there - happy to help. What should I call you?</div>
+                                    <div className="fx-dx-bub b" style={{ background: '#0396A6' }}>Hi there - happy to help. What should I call you?</div>
                                     <div className="fx-dx-bub u" style={{ background: '#1E293B' }}>Ravi</div>
-                                    <div className="fx-dx-bub b" style={{ background: '#5F23C8' }}>Great to meet you, Ravi. Could you share your email so we can stay in touch about our services?</div>
+                                    <div className="fx-dx-bub b" style={{ background: '#0396A6' }}>Great to meet you, Ravi. Could you share your email so we can stay in touch about our services?</div>
                                     <div className="fx-dx-input">Switch to human mode to reply manually…</div>
                                 </div>
                             </div>
@@ -246,7 +246,7 @@ export default function DashboardSection() {
                             className="w-full lg:w-[40%] flex flex-col justify-center items-start text-left lg:pr-4"
                             style={{ opacity: textOpacity, filter: textBlur, x: textX }}
                         >
-                            <span className="text-[12.5px] font-semibold tracking-[0.16em] uppercase text-[#5F23C8] flex items-center mb-4">Your command centre</span>
+                            <span className="text-[12.5px] font-semibold tracking-[0.16em] uppercase text-[#0396A6] flex items-center mb-4">Your command centre</span>
                             <h2 className="text-[40px] sm:text-[52px] lg:text-[64px] leading-[1.05] tracking-tight text-white mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                                 Every lead - and everything about it in one place.
                             </h2>
@@ -256,14 +256,14 @@ export default function DashboardSection() {
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-6 w-full">
                                 {[
-                                    { icon: <MessageCircle className="w-5 h-5 text-[#5F23C8]" />, title: 'All conversations stored', desc: 'Web and WhatsApp, old, new and live.' },
-                                    { icon: <Tags className="w-5 h-5 text-[#5F23C8]" />, title: 'Warm / hot tagging by intent', desc: 'To rules you control.' },
-                                    { icon: <FileText className="w-5 h-5 text-[#5F23C8]" />, title: 'Full activity log', desc: 'Meetings, proposals and quotes, per lead.' },
-                                    { icon: <Headset className="w-5 h-5 text-[#5F23C8]" />, title: 'One-click human takeover', desc: 'With full conversation history.' },
-                                    { icon: <BarChart3 className="w-5 h-5 text-[#5F23C8]" />, title: 'Analytics & CRM sync', desc: 'Track funnel drop-offs and seamlessly sync data.' },
-                                    { icon: <SlidersHorizontal className="w-5 h-5 text-[#5F23C8]" />, title: 'Tone & instructions you control', desc: 'Expertly tuned and monitored by our team.' },
+                                    { icon: <MessageCircle className="w-5 h-5 text-[#0396A6]" />, title: 'All conversations stored', desc: 'Web and WhatsApp, old, new and live.' },
+                                    { icon: <Tags className="w-5 h-5 text-[#0396A6]" />, title: 'Warm / hot tagging by intent', desc: 'To rules you control.' },
+                                    { icon: <FileText className="w-5 h-5 text-[#0396A6]" />, title: 'Full activity log', desc: 'Meetings, proposals and quotes, per lead.' },
+                                    { icon: <Headset className="w-5 h-5 text-[#0396A6]" />, title: 'One-click human takeover', desc: 'With full conversation history.' },
+                                    { icon: <BarChart3 className="w-5 h-5 text-[#0396A6]" />, title: 'Analytics & CRM sync', desc: 'Track funnel drop-offs and seamlessly sync data.' },
+                                    { icon: <SlidersHorizontal className="w-5 h-5 text-[#0396A6]" />, title: 'Tone & instructions you control', desc: 'Expertly tuned and monitored by our team.' },
                                 ].map((f, i) => (
-                                    <div key={i} className="flex items-start gap-4 p-3.5 rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-300 border border-[rgba(255,255,255,0.08)] shadow-[0_2px_10px_rgba(0,0,0,0.5)] hover:shadow-[0_8px_24px_-4px_rgba(95, 35, 200,0.15)] cursor-default group hover:-translate-y-0.5">
+                                    <div key={i} className="flex items-start gap-4 p-3.5 rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-300 border border-[rgba(255,255,255,0.08)] shadow-[0_2px_10px_rgba(0,0,0,0.5)] hover:shadow-[0_8px_24px_-4px_rgba(3, 150, 166,0.15)] cursor-default group hover:-translate-y-0.5">
                                         <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#1E293B] border border-[#334155] flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-inner">
                                             {f.icon}
                                         </div>

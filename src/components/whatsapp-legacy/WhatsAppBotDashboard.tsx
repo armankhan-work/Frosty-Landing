@@ -638,7 +638,7 @@ export default function WhatsAppBotDashboard({
                           <div className="flex items-center justify-end gap-1 mt-1.5 opacity-70">
                             <span className="text-[9px] font-bold">11:42</span>
                             {m.role !== 'user' && (
-                              <Check size={12} className="text-purple-200" />
+                              <Check size={12} className="text-teal-200" />
                             )}
                           </div>
                         </div>
@@ -814,12 +814,12 @@ export default function WhatsAppBotDashboard({
                 </div>
 
                 {/* Preview Card */}
-                <div className="p-6 rounded-2xl bg-gradient-to-br from-[#F0EAFF] to-purple-100/50 dark:from-purple-950/40 dark:to-purple-900/20 border border-[#E8E3F4] shadow-sm space-y-6">
+                <div className="p-6 rounded-2xl bg-gradient-to-br from-[#F0EAFF] to-teal-100/50 dark:from-teal-950/40 dark:to-teal-900/20 border border-[#E8E3F4] shadow-sm space-y-6">
                   <div className="flex justify-between items-start">
                     <div className="w-10 h-10 rounded-xl bg-[#673EBE] text-white flex items-center justify-center shadow-md">
                       <Bot size={22} />
                     </div>
-                    <span className="text-[10px] font-extrabold tracking-wider text-[#673EBE] bg-white dark:bg-purple-900/60 px-3 py-1 rounded-full border border-purple-200 uppercase">
+                    <span className="text-[10px] font-extrabold tracking-wider text-[#673EBE] bg-white dark:bg-teal-900/60 px-3 py-1 rounded-full border border-teal-200 uppercase">
                       {cfg.tone}
                     </span>
                   </div>

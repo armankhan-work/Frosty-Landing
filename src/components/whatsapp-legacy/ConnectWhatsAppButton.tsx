@@ -247,7 +247,7 @@ export default function ConnectWhatsAppButton({
                 Meta Business Manager → WhatsApp Accounts
               </a>.
               {manualWabaId && (
-                <span style={{ color: '#3b82f6' }}> ✓ WABA ID was auto-detected.</span>
+                <span style={{ color: '#FF7A5E' }}> ✓ WABA ID was auto-detected.</span>
               )}
             </p>
 

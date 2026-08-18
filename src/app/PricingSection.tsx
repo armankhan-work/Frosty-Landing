@@ -359,47 +359,47 @@ export default function PricingSection() {
 
     const universalFeatures = [
         {
-            icon: <Lock className="w-5 h-5 text-[#5F23C8]" />,
+            icon: <Lock className="w-5 h-5 text-[#0396A6]" />,
             title: "Strict Factual Grounding",
             desc: "Answers grounded in your own content. Invented prices, links and phone numbers are removed before the customer sees them."
         },
         {
-            icon: <Globe className="w-5 h-5 text-[#5F23C8]" />,
+            icon: <Globe className="w-5 h-5 text-[#0396A6]" />,
             title: "One Shared Memory",
             desc: "One shared memory across website and WhatsApp — conversations pick up with zero lost context."
         },
         {
-            icon: <ShieldCheck className="w-5 h-5 text-[#5F23C8]" />,
+            icon: <ShieldCheck className="w-5 h-5 text-[#0396A6]" />,
             title: "Approval Gates",
             desc: "Approval gates for bookings, high-value actions, and custom quotes before dispatch."
         },
         {
-            icon: <History className="w-5 h-5 text-[#5F23C8]" />,
+            icon: <History className="w-5 h-5 text-[#0396A6]" />,
             title: "Agent Versioning & Rollback",
             desc: "Full agent versioning with one-click rollback for prompts, knowledge, and settings."
         },
         {
-            icon: <FileCheck2 className="w-5 h-5 text-[#5F23C8]" />,
+            icon: <FileCheck2 className="w-5 h-5 text-[#0396A6]" />,
             title: "Quotations with GST as PDF",
             desc: "Instant quotes generated with GST calculated and formatted automatically as a downloadable PDF."
         },
         {
-            icon: <Mic className="w-5 h-5 text-[#5F23C8]" />,
+            icon: <Mic className="w-5 h-5 text-[#0396A6]" />,
             title: "Voice Notes on WhatsApp",
             desc: "Transcribes, understands, and replies to WhatsApp audio voice notes in real-time."
         },
         {
-            icon: <Users className="w-5 h-5 text-[#5F23C8]" />,
+            icon: <Users className="w-5 h-5 text-[#0396A6]" />,
             title: "RBAC & Message Audit Logs",
             desc: "Granular role permissions, secure team governance, and complete compliance audit trails."
         },
         {
-            icon: <Languages className="w-5 h-5 text-[#5F23C8]" />,
+            icon: <Languages className="w-5 h-5 text-[#0396A6]" />,
             title: "Multilingual Intelligence",
             desc: "English, 10 Indian and 6 international languages. Frosty replies in the language your customer writes in."
         },
         {
-            icon: <Zap className="w-5 h-5 text-[#5F23C8]" />,
+            icon: <Zap className="w-5 h-5 text-[#0396A6]" />,
             title: "Lead Re-engagement & Routing",
             desc: "Follows up on leads that went quiet, with per-capability AI/human/off routing and knowledge-gap logging."
         }
@@ -408,7 +408,7 @@ export default function PricingSection() {
     return (
         <section className="relative w-full overflow-hidden pt-6 sm:pt-8 lg:pt-10 pb-10 sm:pb-12 bg-transparent" id="pricing">
             {/* Background Glows */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-[#5F23C8]/4 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-[#0396A6]/4 rounded-full blur-[120px] pointer-events-none" />
             
             <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 {/* Header */}
@@ -418,10 +418,10 @@ export default function PricingSection() {
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50/95 border border-purple-200 mb-3.5 shadow-xs"
+                        className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50/95 border border-teal-200 mb-3.5 shadow-xs"
                     >
-                        <Sparkles className="w-3.5 h-3.5 text-[#5F23C8]" />
-                        <span className="text-[11px] sm:text-xs font-bold tracking-wide text-[#5F23C8]">
+                        <Sparkles className="w-3.5 h-3.5 text-[#0396A6]" />
+                        <span className="text-[11px] sm:text-xs font-bold tracking-wide text-[#0396A6]">
                             Launch pricing, first 100 customers. Save a further 20% paying annually.
                         </span>
                     </motion.div>
@@ -452,7 +452,7 @@ export default function PricingSection() {
                                 onClick={() => setTerm('annual')}
                                 className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
                                     term === 'annual' 
-                                        ? 'bg-[#5F23C8] text-white shadow-sm' 
+                                        ? 'bg-[#0396A6] text-white shadow-sm' 
                                         : 'text-slate-600 hover:text-slate-900'
                                 }`}
                             >
@@ -469,7 +469,7 @@ export default function PricingSection() {
                                 onClick={() => setTerm('biannual')}
                                 className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
                                     term === 'biannual' 
-                                        ? 'bg-[#5F23C8] text-white shadow-sm' 
+                                        ? 'bg-[#0396A6] text-white shadow-sm' 
                                         : 'text-slate-600 hover:text-slate-900'
                                 }`}
                             >
@@ -486,7 +486,7 @@ export default function PricingSection() {
                                 onClick={() => setTerm('quarterly')}
                                 className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
                                     term === 'quarterly' 
-                                        ? 'bg-[#5F23C8] text-white shadow-sm' 
+                                        ? 'bg-[#0396A6] text-white shadow-sm' 
                                         : 'text-slate-600 hover:text-slate-900'
                                 }`}
                             >
@@ -503,7 +503,7 @@ export default function PricingSection() {
                                 onClick={() => setTerm('monthly')}
                                 className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
                                     term === 'monthly' 
-                                        ? 'bg-[#5F23C8] text-white shadow-sm' 
+                                        ? 'bg-[#0396A6] text-white shadow-sm' 
                                         : 'text-slate-600 hover:text-slate-900'
                                 }`}
                             >
@@ -528,7 +528,7 @@ export default function PricingSection() {
                                     whileHover={{ y: -5, transition: { duration: 0.18, ease: "easeOut" } }}
                                     className={`relative flex flex-col rounded-[22px] p-5 lg:p-5 xl:p-6 h-full transition-all duration-200 ${
                                         plan.highlighted 
-                                            ? 'bg-white border-2 border-[#5F23C8] shadow-[0_8px_30px_rgba(95,35,200,0.1)] ring-1 ring-[#5F23C8]/15' 
+                                            ? 'bg-white border-2 border-[#0396A6] shadow-[0_8px_30px_rgba(3, 150, 166,0.1)] ring-1 ring-[#0396A6]/15' 
                                             : plan.isEnterprise
                                                 ? 'bg-white border border-slate-300/80 shadow-xs hover:border-slate-400'
                                                 : 'bg-white border border-slate-200/90 shadow-xs hover:border-slate-300'
@@ -545,14 +545,14 @@ export default function PricingSection() {
                                                 {currentPricing.savings}
                                             </span>
                                         ) : plan.highlighted ? (
-                                            <span className="text-[10px] font-bold tracking-wider text-[#5F23C8] bg-purple-50 border border-purple-200/80 px-2 py-0.5 rounded-full uppercase shrink-0">
+                                            <span className="text-[10px] font-bold tracking-wider text-[#0396A6] bg-teal-50 border border-teal-200/80 px-2 py-0.5 rounded-full uppercase shrink-0">
                                                 Most Popular
                                             </span>
                                         ) : null}
                                     </div>
 
                                     {/* Divider */}
-                                    <div className={`w-full h-px mb-4 ${plan.highlighted ? 'bg-[#5F23C8]/20' : 'bg-slate-100'}`} />
+                                    <div className={`w-full h-px mb-4 ${plan.highlighted ? 'bg-[#0396A6]/20' : 'bg-slate-100'}`} />
 
                                     {/* Price Hierarchy Area */}
                                     <div className="flex flex-col min-h-[64px] justify-center mb-4">
@@ -576,12 +576,12 @@ export default function PricingSection() {
                                         {/* Volume Box */}
                                         <div className={`p-3 rounded-xl border flex flex-col gap-0.5 transition-colors duration-200 ${
                                             plan.highlighted 
-                                                ? 'bg-purple-50/60 border-purple-200/70' 
+                                                ? 'bg-teal-50/60 border-teal-200/70' 
                                                 : 'bg-slate-50/80 border-slate-200/70'
                                         }`}>
                                             <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-slate-500">
                                                 <span>Volume</span>
-                                                <MessageCircle className="w-3 h-3 text-[#5F23C8]" />
+                                                <MessageCircle className="w-3 h-3 text-[#0396A6]" />
                                             </div>
                                             <div className="text-[13.5px] sm:text-[14px] font-bold text-slate-900 leading-tight">
                                                 {plan.conversations}
@@ -623,7 +623,7 @@ export default function PricingSection() {
                                             </div>
                                             {!plan.isEnterprise && (
                                                 <div className="flex items-center gap-1.5 text-slate-500">
-                                                    <Sparkles className="w-3.5 h-3.5 text-[#5F23C8] shrink-0" />
+                                                    <Sparkles className="w-3.5 h-3.5 text-[#0396A6] shrink-0" />
                                                     <span>7-day trial (up to 50 conversations)</span>
                                                 </div>
                                             )}
@@ -636,10 +636,10 @@ export default function PricingSection() {
                                             href={plan.ctaLink}
                                             className={`w-full py-2.5 px-4 rounded-xl font-bold text-xs sm:text-[13px] transition-all duration-200 flex items-center justify-center gap-1.5 text-center group ${
                                                 plan.highlighted 
-                                                    ? 'bg-[#5F23C8] !text-white hover:bg-[#4C1D95] shadow-sm hover:shadow-md active:scale-[0.98]' 
+                                                    ? 'bg-[#0396A6] !text-white hover:bg-[#0A1A2F] shadow-sm hover:shadow-md active:scale-[0.98]' 
                                                     : plan.isEnterprise
                                                         ? 'bg-slate-900 !text-white hover:bg-slate-800 shadow-sm active:scale-[0.98]'
-                                                        : 'bg-stone-50 border border-slate-200 text-slate-800 hover:bg-white hover:border-[#5F23C8]/40 hover:text-[#5F23C8] active:scale-[0.98]'
+                                                        : 'bg-stone-50 border border-slate-200 text-slate-800 hover:bg-white hover:border-[#0396A6]/40 hover:text-[#0396A6] active:scale-[0.98]'
                                             }`}
                                         >
                                             <span>{plan.cta}</span>
@@ -656,7 +656,7 @@ export default function PricingSection() {
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 mt-6 mb-10 sm:mb-12 max-w-4xl mx-auto px-2">
                     <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-4 text-center sm:text-left">
                         <div className="flex items-center gap-1.5">
-                            <Sparkles className="w-3.5 h-3.5 text-[#5F23C8] shrink-0" />
+                            <Sparkles className="w-3.5 h-3.5 text-[#0396A6] shrink-0" />
                             <span className="font-medium text-slate-700">7-day full access trial (up to 50 conversations) on all self-serve plans</span>
                         </div>
                         <span className="hidden sm:inline text-slate-300">•</span>
@@ -673,10 +673,10 @@ export default function PricingSection() {
                             onClick={() => setRegion(r => r === 'IN' ? 'INTL' : 'IN')}
                             className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100/90 hover:bg-slate-200/90 border border-slate-200 text-[11px] font-semibold text-slate-700 hover:text-slate-900 transition-colors cursor-pointer"
                         >
-                            <Globe className="w-3 h-3 text-[#5F23C8]" />
+                            <Globe className="w-3 h-3 text-[#0396A6]" />
                             <span>{region === 'IN' ? 'India (₹ INR)' : 'International ($ USD)'}</span>
                             <span className="text-slate-400">·</span>
-                            <span className="text-[#5F23C8] underline">Switch</span>
+                            <span className="text-[#0396A6] underline">Switch</span>
                         </button>
                     </div>
                 </div>
@@ -684,9 +684,9 @@ export default function PricingSection() {
                 {/* ── Expanded "Everything you need, included in every plan" Section ── */}
                 <div className="pt-8 sm:pt-10 border-t border-slate-200/80">
                     <div className="text-center max-w-2xl mx-auto mb-8">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 border border-purple-200/60 mb-2.5">
-                            <Sparkles className="w-3.5 h-3.5 text-[#5F23C8]" />
-                            <span className="text-[10px] sm:text-[11px] font-bold tracking-widest text-[#5F23C8] uppercase">Full Product Included</span>
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 border border-teal-200/60 mb-2.5">
+                            <Sparkles className="w-3.5 h-3.5 text-[#0396A6]" />
+                            <span className="text-[10px] sm:text-[11px] font-bold tracking-widest text-[#0396A6] uppercase">Full Product Included</span>
                         </div>
                         <h3 className="text-2xl sm:text-3xl font-serif font-medium text-slate-900 tracking-tight mb-2.5">
                             Everything you need, included in every plan
@@ -704,9 +704,9 @@ export default function PricingSection() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.04, duration: 0.3 }}
-                                className="p-4 rounded-xl bg-white border border-slate-200/70 shadow-xs hover:border-[#5F23C8]/30 transition-all duration-200 flex flex-col"
+                                className="p-4 rounded-xl bg-white border border-slate-200/70 shadow-xs hover:border-[#0396A6]/30 transition-all duration-200 flex flex-col"
                             >
-                                <div className="w-8 h-8 rounded-lg bg-purple-50 border border-purple-100 flex items-center justify-center mb-2.5 shrink-0">
+                                <div className="w-8 h-8 rounded-lg bg-teal-50 border border-teal-100 flex items-center justify-center mb-2.5 shrink-0">
                                     {feat.icon}
                                 </div>
                                 <h4 className="text-[13.5px] font-bold text-slate-900 mb-1 font-serif">

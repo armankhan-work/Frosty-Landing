@@ -94,7 +94,7 @@ const FooterSection = () => {
 
         .footer-revealed { animation: footerReveal 300ms ease-out forwards; }
         .section-title { position: relative; display: inline-block; }
-        .section-title::after { content: ''; position: absolute; bottom: -4px; left: 0; height: 2px; background: #5F23C8; width: 0; }
+        .section-title::after { content: ''; position: absolute; bottom: -4px; left: 0; height: 2px; background: #0396A6; width: 0; }
         .footer-revealed .section-title::after { animation: underlineExpand 400ms ease-out 150ms forwards; }
         .footer-link { position: relative; display: inline-block; transition: color 150ms ease-out; }
         .footer-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 200ms ease-out; }
@@ -102,7 +102,7 @@ const FooterSection = () => {
         .footer-revealed .footer-link { animation: linkFadeIn 300ms ease-out forwards; }
         
         .careers-card { transition: all 300ms ease-out; }
-        .careers-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(95,35,200,0.1); }
+        .careers-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(3, 150, 166,0.1); }
         .careers-card:active { transform: translateY(2px); }
         .careers-icon { transition: opacity 200ms ease-out; }
         .careers-card:hover .careers-icon { opacity: 1; }
@@ -116,21 +116,34 @@ const FooterSection = () => {
 
       <footer
         ref={footerRef}
-        className={`border-t pt-8 pb-6 transition-colors duration-300 font-sans ${isVisible ? 'footer-revealed' : 'opacity-0'} bg-white/70 backdrop-blur-md border-slate-200 relative z-10`}
+        className={`border-t pt-8 pb-3 transition-colors duration-300 font-sans ${isVisible ? 'footer-revealed' : 'opacity-0'} bg-white/70 backdrop-blur-md border-slate-200 relative z-10`}
       >
         <div className="container mx-auto px-4 md:px-6 max-w-[1400px]">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 mb-8">
-            
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 mb-4">
+
             <div className="lg:col-span-3 flex flex-col space-y-4">
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-3 group">
-                <Link href="/" className="flex items-center gap-2 group cursor-pointer">
+              <div className="flex items-center gap-2 group">
+                <Link href="/" className="flex items-center gap-2 cursor-pointer">
                   <div className="transition-transform group-hover:scale-110">
                     <FrostyIcon size={32} glow={0.5} />
                   </div>
-                  <FlipText className="text-[1.3rem] font-black font-sans font-bold text-slate-900">
-                    Frosty Agent
-                  </FlipText>
                 </Link>
+                <div className="flex flex-col justify-center">
+                  <Link href="/" className="cursor-pointer">
+                    <FlipText className="text-[1.3rem] font-black font-sans font-bold text-slate-900 leading-tight">
+                      Frosty Agent
+                    </FlipText>
+                  </Link>
+                  <a 
+                    href="https://www.frostrek.ai/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-[11px] font-medium !text-slate-500 hover:!text-[#0396A6] mt-0.5 transition-colors relative z-20"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    Powered by Frostrek
+                  </a>
+                </div>
               </div>
 
               <div className="flex flex-col w-full max-w-[340px] gap-4">
@@ -172,7 +185,7 @@ const FooterSection = () => {
                     className="w-9 h-9 rounded-full bg-white/90 border border-slate-200/80 hover:bg-[#1877F2]/10 hover:border-[#1877F2]/50 hover:shadow-[0_0_16px_rgba(24,119,242,0.35)] shadow-xs flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:scale-110 active:scale-95 group"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" className="transition-transform duration-300 group-hover:scale-110">
-                      <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="#1877F2"/>
+                      <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="#1877F2" />
                     </svg>
                   </a>
 
@@ -242,12 +255,12 @@ const FooterSection = () => {
             </div>
 
             <div className="lg:col-span-9 grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div className="space-y-3">
-                <h3 className="section-title font-bold text-[10px] uppercase tracking-widest text-[#5F23C8]">Products</h3>
-                <ul className="space-y-1.5">
+              <div className="space-y-1">
+                <h3 className="section-title font-bold text-[10px] uppercase tracking-widest text-[#0396A6]">Products</h3>
+                <ul className="space-y-1">
                   {NAV_ITEMS.find(n => n.label === 'Products')?.megaMenu?.flatMap(s => s.items).slice(0, 7).map(item => (
                     <li key={item.name}>
-                      <Link href={item.href} className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#5F23C8] group">
+                      <Link href={item.href} className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#0396A6] group">
                         <FlipText>{item.name}</FlipText>
                       </Link>
                     </li>
@@ -255,12 +268,12 @@ const FooterSection = () => {
                 </ul>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="section-title font-bold text-[10px] uppercase tracking-widest text-[#5F23C8]">Solutions</h3>
-                <ul className="space-y-1.5">
+              <div className="space-y-1">
+                <h3 className="section-title font-bold text-[10px] uppercase tracking-widest text-[#0396A6]">Solutions</h3>
+                <ul className="space-y-1">
                   {NAV_ITEMS.find(n => n.label === 'Solutions')?.megaMenu?.flatMap(s => s.items).map(item => (
                     <li key={item.name}>
-                      <Link href={item.href} className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#5F23C8] group">
+                      <Link href={item.href} className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#0396A6] group">
                         <FlipText>{item.name}</FlipText>
                       </Link>
                     </li>
@@ -268,22 +281,19 @@ const FooterSection = () => {
                 </ul>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="section-title font-bold text-[10px] uppercase tracking-widest text-[#5F23C8]">Company</h3>
-                <ul className="space-y-1.5">
-                  <li><Link href="https://www.frostrek.ai/about" className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#5F23C8] group"><FlipText>About Us</FlipText></Link></li>
-                  <li><Link href="https://www.frostrek.ai/experience" className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#5F23C8] group"><FlipText>Experience</FlipText></Link></li>
-                  <li><Link href="https://www.frostrek.ai/resources/case-studies" className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#5F23C8] group"><FlipText>Case Studies</FlipText></Link></li>
-                  <li><Link href="https://www.frostrek.ai/resources/blog" className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#5F23C8] group"><FlipText>Blog</FlipText></Link></li>
-                  <li><Link href="/faq" className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#5F23C8] group"><FlipText>FAQ</FlipText></Link></li>
-                  <li><Link href="https://www.frostrek.ai/schedule-demo" className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#5F23C8] group"><FlipText>Schedule Demo</FlipText></Link></li>
-                  <li><Link href="https://www.frostrek.ai/contact" className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#5F23C8] group"><FlipText>Contact</FlipText></Link></li>
+              <div className="space-y-1">
+                <h3 className="section-title font-bold text-[10px] uppercase tracking-widest text-[#0396A6]">Company</h3>
+                <ul className="space-y-1">
+                  <li><Link href="/about" className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#0396A6] group"><FlipText>About Us</FlipText></Link></li>
+                  <li><Link href="https://www.frostrek.ai/experience" className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#0396A6] group"><FlipText>Experience</FlipText></Link></li>
+                  <li><Link href="/faq" className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#0396A6] group"><FlipText>FAQ</FlipText></Link></li>
+                  <li><Link href="/contact" className="footer-link text-[13px] font-medium text-slate-600 hover:text-[#0396A6] group"><FlipText>Book Demo & Contact</FlipText></Link></li>
                 </ul>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-1">
                 <div className="text-center">
-                  <h3 className="section-title font-bold text-[10px] uppercase tracking-widest text-[#5F23C8]">Location</h3>
+                  <h3 className="section-title font-bold text-[10px] uppercase tracking-widest text-[#0396A6]">Location</h3>
                 </div>
                 <div
                   ref={locationRef}
@@ -291,7 +301,7 @@ const FooterSection = () => {
                   role="button"
                   tabIndex={0}
                   onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleLocationClick(); }}
-                  className="relative w-full h-36 md:h-44 mx-auto rounded-2xl overflow-hidden shadow-sm border border-slate-200 bg-slate-50 cursor-pointer transition-all duration-300 group hover:border-[#5F23C8]/40 select-none"
+                  className="relative w-full h-36 md:h-44 mx-auto rounded-2xl overflow-hidden shadow-sm border border-slate-200 bg-slate-50 cursor-pointer transition-all duration-300 group hover:border-[#0396A6]/40 select-none"
                 >
                   <svg className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-300" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
                     <rect width="400" height="200" fill="#F8FAFC" />
@@ -301,26 +311,26 @@ const FooterSection = () => {
                     <path d="M-10 130 L410 70" stroke="#E2E8F0" strokeWidth="4" />
                     <path d="M280 -10 L250 210" stroke="#E2E8F0" strokeWidth="5" />
                     <path d="M-10 95 L410 115" stroke="#94A3B8" strokeWidth="3" strokeDasharray="4 4" />
-                    <rect x="140" y="70" width="35" height="25" rx="3" fill="#5F23C8" fillOpacity="0.1" />
-                    <rect x="210" y="55" width="28" height="40" rx="3" fill="#5F23C8" fillOpacity="0.1" />
-                    <rect x="150" y="110" width="45" height="30" rx="3" fill="#5F23C8" fillOpacity="0.1" />
+                    <rect x="140" y="70" width="35" height="25" rx="3" fill="#0396A6" fillOpacity="0.1" />
+                    <rect x="210" y="55" width="28" height="40" rx="3" fill="#0396A6" fillOpacity="0.1" />
+                    <rect x="150" y="110" width="45" height="30" rx="3" fill="#0396A6" fillOpacity="0.1" />
                   </svg>
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none">
-                    <span className="absolute w-12 h-12 rounded-full bg-[#5F23C8]/20 animate-ping" />
-                    <span className="absolute w-7 h-7 rounded-full bg-[#5F23C8]/30" />
-                    <div className="relative z-10 w-9 h-9 rounded-full bg-[#5F23C8] text-white flex items-center justify-center shadow-[0_4px_12px_rgba(95,35,200,0.4)] transform group-hover:scale-110 transition-transform duration-300">
+                    <span className="absolute w-12 h-12 rounded-full bg-[#0396A6]/20 animate-ping" />
+                    <span className="absolute w-7 h-7 rounded-full bg-[#0396A6]/30" />
+                    <div className="relative z-10 w-9 h-9 rounded-full bg-[#0396A6] text-white flex items-center justify-center shadow-[0_4px_12px_rgba(3, 150, 166,0.4)] transform group-hover:scale-110 transition-transform duration-300">
                       <MapPin size={18} className="text-white fill-white" />
                     </div>
                   </div>
                   <div className="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <span className="inline-flex items-center gap-1 text-[10px] font-bold text-white bg-[#5F23C8] px-2 py-1 rounded-md shadow-md">
+                    <span className="inline-flex items-center gap-1 text-[10px] font-bold text-white bg-[#0396A6] px-2 py-1 rounded-md shadow-md">
                       Open Map <ExternalLink size={10} />
                     </span>
                   </div>
                   <div className="absolute bottom-3 left-3 z-20">
-                    <div className="px-3 py-1.5 rounded-lg shadow-sm backdrop-blur-md bg-white/95 border border-slate-200 text-slate-800 flex flex-col gap-0.5 group-hover:border-[#5F23C8]/50 transition-colors">
+                    <div className="px-3 py-1.5 rounded-lg shadow-sm backdrop-blur-md bg-white/95 border border-slate-200 text-slate-800 flex flex-col gap-0.5 group-hover:border-[#0396A6]/50 transition-colors">
                       <div className="flex items-center gap-1.5">
-                        <MapPin size={12} className="text-[#5F23C8]" />
+                        <MapPin size={12} className="text-[#0396A6]" />
                         <span className="text-[11px] font-bold">JMD Empire, Sector 62, Gurugram, India</span>
                       </div>
                     </div>
@@ -329,7 +339,7 @@ const FooterSection = () => {
               </div>
             </div>
           </div>
-          <div className="text-center pt-4 border-t border-slate-200 text-[11px] font-medium text-slate-500">
+          <div className="text-center pt-2 border-t border-slate-200 text-[11px] font-medium text-slate-500">
             &copy; {currentYear} {COMPANY_INFO.name}. All rights reserved.
           </div>
         </div>

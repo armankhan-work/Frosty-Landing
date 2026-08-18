@@ -107,7 +107,7 @@ function MiniProductCard({ color, name, price, rating }: {
       <div style={{ padding: '6px 8px 8px' }}>
         <div style={{ fontSize: 9, fontWeight: 600, color: '#1a1a2e', lineHeight: 1.3, fontFamily: "'DM Sans', sans-serif" }}>{name}</div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 3 }}>
-          <span style={{ fontSize: 9, fontWeight: 700, color: '#4422AE', fontFamily: "'DM Sans', sans-serif" }}>{price}</span>
+          <span style={{ fontSize: 9, fontWeight: 700, color: '#0396A6', fontFamily: "'DM Sans', sans-serif" }}>{price}</span>
           <span style={{ fontSize: 7, color: '#888', fontFamily: "'DM Sans', sans-serif" }}>★ {rating}</span>
         </div>
       </div>
@@ -136,11 +136,11 @@ function ChatBubble({ role, text, isTyping }: {
         lineHeight: 1.45,
         fontFamily: "'DM Sans', sans-serif",
         fontWeight: isUser ? 400 : 500,
-        background: isUser ? '#f0edf8' : '#4422AE',
+        background: isUser ? '#f0edf8' : '#0396A6',
         color: isUser ? '#2a2a3e' : '#fff',
         boxShadow: isUser
           ? '0 1px 3px rgba(0,0,0,0.04)'
-          : '0 2px 8px rgba(68,34,174,0.25)',
+          : '0 2px 8px rgba(3, 150, 166,0.25)',
       }}
     >
       {text}
@@ -215,7 +215,7 @@ function AnimatedCursor({ phase }: { phase: AnimPhase }) {
                 top: 0, left: 0,
                 width: 16, height: 16,
                 borderRadius: '50%',
-                background: 'rgba(68,34,174,0.3)',
+                background: 'rgba(3, 150, 166,0.3)',
                 transform: 'translate(-50%, -50%)',
               }}
             />
@@ -257,8 +257,8 @@ function LiveProductDemo({ phase, q1Text, a1Text, q2Text, a2Text, isTypingQ1, is
         borderRadius: 16,
         overflow: 'hidden',
         background: '#f8f7fc',
-        boxShadow: '0 25px 80px -12px rgba(68,34,174,0.18), 0 8px 24px -4px rgba(0,0,0,0.08)',
-        border: '1px solid rgba(68,34,174,0.08)',
+        boxShadow: '0 25px 80px -12px rgba(3, 150, 166,0.18), 0 8px 24px -4px rgba(0,0,0,0.08)',
+        border: '1px solid rgba(3, 150, 166,0.08)',
         aspectRatio: '4 / 3',
       }}
     >
@@ -307,7 +307,7 @@ function LiveProductDemo({ phase, q1Text, a1Text, q2Text, a2Text, isTypingQ1, is
           borderBottom: '1px solid rgba(0,0,0,0.04)',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-            <div style={{ width: 14, height: 14, borderRadius: 3, background: 'linear-gradient(135deg, #4422AE, #7c5fd6)' }} />
+            <div style={{ width: 14, height: 14, borderRadius: 3, background: 'linear-gradient(135deg, #0396A6, #7c5fd6)' }} />
             <span style={{ fontSize: 9, fontWeight: 700, color: '#1a1a2e', fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '-0.02em' }}>YourStore</span>
           </div>
           <div style={{ display: 'flex', gap: 12 }}>
@@ -321,7 +321,7 @@ function LiveProductDemo({ phase, q1Text, a1Text, q2Text, a2Text, isTypingQ1, is
         <div style={{
           margin: '8px 10px',
           borderRadius: 8,
-          background: 'linear-gradient(135deg, #f3f0ff 0%, #ede9fe 50%, #e8e4fd 100%)',
+          background: 'linear-gradient(135deg, #f3f0ff 0%, #CCFBF1 50%, #e8e4fd 100%)',
           padding: '14px 16px',
           position: 'relative',
           overflow: 'hidden',
@@ -334,7 +334,7 @@ function LiveProductDemo({ phase, q1Text, a1Text, q2Text, a2Text, isTypingQ1, is
           </div>
           <div style={{
             position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)',
-            width: 32, height: 38, background: 'rgba(68,34,174,0.12)', borderRadius: 6,
+            width: 32, height: 38, background: 'rgba(3, 150, 166,0.12)', borderRadius: 6,
           }} />
         </div>
 
@@ -362,9 +362,9 @@ function LiveProductDemo({ phase, q1Text, a1Text, q2Text, a2Text, isTypingQ1, is
                 bottom: 12, right: 12,
                 width: 36, height: 36,
                 borderRadius: '50%',
-                background: 'linear-gradient(135deg, #4422AE, #6644cc)',
+                background: 'linear-gradient(135deg, #0396A6, #6644cc)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                boxShadow: '0 4px 16px rgba(68,34,174,0.35)',
+                boxShadow: '0 4px 16px rgba(3, 150, 166,0.35)',
                 cursor: 'pointer',
                 zIndex: 30,
               }}
@@ -411,7 +411,7 @@ function LiveProductDemo({ phase, q1Text, a1Text, q2Text, a2Text, isTypingQ1, is
               <div style={{
                 display: 'flex', alignItems: 'center', gap: 6,
                 padding: '8px 10px',
-                background: 'linear-gradient(135deg, #4422AE, #5533bb)',
+                background: 'linear-gradient(135deg, #0396A6, #5533bb)',
                 color: '#fff',
               }}>
                 <div style={{
@@ -458,7 +458,7 @@ function LiveProductDemo({ phase, q1Text, a1Text, q2Text, a2Text, isTypingQ1, is
                     display: 'flex', gap: 3,
                     padding: '6px 10px',
                     borderRadius: 10,
-                    background: '#4422AE',
+                    background: '#0396A6',
                   }}>
                     <span className="hero-typing-dot" style={{ animationDelay: '0ms' }} />
                     <span className="hero-typing-dot" style={{ animationDelay: '150ms' }} />
@@ -473,7 +473,7 @@ function LiveProductDemo({ phase, q1Text, a1Text, q2Text, a2Text, isTypingQ1, is
                     display: 'flex', gap: 3,
                     padding: '6px 10px',
                     borderRadius: 10,
-                    background: '#4422AE',
+                    background: '#0396A6',
                   }}>
                     <span className="hero-typing-dot" style={{ animationDelay: '0ms' }} />
                     <span className="hero-typing-dot" style={{ animationDelay: '150ms' }} />
@@ -498,7 +498,7 @@ function LiveProductDemo({ phase, q1Text, a1Text, q2Text, a2Text, isTypingQ1, is
                 </div>
                 <div style={{
                   width: 20, height: 20, borderRadius: '50%',
-                  background: '#4422AE', display: 'flex',
+                  background: '#0396A6', display: 'flex',
                   alignItems: 'center', justifyContent: 'center',
                 }}>
                   <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round">
@@ -626,7 +626,7 @@ export default function HeroSection() {
       {/* Subtle warm background */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'radial-gradient(ellipse 80% 60% at 20% 50%, rgba(68,34,174,0.04), transparent 70%), radial-gradient(ellipse 60% 50% at 80% 30%, rgba(139,92,246,0.03), transparent 70%)',
+        background: 'radial-gradient(ellipse 80% 60% at 20% 50%, rgba(3, 150, 166,0.04), transparent 70%), radial-gradient(ellipse 60% 50% at 80% 30%, rgba(3, 150, 166,0.03), transparent 70%)',
         pointerEvents: 'none',
       }} />
 
@@ -654,18 +654,18 @@ export default function HeroSection() {
               display: 'inline-flex', alignItems: 'center', gap: 8,
               padding: '6px 14px',
               borderRadius: 999,
-              background: 'rgba(68,34,174,0.06)',
-              border: '1px solid rgba(68,34,174,0.1)',
+              background: 'rgba(3, 150, 166,0.06)',
+              border: '1px solid rgba(3, 150, 166,0.1)',
               fontSize: 12,
               fontWeight: 600,
               letterSpacing: '0.04em',
-              color: '#4422AE',
+              color: '#0396A6',
               fontFamily: "'DM Sans', sans-serif",
             }}>
               <span style={{
                 width: 6, height: 6, borderRadius: '50%',
-                background: '#4422AE',
-                boxShadow: '0 0 0 0 rgba(68,34,174,0.4)',
+                background: '#0396A6',
+                boxShadow: '0 0 0 0 rgba(3, 150, 166,0.4)',
                 animation: 'hero-pulse 2.4s infinite',
               }} />
               AI-Powered Customer Agent
@@ -690,7 +690,7 @@ export default function HeroSection() {
           >
             Your AI agent that{' '}
             <span style={{
-              background: 'linear-gradient(135deg, #4422AE, #7c5fd6)',
+              background: 'linear-gradient(135deg, #0396A6, #7c5fd6)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -731,13 +731,13 @@ export default function HeroSection() {
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 padding: '14px 28px',
                 borderRadius: 12,
-                background: 'linear-gradient(135deg, #4422AE, #5533bb)',
+                background: 'linear-gradient(135deg, #0396A6, #5533bb)',
                 color: '#fff',
                 fontSize: 15,
                 fontWeight: 600,
                 fontFamily: "'DM Sans', sans-serif",
                 textDecoration: 'none',
-                boxShadow: '0 8px 24px -4px rgba(68,34,174,0.35)',
+                boxShadow: '0 8px 24px -4px rgba(3, 150, 166,0.35)',
                 transition: 'transform 0.2s ease, box-shadow 0.2s ease',
                 cursor: 'pointer',
                 border: 'none',
@@ -756,12 +756,12 @@ export default function HeroSection() {
                 padding: '14px 28px',
                 borderRadius: 12,
                 background: 'transparent',
-                color: '#4422AE',
+                color: '#0396A6',
                 fontSize: 15,
                 fontWeight: 600,
                 fontFamily: "'DM Sans', sans-serif",
                 textDecoration: 'none',
-                border: '1.5px solid rgba(68,34,174,0.2)',
+                border: '1.5px solid rgba(3, 150, 166,0.2)',
                 transition: 'transform 0.2s ease, border-color 0.2s ease, background 0.2s ease',
                 cursor: 'pointer',
               }}

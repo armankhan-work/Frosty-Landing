@@ -39,12 +39,12 @@ type Props = {
 };
 
 export const COLOR_PALETTES: Record<string, { hex: string; name: string; bg: string }> = {
-  emerald: { hex: "#673EBE", name: "Violet", bg: "bg-purple-500" },
-  indigo:  { hex: "#6366f1", name: "Indigo",  bg: "bg-indigo-500" },
+  emerald: { hex: "#673EBE", name: "Violet", bg: "bg-teal-500" },
+  indigo:  { hex: "#0396A6", name: "Indigo",  bg: "bg-slate-500" },
   amber:   { hex: "#f59e0b", name: "Amber",   bg: "bg-amber-500" },
   rose:    { hex: "#f43f5e", name: "Rose",    bg: "bg-rose-500" },
   cyan:    { hex: "#06b6d4", name: "Cyan",    bg: "bg-cyan-500" },
-  purple:  { hex: "#a855f7", name: "Purple",  bg: "bg-purple-500" },
+  purple:  { hex: "#0396A6", name: "Purple",  bg: "bg-teal-500" },
 };
 
 // ⚠️ MOCK DATA FALLBACK TOGGLE — Set to false to remove mock data in future

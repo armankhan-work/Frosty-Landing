@@ -29,9 +29,9 @@ export default function ProposalsQuotesFlow({ onComplete }: { onComplete?: () =>
             <line x1="100" y1="380" x2="100" y2="80" stroke="#E2E8F0" strokeWidth="2" strokeDasharray="4 4" />
 
             {/* Animated lines */}
-            <motion.line x1="100" y1="80" x2="400" y2="80" stroke="#5F23C8" strokeWidth="2.5" strokeDasharray="4 4"
+            <motion.line x1="100" y1="80" x2="400" y2="80" stroke="#0396A6" strokeWidth="2.5" strokeDasharray="4 4"
               initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1, delay: 0.8 }} />
-            <motion.line x1="400" y1="80" x2="400" y2="380" stroke="#8B5CF6" strokeWidth="2.5" strokeDasharray="4 4"
+            <motion.line x1="400" y1="80" x2="400" y2="380" stroke="#14B8A6" strokeWidth="2.5" strokeDasharray="4 4"
               initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1.2, delay: 2.2 }} />
             <motion.line x1="400" y1="380" x2="100" y2="380" stroke="#D97706" strokeWidth="2.5" strokeDasharray="4 4"
               initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1, delay: 4 }} />
@@ -50,9 +50,9 @@ export default function ProposalsQuotesFlow({ onComplete }: { onComplete?: () =>
 
             {/* Node: Website (top right) */}
             <motion.g initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.4, type: 'spring' }}>
-              <circle cx="400" cy="80" r="24" fill="#FAF5FF" stroke="#5F23C8" strokeWidth="1.5" />
+              <circle cx="400" cy="80" r="24" fill="#F0FDFA" stroke="#0396A6" strokeWidth="1.5" />
               <foreignObject x="388" y="68" width="24" height="24" className="overflow-visible pointer-events-none">
-                <div className="w-6 h-6 flex items-center justify-center text-[#5F23C8]">
+                <div className="w-6 h-6 flex items-center justify-center text-[#0396A6]">
                   <Globe className="w-5 h-5" strokeWidth={1.75} />
                 </div>
               </foreignObject>
@@ -60,9 +60,9 @@ export default function ProposalsQuotesFlow({ onComplete }: { onComplete?: () =>
 
             {/* Node: Brain (bottom right) */}
             <motion.g initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.6, type: 'spring' }}>
-              <circle cx="400" cy="380" r="24" fill="#FAF5FF" stroke="#8B5CF6" strokeWidth="1.5" />
+              <circle cx="400" cy="380" r="24" fill="#F0FDFA" stroke="#14B8A6" strokeWidth="1.5" />
               <foreignObject x="388" y="368" width="24" height="24" className="overflow-visible pointer-events-none">
-                <div className="w-6 h-6 flex items-center justify-center text-[#8B5CF6]">
+                <div className="w-6 h-6 flex items-center justify-center text-[#14B8A6]">
                   <Brain className="w-5 h-5" strokeWidth={1.75} />
                 </div>
               </foreignObject>
@@ -80,15 +80,15 @@ export default function ProposalsQuotesFlow({ onComplete }: { onComplete?: () =>
 
             {/* Bubble 1: User question */}
             <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.4, duration: 0.4 }}>
-              <rect x="155" y="56" width="190" height="46" rx="14" fill="#5F23C8" />
+              <rect x="155" y="56" width="190" height="46" rx="14" fill="#0396A6" />
               <text x="250" y="76" textAnchor="middle" fill="white" fontSize="11" fontWeight="600">&quot;Send me pricing</text>
               <text x="250" y="91" textAnchor="middle" fill="white" fontSize="11" fontWeight="600">for 50 seats.&quot;</text>
             </motion.g>
 
             {/* Bubble 2: Generating quote */}
             <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 3, duration: 0.4 }}>
-              <rect x="310" y="215" width="155" height="28" rx="14" fill="#FFFFFF" stroke="#5F23C8" strokeWidth="1" />
-              <text x="387" y="234" textAnchor="middle" fill="#5F23C8" fontSize="11" fontWeight="700">Generating quote…</text>
+              <rect x="310" y="215" width="155" height="28" rx="14" fill="#FFFFFF" stroke="#0396A6" strokeWidth="1" />
+              <text x="387" y="234" textAnchor="middle" fill="#0396A6" fontSize="11" fontWeight="700">Generating quote…</text>
             </motion.g>
 
             {/* Bubble 3: Quotation ready */}

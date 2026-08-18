@@ -13,7 +13,7 @@ export default function NotFound() {
       </p>
       <Link
         href="/"
-        className="px-6 py-3 rounded-full bg-[#5F23C8] text-white font-bold text-sm hover:bg-[#4C1D95] shadow-sm transition-all"
+        className="px-6 py-3 rounded-full bg-[#0396A6] text-white font-bold text-sm hover:bg-[#0A1A2F] shadow-sm transition-all"
       >
         Return to Home
       </Link>

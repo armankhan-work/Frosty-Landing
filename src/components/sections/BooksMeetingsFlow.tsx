@@ -56,7 +56,7 @@ export default function BooksMeetingsFlow({ onComplete }: { onComplete?: () => v
                   />
                   <motion.line
                     x1="400" y1="80" x2="400" y2="380"
-                    stroke="#8B5CF6" strokeWidth="2" strokeDasharray="4 4" // Purple for Brain
+                    stroke="#14B8A6" strokeWidth="2" strokeDasharray="4 4" // Purple for Brain
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 1.5, delay: 2.5 }}
@@ -69,7 +69,7 @@ export default function BooksMeetingsFlow({ onComplete }: { onComplete?: () => v
                   />
                   <motion.line
                     x1="400" y1="380" x2="100" y2="380"
-                    stroke="#3B82F6" strokeWidth="2" strokeDasharray="4 4" // Blue for Calendar
+                    stroke="#FF7A5E" strokeWidth="2" strokeDasharray="4 4" // Blue for Calendar
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 1, delay: 4.5 }}
@@ -113,13 +113,13 @@ export default function BooksMeetingsFlow({ onComplete }: { onComplete?: () => v
 
                 {/* Node 3: Brain (Bottom-Right) */}
                 <motion.div 
-                  className="absolute top-[356px] left-[376px] w-12 h-12 bg-gradient-to-tr from-purple-100 to-purple-50 rounded-full flex items-center justify-center border border-purple-200 z-10 cursor-pointer pointer-events-auto"
+                  className="absolute top-[356px] left-[376px] w-12 h-12 bg-gradient-to-tr from-teal-100 to-teal-50 rounded-full flex items-center justify-center border border-teal-200 z-10 cursor-pointer pointer-events-auto"
                   initial={{ scale: 0 }} 
                   animate={{ scale: 1, boxShadow: "0px 4px 6px -1px rgba(0, 0, 0, 0.1)" }} 
                   transition={{ delay: 0.6, type: 'spring' }}
                   whileHover={{ scale: 1.25, rotate: -10, boxShadow: "0px 20px 40px -5px rgba(168, 85, 247, 0.8)" }}
                 >
-                  <Brain className="w-6 h-6 text-purple-600" />
+                  <Brain className="w-6 h-6 text-teal-600" />
                 </motion.div>
                 
                 {/* Node 4: Calendar (Bottom-Left) */}
@@ -148,7 +148,7 @@ export default function BooksMeetingsFlow({ onComplete }: { onComplete?: () => v
                   initial={{ opacity: 0, scale: 0.8, x: "-50%", y: "-50%" }}
                   animate={{ opacity: 1, scale: 1, x: "-50%", y: "-50%" }}
                   transition={{ duration: 0.5, delay: 3.2 }}
-                  className="absolute top-[230px] left-[400px] bg-purple-100 text-purple-700 text-[11px] font-bold px-3 py-1.5 rounded-full border border-purple-200 z-20 shadow-sm whitespace-nowrap"
+                  className="absolute top-[230px] left-[400px] bg-teal-100 text-teal-700 text-[11px] font-bold px-3 py-1.5 rounded-full border border-teal-200 z-20 shadow-sm whitespace-nowrap"
                 >
                   Checking Availability...
                 </motion.div>

@@ -28,14 +28,14 @@ const TILES: TileData[] = [
         desc: 'Vector-embedded company data. Your agent knows everything you do.',
         x: 6, y: 55,
         lineX: 175, lineY: 300, // Points to Knowledge Layer
-        icon: <Database size={26} strokeWidth={1.5} color="#5F23C8" />,
+        icon: <Database size={26} strokeWidth={1.5} color="#0396A6" />,
     },
     {
         label: 'CRM Sync',
         desc: 'Deep integrations. Reads from and writes directly to your database.',
         x: 90, y: 78,
         lineX: 348, lineY: 380, // Points to CRM
-        icon: <Users size={26} strokeWidth={1.5} color="#8B5CF6" />,
+        icon: <Users size={26} strokeWidth={1.5} color="#14B8A6" />,
     },
 ];
 
@@ -49,10 +49,10 @@ const THEMES: Record<ThemeColor, { top: [string, string], right: [string, string
         top: ['#eaf6ef', '#d8ede1'], right: ['#cfe3d6', '#b8d4c2'], left: ['#d8ebdf', '#c4dccb'], stroke: 'rgba(45,106,79,0.15)', text: '#1a3d2e'
     },
     blue: {
-        top: ['#eff6ff', '#dbeafe'], right: ['#bfdbfe', '#93c5fd'], left: ['#dbeafe', '#bfdbfe'], stroke: 'rgba(29,78,216,0.15)', text: '#1e3a8a'
+        top: ['#eff6ff', '#dbeafe'], right: ['#bfdbfe', '#FFB09F'], left: ['#dbeafe', '#bfdbfe'], stroke: 'rgba(29,78,216,0.15)', text: '#0A1A2F'
     },
     purple: {
-        top: ['#faf5ff', '#f3e8ff'], right: ['#e9d5ff', '#d8b4fe'], left: ['#f3e8ff', '#e9d5ff'], stroke: 'rgba(126,34,206,0.15)', text: '#4c1d95'
+        top: ['#F0FDFA', '#CCFBF1'], right: ['#CCFBF1', '#d8b4fe'], left: ['#CCFBF1', '#CCFBF1'], stroke: 'rgba(126,34,206,0.15)', text: '#0A1A2F'
     }
 };
 
@@ -147,7 +147,7 @@ function Dots() {
         <>
             {pts.map(([x, y], i) => (
                 <motion.circle
-                    key={i} cx={x} cy={y} r={2 + (i % 3)} fill="#5F23C8"
+                    key={i} cx={x} cy={y} r={2 + (i % 3)} fill="#0396A6"
                     animate={{ opacity: [0.1, 0.35, 0.1] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: i * 0.25 }}
                 />
@@ -212,7 +212,7 @@ export default function IsometricPlatform() {
                         <motion.line key={`line-${i}`}
                             className="hidden lg:block"
                             x1={tileCx} y1={tileCy} x2={t.lineX} y2={t.lineY}
-                            stroke={hovered === i ? "#5F23C8" : "#CBD5E1"} strokeWidth={hovered === i ? 1.5 : 1}
+                            stroke={hovered === i ? "#0396A6" : "#CBD5E1"} strokeWidth={hovered === i ? 1.5 : 1}
                             strokeDasharray="4 4"
                             opacity={hovered === i ? 0.9 : 0.6}
                             style={{ transition: 'opacity 0.3s, stroke-width 0.3s' }}
@@ -322,9 +322,9 @@ export default function IsometricPlatform() {
                                 width: 60,
                                 height: 60,
                                 borderRadius: 18,
-                                backgroundColor: hovered === i ? '#5F23C8' : 'white',
-                                boxShadow: hovered === i ? '0 16px 32px rgba(95,35,200,0.25)' : '0 8px 24px rgba(0,0,0,0.06)',
-                                border: `1px solid ${hovered === i ? '#5F23C8' : 'rgba(0,0,0,0.08)'}`,
+                                backgroundColor: hovered === i ? '#0396A6' : 'white',
+                                boxShadow: hovered === i ? '0 16px 32px rgba(3, 150, 166,0.25)' : '0 8px 24px rgba(0,0,0,0.06)',
+                                border: `1px solid ${hovered === i ? '#0396A6' : 'rgba(0,0,0,0.08)'}`,
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                                 transition: 'background-color 0.3s ease, box-shadow 0.3s ease, border 0.3s ease',
                             }}

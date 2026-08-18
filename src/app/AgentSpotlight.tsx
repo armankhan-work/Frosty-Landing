@@ -22,7 +22,7 @@ const SERVICES = [
         <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
       </svg>
     ),
-    accentColor: '#5F23C8',
+    accentColor: '#0396A6',
     borderColor: 'rgba(99, 90, 128,0.45)',
     bg: '#070d1a',
     atmoColor: 'rgba(99, 90, 128,0.12)',
@@ -51,10 +51,10 @@ const SERVICES = [
         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
       </svg>
     ),
-    accentColor: '#5F23C8',
-    borderColor: 'rgba(95, 35, 200,0.45)',
+    accentColor: '#0396A6',
+    borderColor: 'rgba(3, 150, 166,0.45)',
     bg: '#060a14',
-    atmoColor: 'rgba(95, 35, 200,0.12)',
+    atmoColor: 'rgba(3, 150, 166,0.12)',
     desc: 'The central nervous system. Syncs all agents into a single omni-channel dashboard with human handoff on demand.',
   },
 ];
@@ -63,19 +63,19 @@ const SERVICES = [
 function WebsiteSVG() {
   return (
     <svg className="absolute inset-0 w-full h-full" viewBox="0 0 300 160" preserveAspectRatio="xMidYMid slice" style={{ opacity: 0.22 }}>
-      {Array.from({ length: 5 }).map((_, i) => <line key={`wh${i}`} x1="0" y1={i * 32} x2="300" y2={i * 32} stroke="#5F23C8" strokeWidth="0.5" />)}
-      {Array.from({ length: 7 }).map((_, i) => <line key={`wv${i}`} x1={i * 50} y1="0" x2={i * 50} y2="160" stroke="#5F23C8" strokeWidth="0.5" />)}
-      <rect x="30" y="18" width="180" height="120" rx="6" fill="none" stroke="#5F23C8" strokeWidth="1.2" />
-      <rect x="30" y="18" width="180" height="18" rx="6" fill="#5F23C8" fillOpacity="0.1" />
-      <circle cx="43" cy="27" r="3.5" fill="#5F23C8" fillOpacity="0.5" />
-      <circle cx="54" cy="27" r="3.5" fill="#5F23C8" fillOpacity="0.3" />
-      <circle cx="65" cy="27" r="3.5" fill="#5F23C8" fillOpacity="0.2" />
-      <rect x="40" y="48" width="90" height="6" rx="3" fill="#5F23C8" fillOpacity="0.3" />
-      <rect x="40" y="60" width="65" height="4" rx="2" fill="#5F23C8" fillOpacity="0.18" />
-      <rect x="40" y="70" width="80" height="4" rx="2" fill="#5F23C8" fillOpacity="0.13" />
-      <rect x="40" y="82" width="50" height="4" rx="2" fill="#5F23C8" fillOpacity="0.1" />
-      <circle cx="240" cy="120" r="5" fill="#5F23C8" fillOpacity="0.3" />
-      <circle cx="50" cy="140" r="4" fill="#5F23C8" fillOpacity="0.2" />
+      {Array.from({ length: 5 }).map((_, i) => <line key={`wh${i}`} x1="0" y1={i * 32} x2="300" y2={i * 32} stroke="#0396A6" strokeWidth="0.5" />)}
+      {Array.from({ length: 7 }).map((_, i) => <line key={`wv${i}`} x1={i * 50} y1="0" x2={i * 50} y2="160" stroke="#0396A6" strokeWidth="0.5" />)}
+      <rect x="30" y="18" width="180" height="120" rx="6" fill="none" stroke="#0396A6" strokeWidth="1.2" />
+      <rect x="30" y="18" width="180" height="18" rx="6" fill="#0396A6" fillOpacity="0.1" />
+      <circle cx="43" cy="27" r="3.5" fill="#0396A6" fillOpacity="0.5" />
+      <circle cx="54" cy="27" r="3.5" fill="#0396A6" fillOpacity="0.3" />
+      <circle cx="65" cy="27" r="3.5" fill="#0396A6" fillOpacity="0.2" />
+      <rect x="40" y="48" width="90" height="6" rx="3" fill="#0396A6" fillOpacity="0.3" />
+      <rect x="40" y="60" width="65" height="4" rx="2" fill="#0396A6" fillOpacity="0.18" />
+      <rect x="40" y="70" width="80" height="4" rx="2" fill="#0396A6" fillOpacity="0.13" />
+      <rect x="40" y="82" width="50" height="4" rx="2" fill="#0396A6" fillOpacity="0.1" />
+      <circle cx="240" cy="120" r="5" fill="#0396A6" fillOpacity="0.3" />
+      <circle cx="50" cy="140" r="4" fill="#0396A6" fillOpacity="0.2" />
     </svg>
   );
 }
@@ -110,10 +110,10 @@ function UnifiedSVG() {
   return (
     <svg className="absolute inset-0 w-full h-full" viewBox="0 0 300 160" preserveAspectRatio="xMidYMid slice" style={{ opacity: 0.3 }}>
       {edges.map(([x1, y1, x2, y2], i) => (
-        <line key={`e${i}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#5F23C8" strokeWidth="0.9" />
+        <line key={`e${i}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#0396A6" strokeWidth="0.9" />
       ))}
       {nodes.map(([cx, cy, r, op], i) => (
-        <circle key={`n${i}`} cx={cx} cy={cy} r={r} fill="#5F23C8" fillOpacity={op} />
+        <circle key={`n${i}`} cx={cx} cy={cy} r={r} fill="#0396A6" fillOpacity={op} />
       ))}
     </svg>
   );
@@ -240,8 +240,8 @@ export default function AgentSpotlight() {
               </feMerge>
             </filter>
             <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#5F23C8" />
-              <stop offset="100%" stopColor="#5F23C8" />
+              <stop offset="0%" stopColor="#0396A6" />
+              <stop offset="100%" stopColor="#0396A6" />
             </linearGradient>
           </defs>
           {SERVICES.map((_, i) => {
@@ -268,7 +268,7 @@ export default function AgentSpotlight() {
                 <path
                   ref={el => { pulseLinesRef.current[i] = el; }}
                   d={pathData}
-                  stroke="#5F23C8"
+                  stroke="#0396A6"
                   strokeWidth="2.5"
                   fill="none"
                   strokeDasharray="30, 600"

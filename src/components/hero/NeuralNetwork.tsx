@@ -22,8 +22,8 @@ const ICON_NODES: {
   { id: 'instagram', x: 5,   y: 60,  size: 50, icon: Instagram,      color: '#E1306C', label: 'Instagram',  delay: 0.9,  floatY: 8,  floatDur: 4.5 },
   { id: 'phone',     x: 18,  y: 82,  size: 42, icon: Phone,          color: '#2D6A4F', label: 'Calls',      delay: 1.2,  floatY: 5,  floatDur: 6.0 },
   { id: 'bot',       x: 50,  y: 5,   size: 44, icon: Bot,            color: '#40916C', label: 'AI Bot',     delay: 0.15, floatY: 6,  floatDur: 5.0 },
-  { id: 'mail',      x: 78,  y: 80,  size: 44, icon: Mail,           color: '#2563EB', label: 'Email',      delay: 0.45, floatY: 6,  floatDur: 5.8 },
-  { id: 'crm',       x: 3,   y: 40,  size: 40, icon: Database,       color: '#7C3AED', label: 'CRM',        delay: 0.75, floatY: 4,  floatDur: 6.2 },
+  { id: 'mail',      x: 78,  y: 80,  size: 44, icon: Mail,           color: '#FF7A5E', label: 'Email',      delay: 0.45, floatY: 6,  floatDur: 5.8 },
+  { id: 'crm',       x: 3,   y: 40,  size: 40, icon: Database,       color: '#26B3AA', label: 'CRM',        delay: 0.75, floatY: 4,  floatDur: 6.2 },
 ];
 
 /* Particles - seeded random for consistency */

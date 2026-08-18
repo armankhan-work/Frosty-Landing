@@ -28,14 +28,14 @@ const TILES: TileData[] = [
         desc: 'Vector-embedded company data. Your agent knows everything you do.',
         x: 6, y: 55,
         lineX: 175, lineY: 300, // Points to Knowledge Layer
-        icon: <Database size={26} strokeWidth={1.5} color="#3B82F6" />,
+        icon: <Database size={26} strokeWidth={1.5} color="#FF7A5E" />,
     },
     {
         label: 'CRM Sync',
         desc: 'Deep integrations. Reads from and writes directly to your database.',
         x: 90, y: 78,
         lineX: 348, lineY: 380, // Points to CRM
-        icon: <Users size={26} strokeWidth={1.5} color="#8B5CF6" />,
+        icon: <Users size={26} strokeWidth={1.5} color="#14B8A6" />,
     },
 ];
 
@@ -49,10 +49,10 @@ const THEMES: Record<ThemeColor, { top: [string, string], right: [string, string
         top: ['#eaf6ef', '#d8ede1'], right: ['#cfe3d6', '#b8d4c2'], left: ['#d8ebdf', '#c4dccb'], stroke: 'rgba(45,106,79,0.15)', text: '#1a3d2e'
     },
     blue: {
-        top: ['#eff6ff', '#dbeafe'], right: ['#bfdbfe', '#93c5fd'], left: ['#dbeafe', '#bfdbfe'], stroke: 'rgba(29,78,216,0.15)', text: '#1e3a8a'
+        top: ['#eff6ff', '#dbeafe'], right: ['#bfdbfe', '#FFB09F'], left: ['#dbeafe', '#bfdbfe'], stroke: 'rgba(29,78,216,0.15)', text: '#0A1A2F'
     },
     purple: {
-        top: ['#faf5ff', '#f3e8ff'], right: ['#e9d5ff', '#d8b4fe'], left: ['#f3e8ff', '#e9d5ff'], stroke: 'rgba(126,34,206,0.15)', text: '#4c1d95'
+        top: ['#F0FDFA', '#CCFBF1'], right: ['#CCFBF1', '#d8b4fe'], left: ['#CCFBF1', '#CCFBF1'], stroke: 'rgba(126,34,206,0.15)', text: '#0A1A2F'
     }
 };
 

@@ -44,7 +44,7 @@ export function KpiGrid({ overview, recentConversationsWeek, recentConversations
       value: overview ? recentConversationsWeek : (ENABLE_MOCK_FALLBACK ? 142 : 0),
       hint: overview ? `${recentConversationsToday} today` : (ENABLE_MOCK_FALLBACK ? "18 today" : "0 today"),
       icon: <MessageSquare className="w-5 h-5" />,
-      iconBg: "bg-purple-500/10 text-purple-700 dark:text-purple-300",
+      iconBg: "bg-teal-500/10 text-teal-700 dark:text-teal-300",
       accentBar: "bg-[#7A5AF8]"
     },
     {

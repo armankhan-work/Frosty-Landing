@@ -10,7 +10,7 @@ export default function CostOfSlowSection() {
         <section id="cost" className="relative pt-8 sm:pt-12 lg:pt-14 pb-12 lg:pb-16 bg-transparent overflow-hidden">
             {/* Rich Ambient Purple / Warm Backdrop Aura */}
             <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-0">
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(95,35,200,0.08)_0%,rgba(196,181,253,0.03)_40%,transparent_75%)] rounded-full blur-[100px]" />
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(3, 150, 166,0.08)_0%,rgba(196,181,253,0.03)_40%,transparent_75%)] rounded-full blur-[100px]" />
             </div>
             
             <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
@@ -21,16 +21,16 @@ export default function CostOfSlowSection() {
                         
                         <div className="mb-5">
                             {/* Eyebrow */}
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#5F23C8]/[0.07] border border-[#5F23C8]/15 mb-3 backdrop-blur-sm">
-                                <span className="w-4 h-4 rounded-full bg-[#5F23C8]/20 flex items-center justify-center">
-                                    <Zap className="w-2.5 h-2.5 text-[#5F23C8]" />
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0396A6]/[0.07] border border-[#0396A6]/15 mb-3 backdrop-blur-sm">
+                                <span className="w-4 h-4 rounded-full bg-[#0396A6]/20 flex items-center justify-center">
+                                    <Zap className="w-2.5 h-2.5 text-[#0396A6]" />
                                 </span>
-                                <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#5F23C8]">THE COST OF A SLOW REPLY</span>
+                                <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">THE COST OF A SLOW REPLY</span>
                             </div>
                             
                             {/* Heading */}
                             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-medium text-[#18181B] leading-[1.12] tracking-tight mb-3">
-                                The first five minutes decide who they <span className="text-[#5F23C8] font-semibold">talk to.</span>
+                                The first five minutes decide who they <span className="text-[#0396A6] font-semibold">talk to.</span>
                             </h2>
                             
                             {/* Body */}
@@ -45,8 +45,8 @@ export default function CostOfSlowSection() {
                             {/* Stat 1: Qualification */}
                             <div className="flex flex-col items-center">
                                 <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5">
-                                    <div className="w-6 h-6 rounded-lg bg-[#5F23C8]/10 flex items-center justify-center shrink-0">
-                                        <TrendingUp className="w-3.5 h-3.5 text-[#5F23C8]" />
+                                    <div className="w-6 h-6 rounded-lg bg-[#0396A6]/10 flex items-center justify-center shrink-0">
+                                        <TrendingUp className="w-3.5 h-3.5 text-[#0396A6]" />
                                     </div>
                                     <span className="text-[9px] sm:text-[10px] font-semibold text-stone-600 tracking-wider uppercase">Qualification</span>
                                 </div>
@@ -78,8 +78,8 @@ export default function CostOfSlowSection() {
                         </div>
 
                         {/* Bottom Insight Banner */}
-                        <div className="w-full bg-[#5F23C8]/[0.06] backdrop-blur-md rounded-2xl p-4 border border-[#5F23C8]/15 shadow-sm flex items-center gap-3.5">
-                            <div className="w-8 h-8 rounded-xl bg-[#5F23C8] flex items-center justify-center shadow-[0_2px_10px_rgba(95,35,200,0.3)] shrink-0">
+                        <div className="w-full bg-[#0396A6]/[0.06] backdrop-blur-md rounded-2xl p-4 border border-[#0396A6]/15 shadow-sm flex items-center gap-3.5">
+                            <div className="w-8 h-8 rounded-xl bg-[#0396A6] flex items-center justify-center shadow-[0_2px_10px_rgba(3, 150, 166,0.3)] shrink-0">
                                 <Trophy className="w-4 h-4 text-white" />
                             </div>
                             <div className="min-w-0">
@@ -97,7 +97,7 @@ export default function CostOfSlowSection() {
                         className="hidden lg:flex w-[320px] xl:w-[380px] h-[480px] xl:h-[540px] shrink-0 relative items-center justify-center z-20 -mx-14 xl:-mx-20 pointer-events-none"
                     >
                         {/* Glow halo behind hourglass */}
-                        <div className="absolute inset-0 bg-[#5F23C8]/15 rounded-full blur-[70px] scale-[0.8]" />
+                        <div className="absolute inset-0 bg-[#0396A6]/15 rounded-full blur-[70px] scale-[0.8]" />
 
                         <div className="relative w-full h-full opacity-100 scale-[1.35] xl:scale-[1.55]" style={{
                             backgroundImage: "url('/glowing_hourglass.png')",
@@ -109,7 +109,7 @@ export default function CostOfSlowSection() {
                         }}>
                             {/* Animated Sand Stream */}
                             <div className="absolute left-[50%] -translate-x-1/2 top-[41%] w-[10px] h-[55px] xl:h-[65px] overflow-hidden pointer-events-none">
-                                <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[0.75px] h-full bg-gradient-to-b from-transparent via-[#7C3AED] to-transparent opacity-60" />
+                                <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[0.75px] h-full bg-gradient-to-b from-transparent via-[#26B3AA] to-transparent opacity-60" />
                                 {[...Array(24)].map((_, i) => (
                                     <motion.div 
                                         key={i}
@@ -121,7 +121,7 @@ export default function CostOfSlowSection() {
                                             ease: 'linear', 
                                             delay: i * 0.08 
                                         }}
-                                        className="absolute left-1/2 -translate-x-1/2 w-[1.5px] h-[3px] rounded-full bg-[#A78BFA] shadow-[0_0_5px_#7C3AED]"
+                                        className="absolute left-1/2 -translate-x-1/2 w-[1.5px] h-[3px] rounded-full bg-[#2DD4BF] shadow-[0_0_5px_#26B3AA]"
                                         style={{ marginLeft: i % 2 === 0 ? '-0.5px' : (i % 3 === 0 ? '0.5px' : '0px') }}
                                     />
                                 ))}
@@ -130,7 +130,7 @@ export default function CostOfSlowSection() {
                             <motion.div 
                                 animate={{ opacity: [0.5, 0.85, 0.5], scale: [0.95, 1.1, 0.95] }}
                                 transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-                                className="absolute left-[50%] -translate-x-1/2 bottom-[26%] w-[45px] h-[18px] bg-[#7C3AED]/40 blur-[7px] rounded-full"
+                                className="absolute left-[50%] -translate-x-1/2 bottom-[26%] w-[45px] h-[18px] bg-[#26B3AA]/40 blur-[7px] rounded-full"
                             />
                         </div>
                     </motion.div>

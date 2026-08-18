@@ -33,13 +33,13 @@ export default function ProblemConclusion() {
                     <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">The</motion.span>
                     <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">customer</motion.span>
                     <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">was</motion.span>
-                    <motion.span variants={wordVariants} className="inline-block text-[#5F23C8] font-bold">ready.</motion.span>
+                    <motion.span variants={wordVariants} className="inline-block text-[#0396A6] font-bold">ready.</motion.span>
                 </span>
                 <br className="hidden md:block" />
                 <span className="inline-block md:mt-2 mb-4">
                     <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">The</motion.span>
                     <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">business</motion.span>
-                    <motion.span variants={wordVariants} className="inline-block text-[#E11D48] font-bold">wasn't.</motion.span>
+                    <motion.span variants={wordVariants} className="inline-block text-[#FF7A5E] font-bold">wasn't.</motion.span>
                 </span>
             </motion.h3>
 
@@ -48,7 +48,7 @@ export default function ProblemConclusion() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ margin: "-100px", once: true }}
                 transition={{ duration: 0.8, delay: 1.8 }}
-                className="text-[#5F23C8] text-sm md:text-base font-bold tracking-[0.3em] uppercase mb-16"
+                className="text-[#0396A6] text-sm md:text-base font-bold tracking-[0.3em] uppercase mb-16"
             >
                 There has to be a better way.
             </motion.p>
@@ -60,14 +60,14 @@ export default function ProblemConclusion() {
                     whileInView={{ scale: 1, opacity: 1 }}
                     viewport={{ margin: "0px", once: true }}
                     transition={{ duration: 0.5, type: "spring", delay: 2.4 }}
-                    className="w-2.5 h-2.5 rounded-full bg-[#5F23C8] shadow-[0_0_16px_4px_rgba(95,35,200,0.4)] relative z-10"
+                    className="w-2.5 h-2.5 rounded-full bg-[#0396A6] shadow-[0_0_16px_4px_rgba(3, 150, 166,0.4)] relative z-10"
                 />
                 <motion.div
                     initial={{ height: 0, opacity: 0 }}
                     whileInView={{ height: '100%', opacity: 1 }}
                     viewport={{ margin: "0px", once: true }}
                     transition={{ duration: 1, delay: 2.7 }}
-                    className="w-[1.5px] bg-gradient-to-b from-[#5F23C8] via-[#8B5CF6] to-transparent relative z-0 -mt-[1px]"
+                    className="w-[1.5px] bg-gradient-to-b from-[#0396A6] via-[#14B8A6] to-transparent relative z-0 -mt-[1px]"
                 />
             </div>
         </section>

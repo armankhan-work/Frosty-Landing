@@ -95,13 +95,13 @@ export function Sidebar({ primary, revenue, admin, me, planLabel, isCollapsed, s
       aria-label="Merchant navigation"
     >
       <div className="flex items-center gap-3 p-3.5 mb-1 shrink-0">
-        <div className="w-8 h-8 rounded-full bg-white/10 text-purple-200 border border-white/15 flex items-center justify-center font-bold shrink-0 shadow-md">
-          <Snowflake className="w-4 h-4 text-purple-300" />
+        <div className="w-8 h-8 rounded-full bg-white/10 text-teal-200 border border-white/15 flex items-center justify-center font-bold shrink-0 shadow-md">
+          <Snowflake className="w-4 h-4 text-teal-300" />
         </div>
         {!isCollapsed && (
           <div className="flex flex-col">
             <strong className="text-sm font-bold leading-tight tracking-tight text-white">Frosty</strong>
-            <p className="text-[10px] font-medium text-purple-200/75 leading-tight">Merchant workspace</p>
+            <p className="text-[10px] font-medium text-teal-200/75 leading-tight">Merchant workspace</p>
           </div>
         )}
       </div>
@@ -138,15 +138,15 @@ export function Sidebar({ primary, revenue, admin, me, planLabel, isCollapsed, s
           <div className="flex items-center justify-between">
             <div className="flex flex-col overflow-hidden pr-2">
               <span className="text-[12px] font-semibold text-white truncate w-full" title={name}>{name}</span>
-              <span className="text-[9px] font-medium text-purple-200/70 uppercase tracking-wider">{roleLabel(me.role, me.is_owner)}</span>
+              <span className="text-[9px] font-medium text-teal-200/70 uppercase tracking-wider">{roleLabel(me.role, me.is_owner)}</span>
             </div>
-            <span className="px-2.5 py-1 rounded-full text-[9px] font-bold bg-purple-500/20 text-[#E1CEFA] border border-purple-500/30 uppercase tracking-wider shrink-0 shadow-sm">
+            <span className="px-2.5 py-1 rounded-full text-[9px] font-bold bg-teal-500/20 text-[#E1CEFA] border border-teal-500/30 uppercase tracking-wider shrink-0 shadow-sm">
               {planLabel}
             </span>
           </div>
         ) : (
           <div className="flex justify-center">
-            <span className="w-2 h-2 rounded-full bg-purple-400 shadow-[0_0_8px_rgba(168,85,247,0.6)]" title={`Plan: ${planLabel}`} />
+            <span className="w-2 h-2 rounded-full bg-teal-400 shadow-[0_0_8px_rgba(168,85,247,0.6)]" title={`Plan: ${planLabel}`} />
           </div>
         )}
       </div>

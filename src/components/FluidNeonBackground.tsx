@@ -125,7 +125,7 @@ void main() {
     vec3 cyan = vec3(0.0, 1.0, 1.0);
     // Electric Blue: #1D4ED8
     vec3 electric = vec3(0.114, 0.306, 0.847);
-    // Deep Violet: #4F46E5
+    // Deep Violet: #0396A6
     vec3 violet = vec3(0.310, 0.275, 0.898);
 
     vec3 col = obsidian;

@@ -126,8 +126,8 @@ export function TubesBackground({
           sleepTimeScale2: 2,
           tubes: {
             count: 16,
-            // Single solid darkest shade: Deep Royal Violet (#6D28D9)
-            colors: ["#6D28D9", "#6D28D9", "#6D28D9"],
+            // Single solid darkest shade: Deep Royal Violet (#027D8A)
+            colors: ["#027D8A", "#027D8A", "#027D8A"],
             minRadius: 0.005,
             maxRadius: 0.05,
             minTubularSegments: 32,
@@ -138,7 +138,7 @@ export function TubesBackground({
             },
             lights: {
               intensity: 220,
-              colors: ["#FFFFFF", "#DDD6FE", "#FFFFFF", "#C4B5FD"]
+              colors: ["#FFFFFF", "#99F6E4", "#FFFFFF", "#5EEAD4"]
             },
             lerp: 0.5,
             noise: 0.05
@@ -179,8 +179,8 @@ export function TubesBackground({
 
   const handleClick = () => {
     if (!enableClickInteraction || !tubesRef.current) return;
-    tubesRef.current.tubes.setColors(["#6D28D9", "#6D28D9", "#6D28D9"]);
-    tubesRef.current.tubes.setLightsColors(["#FFFFFF", "#DDD6FE", "#FFFFFF", "#C4B5FD"]);
+    tubesRef.current.tubes.setColors(["#027D8A", "#027D8A", "#027D8A"]);
+    tubesRef.current.tubes.setLightsColors(["#FFFFFF", "#99F6E4", "#FFFFFF", "#5EEAD4"]);
   };
 
   return (

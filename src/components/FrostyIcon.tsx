@@ -19,23 +19,23 @@ function drawSnowflake(cx: CanvasRenderingContext2D, x: number, y: number, size:
   // Soft Vibrant Aura Layer
   if (glowI > 0.01) {
     const grad = cx.createRadialGradient(0, 0, 0, 0, 0, size * 1.8);
-    grad.addColorStop(0, `rgba(95,35,200,${glowI * .25})`);
-    grad.addColorStop(.5, `rgba(2,132,199,${glowI * .12})`);
-    grad.addColorStop(1, 'rgba(95,35,200,0)');
+    grad.addColorStop(0, `rgba(3, 150, 166,${glowI * .25})`);
+    grad.addColorStop(.5, `rgba(255, 122, 94,${glowI * .12})`);
+    grad.addColorStop(1, 'rgba(3, 150, 166,0)');
     cx.fillStyle = grad;
     cx.fillRect(-size * 2, -size * 2, size * 4, size * 4);
   }
 
   // Base Structural Gradients - Vibrant Frost Purple & Sky Blue
   const sg = cx.createLinearGradient(-size, -size, size, size);
-  sg.addColorStop(0, '#5F23C8');
-  sg.addColorStop(.5, '#8B5CF6');
-  sg.addColorStop(1, '#0284C7');
+  sg.addColorStop(0, '#0396A6');
+  sg.addColorStop(.5, '#14B8A6');
+  sg.addColorStop(1, '#FF7A5E');
   
   cx.save();
-  cx.shadowColor = 'rgba(95,35,200,0.35)';
+  cx.shadowColor = 'rgba(3, 150, 166,0.35)';
   cx.shadowBlur = glowI * 12;
-  cx.strokeStyle = 'rgba(95,35,200,0.85)';
+  cx.strokeStyle = 'rgba(3, 150, 166,0.85)';
   cx.lineWidth = size * .036;
   cx.lineCap = 'round';
   cx.beginPath();
@@ -57,7 +57,7 @@ function drawSnowflake(cx: CanvasRenderingContext2D, x: number, y: number, size:
     cx.beginPath();
     cx.moveTo(Math.cos(rad) * size * .13, Math.sin(rad) * size * .13);
     cx.lineTo(Math.cos(rad + Math.PI) * size * .13, Math.sin(rad + Math.PI) * size * .13);
-    cx.strokeStyle = 'rgba(95,35,200,0.6)';
+    cx.strokeStyle = 'rgba(3, 150, 166,0.6)';
     cx.lineWidth = size * .024;
     cx.stroke();
   });
@@ -65,8 +65,8 @@ function drawSnowflake(cx: CanvasRenderingContext2D, x: number, y: number, size:
   // Core Center Pearl
   const cg = cx.createRadialGradient(0, 0, 0, 0, 0, size * .08);
   cg.addColorStop(0, '#FFFFFF');
-  cg.addColorStop(.4, '#DDD6FE');
-  cg.addColorStop(1, '#5F23C8');
+  cg.addColorStop(.4, '#99F6E4');
+  cg.addColorStop(1, '#0396A6');
   cx.beginPath();
   cx.arc(0, 0, size * .07, 0, Math.PI * 2);
   cx.fillStyle = cg;
@@ -89,42 +89,9 @@ export default function FrostyIcon({
   alpha?: number;
   className?: string;
 }) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const cx = canvas.getContext('2d');
-    if (!cx) return;
-
-    // Retina Display (High-DPI) scaling to keep it crisp
-    const dpr = window.devicePixelRatio || 1;
-
-    // We create a bounding box exactly 4x the size to ensure the heavy glow is never clipped
-    const boundingBox = size * 4;
-
-    canvas.width = boundingBox * dpr;
-    canvas.height = boundingBox * dpr;
-
-    cx.scale(dpr, dpr);
-    cx.clearRect(0, 0, boundingBox, boundingBox);
-
-    // Render it perfectly dead-center
-    drawSnowflake(cx, boundingBox / 2, boundingBox / 2, size, rotation, glow, alpha);
-
-  }, [size, rotation, glow, alpha]);
-
   return (
-    <div className={`flex items-center justify-center relative ${className}`} style={{ width: size, height: size }}>
-      <canvas
-        ref={canvasRef}
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-        style={{
-          width: size * 4,
-          height: size * 4,
-          pointerEvents: 'none'
-        }}
-      />
+    <div className={`flex items-center justify-center relative ${className}`} style={{ width: size, height: size, opacity: alpha, transform: `rotate(${rotation}rad)`, filter: glow > 0 ? `drop-shadow(0 0 ${glow * 10}px rgba(3, 150, 166, 0.4))` : 'none' }}>
+      <img src="/logonew.png" alt="Frosty Logo" className="w-full h-full object-contain pointer-events-none" />
     </div>
   );
 }
