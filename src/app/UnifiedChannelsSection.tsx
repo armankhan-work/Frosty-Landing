@@ -150,8 +150,8 @@ export default function UnifiedChannelsSection() {
            <div className="divide-y divide-slate-200/70 border-t border-slate-200/70">
               {/* Feature 1 */}
               <div className="flex gap-3 items-start py-2.5 group">
-                 <div className="w-7.5 h-7.5 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 flex items-center justify-center shrink-0 text-[#0396A6] shadow-2xs group-hover:bg-[#0396A6]/[0.14] transition-colors">
-                    <svg className="w-3.5 h-3.5 text-[#0396A6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+                 <div className="shrink-0 text-[#0396A6] mt-0.5">
+                    <svg className="w-4 h-4 text-[#0396A6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
                        <line x1="12" y1="22.08" x2="12" y2="12"/></svg>
@@ -164,8 +164,8 @@ export default function UnifiedChannelsSection() {
               
               {/* Feature 2 */}
               <div className="flex gap-3 items-start py-2.5 group">
-                 <div className="w-7.5 h-7.5 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 flex items-center justify-center shrink-0 text-[#0396A6] shadow-2xs group-hover:bg-[#0396A6]/[0.14] transition-colors">
-                    <svg className="w-3.5 h-3.5 text-[#0396A6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+                 <div className="shrink-0 text-[#0396A6] mt-0.5">
+                    <svg className="w-4 h-4 text-[#0396A6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
                        <circle cx="12" cy="12" r="10"/>
                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/>
                     </svg>
@@ -178,8 +178,8 @@ export default function UnifiedChannelsSection() {
               
               {/* Feature 3 */}
               <div className="flex gap-3 items-start py-2.5 group">
-                 <div className="w-7.5 h-7.5 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 flex items-center justify-center shrink-0 text-[#0396A6] shadow-2xs group-hover:bg-[#0396A6]/[0.14] transition-colors">
-                    <svg className="w-3.5 h-3.5 text-[#0396A6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+                 <div className="shrink-0 text-[#0396A6] mt-0.5">
+                    <svg className="w-4 h-4 text-[#0396A6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
                     </svg>
                  </div>
@@ -191,8 +191,8 @@ export default function UnifiedChannelsSection() {
               
               {/* Feature 4 */}
               <div className="flex gap-3 items-start py-2.5 group">
-                 <div className="w-7.5 h-7.5 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 flex items-center justify-center shrink-0 text-[#0396A6] shadow-2xs group-hover:bg-[#0396A6]/[0.14] transition-colors">
-                    <svg className="w-3.5 h-3.5 text-[#0396A6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+                 <div className="shrink-0 text-[#0396A6] mt-0.5">
+                    <svg className="w-4 h-4 text-[#0396A6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
                        <circle cx="12" cy="7" r="4"/>
                     </svg>
@@ -294,9 +294,7 @@ export default function UnifiedChannelsSection() {
            >
               <div className="px-3 py-2 border-b border-slate-100 flex items-center justify-between">
                  <div className="flex items-center gap-1.5">
-                    <div className="w-5 h-5 rounded-md bg-[#0396A6]/10 text-[#0396A6] flex items-center justify-center">
-                       <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                    </div>
+                    <img src="/web.svg" alt="Website" className="w-4 h-4 object-contain shrink-0" />
                     <span className="text-slate-900 text-[11.5px] font-bold">Website</span>
                  </div>
                  <div className="flex items-center gap-1">
@@ -352,9 +350,7 @@ export default function UnifiedChannelsSection() {
            >
               <div className="px-3 py-2 border-b border-slate-100 flex items-center justify-between">
                  <div className="flex items-center gap-1.5">
-                    <div className="w-5 h-5 rounded-md bg-emerald-50 text-emerald-600 flex items-center justify-center">
-                       <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 2.17.69 4.19 1.87 5.84L2 22l4.28-1.85A9.954 9.954 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18.23c-1.83 0-3.56-.47-5.06-1.32l-3.32 1.44 1.46-3.24A8.257 8.257 0 013.77 12c0-4.54 3.69-8.23 8.23-8.23s8.23 3.69 8.23 8.23-3.69 8.23-8.23 8.23z"/></svg>
-                    </div>
+                    <img src="/whatsapp.png" alt="WhatsApp" className="w-4 h-4 object-contain shrink-0" />
                     <span className="text-slate-900 text-[11.5px] font-bold">WhatsApp</span>
                  </div>
                  <div className="flex items-center gap-1">
@@ -408,9 +404,7 @@ export default function UnifiedChannelsSection() {
            >
               <div className="px-3 py-2 border-b border-slate-100 flex items-center justify-between">
                  <div className="flex items-center gap-1.5">
-                    <div className="w-5 h-5 rounded-md bg-rose-50 text-[#EA4335] flex items-center justify-center">
-                       <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    </div>
+                    <img src="/gmail.png" alt="Email" className="w-4 h-4 object-contain shrink-0" />
                     <span className="text-slate-900 text-[11.5px] font-bold">Email</span>
                  </div>
                  <div className="flex items-center gap-1">

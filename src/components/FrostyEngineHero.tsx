@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Brain, Zap, Target, CheckCircle2, Clock } from 'lucide-react';
+import { Brain, Zap, Target, CheckCircle2, Clock, ArrowRight } from 'lucide-react';
 
 /* ─── ParallaxStarfield (Subtle background depth) ─────────────────── */
 export function ParallaxStarfield() {
@@ -1618,6 +1618,7 @@ function DominantInteractiveBrowser() {
    HERO ROOT SECTION
    ═══════════════════════════════════════════════════════════════════ */
 export default function FrostyEngineHero() {
+  const [inputUrl, setInputUrl] = useState('');
   return (
     <motion.section
       className="relative w-full overflow-hidden z-0"
@@ -1647,8 +1648,8 @@ export default function FrostyEngineHero() {
                 transition: { staggerChildren: 0.1, delayChildren: 0.05 },
               },
             }}
-            className="text-center lg:text-left mx-auto lg:mx-0 flex flex-col items-center lg:items-start"
-            style={{ maxWidth: 510 }}
+            className="text-center lg:text-left mx-auto lg:mx-0 flex flex-col items-center lg:items-start w-full -mt-4 lg:-mt-8 xl:-mt-12"
+            style={{ maxWidth: 580 }}
           >
             {/* Eyebrow / Positioning */}
             <motion.div
@@ -1667,7 +1668,7 @@ export default function FrostyEngineHero() {
                 border: '1px solid rgba(3, 150, 166, 0.2)',
                 padding: '4px 12px',
                 borderRadius: 999,
-                marginBottom: 16,
+                marginBottom: 12,
               }}
             >
               <span style={{ width: 5, height: 5, borderRadius: '50%', background: PURPLE }} />
@@ -1686,10 +1687,10 @@ export default function FrostyEngineHero() {
               className="font-serif font-bold text-[#0F172A] tracking-tight"
               style={{
                 fontFamily: "'Cormorant Garamond', Georgia, serif",
-                fontSize: 'clamp(42px, 5.5vw, 68px)',
+                fontSize: 'clamp(38px, 4.8vw, 62px)',
                 fontWeight: 700,
                 lineHeight: 1.08,
-                margin: '0 0 18px',
+                margin: '0 0 14px',
               }}
             >
               <motion.span
@@ -1704,10 +1705,10 @@ export default function FrostyEngineHero() {
                   },
                 }}
               >
-                Your Business.
+                Your Business,
               </motion.span>
               <motion.span
-                style={{ display: 'block', textAlign: 'center' }}
+                style={{ display: 'block', position: 'relative', whiteSpace: 'nowrap' }}
                 variants={{
                   initial: { opacity: 0, y: 18, filter: 'blur(6px)' },
                   animate: {
@@ -1718,20 +1719,7 @@ export default function FrostyEngineHero() {
                   },
                 }}
               >
-                Now
-              </motion.span>
-              <motion.span
-                style={{ display: 'block', position: 'relative' }}
-                variants={{
-                  initial: { opacity: 0, y: 18, filter: 'blur(6px)' },
-                  animate: {
-                    opacity: 1,
-                    y: 0,
-                    filter: 'blur(0px)',
-                    transition: { duration: 0.9, ease: EASE },
-                  },
-                }}
-              >
+                Now{' '}
                 <span
                   style={{
                     color: PURPLE,
@@ -1739,7 +1727,7 @@ export default function FrostyEngineHero() {
                     display: 'inline-block',
                   }}
                 >
-                  powered by <span style={{ color: CORAL_ORANGE }}>AI</span>
+                  powered by <span style={{ color: CORAL_ORANGE }}>AI</span>.
                   <HandDrawnCurve />
                 </span>
               </motion.span>
@@ -1756,12 +1744,12 @@ export default function FrostyEngineHero() {
                 },
               }}
               className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-[48ch]"
-              style={{ marginBottom: 20 }}
+              style={{ marginBottom: 16 }}
             >
               Frosty Agent understands your business, engages customers, manages leads, and takes action across every conversation — 24/7.
             </motion.p>
 
-            {/* 3 Compact Capability Indicators */}
+            {/* Live Demo URL Input Pill */}
             <motion.div
               variants={{
                 initial: { opacity: 0, y: 12 },
@@ -1771,38 +1759,35 @@ export default function FrostyEngineHero() {
                   transition: { duration: 0.8, delay: 0.35 },
                 },
               }}
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '7px 10px',
-                marginBottom: 22,
-              }}
-              className="justify-center lg:justify-start"
+              className="w-full max-w-[480px] mb-4"
             >
-              {[
-                { icon: <Brain size={14} strokeWidth={2.5} className="text-[#0396A6]" />, label: 'Understands your business' },
-                { icon: <Zap size={14} strokeWidth={2.5} className="text-[#0396A6]" />, label: 'Replies instantly' },
-                { icon: <Target size={14} strokeWidth={2.5} className="text-[#0396A6]" />, label: 'Converts conversations' },
-              ].map((benefit) => (
-                <div
-                  key={benefit.label}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 5.5,
-                    background: 'rgba(3, 150, 166, 0.06)',
-                    border: '1px solid rgba(3, 150, 166, 0.18)',
-                    padding: '4.5px 10.5px',
-                    borderRadius: 999,
-                    fontSize: 11.5,
-                    fontWeight: 600,
-                    color: '#1E293B',
-                  }}
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const target = document.getElementById('demo') || document.getElementById('what-is-frosty');
+                  if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                  } else {
+                    window.location.href = '/login?mode=register';
+                  }
+                }}
+                className="w-full p-1.5 pl-3 sm:pl-4 bg-white/95 backdrop-blur-md rounded-full border border-slate-200/90 shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_36px_rgba(3,150,166,0.12)] hover:border-[#0396A6]/40 transition-all duration-300 flex items-center gap-2"
+              >
+                <input
+                  type="text"
+                  value={inputUrl}
+                  onChange={(e) => setInputUrl(e.target.value)}
+                  placeholder="https://yourbrand.com"
+                  className="flex-1 min-w-0 bg-transparent border-none outline-none text-slate-800 placeholder:text-slate-400 font-sans text-[13.5px] sm:text-[14.5px] px-2 py-2"
+                />
+                <button
+                  type="submit"
+                  className="shrink-0 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-[#0396A6] to-[#028494] hover:from-[#028494] hover:to-[#026c7a] text-white text-[13px] sm:text-[14px] font-bold font-sans flex items-center gap-1.5 shadow-[0_4px_14px_rgba(3,150,166,0.35)] transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer border-none"
                 >
-                  <span style={{ fontSize: 12 }}>{benefit.icon}</span>
-                  <span>{benefit.label}</span>
-                </div>
-              ))}
+                  <span>Live Demo</span>
+                  <ArrowRight className="w-4 h-4" strokeWidth={2.2} />
+                </button>
+              </form>
             </motion.div>
 
             {/* Premium Trust / Proof Row */}
@@ -1815,7 +1800,7 @@ export default function FrostyEngineHero() {
                 },
               }}
               style={{
-                paddingTop: 14,
+                paddingTop: 12,
                 borderTop: '1px solid rgba(0, 0, 0, 0.06)',
                 display: 'flex',
                 flexWrap: 'wrap',

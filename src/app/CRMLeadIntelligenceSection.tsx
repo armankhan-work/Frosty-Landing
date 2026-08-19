@@ -26,8 +26,8 @@ interface Lead {
 }
 
 const INITIAL_INTERACTIONS: Interaction[] = [
-  { id: '1', channel: 'Website', action: 'Visited pricing page', time: '10:24 AM', icon: <Globe className="w-4 h-4" />, color: 'text-[#0396A6]', bgColor: 'bg-[#0396A6]/10' },
-  { id: '2', channel: 'WhatsApp', action: 'Asked for bulk order discount', time: '10:26 AM', icon: <MessageCircle className="w-4 h-4" />, color: 'text-green-600', bgColor: 'bg-green-50' }
+  { id: '1', channel: 'Website', action: 'Visited pricing page', time: '10:24 AM', icon: <img src="/web.svg" alt="Website" className="w-4 h-4 object-contain" />, color: 'text-[#0396A6]', bgColor: 'bg-transparent' },
+  { id: '2', channel: 'WhatsApp', action: 'Asked for bulk order discount', time: '10:26 AM', icon: <img src="/whatsapp.png" alt="WhatsApp" className="w-4 h-4 object-contain" />, color: 'text-green-600', bgColor: 'bg-transparent' }
 ];
 
 const INCOMING_LEADS = [
@@ -82,7 +82,7 @@ export default function CRMLeadIntelligenceSection() {
       
       setInteractions(prev => [
         ...prev, 
-        { id: '3', channel: 'Email', action: 'Requested proposal', time: '10:31 AM', icon: <Mail className="w-4 h-4" />, color: 'text-[#0396A6]', bgColor: 'bg-[#0396A6]/10' }
+        { id: '3', channel: 'Email', action: 'Requested proposal', time: '10:31 AM', icon: <img src="/gmail.png" alt="Email" className="w-4 h-4 object-contain" />, color: 'text-[#0396A6]', bgColor: 'bg-transparent' }
       ]);
       
       await wait(600);
@@ -161,9 +161,7 @@ export default function CRMLeadIntelligenceSection() {
       {/* HEADER */}
       <div className="relative z-10 text-center mb-8 max-w-2xl px-6">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 mb-6 backdrop-blur-sm shadow-xs">
-          <span className="w-4 h-4 rounded-full bg-[#0396A6]/20 flex items-center justify-center">
-            <Users className="w-2.5 h-2.5 text-[#0396A6]" />
-          </span>
+          <Users className="w-3.5 h-3.5 text-[#0396A6]" />
           <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">CRM + LEAD INTELLIGENCE</span>
         </div>
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-[#0F172A] leading-[1.15] tracking-tight m-0 mb-6">
@@ -260,7 +258,7 @@ export default function CRMLeadIntelligenceSection() {
                         >
                           <div className="relative">
                              <div className={`absolute -left-1 top-1/2 -translate-y-1/2 w-[6px] h-[6px] rounded-full bg-white border-2 border-slate-400 z-10`} />
-                             <div className={`w-7 h-7 ml-4 rounded-full flex items-center justify-center shrink-0 ${interaction.bgColor} ${interaction.color}`}>
+                             <div className="w-6 h-6 ml-4 flex items-center justify-center shrink-0">
                                {interaction.icon}
                              </div>
                           </div>

@@ -5,21 +5,57 @@ import { motion } from 'framer-motion';
 import {
     AlertTriangle,
     Clock,
-    TrendingUp,
-    DollarSign,
-    Sparkles,
-    Globe,
-    MessageCircle,
-    FileText,
-    PhoneCall,
     User,
     X,
     UserCheck,
-    Zap,
-    ShieldCheck,
-    Target,
     ArrowRight
 } from 'lucide-react';
+
+/* ─── Two-Sparkle Frosty Brand Logo ─── */
+function TwoSparklesIcon({ className = "w-7 h-7", size = 28 }: { className?: string; size?: number }) {
+    return (
+        <svg
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className={className}
+            style={{ width: size, height: size, flexShrink: 0 }}
+        >
+            {/* Big teal 4-pointed diamond sparkle */}
+            <path
+                d="M13 2C13 8.075 8.075 13 2 13C8.075 13 13 17.925 13 24C13 17.925 17.925 13 24 13C17.925 13 13 8.075 13 2Z"
+                fill="#0396A6"
+            />
+            {/* Small coral 4-pointed diamond sparkle */}
+            <path
+                d="M23 18C23 21.314 20.314 24 17 24C20.314 24 23 26.686 23 30C23 26.686 25.686 24 29 24C25.686 24 23 21.314 23 18Z"
+                fill="#FF7A5E"
+            />
+        </svg>
+    );
+}
+
+/* ─── Color-Masked Custom Asset Icon ─── */
+function MaskIcon({ src, color, size = 20, className = "" }: { src: string; color: string; size?: number; className?: string }) {
+    return (
+        <span
+            className={`inline-block shrink-0 ${className}`}
+            style={{
+                width: size,
+                height: size,
+                backgroundColor: color,
+                WebkitMaskImage: `url('${src}')`,
+                WebkitMaskSize: 'contain',
+                WebkitMaskRepeat: 'no-repeat',
+                WebkitMaskPosition: 'center',
+                maskImage: `url('${src}')`,
+                maskSize: 'contain',
+                maskRepeat: 'no-repeat',
+                maskPosition: 'center',
+            }}
+        />
+    );
+}
 
 export default function ProblemSection() {
     const [pulse, setPulse] = useState(0);
@@ -33,10 +69,9 @@ export default function ProblemSection() {
     }, []);
 
     const channels = [
-        { name: 'Website', sub: 'New enquiry', icon: Globe, color: 'text-[#0396A6]', bg: 'bg-teal-50 border-teal-100' },
-        { name: 'WhatsApp', sub: 'New message', icon: MessageCircle, color: 'text-emerald-600', bg: 'bg-emerald-50 border-emerald-100' },
-        { name: 'Lead Form', sub: 'New enquiry', icon: FileText, color: 'text-slate-700', bg: 'bg-slate-50 border-slate-200/80' },
-        { name: 'Phone / Call', sub: 'New call', icon: PhoneCall, color: 'text-[#0396A6]', bg: 'bg-teal-50 border-teal-100' }
+        { name: 'Website', sub: 'New enquiry', img: '/web.svg' },
+        { name: 'WhatsApp', sub: 'New message', img: '/whatsapp.png' },
+        { name: 'Email', sub: 'New email', img: '/gmail.png' },
     ];
 
     return (
@@ -87,7 +122,7 @@ export default function ProblemSection() {
                             But when leads wait for a reply, they move on.
                         </motion.p>
 
-                        {/* 3 Metric Stat Cards */}
+                        {/* 3 Metric Stat Cards (Compact, Centered: SVG -> Name -> Text) */}
                         <div className="grid grid-cols-3 gap-2.5 sm:gap-3 mb-4">
                             {/* Stat Card 1: 5X */}
                             <motion.div
@@ -95,76 +130,70 @@ export default function ProblemSection() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.1 }}
-                                className="p-3 sm:p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs flex flex-col justify-between hover:border-[#0396A6]/30 transition-colors"
+                                className="min-h-[145px] sm:min-h-[155px] p-3 sm:p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs flex flex-col items-center justify-center text-center gap-1.5 hover:border-[#0396A6]/30 transition-colors"
                             >
-                                <div className="w-8 h-8 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center mb-2">
-                                    <Clock className="w-4 h-4 text-[#0396A6] stroke-[1.75]" />
+                                <div className="w-7 h-7 shrink-0 flex items-center justify-center mb-0.5">
+                                    <Clock className="w-[23px] h-[23px] text-[#0396A6] stroke-[1.85]" />
                                 </div>
-                                <div>
-                                    <div className="text-2xl sm:text-3xl font-bold font-serif text-[#0396A6] leading-none mb-1">
-                                        5X
-                                    </div>
-                                    <div className="text-[10.5px] sm:text-xs text-slate-600 leading-tight">
-                                        more likely to convert if you respond in 5 mins
-                                    </div>
+                                <div className="text-2xl sm:text-3xl font-bold text-[#0396A6] leading-none font-sans">
+                                    5X
+                                </div>
+                                <div className="text-[10px] sm:text-[11px] text-slate-600 leading-tight font-sans text-center">
+                                    more likely to convert if you respond in 5 mins
                                 </div>
                             </motion.div>
 
-                            {/* Stat Card 2: 80% */}
+                            {/* Stat Card 2: 80% (New Analytics Icon from public/analytics.png in Orange) */}
                             <motion.div
                                 initial={{ opacity: 0, y: 12 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.15 }}
-                                className="p-3 sm:p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs flex flex-col justify-between hover:border-[#EA580C]/30 transition-colors"
+                                className="min-h-[145px] sm:min-h-[155px] p-3 sm:p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs flex flex-col items-center justify-center text-center gap-1.5 hover:border-[#EA580C]/30 transition-colors"
                             >
-                                <div className="w-8 h-8 rounded-full bg-amber-50 border border-amber-100 flex items-center justify-center mb-2">
-                                    <TrendingUp className="w-4 h-4 text-[#EA580C] stroke-[1.75]" />
+                                <div className="w-7 h-7 shrink-0 flex items-center justify-center mb-0.5">
+                                    <MaskIcon src="/analytics.png" color="#EA580C" size={23} />
                                 </div>
-                                <div>
-                                    <div className="text-2xl sm:text-3xl font-bold font-serif text-[#EA580C] leading-none mb-1">
-                                        80%
-                                    </div>
-                                    <div className="text-[10.5px] sm:text-xs text-slate-600 leading-tight">
-                                        of leads choose competitors due to slow response
-                                    </div>
+                                <div className="text-2xl sm:text-3xl font-bold text-[#EA580C] leading-none font-sans">
+                                    80%
+                                </div>
+                                <div className="text-[10px] sm:text-[11px] text-slate-600 leading-tight font-sans text-center">
+                                    of leads choose competitors due to slow response
                                 </div>
                             </motion.div>
 
-                            {/* Stat Card 3: Lost */}
+                            {/* Stat Card 3: Lost (Dollar Icon from public/dollar.png in Teal, balanced optical size) */}
                             <motion.div
                                 initial={{ opacity: 0, y: 12 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.2 }}
-                                className="p-3 sm:p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs flex flex-col justify-between hover:border-[#0396A6]/30 transition-colors"
+                                className="min-h-[145px] sm:min-h-[155px] p-3 sm:p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs flex flex-col items-center justify-center text-center gap-1.5 hover:border-[#0396A6]/30 transition-colors"
                             >
-                                <div className="w-8 h-8 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center mb-2">
-                                    <DollarSign className="w-4 h-4 text-[#0396A6] stroke-[1.75]" />
+                                <div className="w-7 h-7 shrink-0 flex items-center justify-center mb-0.5 overflow-visible">
+                                    <MaskIcon src="/dollar.png" color="#0396A6" size={48} />
                                 </div>
-                                <div>
-                                    <div className="text-2xl sm:text-3xl font-bold font-serif text-[#0396A6] leading-none mb-1">
-                                        Lost
-                                    </div>
-                                    <div className="text-[10.5px] sm:text-xs text-slate-600 leading-tight">
-                                        revenue & time on every missed opportunity
-                                    </div>
+                                <div className="text-2xl sm:text-3xl font-bold text-[#0396A6] leading-none font-sans">
+                                    Lost
+                                </div>
+                                <div className="text-[10px] sm:text-[11px] text-slate-600 leading-tight font-sans text-center">
+                                    revenue and time on every missed opportunity
                                 </div>
                             </motion.div>
                         </div>
 
-                        {/* Bottom Banner Card */}
+                        {/* Bottom Banner Card with Sparkle Logo */}
                         <motion.div
                             initial={{ opacity: 0, y: 12 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.25 }}
-                            className="p-3.5 rounded-2xl bg-white border border-teal-100 shadow-2xs flex items-center gap-3.5"
+                            className="p-3.5 sm:p-4 rounded-2xl bg-[#F0FDFA]/60 border border-teal-100 shadow-2xs flex items-center gap-3.5"
                         >
-                            <div className="w-8 h-8 rounded-xl bg-[#0396A6]/10 flex items-center justify-center shrink-0 border border-[#0396A6]/20">
-                                <Sparkles className="w-4 h-4 text-[#0396A6] stroke-[1.75]" />
+                            <div className="shrink-0 flex items-center justify-center">
+                                <TwoSparklesIcon size={28} />
                             </div>
-                            <div className="text-xs sm:text-sm">
+                            <div className="text-xs sm:text-sm font-sans">
                                 <div className="font-bold text-slate-900 leading-tight">
                                     One AI agent. Every conversation.
                                 </div>
@@ -192,44 +221,40 @@ export default function ProblemSection() {
                                 {/* Flow Row Container */}
                                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0 relative">
                                     
-                                    {/* 1. Left Channel Column (4 pills) */}
-                                    <div className="w-full sm:w-[130px] lg:w-[140px] flex flex-col gap-1.5 shrink-0 z-10">
-                                        {channels.map((ch) => {
-                                            const Icon = ch.icon;
-                                            return (
-                                                <div
-                                                    key={`without-${ch.name}`}
-                                                    className="p-1.5 px-2.5 rounded-xl border border-slate-200/80 bg-white shadow-2xs flex items-center gap-2"
-                                                >
-                                                    <div className={`w-5.5 h-5.5 rounded-lg ${ch.bg} flex items-center justify-center shrink-0`}>
-                                                        <Icon className={`w-3.5 h-3.5 ${ch.color} stroke-[1.75]`} />
+                                    {/* 1. Left Channel Column (3 pills: Website, WhatsApp, Email) */}
+                                    <div className="w-full sm:w-[130px] lg:w-[140px] flex flex-col gap-2 shrink-0 z-10">
+                                        {channels.map((ch) => (
+                                            <div
+                                                key={`without-${ch.name}`}
+                                                className="p-1.5 px-2.5 rounded-xl border border-slate-200/80 bg-white shadow-2xs flex items-center gap-2"
+                                            >
+                                                <div className="shrink-0 flex items-center justify-center">
+                                                    <img src={ch.img} alt={ch.name} className="w-4 h-4 object-contain" />
+                                                </div>
+                                                <div className="min-w-0">
+                                                    <div className="text-[10.5px] font-bold text-slate-900 leading-none truncate">
+                                                        {ch.name}
                                                     </div>
-                                                    <div className="min-w-0">
-                                                        <div className="text-[10.5px] font-bold text-slate-900 leading-none truncate">
-                                                            {ch.name}
-                                                        </div>
-                                                        <div className="text-[9px] text-slate-500 leading-none mt-0.5 truncate">
-                                                            {ch.sub}
-                                                        </div>
+                                                    <div className="text-[9px] text-slate-500 leading-none mt-0.5 truncate">
+                                                        {ch.sub}
                                                     </div>
                                                 </div>
-                                            );
-                                        })}
+                                            </div>
+                                        ))}
                                     </div>
 
                                     {/* 2. SVG Wires Connector */}
-                                    <div className="hidden sm:flex items-center justify-center w-[34px] lg:w-[40px] h-[124px] shrink-0 relative">
-                                        <svg className="w-full h-full" viewBox="0 0 40 124" fill="none">
-                                            {/* 4 incoming branch lines from channel pills */}
+                                    <div className="hidden sm:flex items-center justify-center w-[34px] lg:w-[40px] h-[96px] shrink-0 relative">
+                                        <svg className="w-full h-full" viewBox="0 0 40 96" fill="none">
+                                            {/* 3 incoming branch lines from channel pills */}
                                             <path d="M 0 16 H 20" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3" />
                                             <path d="M 0 48 H 20" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3" />
-                                            <path d="M 0 78 H 20" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3" />
-                                            <path d="M 0 108 H 20" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3" />
+                                            <path d="M 0 80 H 20" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3" />
                                             {/* Vertical bus wire */}
-                                            <path d="M 20 16 V 108" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3" />
+                                            <path d="M 20 16 V 80" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3" />
                                             {/* Main outgoing line with arrow */}
-                                            <path d="M 20 62 H 34" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3" />
-                                            <polyline points="31,58 37,62 31,66" fill="none" stroke="#0396A6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                            <path d="M 20 48 H 34" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3" />
+                                            <polyline points="31,44 37,48 31,52" fill="none" stroke="#0396A6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                         </svg>
                                     </div>
 
@@ -254,9 +279,7 @@ export default function ProblemSection() {
                                             
                                             {/* Block 1: Waiting for response */}
                                             <div className="flex-1 sm:flex-initial w-full sm:w-[104px] lg:w-[112px] h-[98px] sm:h-[106px] lg:h-[110px] p-3 rounded-[16px] border border-slate-200/90 bg-white text-center flex flex-col items-center justify-center shadow-2xs shrink-0">
-                                                <div className="w-7.5 h-7.5 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center mb-1.5 shrink-0">
-                                                    <Clock className="w-4 h-4 text-[#0396A6] stroke-[1.75]" />
-                                                </div>
+                                                <Clock className="w-5 h-5 text-[#0396A6] stroke-[1.75] mb-1.5 shrink-0" />
                                                 <span className="text-[10.5px] sm:text-[11px] font-bold text-slate-800 leading-tight font-sans">
                                                     Waiting for <br /> response
                                                 </span>
@@ -267,9 +290,7 @@ export default function ProblemSection() {
 
                                             {/* Block 2: Delayed follow up */}
                                             <div className="flex-1 sm:flex-initial w-full sm:w-[104px] lg:w-[112px] h-[98px] sm:h-[106px] lg:h-[110px] p-3 rounded-[16px] border border-slate-200/90 bg-white text-center flex flex-col items-center justify-center shadow-2xs shrink-0">
-                                                <div className="w-7.5 h-7.5 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center mb-1.5 shrink-0">
-                                                    <User className="w-4 h-4 text-[#0396A6] stroke-[1.75]" />
-                                                </div>
+                                                <User className="w-5 h-5 text-[#0396A6] stroke-[1.75] mb-1.5 shrink-0" />
                                                 <span className="text-[10.5px] sm:text-[11px] font-bold text-slate-800 leading-tight font-sans">
                                                     Delayed <br /> follow up
                                                 </span>
@@ -280,9 +301,7 @@ export default function ProblemSection() {
 
                                             {/* Block 3: Lead lost */}
                                             <div className="flex-1 sm:flex-initial w-full sm:w-[104px] lg:w-[112px] h-[98px] sm:h-[106px] lg:h-[110px] p-3 rounded-[16px] border border-[#FED7AA] bg-[#FFF9F5] text-center flex flex-col items-center justify-center shadow-2xs shrink-0">
-                                                <div className="w-7.5 h-7.5 rounded-full bg-[#EA580C] text-white flex items-center justify-center mb-1.5 shrink-0 shadow-2xs">
-                                                    <X className="w-3.5 h-3.5 stroke-[2.5]" />
-                                                </div>
+                                                <X className="w-5 h-5 text-[#EA580C] stroke-[2.5] mb-1.5 shrink-0" />
                                                 <span className="text-[10.5px] sm:text-[11px] font-bold text-slate-900 leading-tight font-sans">
                                                     Lead lost
                                                 </span>
@@ -314,57 +333,51 @@ export default function ProblemSection() {
                                 {/* Flow Row Container */}
                                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0 relative">
                                     
-                                    {/* 1. Left Channel Column (4 pills) */}
-                                    <div className="w-full sm:w-[130px] lg:w-[140px] flex flex-col gap-1.5 shrink-0 z-10">
-                                        {channels.map((ch) => {
-                                            const Icon = ch.icon;
-                                            return (
-                                                <div
-                                                    key={`with-${ch.name}`}
-                                                    className="p-1.5 px-2.5 rounded-xl border border-teal-200/80 bg-white shadow-2xs flex items-center gap-2"
-                                                >
-                                                    <div className={`w-5.5 h-5.5 rounded-lg ${ch.bg} flex items-center justify-center shrink-0`}>
-                                                        <Icon className={`w-3.5 h-3.5 ${ch.color} stroke-[1.75]`} />
+                                    {/* 1. Left Channel Column (3 pills: Website, WhatsApp, Email) */}
+                                    <div className="w-full sm:w-[130px] lg:w-[140px] flex flex-col gap-2 shrink-0 z-10">
+                                        {channels.map((ch) => (
+                                            <div
+                                                key={`with-${ch.name}`}
+                                                className="p-1.5 px-2.5 rounded-xl border border-teal-200/80 bg-white shadow-2xs flex items-center gap-2"
+                                            >
+                                                <div className="shrink-0 flex items-center justify-center">
+                                                    <img src={ch.img} alt={ch.name} className="w-4 h-4 object-contain" />
+                                                </div>
+                                                <div className="min-w-0">
+                                                    <div className="text-[10.5px] font-bold text-slate-900 leading-none truncate">
+                                                        {ch.name}
                                                     </div>
-                                                    <div className="min-w-0">
-                                                        <div className="text-[10.5px] font-bold text-slate-900 leading-none truncate">
-                                                            {ch.name}
-                                                        </div>
-                                                        <div className="text-[9px] text-[#0396A6] font-semibold leading-none mt-0.5 truncate">
-                                                            {ch.sub}
-                                                        </div>
+                                                    <div className="text-[9px] text-[#0396A6] font-semibold leading-none mt-0.5 truncate">
+                                                        {ch.sub}
                                                     </div>
                                                 </div>
-                                            );
-                                        })}
+                                            </div>
+                                        ))}
                                     </div>
 
                                     {/* 2. SVG Wires Connector (Solid Cyan with Animated Pulses) */}
-                                    <div className="hidden sm:flex items-center justify-center w-[34px] lg:w-[40px] h-[124px] shrink-0 relative">
-                                        <svg className="w-full h-full" viewBox="0 0 40 124" fill="none">
-                                            {/* 4 incoming branch lines from channel pills */}
+                                    <div className="hidden sm:flex items-center justify-center w-[34px] lg:w-[40px] h-[96px] shrink-0 relative">
+                                        <svg className="w-full h-full" viewBox="0 0 40 96" fill="none">
+                                            {/* 3 incoming branch lines from channel pills */}
                                             <path d="M 0 16 H 20" stroke="#0396A6" strokeWidth="1.75" />
                                             <path d="M 0 48 H 20" stroke="#0396A6" strokeWidth="1.75" />
-                                            <path d="M 0 78 H 20" stroke="#0396A6" strokeWidth="1.75" />
-                                            <path d="M 0 108 H 20" stroke="#0396A6" strokeWidth="1.75" />
+                                            <path d="M 0 80 H 20" stroke="#0396A6" strokeWidth="1.75" />
                                             {/* Vertical bus wire */}
-                                            <path d="M 20 16 V 108" stroke="#0396A6" strokeWidth="1.75" />
+                                            <path d="M 20 16 V 80" stroke="#0396A6" strokeWidth="1.75" />
                                             {/* Main outgoing line with arrow */}
-                                            <path d="M 20 62 H 34" stroke="#0396A6" strokeWidth="1.75" />
-                                            <polyline points="31,58 37,62 31,66" fill="none" stroke="#0396A6" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+                                            <path d="M 20 48 H 34" stroke="#0396A6" strokeWidth="1.75" />
+                                            <polyline points="31,44 37,48 31,52" fill="none" stroke="#0396A6" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
                                             {/* Traveling particle */}
-                                            <circle cx={20} cy={16 + (pulse * 0.92) % 92} r="2.5" fill="#0396A6" />
+                                            <circle cx={20} cy={16 + (pulse * 0.64) % 64} r="2.5" fill="#0396A6" />
                                         </svg>
                                     </div>
 
                                     {/* 3. Steps Pipeline (Frosty Agent Card & Qualified Lead Card) */}
                                     <div className="flex-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 lg:gap-3.5 pl-0 sm:pl-1">
                                         
-                                        {/* Block 4: Frosty Agent Centerpiece Card */}
+                                        {/* Block 4: Frosty Agent Centerpiece Card with Sparkle Logo */}
                                         <div className="flex-1 sm:max-w-[225px] lg:max-w-[245px] p-3.5 sm:p-4 rounded-[18px] border border-teal-200/90 bg-white shadow-2xs text-center flex flex-col items-center justify-center shrink-0">
-                                            <div className="w-7.5 h-7.5 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center mb-1.5">
-                                                <Sparkles className="w-4 h-4 text-[#0396A6] stroke-[1.75]" />
-                                            </div>
+                                            <TwoSparklesIcon size={32} className="mb-2" />
                                             <div
                                                 className="text-xs sm:text-[13px] font-extrabold text-[#0396A6] tracking-wider uppercase leading-tight font-sans"
                                                 style={{ fontFamily: "'Outfit', -apple-system, sans-serif" }}
@@ -386,9 +399,7 @@ export default function ProblemSection() {
 
                                         {/* Block 5: Qualified Lead Card */}
                                         <div className="flex-1 sm:max-w-[145px] lg:max-w-[160px] p-3.5 sm:p-4 rounded-[18px] border border-teal-200/90 bg-white shadow-2xs text-center flex flex-col items-center justify-center shrink-0">
-                                            <div className="w-7.5 h-7.5 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center mb-1.5">
-                                                <UserCheck className="w-4 h-4 text-[#0396A6] stroke-[1.75]" />
-                                            </div>
+                                            <UserCheck className="w-5 h-5 text-[#0396A6] stroke-[1.75] mb-1.5" />
                                             <div
                                                 className="text-xs sm:text-[12.5px] font-bold text-slate-900 leading-tight font-sans"
                                                 style={{ fontFamily: "'Outfit', -apple-system, sans-serif" }}
@@ -413,3 +424,5 @@ export default function ProblemSection() {
         </section>
     );
 }
+
+

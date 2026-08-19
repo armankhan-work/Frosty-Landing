@@ -263,8 +263,8 @@ export default function DashboardSection() {
                                     { icon: <BarChart3 className="w-5 h-5 text-[#0396A6]" />, title: 'Analytics & CRM sync', desc: 'Track funnel drop-offs and seamlessly sync data.' },
                                     { icon: <SlidersHorizontal className="w-5 h-5 text-[#0396A6]" />, title: 'Tone & instructions you control', desc: 'Expertly tuned and monitored by our team.' },
                                 ].map((f, i) => (
-                                    <div key={i} className="flex items-start gap-4 p-3.5 rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-300 border border-[rgba(255,255,255,0.08)] shadow-[0_2px_10px_rgba(0,0,0,0.5)] hover:shadow-[0_8px_24px_-4px_rgba(3, 150, 166,0.15)] cursor-default group hover:-translate-y-0.5">
-                                        <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#1E293B] border border-[#334155] flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-inner">
+                                    <div key={i} className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-300 border border-[rgba(255,255,255,0.08)] shadow-[0_2px_10px_rgba(0,0,0,0.5)] hover:shadow-[0_8px_24px_-4px_rgba(3, 150, 166,0.15)] cursor-default group hover:-translate-y-0.5">
+                                        <div className="shrink-0 mt-0.5 text-[#0396A6]">
                                             {f.icon}
                                         </div>
                                         <div className="flex flex-col text-left">

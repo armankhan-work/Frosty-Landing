@@ -23,11 +23,12 @@ import {
     ChevronDown,
     Building2,
     HelpCircle,
-    CheckCircle2
+    CheckCircle2,
+    PlusCircle
 } from 'lucide-react';
 
 type Region = 'IN' | 'INTL';
-type PlanFamily = 'core' | 'commerce';
+type PlanFamily = 'core' | 'commerce' | 'addons';
 type CoreBillingTerm = 'annual' | 'biannual' | 'quarterly' | 'monthly';
 type CommerceBillingTerm = 'annual' | 'biannual' | 'trimonthly';
 type BillingTerm = CoreBillingTerm | CommerceBillingTerm;
@@ -53,6 +54,139 @@ interface PlanDetails {
     pricing: Record<string, TierPricing>;
 }
 
+/* ─── Conversation Info Tooltip ─── */
+function ConversationInfoTooltip({ align = 'right' }: { align?: 'left' | 'center' | 'right' }) {
+    const [open, setOpen] = useState(false);
+    return (
+        <div
+            className="relative inline-flex items-center normal-case font-normal tracking-normal text-slate-700"
+            onMouseEnter={() => setOpen(true)}
+            onMouseLeave={() => setOpen(false)}
+        >
+            <button
+                type="button"
+                onClick={(e) => {
+                    e.stopPropagation();
+                    setOpen((v) => !v);
+                }}
+                className="p-0.5 rounded-full text-[#0396A6] hover:text-[#027A87] hover:bg-[#0396A6]/10 transition-colors cursor-pointer focus:outline-none"
+                aria-label="What counts as a conversation?"
+            >
+                <Info className="w-3.5 h-3.5 text-[#0396A6]" />
+            </button>
+            <AnimatePresence>
+                {open && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 6, scale: 0.96 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 4, scale: 0.96 }}
+                        transition={{ duration: 0.15 }}
+                        className={`absolute top-full mt-2 w-[265px] sm:w-[280px] p-3.5 bg-white rounded-2xl border border-slate-200/90 shadow-[0_12px_32px_rgba(0,0,0,0.14)] z-50 text-left pointer-events-auto normal-case font-normal tracking-normal ${align === 'left'
+                                ? 'right-[-25px] sm:right-[-32px] md:right-[-38px]'
+                                : align === 'center'
+                                    ? 'right-[-10px] sm:right-[-18px]'
+                                    : 'right-0'
+                            }`}
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#0396A6] mb-2 pb-1.5 border-b border-slate-100 normal-case tracking-normal">
+                            <Info className="w-3.5 h-3.5 shrink-0" />
+                            <span>What counts as a conversation?</span>
+                        </div>
+                        <ul className="space-y-2 text-[11px] text-slate-600 font-normal leading-relaxed normal-case tracking-normal">
+                            <li className="flex items-start gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#0396A6] mt-1.5 shrink-0" />
+                                <span className="normal-case">
+                                    <strong className="text-slate-900 font-semibold">1 Conversation = Up to 12 replies</strong> from the Frosty agent. A 13th reply automatically starts a new conversation.
+                                </span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#0396A6] mt-1.5 shrink-0" />
+                                <span className="normal-case">
+                                    <strong className="text-slate-900 font-semibold">Customer messages are unlimited and never counted.</strong> Only the agent&apos;s outgoing responses count toward your monthly allowance.
+                                </span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-1.5 shrink-0" />
+                                <span className="normal-case">
+                                    Unused conversation allowances do not roll over between billing cycles.
+                                </span>
+                            </li>
+                        </ul>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+}
+
+/* ─── Guarantee Info Tooltip ─── */
+function GuaranteeInfoTooltip() {
+    const [open, setOpen] = useState(false);
+    return (
+        <div 
+            className="relative inline-flex items-center normal-case font-normal tracking-normal text-slate-700" 
+            onMouseEnter={() => setOpen(true)} 
+            onMouseLeave={() => setOpen(false)}
+        >
+            <button
+                type="button"
+                onClick={(e) => {
+                    e.stopPropagation();
+                    setOpen((v) => !v);
+                }}
+                className="p-1 rounded-full text-[#0396A6] hover:text-[#027A87] hover:bg-[#0396A6]/10 transition-colors cursor-pointer focus:outline-none inline-flex items-center justify-center"
+                aria-label="View Full Guarantee Terms & FAQ"
+            >
+                <Info className="w-4 h-4 text-[#0396A6]" />
+            </button>
+            <AnimatePresence>
+                {open && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 4, scale: 0.96 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 4, scale: 0.96 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute top-full mt-2 left-0 sm:left-0 -left-12 max-sm:-left-28 w-[300px] sm:w-[350px] max-w-[calc(100vw-2.5rem)] p-4 bg-white rounded-2xl border border-slate-200/90 shadow-[0_16px_36px_rgba(0,0,0,0.16)] z-50 text-left pointer-events-auto normal-case font-normal tracking-normal"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className="flex items-center gap-1.5 text-xs font-bold text-[#0396A6] mb-2 pb-1.5 border-b border-slate-100 normal-case tracking-normal">
+                            <ShieldCheck className="w-4 h-4 shrink-0 text-[#0396A6]" />
+                            <span>Full Guarantee Terms (§6)</span>
+                        </div>
+                        <ul className="space-y-2 text-[11px] text-slate-600 font-normal leading-relaxed normal-case tracking-normal">
+                            <li className="flex items-start gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#0396A6] mt-1.5 shrink-0" />
+                                <span className="normal-case">
+                                    The 14 days start when the agent goes live (published and connected to at least one channel) or 14 days after payment, whichever comes first.
+                                </span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#0396A6] mt-1.5 shrink-0" />
+                                <span className="normal-case">
+                                    Available once per customer, on a first purchase only. Not available on renewals or upgrades.
+                                </span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-slate-400 mt-1.5 shrink-0" />
+                                <span className="normal-case">
+                                    Monthly plans do not need it — cancel anytime and the plan simply ends at the close of the current monthly billing period.
+                                </span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-slate-400 mt-1.5 shrink-0" />
+                                <span className="normal-case">
+                                    Refunds are processed to the original payment method, typically within 5–7 business days.
+                                </span>
+                            </li>
+                        </ul>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+}
+
 export default function PricingSection() {
     const [region, setRegion] = useState<Region>('IN');
     const [planFamily, setPlanFamily] = useState<PlanFamily>('core');
@@ -60,10 +194,9 @@ export default function PricingSection() {
     const [commerceTerm, setCommerceTerm] = useState<CommerceBillingTerm>('annual');
     const [showGuaranteeModal, setShowGuaranteeModal] = useState(false);
 
-    // Multi-tier Geo-Lock Detection (Timezone heuristic + IP fallback APIs)
+    // Multi-tier Geo-Lock Detection
     useEffect(() => {
         try {
-            // 1. Check URL parameters for developer/preview testing (e.g. ?geo=intl or ?geo=in)
             if (typeof window !== 'undefined') {
                 const params = new URLSearchParams(window.location.search);
                 const queryGeo = params.get('geo')?.toLowerCase() || params.get('region')?.toLowerCase() || params.get('country')?.toLowerCase();
@@ -76,53 +209,18 @@ export default function PricingSection() {
                     return;
                 }
             }
-
-            // 2. Instant client-side timezone check
             const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
             const isIndianTimezone = tz.includes('Calcutta') || tz.includes('Kolkata') || tz.includes('India');
+            setRegion(isIndianTimezone ? 'IN' : 'INTL');
 
-            if (!isIndianTimezone) {
-                setRegion('INTL');
-            } else {
-                setRegion('IN');
-            }
-
-            // 3. Confirm with IP Geolocation API with fast failover
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 3500);
-
-            fetch('https://ipapi.co/json/', { signal: controller.signal })
-                .then((res) => {
-                    if (!res.ok) throw new Error('ipapi failed');
-                    return res.json();
-                })
-                .then((data) => {
-                    clearTimeout(timeoutId);
-                    if (data && data.country_code) {
-                        setRegion(data.country_code === 'IN' ? 'IN' : 'INTL');
-                    }
-                })
-                .catch(() => {
-                    // Secondary fallback API
-                    fetch('https://api.country.is/')
-                        .then((res) => res.json())
-                        .then((data) => {
-                            if (data && data.country) {
-                                setRegion(data.country === 'IN' ? 'IN' : 'INTL');
-                            }
-                        })
-                        .catch(() => {
-                            // Maintain initial timezone detection
-                        });
-                });
+            fetch('https://ipapi.co/json/').then(res => res.json()).then(data => {
+                if (data?.country_code) setRegion(data.country_code === 'IN' ? 'IN' : 'INTL');
+            }).catch(() => { });
         } catch {
             setRegion('IN');
         }
     }, []);
 
-    // ─────────────────────────────────────────────────────────────
-    // INDIA PRICING (₹ INR)
-    // ─────────────────────────────────────────────────────────────
     const indiaCorePlans: PlanDetails[] = [
         {
             tag: 'STARTER',
@@ -164,31 +262,31 @@ export default function PricingSection() {
             name: 'Core Growth',
             conversations: '600 conversations',
             seats: '3 team seats',
-            overage: '₹20 / extra conversation',
+            overage: '₹22 / extra conversation',
             cta: 'Start 7-Day Free Trial',
             ctaLink: '/login?mode=register',
             highlighted: true,
             pricing: {
                 annual: {
-                    price: '₹7,919',
+                    price: '₹8,479',
                     period: '/mo',
-                    billingNote: 'Billed annually (₹95,028)',
-                    savings: 'Save ₹23,760'
+                    billingNote: 'Billed annually (₹1,01,748)',
+                    savings: 'Save ₹25,440'
                 },
                 biannual: {
-                    price: '₹8,899',
+                    price: '₹9,499',
                     period: '/mo',
-                    billingNote: 'Billed 6 months (₹53,394)',
-                    savings: 'Save ₹6,000'
+                    billingNote: 'Billed 6 months (₹56,994)',
+                    savings: 'Save ₹6,600'
                 },
                 quarterly: {
-                    price: '₹9,399',
+                    price: '₹10,099',
                     period: '/mo',
-                    billingNote: 'Billed quarterly (₹28,197)',
+                    billingNote: 'Billed quarterly (₹30,297)',
                     savings: 'Save ₹1,500'
                 },
                 monthly: {
-                    price: '₹9,899',
+                    price: '₹10,599',
                     period: '/mo',
                     billingNote: 'Billed monthly'
                 }
@@ -199,31 +297,31 @@ export default function PricingSection() {
             name: 'Core Scale',
             conversations: '1,600 conversations',
             seats: '4 team seats',
-            overage: '₹16 / extra conversation',
+            overage: '₹18 / extra conversation',
             cta: 'Start 7-Day Free Trial',
             ctaLink: '/login?mode=register',
             highlighted: false,
             pricing: {
                 annual: {
-                    price: '₹17,599',
+                    price: '₹15,999',
                     period: '/mo',
-                    billingNote: 'Billed annually (₹211,188)',
-                    savings: 'Save ₹52,800'
+                    billingNote: 'Billed annually (₹1,91,988)',
+                    savings: 'Save ₹48,000'
                 },
                 biannual: {
-                    price: '₹19,799',
+                    price: '₹17,999',
                     period: '/mo',
-                    billingNote: 'Billed 6 months (₹118,794)',
-                    savings: 'Save ₹13,200'
+                    billingNote: 'Billed 6 months (₹1,07,994)',
+                    savings: 'Save ₹12,000'
                 },
                 quarterly: {
-                    price: '₹20,899',
+                    price: '₹19,199',
                     period: '/mo',
-                    billingNote: 'Billed quarterly (₹62,697)',
-                    savings: 'Save ₹3,300'
+                    billingNote: 'Billed quarterly (₹57,597)',
+                    savings: 'Save ₹2,400'
                 },
                 monthly: {
-                    price: '₹21,999',
+                    price: '₹19,999',
                     period: '/mo',
                     billingNote: 'Billed monthly'
                 }
@@ -240,25 +338,25 @@ export default function PricingSection() {
             highlighted: false,
             pricing: {
                 annual: {
-                    price: '₹40,479',
+                    price: '₹31,999',
                     period: '/mo',
-                    billingNote: 'Billed annually (₹485,748)',
-                    savings: 'Save ₹121,440'
+                    billingNote: 'Billed annually (₹3,83,988)',
+                    savings: 'Save ₹96,000'
                 },
                 biannual: {
-                    price: '₹45,499',
+                    price: '₹35,999',
                     period: '/mo',
-                    billingNote: 'Billed 6 months (₹272,994)',
-                    savings: 'Save ₹30,600'
+                    billingNote: 'Billed 6 months (₹2,15,994)',
+                    savings: 'Save ₹24,000'
                 },
                 quarterly: {
-                    price: '₹48,099',
+                    price: '₹38,399',
                     period: '/mo',
-                    billingNote: 'Billed quarterly (₹144,297)',
-                    savings: 'Save ₹7,500'
+                    billingNote: 'Billed quarterly (₹1,15,197)',
+                    savings: 'Save ₹4,800'
                 },
                 monthly: {
-                    price: '₹50,599',
+                    price: '₹39,999',
                     period: '/mo',
                     billingNote: 'Billed monthly'
                 }
@@ -272,7 +370,7 @@ export default function PricingSection() {
             name: 'Commerce Starter',
             conversations: '500 conversations',
             seats: '2 team seats',
-            overage: '₹24 / extra conversation',
+            overage: '₹26 / extra conversation',
             cta: 'Start 7-Day Free Trial',
             ctaLink: '/login?mode=register',
             highlighted: false,
@@ -309,7 +407,7 @@ export default function PricingSection() {
                 annual: {
                     price: '₹14,399',
                     period: '/mo',
-                    billingNote: 'Billed annually (₹172,788)',
+                    billingNote: 'Billed annually (₹1,72,788)',
                     savings: 'Save ₹43,200'
                 },
                 biannual: {
@@ -338,13 +436,13 @@ export default function PricingSection() {
                 annual: {
                     price: '₹23,999',
                     period: '/mo',
-                    billingNote: 'Billed annually (₹287,988)',
+                    billingNote: 'Billed annually (₹2,87,988)',
                     savings: 'Save ₹72,000'
                 },
                 biannual: {
                     price: '₹26,999',
                     period: '/mo',
-                    billingNote: 'Billed 6 months (₹161,994)',
+                    billingNote: 'Billed 6 months (₹1,61,994)',
                     savings: 'Save ₹18,000'
                 },
                 trimonthly: {
@@ -359,66 +457,63 @@ export default function PricingSection() {
             name: 'Commerce Max',
             conversations: '5,000 conversations',
             seats: '7 team seats',
-            overage: '₹16 / extra conversation',
+            overage: '₹15 / extra conversation',
             cta: 'Start 7-Day Free Trial',
             ctaLink: '/login?mode=register',
             highlighted: false,
             pricing: {
                 annual: {
-                    price: '₹53,999',
+                    price: '₹47,999',
                     period: '/mo',
-                    billingNote: 'Billed annually (₹647,988)',
-                    savings: 'Save ₹162,000'
+                    billingNote: 'Billed annually (₹5,75,988)',
+                    savings: 'Save ₹1,44,000'
                 },
                 biannual: {
-                    price: '₹60,799',
+                    price: '₹53,999',
                     period: '/mo',
-                    billingNote: 'Billed 6 months (₹364,794)',
-                    savings: 'Save ₹40,200'
+                    billingNote: 'Billed 6 months (₹3,23,994)',
+                    savings: 'Save ₹36,000'
                 },
                 trimonthly: {
-                    price: '₹67,499',
+                    price: '₹59,999',
                     period: '/mo',
-                    billingNote: 'Billed 3 months (₹202,497) · Min Term'
+                    billingNote: 'Billed 3 months (₹1,79,997) · Min Term'
                 }
             }
         }
     ];
 
-    // ─────────────────────────────────────────────────────────────
-    // INTERNATIONAL PRICING ($ USD)
-    // ─────────────────────────────────────────────────────────────
     const intlCorePlans: PlanDetails[] = [
         {
             tag: 'STARTER',
             name: 'Core Starter',
             conversations: '300 conversations',
             seats: '2 team seats',
-            overage: '$0.80 / extra conversation',
+            overage: '$0.88 / extra conversation',
             cta: 'Start 7-Day Free Trial',
             ctaLink: '/login?mode=register',
             highlighted: false,
             pricing: {
                 annual: {
-                    price: '$159',
-                    period: '/mo',
-                    billingNote: 'Billed annually ($1,908)',
-                    savings: 'Save $480'
-                },
-                biannual: {
-                    price: '$179',
-                    period: '/mo',
-                    billingNote: 'Billed 6 months ($1,074)',
-                    savings: 'Save $120'
-                },
-                quarterly: {
                     price: '$189',
                     period: '/mo',
-                    billingNote: 'Billed quarterly ($567)',
+                    billingNote: 'Billed annually ($2,268)',
+                    savings: 'Save $600'
+                },
+                biannual: {
+                    price: '$215',
+                    period: '/mo',
+                    billingNote: 'Billed 6 months ($1,290)',
+                    savings: 'Save $150'
+                },
+                quarterly: {
+                    price: '$229',
+                    period: '/mo',
+                    billingNote: 'Billed quarterly ($687)',
                     savings: 'Save $30'
                 },
                 monthly: {
-                    price: '$199',
+                    price: '$239',
                     period: '/mo',
                     billingNote: 'Billed monthly'
                 }
@@ -429,31 +524,31 @@ export default function PricingSection() {
             name: 'Core Growth',
             conversations: '600 conversations',
             seats: '3 team seats',
-            overage: '$0.70 / extra conversation',
+            overage: '$0.75 / extra conversation',
             cta: 'Start 7-Day Free Trial',
             ctaLink: '/login?mode=register',
             highlighted: true,
             pricing: {
                 annual: {
-                    price: '$279',
+                    price: '$309',
                     period: '/mo',
-                    billingNote: 'Billed annually ($3,348)',
-                    savings: 'Save $840'
+                    billingNote: 'Billed annually ($3,708)',
+                    savings: 'Save $960'
                 },
                 biannual: {
-                    price: '$319',
+                    price: '$349',
                     period: '/mo',
-                    billingNote: 'Billed 6 months ($1,914)',
-                    savings: 'Save $180'
+                    billingNote: 'Billed 6 months ($2,094)',
+                    savings: 'Save $240'
                 },
                 quarterly: {
-                    price: '$329',
+                    price: '$369',
                     period: '/mo',
-                    billingNote: 'Billed quarterly ($987)',
+                    billingNote: 'Billed quarterly ($1,107)',
                     savings: 'Save $60'
                 },
                 monthly: {
-                    price: '$349',
+                    price: '$389',
                     period: '/mo',
                     billingNote: 'Billed monthly'
                 }
@@ -464,31 +559,31 @@ export default function PricingSection() {
             name: 'Core Scale',
             conversations: '1,600 conversations',
             seats: '4 team seats',
-            overage: '$0.52 / extra conversation',
+            overage: '$0.56 / extra conversation',
             cta: 'Start 7-Day Free Trial',
             ctaLink: '/login?mode=register',
             highlighted: false,
             pricing: {
                 annual: {
-                    price: '$559',
+                    price: '$589',
                     period: '/mo',
-                    billingNote: 'Billed annually ($6,708)',
-                    savings: 'Save $1,680'
+                    billingNote: 'Billed annually ($7,068)',
+                    savings: 'Save $1,800'
                 },
                 biannual: {
-                    price: '$629',
+                    price: '$665',
                     period: '/mo',
-                    billingNote: 'Billed 6 months ($3,774)',
-                    savings: 'Save $420'
+                    billingNote: 'Billed 6 months ($3,990)',
+                    savings: 'Save $450'
                 },
                 quarterly: {
-                    price: '$669',
+                    price: '$705',
                     period: '/mo',
-                    billingNote: 'Billed quarterly ($2,007)',
-                    savings: 'Save $90'
+                    billingNote: 'Billed quarterly ($2,115)',
+                    savings: 'Save $105'
                 },
                 monthly: {
-                    price: '$699',
+                    price: '$739',
                     period: '/mo',
                     billingNote: 'Billed monthly'
                 }
@@ -505,25 +600,25 @@ export default function PricingSection() {
             highlighted: false,
             pricing: {
                 annual: {
-                    price: '$1,179',
+                    price: '$1,299',
                     period: '/mo',
-                    billingNote: 'Billed annually ($14,148)',
-                    savings: 'Save $3,600'
+                    billingNote: 'Billed annually ($15,588)',
+                    savings: 'Save $3,960'
                 },
                 biannual: {
-                    price: '$1,329',
+                    price: '$1,469',
                     period: '/mo',
-                    billingNote: 'Billed 6 months ($7,974)',
-                    savings: 'Save $900'
+                    billingNote: 'Billed 6 months ($8,814)',
+                    savings: 'Save $990'
                 },
                 quarterly: {
-                    price: '$1,409',
+                    price: '$1,559',
                     period: '/mo',
-                    billingNote: 'Billed quarterly ($4,227)',
-                    savings: 'Save $210'
+                    billingNote: 'Billed quarterly ($4,677)',
+                    savings: 'Save $240'
                 },
                 monthly: {
-                    price: '$1,479',
+                    price: '$1,629',
                     period: '/mo',
                     billingNote: 'Billed monthly'
                 }
@@ -537,27 +632,27 @@ export default function PricingSection() {
             name: 'Commerce Starter',
             conversations: '500 conversations',
             seats: '2 team seats',
-            overage: '$0.81 / extra conversation',
+            overage: '$0.88 / extra conversation',
             cta: 'Start 7-Day Free Trial',
             ctaLink: '/login?mode=register',
             highlighted: false,
             pricing: {
                 annual: {
-                    price: '$269',
+                    price: '$289',
                     period: '/mo',
-                    billingNote: 'Billed annually ($3,228)',
-                    savings: 'Save $840'
+                    billingNote: 'Billed annually ($3,468)',
+                    savings: 'Save $960'
                 },
                 biannual: {
-                    price: '$309',
+                    price: '$335',
                     period: '/mo',
-                    billingNote: 'Billed 6 months ($1,854)',
+                    billingNote: 'Billed 6 months ($2,010)',
                     savings: 'Save $180'
                 },
                 trimonthly: {
-                    price: '$339',
+                    price: '$369',
                     period: '/mo',
-                    billingNote: 'Billed 3 months ($1,017) · Min Term'
+                    billingNote: 'Billed 3 months ($1,107) · Min Term'
                 }
             }
         },
@@ -566,27 +661,27 @@ export default function PricingSection() {
             name: 'Commerce Growth',
             conversations: '1,000 conversations',
             seats: '3 team seats',
-            overage: '$0.72 / extra conversation',
+            overage: '$0.75 / extra conversation',
             cta: 'Start 7-Day Free Trial',
             ctaLink: '/login?mode=register',
             highlighted: true,
             pricing: {
                 annual: {
-                    price: '$479',
+                    price: '$519',
                     period: '/mo',
-                    billingNote: 'Billed annually ($5,748)',
-                    savings: 'Save $1,440'
+                    billingNote: 'Billed annually ($6,228)',
+                    savings: 'Save $1,800'
                 },
                 biannual: {
-                    price: '$539',
+                    price: '$585',
                     period: '/mo',
-                    billingNote: 'Billed 6 months ($3,234)',
-                    savings: 'Save $360'
+                    billingNote: 'Billed 6 months ($3,510)',
+                    savings: 'Save $450'
                 },
                 trimonthly: {
-                    price: '$599',
+                    price: '$649',
                     period: '/mo',
-                    billingNote: 'Billed 3 months ($1,797) · Min Term'
+                    billingNote: 'Billed 3 months ($1,947) · Min Term'
                 }
             }
         },
@@ -601,21 +696,21 @@ export default function PricingSection() {
             highlighted: false,
             pricing: {
                 annual: {
-                    price: '$739',
+                    price: '$829',
                     period: '/mo',
-                    billingNote: 'Billed annually ($8,868)',
-                    savings: 'Save $2,280'
+                    billingNote: 'Billed annually ($9,948)',
+                    savings: 'Save $2,760'
                 },
                 biannual: {
-                    price: '$839',
+                    price: '$939',
                     period: '/mo',
-                    billingNote: 'Billed 6 months ($5,034)',
-                    savings: 'Save $540'
+                    billingNote: 'Billed 6 months ($5,634)',
+                    savings: 'Save $720'
                 },
                 trimonthly: {
-                    price: '$929',
+                    price: '$1,039',
                     period: '/mo',
-                    billingNote: 'Billed 3 months ($2,787) · Min Term'
+                    billingNote: 'Billed 3 months ($3,117) · Min Term'
                 }
             }
         },
@@ -624,33 +719,103 @@ export default function PricingSection() {
             name: 'Commerce Max',
             conversations: '5,000 conversations',
             seats: '7 team seats',
-            overage: '$0.47 / extra conversation',
+            overage: '$0.44 / extra conversation',
             cta: 'Start 7-Day Free Trial',
             ctaLink: '/login?mode=register',
             highlighted: false,
             pricing: {
                 annual: {
-                    price: '$1,579',
+                    price: '$1,759',
                     period: '/mo',
-                    billingNote: 'Billed annually ($18,948)',
-                    savings: 'Save $4,800'
+                    billingNote: 'Billed annually ($21,108)',
+                    savings: 'Save $5,760'
                 },
                 biannual: {
-                    price: '$1,779',
-                    period: '/mo',
-                    billingNote: 'Billed 6 months ($10,674)',
-                    savings: 'Save $1,200'
-                },
-                trimonthly: {
                     price: '$1,979',
                     period: '/mo',
-                    billingNote: 'Billed 3 months ($5,937) · Min Term'
+                    billingNote: 'Billed 6 months ($11,874)',
+                    savings: 'Save $1,440'
+                },
+                trimonthly: {
+                    price: '$2,199',
+                    period: '/mo',
+                    billingNote: 'Billed 3 months ($6,597) · Min Term'
                 }
             }
         }
     ];
 
-    // Determine current plan list
+    const addonsData = [
+        {
+            icon: <Users className="w-5 h-5 text-[#0396A6]" />,
+            tag: 'TEAM EXPANSION',
+            name: 'Additional Team Seats',
+            badge: 'Flexible Scale',
+            price: region === 'IN' ? '₹999' : '$19.99',
+            period: '/ seat / mo',
+            billingNote: 'Billed monthly with active plan',
+            desc: 'Expand your live dashboard access. Included seats are specified per tier (2 to 7 seats).',
+            bullets: [
+                'Full RBAC permissions (Owner, Manager, Agent)',
+                'Live conversation takeover & whisper notes',
+                'Individual performance & response audit logs'
+            ],
+            cta: 'Add to Plan',
+            ctaLink: '/login?mode=register'
+        },
+        {
+            icon: <img src="/whatsapp.png" alt="WhatsApp" className="w-5 h-5 object-contain" />,
+            tag: 'OFFICIAL API',
+            name: 'WhatsApp Business Messaging',
+            badge: region === 'IN' ? 'Included in India' : 'Meta Direct',
+            price: region === 'IN' ? 'Included' : 'Meta + 5%',
+            period: region === 'IN' ? 'in all India plans' : 'per conversation',
+            billingNote: region === 'IN' ? 'Nothing extra to pay on India plans' : 'Meta official per-message pass-through',
+            desc: 'Connect your verified WhatsApp Business phone number with shared customer memory.',
+            bullets: [
+                'Official Meta Cloud API integration',
+                'Zero extra platform markups on India plans',
+                'Voice notes audio transcription & replies'
+            ],
+            cta: 'Connect WhatsApp',
+            ctaLink: '/login?mode=register'
+        },
+        {
+            icon: <Zap className="w-5 h-5 text-[#0396A6]" />,
+            tag: 'USAGE BUFFER',
+            name: 'Extra Conversation Overages',
+            badge: 'Zero Dropouts',
+            price: region === 'IN' ? 'From ₹15' : 'From $0.44',
+            period: '/ extra conversation',
+            billingNote: 'Tier-discounted overage rates',
+            desc: 'Never drop a high-intent customer. Real-time notifications as you approach quota limits.',
+            bullets: [
+                'Real-time alerts at 80% and 95% volume',
+                'Cheaper volume overage tiers (₹15–₹26)',
+                'Instant prorated plan upgrades anytime'
+            ],
+            cta: 'View Volume Tiers',
+            ctaLink: '/login?mode=register'
+        },
+        {
+            icon: <Sparkles className="w-5 h-5 text-[#0396A6]" />,
+            tag: 'CUSTOM PIPELINES',
+            name: 'Custom Integrations & CRM',
+            badge: 'Custom Setup',
+            price: 'Custom',
+            period: 'quote',
+            billingNote: 'Tailored to your tech stack',
+            desc: 'Connect Frosty directly into your custom ERP, proprietary databases, or internal workflows.',
+            bullets: [
+                'HubSpot, Salesforce, Zoho & Webhooks',
+                'Custom SQL database lookups & inventory',
+                'Dedicated staging sandbox & engineer bridge'
+            ],
+            cta: 'Talk to Sales',
+            ctaLink: 'https://www.frostrek.ai/contact'
+        }
+    ];
+
     const currentPlans =
         planFamily === 'core'
             ? region === 'IN'
@@ -713,9 +878,7 @@ export default function PricingSection() {
     return (
         <section className="relative w-full overflow-hidden pt-8 sm:pt-10 lg:pt-12 pb-14 sm:pb-16 bg-transparent" id="pricing">
             <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                {/* ── Section Header ── */}
                 <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
-                    {/* Badge */}
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -730,7 +893,6 @@ export default function PricingSection() {
                         </span>
                     </motion.div>
 
-                    {/* Headline */}
                     <motion.h2
                         initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -740,7 +902,6 @@ export default function PricingSection() {
                         Every plan includes every feature.
                     </motion.h2>
 
-                    {/* Subtitle & Zero-Fee Highlight */}
                     <motion.p
                         initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -751,21 +912,19 @@ export default function PricingSection() {
                         Plans differ on conversation volume, seats and support only.
                     </motion.p>
 
-                    {/* Guaranteed Zero-Fee Callout */}
                     <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs font-semibold mt-1 shadow-2xs">
                         <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                         <span>No setup fee, no onboarding fee, no implementation fee — on any plan.</span>
                     </div>
 
-                    {/* ── Category Switcher: Core Plans vs Commerce Plans ── */}
                     <div className="mt-8 flex justify-center">
-                        <div className="inline-flex p-1.5 rounded-2xl bg-slate-100/90 border border-slate-200 shadow-inner max-w-full">
+                        <div className="inline-flex p-1.5 rounded-2xl bg-slate-100/90 border border-slate-200 shadow-inner max-w-full flex-wrap justify-center gap-1">
                             <button
                                 type="button"
                                 onClick={() => setPlanFamily('core')}
                                 className={`relative px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 flex items-center gap-2 cursor-pointer ${planFamily === 'core'
-                                        ? 'bg-white text-slate-900 shadow-sm border border-slate-200/80'
-                                        : 'text-slate-600 hover:text-slate-900'
+                                    ? 'bg-white text-slate-900 shadow-sm border border-slate-200/80'
+                                    : 'text-slate-600 hover:text-slate-900'
                                     }`}
                             >
                                 <Bot className={`w-4 h-4 ${planFamily === 'core' ? 'text-[#0396A6]' : 'text-slate-400'}`} />
@@ -776,260 +935,316 @@ export default function PricingSection() {
                                 type="button"
                                 onClick={() => setPlanFamily('commerce')}
                                 className={`relative px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 flex items-center gap-2 cursor-pointer ${planFamily === 'commerce'
-                                        ? 'bg-white text-slate-900 shadow-sm border border-slate-200/80'
-                                        : 'text-slate-600 hover:text-slate-900'
+                                    ? 'bg-white text-slate-900 shadow-sm border border-slate-200/80'
+                                    : 'text-slate-600 hover:text-slate-900'
                                     }`}
                             >
                                 <ShoppingBag className={`w-4 h-4 ${planFamily === 'commerce' ? 'text-[#0396A6]' : 'text-slate-400'}`} />
                                 <span>Commerce Plans</span>
                                 <span className="hidden sm:inline text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-teal-50 text-[#0396A6] border border-teal-200/60">
-                                    Store Sync & Returns
+                                    Store Sync
                                 </span>
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => setPlanFamily('addons')}
+                                className={`relative px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 flex items-center gap-2 cursor-pointer ${planFamily === 'addons'
+                                    ? 'bg-white text-slate-900 shadow-sm border border-slate-200/80'
+                                    : 'text-slate-600 hover:text-slate-900'
+                                    }`}
+                            >
+                                <PlusCircle className={`w-4 h-4 ${planFamily === 'addons' ? 'text-[#0396A6]' : 'text-slate-400'}`} />
+                                <span>Add-ons & Extras</span>
                             </button>
                         </div>
                     </div>
 
-                    {/* Category Description Banner */}
                     <div className="mt-3 text-xs sm:text-sm text-slate-600 max-w-xl mx-auto font-medium">
                         {planFamily === 'core' ? (
                             <span>Full-featured agent for websites, WhatsApp, knowledge base, quotes & lead management.</span>
-                        ) : (
+                        ) : planFamily === 'commerce' ? (
                             <span>
                                 Live store integration: answers &ldquo;where is my order&rdquo;, tracks shipments & handles returns from live order data. (3-month min, no setup fee).
+                            </span>
+                        ) : (
+                            <span>
+                                Flexible add-ons to scale your team seats, WhatsApp channels, conversation capacity, and custom integrations.
                             </span>
                         )}
                     </div>
 
-                    {/* ── Adaptive Billing Term Selector ── */}
-                    <div className="mt-5 flex flex-wrap justify-center items-center gap-1.5 sm:gap-2">
-                        <div className="inline-flex p-1 rounded-2xl sm:rounded-full bg-slate-100/90 border border-slate-200/90 shadow-inner flex-wrap justify-center">
-                            {/* Annual Term (Available in both) */}
-                            <button
-                                type="button"
-                                onClick={() => (planFamily === 'core' ? setCoreTerm('annual') : setCommerceTerm('annual'))}
-                                className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${currentTerm === 'annual'
-                                        ? 'bg-[#0396A6] !text-white shadow-sm'
-                                        : 'text-slate-600 hover:text-slate-900'
-                                    }`}
-                            >
-                                <span className={currentTerm === 'annual' ? '!text-white font-bold' : ''}>Annual</span>
-                                <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${currentTerm === 'annual' ? 'bg-white/20 !text-white' : 'bg-emerald-100 text-emerald-800'
-                                    }`}>
-                                    Save 20%
-                                </span>
-                            </button>
-
-                            {/* 6-Month Term (Available in both) */}
-                            <button
-                                type="button"
-                                onClick={() => (planFamily === 'core' ? setCoreTerm('biannual') : setCommerceTerm('biannual'))}
-                                className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${currentTerm === 'biannual'
-                                        ? 'bg-[#0396A6] !text-white shadow-sm'
-                                        : 'text-slate-600 hover:text-slate-900'
-                                    }`}
-                            >
-                                <span className={currentTerm === 'biannual' ? '!text-white font-bold' : ''}>6 Months</span>
-                                <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${currentTerm === 'biannual' ? 'bg-white/20 !text-white' : 'bg-emerald-100 text-emerald-800'
-                                    }`}>
-                                    {planFamily === 'commerce' ? 'Save 10%' : 'Save 10-15%'}
-                                </span>
-                            </button>
-
-                            {/* Core Only: Quarterly */}
-                            {planFamily === 'core' && (
+                    {planFamily !== 'addons' && (
+                        <div className="mt-5 flex flex-wrap justify-center items-center gap-1.5 sm:gap-2">
+                            <div className="inline-flex p-1 rounded-2xl sm:rounded-full bg-slate-100/90 border border-slate-200/90 shadow-inner flex-wrap justify-center">
                                 <button
                                     type="button"
-                                    onClick={() => setCoreTerm('quarterly')}
-                                    className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${currentTerm === 'quarterly'
-                                            ? 'bg-[#0396A6] !text-white shadow-sm'
-                                            : 'text-slate-600 hover:text-slate-900'
+                                    onClick={() => (planFamily === 'core' ? setCoreTerm('annual') : setCommerceTerm('annual'))}
+                                    className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${currentTerm === 'annual'
+                                        ? 'bg-[#0396A6] !text-white shadow-sm'
+                                        : 'text-slate-600 hover:text-slate-900'
                                         }`}
                                 >
-                                    <span className={currentTerm === 'quarterly' ? '!text-white font-bold' : ''}>Quarterly</span>
-                                    <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${currentTerm === 'quarterly' ? 'bg-white/20 !text-white' : 'bg-emerald-100 text-emerald-800'
+                                    <span className={currentTerm === 'annual' ? '!text-white font-bold' : ''}>Annual</span>
+                                    <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${currentTerm === 'annual' ? 'bg-white/20 !text-white' : 'bg-emerald-100 text-emerald-800'
                                         }`}>
-                                        Save ~5%
+                                        Save 20%
                                     </span>
                                 </button>
-                            )}
 
-                            {/* Core Only: Monthly */}
-                            {planFamily === 'core' && (
                                 <button
                                     type="button"
-                                    onClick={() => setCoreTerm('monthly')}
-                                    className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${currentTerm === 'monthly'
-                                            ? 'bg-[#0396A6] !text-white shadow-sm'
-                                            : 'text-slate-600 hover:text-slate-900'
+                                    onClick={() => (planFamily === 'core' ? setCoreTerm('biannual') : setCommerceTerm('biannual'))}
+                                    className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${currentTerm === 'biannual'
+                                        ? 'bg-[#0396A6] !text-white shadow-sm'
+                                        : 'text-slate-600 hover:text-slate-900'
                                         }`}
                                 >
-                                    <span className={currentTerm === 'monthly' ? '!text-white font-bold' : ''}>Monthly</span>
-                                </button>
-                            )}
-
-                            {/* Commerce Only: 3-Month Minimum Term */}
-                            {planFamily === 'commerce' && (
-                                <button
-                                    type="button"
-                                    onClick={() => setCommerceTerm('trimonthly')}
-                                    className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${currentTerm === 'trimonthly'
-                                            ? 'bg-[#0396A6] !text-white shadow-sm'
-                                            : 'text-slate-600 hover:text-slate-900'
-                                        }`}
-                                >
-                                    <span className={currentTerm === 'trimonthly' ? '!text-white font-bold' : ''}>3 Months</span>
-                                    <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${currentTerm === 'trimonthly' ? 'bg-white/20 !text-white' : 'bg-slate-200 text-slate-700'}`}>
-                                        Min Term · List Price
+                                    <span className={currentTerm === 'biannual' ? '!text-white font-bold' : ''}>6 Months</span>
+                                    <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${currentTerm === 'biannual' ? 'bg-white/20 !text-white' : 'bg-emerald-100 text-emerald-800'
+                                        }`}>
+                                        {planFamily === 'commerce' ? 'Save 10%' : 'Save 10-15%'}
                                     </span>
                                 </button>
-                            )}
+
+                                {planFamily === 'core' && (
+                                    <button
+                                        type="button"
+                                        onClick={() => setCoreTerm('quarterly')}
+                                        className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${currentTerm === 'quarterly'
+                                            ? 'bg-[#0396A6] !text-white shadow-sm'
+                                            : 'text-slate-600 hover:text-slate-900'
+                                            }`}
+                                    >
+                                        <span className={currentTerm === 'quarterly' ? '!text-white font-bold' : ''}>Quarterly</span>
+                                        <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${currentTerm === 'quarterly' ? 'bg-white/20 !text-white' : 'bg-emerald-100 text-emerald-800'
+                                            }`}>
+                                            Save ~5%
+                                        </span>
+                                    </button>
+                                )}
+
+                                {planFamily === 'core' && (
+                                    <button
+                                        type="button"
+                                        onClick={() => setCoreTerm('monthly')}
+                                        className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${currentTerm === 'monthly'
+                                            ? 'bg-[#0396A6] !text-white shadow-sm'
+                                            : 'text-slate-600 hover:text-slate-900'
+                                            }`}
+                                    >
+                                        <span className={currentTerm === 'monthly' ? '!text-white font-bold' : ''}>Monthly</span>
+                                    </button>
+                                )}
+
+                                {planFamily === 'commerce' && (
+                                    <button
+                                        type="button"
+                                        onClick={() => setCommerceTerm('trimonthly')}
+                                        className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${currentTerm === 'trimonthly'
+                                            ? 'bg-[#0396A6] !text-white shadow-sm'
+                                            : 'text-slate-600 hover:text-slate-900'
+                                            }`}
+                                    >
+                                        <span className={currentTerm === 'trimonthly' ? '!text-white font-bold' : ''}>3 Months</span>
+                                        <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${currentTerm === 'trimonthly' ? 'bg-white/20 !text-white' : 'bg-slate-200 text-slate-700'}`}>
+                                            Min Term · List Price
+                                        </span>
+                                    </button>
+                                )}
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </div>
 
-                {/* ── 4-Tier Plan Grid (Starter, Growth, Scale, Max) ── */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-4 xl:gap-5 items-stretch">
-                    <AnimatePresence mode="wait">
-                        {currentPlans.map((plan, index) => {
-                            const currentPricing = plan.pricing[currentTerm] || plan.pricing['annual'];
-                            return (
-                                <motion.div
-                                    key={`${region}-${planFamily}-${plan.name}`}
-                                    initial={{ opacity: 0, y: 15 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -15 }}
-                                    transition={{ delay: index * 0.05, duration: 0.25 }}
-                                    whileHover={{ y: -5, transition: { duration: 0.18, ease: 'easeOut' } }}
-                                    className={`relative flex flex-col rounded-[22px] p-5 lg:p-5 xl:p-6 h-full transition-all duration-200 ${plan.highlighted
+                {planFamily === 'addons' ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-4 xl:gap-5 items-stretch w-full">
+                        {addonsData.map((addon, index) => (
+                            <motion.div
+                                key={addon.name}
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: index * 0.05, duration: 0.25 }}
+                                whileHover={{ y: -5, transition: { duration: 0.18, ease: 'easeOut' } }}
+                                className="relative flex flex-col rounded-[22px] p-5 lg:p-5 xl:p-6 h-full bg-white border border-slate-200/90 shadow-xs hover:border-[#0396A6]/40 hover:shadow-[0_8px_30px_rgba(3,150,166,0.08)] transition-all duration-200"
+                            >
+                                <div className="flex items-center justify-between gap-2 mb-3">
+                                    <div className="flex items-center gap-2">
+                                        <div className="shrink-0 text-[#0396A6]">
+                                            {addon.icon}
+                                        </div>
+                                        <span className="text-[10px] font-bold tracking-wider text-slate-500 uppercase">
+                                            {addon.tag}
+                                        </span>
+                                    </div>
+                                    <span className="text-[10px] font-bold tracking-tight text-[#0396A6] bg-teal-50 border border-teal-200/80 px-2 py-0.5 rounded-full">
+                                        {addon.badge}
+                                    </span>
+                                </div>
+                                <h3 className="text-lg sm:text-xl font-bold text-slate-900 leading-tight mb-2">
+                                    {addon.name}
+                                </h3>
+                                <div className="w-full h-px bg-slate-100 mb-4" />
+                                <div className="flex flex-col min-h-[54px] justify-center mb-3">
+                                    <div className="flex items-baseline gap-1">
+                                        <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-none">
+                                            {addon.price}
+                                        </span>
+                                        {addon.period && (
+                                            <span className="text-xs text-slate-500 font-medium ml-0.5">
+                                                {addon.period}
+                                            </span>
+                                        )}
+                                    </div>
+                                    <div className="text-xs text-slate-500 font-medium mt-1">
+                                        {addon.billingNote}
+                                    </div>
+                                </div>
+                                <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                                    {addon.desc}
+                                </p>
+                                <div className="my-2 flex flex-col gap-1.5 text-[11px] text-slate-600 flex-1">
+                                    {addon.bullets.map((b, bi) => (
+                                        <div key={bi} className="flex items-start gap-1.5">
+                                            <Check className="w-3.5 h-3.5 text-[#0396A6] shrink-0 stroke-[2.5] mt-0.5" />
+                                            <span>{b}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="mt-auto pt-4 flex flex-col gap-2">
+                                    <Link
+                                        href={addon.ctaLink}
+                                        className="w-full py-2.5 px-4 rounded-xl font-bold text-xs sm:text-[13px] transition-all duration-200 flex items-center justify-center gap-1.5 text-center group cursor-pointer bg-stone-50 border border-slate-200 text-slate-800 hover:bg-[#0396A6] hover:text-white hover:border-[#0396A6] active:scale-[0.98]"
+                                    >
+                                        <span>{addon.cta}</span>
+                                        <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+                                    </Link>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-4 xl:gap-5 items-stretch">
+                        <AnimatePresence mode="wait">
+                            {currentPlans.map((plan, index) => {
+                                const currentPricing = plan.pricing[currentTerm] || plan.pricing['annual'];
+                                return (
+                                    <motion.div
+                                        key={`${region}-${planFamily}-${plan.name}`}
+                                        initial={{ opacity: 0, y: 15 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -15 }}
+                                        transition={{ delay: index * 0.05, duration: 0.25 }}
+                                        whileHover={{ y: -5, transition: { duration: 0.18, ease: 'easeOut' } }}
+                                        className={`relative flex flex-col rounded-[22px] p-5 lg:p-5 xl:p-6 h-full transition-all duration-200 ${plan.highlighted
                                             ? 'bg-white border-2 border-[#0396A6] shadow-[0_8px_30px_rgba(3,150,166,0.12)] ring-1 ring-[#0396A6]/20'
                                             : 'bg-white border border-slate-200/90 shadow-xs hover:border-slate-300'
-                                        }`}
-                                >
-                                    {/* Card Header: Plan Name & Badge */}
-                                    <div className="flex items-center justify-between gap-2 mb-3">
-                                        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 font-serif leading-tight">
-                                            {plan.name}
-                                        </h3>
-                                        {currentPricing.savings ? (
-                                            <span className="text-[10.5px] font-bold tracking-tight text-emerald-800 bg-emerald-50 border border-emerald-200/80 px-2 py-0.5 rounded-full shrink-0 flex items-center gap-1">
-                                                <BadgePercent className="w-3 h-3 text-emerald-600" />
-                                                {currentPricing.savings}
-                                            </span>
-                                        ) : plan.highlighted ? (
-                                            <span className="text-[10px] font-bold tracking-wider text-[#0396A6] bg-teal-50 border border-teal-200/80 px-2 py-0.5 rounded-full uppercase shrink-0">
-                                                Most Popular
-                                            </span>
-                                        ) : null}
-                                    </div>
-
-                                    {/* Divider */}
-                                    <div className={`w-full h-px mb-4 ${plan.highlighted ? 'bg-[#0396A6]/20' : 'bg-slate-100'}`} />
-
-                                    {/* Price Display Area */}
-                                    <div className="flex flex-col min-h-[64px] justify-center mb-4">
-                                        <div className="flex items-baseline gap-1">
-                                            <span className="text-3xl sm:text-[34px] xl:text-4xl font-extrabold text-slate-900 tracking-tight font-serif leading-none">
-                                                {currentPricing.price}
-                                            </span>
-                                            {currentPricing.period && (
-                                                <span className="text-xs sm:text-sm text-slate-500 font-medium ml-0.5">
-                                                    {currentPricing.period}
+                                            }`}
+                                    >
+                                        <div className="flex items-center justify-between gap-2 mb-3">
+                                            <h3 className="text-xl sm:text-2xl font-bold text-slate-900 leading-tight">
+                                                {plan.name}
+                                            </h3>
+                                            {currentPricing.savings ? (
+                                                <span className="text-[10.5px] font-bold tracking-tight text-emerald-800 bg-emerald-50 border border-emerald-200/80 px-2 py-0.5 rounded-full shrink-0 flex items-center gap-1">
+                                                    <BadgePercent className="w-3 h-3 text-emerald-600" />
+                                                    {currentPricing.savings}
                                                 </span>
-                                            )}
+                                            ) : plan.highlighted ? (
+                                                <span className="text-[10px] font-bold tracking-wider text-[#0396A6] bg-teal-50 border border-teal-200/80 px-2 py-0.5 rounded-full uppercase shrink-0">
+                                                    Most Popular
+                                                </span>
+                                            ) : null}
                                         </div>
-                                        <div className="text-xs text-slate-500 font-medium mt-1">
-                                            {currentPricing.billingNote}
+                                        <div className={`w-full h-px mb-4 ${plan.highlighted ? 'bg-[#0396A6]/20' : 'bg-slate-100'}`} />
+                                        <div className="flex flex-col min-h-[64px] justify-center mb-4">
+                                            <div className="flex items-baseline gap-1">
+                                                <span className="text-3xl sm:text-[34px] xl:text-4xl font-extrabold text-slate-900 tracking-tight leading-none">
+                                                    {currentPricing.price}
+                                                </span>
+                                                {currentPricing.period && (
+                                                    <span className="text-xs sm:text-sm text-slate-500 font-medium ml-0.5">
+                                                        {currentPricing.period}
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <div className="text-xs text-slate-500 font-medium mt-1">
+                                                {currentPricing.billingNote}
+                                            </div>
                                         </div>
-                                    </div>
-
-                                    {/* Metrics Box: Volume & Extra Conversation Rate */}
-                                    <div className="flex flex-col gap-2.5 mb-4 flex-1">
-                                        {/* Volume & Overage Box */}
-                                        <div
-                                            className={`p-3 rounded-xl border flex flex-col gap-0.5 transition-colors duration-200 ${plan.highlighted
+                                        <div className="flex flex-col gap-2.5 mb-4 flex-1">
+                                            <div
+                                                className={`p-3 rounded-xl border flex flex-col gap-0.5 transition-colors duration-200 ${plan.highlighted
                                                     ? 'bg-teal-50/60 border-teal-200/70'
                                                     : 'bg-slate-50/80 border-slate-200/70'
-                                                }`}
-                                        >
-                                            <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                                                <span>Monthly Allowance</span>
-                                                <MessageCircle className="w-3 h-3 text-[#0396A6]" />
+                                                    }`}
+                                            >
+                                                <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                                                    <span>Monthly Allowance</span>
+                                                    <ConversationInfoTooltip align={index === 0 ? 'left' : index === 3 ? 'right' : 'center'} />
+                                                </div>
+                                                <div className="text-[13.5px] sm:text-[14px] font-bold text-slate-900 leading-tight">
+                                                    {plan.conversations}
+                                                </div>
+                                                <div className="text-[11px] text-[#0396A6] font-semibold mt-0.5">
+                                                    Extra: {plan.overage}
+                                                </div>
                                             </div>
-                                            <div className="text-[13.5px] sm:text-[14px] font-bold text-slate-900 leading-tight">
-                                                {plan.conversations}
+                                            <div className="p-2.5 px-3 rounded-xl border border-slate-200/70 bg-white flex items-center justify-between shadow-2xs">
+                                                <div className="flex items-center gap-1.5">
+                                                    <Users className="w-3.5 h-3.5 text-slate-500" />
+                                                    <span className="text-xs font-semibold text-slate-700">Team Seats</span>
+                                                </div>
+                                                <span className="text-xs font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded-md">
+                                                    {plan.seats}
+                                                </span>
                                             </div>
-                                            <div className="text-[11px] text-[#0396A6] font-semibold mt-0.5">
-                                                Extra: {plan.overage}
+                                            <div className="p-2.5 px-3 rounded-xl border border-slate-200/70 bg-white flex items-center justify-between shadow-2xs">
+                                                <div className="flex items-center gap-1.5">
+                                                    <img src="/whatsapp.png" alt="WhatsApp" className="w-3.5 h-3.5 object-contain shrink-0" />
+                                                    <span className="text-xs font-semibold text-slate-700">WhatsApp Channel</span>
+                                                </div>
+                                                <span className="text-[11px] font-bold text-slate-800">
+                                                    {region === 'IN' ? 'Included' : 'Meta + 5%'}
+                                                </span>
                                             </div>
-                                        </div>
-
-                                        {/* Team Seats Box */}
-                                        <div className="p-2.5 px-3 rounded-xl border border-slate-200/70 bg-white flex items-center justify-between shadow-2xs">
-                                            <div className="flex items-center gap-1.5">
-                                                <Users className="w-3.5 h-3.5 text-slate-500" />
-                                                <span className="text-xs font-semibold text-slate-700">Team Seats</span>
-                                            </div>
-                                            <span className="text-xs font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded-md">
-                                                {plan.seats}
-                                            </span>
-                                        </div>
-
-                                        {/* WhatsApp Channel Indicator */}
-                                        <div className="p-2.5 px-3 rounded-xl border border-slate-200/70 bg-white flex items-center justify-between shadow-2xs">
-                                            <div className="flex items-center gap-1.5">
-                                                <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
-                                                <span className="text-xs font-semibold text-slate-700">WhatsApp Channel</span>
-                                            </div>
-                                            <span className="text-[11px] font-bold text-slate-800">
-                                                {region === 'IN' ? 'Included' : 'Meta + 5%'}
-                                            </span>
-                                        </div>
-
-                                        {/* Included Checklist */}
-                                        <div className="my-2 flex flex-col gap-1.5 text-[11px] text-slate-600">
-                                            <div className="flex items-center gap-1.5">
-                                                <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 stroke-[2.5]" />
-                                                <span>All platform features included</span>
-                                            </div>
-                                            <div className="flex items-center gap-1.5">
-                                                <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 stroke-[2.5]" />
-                                                <span>Zero setup or onboarding fees</span>
-                                            </div>
-                                            <div className="flex items-center gap-1.5 text-slate-500">
-                                                <Sparkles className="w-3.5 h-3.5 text-[#0396A6] shrink-0" />
-                                                <span>7-day free trial (up to 50 convos)</span>
+                                            <div className="my-2 flex flex-col gap-1.5 text-[11px] text-slate-600">
+                                                <div className="flex items-center gap-1.5">
+                                                    <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 stroke-[2.5]" />
+                                                    <span>All platform features included</span>
+                                                </div>
+                                                <div className="flex items-center gap-1.5">
+                                                    <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 stroke-[2.5]" />
+                                                    <span>Zero setup or onboarding fees</span>
+                                                </div>
+                                                <div className="flex items-center gap-1.5 text-slate-500">
+                                                    <Sparkles className="w-3.5 h-3.5 text-[#0396A6] shrink-0" />
+                                                    <span>7-day free trial (up to 50 convos)</span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    {/* Single CTA Button */}
-                                    <div className="mt-auto pt-2 flex flex-col gap-2">
-                                        <Link
-                                            href={plan.ctaLink}
-                                            className={`w-full py-2.5 px-4 rounded-xl font-bold text-xs sm:text-[13px] transition-all duration-200 flex items-center justify-center gap-1.5 text-center group cursor-pointer ${plan.highlighted
+                                        <div className="mt-auto pt-2 flex flex-col gap-2">
+                                            <Link
+                                                href={plan.ctaLink}
+                                                className={`w-full py-2.5 px-4 rounded-xl font-bold text-xs sm:text-[13px] transition-all duration-200 flex items-center justify-center gap-1.5 text-center group cursor-pointer ${plan.highlighted
                                                     ? 'bg-[#0396A6] !text-white hover:!text-white hover:bg-[#027A87] shadow-sm hover:shadow-md active:scale-[0.98]'
                                                     : 'bg-stone-50 border border-slate-200 text-slate-800 hover:bg-white hover:border-[#0396A6]/40 hover:text-[#0396A6] active:scale-[0.98]'
-                                                }`}
-                                        >
-                                            <span className={plan.highlighted ? '!text-white' : ''}>{plan.cta}</span>
-                                            <ArrowRight className={`w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 ${plan.highlighted ? '!text-white' : ''}`} />
-                                        </Link>
-                                    </div>
-                                </motion.div>
-                            );
-                        })}
-                    </AnimatePresence>
-                </div>
+                                                    }`}
+                                            >
+                                                <span className={plan.highlighted ? '!text-white' : ''}>{plan.cta}</span>
+                                                <ArrowRight className={`w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 ${plan.highlighted ? '!text-white' : ''}`} />
+                                            </Link>
+                                        </div>
+                                    </motion.div>
+                                );
+                            })}
+                        </AnimatePresence>
+                    </div>
+                )}
 
-                {/* ── Enterprise Tier Card (High-Contrast, Premium Light Design) ── */}
                 <div className="mt-6 p-6 sm:p-7 rounded-[22px] bg-white border border-slate-200/90 shadow-sm hover:border-[#0396A6]/40 transition-all duration-200 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative overflow-hidden">
-                    {/* Subtle gradient accent background */}
                     <div className="absolute top-0 right-0 w-96 h-full bg-gradient-to-l from-teal-50/40 to-transparent pointer-events-none" />
-
                     <div className="flex items-start gap-4 relative z-10">
-                        <div className="w-12 h-12 rounded-2xl bg-teal-50 border border-teal-100 flex items-center justify-center shrink-0 shadow-2xs">
-                            <Building2 className="w-6 h-6 text-[#0396A6]" />
-                        </div>
+                        <Building2 className="w-8 h-8 text-[#0396A6] shrink-0 mt-1" />
                         <div className="flex flex-col">
                             <div className="flex items-center gap-2 mb-1.5 flex-wrap">
                                 <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#0396A6]/10 border border-[#0396A6]/20 text-[10.5px] font-bold tracking-wider uppercase text-[#0396A6]">
@@ -1039,14 +1254,12 @@ export default function PricingSection() {
                                     Custom Volume · Dedicated Infrastructure · Custom SLA
                                 </span>
                             </div>
-                            <h4 className="text-xl sm:text-2xl font-bold font-serif text-slate-900 leading-tight mb-1.5">
+                            <h4 className="text-xl sm:text-2xl font-bold text-slate-900 leading-tight mb-1.5">
                                 Need custom scale, bespoke integrations, or dedicated SLAs?
                             </h4>
                             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-3xl mb-3.5">
                                 Everything in Max plus custom conversation volume, dedicated account manager, multi-region data residency, custom security reviews, and direct Slack/Teams engineer bridge.
                             </p>
-
-                            {/* Enterprise Feature Badges */}
                             <div className="flex flex-wrap gap-2 text-xs font-semibold text-slate-700">
                                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-800">
                                     <Check className="w-3.5 h-3.5 text-emerald-600 stroke-[2.5]" />
@@ -1067,10 +1280,9 @@ export default function PricingSection() {
                             </div>
                         </div>
                     </div>
-
                     <div className="shrink-0 w-full lg:w-auto relative z-10 flex flex-col sm:flex-row lg:flex-col gap-2.5 items-stretch sm:items-center lg:items-end">
                         <div className="text-left lg:text-right">
-                            <span className="text-2xl font-bold font-serif text-slate-900 block">Custom</span>
+                            <span className="text-2xl font-bold text-slate-900 block">Custom</span>
                             <span className="text-xs text-slate-500 font-medium">Billed per agreement</span>
                         </div>
                         <Link
@@ -1084,88 +1296,20 @@ export default function PricingSection() {
                     </div>
                 </div>
 
-                {/* ── Section: What counts as a conversation & Add-ons Info ── */}
-                <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {/* Unit Explanation Card */}
-                    <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex flex-col justify-between">
-                        <div>
-                            <div className="flex items-center justify-between mb-2">
-                                <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#0396A6]">
-                                    <HelpCircle className="w-4 h-4" />
-                                    <span>The Unit · What counts as a conversation</span>
-                                </div>
-                                <span className="text-[11px] font-semibold text-slate-400">Section 1</span>
-                            </div>
-                            <ul className="space-y-2 text-xs text-slate-700 mt-3">
-                                <li className="flex items-start gap-2">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[#0396A6] mt-1.5 shrink-0" />
-                                    <span>
-                                        <strong className="text-slate-900 font-semibold">1 Conversation = Up to 12 replies</strong> from the Frosty agent. A 13th reply automatically starts a new conversation.
-                                    </span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[#0396A6] mt-1.5 shrink-0" />
-                                    <span>
-                                        <strong className="text-slate-900 font-semibold">Customer messages are unlimited and never counted.</strong> Only the agent&apos;s outgoing responses count toward your monthly allowance.
-                                    </span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-1.5 shrink-0" />
-                                    <span>Unused conversation allowances do not roll over between billing cycles.</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    {/* Add-ons & WhatsApp Rules Card */}
-                    <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex flex-col justify-between">
-                        <div>
-                            <div className="flex items-center justify-between mb-2">
-                                <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-700">
-                                    <Info className="w-4 h-4 text-[#0396A6]" />
-                                    <span>Add-ons, Team Seats & WhatsApp</span>
-                                </div>
-                                <span className="text-[11px] font-semibold text-slate-400">Section 5</span>
-                            </div>
-                            <ul className="space-y-2 text-xs text-slate-700 mt-3">
-                                <li className="flex items-start gap-2">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[#0396A6] mt-1.5 shrink-0" />
-                                    <span>
-                                        <strong className="text-slate-900 font-semibold">Additional team seats:</strong> {region === 'IN' ? '₹999 per seat / month' : '$19.99 per seat / month'}. Included seats are specified per tier.
-                                    </span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[#0396A6] mt-1.5 shrink-0" />
-                                    <span>
-                                        <strong className="text-slate-900 font-semibold">WhatsApp Messaging:</strong>{' '}
-                                        {region === 'IN' ? (
-                                            <span className="text-emerald-700 font-semibold">Included in every India plan. Nothing extra to pay.</span>
-                                        ) : (
-                                            <span>Billed at Meta&apos;s published per-message rate plus 5% as a separate invoice line.</span>
-                                        )}
-                                    </span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-1.5 shrink-0" />
-                                    <span>
-                                        <strong className="text-slate-900 font-semibold">Extra usage notifications:</strong> You will be notified in real-time as you approach plan limits. Upgrading is always cheaper than sustained extra overages.
-                                    </span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
 
                 {/* ── 14-Day Money-Back Guarantee Section ── */}
-                <div className="mt-8 p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-teal-50/70 via-white to-slate-50 border border-teal-200/80 shadow-xs relative overflow-hidden">
-                    <div className="max-w-3xl">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0396A6]/10 border border-[#0396A6]/20 mb-3">
-                            <ShieldCheck className="w-4 h-4 text-[#0396A6]" />
-                            <span className="text-xs font-bold tracking-wider text-[#0396A6] uppercase">Risk-Free Purchase Guarantee</span>
+                <div className="mt-8 p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-teal-50/70 via-white to-slate-50 border border-teal-200/80 shadow-xs relative flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8">
+                    <div className="max-w-3xl flex-1">
+                        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0396A6]/10 border border-[#0396A6]/20 mb-2.5">
+                            <ShieldCheck className="w-4.5 h-4.5 text-[#0396A6]" />
+                            <span className="text-xs sm:text-[13px] font-bold tracking-wider text-[#0396A6] uppercase">Risk-Free Purchase Guarantee</span>
                         </div>
-                        <h3 className="text-xl sm:text-2xl font-bold font-serif text-slate-900 mb-2">
-                            14-day money-back guarantee
-                        </h3>
+                        <div className="flex items-center gap-2 mb-2">
+                            <h3 className="text-xl sm:text-2xl font-bold text-slate-900">
+                                14-day money-back guarantee
+                            </h3>
+                            <GuaranteeInfoTooltip />
+                        </div>
                         <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
                             If Frosty isn&apos;t right for you, cancel within 14 days of going live and we&apos;ll refund what you&apos;ve paid.{' '}
                             <strong className="text-slate-900 font-semibold">
@@ -1174,35 +1318,24 @@ export default function PricingSection() {
                             — if you use more than that, we only charge for the conversations beyond it, at your plan&apos;s rate.
                         </p>
 
-                        <div className="mt-4 flex flex-wrap items-center gap-4 text-xs text-slate-500">
-                            <span>Available on Quarterly, 6-Month, Annual, and all Commerce plans.</span>
-                            <button
-                                type="button"
-                                onClick={() => setShowGuaranteeModal(!showGuaranteeModal)}
-                                className="text-[#0396A6] font-semibold underline hover:text-[#0A1A2F] cursor-pointer inline-flex items-center gap-1"
-                            >
-                                <span>{showGuaranteeModal ? 'Hide Full Terms' : 'View Full Terms & FAQ'}</span>
-                                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showGuaranteeModal ? 'rotate-180' : ''}`} />
-                            </button>
-                        </div>
+                        <p className="mt-3 text-xs text-slate-500">
+                            Available on Quarterly, 6-Month, Annual, and all Commerce plans.
+                        </p>
+                    </div>
 
-                        {/* Expandable Guarantee Terms Drawer */}
-                        {showGuaranteeModal && (
-                            <motion.div
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: 'auto' }}
-                                exit={{ opacity: 0, height: 0 }}
-                                className="mt-4 pt-4 border-t border-teal-200/60 text-xs text-slate-600 space-y-2 bg-white/80 p-4 rounded-xl"
-                            >
-                                <p className="font-bold text-slate-800">Full Guarantee Terms (§6):</p>
-                                <ul className="list-disc list-inside space-y-1.5">
-                                    <li>The 14 days start when the agent goes live (published and connected to at least one channel) or 14 days after payment, whichever comes first.</li>
-                                    <li>Available once per customer, on a first purchase only. Not available on renewals or upgrades.</li>
-                                    <li>Monthly plans do not need it — cancel anytime and the plan simply ends at the close of the current monthly billing period.</li>
-                                    <li>Refunds are processed to the original payment method, typically within 5–7 business days.</li>
-                                </ul>
-                            </motion.div>
-                        )}
+                    {/* Right Side: Apple/Google-Style 3D Guarantee Emblem Badge */}
+                    <div className="shrink-0 flex flex-col items-center justify-center lg:pr-2">
+                        <motion.div
+                            animate={{ y: [0, -6, 0] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                            className="relative group cursor-pointer select-none"
+                        >
+                            <img
+                                src="/guarantee_badge.png"
+                                alt="14-Day Money-Back Guarantee Trust Seal"
+                                className="relative w-36 h-36 sm:w-40 sm:h-40 xl:w-44 xl:h-44 object-contain transition-transform duration-300 group-hover:scale-105 pointer-events-none drop-shadow-[0_8px_24px_rgba(3,150,166,0.18)]"
+                            />
+                        </motion.div>
                     </div>
                 </div>
 
@@ -1215,7 +1348,7 @@ export default function PricingSection() {
                                 Full Product Included
                             </span>
                         </div>
-                        <h3 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 tracking-tight mb-2.5">
+                        <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-2.5">
                             Everything you need, included in every plan
                         </h3>
                         <p className="text-xs sm:text-sm text-slate-600">
@@ -1233,10 +1366,10 @@ export default function PricingSection() {
                                 transition={{ delay: idx * 0.03, duration: 0.25 }}
                                 className="p-4 rounded-xl bg-white border border-slate-200/70 shadow-xs hover:border-[#0396A6]/30 transition-all duration-200 flex flex-col"
                             >
-                                <div className="w-8 h-8 rounded-lg bg-teal-50 border border-teal-100 flex items-center justify-center mb-2.5 shrink-0">
+                                <div className="mb-2 text-[#0396A6] shrink-0">
                                     {feat.icon}
                                 </div>
-                                <h4 className="text-[13.5px] font-bold text-slate-900 mb-1 font-serif">
+                                <h4 className="text-[13.5px] font-bold text-slate-900 mb-1">
                                     {feat.title}
                                 </h4>
                                 <p className="text-xs text-slate-500 leading-relaxed">

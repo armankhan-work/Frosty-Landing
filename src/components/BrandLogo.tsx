@@ -73,7 +73,7 @@ export default function BrandLogo({ ready = true, collapsed = false, forceLight 
         className="frost-icon flex-shrink-0 z-10 relative flex items-center justify-center translate-y-[-1px] mr-2"
         style={{ opacity: 0 }}
       >
-        <img src="/logonew.png" alt="Frosty Logo" className="w-8 h-8 object-contain" />
+        <FrostyIcon size={32} glow={forceLight ? 0.8 : 0.4} />
       </div>
 
       {/* The Hidden Text Drawer */}

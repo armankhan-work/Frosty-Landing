@@ -42,7 +42,7 @@
 
 .statValue {
   margin: 0;
-  font-family: var(--font-serif);
+  font-family: var(--font-sans, 'Outfit', sans-serif);
   font-size: 26px;
   line-height: 1.15;
   font-weight: 600;

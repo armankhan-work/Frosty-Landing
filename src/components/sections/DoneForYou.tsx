@@ -373,7 +373,7 @@ export default function DoneForYou() {
                                             )}
                                         </div>
                                         
-                                        <h3 className="text-xl lg:text-2xl font-medium text-white mb-2 leading-tight shrink-0 truncate" style={{ fontFamily: 'var(--font-serif, "Playfair Display", serif)' }}>
+                                        <h3 className="text-xl lg:text-2xl font-medium text-white mb-2 leading-tight shrink-0 truncate">
                                             {activeStep.title}
                                         </h3>
                                         

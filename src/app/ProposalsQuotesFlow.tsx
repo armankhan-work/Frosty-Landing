@@ -52,8 +52,8 @@ export default function ProposalsQuotesFlow({ onComplete }: { onComplete?: () =>
             <motion.g initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.4, type: 'spring' }}>
               <circle cx="400" cy="80" r="24" fill="#F0FDFA" stroke="#0396A6" strokeWidth="1.5" />
               <foreignObject x="388" y="68" width="24" height="24" className="overflow-visible pointer-events-none">
-                <div className="w-6 h-6 flex items-center justify-center text-[#0396A6]">
-                  <Globe className="w-5 h-5" strokeWidth={1.75} />
+                <div className="w-6 h-6 flex items-center justify-center">
+                  <img src="/web.svg" alt="Website" className="w-5 h-5 object-contain" />
                 </div>
               </foreignObject>
             </motion.g>

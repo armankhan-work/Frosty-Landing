@@ -50,7 +50,7 @@ export function AnalyticsCharts({ overview }: Props) {
       >
         <div className="mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <h2 className="text-lg font-serif font-semibold text-foreground">Conversation Volume</h2>
+            <h2 className="text-lg font-semibold text-foreground">Conversation Volume</h2>
             <p className="text-sm text-muted-foreground">30-day interaction trends</p>
           </div>
           
@@ -178,7 +178,7 @@ export function AnalyticsCharts({ overview }: Props) {
       >
         <div className="mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <h2 className="text-lg font-serif font-semibold text-foreground">Lead Intent</h2>
+            <h2 className="text-lg font-semibold text-foreground">Lead Intent</h2>
             <p className="text-sm text-muted-foreground">Temperature distribution</p>
           </div>
           <div className="relative">

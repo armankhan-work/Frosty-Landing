@@ -190,7 +190,7 @@ export default function GoogleCalendarScheduler({
                     </div>
                     <div>
                         <h4 className="text-sm font-bold text-[#0A1A2F] leading-tight">{hostName}</h4>
-                        <h3 className="text-base sm:text-lg font-serif font-medium text-[#0A1A2F] mt-0.5">
+                        <h3 className="text-base sm:text-lg font-medium text-[#0A1A2F] mt-0.5">
                             {meetingTitle}
                         </h3>
                     </div>
@@ -245,7 +245,7 @@ export default function GoogleCalendarScheduler({
                         >
                             {/* Step Title & Timezone */}
                             <div>
-                                <h4 className="text-sm sm:text-base font-serif font-bold text-[#0A1A2F]">
+                                <h4 className="text-sm sm:text-base font-bold text-[#0A1A2F]">
                                     Select an appointment time
                                 </h4>
                                 <div className="flex items-center gap-1.5 text-xs text-slate-500 mt-1">
@@ -256,7 +256,7 @@ export default function GoogleCalendarScheduler({
 
                             {/* Month Header */}
                             <div className="flex items-center justify-between px-1">
-                                <span className="text-sm font-bold text-[#0A1A2F] font-serif">
+                                <span className="text-sm font-bold text-[#0A1A2F]">
                                     {monthName} {year}
                                 </span>
                                 <div className="flex items-center gap-1">
@@ -450,7 +450,7 @@ export default function GoogleCalendarScheduler({
                                 <CheckCircle2 className="w-7 h-7" />
                             </div>
                             <div>
-                                <h3 className="text-lg font-serif font-bold text-[#0A1A2F]">
+                                <h3 className="text-lg font-bold text-[#0A1A2F]">
                                     Call Scheduled Successfully!
                                 </h3>
                                 <p className="text-xs text-slate-500 mt-1 max-w-xs mx-auto">

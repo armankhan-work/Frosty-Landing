@@ -29,31 +29,31 @@ textarea,
 select,
 label,
 li,
+h3,
+h4,
+h5,
+h6,
 .font-sans,
 [class*="font-sans"],
 .fx-lead {
   font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* 2. Global Headings & Heading Children Typography: Cormorant Garamond */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-h1 *,
-h2 *,
-h3 *,
-h4 *,
-h5 *,
-h6 *,
+/* 2. Main Section Headings & all their nested words/spans: Cormorant Garamond */
 .font-serif,
 .font-serif *,
-[class*="font-serif"],
-[class*="font-serif"] *,
-.fx-h2,
-.fx-h2 * {
+.font-serif-heading,
+.font-serif-heading *,
+.fx-main-heading,
+.fx-main-heading *,
+.fx-sec-title,
+.fx-sec-title *,
+.section-main-heading,
+.section-main-heading *,
+.fx-root .fx-h2,
+.fx-root .fx-h2 *,
+.fx-sec .fx-h2,
+.fx-sec .fx-h2 * {
   font-family: 'Cormorant Garamond', Georgia, serif !important;
 }
 

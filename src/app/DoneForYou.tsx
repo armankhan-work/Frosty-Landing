@@ -162,8 +162,8 @@ export default function DoneForYou() {
                     >
                         {/* Feature 1 */}
                         <div className="flex flex-row sm:flex-col lg:flex-row items-center sm:items-start lg:items-center gap-3 group">
-                            <div className="w-10 h-10 rounded-xl bg-teal-50 border border-teal-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
-                                <Clock className="w-5 h-5 text-[#0396A6]" />
+                            <div className="shrink-0 group-hover:scale-105 transition-transform duration-300">
+                                <Clock className="w-6 h-6 text-[#0396A6] stroke-[1.85]" />
                             </div>
                             <div>
                                 <h4 className="text-[13px] font-bold text-slate-900 leading-tight">Setup in 5 min</h4>
@@ -172,8 +172,8 @@ export default function DoneForYou() {
                         </div>
                         {/* Feature 2 */}
                         <div className="flex flex-row sm:flex-col lg:flex-row items-center sm:items-start lg:items-center gap-3 group">
-                            <div className="w-10 h-10 rounded-xl bg-teal-50 border border-teal-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
-                                <Sparkles className="w-5 h-5 text-[#0396A6]" />
+                            <div className="shrink-0 group-hover:scale-105 transition-transform duration-300">
+                                <Sparkles className="w-6 h-6 text-[#0396A6] stroke-[1.85]" />
                             </div>
                             <div>
                                 <h4 className="text-[13px] font-bold text-slate-900 leading-tight">Auto-learning</h4>
@@ -182,8 +182,8 @@ export default function DoneForYou() {
                         </div>
                         {/* Feature 3 */}
                         <div className="flex flex-row sm:flex-col lg:flex-row items-center sm:items-start lg:items-center gap-3 group">
-                            <div className="w-10 h-10 rounded-xl bg-teal-50 border border-teal-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
-                                <ShieldCheck className="w-5 h-5 text-[#0396A6]" />
+                            <div className="shrink-0 group-hover:scale-105 transition-transform duration-300">
+                                <ShieldCheck className="w-6 h-6 text-[#0396A6] stroke-[1.85]" />
                             </div>
                             <div>
                                 <h4 className="text-[13px] font-bold text-slate-900 leading-tight">Strict guardrails</h4>
@@ -335,7 +335,7 @@ export default function DoneForYou() {
                                             )}
                                         </div>
                                         
-                                        <h3 className="text-xl lg:text-2xl font-serif font-bold text-slate-900 mb-6 leading-tight shrink-0 line-clamp-2">
+                                        <h3 className="text-xl lg:text-2xl font-bold text-slate-900 mb-6 leading-tight shrink-0 line-clamp-2">
                                             {activeStep.title}
                                         </h3>
                                         

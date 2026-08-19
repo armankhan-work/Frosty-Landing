@@ -23,7 +23,7 @@ export default function WhatIsFrostySection() {
                     </p>
                 </div>
 
-                <div className="w-full lg:w-[50%] relative overflow-hidden">
+                <div className="w-full lg:w-[50%] relative py-2 sm:py-4">
                     <div className="w-full flex justify-center lg:justify-end">
                         <InteractiveDashboard />
                     </div>

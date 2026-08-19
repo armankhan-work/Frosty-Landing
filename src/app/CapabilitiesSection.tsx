@@ -20,9 +20,7 @@ export default function CapabilitiesSection() {
                             transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
                             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-6 relative group bg-[#0396A6]/[0.08] border border-[#0396A6]/20 backdrop-blur-sm shadow-xs"
                         >
-                            <span className="w-4 h-4 rounded-full bg-[#0396A6]/20 flex items-center justify-center">
-                                <Settings className="w-2.5 h-2.5 text-[#0396A6]" />
-                            </span>
+                            <Settings className="w-3.5 h-3.5 text-[#0396A6]" />
                             <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">UNDER THE HOOD</span>
                         </motion.div>
 
@@ -59,27 +57,21 @@ export default function CapabilitiesSection() {
                             className="flex flex-col gap-3 w-full max-w-lg"
                         >
                             <div className="flex items-center gap-3 p-3 rounded-xl bg-white/90 border border-slate-200 shadow-2xs">
-                                <div className="w-8 h-8 rounded-lg bg-teal-50 text-[#0396A6] flex items-center justify-center shrink-0 border border-teal-100">
-                                    <span className="text-xs font-bold font-mono">01</span>
-                                </div>
+                                <span className="text-xs font-bold font-mono text-[#0396A6] shrink-0 w-5">01</span>
                                 <div>
                                     <h4 className="text-[13px] font-bold text-slate-900 leading-tight">Isolated Knowledge Layer</h4>
                                     <p className="text-[11px] text-slate-500 leading-tight mt-0.5">Your proprietary data is vector-embedded into isolated client boundaries.</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-3 p-3 rounded-xl bg-white/90 border border-slate-200 shadow-2xs">
-                                <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-100">
-                                    <span className="text-xs font-bold font-mono">02</span>
-                                </div>
+                                <span className="text-xs font-bold font-mono text-emerald-700 shrink-0 w-5">02</span>
                                 <div>
                                     <h4 className="text-[13px] font-bold text-slate-900 leading-tight">Deterministic Guardrails</h4>
                                     <p className="text-[11px] text-slate-500 leading-tight mt-0.5">Removes invented prices, phone numbers, and links before reaching the customer.</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-3 p-3 rounded-xl bg-white/90 border border-slate-200 shadow-2xs">
-                                <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center shrink-0 border border-blue-100">
-                                    <span className="text-xs font-bold font-mono">03</span>
-                                </div>
+                                <span className="text-xs font-bold font-mono text-blue-700 shrink-0 w-5">03</span>
                                 <div>
                                     <h4 className="text-[13px] font-bold text-slate-900 leading-tight">Real-Time CRM & Webhooks</h4>
                                     <p className="text-[11px] text-slate-500 leading-tight mt-0.5">Syncs qualified intents and message transcripts straight into your toolstack.</p>

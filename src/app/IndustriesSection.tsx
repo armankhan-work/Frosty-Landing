@@ -120,16 +120,8 @@ function RadialIndustryHub() {
                                     borderColor: isActive ? item.color : undefined,
                                 }}>
                                 <div className={`relative flex items-center justify-center ${isActive ? 'mb-1' : 'mb-0 sm:mb-1 group-hover:mb-1'}`}>
-                                    {isActive && (
-                                        <div className="absolute inset-0 rounded-full border-2 border-[#0396A6] animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite] opacity-30" />
-                                    )}
-                                    <div className="relative z-10 w-8 h-9 xl:w-9 xl:h-10 flex items-center justify-center transition-all duration-300"
-                                        style={{
-                                            clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
-                                            backgroundColor: isActive ? item.color : item.lightBg,
-                                            color: isActive ? '#ffffff' : item.color,
-                                        }}>
-                                        <span className="w-4 h-4 flex items-center justify-center"><Icon n={item.id} /></span>
+                                    <div className="relative z-10 w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center text-[#0396A6] transition-transform duration-300">
+                                        <span className="w-5 h-5 flex items-center justify-center"><Icon n={item.id} /></span>
                                     </div>
                                 </div>
                                 <span className={`text-[10px] xl:text-[11px] font-bold text-center tracking-tight leading-tight transition-colors duration-300 truncate w-full px-0.5 ${isActive ? 'block' : 'hidden sm:block group-hover:block'}`}
@@ -159,9 +151,7 @@ export default function IndustriesSection() {
                             transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
                             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-6 relative group bg-[#0396A6]/[0.08] border border-[#0396A6]/20 backdrop-blur-sm shadow-xs"
                         >
-                            <span className="w-4 h-4 rounded-full bg-[#0396A6]/20 flex items-center justify-center">
-                                <Users className="w-2.5 h-2.5 text-[#0396A6]" />
-                            </span>
+                            <Users className="w-3.5 h-3.5 text-[#0396A6]" />
                             <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">WHO IS FROSTY FOR?</span>
                         </motion.div>
 
@@ -186,28 +176,6 @@ export default function IndustriesSection() {
                         >
                             From e-commerce to clinics to car showrooms — if your leads arrive through a website or WhatsApp, Frosty can answer them, qualify them, and act on them automatically 24/7.
                         </motion.p>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.45, ease: 'easeOut' }}
-                            className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-8 mt-8 sm:mt-10 w-full max-w-[500px]"
-                        >
-                            {[
-                                { icon: "chat", stat: "24/7", label: "AI that never sleeps" },
-                                { icon: "shield", stat: "100%", label: "Consistent responses" },
-                                { icon: "bolt", stat: "Instant", label: "Lead qualification" },
-                            ].map((s, i) => (
-                                <div key={i} className="group cursor-default">
-                                    <div className="w-12 h-12 rounded-[16px] bg-teal-50 border border-teal-200 flex items-center justify-center mb-3 text-[#0396A6] shadow-xs group-hover:scale-105 group-hover:border-[#0396A6] transition-all duration-300">
-                                        <span className="w-6 h-6 flex items-center justify-center"><Icon n={s.icon} /></span>
-                                    </div>
-                                    <h4 className="text-[17px] font-bold text-slate-900 leading-tight">{s.stat}</h4>
-                                    <p className="text-[13px] text-slate-500 font-medium mt-0.5">{s.label}</p>
-                                </div>
-                            ))}
-                        </motion.div>
                     </div>
 
                     {/* Right Column */}

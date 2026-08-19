@@ -259,7 +259,7 @@ export default function ContactPage() {
                         <CheckCircle2 className="w-8 h-8" />
                       </div>
                       <div className="space-y-1 max-w-md">
-                        <h3 className="text-xl font-bold text-emerald-950 font-serif">
+                        <h3 className="text-xl font-bold text-emerald-950">
                           Message Sent Successfully!
                         </h3>
                         <p className="text-xs sm:text-sm text-emerald-800 leading-relaxed">

@@ -21,9 +21,7 @@ export default function CostOfSlowSection() {
                         <div className="mb-5">
                             {/* Eyebrow Badge */}
                             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 mb-3.5 backdrop-blur-sm shadow-2xs">
-                                <span className="w-4 h-4 rounded-full bg-[#0396A6]/20 flex items-center justify-center">
-                                    <Zap className="w-2.5 h-2.5 text-[#0396A6]" />
-                                </span>
+                                <Zap className="w-3.5 h-3.5 text-[#0396A6]" />
                                 <span className="text-[10.5px] font-bold tracking-widest uppercase text-[#0396A6]">
                                     THE COST OF A SLOW REPLY
                                 </span>
@@ -45,52 +43,58 @@ export default function CostOfSlowSection() {
                         </div>
 
                         {/* 3 Stat Cards */}
-                        <div className="grid grid-cols-3 gap-3 mb-4">
+                        <div className="grid grid-cols-3 gap-2.5 sm:gap-3 mb-4">
 
-                            {/* Card 1: Qualification */}
-                            <div className="bg-white/90 backdrop-blur-sm border border-slate-200/80 rounded-2xl p-3 sm:p-4 text-center flex flex-col items-center justify-center shadow-xs">
-                                <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#0396A6]/10 border border-[#0396A6]/20 mb-1.5">
-                                    <TrendingUp className="w-3 h-3 text-[#0396A6] stroke-[2]" />
-                                    <span className="text-[8.5px] font-bold text-[#0396A6] tracking-wider uppercase">
+                            {/* Card 1: Qualification (Teal) */}
+                            <div className="bg-white/90 backdrop-blur-sm border border-slate-200/80 rounded-2xl p-3 sm:p-3.5 text-center flex flex-col items-center justify-between shadow-xs min-h-[145px] sm:min-h-[155px]">
+                                <div className="flex items-center justify-center gap-1.5 sm:gap-2 mb-1">
+                                    <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#0396A6]/15 flex items-center justify-center shrink-0">
+                                        <TrendingUp className="w-3.5 h-3.5 text-[#0396A6] stroke-[2.2]" />
+                                    </div>
+                                    <span className="text-[9.5px] sm:text-[10px] font-extrabold text-[#0396A6] tracking-wider uppercase font-sans">
                                         QUALIFICATION
                                     </span>
                                 </div>
-                                <div className="text-2xl sm:text-3xl font-extrabold font-sans text-[#0396A6] leading-tight my-0.5">
+                                <div className="text-2xl sm:text-3xl font-extrabold font-sans text-[#0396A6] leading-none my-1">
                                     7x
                                 </div>
-                                <div className="text-[10.5px] sm:text-[11px] text-slate-600 leading-snug">
+                                <div className="text-[10px] sm:text-[11px] text-slate-600 leading-tight font-sans">
                                     more likely to qualify<br />the lead
                                 </div>
                             </div>
 
-                            {/* Card 2: Advantage */}
-                            <div className="bg-white/90 backdrop-blur-sm border border-slate-200/80 rounded-2xl p-3 sm:p-4 text-center flex flex-col items-center justify-center shadow-xs">
-                                <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-orange-50 border border-orange-200/80 mb-1.5">
-                                    <Users className="w-3 h-3 text-[#EA580C] stroke-[2]" />
-                                    <span className="text-[8.5px] font-bold text-[#EA580C] tracking-wider uppercase">
+                            {/* Card 2: Advantage (Orange Shade 1: Bright Amber-Orange #F97316) */}
+                            <div className="bg-white/90 backdrop-blur-sm border border-slate-200/80 rounded-2xl p-3 sm:p-3.5 text-center flex flex-col items-center justify-between shadow-xs min-h-[145px] sm:min-h-[155px]">
+                                <div className="flex items-center justify-center gap-1.5 sm:gap-2 mb-1">
+                                    <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#F97316]/15 flex items-center justify-center shrink-0">
+                                        <Users className="w-3.5 h-3.5 text-[#F97316] stroke-[2.2]" />
+                                    </div>
+                                    <span className="text-[9.5px] sm:text-[10px] font-extrabold text-[#F97316] tracking-wider uppercase font-sans">
                                         ADVANTAGE
                                     </span>
                                 </div>
-                                <div className="text-2xl sm:text-3xl font-extrabold font-sans text-[#EA580C] leading-tight my-0.5">
+                                <div className="text-2xl sm:text-3xl font-extrabold font-sans text-[#F97316] leading-none my-1">
                                     60x
                                 </div>
-                                <div className="text-[10.5px] sm:text-[11px] text-slate-600 leading-snug">
+                                <div className="text-[10px] sm:text-[11px] text-slate-600 leading-tight font-sans">
                                     more likely to connect<br />before competitors
                                 </div>
                             </div>
 
-                            {/* Card 3: Average */}
-                            <div className="bg-white/90 backdrop-blur-sm border border-slate-200/80 rounded-2xl p-3 sm:p-4 text-center flex flex-col items-center justify-center shadow-xs">
-                                <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-orange-50 border border-orange-200/80 mb-1.5">
-                                    <Clock className="w-3 h-3 text-[#EA580C] stroke-[2]" />
-                                    <span className="text-[8.5px] font-bold text-[#EA580C] tracking-wider uppercase">
+                            {/* Card 3: Average (Orange Shade 2: Deep Crimson-Orange #EA580C) */}
+                            <div className="bg-white/90 backdrop-blur-sm border border-slate-200/80 rounded-2xl p-3 sm:p-3.5 text-center flex flex-col items-center justify-between shadow-xs min-h-[145px] sm:min-h-[155px]">
+                                <div className="flex items-center justify-center gap-1.5 sm:gap-2 mb-1">
+                                    <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#EA580C]/15 flex items-center justify-center shrink-0">
+                                        <Clock className="w-3.5 h-3.5 text-[#EA580C] stroke-[2.2]" />
+                                    </div>
+                                    <span className="text-[9.5px] sm:text-[10px] font-extrabold text-[#EA580C] tracking-wider uppercase font-sans">
                                         AVERAGE
                                     </span>
                                 </div>
-                                <div className="text-2xl sm:text-3xl font-extrabold font-sans text-[#EA580C] leading-tight my-0.5">
+                                <div className="text-2xl sm:text-3xl font-extrabold font-sans text-[#EA580C] leading-none my-1">
                                     0.4%
                                 </div>
-                                <div className="text-[10.5px] sm:text-[11px] text-slate-600 leading-snug">
+                                <div className="text-[10px] sm:text-[11px] text-slate-600 leading-tight font-sans">
                                     of leads get a fast<br />human response
                                 </div>
                             </div>
@@ -98,15 +102,15 @@ export default function CostOfSlowSection() {
                         </div>
 
                         {/* Bottom Trophy Banner */}
-                        <div className="w-full bg-white rounded-2xl p-3.5 sm:p-4 border border-teal-100/80 shadow-xs flex items-center gap-3.5">
-                            <div className="w-8 h-8 rounded-xl bg-[#0396A6] flex items-center justify-center shadow-[0_2px_10px_rgba(3,150,166,0.3)] shrink-0">
-                                <Trophy className="w-4 h-4 text-white" />
+                        <div className="w-full bg-white rounded-2xl p-3 sm:p-3.5 border border-teal-100/80 shadow-xs flex items-center gap-3.5">
+                            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#0396A6] flex items-center justify-center shrink-0 shadow-sm">
+                                <Trophy className="w-4 h-4 sm:w-5 sm:h-5 text-white stroke-[2.2]" />
                             </div>
                             <div className="min-w-0">
-                                <div className="text-[12.5px] sm:text-[13px] font-bold text-slate-900 leading-tight">
+                                <div className="text-[12px] sm:text-[12.5px] font-bold text-slate-900 leading-tight font-sans">
                                     Frosty Agent replies in seconds – before this chart even starts.
                                 </div>
-                                <div className="text-[11.5px] text-slate-600 mt-0.5">
+                                <div className="text-[11px] sm:text-[11.5px] text-slate-600 mt-0.5 font-sans">
                                     While others respond, Frosty Agent converts.
                                 </div>
                             </div>

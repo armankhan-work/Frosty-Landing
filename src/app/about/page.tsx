@@ -416,7 +416,7 @@ export default function AboutPage() {
                 whileHover={{ y: -3 }}
                 className={`p-5 sm:p-6 rounded-2xl ${stat.bg} border border-slate-200/80 shadow-2xs text-center transition-all`}
               >
-                <div className={`text-2xl sm:text-3xl md:text-4xl font-serif font-bold ${stat.color} tracking-tight`}>
+                <div className={`text-2xl sm:text-3xl md:text-4xl font-bold ${stat.color} tracking-tight`}>
                   {stat.number}
                 </div>
                 <div className="text-[11px] sm:text-xs font-semibold text-slate-500 mt-1.5">{stat.label}</div>

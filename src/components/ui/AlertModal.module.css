@@ -51,7 +51,7 @@
 }
 
 .alertTitle {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans, 'Outfit', sans-serif);
   font-size: 24px;
   font-weight: 700;
   color: var(--ink);

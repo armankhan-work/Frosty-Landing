@@ -214,13 +214,13 @@ export default function PremiumTwoAgents() {
 
               {/* Node 2: Website (Top Right) */}
               <motion.div
-                className="absolute top-[56px] left-[276px] w-12 h-12 bg-gradient-to-tr from-blue-100 to-blue-50 rounded-full flex items-center justify-center border border-blue-200 z-10 cursor-pointer pointer-events-auto"
+                className="absolute top-[56px] left-[276px] w-12 h-12 flex items-center justify-center z-10 cursor-pointer pointer-events-auto"
                 initial={{ scale: 0 }}
-                animate={{ scale: 1, boxShadow: "0px 4px 6px -1px rgba(0, 0, 0, 0.1)" }}
+                animate={{ scale: 1 }}
                 transition={{ delay: 0.4, type: 'spring' }}
-                whileHover={{ scale: 1.25, rotate: 10, boxShadow: "0px 20px 40px -5px rgba(59, 130, 246, 0.8)" }}
+                whileHover={{ scale: 1.25, rotate: 10 }}
               >
-                <Globe className="w-6 h-6 text-blue-600" />
+                <img src="/web.svg" alt="Website" className="w-8 h-8 object-contain" />
               </motion.div>
 
               {/* Node 3: Brain (Bottom Right) */}
@@ -236,13 +236,13 @@ export default function PremiumTwoAgents() {
 
               {/* Node 4: WhatsApp (Bottom Left) */}
               <motion.div
-                className="absolute top-[236px] left-[36px] w-12 h-12 bg-white rounded-full flex items-center justify-center border border-gray-100 z-10 p-2.5 cursor-pointer pointer-events-auto"
+                className="absolute top-[236px] left-[36px] w-12 h-12 flex items-center justify-center z-10 cursor-pointer pointer-events-auto"
                 initial={{ scale: 0 }}
-                animate={{ scale: 1, boxShadow: "0px 4px 6px -1px rgba(0, 0, 0, 0.1)" }}
+                animate={{ scale: 1 }}
                 transition={{ delay: 0.8, type: 'spring' }}
-                whileHover={{ scale: 1.25, rotate: 10, boxShadow: "0px 20px 40px -5px rgba(34, 197, 94, 0.8)" }}
+                whileHover={{ scale: 1.25, rotate: 10 }}
               >
-                <img src="/whatsapp.png" alt="WhatsApp" className="w-full h-full object-contain" />
+                <img src="/whatsapp.png" alt="WhatsApp" className="w-8 h-8 object-contain" />
               </motion.div>
 
               {/* Message Bubble 1: User to Website */}
@@ -395,7 +395,7 @@ export default function PremiumTwoAgents() {
                   </div>
                 </div>
 
-                <h3 className="text-[26px] font-bold text-[#FF7A5E] mb-3 font-serif leading-tight">
+                <h3 className="text-[26px] font-bold text-[#FF7A5E] mb-3 leading-tight">
                   Website Conversion Agent
                 </h3>
                 <p className="text-[14px] text-[#5B6B63] leading-[1.6] mb-8">
@@ -501,7 +501,7 @@ export default function PremiumTwoAgents() {
                   </div>
                 </div>
 
-                <h3 className="text-[26px] font-bold text-[#166534] mb-3 font-serif leading-tight">
+                <h3 className="text-[26px] font-bold text-[#166534] mb-3 leading-tight">
                   WhatsApp Conversation Agent
                 </h3>
                 <p className="text-[14px] text-[#5B6B63] leading-[1.6] mb-8">

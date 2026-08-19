@@ -185,13 +185,13 @@ export default function TwoAgentsSection() {
 
               {/* Node 2: Website (Top Right) */}
               <motion.div 
-                className="absolute top-[56px] left-[276px] w-12 h-12 bg-[#F0FDFA] rounded-full flex items-center justify-center border border-[#0396A6]/30 z-10 cursor-pointer pointer-events-auto shadow-md"
+                className="absolute top-[56px] left-[276px] w-12 h-12 flex items-center justify-center z-10 cursor-pointer pointer-events-auto"
                 initial={{ scale: 0 }} 
                 animate={{ scale: 1 }} 
                 transition={{ delay: 0.4, type: 'spring' }}
                 whileHover={{ scale: 1.2, rotate: 10 }}
               >
-                <Globe className="w-6 h-6 text-[#0396A6]" />
+                <img src="/web.svg" alt="Website" className="w-9 h-9 object-contain" />
               </motion.div>
 
               {/* Node 3: Brain (Bottom Right) */}
@@ -207,13 +207,13 @@ export default function TwoAgentsSection() {
 
               {/* Node 4: WhatsApp (Bottom Left) */}
               <motion.div 
-                className="absolute top-[236px] left-[36px] w-12 h-12 bg-green-50 rounded-full flex items-center justify-center border border-green-200 z-10 p-2.5 cursor-pointer pointer-events-auto shadow-md"
+                className="absolute top-[236px] left-[36px] w-12 h-12 flex items-center justify-center z-10 cursor-pointer pointer-events-auto"
                 initial={{ scale: 0 }} 
                 animate={{ scale: 1 }} 
                 transition={{ delay: 0.8, type: 'spring' }}
                 whileHover={{ scale: 1.2, rotate: 10 }}
               >
-                <img src="/whatsapp.png" alt="WhatsApp" className="w-full h-full object-contain" />
+                <img src="/whatsapp.png" alt="WhatsApp" className="w-9 h-9 object-contain" />
               </motion.div>
               
               {/* Message Bubbles */}
@@ -270,9 +270,7 @@ export default function TwoAgentsSection() {
         >
           {/* Eyebrow */}
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 mb-2.5 backdrop-blur-sm shadow-xs">
-            <span className="w-3.5 h-3.5 rounded-full bg-[#0396A6]/20 flex items-center justify-center">
-              <Bot className="w-2 h-2 text-[#0396A6]" />
-            </span>
+            <Bot className="w-3.5 h-3.5 text-[#0396A6]" />
             <span className="text-[9.5px] md:text-[10.5px] font-bold tracking-widest uppercase text-[#0396A6]">DUAL-CHANNEL ARCHITECTURE</span>
           </div>
 
@@ -351,11 +349,10 @@ export default function TwoAgentsSection() {
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-2.5 sm:mb-3">
                   <motion.div 
-                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-teal-50 border border-teal-200 flex items-center justify-center shadow-sm"
                     animate={{ scale: active === 'outbound' ? 1.1 : 1 }}
                     transition={{ type: 'spring', stiffness: 300 }}
                   >
-                    <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#0396A6]" strokeWidth={2.5} />
+                    <img src="/web.svg" alt="Website" className="w-6 h-6 object-contain shrink-0" />
                   </motion.div>
                   <div className="px-2 py-0.5 rounded-full bg-[#0396A6]/10 text-[9px] font-bold text-[#0396A6] tracking-wider uppercase border border-[#0396A6]/20">
                     WEB AGENT
@@ -435,11 +432,10 @@ export default function TwoAgentsSection() {
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-2.5 sm:mb-3">
                   <motion.div 
-                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-green-50 border border-green-200 flex items-center justify-center shadow-sm"
                     animate={{ scale: active === 'inbound' ? 1.1 : 1 }}
                     transition={{ type: 'spring', stiffness: 300 }}
                   >
-                    <MessageSquare className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-600" strokeWidth={2.5} />
+                    <img src="/whatsapp.png" alt="WhatsApp" className="w-6 h-6 object-contain shrink-0" />
                   </motion.div>
                   <div className="px-2 py-0.5 rounded-full bg-green-50 text-[9px] font-bold text-green-700 tracking-wider uppercase border border-green-200">
                     WHATSAPP AGENT

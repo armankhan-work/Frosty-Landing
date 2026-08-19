@@ -50,7 +50,7 @@ function SidebarIcon({ type, active }: { type: string; active?: boolean }) {
 
 function DashboardPanel() {
   return (
-    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-white overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
+    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-white overflow-hidden">
       <div className="px-4 sm:px-6 pt-5 pb-3 shrink-0 flex items-start justify-between">
         <div>
           <div className="text-[22px] font-sans font-bold !text-slate-900 leading-tight" style={{ fontFamily: "var(--sans, 'Outfit', sans-serif)" }}>Dashboard Overview</div>
@@ -214,7 +214,7 @@ function AnalyticsPanelV2() {
   const data = ANALYTICS_DATA[timeFilter];
 
   return (
-    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-white overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
+    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-white overflow-hidden">
       <div className="px-4 sm:px-6 pt-5 pb-3 shrink-0">
         <div className="text-[22px] font-sans font-bold !text-slate-900 leading-tight" style={{ fontFamily: "var(--sans, 'Outfit', sans-serif)" }}>Analytics</div>
         <p className="text-[11px] font-medium !text-slate-500">Real-time insights and metrics</p>
@@ -365,7 +365,7 @@ function CalendarPanel() {
   for (let d = 1; d <= daysInMonth; d++) days.push(d);
 
   return (
-    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-white overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
+    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-white overflow-hidden">
       <div className="h-[46px] sm:h-[50px] border-b border-[#CCFBF1] px-3 sm:px-5 flex items-center justify-between bg-white shrink-0">
         <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
           <span className="text-[13px] sm:text-[14px] font-bold !text-slate-900 truncate">Scheduled Meetings</span>
@@ -432,7 +432,7 @@ function TeamPanel() {
   ];
 
   return (
-    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-white overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
+    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-white overflow-hidden">
       <div className="px-4 sm:px-6 pt-5 pb-3 shrink-0 flex items-center justify-between gap-2 overflow-hidden">
         <div className="min-w-0">
           <div className="text-[20px] sm:text-[22px] font-sans font-bold !text-slate-900 truncate" style={{ fontFamily: "var(--sans, 'Outfit', sans-serif)" }}>Team Management</div>
@@ -605,7 +605,7 @@ export default function InteractiveDashboard() {
   }, [activeTab]);
 
   return (
-    <div className="relative w-full max-w-[720px] mx-auto bg-white rounded-[20px] sm:rounded-[28px] shadow-[0_20px_60px_rgba(0,0,0,.08)] border border-slate-200/80 overflow-hidden">
+    <div className="relative w-full max-w-[720px] mx-auto bg-white rounded-[24px] sm:rounded-[28px] shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-slate-200/80 overflow-hidden">
       <div className="flex">
         {/* Sidebar */}
         <div className="w-[48px] sm:w-[56px] bg-[#F8FAFC] flex flex-col items-center py-4 sm:py-5 gap-4 sm:gap-5 shrink-0 border-r border-slate-200">
@@ -638,7 +638,7 @@ export default function InteractiveDashboard() {
             {activeTab === 'home' && <DashboardPanel />}
             {activeTab === 'chart' && <AnalyticsPanelV2 />}
             {activeTab === 'chat' && (
-              <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-white overflow-hidden rounded-r-[20px] sm:rounded-r-[28px]">
+              <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-white overflow-hidden">
                 <div className="h-[46px] sm:h-[50px] border-b border-[#CCFBF1] px-3 sm:px-5 flex items-center justify-between bg-white shrink-0">
                   <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
                     <span className="text-[13px] sm:text-[14px] font-bold !text-slate-900 truncate">New Lead</span>

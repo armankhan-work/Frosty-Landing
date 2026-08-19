@@ -103,7 +103,7 @@ export function ActivityFeed() {
   return (
     <div className="w-full">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-sm font-serif font-semibold text-foreground flex items-center gap-2">
+        <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#673EBE] opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#673EBE]"></span>

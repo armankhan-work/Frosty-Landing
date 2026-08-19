@@ -157,7 +157,7 @@ function AwwwardsPieChart({ data, centerTitle = "Total", valueUnit = "" }: { dat
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.15 }}
-            className="text-2xl font-bold font-serif text-foreground tracking-tight my-0.5"
+            className="text-2xl font-bold text-foreground tracking-tight my-0.5"
           >
             {displayVal}{valueUnit}
           </motion.span>
@@ -233,7 +233,7 @@ function KpiSparklineCard({
     <div className="flex items-center justify-between h-full w-full p-1 gap-3">
       {/* Left side: Big number & hint */}
       <div className="flex flex-col justify-center shrink-0 min-w-[100px]">
-        <span className="text-3xl font-bold text-foreground font-serif tracking-tight">
+        <span className="text-3xl font-bold text-foreground tracking-tight">
           <CountUp end={val} duration={1.5} />
         </span>
         <span className="text-xs text-muted-foreground/70 font-medium mt-1 truncate max-w-[120px]">
@@ -628,7 +628,7 @@ export function WidgetCard({ widgetDef, widgetInstance, data, isEditMode, onRemo
               <GripVertical className="w-4 h-4" />
             </div>
           )}
-          <span className="text-sm font-serif font-semibold text-foreground truncate">{widgetDef.label}</span>
+          <span className="text-sm font-semibold text-foreground truncate">{widgetDef.label}</span>
         </div>
 
         {/* Header Actions (Only rendered in Edit Mode) */}
