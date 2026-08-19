@@ -71,32 +71,6 @@ export default function TwoAgentsSection() {
       }}
     >
       
-      {/* Interactive Section-Wide Spotlight */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        <motion.div
-          className="absolute rounded-full blur-[100px]"
-          style={{
-            width: 800,
-            height: 800,
-            x: springX,
-            y: springY,
-            translateX: "-50%",
-            translateY: "-50%",
-          }}
-          animate={{
-            background: active === 'outbound'
-              ? 'radial-gradient(circle, rgba(3, 150, 166,0.08) 0%, transparent 70%)'
-              : active === 'inbound'
-              ? 'radial-gradient(circle, rgba(16,185,129,0.08) 0%, transparent 70%)'
-              : isHoveringSection 
-              ? 'radial-gradient(circle, rgba(3, 150, 166,0.05) 0%, transparent 70%)'
-              : 'radial-gradient(circle, rgba(3, 150, 166,0) 0%, transparent 70%)',
-            scale: isHoveringSection ? 1 : 0.8,
-          }}
-          transition={{ duration: 0.5 }}
-        />
-      </div>
-
       {/* Dropping Logo Animation */}
       <AnimatePresence>
         {logoDropped && (

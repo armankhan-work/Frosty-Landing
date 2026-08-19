@@ -1,125 +1,133 @@
 // @ts-nocheck
 'use client';
 
-import { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
+import { Lightbulb } from 'lucide-react';
 
-const ODDS = [
+const BARS_DATA = [
   {
-    t: "5 min", v: 100, color: "#0396A6", label: "100",
-    head: "The window is open.",
-    body: "The study's baseline. Every other number here is measured against this moment.",
-    quote: null
+    time: "5 min",
+    valLabel: "100",
+    percentage: 100,
+    barColor: "bg-gradient-to-b from-[#06B6D4] to-[#0396A6]",
+    badgeBg: "bg-teal-50 border border-teal-200/90 text-[#0396A6]",
+    arrowColor: "border-t-teal-200",
   },
   {
-    t: "10 min", v: 25, color: "#D97706", label: "25",
-    head: "Four times worse - after five more minutes.",
-    body: "Five minutes of delay costs three-quarters of the odds.",
-    quote: "From 5 minutes to 10 minutes the dial to qualify odds decrease 4 times."
+    time: "10 min",
+    valLabel: "25",
+    percentage: 25,
+    barColor: "bg-[#D8B896]",
+    badgeBg: "bg-[#F7EFE8] border border-[#E8D7C8] text-[#8C6D58]",
+    arrowColor: "border-t-[#E8D7C8]",
   },
   {
-    t: "30 min", v: 4.8, color: "#E11D48", label: "4.8",
-    head: "21× worse. The lead has gone cold.",
-    body: "Half an hour is the difference between a live conversation and a voicemail.",
-    quote: "The odds of qualifying a lead if called in 5 minutes versus 30 minutes drop 21 times."
+    time: "30 min",
+    valLabel: "4.8",
+    percentage: 5,
+    barColor: "bg-[#E29578]",
+    badgeBg: "bg-[#FBEBEB] border border-[#F2D1D1] text-[#B85D5D]",
+    arrowColor: "border-t-[#F2D1D1]",
   },
 ];
 
 export default function PremiumOddsDashboard() {
-  const [hoveredIndex, setHoveredIndex] = useState(0);
-  const [activeBar, setActiveBar] = useState<number | null>(null);
-
-  const cur = ODDS[hoveredIndex];
-
   return (
-    <div className="w-full flex-1 flex flex-col justify-center font-sans z-10">
-      {/* Main Chart Container */}
-      <div className="w-full transition-all duration-300">
+    <div className="w-full flex flex-col justify-start font-sans z-10">
+      
+      {/* Header */}
+      <div className="mb-4 text-left">
+        <h3 className="text-xl sm:text-2xl lg:text-[25px] font-bold font-sans text-slate-900 leading-tight tracking-tight">
+          Relative odds of qualifying a lead
+        </h3>
+        <div className="text-[10.5px] font-bold text-slate-400 mt-1 uppercase tracking-wider">
+          RELATIVE ODDS (INDEX)
+        </div>
+      </div>
+
+      {/* Chart Canvas Area: Stretched taller in vertical with slimmer bars */}
+      <div className="relative w-full pt-10 sm:pt-12">
         
-        {/* Header */}
-        <div className="mb-6 sm:mb-8 text-center sm:text-left">
-          <h3 className="text-xl sm:text-2xl font-serif font-bold text-stone-900 leading-tight tracking-tight">
-            Relative odds of qualifying a lead
-          </h3>
+        {/* Y-Axis scale + Horizontal Grid Lines */}
+        <div className="relative pl-8 pr-2">
+          
+          {/* Y-Axis numbers */}
+          <div className="absolute top-0 left-0 bottom-0 flex flex-col justify-between text-[11px] font-semibold text-slate-500 py-[2px]">
+            <span>100</span>
+            <span>75</span>
+            <span>50</span>
+            <span>25</span>
+            <span>0</span>
+          </div>
+
+          {/* Grid lines & Bars Box */}
+          <div className="relative h-[235px] sm:h-[250px] lg:h-[265px] w-full border-b border-slate-200/90 flex items-end justify-between px-4 sm:px-8 lg:px-10 pb-[1px]">
+            
+            {/* Horizontal Grid lines */}
+            {[0, 25, 50, 75, 100].map((val) => (
+              <div
+                key={val}
+                className="absolute left-0 right-0 h-px bg-slate-200/70 pointer-events-none"
+                style={{ bottom: `${val}%` }}
+              />
+            ))}
+
+            {/* 3 Slimmer Bars */}
+            {BARS_DATA.map((item, i) => (
+              <div
+                key={item.time}
+                className="relative flex flex-col justify-end items-center w-1/3 max-w-[68px] sm:max-w-[76px] lg:max-w-[82px] h-full z-10"
+              >
+                {/* Floating Tooltip + Number Label Positioned Directly Above Bar Top */}
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + i * 0.1 }}
+                  className="absolute flex flex-col items-center pointer-events-none"
+                  style={{ bottom: `calc(${item.percentage}% + 5px)` }}
+                >
+                  {/* Tooltip Pill */}
+                  <div className={`px-2.5 py-0.5 rounded-md text-[10px] sm:text-[10.5px] font-extrabold shadow-2xs whitespace-nowrap ${item.badgeBg}`}>
+                    {item.time}
+                  </div>
+                  {/* Tooltip Pointer Triangle */}
+                  <div className={`w-0 h-0 border-l-[3.5px] border-l-transparent border-r-[3.5px] border-r-transparent border-t-[4px] ${item.arrowColor}`} />
+
+                  {/* Numerical Value right above bar */}
+                  <div className="mt-1 text-xs sm:text-sm font-bold text-slate-800 leading-none">
+                    {item.valLabel}
+                  </div>
+                </motion.div>
+
+                {/* Solid Animated Bar reaching exact grid line */}
+                <motion.div
+                  initial={{ height: 0 }}
+                  whileInView={{ height: `${item.percentage}%` }}
+                  viewport={{ once: true }}
+                  transition={{ type: "spring", stiffness: 70, damping: 15, delay: 0.1 + i * 0.1 }}
+                  style={{ height: `${item.percentage}%` }}
+                  className={`w-full rounded-t-xl shadow-2xs relative overflow-hidden ${item.barColor}`}
+                >
+                  {/* Specular Top Shine */}
+                  <div className="absolute top-0 inset-x-0 h-1/3 bg-gradient-to-b from-white/30 to-transparent" />
+                </motion.div>
+              </div>
+            ))}
+          </div>
+
         </div>
 
-        {/* Chart Section */}
-        <div className="flex flex-col">
-          <div className="text-[10px] text-stone-500 mb-2 font-semibold tracking-wide uppercase">Relative odds (index)</div>
+      </div>
 
-          <div className="relative pl-7 sm:pl-9">
-            {/* Y-Axis Labels */}
-            <div className="absolute top-0 left-0 bottom-0 flex flex-col justify-between text-[11px] font-semibold text-stone-500 py-[2px]">
-              <span>100</span>
-              <span>75</span>
-              <span>50</span>
-              <span>25</span>
-              <span>0</span>
-            </div>
-
-            {/* Grid and Bars */}
-            <div 
-              className="relative h-[140px] sm:h-[185px] lg:h-[200px] w-full border-b border-stone-200 flex items-end justify-around px-4 sm:px-8 pb-[1px]"
-              onMouseLeave={() => setActiveBar(null)}
-            >
-              {/* Horizontal Grid lines */}
-              {[0, 25, 50, 75, 100].map((val) => (
-                <div
-                  key={val}
-                  className="absolute left-0 right-0 h-px bg-stone-200/80 pointer-events-none"
-                  style={{ bottom: `${val}%` }}
-                />
-              ))}
-
-              {/* Bars */}
-              {ODDS.map((item, i) => {
-                const isDull = activeBar !== null && activeBar !== i;
-                return (
-                  <div
-                    key={item.t}
-                    className={`relative flex flex-col justify-end items-center group w-1/4 max-w-[110px] h-full cursor-pointer transition-all duration-300 ${isDull ? 'opacity-35 grayscale-[40%]' : 'opacity-100'}`}
-                    onMouseEnter={() => {
-                      setHoveredIndex(i);
-                      setActiveBar(i);
-                    }}
-                  >
-                    {/* Value Label */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ margin: "-50px" }}
-                      transition={{ delay: 0.3 + i * 0.1, duration: 0.6 }}
-                      className="mb-2 text-[15px] font-bold text-stone-900 whitespace-nowrap"
-                    >
-                      {item.label}
-                    </motion.div>
-
-                    {/* Bar */}
-                    <motion.div
-                      initial={{ height: 0 }}
-                      whileInView={{ height: `${item.v}%` }}
-                      viewport={{ margin: "-50px" }}
-                      transition={{ type: "spring", stiffness: 60, damping: 15, delay: 0.1 + i * 0.1 }}
-                      className="w-full rounded-t-xl shadow-sm relative overflow-hidden group-hover:brightness-105 transition-all duration-300"
-                      style={{ backgroundColor: item.color }}
-                    >
-                      {/* Inner highlight */}
-                      <div className="absolute top-0 inset-x-0 h-1/2 bg-gradient-to-b from-white/30 to-transparent" />
-                    </motion.div>
-                  </div>
-                )
-              })}
-            </div>
-
-            {/* X-Axis Labels */}
-            <div className="flex justify-around px-4 sm:px-8 mt-3">
-              {ODDS.map((item) => (
-                <div key={item.t} className="text-[12px] font-bold text-stone-700 w-1/4 max-w-[110px] text-center">
-                  {item.t}
-                </div>
-              ))}
-            </div>
-          </div>
+      {/* Bottom Lightbulb Callout Card */}
+      <div className="w-full bg-[#F0FDFA]/70 border border-teal-100/90 rounded-2xl p-3.5 sm:p-4 mt-6 flex items-center gap-3.5 shadow-2xs">
+        <div className="w-8 h-8 rounded-full bg-[#0396A6] flex items-center justify-center text-white shrink-0 shadow-sm">
+          <Lightbulb className="w-4 h-4 stroke-[2]" />
+        </div>
+        <div className="text-xs sm:text-[13px] text-slate-800 leading-snug font-sans">
+          Responding within 5 minutes makes you <span className="font-bold text-[#0396A6]">7x</span> more likely to qualify the lead.
         </div>
       </div>
 

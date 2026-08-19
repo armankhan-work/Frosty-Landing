@@ -6,60 +6,7 @@ import { Brain, Zap, Target, CheckCircle2, Clock } from 'lucide-react';
 
 /* ─── ParallaxStarfield (Subtle background depth) ─────────────────── */
 export function ParallaxStarfield() {
-  const [mounted, setMounted] = React.useState(false);
-  const [layers, setLayers] = React.useState<{
-    layer1: { left: string; top: string; color: string }[];
-    layer2: { left: string; top: string; color: string }[];
-  }>({ layer1: [], layer2: [] });
-
-  React.useEffect(() => {
-    const palette = ['#26B3AA', '#14B8A6', '#2DD4BF', '#5EEAD4'];
-    const generateStars = (count: number) =>
-      Array.from({ length: count }).map(() => ({
-        left: `${Math.random() * 100}%`,
-        top: `${Math.random() * 100}%`,
-        color: palette[Math.floor(Math.random() * palette.length)],
-      }));
-
-    setLayers({
-      layer1: generateStars(28),
-      layer2: generateStars(16),
-    });
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
-  return (
-    <div className="fixed inset-0 z-[1] overflow-hidden pointer-events-none flex items-center justify-center">
-      <div className="relative w-[140vmax] h-[140vmax] rotate-[15deg] flex-shrink-0">
-        <motion.div
-          className="absolute inset-0 w-full h-full"
-          animate={{ y: ['0%', '100%'] }}
-          transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
-        >
-          <div className="absolute inset-0 w-full h-full">
-            {layers.layer1.map((pos, i) => (
-              <div
-                key={i}
-                className="absolute rounded-full w-[2px] h-[2px] opacity-20"
-                style={{ left: pos.left, top: pos.top, backgroundColor: pos.color }}
-              />
-            ))}
-          </div>
-          <div className="absolute inset-0 w-full h-full" style={{ top: '-100%' }}>
-            {layers.layer1.map((pos, i) => (
-              <div
-                key={i}
-                className="absolute rounded-full w-[2px] h-[2px] opacity-20"
-                style={{ left: pos.left, top: pos.top, backgroundColor: pos.color }}
-              />
-            ))}
-          </div>
-        </motion.div>
-      </div>
-    </div>
-  );
+  return null;
 }
 
 const EASE = [0.23, 1, 0.32, 1] as const;
@@ -1681,23 +1628,7 @@ export default function FrostyEngineHero() {
         padding: '24px 0 28px',
       }}
     >
-      {/* Background Soft Purple Aura */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '-15%',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: 950,
-          height: 500,
-          background:
-            'radial-gradient(ellipse at top, rgba(3, 150, 166, 0.05) 0%, rgba(196, 181, 253, 0.02) 45%, transparent 75%)',
-          borderRadius: '50%',
-          filter: 'blur(100px)',
-          pointerEvents: 'none',
-          zIndex: 0,
-        }}
-      />
+
 
       {/* Two-Column Responsive Grid */}
       <div
