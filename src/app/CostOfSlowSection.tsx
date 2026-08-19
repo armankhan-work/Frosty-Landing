@@ -4,120 +4,177 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Zap, TrendingUp, Users, Clock, Trophy } from 'lucide-react';
 import PremiumOddsDashboard from './PremiumOddsDashboard';
-
 import HourglassSandCanvas from '@/components/HourglassSandCanvas';
 
 export default function CostOfSlowSection() {
     return (
-        <section id="cost" className="relative pt-8 sm:pt-12 lg:pt-14 pb-12 lg:pb-16 bg-transparent overflow-hidden">
-            {/* Rich Ambient Purple / Warm Backdrop Aura */}
-            <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-0">
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(3, 150, 166,0.08)_0%,rgba(196,181,253,0.03)_40%,transparent_75%)] rounded-full blur-[100px]" />
-            </div>
+        <section id="cost" className="relative py-10 lg:py-14 bg-transparent overflow-hidden">
+            <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                {/* 3-Column Layout: Top-aligned to match SS1 */}
+                <div className="flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-3 xl:gap-6 w-full">
 
-            <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
-                <div className="relative flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-0 w-full">
-
-                    {/* ── Left Side: Pure Editorial Layout Blended Seamlessly ── */}
-                    <div className="w-full lg:w-[46%] xl:w-[45%] flex flex-col justify-between z-10 lg:pr-4 xl:pr-6">
+                    {/* ═════════════════════════════════════════════════════════════════════ */}
+                    {/* COLUMN 1 (LEFT): Headline, Paragraph, 3 Cards & Trophy Banner         */}
+                    {/* ═════════════════════════════════════════════════════════════════════ */}
+                    <div className="w-full lg:w-[40%] xl:w-[39%] flex flex-col justify-between z-10 shrink-0">
 
                         <div className="mb-5">
-                            {/* Eyebrow */}
-                            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 mb-3.5 backdrop-blur-sm shadow-xs">
+                            {/* Eyebrow Badge */}
+                            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 mb-3.5 backdrop-blur-sm shadow-2xs">
                                 <span className="w-4 h-4 rounded-full bg-[#0396A6]/20 flex items-center justify-center">
                                     <Zap className="w-2.5 h-2.5 text-[#0396A6]" />
                                 </span>
-                                <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">THE COST OF A SLOW REPLY</span>
+                                <span className="text-[10.5px] font-bold tracking-widest uppercase text-[#0396A6]">
+                                    THE COST OF A SLOW REPLY
+                                </span>
                             </div>
 
                             {/* Heading */}
-                            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#18181B] leading-[1.12] tracking-tight mb-5">
-                                The first five minutes decide who they <span className="text-[#0396A6] font-bold" style={{ color: '#0396A6' }}>talk to.</span>
+                            <h2 className="text-3xl sm:text-4xl lg:text-[40px] xl:text-[44px] font-serif font-bold text-[#0F172A] leading-[1.12] tracking-tight mb-4">
+                                The first five minutes <br />
+                                decide who they <span className="text-[#0396A6] relative inline-block">
+                                    talk to.
+                                    <span className="absolute -bottom-1 left-0 w-20 h-[3px] bg-[#0396A6] rounded-full" />
+                                </span>
                             </h2>
 
                             {/* Body */}
-                            <p className="text-sm sm:text-base text-stone-600 leading-relaxed max-w-xl mb-6">
-                                Reply inside five minutes and your odds of qualifying the lead multiply - and almost nobody replies that fast. Frosty is built to win that window, every time.
+                            <p className="text-sm sm:text-[14.5px] text-slate-600 leading-relaxed max-w-lg">
+                                Reply inside five minutes and your odds of qualifying the lead multiply – and almost nobody replies that fast. Frosty is built to win that window, every time.
                             </p>
                         </div>
 
-                        {/* Boxless Inline Stats (Icon + Single Word Label + Big Value) */}
-                        <div className="grid grid-cols-3 gap-4 sm:gap-6 py-2 mb-6 border-y border-stone-200/50">
+                        {/* 3 Stat Cards */}
+                        <div className="grid grid-cols-3 gap-3 mb-4">
 
-                            {/* Stat 1: Qualification */}
-                            <div className="flex flex-col items-center">
-                                <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5">
-                                    <div className="w-6 h-6 rounded-lg bg-[#0396A6]/10 flex items-center justify-center shrink-0">
-                                        <TrendingUp className="w-3.5 h-3.5 text-[#0396A6]" />
-                                    </div>
-                                    <span className="text-[9px] sm:text-[10px] font-semibold text-stone-600 tracking-wider uppercase">Qualification</span>
+                            {/* Card 1: Qualification */}
+                            <div className="bg-white/90 backdrop-blur-sm border border-slate-200/80 rounded-2xl p-3 sm:p-4 text-center flex flex-col items-center justify-center shadow-xs">
+                                <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#0396A6]/10 border border-[#0396A6]/20 mb-1.5">
+                                    <TrendingUp className="w-3 h-3 text-[#0396A6] stroke-[2]" />
+                                    <span className="text-[8.5px] font-bold text-[#0396A6] tracking-wider uppercase">
+                                        QUALIFICATION
+                                    </span>
                                 </div>
-                                <div className="text-xl sm:text-2xl font-bold text-stone-900 leading-none font-sans">7×</div>
+                                <div className="text-2xl sm:text-3xl font-extrabold font-sans text-[#0396A6] leading-tight my-0.5">
+                                    7x
+                                </div>
+                                <div className="text-[10.5px] sm:text-[11px] text-slate-600 leading-snug">
+                                    more likely to qualify<br />the lead
+                                </div>
                             </div>
 
-                            {/* Stat 2: Advantage */}
-                            <div className="flex flex-col items-center">
-                                <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5">
-                                    <div className="w-6 h-6 rounded-lg bg-amber-50 flex items-center justify-center shrink-0">
-                                        <Users className="w-3.5 h-3.5 text-amber-600" />
-                                    </div>
-                                    <span className="text-[9px] sm:text-[10px] font-semibold text-stone-600 tracking-wider uppercase">Advantage</span>
+                            {/* Card 2: Advantage */}
+                            <div className="bg-white/90 backdrop-blur-sm border border-slate-200/80 rounded-2xl p-3 sm:p-4 text-center flex flex-col items-center justify-center shadow-xs">
+                                <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-orange-50 border border-orange-200/80 mb-1.5">
+                                    <Users className="w-3 h-3 text-[#EA580C] stroke-[2]" />
+                                    <span className="text-[8.5px] font-bold text-[#EA580C] tracking-wider uppercase">
+                                        ADVANTAGE
+                                    </span>
                                 </div>
-                                <div className="text-xl sm:text-2xl font-bold text-stone-900 leading-none font-sans">60×</div>
+                                <div className="text-2xl sm:text-3xl font-extrabold font-sans text-[#EA580C] leading-tight my-0.5">
+                                    60x
+                                </div>
+                                <div className="text-[10.5px] sm:text-[11px] text-slate-600 leading-snug">
+                                    more likely to connect<br />before competitors
+                                </div>
                             </div>
 
-                            {/* Stat 3: Average */}
-                            <div className="flex flex-col items-center">
-                                <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5">
-                                    <div className="w-6 h-6 rounded-lg bg-red-50 flex items-center justify-center shrink-0">
-                                        <Clock className="w-3.5 h-3.5 text-red-600" />
-                                    </div>
-                                    <span className="text-[9px] sm:text-[10px] font-semibold text-stone-600 tracking-wider uppercase">Average</span>
+                            {/* Card 3: Average */}
+                            <div className="bg-white/90 backdrop-blur-sm border border-slate-200/80 rounded-2xl p-3 sm:p-4 text-center flex flex-col items-center justify-center shadow-xs">
+                                <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-orange-50 border border-orange-200/80 mb-1.5">
+                                    <Clock className="w-3 h-3 text-[#EA580C] stroke-[2]" />
+                                    <span className="text-[8.5px] font-bold text-[#EA580C] tracking-wider uppercase">
+                                        AVERAGE
+                                    </span>
                                 </div>
-                                <div className="text-xl sm:text-2xl font-bold text-red-600 leading-none font-sans">0.4%</div>
+                                <div className="text-2xl sm:text-3xl font-extrabold font-sans text-[#EA580C] leading-tight my-0.5">
+                                    0.4%
+                                </div>
+                                <div className="text-[10.5px] sm:text-[11px] text-slate-600 leading-snug">
+                                    of leads get a fast<br />human response
+                                </div>
                             </div>
 
                         </div>
 
-                        {/* Bottom Insight Banner */}
-                        <div className="w-full bg-[#0396A6]/[0.06] backdrop-blur-md rounded-2xl p-4 border border-[#0396A6]/15 shadow-sm flex items-center gap-3.5">
-                            <div className="w-8 h-8 rounded-xl bg-[#0396A6] flex items-center justify-center shadow-[0_2px_10px_rgba(3, 150, 166,0.3)] shrink-0">
+                        {/* Bottom Trophy Banner */}
+                        <div className="w-full bg-white rounded-2xl p-3.5 sm:p-4 border border-teal-100/80 shadow-xs flex items-center gap-3.5">
+                            <div className="w-8 h-8 rounded-xl bg-[#0396A6] flex items-center justify-center shadow-[0_2px_10px_rgba(3,150,166,0.3)] shrink-0">
                                 <Trophy className="w-4 h-4 text-white" />
                             </div>
                             <div className="min-w-0">
-                                <div className="text-[13px] font-bold text-stone-900 leading-tight">Frosty Agent replies in seconds - before this chart even starts.</div>
-                                <div className="text-[12px] text-stone-600 mt-0.5">While others respond, Frosty Agent converts.</div>
+                                <div className="text-[12.5px] sm:text-[13px] font-bold text-slate-900 leading-tight">
+                                    Frosty Agent replies in seconds – before this chart even starts.
+                                </div>
+                                <div className="text-[11.5px] text-slate-600 mt-0.5">
+                                    While others respond, Frosty Agent converts.
+                                </div>
                             </div>
                         </div>
 
                     </div>
 
-                    {/* ── Center: Majestic 3D Hourglass ── */}
-                    <motion.div
-                        animate={{ y: [-10, 10, -10] }}
-                        transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut' }}
-                        className="hidden lg:flex w-[300px] xl:w-[340px] h-[430px] xl:h-[480px] shrink-0 relative items-center justify-center z-20 -mx-10 xl:-mx-12 pointer-events-none"
-                    >
-                        <div className="relative w-full h-full opacity-100" style={{
-                            backgroundImage: "url('/glowing_hourglass.png')",
-                            backgroundSize: 'contain',
-                            backgroundPosition: 'center',
-                            backgroundRepeat: 'no-repeat'
-                        }}>
-                            {/* Realistic Granular Physics Sand Canvas Simulation */}
-                            <HourglassSandCanvas />
+                    {/* ═════════════════════════════════════════════════════════════════════ */}
+                    {/* COLUMN 2 (CENTER): Hourglass (Untouched)                              */}
+                    {/* ═════════════════════════════════════════════════════════════════════ */}
+                    <div className="hidden lg:flex w-[22%] xl:w-[23%] justify-center items-start pt-2 xl:pt-3 relative z-20 pointer-events-none">
+                        <motion.div
+                            animate={{ y: [-4, 4, -4] }}
+                            transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut' }}
+                            className="w-[340px] xl:w-[370px] h-[270px] xl:h-[295px] relative items-center justify-center -ml-16 xl:-ml-20"
+                        >
+                            <div className="relative w-full h-full" style={{
+                                backgroundImage: "url('/glowing_hourglass2.png')",
+                                backgroundSize: 'contain',
+                                backgroundPosition: 'center',
+                                backgroundRepeat: 'no-repeat'
+                            }}>
+                                {/* Animated Sand Canvas Simulation */}
+                                <HourglassSandCanvas />
 
-                            {/* Radiant Sand Heap Breathing Glow */}
-                            <motion.div
-                                animate={{ opacity: [0.45, 0.8, 0.45], scale: [0.96, 1.04, 0.96] }}
-                                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-                                className="absolute left-1/2 -translate-x-1/2 top-[66.7%] -translate-y-1/2 w-[85px] xl:w-[95px] h-[25px] bg-[radial-gradient(ellipse_at_center,rgba(255,122,94,0.45)_0%,rgba(232,101,75,0.25)_45%,transparent_75%)] blur-[9px] rounded-full pointer-events-none"
-                            />
-                        </div>
-                    </motion.div>
+                                {/* Ambient Top Teal Chamber Glow */}
+                                <motion.div
+                                    animate={{ opacity: [0.35, 0.65, 0.35], scale: [0.96, 1.04, 0.96] }}
+                                    transition={{ duration: 3.0, repeat: Infinity, ease: 'easeInOut' }}
+                                    className="absolute left-1/2 -translate-x-1/2 top-[34%] -translate-y-1/2 w-[85px] h-[28px] bg-[radial-gradient(ellipse_at_center,rgba(34,211,238,0.45)_0%,rgba(3,150,166,0.2)_45%,transparent_75%)] blur-[9px] rounded-full pointer-events-none"
+                                />
 
-                    {/* ── Right Side: Chart Dashboard Blended Seamlessly ── */}
-                    <div className="w-full lg:w-[46%] xl:w-[45%] relative flex flex-col z-10 lg:pl-4 xl:pl-6">
+                                {/* Ambient Bottom Orange Mound Glow */}
+                                <motion.div
+                                    animate={{ opacity: [0.45, 0.85, 0.45], scale: [0.96, 1.04, 0.96] }}
+                                    transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+                                    className="absolute left-1/2 -translate-x-1/2 top-[67%] -translate-y-1/2 w-[85px] h-[24px] bg-[radial-gradient(ellipse_at_center,rgba(249,115,22,0.45)_0%,rgba(234,88,12,0.25)_45%,transparent_75%)] blur-[9px] rounded-full pointer-events-none"
+                                />
+
+                                {/* ── Callout 1 (Top Right): Teal Dot Touching Glass Surface Outline (59.1%) ── */}
+                                <div className="absolute left-[59.1%] top-[24%] flex items-center pointer-events-none z-30">
+                                    <div className="w-[5px] h-[5px] rounded-full bg-[#0396A6] shrink-0 z-10" />
+                                    <div className="w-5 h-[1.5px] bg-[#0396A6] shrink-0 -ml-[0.5px]" />
+                                    <div className="text-[12px] xl:text-[12.5px] font-sans leading-[1.15] text-left shrink-0 ml-2">
+                                        <div className="font-semibold text-slate-800">Every</div>
+                                        <div className="font-bold text-[#0396A6]">second</div>
+                                        <div className="font-semibold text-slate-800">counts</div>
+                                    </div>
+                                </div>
+
+                                {/* ── Callout 2 (Bottom Right): Orange Dot Fixed (60.4%) ── */}
+                                <div className="absolute left-[60.4%] top-[72%] flex items-center pointer-events-none z-30">
+                                    <div className="w-[5px] h-[5px] rounded-full bg-[#EA580C] shrink-0 z-10" />
+                                    <div className="w-5 h-[1.5px] bg-[#EA580C] shrink-0 -ml-[0.5px]" />
+                                    <div className="text-[12px] xl:text-[12.5px] font-sans leading-[1.15] text-left shrink-0 ml-2">
+                                        <div className="font-bold text-[#EA580C]">Miss it,</div>
+                                        <div className="font-semibold text-slate-800">and you</div>
+                                        <div className="font-semibold text-slate-800">miss the lead</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+
+                    {/* ═════════════════════════════════════════════════════════════════════ */}
+                    {/* COLUMN 3 (RIGHT): Relative Odds Chart Shifted Left                    */}
+                    {/* ═════════════════════════════════════════════════════════════════════ */}
+                    <div className="w-full lg:w-[38%] xl:w-[38%] flex flex-col justify-between z-10 shrink-0 lg:-ml-4 xl:-ml-6">
                         <PremiumOddsDashboard />
                     </div>
 

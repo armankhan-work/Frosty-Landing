@@ -97,9 +97,6 @@ export default function DoneForYou() {
         <section id="setup" className="relative w-full overflow-hidden font-sans pt-6 sm:pt-10 pb-8 sm:pb-12 bg-transparent">
             {/* Background elements */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden -z-10">
-                <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-[#0396A6]/[0.03] blur-[120px]" />
-                <div className="absolute bottom-[10%] right-[10%] w-[40%] h-[40%] rounded-full bg-[#0396A6]/[0.03] blur-[100px]" />
-                
                 <svg className="absolute bottom-0 left-0 w-full h-full opacity-15" viewBox="0 0 1000 1000" preserveAspectRatio="none">
                     <path d="M0,1000 C200,800 400,1000 1000,600" fill="none" stroke="#0396A6" strokeWidth="0.8" strokeDasharray="4 8" />
                     <path d="M0,900 C300,700 500,900 1000,500" fill="none" stroke="#0396A6" strokeWidth="0.8" strokeDasharray="4 8" />

@@ -16,11 +16,7 @@ export default function CTASection() {
     return (
         <section className="relative pt-8 sm:pt-12 pb-12 sm:pb-16 bg-transparent">
             <div className="w-full max-w-[1600px] mx-auto px-6 lg:px-10 xl:px-12 relative z-10">
-                <div className="relative rounded-[32px] overflow-hidden px-8 py-10 md:px-16 md:py-14 text-center bg-white/95 backdrop-blur-md border border-slate-200 shadow-[0_20px_60px_rgba(0,0,0,0.06)] flex flex-col justify-center">
-                    {/* Decorative glows */}
-                    <div className="absolute -top-20 -right-20 w-80 h-80 bg-[#0396A6]/5 rounded-full blur-3xl pointer-events-none" />
-                    <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-[#FF7A5E]/5 rounded-full blur-3xl pointer-events-none" />
-                    
+                <div className="relative rounded-[32px] overflow-hidden px-8 py-10 md:px-16 md:py-14 text-center bg-white border border-slate-200 shadow-sm flex flex-col justify-center">
                     <div className="relative z-10 flex flex-col items-center justify-center">
                         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 mb-6 backdrop-blur-sm shadow-xs">
                             <span className="w-4 h-4 rounded-full bg-[#0396A6]/20 flex items-center justify-center">

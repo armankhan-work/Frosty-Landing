@@ -372,9 +372,7 @@ h4,
 .fx-hero-bg {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(60% 50% at 82% 12%, rgba(3, 150, 166, .06), transparent 70%),
-    radial-gradient(50% 45% at 12% 88%, rgba(255, 122, 94, .06), transparent 70%);
+  background: transparent;
   pointer-events: none;
 }
 

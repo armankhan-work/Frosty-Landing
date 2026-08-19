@@ -158,13 +158,6 @@ export default function CRMLeadIntelligenceSection() {
 
   return (
     <section ref={containerRef} className="relative w-full pt-16 pb-8 lg:pt-20 lg:pb-12 overflow-hidden z-10 flex flex-col items-center bg-transparent font-sans">
-      
-      {/* Background Ambience */}
-      <div className="absolute inset-0 pointer-events-none z-0 flex justify-center overflow-hidden">
-        <div className="absolute top-[-10%] right-[-10%] w-[1000px] h-[800px] bg-[#0396A6]/5 rounded-[100%] blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[800px] h-[600px] bg-[#FF7A5E]/5 rounded-[100%] blur-[120px]" />
-      </div>
-
       {/* HEADER */}
       <div className="relative z-10 text-center mb-8 max-w-2xl px-6">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 mb-6 backdrop-blur-sm shadow-xs">

@@ -1,588 +1,600 @@
 'use client';
 
-import React, { useRef, useEffect, useState } from 'react';
-import { motion, useInView, useAnimation, AnimatePresence } from 'framer-motion';
-import { Globe, MessageCircle, Users, Activity, Sparkles, MessageSquare, Zap, Filter } from 'lucide-react';
-import FrostyIcon from '@/components/FrostyIcon';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useInView } from 'framer-motion';
+import {
+    Sparkles,
+    MessageSquare,
+    Zap,
+    Globe,
+    MessageCircle,
+    Phone,
+    Send,
+    Check
+} from 'lucide-react';
 
-type NodeData = {
-    id: string;
-    title: string;
-    subtitle: string;
-    icon: React.ReactNode;
-    iconColor: string;
-    position: { x: number; y: number };
-    delayOffset: number;
-};
+/* ─── Sparkle Star SVG Logo ────────────────────────────────────── */
+function FrostySparkleIcon({ className = "w-9 h-9" }: { className?: string }) {
+    return (
+        <div className={`relative flex items-center justify-center ${className}`}>
+            {/* Primary Teal Star */}
+            <svg
+                viewBox="0 0 100 100"
+                className="w-full h-full text-[#0396A6] fill-current drop-shadow-[0_2px_8px_rgba(3,150,166,0.35)]"
+            >
+                <path d="M 50 8 C 50 35 35 50 8 50 C 35 50 50 65 50 92 C 50 65 65 50 92 50 C 65 50 50 35 50 8 Z" />
+            </svg>
+            {/* Secondary Orange Star */}
+            <svg
+                viewBox="0 0 100 100"
+                className="w-[45%] h-[45%] absolute -bottom-0.5 -right-0.5 text-[#F59E0B] fill-current drop-shadow-[0_1px_4px_rgba(245,158,11,0.4)]"
+            >
+                <path d="M 50 8 C 50 35 35 50 8 50 C 35 50 50 65 50 92 C 50 65 65 50 92 50 C 65 50 50 35 50 8 Z" />
+            </svg>
+        </div>
+    );
+}
 
-const NODES: NodeData[] = [
+/* ─── Qualified Lead User Checkmark Icon ────────────────────────── */
+function QualifiedLeadIcon() {
+    return (
+        <div className="relative flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 flex items-center justify-center">
+                <svg
+                    viewBox="0 0 24 24"
+                    className="w-5 h-5 text-[#0396A6]"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.75"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                >
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                </svg>
+            </div>
+            <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-[#0396A6] text-white flex items-center justify-center shadow-xs">
+                <Check className="w-2.5 h-2.5 stroke-[3]" />
+            </div>
+        </div>
+    );
+}
+
+/* ─── Bottom Banner SVG Icons (Transparent, Aesthetic, Hollow Teal) ─── */
+function ShieldCheckCustomIcon({ className = "w-7 h-7" }: { className?: string }) {
+    return (
+        <svg
+            viewBox="0 0 24 24"
+            className={className}
+            fill="none"
+            stroke="#0396A6"
+            strokeWidth="1.75"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            <path d="M9 12l2 2 4-4" />
+        </svg>
+    );
+}
+
+function TargetCustomIcon({ className = "w-7 h-7" }: { className?: string }) {
+    return (
+        <svg
+            viewBox="0 0 28 28"
+            className={className}
+            fill="none"
+            stroke="#0396A6"
+            strokeWidth="1.75"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <circle cx="12" cy="16" r="9" strokeDasharray="48" />
+            <circle cx="12" cy="16" r="5" />
+            <circle cx="12" cy="16" r="1.5" fill="#0396A6" />
+            <path d="M23 5L15 13" />
+            <polyline points="18 5 23 5 23 10" />
+        </svg>
+    );
+}
+
+function RevenueChartCustomIcon({ className = "w-7 h-7" }: { className?: string }) {
+    return (
+        <svg
+            viewBox="0 0 28 28"
+            className={className}
+            fill="none"
+            stroke="#0396A6"
+            strokeWidth="1.75"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <rect x="3" y="18" width="3" height="7" rx="0.5" />
+            <rect x="8" y="14" width="3" height="11" rx="0.5" />
+            <rect x="13" y="10" width="3" height="15" rx="0.5" />
+            <path d="M3 13 L10 8 L16 12 L24 4" />
+            <polyline points="19 4 24 4 24 9" />
+        </svg>
+    );
+}
+
+/* ─── Data Constants ───────────────────────────────────────────── */
+const FEATURES = [
+    {
+        icon: <Sparkles className="w-5 h-5 text-[#0396A6]" strokeWidth={1.75} />,
+        title: 'Understands your business',
+        description: 'Learns your goals, products and audience.'
+    },
+    {
+        icon: <MessageSquare className="w-5 h-5 text-[#0396A6]" strokeWidth={1.75} />,
+        title: 'Engages across every channel',
+        description: 'Web, WhatsApp, voice, social and more.'
+    },
+    {
+        icon: <Zap className="w-5 h-5 text-[#0396A6]" strokeWidth={1.75} />,
+        title: 'Takes action that drives results',
+        description: 'Qualifies leads and moves conversations forward.'
+    }
+];
+
+const CHANNELS = [
     {
         id: 'website',
         title: 'Website',
-        subtitle: 'Agent',
-        icon: <Globe className="w-4 h-4 sm:w-5 sm:h-5 text-[#0396A6]" />,
-        iconColor: 'bg-[#0396A6]/10 border-[#0396A6]/25',
-        position: { x: 18, y: 16 },
-        delayOffset: 0
+        subtitle: 'New enquiry',
+        icon: <Globe className="w-[18px] h-[18px] text-[#0396A6]" strokeWidth={1.75} />
     },
     {
         id: 'whatsapp',
         title: 'WhatsApp',
-        subtitle: 'Agent',
-        icon: <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-600" />,
-        iconColor: 'bg-green-50 border-green-200',
-        position: { x: 82, y: 16 },
-        delayOffset: 1.2
+        subtitle: 'New message',
+        icon: <MessageCircle className="w-[18px] h-[18px] text-[#0396A6]" strokeWidth={1.75} />
     },
     {
-        id: 'unified',
-        title: 'Unified',
-        subtitle: 'Agent',
-        icon: <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[#0396A6]" />,
-        iconColor: 'bg-[#0396A6]/10 border-[#0396A6]/25',
-        position: { x: 14, y: 50 },
-        delayOffset: 2.5
+        id: 'voice',
+        title: 'Voice Call',
+        subtitle: 'New call',
+        icon: <Phone className="w-[18px] h-[18px] text-[#0396A6]" strokeWidth={1.75} />
     },
     {
-        id: 'crm',
-        title: 'CRM',
-        subtitle: '& Integrations',
-        icon: <Users className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />,
-        iconColor: 'bg-blue-50 border-blue-200',
-        position: { x: 86, y: 50 },
-        delayOffset: 3.8
-    },
-    {
-        id: 'lead',
-        title: 'Lead',
-        subtitle: 'Segregation',
-        icon: <Filter className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600" />,
-        iconColor: 'bg-amber-50 border-amber-200',
-        position: { x: 18, y: 84 },
-        delayOffset: 4.5
-    },
-    {
-        id: 'analytics',
-        title: 'Analytics',
-        subtitle: '& Insights',
-        icon: <Activity className="w-4 h-4 sm:w-5 sm:h-5 text-[#0396A6]" />,
-        iconColor: 'bg-[#0396A6]/10 border-[#0396A6]/25',
-        position: { x: 82, y: 84 },
-        delayOffset: 5.1
+        id: 'social',
+        title: 'Social',
+        subtitle: 'New message',
+        icon: <Send className="w-[18px] h-[18px] text-[#0396A6]" strokeWidth={1.75} />
     }
 ];
 
 export default function IntroducingFrostySection() {
     const sectionRef = useRef<HTMLDivElement>(null);
-    const isInView = useInView(sectionRef, { once: false, margin: "-100px" });
+    const isInView = useInView(sectionRef, { once: false, margin: '-60px' });
+    const [pulseKey, setPulseKey] = useState(0);
 
-    const [particles, setParticles] = useState<Array<{ id: number, top: string, left: string, size: number, delay: number, duration: number }>>([]);
-    const [burstActive, setBurstActive] = useState(false);
-    const [, setCorePulse] = useState(0);
-
-    // Perfect Sync Orchestrator States
-    const [rayOutState, setRayOutState] = useState<Record<string, number>>({});
-    const [rayInState, setRayInState] = useState<Record<string, number>>({});
-    const [nodeGlowState, setNodeGlowState] = useState<Record<string, number>>({});
-
-    // Click Interaction Controls
-    const [hoveredNode, setHoveredNode] = useState<string | null>(null);
-    const nodeTiltControls = useAnimation();
-    const coreGlowControls = useAnimation();
-
-    const handleCoreClick = () => {
-        // Core instantly glows
-        coreGlowControls.start({
-            scale: [1, 1.15, 1],
-            transition: { duration: 0.4 }
-        });
-
-        // Nodes tilt right, left, settle
-        nodeTiltControls.start({
-            rotate: [0, 8, -8, 4, -4, 0],
-            transition: { duration: 0.7, ease: "easeInOut" }
-        });
-    };
-
-    // Generate ambient particles
-    useEffect(() => {
-        const newParticles = Array.from({ length: 15 }).map((_, i) => ({
-            id: i,
-            top: `${20 + Math.random() * 60}%`,
-            left: `${10 + Math.random() * 80}%`,
-            size: Math.random() * 2 + 1,
-            delay: Math.random() * 5,
-            duration: Math.random() * 6 + 6
-        }));
-        setParticles(newParticles);
-    }, []);
-
-    // Core Heartbeat & Intelligence Burst Orchestration
-    useEffect(() => {
-        if (!isInView) return;
-
-        let beatCounter = 0;
-        const beatInterval = setInterval(() => {
-            beatCounter++;
-            setCorePulse(prev => prev + 1);
-
-            // Trigger intelligence burst every 3rd or 4th beat (approx 9-12s)
-            if (beatCounter % 3 === 0) {
-                setBurstActive(true);
-                setTimeout(() => setBurstActive(false), 1500);
-            }
-        }, 3500);
-
-        return () => clearInterval(beatInterval);
-    }, [isInView]);
-
-    // Master Timer for Rays and Node Glows
-    useEffect(() => {
-        if (!isInView) return;
-
-        const intervals: NodeJS.Timeout[] = [];
-        const timeouts: NodeJS.Timeout[] = [];
-
-        NODES.forEach((node) => {
-            const startDelay = node.delayOffset * 1000;
-
-            const startNodeLoop = () => {
-                let iteration = 0;
-
-                const fireCycle = () => {
-                    iteration++;
-                    const now = Date.now();
-
-                    // Fire outbound ray
-                    setRayOutState(prev => ({ ...prev, [node.id]: now }));
-
-                    // Glow EXACTLY when the 2nd ray hits (2.1s travel time)
-                    if (iteration % 2 === 0) {
-                        const tGlow = setTimeout(() => {
-                            setNodeGlowState(prev => ({ ...prev, [node.id]: Date.now() }));
-                        }, 2100);
-                        timeouts.push(tGlow);
-                    }
-
-                    // Fire inbound ray slightly later
-                    const tIn = setTimeout(() => {
-                        setRayInState(prev => ({ ...prev, [node.id]: Date.now() }));
-                    }, 3500);
-                    timeouts.push(tIn);
-                };
-
-                fireCycle();
-                const interval = setInterval(fireCycle, 7000);
-                intervals.push(interval);
-            };
-
-            const tStart = setTimeout(startNodeLoop, startDelay);
-            timeouts.push(tStart);
-        });
-
-        return () => {
-            intervals.forEach(clearInterval);
-            timeouts.forEach(clearTimeout);
-        };
-    }, [isInView]);
-
-    // Capability highlight sequence
-    const [activeCapability, setActiveCapability] = useState(0);
+    // Periodic heartbeat glow trigger for Frosty central core
     useEffect(() => {
         if (!isInView) return;
         const interval = setInterval(() => {
-            setActiveCapability(prev => (prev + 1) % 3);
-        }, 4000);
+            setPulseKey((k) => k + 1);
+        }, 2800);
         return () => clearInterval(interval);
     }, [isInView]);
 
     return (
-        <section ref={sectionRef} className="relative w-full py-8 sm:py-12 lg:py-14 min-h-[85vh] lg:min-h-[88vh] flex flex-col justify-center overflow-hidden bg-transparent">
-
-            {/* Atmospheric Glow & Bottom Wave Field */}
-            <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
-                <motion.div
-                    animate={isInView ? { opacity: [0.15, 0.25, 0.15] } : {}}
-                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#0396A6]/8 via-transparent to-transparent blur-3xl"
-                />
-
-                {/* Abstract Electromagnetic Field Waves */}
-                <div className="absolute bottom-0 left-0 w-full h-[350px] overflow-hidden opacity-20">
-                    <motion.svg
-                        animate={isInView ? { x: [0, -1000] } : {}}
-                        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-                        width="300%" height="100%" viewBox="0 0 3000 300" preserveAspectRatio="none" className="absolute bottom-0"
+        <section
+            ref={sectionRef}
+            className="relative w-full min-h-[calc(100vh-72px)] lg:h-[calc(100vh-72px)] lg:max-h-[920px] flex flex-col justify-between py-6 sm:py-8 lg:py-5 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden bg-transparent select-none"
+        >
+            {/* Main Content (Split 2-Column on Desktop) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center flex-1 my-auto relative z-10 w-full">
+                
+                {/* ── Left Column: Intro & Features ── */}
+                <div className="lg:col-span-5 flex flex-col justify-center text-left lg:pr-2 xl:pr-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.5, ease: 'easeOut' }}
                     >
-                        <path d="M0,150 Q150,80 300,150 T600,150 T900,150 T1200,150 T1500,150 T1800,150 T2100,150 T2400,150 T2700,150 T3000,150" fill="none" stroke="url(#wave-grad)" strokeWidth="1.5" />
-                    </motion.svg>
-                    <motion.svg
-                        animate={isInView ? { x: [0, -1000] } : {}}
-                        transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
-                        width="300%" height="100%" viewBox="0 0 3000 300" preserveAspectRatio="none" className="absolute bottom-0"
-                    >
-                        <path d="M0,200 Q150,120 300,200 T600,200 T900,200 T1200,200 T1500,200 T1800,200 T2100,200 T2400,200 T2700,200 T3000,200" fill="none" stroke="url(#wave-grad)" strokeWidth="1" opacity="0.6" />
-                    </motion.svg>
-                    <motion.svg
-                        animate={isInView ? { x: [0, -1000] } : {}}
-                        transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-                        width="300%" height="100%" viewBox="0 0 3000 300" preserveAspectRatio="none" className="absolute bottom-0"
-                    >
-                        <path d="M0,250 Q150,180 300,250 T600,250 T900,250 T1200,250 T1500,250 T1800,250 T2100,250 T2400,250 T2700,250 T3000,250" fill="none" stroke="url(#wave-grad)" strokeWidth="2" opacity="0.3" />
-                        <defs>
-                            <linearGradient id="wave-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stopColor="#0396A6" stopOpacity="0" />
-                                <stop offset="50%" stopColor="#0396A6" stopOpacity="0.6" />
-                                <stop offset="100%" stopColor="#0396A6" stopOpacity="0" />
-                            </linearGradient>
-                        </defs>
-                    </motion.svg>
-                </div>
-            </div>
+                        {/* Eyebrow Badge */}
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 mb-3.5 backdrop-blur-xs shadow-2xs">
+                            <span className="w-3.5 h-3.5 rounded-full bg-[#0396A6]/20 flex items-center justify-center">
+                                <Sparkles className="w-2.5 h-2.5 text-[#0396A6]" strokeWidth={2} />
+                            </span>
+                            <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">
+                                INTRODUCING FROSTY AGENT
+                            </span>
+                        </div>
 
-            <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
+                        {/* Heading */}
+                        <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-serif font-bold text-[#0F172A] leading-[1.12] tracking-tight m-0 mb-3">
+                            Meet{' '}
+                            <span className="text-[#0396A6] font-bold" style={{ color: '#0396A6' }}>
+                                Frosty Agent.
+                            </span>
+                        </h2>
 
-                    {/* Left Copy Column */}
-                    <div className="flex flex-col justify-center mt-6 lg:mt-0">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.6, ease: "easeOut" }}
-                        >
-                            {/* Eyebrow */}
-                            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 mb-6 backdrop-blur-sm shadow-xs">
-                                <span className="w-4 h-4 rounded-full bg-[#0396A6]/20 flex items-center justify-center">
-                                    <Sparkles className="w-2.5 h-2.5 text-[#0396A6]" />
-                                </span>
-                                <span className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#0396A6]">INTRODUCING FROSTY AGENT</span>
-                            </div>
+                        {/* Subtitle */}
+                        <p className="text-sm sm:text-[15px] text-slate-600 font-normal leading-relaxed max-w-lg m-0 mb-4">
+                            An AI workforce that engages customers, qualifies leads, and takes action 24/7.
+                        </p>
 
-                            <h2
-                                className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-[#0F172A] leading-[1.15] tracking-tight m-0 mb-6"
-                            >
-                                Meet <motion.span
-                                    className="inline-block text-[#0396A6] font-bold"
-                                    animate={isInView ? { textShadow: ["0 0 10px rgba(3, 150, 166,0.15)", "0 0 20px rgba(3, 150, 166,0.3)", "0 0 10px rgba(3, 150, 166,0.15)"] } : {}}
-                                    transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                                    style={{ color: '#0396A6' }}
+                        {/* Subtle Accent Line */}
+                        <div className="w-12 h-1 bg-[#0396A6]/80 rounded-full mb-5" />
+
+                        {/* 3 Core Feature Items */}
+                        <div className="flex flex-col gap-3.5 sm:gap-4">
+                            {FEATURES.map((item, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, x: -14 }}
+                                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                                    transition={{ duration: 0.4, delay: 0.15 + idx * 0.1, ease: 'easeOut' }}
+                                    className="flex items-start gap-3.5 group"
                                 >
-                                    Frosty Agent.
-                                </motion.span>
-                            </h2>
-                            <p
-                                className="text-sm md:text-base text-slate-600 font-normal leading-relaxed max-w-xl m-0 mb-6"
-                            >
-                                An AI workforce built to engage customers, qualify opportunities, and move conversations forward.
-                            </p>
-
-                            <div className="flex flex-col gap-4 mb-6">
-                                {[
-                                    { icon: <Sparkles className="w-5 h-5" />, text: "Understands your business" },
-                                    { icon: <MessageSquare className="w-5 h-5" />, text: "Engages across every channel" },
-                                    { icon: <Zap className="w-5 h-5" />, text: "Takes action that drives results" }
-                                ].map((item, i) => (
-                                    <div key={i} className="flex items-center gap-4">
-                                        <motion.div
-                                            className={`flex-shrink-0 transition-colors duration-700 ${activeCapability === i ? 'text-[#0396A6]' : 'text-slate-400'}`}
-                                            animate={activeCapability === i ? { scale: [1, 1.1, 1] } : {}}
-                                            transition={{ duration: 1.5, ease: "easeInOut" }}
-                                        >
-                                            {item.icon}
-                                        </motion.div>
-                                        <span className={`font-semibold text-lg transition-colors duration-700 ${activeCapability === i ? 'text-[#0F172A]' : 'text-slate-500'}`}>
-                                            {item.text}
+                                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-[#0396A6]/[0.14] group-hover:border-[#0396A6]/40 transition-colors">
+                                        {item.icon}
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <span className="text-sm sm:text-[15px] font-bold text-slate-900 leading-snug">
+                                            {item.title}
+                                        </span>
+                                        <span className="text-xs sm:text-[13px] text-slate-500 font-normal leading-relaxed mt-0.5">
+                                            {item.description}
                                         </span>
                                     </div>
-                                ))}
-                            </div>
-                        </motion.div>
-                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
+                </div>
 
-                    {/* Right Visual Column - Scaled & Positioned Cleanly inside Viewport */}
-                    <div className="relative w-full aspect-square max-w-[340px] sm:max-w-[380px] lg:max-w-[420px] mx-auto mt-6 lg:mt-8 translate-y-3 lg:translate-y-6">
-
-                        {/* Magnetic Rings - Constrained to 105% max radius to stay fully inside Viewport */}
-                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-                            {[1, 2, 3, 4].map((ring, i) => (
+                {/* ── Right Column: Interactive Diagram Flow ── */}
+                <div className="lg:col-span-7 flex items-center justify-center w-full relative">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.96 }}
+                        animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                        transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
+                        className="relative w-full max-w-[660px] h-[340px] sm:h-[360px] mx-auto flex items-center"
+                    >
+                        {/* 1. Left Sub-Column: 4 Input Cards */}
+                        <div className="absolute left-0 top-0 bottom-0 w-[140px] sm:w-[155px] flex flex-col justify-between py-2 z-20">
+                            {CHANNELS.map((ch, idx) => (
                                 <motion.div
-                                    key={ring}
-                                    className="absolute rounded-full border border-[#0396A6]"
-                                    style={{ width: '20%', height: '20%' }}
-                                    animate={isInView ? {
-                                        width: ['20%', '105%'],
-                                        height: ['20%', '105%'],
-                                        opacity: [0.22, 0],
-                                        borderWidth: ['1.5px', '0.5px'],
-                                        borderRadius: ['50%', '49%', '50%'],
-                                    } : {}}
-                                    transition={{
-                                        duration: 7,
-                                        repeat: Infinity,
-                                        delay: i * 1.75,
-                                        ease: "circOut"
-                                    }}
-                                />
+                                    key={ch.id}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                                    transition={{ duration: 0.4, delay: 0.1 + idx * 0.08 }}
+                                    whileHover={{ scale: 1.03, x: 2 }}
+                                    className="h-[62px] p-2 sm:p-2.5 bg-white rounded-2xl border border-slate-200/80 shadow-[0_4px_16px_rgba(0,0,0,0.04)] hover:shadow-[0_6px_22px_rgba(3,150,166,0.12)] hover:border-[#0396A6]/40 transition-all flex items-center gap-2 sm:gap-2.5 cursor-pointer backdrop-blur-xs"
+                                >
+                                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 flex items-center justify-center shrink-0 text-[#0396A6]">
+                                        {ch.icon}
+                                    </div>
+                                    <div className="flex flex-col min-w-0">
+                                        <span className="text-xs sm:text-[13px] font-bold text-slate-900 leading-tight truncate">
+                                            {ch.title}
+                                        </span>
+                                        <span className="text-[10px] sm:text-[11px] text-slate-400 font-medium leading-tight mt-0.5 truncate">
+                                            {ch.subtitle}
+                                        </span>
+                                    </div>
+                                </motion.div>
                             ))}
                         </div>
 
-                        {/* Connection Paths & Data Particles */}
-                        <svg className="absolute inset-0 w-full h-full pointer-events-none z-10" viewBox="0 0 100 100" preserveAspectRatio="none">
-                            {NODES.map((node) => {
-                                const isBurst = burstActive;
-                                return (
-                                    <g key={`path-${node.id}`}>
-                                        {/* Breathing Connection Line */}
-                                        <motion.path
-                                            d={`M50,50 Q${(node.position.x + 50) / 2},${node.position.y} ${node.position.x},${node.position.y}`}
-                                            fill="none"
-                                            stroke="rgba(3, 150, 166,0.2)"
-                                            strokeWidth="0.3"
-                                            animate={isInView ? {
-                                                opacity: isBurst ? 0.8 : [0.3, 0.6, 0.3],
-                                            } : {}}
-                                            transition={{ duration: 4 + (node.delayOffset % 2), repeat: Infinity, ease: "easeInOut" }}
-                                        />
-
-                                        {/* Outbound Data Particle (Frosty -> Node) */}
-                                        {rayOutState[node.id] && (
-                                            <motion.circle
-                                                key={`out-${node.id}-${rayOutState[node.id]}`}
-                                                r="1.2"
-                                                fill="#0396A6"
-                                                style={{ filter: 'drop-shadow(0 0 3px rgba(3, 150, 166,0.6))' }}
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: [0, 1, 1, 0] }}
-                                                transition={{ duration: 2.1, times: [0, 0.1, 0.9, 1], ease: "linear" }}
-                                            >
-                                                <animateMotion
-                                                    dur="2.1s"
-                                                    fill="freeze"
-                                                    path={`M50,50 Q${(node.position.x + 50) / 2},${node.position.y} ${node.position.x},${node.position.y}`}
-                                                />
-                                            </motion.circle>
-                                        )}
-
-                                        {/* Inbound Data Particle (Node -> Frosty) */}
-                                        {rayInState[node.id] && (
-                                            <motion.circle
-                                                key={`in-${node.id}-${rayInState[node.id]}`}
-                                                r="1.2"
-                                                fill="#FF7A5E"
-                                                style={{ filter: 'drop-shadow(0 0 3px rgba(255, 122, 94,0.6))' }}
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: [0, 1, 1, 0] }}
-                                                transition={{ duration: 2.1, times: [0, 0.1, 0.9, 1], ease: "linear" }}
-                                            >
-                                                <animateMotion
-                                                    dur="2.1s"
-                                                    fill="freeze"
-                                                    path={`M${node.position.x},${node.position.y} Q${(node.position.x + 50) / 2},${node.position.y} 50,50`}
-                                                />
-                                            </motion.circle>
-                                        )}
-                                    </g>
-                                );
-                            })}
-                        </svg>
-
-                        {/* Agent Nodes */}
-                        {NODES.map((node) => {
-                            const isWeb = node.id === 'website';
-                            const isWA = node.id === 'whatsapp';
-                            const isUnified = node.id === 'unified';
-                            const isCRM = node.id === 'crm';
-                            const isLead = node.id === 'lead';
-
-                            const floatY = isWeb ? 3 : isUnified ? 4 : isCRM ? 2 : isLead ? 3.5 : 2.5;
-                            const floatX = isWA ? 3 : isCRM ? 2 : isLead ? -2 : 1;
-                            const floatDur = isWeb ? 5.5 : isWA ? 6.2 : isUnified ? 7.1 : isCRM ? 5.8 : isLead ? 6.5 : 8.0;
-
-                            return (
-                                <motion.div
-                                    key={node.id}
-                                    onHoverStart={() => setHoveredNode(node.id)}
-                                    onHoverEnd={() => setHoveredNode(null)}
-                                    onClick={() => setHoveredNode(hoveredNode === node.id ? null : node.id)}
-                                    className={`absolute flex items-center justify-center sm:justify-start w-11 h-11 sm:w-auto sm:h-auto sm:gap-2.5 sm:bg-white/95 sm:backdrop-blur-md sm:border sm:border-slate-200/80 sm:rounded-xl sm:p-2 sm:pr-3.5 sm:shadow-[0_4px_18px_rgba(0,0,0,0.06)] cursor-pointer group ${hoveredNode === node.id ? 'z-50' : 'z-20'} sm:z-20`}
-                                    style={{
-                                        left: `${node.position.x}%`,
-                                        top: `${node.position.y}%`,
-                                        transform: 'translate(-50%, -50%)',
-                                    }}
-                                    animate={isInView ? {
-                                        y: [`calc(-50% + 0px)`, `calc(-50% - ${floatY}px)`, `calc(-50% + ${floatY}px)`, `calc(-50% + 0px)`],
-                                        x: [`calc(-50% + 0px)`, `calc(-50% + ${floatX}px)`, `calc(-50% - ${floatX}px)`, `calc(-50% + 0px)`],
-                                        boxShadow: burstActive
-                                            ? "0 0 25px rgba(3, 150, 166,0.15)"
-                                            : "0 4px 18px rgba(0,0,0,0.06)"
-                                    } : {}}
-                                    transition={{
-                                        y: { duration: floatDur, repeat: Infinity, ease: "easeInOut" },
-                                        x: { duration: floatDur * 1.1, repeat: Infinity, ease: "easeInOut" },
-                                        boxShadow: { duration: 0.5, ease: "easeOut" }
-                                    }}
-                                >
-                                    <motion.div
-                                        className="relative w-full h-full flex items-center justify-center sm:justify-start"
-                                        animate={nodeTiltControls}
-                                    >
-                                        {/* Colored Icon Box */}
-                                        <motion.div
-                                            className={`flex items-center justify-center w-full h-full sm:w-9 sm:h-9 rounded-xl sm:rounded-lg sm:border ${node.iconColor} relative`}
-                                            animate={isInView ? {
-                                                rotate: isWeb ? [0, 2, -1, 0] : isWA ? [0, -2, 1, 0] : [0, 1, -1, 0],
-                                                borderColor: burstActive ? 'rgba(3, 150, 166,0.5)' : 'rgba(3, 150, 166,0.2)',
-                                            } : {}}
-                                            transition={{
-                                                rotate: { duration: 6, repeat: Infinity, ease: "easeInOut" },
-                                                borderColor: { duration: 0.8, ease: "easeOut" }
-                                            }}
-                                        >
-                                            {/* Icon subtle glow on burst */}
-                                            <motion.div
-                                                className="absolute inset-0 bg-[#0396A6] blur-md sm:rounded-lg"
-                                                animate={{ opacity: burstActive ? 0.2 : 0 }}
-                                                transition={{ duration: 0.4 }}
-                                            />
-                                            <div className="relative z-10 scale-105 sm:scale-100 drop-shadow-sm sm:drop-shadow-none">
-                                                {node.icon}
-                                            </div>
-                                        </motion.div>
-
-                                        {/* Desktop Text */}
-                                        <div className="hidden sm:block ml-2.5">
-                                            <div className="text-slate-900 font-bold text-[13px] leading-tight whitespace-nowrap">{node.title}</div>
-                                            <div className="text-slate-500 text-[11px] whitespace-nowrap font-medium">{node.subtitle}</div>
-                                        </div>
-                                    </motion.div>
-
-                                    {/* Mobile Tooltip */}
-                                    <AnimatePresence>
-                                        {hoveredNode === node.id && (
-                                            <motion.div
-                                                initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                                                animate={{ opacity: 1, y: 0, scale: 1 }}
-                                                exit={{ opacity: 0, y: 5, scale: 0.95 }}
-                                                transition={{ duration: 0.2 }}
-                                                className="absolute sm:hidden top-full mt-3 left-1/2 -translate-x-1/2 bg-white border border-slate-200 text-slate-900 py-2 px-3 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] whitespace-nowrap z-50 flex flex-col items-center pointer-events-none"
-                                            >
-                                                <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-white border-t border-l border-slate-200 rotate-45 rounded-sm" />
-                                                <div className="text-slate-900 font-bold text-[13px] leading-tight relative z-10">{node.title}</div>
-                                                <div className="text-[#0396A6] text-[10px] uppercase tracking-widest font-bold mt-0.5 relative z-10">{node.subtitle}</div>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
-
-                                    {/* Localized node response halo */}
-                                    {nodeGlowState[node.id] && (
-                                        <motion.div
-                                            key={`glow-${node.id}-${nodeGlowState[node.id]}`}
-                                            className="absolute inset-0 rounded-xl border border-[#0396A6]/60 pointer-events-none"
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: [0, 0.6, 0] }}
-                                            transition={{ duration: 1.5, ease: "easeOut" }}
-                                        />
-                                    )}
-
-                                    {/* Burst active halo */}
-                                    {burstActive && (
-                                        <motion.div
-                                            className="absolute inset-0 rounded-xl border border-[#0396A6]/40 pointer-events-none"
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: [0, 0.4, 0] }}
-                                            transition={{ duration: 1.5 }}
-                                        />
-                                    )}
-                                </motion.div>
-                            );
-                        })}
-
-                        {/* Central Frosty Core */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 flex flex-col items-center justify-center scale-[0.65] sm:scale-95 transition-transform duration-300">
-
-                            <div className="relative flex items-center justify-center w-[125px] h-[125px]">
-                                {/* Outer atmospheric glow */}
-                                <motion.div
-                                    className="absolute rounded-full bg-[#0396A6]/15 blur-[35px]"
-                                    animate={isInView ? {
-                                        width: burstActive ? 210 : [170, 190, 170],
-                                        height: burstActive ? 210 : [170, 190, 170],
-                                        opacity: burstActive ? 0.6 : [0.3, 0.5, 0.3]
-                                    } : {}}
-                                    transition={burstActive ? { duration: 0.4, ease: "easeOut" } : { duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                                />
-
-                                {/* Inner bright rim */}
-                                <motion.div
-                                    className="absolute w-[125px] h-[125px] rounded-full border-[2px] border-[#0396A6]/30 bg-white/95 backdrop-blur-sm flex items-center justify-center"
-                                    animate={isInView ? {
-                                        scale: burstActive ? 1.05 : [1, 1.015, 1],
-                                        boxShadow: burstActive
-                                            ? "0 0 50px rgba(3, 150, 166,0.3), inset 0 0 18px rgba(3, 150, 166,0.15)"
-                                            : [
-                                                "0 0 25px rgba(3, 150, 166,0.15), inset 0 0 10px rgba(3, 150, 166,0.05)",
-                                                "0 0 40px rgba(3, 150, 166,0.25), inset 0 0 18px rgba(3, 150, 166,0.1)",
-                                                "0 0 25px rgba(3, 150, 166,0.15), inset 0 0 10px rgba(3, 150, 166,0.05)"
-                                            ]
-                                    } : {}}
-                                    transition={burstActive ? { duration: 0.4, ease: "easeOut" } : { duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                                >
-                                    <div
-                                        className="absolute w-[105px] h-[105px] rounded-full bg-gradient-to-br from-white via-[#F0FDFA] to-[#CCFBF1] border border-slate-100 flex items-center justify-center cursor-pointer shadow-inner"
-                                        onClick={handleCoreClick}
-                                    >
-                                        <motion.div
-                                            animate={isInView ? {
-                                                opacity: burstActive ? 1 : [0.9, 1, 0.9],
-                                                scale: burstActive ? 1.05 : 1
-                                            } : {}}
-                                            transition={burstActive ? { duration: 0.3 } : { duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                                        >
-                                            <motion.div
-                                                animate={coreGlowControls}
-                                                whileHover={{ rotate: 90, scale: 1.1 }}
-                                            >
-                                                <FrostyIcon size={50} glow={0.6} />
-                                            </motion.div>
-                                        </motion.div>
-                                    </div>
-                                </motion.div>
-                            </div>
-
+                        {/* 2. Middle Central Hub: Frosty Agent Circle */}
+                        <div className="absolute left-[47%] -translate-x-1/2 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center">
+                            {/* Ambient Glow */}
                             <motion.div
-                                className="absolute -bottom-7 text-slate-900 font-bold text-base tracking-wide z-40 whitespace-nowrap"
-                                animate={{ opacity: burstActive ? 1 : 0.9 }}
+                                animate={{
+                                    scale: [1, 1.08, 1],
+                                    opacity: [0.35, 0.6, 0.35]
+                                }}
+                                transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+                                className="absolute w-[210px] h-[210px] sm:w-[230px] sm:h-[230px] rounded-full bg-[radial-gradient(circle,_rgba(3,150,166,0.22)_0%,_transparent_70%)] blur-xl pointer-events-none"
+                            />
+
+                            {/* Outer Subtle Pulse Ring */}
+                            <motion.div
+                                key={`pulse-${pulseKey}`}
+                                initial={{ scale: 0.95, opacity: 0.8 }}
+                                animate={{ scale: 1.25, opacity: 0 }}
+                                transition={{ duration: 1.8, ease: 'easeOut' }}
+                                className="absolute w-[165px] h-[165px] sm:w-[185px] sm:h-[185px] rounded-full border border-[#0396A6]/40 pointer-events-none"
+                            />
+
+                            {/* Frosty Agent Main Circular Card */}
+                            <motion.div
+                                whileHover={{ scale: 1.03 }}
+                                className="relative w-[165px] h-[165px] sm:w-[185px] sm:h-[185px] rounded-full bg-white border border-[#0396A6]/25 shadow-[0_8px_32px_rgba(3,150,166,0.12)] flex flex-col items-center justify-center text-center p-3 cursor-pointer group"
                             >
-                                Frosty Agent
+                                <motion.div
+                                    whileHover={{ rotate: 90 }}
+                                    transition={{ duration: 0.4 }}
+                                    className="mb-1"
+                                >
+                                    <FrostySparkleIcon className="w-10 h-10 sm:w-11 sm:h-11" />
+                                </motion.div>
+
+                                <span className="font-bold text-[15px] sm:text-[17px] text-[#0396A6] tracking-tight leading-tight">
+                                    Frosty Agent
+                                </span>
+
+                                <div className="mt-1.5 flex flex-col items-center gap-0.5">
+                                    <span className="text-[9px] sm:text-[10px] font-semibold text-slate-500 tracking-wider">
+                                        Understand <span className="text-[#0396A6] mx-0.5">•</span> Respond
+                                    </span>
+                                    <span className="text-[9px] sm:text-[10px] font-semibold text-slate-500 tracking-wider">
+                                        Qualify <span className="text-[#0396A6] mx-0.5">•</span> Act
+                                    </span>
+                                </div>
                             </motion.div>
+                        </div>
+
+                        {/* 3. Right Sub-Column: Qualified Lead Card */}
+                        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[125px] sm:w-[140px] z-20">
+                            <motion.div
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                                transition={{ duration: 0.5, delay: 0.3 }}
+                                whileHover={{ scale: 1.04, y: -2 }}
+                                className="p-3 sm:p-3.5 bg-white rounded-2xl border border-slate-200/80 shadow-[0_4px_16px_rgba(0,0,0,0.04)] hover:shadow-[0_6px_22px_rgba(3,150,166,0.12)] hover:border-[#0396A6]/40 transition-all flex flex-col items-center text-center cursor-pointer"
+                            >
+                                <QualifiedLeadIcon />
+
+                                <span className="text-xs sm:text-[13px] font-bold text-slate-900 mt-2 mb-2 leading-tight">
+                                    Qualified Lead
+                                </span>
+
+                                <div className="flex flex-col gap-1 w-full text-left">
+                                    <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] text-slate-600 font-medium leading-tight">
+                                        <Check className="w-3.5 h-3.5 text-[#0396A6] stroke-[2.5] shrink-0" />
+                                        <span className="truncate">CRM Updated</span>
+                                    </div>
+                                    <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] text-slate-600 font-medium leading-tight">
+                                        <Check className="w-3.5 h-3.5 text-[#0396A6] stroke-[2.5] shrink-0" />
+                                        <span className="truncate">Follow-up Ready</span>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </div>
+
+                        {/* 4. SVG Connecting Paths & Animated Data Packets */}
+                        <svg
+                            className="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible"
+                            viewBox="0 0 660 360"
+                            preserveAspectRatio="none"
+                        >
+                            <defs>
+                                {/* Directional Arrow Markers */}
+                                <marker
+                                    id="teal-arrow"
+                                    viewBox="0 0 10 10"
+                                    refX="6"
+                                    refY="5"
+                                    markerWidth="5"
+                                    markerHeight="5"
+                                    orient="auto"
+                                >
+                                    <path d="M 0 1.5 L 7 5 L 0 8.5 z" fill="#0396A6" />
+                                </marker>
+
+                                {/* Packet Glow Filter */}
+                                <filter id="pulse-glow" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur" />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                            </defs>
+
+                            {/* Path 1: Website (Top) -> Frosty */}
+                            <path
+                                id="path-website"
+                                d="M 148 40 L 210 40 Q 225 40 225 55 L 225 105 Q 225 118 238 120 L 255 125"
+                                fill="none"
+                                stroke="#0396A6"
+                                strokeWidth="1.5"
+                                strokeDasharray="3.5 3.5"
+                                strokeOpacity="0.75"
+                                markerEnd="url(#teal-arrow)"
+                            />
+
+                            {/* Path 2: WhatsApp (Mid-Top) -> Frosty */}
+                            <path
+                                id="path-whatsapp"
+                                d="M 148 120 L 215 120 Q 235 120 242 145 L 250 152"
+                                fill="none"
+                                stroke="#0396A6"
+                                strokeWidth="1.5"
+                                strokeDasharray="3.5 3.5"
+                                strokeOpacity="0.75"
+                                markerEnd="url(#teal-arrow)"
+                            />
+
+                            {/* Path 3: Voice Call (Mid-Bottom) -> Frosty */}
+                            <path
+                                id="path-voice"
+                                d="M 148 240 L 215 240 Q 235 240 242 215 L 250 208"
+                                fill="none"
+                                stroke="#0396A6"
+                                strokeWidth="1.5"
+                                strokeDasharray="3.5 3.5"
+                                strokeOpacity="0.75"
+                                markerEnd="url(#teal-arrow)"
+                            />
+
+                            {/* Path 4: Social (Bottom) -> Frosty */}
+                            <path
+                                id="path-social"
+                                d="M 148 320 L 210 320 Q 225 320 225 305 L 225 255 Q 225 242 238 240 L 255 235"
+                                fill="none"
+                                stroke="#0396A6"
+                                strokeWidth="1.5"
+                                strokeDasharray="3.5 3.5"
+                                strokeOpacity="0.75"
+                                markerEnd="url(#teal-arrow)"
+                            />
+
+                            {/* Path 5: Frosty -> Qualified Lead (Right) */}
+                            <path
+                                id="path-lead"
+                                d="M 405 180 L 522 180"
+                                fill="none"
+                                stroke="#0396A6"
+                                strokeWidth="1.5"
+                                strokeDasharray="3.5 3.5"
+                                strokeOpacity="0.75"
+                                markerEnd="url(#teal-arrow)"
+                            />
+
+                            {/* ── Animated Flowing Data Packets ── */}
+                            {/* Packet 1: Website */}
+                            <circle r="3" fill="#0396A6" filter="url(#pulse-glow)">
+                                <animateMotion
+                                    dur="2.4s"
+                                    repeatCount="indefinite"
+                                    path="M 148 40 L 210 40 Q 225 40 225 55 L 225 105 Q 225 118 238 120 L 255 125"
+                                    keyPoints="0;1"
+                                    keyTimes="0;1"
+                                />
+                            </circle>
+
+                            {/* Packet 2: WhatsApp */}
+                            <circle r="3" fill="#0396A6" filter="url(#pulse-glow)">
+                                <animateMotion
+                                    dur="2.4s"
+                                    begin="0.6s"
+                                    repeatCount="indefinite"
+                                    path="M 148 120 L 215 120 Q 235 120 242 145 L 250 152"
+                                    keyPoints="0;1"
+                                    keyTimes="0;1"
+                                />
+                            </circle>
+
+                            {/* Packet 3: Voice Call */}
+                            <circle r="3" fill="#0396A6" filter="url(#pulse-glow)">
+                                <animateMotion
+                                    dur="2.4s"
+                                    begin="1.2s"
+                                    repeatCount="indefinite"
+                                    path="M 148 240 L 215 240 Q 235 240 242 215 L 250 208"
+                                    keyPoints="0;1"
+                                    keyTimes="0;1"
+                                />
+                            </circle>
+
+                            {/* Packet 4: Social */}
+                            <circle r="3" fill="#0396A6" filter="url(#pulse-glow)">
+                                <animateMotion
+                                    dur="2.4s"
+                                    begin="1.8s"
+                                    repeatCount="indefinite"
+                                    path="M 148 320 L 210 320 Q 225 320 225 305 L 225 255 Q 225 242 238 240 L 255 235"
+                                    keyPoints="0;1"
+                                    keyTimes="0;1"
+                                />
+                            </circle>
+
+                            {/* Packet 5: Frosty -> Qualified Lead (Repeats rhythmically) */}
+                            <circle r="3.2" fill="#0396A6" filter="url(#pulse-glow)">
+                                <animateMotion
+                                    dur="1.8s"
+                                    begin="0.8s"
+                                    repeatCount="indefinite"
+                                    path="M 405 180 L 522 180"
+                                    keyPoints="0;1"
+                                    keyTimes="0;1"
+                                />
+                            </circle>
+                            <circle r="3.2" fill="#0396A6" filter="url(#pulse-glow)">
+                                <animateMotion
+                                    dur="1.8s"
+                                    begin="1.7s"
+                                    repeatCount="indefinite"
+                                    path="M 405 180 L 522 180"
+                                    keyPoints="0;1"
+                                    keyTimes="0;1"
+                                />
+                            </circle>
+                        </svg>
+                    </motion.div>
+                </div>
+
+            </div>
+
+            {/* ── Bottom Metrics Banner (Aesthetic, Transparent, Divided) ── */}
+            <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.35, ease: 'easeOut' }}
+                className="w-full relative z-10 mt-4 lg:mt-2"
+            >
+                <div className="w-full rounded-2xl sm:rounded-3xl border border-slate-200/70 bg-white/40 backdrop-blur-xs px-4 sm:px-8 py-3.5 sm:py-4 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-0 items-center divide-y lg:divide-y-0 lg:divide-x divide-slate-200/60">
+                        
+                        {/* Stat 1: Instant Response */}
+                        <div className="flex items-center gap-3 sm:gap-3.5 lg:px-6 first:lg:pl-2">
+                            <div className="text-[#0396A6] shrink-0">
+                                <Zap className="w-6 h-6 sm:w-7 sm:h-7 text-[#0396A6]" strokeWidth={1.75} fill="none" />
+                            </div>
+                            <div className="flex flex-col min-w-0">
+                                <span className="text-xs sm:text-[13px] font-bold text-slate-900 leading-tight truncate">
+                                    Instant Response
+                                </span>
+                                <span className="text-[10px] sm:text-[11px] text-slate-500 font-normal leading-tight mt-0.5 truncate">
+                                    Engage in seconds
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Stat 2: Never Miss a Lead */}
+                        <div className="flex items-center gap-3 sm:gap-3.5 lg:px-6 pt-3 lg:pt-0">
+                            <div className="text-[#0396A6] shrink-0">
+                                <ShieldCheckCustomIcon className="w-6 h-6 sm:w-7 sm:h-7 text-[#0396A6]" />
+                            </div>
+                            <div className="flex flex-col min-w-0">
+                                <span className="text-xs sm:text-[13px] font-bold text-slate-900 leading-tight truncate">
+                                    Never Miss a Lead
+                                </span>
+                                <span className="text-[10px] sm:text-[11px] text-slate-500 font-normal leading-tight mt-0.5 truncate">
+                                    24/7 coverage
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Stat 3: Higher Conversions */}
+                        <div className="flex items-center gap-3 sm:gap-3.5 lg:px-6 pt-3 lg:pt-0">
+                            <div className="text-[#0396A6] shrink-0">
+                                <TargetCustomIcon className="w-6 h-6 sm:w-7 sm:h-7 text-[#0396A6]" />
+                            </div>
+                            <div className="flex flex-col min-w-0">
+                                <span className="text-xs sm:text-[13px] font-bold text-slate-900 leading-tight truncate">
+                                    Higher Conversions
+                                </span>
+                                <span className="text-[10px] sm:text-[11px] text-slate-500 font-normal leading-tight mt-0.5 truncate">
+                                    Turn more leads into sales
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Stat 4: More Revenue */}
+                        <div className="flex items-center gap-3 sm:gap-3.5 lg:px-6 last:lg:pr-2 pt-3 lg:pt-0">
+                            <div className="text-[#0396A6] shrink-0">
+                                <RevenueChartCustomIcon className="w-6 h-6 sm:w-7 sm:h-7 text-[#0396A6]" />
+                            </div>
+                            <div className="flex flex-col min-w-0">
+                                <span className="text-xs sm:text-[13px] font-bold text-slate-900 leading-tight truncate">
+                                    More Revenue
+                                </span>
+                                <span className="text-[10px] sm:text-[11px] text-slate-500 font-normal leading-tight mt-0.5 truncate">
+                                    Grow your business
+                                </span>
+                            </div>
                         </div>
 
                     </div>
                 </div>
-            </div>
-
-            {/* Ambient Particles around magnetic field */}
-            <div className="absolute inset-0 pointer-events-none z-50">
-                {particles.map((p) => (
-                    <motion.div
-                        key={`amb-${p.id}`}
-                        className="absolute rounded-full bg-[#0396A6]"
-                        style={{ top: p.top, left: p.left, width: p.size, height: p.size }}
-                        animate={isInView ? {
-                            opacity: [0, 0.3, 0],
-                            y: [0, -40],
-                            x: [0, (Math.random() - 0.5) * 30]
-                        } : {}}
-                        transition={{
-                            duration: p.duration,
-                            repeat: Infinity,
-                            delay: p.delay,
-                            ease: "easeInOut"
-                        }}
-                    />
-                ))}
-            </div>
+            </motion.div>
 
         </section>
     );
