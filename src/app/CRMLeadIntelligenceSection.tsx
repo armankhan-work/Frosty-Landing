@@ -172,7 +172,7 @@ export default function CRMLeadIntelligenceSection() {
         </p>
       </div>
 
-      <div className="w-full flex flex-col items-center mt-2 sm:mt-4">
+      <div className="w-full flex flex-col items-center mt-2 sm:mt-4 sm:transform sm:scale-[0.85] sm:origin-top sm:-mb-[100px]">
         
         <div className="mb-4">
           <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-slate-500 bg-white/90 border border-slate-200 px-3 py-1 rounded-full shadow-2xs">

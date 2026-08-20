@@ -22,6 +22,7 @@ import GlassNavbar from '@/components/GlassNavbar';
 import FooterSection from '../FooterSection';
 import GoogleCalendarScheduler from '@/components/GoogleCalendarScheduler';
 import { ParallaxStarfield } from '@/components/FrostyEngineHero';
+import { trackEvent } from '@/lib/analytics';
 import '../FrostyPage.css';
 
 const REACH_TARGETS = [
@@ -123,15 +124,58 @@ export default function ContactPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage(null);
+
+    // Validation
+    if (!formData.fullName.trim()) {
+      setErrorMessage('Please enter your full name.');
+      return;
+    }
+    if (!formData.workEmail.trim()) {
+      setErrorMessage('Please enter your work email.');
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.workEmail)) {
+      setErrorMessage('Please enter a valid work email address.');
+      return;
+    }
+    if (!formData.message.trim()) {
+      setErrorMessage('Please enter your message or project requirements.');
+      return;
+    }
+
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Failed to send message. Please try again.');
+      }
+
       setIsSubmitted(true);
-    }, 900);
+      trackEvent('generate_lead', {
+        source: 'contact_page',
+        reach_target: formData.reachTarget,
+        has_company: Boolean(formData.companyName),
+      });
+    } catch (err: any) {
+      console.error('[ContactPage] Submission failed:', err);
+      setErrorMessage(err.message || 'Unable to submit your message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleReset = () => {
@@ -143,6 +187,7 @@ export default function ContactPage() {
       reachTarget: 'Sales Enquiry',
       message: '',
     });
+    setErrorMessage(null);
     setIsSubmitted(false);
   };
 
@@ -293,6 +338,12 @@ export default function ContactPage() {
                     </motion.div>
                   ) : (
                     <form key="form" onSubmit={handleSubmit} className="space-y-4 sm:space-y-4.5">
+                      {errorMessage && (
+                        <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-semibold flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
+                          <span>{errorMessage}</span>
+                        </div>
+                      )}
                       
                       {/* Row 1: Full Name */}
                       <div>

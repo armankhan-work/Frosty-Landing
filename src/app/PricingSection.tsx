@@ -188,6 +188,44 @@ function GuaranteeInfoTooltip() {
     );
 }
 
+/* ─── Launch Rate Badge with Interactive Tooltip ─── */
+function LaunchRateBadge({ size = 'normal' }: { size?: 'normal' | 'small' }) {
+    const [open, setOpen] = useState(false);
+    return (
+        <div
+            className="relative inline-flex items-center"
+            onMouseEnter={() => setOpen(true)}
+            onMouseLeave={() => setOpen(false)}
+        >
+            <span
+                className={`inline-flex items-center font-bold bg-[#0396A6]/10 text-[#0396A6] border border-[#0396A6]/20 tracking-tight rounded-full cursor-default select-none transition-all duration-150 hover:bg-[#0396A6]/15 hover:border-[#0396A6]/35 ${
+                    size === 'small'
+                        ? 'px-2 py-0.5 text-[9.5px]'
+                        : 'px-2.5 py-0.5 text-[10.5px] sm:text-xs shadow-2xs'
+                }`}
+            >
+                Launch rate
+            </span>
+            <AnimatePresence>
+                {open && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 4, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 2, scale: 0.95 }}
+                        transition={{ duration: 0.14, ease: 'easeOut' }}
+                        className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 rounded-xl bg-white text-slate-800 text-[11px] font-semibold whitespace-nowrap shadow-[0_10px_25px_rgba(0,0,0,0.12)] border border-slate-200/90 z-50 pointer-events-none flex items-center gap-1.5 select-none"
+                    >
+                        <Sparkles className="w-3.5 h-3.5 text-[#0396A6] shrink-0" />
+                        <span className="text-slate-800 tracking-tight font-semibold">For only first 100 customers</span>
+                        {/* White Caret pointing down */}
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 w-2 h-2 bg-white border-r border-b border-slate-200/90 rotate-45" />
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+}
+
 /* ─── Anchor / Strikethrough Price Calculation (X - 30% = P => X = P / 0.7) ─── */
 function getOriginalStrikethroughPrice(priceStr: string): string {
     if (!priceStr) return '';
@@ -1115,16 +1153,24 @@ export default function PricingSection() {
                                             <span className="text-xs sm:text-sm font-semibold text-slate-400/80 line-through decoration-slate-400/80 tracking-tight decoration-[1.5px] select-none">
                                                 {getOriginalStrikethroughPrice(addon.price)}
                                             </span>
+                                            <span className="text-[10.5px] font-semibold text-slate-400/80 tracking-tight select-none">
+                                                Standard rate
+                                            </span>
                                         </div>
                                     )}
-                                    <div className="flex items-baseline gap-1">
-                                        <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-none">
-                                            {addon.price}
-                                        </span>
-                                        {addon.period && (
-                                            <span className="text-xs text-slate-500 font-medium ml-0.5">
-                                                {addon.period}
+                                    <div className="flex items-center gap-2 flex-wrap">
+                                        <div className="flex items-baseline gap-1">
+                                            <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-none">
+                                                {addon.price}
                                             </span>
+                                            {addon.period && (
+                                                <span className="text-xs text-slate-500 font-medium ml-0.5">
+                                                    {addon.period}
+                                                </span>
+                                            )}
+                                        </div>
+                                        {getOriginalStrikethroughPrice(addon.price) && (
+                                            <LaunchRateBadge size="small" />
                                         )}
                                     </div>
                                     <div className="text-xs text-slate-500 font-medium mt-1">
@@ -1195,17 +1241,23 @@ export default function PricingSection() {
                                                     <span className="text-sm sm:text-base font-semibold text-slate-400/80 line-through decoration-slate-400/80 tracking-tight decoration-[1.5px] select-none">
                                                         {originalCutPrice}
                                                     </span>
+                                                    <span className="text-xs sm:text-sm font-semibold text-slate-400/80 tracking-tight select-none">
+                                                        Standard rate
+                                                    </span>
                                                 </div>
                                             )}
-                                            <div className="flex items-baseline gap-1">
-                                                <span className="text-3xl sm:text-[34px] xl:text-4xl font-extrabold text-slate-900 tracking-tight leading-none">
-                                                    {currentPricing.price}
-                                                </span>
-                                                {currentPricing.period && (
-                                                    <span className="text-xs sm:text-sm text-slate-500 font-medium ml-0.5">
-                                                        {currentPricing.period}
+                                            <div className="flex items-center gap-2 flex-wrap">
+                                                <div className="flex items-baseline gap-1">
+                                                    <span className="text-3xl sm:text-[34px] xl:text-4xl font-extrabold text-slate-900 tracking-tight leading-none">
+                                                        {currentPricing.price}
                                                     </span>
-                                                )}
+                                                    {currentPricing.period && (
+                                                        <span className="text-xs sm:text-sm text-slate-500 font-medium ml-0.5">
+                                                            {currentPricing.period}
+                                                        </span>
+                                                    )}
+                                                </div>
+                                                <LaunchRateBadge />
                                             </div>
                                             <div className="text-xs text-slate-500 font-medium mt-1">
                                                 {currentPricing.billingNote}

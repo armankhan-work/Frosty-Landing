@@ -274,7 +274,7 @@ export default function ProblemSection() {
                                             <path d="M 0 57 L 44 57" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3.5 3.5" strokeOpacity="0.75" markerEnd="url(#teal-arrow-without)" />
                                             <path d="M 0 95 L 22 95 Q 26 95 26 91 L 26 57 L 44 57" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3.5 3.5" strokeOpacity="0.75" markerEnd="url(#teal-arrow-without)" />
 
-                                            {/* Flowing Atoms (Matching SS2 Meet Frosty Agent) */}
+                                            {/* Flowing Atoms (Synchronous start) */}
                                             <circle r="2.8" fill="#0396A6" filter="url(#wire-glow-without)">
                                                 <animateMotion
                                                     dur="2.4s"
@@ -287,7 +287,6 @@ export default function ProblemSection() {
                                             <circle r="2.8" fill="#0396A6" filter="url(#wire-glow-without)">
                                                 <animateMotion
                                                     dur="2.4s"
-                                                    begin="0.6s"
                                                     repeatCount="indefinite"
                                                     path="M 0 57 L 44 57"
                                                     keyPoints="0;1"
@@ -297,7 +296,6 @@ export default function ProblemSection() {
                                             <circle r="2.8" fill="#0396A6" filter="url(#wire-glow-without)">
                                                 <animateMotion
                                                     dur="2.4s"
-                                                    begin="1.2s"
                                                     repeatCount="indefinite"
                                                     path="M 0 95 L 22 95 Q 26 95 26 91 L 26 57 L 44 57"
                                                     keyPoints="0;1"
@@ -454,7 +452,7 @@ export default function ProblemSection() {
                                             <path d="M 0 57 L 44 57" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3.5 3.5" strokeOpacity="0.75" markerEnd="url(#teal-arrow-with)" />
                                             <path d="M 0 95 L 22 95 Q 26 95 26 91 L 26 57 L 44 57" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3.5 3.5" strokeOpacity="0.75" markerEnd="url(#teal-arrow-with)" />
 
-                                            {/* Flowing Atoms (Matching SS2 Meet Frosty Agent) */}
+                                            {/* Flowing Atoms (Synchronous start) */}
                                             <circle r="2.8" fill="#0396A6" filter="url(#wire-glow-with)">
                                                 <animateMotion
                                                     dur="2.4s"
@@ -467,7 +465,6 @@ export default function ProblemSection() {
                                             <circle r="2.8" fill="#0396A6" filter="url(#wire-glow-with)">
                                                 <animateMotion
                                                     dur="2.4s"
-                                                    begin="0.6s"
                                                     repeatCount="indefinite"
                                                     path="M 0 57 L 44 57"
                                                     keyPoints="0;1"
@@ -477,7 +474,6 @@ export default function ProblemSection() {
                                             <circle r="2.8" fill="#0396A6" filter="url(#wire-glow-with)">
                                                 <animateMotion
                                                     dur="2.4s"
-                                                    begin="1.2s"
                                                     repeatCount="indefinite"
                                                     path="M 0 95 L 22 95 Q 26 95 26 91 L 26 57 L 44 57"
                                                     keyPoints="0;1"

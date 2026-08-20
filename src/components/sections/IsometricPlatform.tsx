@@ -21,21 +21,21 @@ const TILES: TileData[] = [
         desc: 'Proprietary reasoning engine built for enterprise logic and secure execution.',
         x: 84, y: 22,
         lineX: 348, lineY: 220, // Points to AI Core
-        icon: <Cpu size={26} strokeWidth={1.5} color="#10B981" />,
+        icon: <Cpu size={26} strokeWidth={2} color="#00ACC1" />,
     },
     {
         label: 'Knowledge Layer',
         desc: 'Vector-embedded company data. Your agent knows everything you do.',
         x: 6, y: 55,
         lineX: 175, lineY: 300, // Points to Knowledge Layer
-        icon: <Database size={26} strokeWidth={1.5} color="#FF7A5E" />,
+        icon: <Database size={26} strokeWidth={2} color="#0396A6" />,
     },
     {
         label: 'CRM Sync',
         desc: 'Deep integrations. Reads from and writes directly to your database.',
         x: 90, y: 78,
         lineX: 348, lineY: 380, // Points to CRM
-        icon: <Users size={26} strokeWidth={1.5} color="#14B8A6" />,
+        icon: <Users size={26} strokeWidth={2} color="#0D5C75" />,
     },
 ];
 
@@ -43,16 +43,32 @@ type ThemeColor = 'gray' | 'green' | 'blue' | 'purple';
 
 const THEMES: Record<ThemeColor, { top: [string, string], right: [string, string], left: [string, string], stroke: string, text: string }> = {
     gray: {
-        top: ['#f8f9fa', '#eef0ef'], right: ['#e2e5e3', '#d6dad8'], left: ['#e8ebe9', '#dde0de'], stroke: 'rgba(0,0,0,0.04)', text: '#475569'
+        top: ['#FFFFFF', '#E6FAF8'], 
+        right: ['#80DEEA', '#4DD0E1'], 
+        left: ['#B2EBF2', '#80DEEA'], 
+        stroke: 'rgba(3,150,166,0.35)', 
+        text: '#0A1A2F'
     },
-    green: {
-        top: ['#eaf6ef', '#d8ede1'], right: ['#cfe3d6', '#b8d4c2'], left: ['#d8ebdf', '#c4dccb'], stroke: 'rgba(45,106,79,0.15)', text: '#1a3d2e'
+    green: { // AI Core - Luminous Aqua-Teal
+        top: ['#E0F7F6', '#B2EBF2'], 
+        right: ['#00ACC1', '#0097A7'], 
+        left: ['#26C6DA', '#00ACC1'], 
+        stroke: 'rgba(0,151,167,0.4)', 
+        text: '#006064'
     },
-    blue: {
-        top: ['#eff6ff', '#dbeafe'], right: ['#bfdbfe', '#FFB09F'], left: ['#dbeafe', '#bfdbfe'], stroke: 'rgba(29,78,216,0.15)', text: '#0A1A2F'
+    blue: { // Knowledge Layer - Frostrek Signature Brand Teal
+        top: ['#CCFBF1', '#99F6E4'], 
+        right: ['#027D8A', '#0D5C75'], 
+        left: ['#0396A6', '#027D8A'], 
+        stroke: 'rgba(3,150,166,0.5)', 
+        text: '#042F2E'
     },
-    purple: {
-        top: ['#F0FDFA', '#CCFBF1'], right: ['#CCFBF1', '#d8b4fe'], left: ['#CCFBF1', '#CCFBF1'], stroke: 'rgba(126,34,206,0.15)', text: '#0A1A2F'
+    purple: { // CRM - Deep Oceanic Foundation Teal
+        top: ['#99F6E4', '#5EEAD4'], 
+        right: ['#0D5C75', '#083344'], 
+        left: ['#0E7490', '#0D5C75'], 
+        stroke: 'rgba(13,92,117,0.5)', 
+        text: '#082F49'
     }
 };
 
@@ -113,8 +129,8 @@ function Platform({ cx, cy, w, h, depth, delay, label, theme = 'gray', isHovered
                     x={cx} y={cy + textOffsetY}
                     textAnchor="middle"
                     dominantBaseline="middle"
-                    fontSize={Math.max(13, w * 0.05)}
-                    fontWeight="600"
+                    fontSize={Math.max(13.5, w * 0.052)}
+                    fontWeight="700"
                     fill={colors.text}
                     style={{ letterSpacing: '0.04em', fontFamily: 'var(--font-sans, "Inter", sans-serif)', pointerEvents: 'none' }}
                     transform={`translate(0, ${cy + textOffsetY}) scale(1, 0.58) translate(0, -${cy + textOffsetY})`}
@@ -147,8 +163,8 @@ function Dots() {
         <>
             {pts.map(([x, y], i) => (
                 <motion.circle
-                    key={i} cx={x} cy={y} r={2 + (i % 3)} fill="#2D6A4F"
-                    animate={{ opacity: [0.06, 0.22, 0.06] }}
+                    key={i} cx={x} cy={y} r={2 + (i % 3)} fill="#0396A6"
+                    animate={{ opacity: [0.1, 0.35, 0.1] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: i * 0.25 }}
                 />
             ))}
@@ -159,6 +175,7 @@ function Dots() {
 export default function IsometricPlatform() {
     const [hovered, setHovered] = useState<number | null>(null);
     const [hasLoaded, setHasLoaded] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(false);
 
     React.useEffect(() => {
         const t = setTimeout(() => setHasLoaded(true), 1500);
@@ -166,7 +183,23 @@ export default function IsometricPlatform() {
     }, []);
 
     return (
-        <div style={{ position: 'relative', width: '100%', maxWidth: 640, aspectRatio: '520 / 460', margin: '0 auto' }}>
+        <motion.div 
+            onClick={() => setIsExpanded(!isExpanded)}
+            animate={{ scale: isExpanded ? 1.2 : 1 }}
+            whileHover={{ scale: isExpanded ? 1.2 : 1 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+            className={`w-full max-w-[640px] aspect-[52/46] mx-auto relative cursor-pointer ${isExpanded ? 'z-50' : 'z-10'}`}
+            style={{ touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' }}
+        >
+            {/* Mobile-only invisible overlay to intercept clicks and prevent SVG pointer-events from swallowing the tap */}
+            <div 
+                className="absolute inset-0 z-50 lg:hidden" 
+                onClick={(e) => {
+                    e.stopPropagation();
+                    setIsExpanded(!isExpanded);
+                }} 
+            />
+
             {/* SVG layer — platforms, dots, connecting lines */}
             <svg viewBox="0 0 520 500" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', overflow: 'visible' }}>
                 <defs>
@@ -193,10 +226,11 @@ export default function IsometricPlatform() {
                     const tileCy = (t.y / 100) * 460 + 30; // updated offset for larger tile size
                     return (
                         <motion.line key={`line-${i}`}
+                            className="hidden lg:block"
                             x1={tileCx} y1={tileCy} x2={t.lineX} y2={t.lineY}
-                            stroke="#2D6A4F" strokeWidth={hovered === i ? 1.5 : 1}
+                            stroke={hovered === i ? "#0396A6" : "#CBD5E1"} strokeWidth={hovered === i ? 1.5 : 1}
                             strokeDasharray="4 4"
-                            opacity={hovered === i ? 0.6 : 0.15}
+                            opacity={hovered === i ? 0.9 : 0.6}
                             style={{ transition: 'opacity 0.3s, stroke-width 0.3s' }}
                             animate={{
                                 strokeDashoffset: hovered === i ? [0, -24] : 0
@@ -221,19 +255,20 @@ export default function IsometricPlatform() {
                     <Platform cx={260} cy={220} w={230} h={95} depth={15} delay={0.35} label="AI Core" theme="green" isHovered={hovered === 0} isDull={hovered !== null && hovered !== 0 && hovered !== 3} hasLoaded={hasLoaded} onMouseEnter={() => setHovered(0)} onMouseLeave={() => setHovered(null)} />
                 </g>
                 <g filter="url(#platformShadow)">
-                    {/* Top Logo uses index 3 to act as master highlight switch, but doesn't animate on hover */}
-                    <Platform cx={260} cy={140} w={175} h={75} depth={13} delay={0.6} theme="gray" isHovered={false} isDull={false} hasLoaded={hasLoaded} onMouseEnter={() => setHovered(3)} onMouseLeave={() => setHovered(null)} />
+                    {/* Top Logo platform dims when another layer is active */}
+                    <Platform cx={260} cy={140} w={175} h={75} depth={13} delay={0.6} theme="gray" isHovered={false} isDull={hovered !== null && hovered !== 3} hasLoaded={hasLoaded} onMouseEnter={() => setHovered(3)} onMouseLeave={() => setHovered(null)} />
                     
                     {/* SVG Logo perfectly positioned on the top platform - Initial reveal matches the platform */}
                     <motion.g 
                         initial={{ opacity: 0, x: -120, y: 60, scale: 0.7 }}
                         whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+                        animate={hovered !== null && hovered !== 3 ? { opacity: 0.35, filter: 'grayscale(1)' } : { opacity: 1, filter: 'grayscale(0)' }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ 
                             x: { type: 'spring', stiffness: 300, damping: 25 },
                             y: { type: 'spring', stiffness: 300, damping: 25 },
                             scale: { type: 'spring', stiffness: 200, damping: 20 },
-                            default: { duration: 0.5, delay: 0.6, ease: 'easeOut' }
+                            default: { duration: 0.4, ease: 'easeOut' }
                         }}
                         style={{ transformOrigin: `260px 140px`, pointerEvents: 'none' }}
                     >
@@ -261,6 +296,7 @@ export default function IsometricPlatform() {
             {TILES.map((t, i) => (
                 <motion.div
                     key={i}
+                    className="hidden lg:block"
                     initial={{ opacity: 0, x: -60, y: 30, scale: 0.5 }}
                     whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
                     animate={{ 
@@ -302,9 +338,9 @@ export default function IsometricPlatform() {
                                 width: 60,
                                 height: 60,
                                 borderRadius: 18,
-                                backgroundColor: hovered === i ? '#2D6A4F' : 'white',
-                                boxShadow: hovered === i ? '0 16px 32px rgba(45,106,79,0.25)' : '0 8px 24px rgba(0,0,0,0.06)',
-                                border: `1px solid ${hovered === i ? '#2D6A4F' : 'rgba(0,0,0,0.05)'}`,
+                                backgroundColor: hovered === i ? '#0396A6' : 'white',
+                                boxShadow: hovered === i ? '0 16px 32px rgba(3, 150, 166,0.25)' : '0 8px 24px rgba(0,0,0,0.06)',
+                                border: `1px solid ${hovered === i ? '#0396A6' : 'rgba(0,0,0,0.08)'}`,
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                                 transition: 'background-color 0.3s ease, box-shadow 0.3s ease, border 0.3s ease',
                             }}
@@ -370,7 +406,7 @@ export default function IsometricPlatform() {
                                     <div style={{
                                         fontSize: 13.5,
                                         fontWeight: 700,
-                                        color: '#111827', // text-gray-900
+                                        color: '#111827', // text-white
                                         marginBottom: 4,
                                         letterSpacing: '-0.01em',
                                     }}>
@@ -378,7 +414,7 @@ export default function IsometricPlatform() {
                                     </div>
                                     <div style={{
                                         fontSize: 12,
-                                        color: '#6B7280', // text-gray-500
+                                        color: '#6B7280', // text-slate-500
                                         lineHeight: 1.45,
                                     }}>
                                         {t.desc}
@@ -389,6 +425,6 @@ export default function IsometricPlatform() {
                     </motion.div>
                 </motion.div>
             ))}
-        </div>
+        </motion.div>
     );
 }

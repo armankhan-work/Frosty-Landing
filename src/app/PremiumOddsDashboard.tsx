@@ -34,14 +34,14 @@ const BARS_DATA = [
 
 export default function PremiumOddsDashboard() {
   return (
-    <div className="w-full flex flex-col justify-start font-sans z-10">
-      
+    <div className="w-full h-full flex flex-col justify-between font-sans z-10 pt-0 lg:pt-[88px] xl:pt-[98px]">
+
       {/* Chart Canvas Area: Stretched taller in vertical with slimmer bars */}
-      <div className="relative w-full pt-4 sm:pt-6">
-        
+      <div className="relative w-full pt-2 sm:pt-4">
+
         {/* Y-Axis scale + Horizontal Grid Lines */}
         <div className="relative pl-7 sm:pl-8 pr-1 sm:pr-2">
-          
+
           {/* Y-Axis numbers */}
           <div className="absolute top-0 left-0 bottom-0 flex flex-col justify-between text-[10px] sm:text-[11px] font-semibold text-slate-500 py-[2px]">
             <span>100</span>
@@ -53,7 +53,7 @@ export default function PremiumOddsDashboard() {
 
           {/* Grid lines & Bars Box */}
           <div className="relative h-[220px] sm:h-[250px] lg:h-[265px] w-full border-b border-slate-200/90 flex items-end justify-between px-2 sm:px-8 lg:px-10 pb-[1px]">
-            
+
             {/* Horizontal Grid lines */}
             {[0, 25, 50, 75, 100].map((val) => (
               <div
@@ -111,12 +111,19 @@ export default function PremiumOddsDashboard() {
 
       </div>
 
-      {/* Bottom Lightbulb Callout Card */}
-      <div className="w-full bg-[#F0FDFA]/70 border border-teal-100/90 rounded-2xl p-3.5 sm:p-4 mt-6 flex items-center gap-3.5 shadow-2xs">
-        <div className="w-8 h-8 rounded-full bg-[#0396A6] flex items-center justify-center text-white shrink-0 shadow-sm">
-          <Lightbulb className="w-4 h-4 stroke-[2]" />
+      {/* Sub-label floating centered in the middle gap with clean breathing room above and below */}
+      <div className="w-full text-center py-1.5 my-auto">
+        <span className="text-[9px] sm:text-[10px] font-bold tracking-wider text-slate-400 uppercase font-sans">
+          RELATIVE ODDS (INDEX)
+        </span>
+      </div>
+
+      {/* Bottom Lightbulb Callout Card - Aligned to exact same baseline as left Trophy Card */}
+      <div className="w-full bg-[#F0FDFA]/70 border border-teal-100/90 rounded-2xl p-3 sm:p-3.5 flex items-center gap-3.5 shadow-2xs">
+        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#0396A6] flex items-center justify-center text-white shrink-0 shadow-sm">
+          <Lightbulb className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.2]" />
         </div>
-        <div className="text-xs sm:text-[13px] text-slate-800 leading-snug font-sans">
+        <div className="text-[12px] sm:text-[12.5px] text-slate-800 leading-snug font-sans">
           Responding within 5 minutes makes you <span className="font-bold text-[#0396A6]">7x</span> more likely to qualify the lead.
         </div>
       </div>

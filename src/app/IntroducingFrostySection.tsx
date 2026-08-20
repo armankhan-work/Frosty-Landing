@@ -445,7 +445,7 @@ export default function IntroducingFrostySection() {
                                 markerEnd="url(#teal-arrow)"
                             />
 
-                            {/* ── Animated Flowing Data Packets ── */}
+                            {/* ── Animated Flowing Data Packets (Synchronized) ── */}
                             {/* Packet 1: Website */}
                             <circle r="3" fill="#0396A6" filter="url(#pulse-glow)">
                                 <animateMotion
@@ -461,7 +461,6 @@ export default function IntroducingFrostySection() {
                             <circle r="3" fill="#0396A6" filter="url(#pulse-glow)">
                                 <animateMotion
                                     dur="2.4s"
-                                    begin="0.6s"
                                     repeatCount="indefinite"
                                     path="M 152 180 L 255 180"
                                     keyPoints="0;1"
@@ -473,7 +472,6 @@ export default function IntroducingFrostySection() {
                             <circle r="3" fill="#0396A6" filter="url(#pulse-glow)">
                                 <animateMotion
                                     dur="2.4s"
-                                    begin="1.2s"
                                     repeatCount="indefinite"
                                     path="M 152 310 L 210 310 Q 225 310 225 295 L 225 245 Q 225 235 238 232 L 255 228"
                                     keyPoints="0;1"

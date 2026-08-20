@@ -10,8 +10,8 @@ export default function CostOfSlowSection() {
     return (
         <section id="cost" className="relative py-10 lg:py-14 bg-transparent overflow-hidden">
             <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                {/* 3-Column Layout: Top-aligned to match SS1 */}
-                <div className="flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-3 xl:gap-6 w-full">
+                {/* 3-Column Layout: Stretched to ensure bottom cards align on the exact same horizontal baseline */}
+                <div className="flex flex-col lg:flex-row items-start lg:items-stretch justify-between gap-8 lg:gap-3 xl:gap-6 w-full">
 
                     {/* ═════════════════════════════════════════════════════════════════════ */}
                     {/* COLUMN 1 (LEFT): Headline, Paragraph, 3 Cards & Trophy Banner         */}
@@ -113,13 +113,13 @@ export default function CostOfSlowSection() {
                     </div>
 
                     {/* ═════════════════════════════════════════════════════════════════════ */}
-                    {/* COLUMN 2 (CENTER): Hourglass (Untouched)                              */}
+                    {/* COLUMN 2 (CENTER): Hourglass (Aligned vertically from 100 to 0)      */}
                     {/* ═════════════════════════════════════════════════════════════════════ */}
-                    <div className="hidden lg:flex w-[22%] xl:w-[23%] justify-center items-start pt-2 xl:pt-3 relative z-20 pointer-events-none">
+                    <div className="hidden lg:flex w-[22%] xl:w-[23%] justify-center items-start pt-[88px] xl:pt-[96px] relative z-20 pointer-events-none">
                         <motion.div
                             animate={{ y: [-4, 4, -4] }}
                             transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut' }}
-                            className="w-[340px] xl:w-[370px] h-[270px] xl:h-[295px] relative items-center justify-center -ml-16 xl:-ml-20"
+                            className="w-[355px] xl:w-[380px] h-[295px] xl:h-[305px] relative items-center justify-center -ml-16 xl:-ml-20"
                         >
                             <div className="relative w-full h-full" style={{
                                 backgroundImage: "url('/glowing_hourglass2.png')",
