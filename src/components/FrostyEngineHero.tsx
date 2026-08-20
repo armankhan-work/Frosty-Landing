@@ -1771,14 +1771,15 @@ export default function FrostyEngineHero() {
                     window.location.href = '/login?mode=register';
                   }
                 }}
-                className="w-full p-1.5 pl-3 sm:pl-4 bg-white/95 backdrop-blur-md rounded-full border border-slate-200/90 shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_36px_rgba(3,150,166,0.12)] hover:border-[#0396A6]/40 transition-all duration-300 flex items-center gap-2"
+                className="w-full p-1.5 pl-3 sm:pl-4 bg-white/95 backdrop-blur-md rounded-full border border-slate-200/90 shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_36px_rgba(3,150,166,0.12)] hover:border-[#0396A6]/60 focus-within:border-[#0396A6] focus-within:ring-2 focus-within:ring-[#0396A6]/20 focus-within:shadow-[0_12px_36px_rgba(3,150,166,0.18)] transition-all duration-300 flex items-center gap-2"
               >
                 <input
                   type="text"
                   value={inputUrl}
                   onChange={(e) => setInputUrl(e.target.value)}
                   placeholder="https://yourbrand.com"
-                  className="flex-1 min-w-0 bg-transparent border-none outline-none text-slate-800 placeholder:text-slate-400 font-sans text-[13.5px] sm:text-[14.5px] px-2 py-2"
+                  className="flex-1 min-w-0 bg-transparent border-none outline-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 text-slate-800 placeholder:text-slate-400 font-sans text-[13.5px] sm:text-[14.5px] px-2 py-2 rounded-l-full shadow-none"
+                  style={{ outline: 'none', border: 'none', boxShadow: 'none' }}
                 />
                 <button
                   type="submit"
