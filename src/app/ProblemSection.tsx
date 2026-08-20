@@ -124,7 +124,7 @@ export default function ProblemSection() {
 
                         {/* 3 Metric Stat Cards (Compact, Centered: SVG -> Name -> Text) */}
                         <div className="grid grid-cols-3 gap-2.5 sm:gap-3 mb-4">
-                            {/* Stat Card 1: 5X */}
+                            {/* Stat Card 1: 7X */}
                             <motion.div
                                 initial={{ opacity: 0, y: 12 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -136,7 +136,7 @@ export default function ProblemSection() {
                                     <Clock className="w-[23px] h-[23px] text-[#0396A6] stroke-[1.85]" />
                                 </div>
                                 <div className="text-2xl sm:text-3xl font-bold text-[#0396A6] leading-none font-sans">
-                                    5X
+                                    7X
                                 </div>
                                 <div className="text-[10px] sm:text-[11px] text-slate-600 leading-tight font-sans text-center">
                                     more likely to convert if you respond in 5 mins

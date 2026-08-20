@@ -1,10 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import FooterSection from './FooterSection';
-import SplashScreen from './SplashScreen';
 import ProblemSection from './ProblemSection';
 import ProblemConclusion from './ProblemConclusion';
 import WhatIsFrostySection from './WhatIsFrostySection';
@@ -49,62 +48,43 @@ function useScrollReveal() {
 }
 
 export default function LandingPage() {
-    const [showSplash, setShowSplash] = useState(true);
-
-
-
     useScrollReveal();
 
     return (
-        <>
-            <AnimatePresence>
-                {showSplash && (
-                    <SplashScreen key="splash" onComplete={() => setShowSplash(false)} />
-                )}
-            </AnimatePresence>
+        <div
+            suppressHydrationWarning
+            className="frosty-root"
+            style={{
+                backgroundColor: '#FFFFFF',
+                minHeight: '100vh',
+                color: '#18181B',
+                overflowX: 'hidden',
+                position: 'relative',
+            }}
+        >
+            <div className="relative z-10">
+                {/* PREMIUM GLASSMORPHISM NAVBAR */}
+                <GlassNavbar ready={true} />
 
-            <motion.div
-                suppressHydrationWarning
-                initial="initial"
-                animate={showSplash ? "initial" : "animate"}
-                variants={{
-                    initial: { opacity: 0 },
-                    animate: { opacity: 1, transition: { duration: 0.8, ease: "easeOut" } }
-                }}
-                className="frosty-root"
-                style={{
-                    backgroundColor: '#FFFFFF',
-                    minHeight: '100vh',
-                    color: '#18181B',
-                    overflowX: 'hidden',
-                    position: 'relative',
-                    visibility: showSplash ? 'hidden' : 'visible'
-                }}
-            >
-                <div className="relative z-10">
-                    {/* PREMIUM GLASSMORPHISM NAVBAR */}
-                    <GlassNavbar ready={!showSplash} />
-
-                    <motion.div style={{ paddingTop: 72, position: 'relative', zIndex: 20 }}>
-                        <FrostyEngineHero />
-                        <ProblemSection />
-                        <CostOfSlowSection />
-                        <ProblemConclusion />
-                        <IntroducingFrostySection />
-                        <WhatIsFrostySection />
-                        <UnifiedChannelsSection />
-                        <CRMLeadIntelligenceSection />
-                        <TwoAgentsSection />
-                        <ItActsSection />
-                        <CapabilitiesSection />
-                        <DoneForYou />
-                        <IndustriesSection />
-                        <PricingSection />
-                        <CTASection />
-                        <FooterSection />
-                    </motion.div>
-                </div>
-            </motion.div>
-        </>
+                <motion.div style={{ paddingTop: 72, position: 'relative', zIndex: 20 }}>
+                    <FrostyEngineHero />
+                    <ProblemSection />
+                    <CostOfSlowSection />
+                    <ProblemConclusion />
+                    <IntroducingFrostySection />
+                    <WhatIsFrostySection />
+                    <UnifiedChannelsSection />
+                    <CRMLeadIntelligenceSection />
+                    <TwoAgentsSection />
+                    <ItActsSection />
+                    <CapabilitiesSection />
+                    <DoneForYou />
+                    <IndustriesSection />
+                    <PricingSection />
+                    <CTASection />
+                    <FooterSection />
+                </motion.div>
+            </div>
+        </div>
     );
 }

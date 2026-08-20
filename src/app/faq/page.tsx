@@ -134,7 +134,8 @@ export default function FAQPage() {
                                             <img
                                                 src={`/images/${imageNames[gIdx % 4]}`}
                                                 alt={group}
-                                                className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
+                                                className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 block"
+                                                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                             />
                                         </div>
                                     </motion.div>
