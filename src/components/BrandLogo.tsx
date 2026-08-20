@@ -81,7 +81,7 @@ export default function BrandLogo({ ready = true, collapsed = false, forceLight 
         className="text-reveal-container overflow-hidden flex items-center"
         style={{ width: 0, opacity: 0 }}
       >
-        <span className="frosty-text font-serif font-bold text-[28px] tracking-tight block pl-2 text-[#18181B]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", whiteSpace: 'nowrap' }}>
+        <span className="frosty-text font-serif font-bold text-[22px] sm:text-[28px] tracking-tight block pl-1.5 sm:pl-2 text-[#18181B]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", whiteSpace: 'nowrap' }}>
           Frosty Agent
         </span>
       </div>

@@ -296,34 +296,6 @@ export default function TwoAgentsSection() {
         {/* Cards Layout */}
         <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_180px_1fr] gap-3 lg:gap-0 items-stretch max-w-[1100px] mx-auto">
           
-          {/* Animated Connecting Lines */}
-          <div className="hidden lg:block absolute inset-0 pointer-events-none z-0">
-            <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid meet" fill="none">
-              <motion.line 
-                x1="30%" y1="50%" x2="43%" y2="50%" 
-                stroke={active === 'outbound' || isGlowing ? '#0396A6' : '#CBD5E1'} 
-                strokeWidth={isGlowing ? "2.5" : "1.5"}
-                strokeDasharray="4 4"
-                animate={{
-                  strokeDashoffset: active === 'outbound' || isGlowing ? [0, -40] : 0,
-                  opacity: active === 'outbound' || isGlowing ? 1 : 0.6
-                }}
-                transition={{ strokeDashoffset: { duration: isGlowing ? 0.5 : 1, repeat: Infinity, ease: 'linear' }, opacity: { duration: 0.4 } }}
-              />
-              <motion.line 
-                x1="57%" y1="50%" x2="70%" y2="50%" 
-                stroke={active === 'inbound' || isGlowing ? '#10B981' : '#CBD5E1'} 
-                strokeWidth={isGlowing ? "2.5" : "1.5"} 
-                strokeDasharray="4 4" 
-                animate={{
-                  strokeDashoffset: active === 'inbound' || isGlowing ? [40, 0] : 0,
-                  opacity: active === 'inbound' || isGlowing ? 1 : 0.6
-                }}
-                transition={{ strokeDashoffset: { duration: isGlowing ? 0.5 : 1, repeat: Infinity, ease: 'linear' }, opacity: { duration: 0.4 } }}
-              />
-            </svg>
-          </div>
-
           {/* LEFT: WEB AGENT CARD */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -375,36 +347,239 @@ export default function TwoAgentsSection() {
             </motion.div>
           </motion.div>
 
-          {/* CENTRAL BRAIN */}
+          {/* CENTRAL BRAIN WITH DIRECT CIRCUMFERENCE WRAP & UPWARD POP */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative z-20 flex flex-col items-center justify-center py-2 lg:py-0 cursor-pointer"
-            onMouseEnter={() => setIsGlowing(true)}
-            onMouseLeave={() => setIsGlowing(false)}
-            onClick={handleBrainClick}
+            className="relative z-20 flex flex-col items-center justify-center py-6 lg:py-0 h-full"
           >
-            <motion.div 
-              className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-full flex items-center justify-center mb-1.5 transition-all duration-500 bg-white shadow-md"
-              whileHover={{ scale: 1.05 }}
-              style={{
-                border: `2px solid ${isGlowing || active ? '#0396A6' : '#CBD5E1'}`,
-                boxShadow: isGlowing || active
-                  ? '0 0 35px rgba(3, 150, 166,0.25), inset 0 0 15px rgba(3, 150, 166,0.1)'
-                  : '0 4px 20px rgba(0,0,0,0.06)',
-              }}
+            {/* Defs Filter for Glowing Energy Particles */}
+            <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
+              <defs>
+                <filter id="brain-tight-glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
+                  <feMerge>
+                    <feMergeNode in="coloredBlur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+            </svg>
+
+            {/* Left Bridge Line (Connecting middle of Left Card to 9 o'clock of Brain) */}
+            <div className="hidden lg:block absolute left-[-40px] xl:left-[-55px] right-[calc(50%+40px)] top-1/2 -translate-y-1/2 h-[4px] pointer-events-none z-10">
+              <svg className="w-full h-full overflow-visible" fill="none">
+                <line x1="0" y1="2" x2="100%" y2="2" stroke="#CBD5E1" strokeWidth="1.5" strokeDasharray="3 3.5" strokeOpacity="0.8" />
+                <circle r="3.5" fill="#0396A6" filter="url(#brain-tight-glow)">
+                  <animateMotion
+                    dur="3.2s"
+                    repeatCount="indefinite"
+                    path="M 0 2 L 100 2"
+                    keyTimes="0; 0.28; 1"
+                    keyPoints="0; 1; 1"
+                  />
+                  <animate
+                    attributeName="opacity"
+                    values="0; 1; 1; 0; 0"
+                    keyTimes="0; 0.05; 0.27; 0.3; 1"
+                    dur="3.2s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+              </svg>
+            </div>
+
+            {/* Right Bridge Line (Connecting middle of Right Card to 3 o'clock of Brain) */}
+            <div className="hidden lg:block absolute left-[calc(50%+40px)] right-[-40px] xl:right-[-55px] top-1/2 -translate-y-1/2 h-[4px] pointer-events-none z-10">
+              <svg className="w-full h-full overflow-visible" fill="none">
+                <line x1="0" y1="2" x2="100%" y2="2" stroke="#CBD5E1" strokeWidth="1.5" strokeDasharray="3 3.5" strokeOpacity="0.8" />
+                <circle r="3.5" fill="#10B981" filter="url(#brain-tight-glow)">
+                  <animateMotion
+                    dur="3.2s"
+                    repeatCount="indefinite"
+                    path="M 100 2 L 0 2"
+                    keyTimes="0; 0.28; 1"
+                    keyPoints="0; 1; 1"
+                  />
+                  <animate
+                    attributeName="opacity"
+                    values="0; 1; 1; 0; 0"
+                    keyTimes="0; 0.05; 0.27; 0.3; 1"
+                    dur="3.2s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+              </svg>
+            </div>
+
+            {/* Central Brain Interactive Unit (Centered exactly at the vertical middle of the box) */}
+            <div 
+              className="relative flex flex-col items-center cursor-pointer"
+              onClick={handleBrainClick}
+              onMouseEnter={() => setIsGlowing(true)}
+              onMouseLeave={() => setIsGlowing(false)}
             >
-              <Brain 
-                className="w-7 h-7 sm:w-8 sm:h-8 relative z-10 transition-colors duration-500 text-[#0396A6]" 
-                strokeWidth={2.5} 
-              />
-            </motion.div>
-            
-            <span className="text-[9px] font-bold text-slate-700 text-center leading-tight max-w-[14ch] tracking-wider uppercase">
-              Shared contextual memory
-            </span>
+              {/* Main Brain Circle with Upward Pop & Glowing Halo */}
+              <motion.div 
+                className="relative w-18 h-18 sm:w-20 sm:h-20 rounded-full flex items-center justify-center bg-white shadow-md z-20"
+                whileHover={{ scale: 1.08, y: -4 }}
+                animate={{
+                  y: [0, 0, -12, -2, 0],
+                  scale: [1, 1, 1.1, 1.02, 1],
+                  borderColor: [
+                    '#CBD5E1',
+                    '#CBD5E1',
+                    '#0396A6',
+                    '#0396A6',
+                    '#CBD5E1'
+                  ],
+                  boxShadow: [
+                    '0 4px 20px rgba(0,0,0,0.06)',
+                    '0 4px 20px rgba(0,0,0,0.06)',
+                    '0 18px 45px rgba(3, 150, 166, 0.45), 0 0 35px rgba(3, 150, 166, 0.35)',
+                    '0 8px 25px rgba(3, 150, 166, 0.2)',
+                    '0 4px 20px rgba(0,0,0,0.06)'
+                  ]
+                }}
+                transition={{
+                  duration: 3.2,
+                  repeat: Infinity,
+                  times: [0, 0.55, 0.72, 0.88, 1],
+                  ease: 'easeInOut'
+                }}
+                style={{
+                  borderWidth: '2.5px',
+                  borderStyle: 'solid',
+                }}
+              >
+                {/* SVG Overlay: Exact Circumference Orbit & Wrapping Particles */}
+                <svg className="absolute -inset-[4px] w-[calc(100%+8px)] h-[calc(100%+8px)] pointer-events-none overflow-visible z-10" viewBox="0 0 100 100" fill="none">
+                  {/* 1. Base Dotted Orbit on exact circumference */}
+                  <circle cx="50" cy="50" r="48.5" stroke="#CBD5E1" strokeWidth="1.5" strokeDasharray="3 3.5" strokeOpacity="0.75" />
+
+                  {/* 2. Shockwave Pulse Halo on Pop */}
+                  <circle cx="50" cy="50" r="48.5" fill="none" stroke="#0396A6" filter="url(#brain-tight-glow)">
+                    <animate
+                      attributeName="r"
+                      values="48.5; 48.5; 48.5; 72; 80"
+                      keyTimes="0; 0.55; 0.65; 0.88; 1"
+                      dur="3.2s"
+                      repeatCount="indefinite"
+                    />
+                    <animate
+                      attributeName="opacity"
+                      values="0; 0; 0.9; 0.2; 0"
+                      keyTimes="0; 0.55; 0.65; 0.88; 1"
+                      dur="3.2s"
+                      repeatCount="indefinite"
+                    />
+                    <animate
+                      attributeName="stroke-width"
+                      values="2; 2; 2.5; 1; 0"
+                      keyTimes="0; 0.55; 0.65; 0.88; 1"
+                      dur="3.2s"
+                      repeatCount="indefinite"
+                    />
+                  </circle>
+
+                  {/* 3. Left Stream wrapping clockwise 360° around circumference */}
+                  <circle r="4" fill="#0396A6" filter="url(#brain-tight-glow)">
+                    <animateMotion
+                      dur="3.2s"
+                      repeatCount="indefinite"
+                      path="M 1.5 50 A 48.5 48.5 0 1 1 98.5 50 A 48.5 48.5 0 1 1 1.5 50"
+                      keyTimes="0; 0.28; 0.72; 1"
+                      keyPoints="0; 0; 1; 1"
+                    />
+                    <animate
+                      attributeName="opacity"
+                      values="0; 0; 1; 1; 0; 0"
+                      keyTimes="0; 0.27; 0.32; 0.7; 0.75; 1"
+                      dur="3.2s"
+                      repeatCount="indefinite"
+                    />
+                  </circle>
+                  {/* Left Trailing Atom */}
+                  <circle r="2.8" fill="#38BDF8" filter="url(#brain-tight-glow)">
+                    <animateMotion
+                      dur="3.2s"
+                      repeatCount="indefinite"
+                      path="M 1.5 50 A 48.5 48.5 0 1 1 98.5 50 A 48.5 48.5 0 1 1 1.5 50"
+                      keyTimes="0; 0.35; 0.79; 1"
+                      keyPoints="0; 0; 1; 1"
+                    />
+                    <animate
+                      attributeName="opacity"
+                      values="0; 0; 1; 1; 0; 0"
+                      keyTimes="0; 0.34; 0.39; 0.77; 0.82; 1"
+                      dur="3.2s"
+                      repeatCount="indefinite"
+                    />
+                  </circle>
+
+                  {/* 4. Right Stream wrapping counter-clockwise 360° around circumference */}
+                  <circle r="4" fill="#10B981" filter="url(#brain-tight-glow)">
+                    <animateMotion
+                      dur="3.2s"
+                      repeatCount="indefinite"
+                      path="M 98.5 50 A 48.5 48.5 0 1 0 1.5 50 A 48.5 48.5 0 1 0 98.5 50"
+                      keyTimes="0; 0.28; 0.72; 1"
+                      keyPoints="0; 0; 1; 1"
+                    />
+                    <animate
+                      attributeName="opacity"
+                      values="0; 0; 1; 1; 0; 0"
+                      keyTimes="0; 0.27; 0.32; 0.7; 0.75; 1"
+                      dur="3.2s"
+                      repeatCount="indefinite"
+                    />
+                  </circle>
+                  {/* Right Trailing Atom */}
+                  <circle r="2.8" fill="#34D399" filter="url(#brain-tight-glow)">
+                    <animateMotion
+                      dur="3.2s"
+                      repeatCount="indefinite"
+                      path="M 98.5 50 A 48.5 48.5 0 1 0 1.5 50 A 48.5 48.5 0 1 0 98.5 50"
+                      keyTimes="0; 0.35; 0.79; 1"
+                      keyPoints="0; 0; 1; 1"
+                    />
+                    <animate
+                      attributeName="opacity"
+                      values="0; 0; 1; 1; 0; 0"
+                      keyTimes="0; 0.34; 0.39; 0.77; 0.82; 1"
+                      dur="3.2s"
+                      repeatCount="indefinite"
+                    />
+                  </circle>
+                </svg>
+
+                {/* Radiant Ambient Glow when converged */}
+                <motion.div
+                  animate={{
+                    opacity: [0.15, 0.15, 0.8, 0.3, 0.15],
+                    scale: [1, 1, 1.4, 1.1, 1]
+                  }}
+                  transition={{
+                    duration: 3.2,
+                    repeat: Infinity,
+                    times: [0, 0.55, 0.72, 0.88, 1],
+                    ease: 'easeInOut'
+                  }}
+                  className="absolute inset-0 rounded-full bg-[radial-gradient(circle,_rgba(3,150,166,0.45)_0%,_transparent_70%)] blur-md pointer-events-none"
+                />
+                <Brain 
+                  className="w-8 h-8 sm:w-9 sm:h-9 relative z-10 transition-colors duration-500 text-[#0396A6]" 
+                  strokeWidth={2.5} 
+                />
+              </motion.div>
+              
+              {/* Text Label positioned cleanly below without offsetting the middle alignment */}
+              <span className="absolute top-[calc(100%+6px)] text-[9.5px] font-bold text-slate-700 text-center leading-tight w-[140px] tracking-wider uppercase pointer-events-none">
+                Shared contextual memory
+              </span>
+            </div>
           </motion.div>
 
           {/* RIGHT: WHATSAPP AGENT CARD */}

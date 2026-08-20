@@ -70,4 +70,24 @@ p {
 body {
   background-color: #FFFFFF !important;
   color: var(--foreground);
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100vw;
+}
+
+html {
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100vw;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Prevent horizontal micro-scroll across all containers on mobile */
+#__next,
+main,
+.frosty-root {
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100vw;
 }

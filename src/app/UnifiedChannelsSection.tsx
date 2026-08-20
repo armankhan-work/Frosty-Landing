@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Globe, MessageCircle, Mail, Check } from 'lucide-react';
 
 /* ─── Sparkle Star SVG Logo ────────────────────────────────────── */
 function FrostySparkleIcon({ className = "w-8 h-8" }: { className?: string }) {
@@ -57,39 +58,39 @@ export default function UnifiedChannelsSection() {
     const runSequence = async () => {
       while (isAlive) {
         setStep(0);
-        await wait(1000);
+        await wait(600);
         
         // Website Flow
         setStep(1);
-        await wait(1000);
-        setStep(2);
-        await wait(1000);
-        setStep(3);
-        await wait(1200);
-        setStep(4);
         await wait(600);
+        setStep(2);
+        await wait(650);
+        setStep(3);
+        await wait(700);
+        setStep(4);
+        await wait(450);
         setStep(5);
-        await wait(1500);
+        await wait(800);
 
         // WA Flow
         setStep(6);
-        await wait(1000);
+        await wait(650);
         setStep(7);
-        await wait(1200);
+        await wait(700);
         setStep(8);
-        await wait(600);
+        await wait(450);
         setStep(9);
-        await wait(800);
+        await wait(500);
 
         // Unified Profile Update
         setStep(10);
-        await wait(1500);
+        await wait(900);
         
         // Unified Conversation Update
         setStep(11);
-        await wait(1500);
+        await wait(900);
         setStep(12);
-        await wait(4000);
+        await wait(2500);
       }
     };
 
@@ -107,7 +108,7 @@ export default function UnifiedChannelsSection() {
       <div className="relative w-full max-w-[1280px] mx-auto h-[515px] hidden lg:block z-10">
         
         {/* ── 0. TOP-LEFT HEADING & DESCRIPTION ── */}
-        <div className="absolute left-[15px] top-[10px] w-[330px] z-20 text-left">
+        <div className="absolute left-[55px] top-[10px] w-[310px] z-20 text-left">
           {/* Eyebrow Badge */}
           <motion.div 
              initial={{ opacity: 0, y: 15 }}
@@ -146,7 +147,7 @@ export default function UnifiedChannelsSection() {
         </div>
 
         {/* ── 1. LEFT FEATURES LIST (Styled with horizontal dividers matching ss2) ── */}
-        <div className="absolute left-[15px] top-[210px] w-[320px] z-20">
+        <div className="absolute left-[55px] top-[210px] w-[310px] z-20">
            <div className="divide-y divide-slate-200/70 border-t border-slate-200/70">
               {/* Feature 1 */}
               <div className="flex gap-3 items-start py-2.5 group">
@@ -207,19 +208,19 @@ export default function UnifiedChannelsSection() {
 
         {/* ── 2. SVG DOTTED CONNECTION LINES & DATA PARTICLES (1:1 with 1280x515) ── */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 1280 515" preserveAspectRatio="none">
-           {/* Top 3 Incoming Lines converging cleanly into center top at X=630 */}
+           {/* Top 3 Incoming Lines converging cleanly into center top at X=670 */}
            {/* Website -> Convergence */}
            <motion.path 
-              d="M 445,175 L 445,202 Q 445,216 460,216 L 615,216 Q 630,216 630,230 L 630,275" 
+              d="M 485,175 L 485,202 Q 485,216 500,216 L 655,216 Q 670,216 670,230 L 670,275" 
               fill="none" 
               stroke="#0396A6" 
               strokeWidth="1.5" 
               strokeDasharray="3 3.5" 
               className="opacity-70" 
            />
-           {/* WhatsApp -> Convergence (Straight Down through X=630) */}
+           {/* WhatsApp -> Convergence (Straight Down through X=670) */}
            <motion.path 
-              d="M 630,175 L 630,275" 
+              d="M 670,175 L 670,275" 
               fill="none" 
               stroke="#10B981" 
               strokeWidth="1.5" 
@@ -228,7 +229,7 @@ export default function UnifiedChannelsSection() {
            />
            {/* Email -> Convergence */}
            <motion.path 
-              d="M 815,175 L 815,202 Q 815,216 800,216 L 645,216 Q 630,216 630,230 L 630,275" 
+              d="M 855,175 L 855,202 Q 855,216 840,216 L 685,216 Q 670,216 670,230 L 670,275" 
               fill="none" 
               stroke="#EA4335" 
               strokeWidth="1.5" 
@@ -237,28 +238,28 @@ export default function UnifiedChannelsSection() {
            />
 
            {/* Convergence Intersection Dot */}
-           <circle cx="630" cy="216" r="3" fill="#10B981" />
+           <circle cx="670" cy="216" r="3" fill="#10B981" />
 
-           {/* Central Circle to 4 Radial Badges (Continuous paths extending from inside circle to badge outer surfaces) */}
+           {/* Central Circle to 4 Radial Badges */}
            {/* Top-Left: Context stitched */}
-           <path d="M 600,320 L 485,306" fill="none" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3.5" className="opacity-70" />
-           <circle cx="535" cy="311.5" r="2.5" fill="#0396A6" />
+           <path d="M 640,320 L 525,306" fill="none" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3.5" className="opacity-70" />
+           <circle cx="575" cy="311.5" r="2.5" fill="#0396A6" />
 
            {/* Bottom-Left: Intent recognised */}
-           <path d="M 600,360 L 485,376" fill="none" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3.5" className="opacity-70" />
-           <circle cx="535" cy="369.5" r="2.5" fill="#0396A6" />
+           <path d="M 640,360 L 525,376" fill="none" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3.5" className="opacity-70" />
+           <circle cx="575" cy="369.5" r="2.5" fill="#0396A6" />
 
            {/* Top-Right: History unified */}
-           <path d="M 660,320 L 765,306" fill="none" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3.5" className="opacity-70" />
-           <circle cx="725" cy="311.5" r="2.5" fill="#0396A6" />
+           <path d="M 700,320 L 805,306" fill="none" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3.5" className="opacity-70" />
+           <circle cx="765" cy="311.5" r="2.5" fill="#0396A6" />
 
            {/* Bottom-Right: Memory updated */}
-           <path d="M 660,360 L 765,376" fill="none" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3.5" className="opacity-70" />
-           <circle cx="725" cy="369.5" r="2.5" fill="#0396A6" />
+           <path d="M 700,360 L 805,376" fill="none" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3.5" className="opacity-70" />
+           <circle cx="765" cy="369.5" r="2.5" fill="#0396A6" />
 
-           {/* Outgoing Vertical Dotted Line: Frosty (405) -> Unified Conversation (423) with visible dotted line */}
+           {/* Outgoing Vertical Dotted Line: Frosty (405) -> Unified Conversation (423) */}
            <motion.path 
-              d="M 630,405 L 630,423" 
+              d="M 670,405 L 670,423" 
               fill="none" 
               stroke="#0396A6" 
               strokeWidth="1.5" 
@@ -266,28 +267,28 @@ export default function UnifiedChannelsSection() {
               className="opacity-60" 
            />
 
-           {/* ── Animated Data Packets (Positioned offscreen with opacity 0 when idle) ── */}
+           {/* ── Animated Data Packets (Faster durations) ── */}
            {/* Website Packet */}
            <motion.circle cx="-100" cy="-100" r="3.5" fill="#0396A6" opacity="0" filter="drop-shadow(0 0 4px #0396A6)">
-              <animateMotion dur="1.1s" path="M 445,175 L 445,202 Q 445,216 460,216 L 615,216 Q 630,216 630,230 L 630,275" begin={step === 4 ? "0s" : "indefinite"} fill="freeze" />
-              <animate attributeName="opacity" values="0;1;0" dur="1.1s" begin={step === 4 ? "0s" : "indefinite"} />
+              <animateMotion dur="0.7s" path="M 485,175 L 485,202 Q 485,216 500,216 L 655,216 Q 670,216 670,230 L 670,275" begin={step === 4 ? "0s" : "indefinite"} fill="freeze" />
+              <animate attributeName="opacity" values="0;1;0" dur="0.7s" begin={step === 4 ? "0s" : "indefinite"} />
            </motion.circle>
 
            {/* WhatsApp Packet */}
            <motion.circle cx="-100" cy="-100" r="3.5" fill="#10B981" opacity="0" filter="drop-shadow(0 0 4px #10B981)">
-              <animateMotion dur="1s" path="M 630,175 L 630,275" begin={step === 8 ? "0s" : "indefinite"} fill="freeze" />
-              <animate attributeName="opacity" values="0;1;0" dur="1s" begin={step === 8 ? "0s" : "indefinite"} />
+              <animateMotion dur="0.6s" path="M 670,175 L 670,275" begin={step === 8 ? "0s" : "indefinite"} fill="freeze" />
+              <animate attributeName="opacity" values="0;1;0" dur="0.6s" begin={step === 8 ? "0s" : "indefinite"} />
            </motion.circle>
 
            {/* Core to Conversation Packet */}
            <motion.circle cx="-100" cy="-100" r="4" fill="#0396A6" opacity="0" filter="drop-shadow(0 0 4px #0396A6)">
-              <animateMotion dur="0.6s" path="M 630,405 L 630,423" begin={step === 9 ? "0s" : "indefinite"} fill="freeze" />
-              <animate attributeName="opacity" values="0;1;0" dur="0.6s" begin={step === 9 ? "0s" : "indefinite"} />
+              <animateMotion dur="0.4s" path="M 670,405 L 670,423" begin={step === 9 ? "0s" : "indefinite"} fill="freeze" />
+              <animate attributeName="opacity" values="0;1;0" dur="0.4s" begin={step === 9 ? "0s" : "indefinite"} />
            </motion.circle>
         </svg>
 
         {/* ── 3. TOP 1: WEBSITE CARD ── */}
-        <div className="absolute left-[360px] top-[15px] z-20">
+        <div className="absolute left-[400px] top-[15px] z-20">
            <motion.div 
               className="w-[170px] bg-white/95 backdrop-blur-xl border border-slate-200 rounded-2xl shadow-[0_12px_30px_rgba(0,0,0,0.04)] overflow-hidden"
               whileHover={{ scale: 1.02, boxShadow: '0 16px 36px rgba(3, 150, 166,0.12)' }}
@@ -343,7 +344,7 @@ export default function UnifiedChannelsSection() {
         </div>
 
         {/* ── 4. TOP 2: WHATSAPP CARD ── */}
-        <div className="absolute left-[545px] top-[15px] z-20">
+        <div className="absolute left-[585px] top-[15px] z-20">
            <motion.div 
               className="w-[170px] bg-white/95 backdrop-blur-xl border border-slate-200 rounded-2xl shadow-[0_12px_30px_rgba(0,0,0,0.04)] overflow-hidden"
               whileHover={{ scale: 1.02, boxShadow: '0 16px 36px rgba(37,211,102,0.12)' }}
@@ -397,7 +398,7 @@ export default function UnifiedChannelsSection() {
         </div>
 
         {/* ── 5. TOP 3: EMAIL CARD ── */}
-        <div className="absolute left-[730px] top-[15px] z-20">
+        <div className="absolute left-[770px] top-[15px] z-20">
            <motion.div 
               className="w-[170px] bg-white/95 backdrop-blur-xl border border-slate-200 rounded-2xl shadow-[0_12px_30px_rgba(0,0,0,0.04)] overflow-hidden"
               whileHover={{ scale: 1.02, boxShadow: '0 16px 36px rgba(234,67,53,0.15)' }}
@@ -440,7 +441,7 @@ export default function UnifiedChannelsSection() {
         </div>
 
         {/* ── 6. CENTRAL FROSTY CORE ── */}
-        <div className="absolute left-[565px] top-[275px] w-[130px] h-[130px] flex items-center justify-center z-30">
+        <div className="absolute left-[605px] top-[275px] w-[130px] h-[130px] flex items-center justify-center z-30">
            {/* Core Glow */}
            <motion.div 
               className="absolute inset-[-25px] bg-[#0396A6]/10 rounded-full blur-[40px] z-0 pointer-events-none"
@@ -471,89 +472,89 @@ export default function UnifiedChannelsSection() {
         </div>
 
         {/* ── 6b. RADIAL FLOATING BADGES (Pixel-Perfect Alignment with SVG lines) ── */}
-        {/* Top-Left: Context stitched (Right edge is at X=515) */}
+        {/* Top-Left: Context stitched */}
         <motion.div 
            animate={step >= 4 ? { opacity: 1, scale: 1.02 } : { opacity: 0.75, scale: 1 }}
-           className="absolute left-[375px] top-[290px] text-[10px] bg-white border border-slate-200/90 px-3 py-1.5 rounded-full text-slate-800 font-semibold whitespace-nowrap shadow-xs flex items-center gap-1.5 z-20"
+           className="absolute left-[415px] top-[290px] text-[10px] bg-white border border-slate-200/90 px-3 py-1.5 rounded-full text-slate-800 font-semibold whitespace-nowrap shadow-xs flex items-center gap-1.5 z-20"
         >
            <svg className="w-3.5 h-3.5 text-[#0396A6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M6 9v12"/><path d="M18 9v3a3 3 0 0 1-3 3H6"/></svg>
            <span>Context stitched</span>
         </motion.div>
         
-        {/* Bottom-Left: Intent recognised (Right edge is at X=515) */}
+        {/* Bottom-Left: Intent recognised */}
         <motion.div 
            animate={step >= 8 ? { opacity: 1, scale: 1.02 } : { opacity: 0.75, scale: 1 }}
-           className="absolute left-[375px] top-[360px] text-[10px] bg-white border border-slate-200/90 px-3 py-1.5 rounded-full text-slate-800 font-semibold whitespace-nowrap shadow-xs flex items-center gap-1.5 z-20"
+           className="absolute left-[415px] top-[360px] text-[10px] bg-white border border-slate-200/90 px-3 py-1.5 rounded-full text-slate-800 font-semibold whitespace-nowrap shadow-xs flex items-center gap-1.5 z-20"
         >
            <svg className="w-3.5 h-3.5 text-[#0396A6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
            <span>Intent recognised</span>
         </motion.div>
         
-        {/* Top-Right: History unified (Left edge is at X=745) */}
+        {/* Top-Right: History unified */}
         <motion.div 
            animate={step >= 9 ? { opacity: 1, scale: 1.02 } : { opacity: 0.75, scale: 1 }}
-           className="absolute left-[745px] top-[290px] text-[10px] bg-white border border-slate-200/90 px-3 py-1.5 rounded-full text-slate-800 font-semibold whitespace-nowrap shadow-xs flex items-center gap-1.5 z-20"
+           className="absolute left-[785px] top-[290px] text-[10px] bg-white border border-slate-200/90 px-3 py-1.5 rounded-full text-slate-800 font-semibold whitespace-nowrap shadow-xs flex items-center gap-1.5 z-20"
         >
            <svg className="w-3.5 h-3.5 text-[#0396A6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
            <span>History unified</span>
         </motion.div>
         
-        {/* Bottom-Right: Memory updated (Left edge is at X=745) */}
+        {/* Bottom-Right: Memory updated */}
         <motion.div 
            animate={step >= 10 ? { opacity: 1, scale: 1.02 } : { opacity: 0.75, scale: 1 }}
-           className="absolute left-[745px] top-[360px] text-[10px] bg-white border border-slate-200/90 px-3 py-1.5 rounded-full text-slate-800 font-semibold whitespace-nowrap shadow-xs flex items-center gap-1.5 z-20"
+           className="absolute left-[785px] top-[360px] text-[10px] bg-white border border-slate-200/90 px-3 py-1.5 rounded-full text-slate-800 font-semibold whitespace-nowrap shadow-xs flex items-center gap-1.5 z-20"
         >
            <svg className="w-3.5 h-3.5 text-[#0396A6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
            <span>Memory updated</span>
         </motion.div>
 
-        {/* ── 7. RIGHT SIDE: CUSTOMER PROFILE CARD ── */}
+        {/* ── 7. RIGHT SIDE: CUSTOMER PROFILE CARD (Compact Width w-[270px] at left-[965px]) ── */}
         <motion.div 
-           className="absolute left-[925px] top-[180px] w-[320px] bg-white/95 backdrop-blur-xl border border-slate-200 rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.06)] overflow-hidden z-20"
+           className="absolute left-[965px] top-[180px] w-[270px] bg-white/95 backdrop-blur-xl border border-slate-200 rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.06)] overflow-hidden z-20"
            initial={{ opacity: 0, y: 20 }}
            animate={step >= 10 ? { opacity: 1, y: 0, boxShadow: '0 15px 40px rgba(3, 150, 166,0.08)' } : { opacity: 0, y: 20, boxShadow: 'none' }}
            transition={{ duration: 0.5 }}
         >
-           <div className="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between">
-              <span className="text-slate-800 text-[12.5px] font-bold">Customer Profile</span>
+           <div className="px-3.5 py-2 border-b border-slate-100 flex items-center justify-between">
+              <span className="text-slate-800 text-[12px] font-bold">Customer Profile</span>
               <button 
                 type="button" 
                 onClick={() => setShowProfileModal(true)}
-                className="text-[#0396A6] text-[10.5px] font-semibold hover:text-[#027A87] hover:underline cursor-pointer transition-colors focus:outline-none"
+                className="text-[#0396A6] text-[10px] font-semibold hover:text-[#027A87] hover:underline cursor-pointer transition-colors focus:outline-none"
               >
                 View full
               </button>
            </div>
-           <div className="p-4">
-              <div className="flex items-center gap-3 mb-3">
-                 <div className="w-10 h-10 rounded-full border border-slate-200 overflow-hidden shrink-0 bg-slate-100 flex items-center justify-center shadow-xs">
+           <div className="p-3.5">
+              <div className="flex items-center gap-2.5 mb-2.5">
+                 <div className="w-9 h-9 rounded-full border border-slate-200 overflow-hidden shrink-0 bg-slate-100 flex items-center justify-center shadow-xs">
                     <img src="https://i.pravatar.cc/150?img=68" alt="James Carter" className="w-full h-full object-cover" />
                  </div>
                  <div className="min-w-0">
-                    <div className="text-slate-900 text-[13px] font-bold flex items-center gap-1.5">
+                    <div className="text-slate-900 text-[12px] font-bold flex items-center gap-1.5">
                        <span className="truncate">James Carter</span>
                        <motion.span 
-                          className="text-[8.5px] bg-teal-50 border border-[#0396A6]/30 px-1.5 py-0.5 rounded text-[#0396A6] font-bold uppercase tracking-wider shrink-0"
+                          className="text-[8px] bg-teal-50 border border-[#0396A6]/30 px-1 py-0.5 rounded text-[#0396A6] font-bold uppercase tracking-wider shrink-0"
                           animate={step >= 10 ? { opacity: 1 } : { opacity: 0.4 }}
                        >
                           HIGH INTENT
                        </motion.span>
                     </div>
-                    <div className="text-[10px] text-slate-500 leading-tight mt-0.5 truncate">james.carter@email.com<br/>+1 (415) 555-0198</div>
+                    <div className="text-[9.5px] text-slate-500 leading-tight mt-0.5 truncate">james.carter@email.com<br/>+1 (415) 555-0198</div>
                  </div>
               </div>
 
-              <div className="flex flex-wrap gap-1.5 mb-3">
-                 <span className="text-[9px] bg-slate-100 px-2 py-0.5 rounded-md text-slate-700 font-medium">Pricing page visited</span>
-                 <span className="text-[9px] bg-slate-100 px-2 py-0.5 rounded-md text-slate-700 font-medium">Asked about bulk order</span>
-                 <span className="text-[9px] bg-teal-50 text-[#0396A6] px-2 py-0.5 rounded-md font-medium border border-[#0396A6]/20">100 units quote</span>
+              <div className="flex flex-wrap gap-1 mb-2.5">
+                 <span className="text-[8.5px] bg-slate-100 px-1.5 py-0.5 rounded text-slate-700 font-medium">Pricing page visited</span>
+                 <span className="text-[8.5px] bg-slate-100 px-1.5 py-0.5 rounded text-slate-700 font-medium">Asked about bulk order</span>
+                 <span className="text-[8.5px] bg-teal-50 text-[#0396A6] px-1.5 py-0.5 rounded font-medium border border-[#0396A6]/20">100 units quote</span>
               </div>
 
-              <div className="pt-2.5 border-t border-slate-100">
-                 <span className="text-slate-800 text-[11px] font-bold mb-2 block">Lead Score</span>
-                 <div className="flex items-center gap-3.5">
-                    <div className="relative w-12 h-12 shrink-0">
-                       <svg className="w-12 h-12 transform -rotate-90" viewBox="0 0 36 36">
+              <div className="pt-2 border-t border-slate-100">
+                 <span className="text-slate-800 text-[10.5px] font-bold mb-1.5 block">Lead Score</span>
+                 <div className="flex items-center gap-2.5">
+                    <div className="relative w-11 h-11 shrink-0">
+                       <svg className="w-11 h-11 transform -rotate-90" viewBox="0 0 36 36">
                           <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#E2E8F0" strokeWidth="3.5" />
                           <motion.path 
                              d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" 
@@ -563,24 +564,24 @@ export default function UnifiedChannelsSection() {
                              strokeDasharray="100, 100" 
                              initial={{ strokeDashoffset: 50 }}
                              animate={step >= 10 ? { strokeDashoffset: 18 } : { strokeDashoffset: 50 }}
-                             transition={{ duration: 1 }}
+                             transition={{ duration: 0.8 }}
                           />
                        </svg>
                        <div className="absolute inset-0 flex flex-col items-center justify-center">
-                          <span className="text-slate-900 font-bold text-[14px] leading-none">{step >= 10 ? '82' : '50'}</span>
-                          <span className="text-slate-500 text-[7.5px] uppercase font-bold mt-0.5">{step >= 10 ? 'High' : 'Med'}</span>
+                          <span className="text-slate-900 font-bold text-[13px] leading-none">{step >= 10 ? '82' : '50'}</span>
+                          <span className="text-slate-500 text-[7px] uppercase font-bold mt-0.5">{step >= 10 ? 'High' : 'Med'}</span>
                        </div>
                     </div>
                     <div className="flex-1 flex flex-col gap-0.5">
-                       <div className="flex justify-between text-[10px]">
+                       <div className="flex justify-between text-[9.5px]">
                           <span className="text-slate-500 font-medium">Intent</span>
                           <span className={step >= 10 ? "text-slate-900 font-bold" : "text-slate-500 font-medium"}>{step >= 10 ? 'High' : 'Med'}</span>
                        </div>
-                       <div className="flex justify-between text-[10px]">
+                       <div className="flex justify-between text-[9.5px]">
                           <span className="text-slate-500 font-medium">Engagement</span>
                           <span className={step >= 10 ? "text-slate-900 font-bold" : "text-slate-500 font-medium"}>{step >= 10 ? 'High' : 'Low'}</span>
                        </div>
-                       <div className="flex justify-between text-[10px]">
+                       <div className="flex justify-between text-[9.5px]">
                           <span className="text-slate-500 font-medium">Fit</span>
                           <span className="text-slate-900 font-bold">Good</span>
                        </div>
@@ -590,9 +591,9 @@ export default function UnifiedChannelsSection() {
            </div>
         </motion.div>
 
-        {/* ── 8. BOTTOM CENTER: UNIFIED CONVERSATION (Compact Height, top: 423px with visible dotted connector) ── */}
+        {/* ── 8. BOTTOM CENTER: UNIFIED CONVERSATION (Compact Height, left-[400px]) ── */}
         <motion.div 
-           className="absolute left-[360px] top-[423px] w-[540px] bg-white/95 backdrop-blur-xl border border-slate-200 rounded-2xl shadow-[0_12px_30px_rgba(0,0,0,0.05)] overflow-hidden z-20"
+           className="absolute left-[400px] top-[423px] w-[540px] bg-white/95 backdrop-blur-xl border border-slate-200 rounded-2xl shadow-[0_12px_30px_rgba(0,0,0,0.05)] overflow-hidden z-20"
            initial={{ opacity: 0, y: 20 }}
            animate={step >= 9 ? { opacity: 1, y: 0, boxShadow: '0 12px 30px rgba(3, 150, 166,0.08)' } : { opacity: 0, y: 20, boxShadow: 'none' }}
            transition={{ duration: 0.5 }}
@@ -703,15 +704,92 @@ export default function UnifiedChannelsSection() {
         )}
       </AnimatePresence>
 
-      {/* MOBILE RESPONSIVE CHANNELS VIEW */}
-      <div className="relative w-full max-w-sm mx-auto px-4 py-4 flex flex-col gap-3 lg:hidden z-10">
-         <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-teal-50 text-[#0396A6] flex items-center justify-center shrink-0 border border-teal-100 font-bold">
-               <FrostySparkleIcon className="w-5 h-5" />
+      {/* MOBILE RESPONSIVE CHANNELS VIEW (< 1024px) */}
+      <div className="relative w-full max-w-lg mx-auto px-4 py-6 flex flex-col gap-5 lg:hidden z-10">
+         {/* Mobile Section Header */}
+         <div className="text-left w-full">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#0396A6]/30 bg-[#0396A6]/10 text-[10px] sm:text-[11px] font-bold tracking-widest uppercase text-[#0396A6] mb-3 shadow-2xs">
+               <svg className="w-3.5 h-3.5 text-[#0396A6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="2" y1="12" x2="22" y2="12"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/>
+               </svg>
+               OMNI-CHANNEL. UNIFIED AGENT.
             </div>
-            <div>
-               <h5 className="text-[13px] font-bold text-slate-900">Unified Memory</h5>
-               <p className="text-[11px] text-slate-500">Every interaction across Web & WhatsApp stays in real-time context.</p>
+            
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#0F172A] leading-[1.15] tracking-tight mb-2 font-serif">
+               Website. WhatsApp. Email.<br />
+               <span className="text-[#0396A6] font-bold" style={{ color: '#0396A6' }}>Unified.</span>
+            </h2>
+            
+            <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed">
+               One customer. Multiple touchpoints. Frosty connects the dots across Website and WhatsApp in real time so conversations never lose context.
+            </p>
+         </div>
+
+         {/* 3 Mobile Channel Chips */}
+         <div className="grid grid-cols-3 gap-2 w-full">
+            <div className="p-2 sm:p-2.5 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex flex-col items-center text-center">
+               <div className="w-6 h-6 rounded-lg bg-teal-50 text-[#0396A6] flex items-center justify-center mb-1">
+                  <Globe className="w-3.5 h-3.5" />
+               </div>
+               <span className="text-[10.5px] sm:text-[11.5px] font-bold text-slate-800 font-sans">Website</span>
+               <span className="text-[8px] sm:text-[9px] text-slate-400 font-medium">Pricing visited</span>
+            </div>
+
+            <div className="p-2 sm:p-2.5 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex flex-col items-center text-center">
+               <div className="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center mb-1">
+                  <MessageCircle className="w-3.5 h-3.5" />
+               </div>
+               <span className="text-[10.5px] sm:text-[11.5px] font-bold text-slate-800 font-sans">WhatsApp</span>
+               <span className="text-[8px] sm:text-[9px] text-slate-400 font-medium">Asked quote</span>
+            </div>
+
+            <div className="p-2 sm:p-2.5 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex flex-col items-center text-center">
+               <div className="w-6 h-6 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-1">
+                  <Mail className="w-3.5 h-3.5" />
+               </div>
+               <span className="text-[10.5px] sm:text-[11.5px] font-bold text-slate-800 font-sans">Email</span>
+               <span className="text-[8px] sm:text-[9px] text-slate-400 font-medium">Timeline shared</span>
+            </div>
+         </div>
+
+         {/* Unified Customer Memory Card */}
+         <div className="p-4 rounded-2xl bg-white border border-teal-200/80 shadow-[0_8px_30px_rgba(3,150,166,0.08)] flex flex-col gap-3 w-full">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+               <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#0396A6] to-teal-700 text-white font-bold text-xs flex items-center justify-center shadow-xs">
+                     JC
+                  </div>
+                  <div>
+                     <div className="text-[13px] font-bold text-slate-900 leading-tight">James Carter</div>
+                     <div className="text-[10px] text-slate-500 font-medium flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Active on Web & WhatsApp
+                     </div>
+                  </div>
+               </div>
+               <span className="px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-[#0396A6]/10 text-[#0396A6] border border-[#0396A6]/20">
+                  82/100 Intent
+               </span>
+            </div>
+
+            {/* AI Unified Response Bubble */}
+            <div className="p-3 rounded-xl bg-[#F0FDFA] border border-teal-100 flex flex-col gap-1.5">
+               <div className="flex items-center gap-1.5 text-[9.5px] font-bold text-[#0396A6] uppercase tracking-wider">
+                  <FrostySparkleIcon className="w-3 h-3 text-[#0396A6]" />
+                  <span>Frosty Agent Unified Reply</span>
+               </div>
+               <p className="text-[11.5px] text-slate-700 leading-snug">
+                  &ldquo;Hi James! Thanks for checking our pricing page earlier. I have your custom quote ready for review.&rdquo;
+               </p>
+            </div>
+
+            {/* Bottom Sync Pill */}
+            <div className="flex items-center justify-between text-[10px] text-slate-500 pt-0.5">
+               <span className="flex items-center gap-1 font-medium">
+                  <Check className="w-3 h-3 text-[#0396A6]" /> CRM synced in real time
+               </span>
+               <span className="font-semibold text-[#0396A6]">Zero context lost</span>
             </div>
          </div>
       </div>

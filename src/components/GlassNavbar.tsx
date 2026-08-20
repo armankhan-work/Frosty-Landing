@@ -33,7 +33,7 @@ export default function GlassNavbar({ ready = true }: GlassNavbarProps) {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full transition-colors duration-300">
       <nav
-        className="w-full flex items-center justify-between px-4 md:px-6 lg:px-8 py-2.5 md:py-3 relative"
+        className="w-full flex items-center justify-between px-3.5 sm:px-6 lg:px-8 py-2.5 md:py-3 relative"
         style={{
           background: 'transparent',
           backdropFilter: 'blur(8px)',
@@ -42,7 +42,7 @@ export default function GlassNavbar({ ready = true }: GlassNavbarProps) {
         }}
       >
         {/* ── Left: Brand Logo ── */}
-        <div className="flex flex-1 justify-start">
+        <div className="flex flex-1 justify-start min-w-0">
         <Link
           href="/"
           className="flex items-center group cursor-pointer focus:outline-none"
@@ -87,7 +87,7 @@ export default function GlassNavbar({ ready = true }: GlassNavbarProps) {
 
         {/* ── Mobile Hamburger Button ── */}
         <button
-          className="flex md:hidden flex-col justify-center items-center gap-[5px] w-9 h-9 rounded-full transition-all duration-200"
+          className="flex md:hidden flex-col justify-center items-center gap-[5px] w-9 h-9 rounded-full transition-all duration-200 shrink-0 ml-2"
           style={{
             background: 'rgba(28, 25, 23, 0.04)',
             border: '1px solid rgba(28, 25, 23, 0.08)',
@@ -140,7 +140,7 @@ export default function GlassNavbar({ ready = true }: GlassNavbarProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.98 }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden pointer-events-auto absolute left-4 right-4 top-full mt-2"
+            className="md:hidden pointer-events-auto absolute left-3 right-3 sm:left-4 sm:right-4 top-full mt-2"
             style={{
               background: 'rgba(255, 255, 255, 0.96)',
               backdropFilter: 'blur(24px)',
@@ -152,6 +152,8 @@ export default function GlassNavbar({ ready = true }: GlassNavbarProps) {
               display: 'flex',
               flexDirection: 'column',
               gap: 8,
+              maxHeight: 'calc(100vh - 80px)',
+              overflowY: 'auto',
             }}
           >
             {navLinks.map((link) => (

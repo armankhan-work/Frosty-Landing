@@ -156,6 +156,84 @@ function TypewriterUnderlined({
   );
 }
 
+/**
+ * StopwatchStatCounter: Smooth stopwatch-style counter that counts up to the target value when scrolled into view
+ */
+function StopwatchStatCounter({
+  targetValue,
+  prefix = '',
+  suffix = '',
+  decimals = 0,
+  duration = 1.6,
+}: {
+  targetValue: number;
+  prefix?: string;
+  suffix?: string;
+  decimals?: number;
+  duration?: number;
+}) {
+  const [currentValue, setCurrentValue] = useState(0);
+  const [hasStarted, setHasStarted] = useState(false);
+  const spanRef = React.useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    if (spanRef.current) {
+      observer.observe(spanRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+
+    let startTimestamp: number | null = null;
+    const durationMs = duration * 1000;
+
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const elapsed = timestamp - startTimestamp;
+      const progress = Math.min(elapsed / durationMs, 1);
+
+      // Fast-to-settle stopwatch ease curve
+      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const val = targetValue * ease;
+
+      setCurrentValue(val);
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        setCurrentValue(targetValue);
+      }
+    };
+
+    const animId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animId);
+  }, [hasStarted, targetValue, duration]);
+
+  return (
+    <span ref={spanRef} className="tabular-nums inline-block font-bold">
+      {prefix}
+      {currentValue.toLocaleString('en-US', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+      })}
+      {suffix}
+    </span>
+  );
+}
+
 /* ─── Timeline Data ─── */
 const TIMELINE_EVENTS = [
   {
@@ -345,7 +423,7 @@ export default function AboutPage() {
               </h1>
             </div>
 
-            {/* Synchronized Paragraph copy */}
+            {/* Synchronized Paragraph copy with Frosty First */}
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -353,7 +431,7 @@ export default function AboutPage() {
               className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed mt-6 sm:mt-8"
               style={{ marginTop: '24px' }}
             >
-              Frostrek is an elite AI research and engineering lab dedicated to eliminating operational bottlenecks. We build custom enterprise models, multi-agent orchestrations, and the technology powering our flagship innovation: the <strong>Frosty Agent</strong>.
+              Meet <strong>Frosty</strong>, our flagship multi-channel autonomous AI agent engineered by Frostrek to eliminate missed leads and operational bottlenecks with strict factual grounding, unified memory across Website & WhatsApp, and 24/7 instant conversions.
             </motion.p>
 
             {/* Action Buttons Synchronized with Landing Page Styles */}
@@ -377,34 +455,42 @@ export default function AboutPage() {
         </section>
 
         {/* ══════════════════════════════════════════════════════════════════
-            STATS SECTION (Synchronized Cards with Frostrek Metrics)
+            STATS SECTION (Stopwatch Counter with Interactive Card Hover)
         ══════════════════════════════════════════════════════════════════ */}
         <section className="px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto mb-20 md:mb-28">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-5">
             {[
               {
-                number: '5,000+',
-                label: 'Training Sessions',
+                value: 99.4,
+                prefix: '',
+                suffix: '%',
+                decimals: 1,
+                label: 'Factual Accuracy',
                 color: 'text-[#0396A6]',
-                bg: 'bg-white',
               },
               {
-                number: '200+',
-                label: 'AI Specialists',
+                value: 20,
+                prefix: '',
+                suffix: '+',
+                decimals: 0,
+                label: 'Happy Clients',
                 color: 'text-[#0A1A2F]',
-                bg: 'bg-white',
               },
               {
-                number: '99.2%',
-                label: 'Accuracy Rate',
+                value: 100,
+                prefix: '',
+                suffix: 'k+',
+                decimals: 0,
+                label: 'Conversations Handled',
                 color: 'text-[#FF7A5E]',
-                bg: 'bg-white',
               },
               {
-                number: '50+',
-                label: 'Enterprise Clients',
+                value: 1.2,
+                prefix: '< ',
+                suffix: 's',
+                decimals: 1,
+                label: 'Avg Response Speed',
                 color: 'text-[#027D8A]',
-                bg: 'bg-white',
               },
             ].map((stat, idx) => (
               <motion.div
@@ -413,13 +499,24 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
-                whileHover={{ y: -3 }}
-                className={`p-5 sm:p-6 rounded-2xl ${stat.bg} border border-slate-200/80 shadow-2xs text-center transition-all`}
+                whileHover={{ y: -6, scale: 1.025 }}
+                className="group relative p-5 sm:p-6 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:border-[#0396A6]/50 hover:shadow-[0_16px_36px_-8px_rgba(3,150,166,0.16),0_4px_12px_rgba(0,0,0,0.03)] text-center transition-all duration-300 cursor-pointer overflow-hidden"
               >
-                <div className={`text-2xl sm:text-3xl md:text-4xl font-bold ${stat.color} tracking-tight`}>
-                  {stat.number}
+                {/* Subtle Hover Gradient Glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#0396A6]/[0.05] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl" />
+
+                <div className={`relative z-10 text-2xl sm:text-3xl md:text-4xl font-bold ${stat.color} tracking-tight transition-transform duration-300 group-hover:scale-105`}>
+                  <StopwatchStatCounter
+                    targetValue={stat.value}
+                    prefix={stat.prefix}
+                    suffix={stat.suffix}
+                    decimals={stat.decimals}
+                    duration={1.6}
+                  />
                 </div>
-                <div className="text-[11px] sm:text-xs font-semibold text-slate-500 mt-1.5">{stat.label}</div>
+                <div className="relative z-10 text-[11px] sm:text-xs font-semibold text-slate-500 group-hover:text-slate-700 mt-1.5 transition-colors duration-200">
+                  {stat.label}
+                </div>
               </motion.div>
             ))}
           </div>
@@ -738,7 +835,7 @@ export default function AboutPage() {
         </section>
 
         {/* ══════════════════════════════════════════════════════════════════
-            HIGH-CONVERSION CTA (Synchronized Theme Gradient)
+            HIGH-CONVERSION CTA (Clean Light Theme Banner)
         ══════════════════════════════════════════════════════════════════ */}
         <section className="px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto my-6 md:my-10">
           <motion.div
@@ -746,46 +843,43 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="py-6 sm:py-7 md:py-8 px-6 sm:px-8 md:px-12 rounded-2xl bg-[#0A1A2F] text-white shadow-lg border border-slate-800 flex flex-col items-center justify-center text-center relative overflow-hidden w-full"
+            className="py-8 sm:py-9 md:py-10 px-6 sm:px-8 md:px-12 rounded-2xl bg-white text-slate-900 shadow-sm border border-slate-200/90 flex flex-col items-center justify-center text-center relative overflow-hidden w-full"
           >
-            <div className="absolute top-0 right-0 w-80 h-80 bg-[#0396A6]/15 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#FF7A5E]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-0 right-0 w-80 h-80 bg-[#0396A6]/[0.05] rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#FF7A5E]/[0.05] rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-3xl mx-auto w-full">
               <span 
-                className="text-[10px] font-bold uppercase tracking-widest bg-[#0396A6]/20 px-3 py-0.5 rounded-full border border-[#0396A6]/40 inline-block mb-2 text-center"
-                style={{ color: '#4DEEE3' }}
+                className="text-[10px] font-bold uppercase tracking-widest bg-[#0396A6]/10 px-3 py-1 rounded-full border border-[#0396A6]/20 inline-block mb-3 text-center text-[#0396A6]"
               >
                 GET STARTED
               </span>
 
               <h2 
-                className="text-xl sm:text-2xl md:text-3xl font-serif font-bold tracking-tight leading-snug mb-2 text-center !text-white w-full"
-                style={{ color: '#FFFFFF', textAlign: 'center' }}
+                className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold tracking-tight leading-snug mb-3 text-center text-slate-900 w-full"
               >
                 Ready to deploy Frosty or build custom enterprise AI?
               </h2>
 
               <p 
-                className="text-xs sm:text-[13px] max-w-2xl mx-auto leading-relaxed text-center !text-slate-200 mt-4 md:mt-5"
-                style={{ color: '#E2E8F0', textAlign: 'center', marginTop: '16px' }}
+                className="text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed text-center text-slate-600 mt-2"
               >
                 Start your free trial with Frosty in minutes, or schedule an enterprise architecture consultation with the Frostrek engineering team.
               </p>
 
-              <div className="flex flex-wrap items-center justify-center gap-3 w-full mt-7 md:mt-9" style={{ marginTop: '28px' }}>
+              <div className="flex flex-wrap items-center justify-center gap-3.5 w-full mt-7 md:mt-8">
                 <Link
                   href="/login?mode=register"
-                  className="px-5 py-2.5 rounded-full font-semibold text-xs sm:text-sm bg-[#0396A6] hover:bg-[#027D8A] text-white shadow-md shadow-[#0396A6]/25 transition-all flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98]"
+                  className="px-6 py-3 rounded-full font-semibold text-xs sm:text-sm bg-[#0396A6] hover:bg-[#027D8A] !text-white hover:!text-white shadow-sm hover:shadow-md shadow-[#0396A6]/20 transition-all flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98]"
                 >
-                  <span>Start Free Trial with Frosty</span>
-                  <ArrowRight size={14} />
+                  <span className="!text-white">Start Free Trial with Frosty</span>
+                  <ArrowRight size={14} className="!text-white" />
                 </Link>
                 <a
                   href="https://www.frostrek.ai/schedule-demo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-2.5 rounded-full font-semibold text-xs sm:text-sm bg-white/10 hover:bg-white/15 text-white border border-white/20 transition-all flex items-center justify-center gap-2"
+                  className="px-6 py-3 rounded-full font-semibold text-xs sm:text-sm bg-slate-50 hover:bg-slate-100 text-slate-800 border border-slate-200/80 transition-all flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <span>Book Enterprise Demo</span>
                   <ExternalLink size={13} />

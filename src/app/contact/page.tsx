@@ -14,6 +14,9 @@ import {
   Building2,
   Clock,
   ArrowDown,
+  ArrowRight,
+  ExternalLink,
+  Globe,
 } from 'lucide-react';
 import GlassNavbar from '@/components/GlassNavbar';
 import FooterSection from '../FooterSection';
@@ -37,6 +40,7 @@ const CONTACT_INFO_CARDS = [
     value: '+91 6399999955',
     subValue: '+1 (856) 942-3661',
     href: 'tel:+916399999955',
+    subHref: 'tel:+18569423661',
     color: 'text-[#0396A6] bg-[#0396A6]/10 border-[#0396A6]/20',
   },
   {
@@ -45,30 +49,43 @@ const CONTACT_INFO_CARDS = [
     value: 'contact@frostrek.com',
     subValue: 'sales@frostrek.com',
     href: 'mailto:contact@frostrek.com',
+    subHref: 'mailto:sales@frostrek.com',
     color: 'text-[#027D8A] bg-[#027D8A]/10 border-[#027D8A]/20',
   },
   {
     icon: MapPin,
-    label: 'OFFICE ADDRESS',
-    value: '4th Floor, JMD Empire, Sec 62, Gurugram, India (HQ)',
-    subValue: '701 Tillery St Unit 12, Austin, TX 78702, USA',
-    href: '#',
+    label: 'HEADQUARTERS (HQ)',
+    value: '4th Floor, JMD Empire, Sec 62',
+    subValue: 'Gurugram, Haryana 122102, India',
+    href: 'https://www.google.com/maps/search/?api=1&query=4th+Floor+JMD+Empire+Sector+62+Gurugram+Haryana+India',
+    subHref: 'https://www.google.com/maps/search/?api=1&query=4th+Floor+JMD+Empire+Sector+62+Gurugram+Haryana+India',
     color: 'text-emerald-600 bg-emerald-50 border-emerald-200',
   },
   {
     icon: Clock,
-    label: 'OPERATING HOURS',
+    label: 'HOURS & MEETINGS',
     value: 'Mon – Fri: 9am – 6pm EST',
-    subValue: '24/7 AI Availability on Web & WhatsApp',
-    href: '#',
+    subValue: 'Direct Calendar Booking & 24/7 AI',
+    href: '#contact-content',
+    subHref: '#contact-content',
     color: 'text-amber-600 bg-amber-50 border-amber-200',
   },
   {
     icon: Building2,
-    label: 'LEGAL ENTITY',
-    value: 'Frostrek Technologies Inc.',
-    subValue: 'Registered & Certified Enterprise AI Provider',
-    href: '#',
+    label: 'USA OFFICE',
+    value: '701 Tillery St Unit 12',
+    subValue: 'Austin, TX 78702, USA',
+    href: 'https://www.google.com/maps/search/?api=1&query=701+Tillery+St+Unit+12+Austin+TX+78702+USA',
+    subHref: 'https://www.google.com/maps/search/?api=1&query=701+Tillery+St+Unit+12+Austin+TX+78702+USA',
+    color: 'text-[#0396A6] bg-[#0396A6]/10 border-[#0396A6]/20',
+  },
+  {
+    icon: Building2,
+    label: 'UK OFFICE',
+    value: '24-26 Arcadia Avenue',
+    subValue: 'London N3 2JU, United Kingdom',
+    href: 'https://www.google.com/maps/search/?api=1&query=24-26+Arcadia+Avenue+London+N3+2JU',
+    subHref: 'https://www.google.com/maps/search/?api=1&query=24-26+Arcadia+Avenue+London+N3+2JU',
     color: 'text-[#FF7A5E] bg-[#FF7A5E]/10 border-[#FF7A5E]/20',
   },
 ];
@@ -221,7 +238,7 @@ export default function ContactPage() {
         {/* ══════════════════════════════════════════════════════════════════
             2-COLUMN SECTION: SEND US A MESSAGE & GOOGLE CALENDAR (SCROLL REVEAL)
         ══════════════════════════════════════════════════════════════════ */}
-        <section id="contact-content" className="pt-8 sm:pt-12 pb-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        <section id="contact-content" className="pt-8 sm:pt-12 pb-10 sm:pb-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
             
             {/* ── LEFT COLUMN: SEND US A MESSAGE FORM & DIRECT CONTACT CARDS ── */}
@@ -409,39 +426,52 @@ export default function ContactPage() {
                 </AnimatePresence>
               </div>
 
-              {/* Direct Info Cards Grid (Phone, Email, Office, Hours, Legal) */}
+              {/* Direct Info Cards Grid (Symmetric 2x3 Grid) */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 {CONTACT_INFO_CARDS.map((card, idx) => {
                   const Icon = card.icon;
+                  const isMainExternal = card.href?.startsWith('http');
+                  const isSubExternal = card.subHref?.startsWith('http');
                   return (
                     <div
                       key={idx}
-                      className={`p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-start gap-3.5 ${
-                        idx === 2 ? 'sm:col-span-2' : ''
-                      }`}
+                      className="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-start gap-3.5 hover:border-[#0396A6]/30 transition-all"
                     >
                       <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 border ${card.color}`}>
                         <Icon className="w-4 h-4" />
                       </div>
-                      <div className="min-w-0">
+                      <div className="min-w-0 flex-1">
                         <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-0.5">
                           {card.label}
                         </span>
-                        {card.href !== '#' ? (
+                        {card.href && card.href !== '#' ? (
                           <a
                             href={card.href}
+                            target={isMainExternal ? '_blank' : undefined}
+                            rel={isMainExternal ? 'noopener noreferrer' : undefined}
                             className="text-xs font-bold text-[#0A1A2F] hover:text-[#0396A6] transition-colors block truncate"
                           >
                             {card.value}
                           </a>
                         ) : (
-                          <div className="text-xs font-bold text-[#0A1A2F] leading-snug">
+                          <div className="text-xs font-bold text-[#0A1A2F] leading-snug truncate">
                             {card.value}
                           </div>
                         )}
-                        <div className="text-[11px] text-slate-500 mt-0.5 leading-snug">
-                          {card.subValue}
-                        </div>
+                        {card.subHref && card.subHref !== '#' ? (
+                          <a
+                            href={card.subHref}
+                            target={isSubExternal ? '_blank' : undefined}
+                            rel={isSubExternal ? 'noopener noreferrer' : undefined}
+                            className="text-[11px] text-slate-500 hover:text-[#0396A6] transition-colors mt-0.5 block leading-snug truncate"
+                          >
+                            {card.subValue}
+                          </a>
+                        ) : (
+                          <div className="text-[11px] text-slate-500 mt-0.5 leading-snug truncate">
+                            {card.subValue}
+                          </div>
+                        )}
                       </div>
                     </div>
                   );
@@ -462,6 +492,62 @@ export default function ContactPage() {
             </motion.div>
 
           </div>
+        </section>
+
+        {/* ══════════════════════════════════════════════════════════════════
+            CUSTOM CONTACT PAGE CTA (Enterprise Consultation & Deployment)
+        ══════════════════════════════════════════════════════════════════ */}
+        <section className="px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto mb-12 md:mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="py-7 sm:py-8 md:py-9 px-6 sm:px-8 md:px-12 rounded-3xl bg-gradient-to-b from-white to-slate-50/80 text-slate-900 shadow-sm border border-slate-200/90 flex flex-col items-center justify-center text-center relative overflow-hidden w-full"
+          >
+            <div className="absolute -top-12 -right-12 w-64 h-64 bg-[#0396A6]/[0.06] rounded-full blur-2xl pointer-events-none" />
+            <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-[#FF7A5E]/[0.05] rounded-full blur-2xl pointer-events-none" />
+
+            <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-3xl mx-auto w-full">
+              <span 
+                className="text-[10px] font-bold uppercase tracking-widest bg-[#0396A6]/10 px-3.5 py-1 rounded-full border border-[#0396A6]/20 inline-flex items-center gap-1.5 mb-3 text-[#0396A6]"
+              >
+                <Sparkles className="w-3 h-3 text-[#0396A6]" />
+                <span>BESPOKE ENTERPRISE ARCHITECTURE</span>
+              </span>
+
+              <h2 
+                className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold tracking-tight leading-snug mb-2.5 text-slate-900 w-full"
+              >
+                Have unique workflows or custom data pipelines?
+              </h2>
+
+              <p 
+                className="text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed text-slate-600 mt-1"
+              >
+                Our AI engineering team builds tailor-made enterprise multi-agent swarms, proprietary CRM bridges, and dedicated staging environments with 99.4% factual accuracy.
+              </p>
+
+              <div className="flex flex-wrap items-center justify-center gap-3.5 w-full mt-6 md:mt-7">
+                <Link
+                  href="/login?mode=register"
+                  className="px-6 py-3 rounded-full font-semibold text-xs sm:text-sm bg-[#0396A6] hover:bg-[#027D8A] !text-white shadow-sm hover:shadow-md shadow-[#0396A6]/20 transition-all flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  <span className="!text-white">Start Free Trial with Frosty</span>
+                  <ArrowRight size={14} className="!text-white" />
+                </Link>
+                <a
+                  href="https://wa.me/916399999955?text=Hi%20Frostrek%20Team,%20I'd%20like%20to%20discuss%20custom%20enterprise%20AI%20solutions."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 rounded-full font-semibold text-xs sm:text-sm bg-white hover:bg-slate-50 text-slate-800 border border-slate-200/90 shadow-2xs transition-all flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  <img src="/whatsapp.png" alt="WhatsApp" className="w-4 h-4 object-contain" />
+                  <span>Chat on WhatsApp</span>
+                </a>
+              </div>
+            </div>
+          </motion.div>
         </section>
       </main>
 

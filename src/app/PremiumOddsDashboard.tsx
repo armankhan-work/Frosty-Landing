@@ -36,24 +36,14 @@ export default function PremiumOddsDashboard() {
   return (
     <div className="w-full flex flex-col justify-start font-sans z-10">
       
-      {/* Header */}
-      <div className="mb-4 text-left">
-        <h3 className="text-xl sm:text-2xl lg:text-[25px] font-bold font-sans text-slate-900 leading-tight tracking-tight">
-          Relative odds of qualifying a lead
-        </h3>
-        <div className="text-[10.5px] font-bold text-slate-400 mt-1 uppercase tracking-wider">
-          RELATIVE ODDS (INDEX)
-        </div>
-      </div>
-
       {/* Chart Canvas Area: Stretched taller in vertical with slimmer bars */}
-      <div className="relative w-full pt-10 sm:pt-12">
+      <div className="relative w-full pt-4 sm:pt-6">
         
         {/* Y-Axis scale + Horizontal Grid Lines */}
-        <div className="relative pl-8 pr-2">
+        <div className="relative pl-7 sm:pl-8 pr-1 sm:pr-2">
           
           {/* Y-Axis numbers */}
-          <div className="absolute top-0 left-0 bottom-0 flex flex-col justify-between text-[11px] font-semibold text-slate-500 py-[2px]">
+          <div className="absolute top-0 left-0 bottom-0 flex flex-col justify-between text-[10px] sm:text-[11px] font-semibold text-slate-500 py-[2px]">
             <span>100</span>
             <span>75</span>
             <span>50</span>
@@ -62,7 +52,7 @@ export default function PremiumOddsDashboard() {
           </div>
 
           {/* Grid lines & Bars Box */}
-          <div className="relative h-[235px] sm:h-[250px] lg:h-[265px] w-full border-b border-slate-200/90 flex items-end justify-between px-4 sm:px-8 lg:px-10 pb-[1px]">
+          <div className="relative h-[220px] sm:h-[250px] lg:h-[265px] w-full border-b border-slate-200/90 flex items-end justify-between px-2 sm:px-8 lg:px-10 pb-[1px]">
             
             {/* Horizontal Grid lines */}
             {[0, 25, 50, 75, 100].map((val) => (
@@ -89,7 +79,7 @@ export default function PremiumOddsDashboard() {
                   style={{ bottom: `calc(${item.percentage}% + 5px)` }}
                 >
                   {/* Tooltip Pill */}
-                  <div className={`px-2.5 py-0.5 rounded-md text-[10px] sm:text-[10.5px] font-extrabold shadow-2xs whitespace-nowrap ${item.badgeBg}`}>
+                  <div className={`px-1.5 sm:px-2.5 py-0.5 rounded-md text-[9px] sm:text-[10.5px] font-extrabold shadow-2xs whitespace-nowrap ${item.badgeBg}`}>
                     {item.time}
                   </div>
                   {/* Tooltip Pointer Triangle */}

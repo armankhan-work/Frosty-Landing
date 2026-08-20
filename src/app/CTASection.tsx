@@ -16,7 +16,7 @@ export default function CTASection() {
     return (
         <section className="relative pt-8 sm:pt-12 pb-12 sm:pb-16 bg-transparent">
             <div className="w-full max-w-[1600px] mx-auto px-6 lg:px-10 xl:px-12 relative z-10">
-                <div className="relative rounded-[32px] overflow-hidden px-8 py-10 md:px-16 md:py-14 text-center bg-white border border-slate-200 shadow-sm flex flex-col justify-center">
+                <div className="relative rounded-[28px] sm:rounded-[32px] overflow-hidden px-4 sm:px-8 py-8 sm:py-10 md:px-16 md:py-14 text-center bg-white border border-slate-200 shadow-sm flex flex-col justify-center">
                     <div className="relative z-10 flex flex-col items-center justify-center">
                         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 mb-6 backdrop-blur-sm shadow-xs">
                             <span className="w-4 h-4 rounded-full bg-[#0396A6]/20 flex items-center justify-center">
@@ -27,13 +27,13 @@ export default function CTASection() {
                         <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-[#0F172A] leading-[1.15] tracking-tight m-0 mb-6">
                             Capture every enquiry — starting this week.
                         </h2>
-                        <p className="text-sm md:text-base text-slate-600 font-normal leading-relaxed max-w-xl mx-auto m-0 mb-6">
+                        <p className="text-sm md:text-base text-slate-600 font-normal leading-relaxed max-w-xl mx-auto m-0 mb-6 px-1">
                             Book a 20-minute demo and we&apos;ll set Frosty up on your website and WhatsApp, trained on your own content. You&apos;ll see it answer a real enquiry before you decide.
                         </p>
-                        <div className="flex flex-wrap items-center justify-center gap-5 pt-2">
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5 pt-2 w-full sm:w-auto">
                             <a 
                                 href={DEMO}
-                                className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-bold text-sm text-white bg-[#0396A6] hover:bg-[#0A1A2F] shadow-[0_10px_30px_rgba(3, 150, 166,0.3)] hover:scale-105 active:scale-95 transition-all duration-300 overflow-hidden"
+                                className="group relative inline-flex items-center justify-center gap-3 px-8 py-3.5 sm:py-4 rounded-full font-bold text-sm text-white bg-[#0396A6] hover:bg-[#0A1A2F] shadow-[0_10px_30px_rgba(3, 150, 166,0.3)] hover:scale-105 active:scale-95 transition-all duration-300 overflow-hidden w-full sm:w-auto"
                                 style={{ color: '#FFFFFF', textDecoration: 'none' }}
                             >
                                 <span className="flex h-2 w-2 relative shrink-0">
@@ -50,7 +50,7 @@ export default function CTASection() {
                             
                             <a 
                                 href="https://wa.me/916399999955"
-                                className="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full font-semibold text-slate-800 hover:text-[#0396A6] text-sm bg-slate-50 hover:bg-slate-100 border border-slate-200 shadow-sm transition-all duration-300 hover:scale-105 active:scale-95 whitespace-nowrap"
+                                className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 sm:py-4 rounded-full font-semibold text-slate-800 hover:text-[#0396A6] text-sm bg-slate-50 hover:bg-slate-100 border border-slate-200 shadow-sm transition-all duration-300 hover:scale-105 active:scale-95 whitespace-nowrap w-full sm:w-auto"
                                 style={{ textDecoration: 'none' }}
                             >
                                 <span>Chat on WhatsApp</span>

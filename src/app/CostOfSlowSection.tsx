@@ -43,58 +43,52 @@ export default function CostOfSlowSection() {
                         </div>
 
                         {/* 3 Stat Cards */}
-                        <div className="grid grid-cols-3 gap-2.5 sm:gap-3 mb-4">
+                        <div className="grid grid-cols-3 gap-1.5 sm:gap-3 mb-4">
 
                             {/* Card 1: Qualification (Teal) */}
-                            <div className="bg-white/90 backdrop-blur-sm border border-slate-200/80 rounded-2xl p-3 sm:p-3.5 text-center flex flex-col items-center justify-between shadow-xs min-h-[145px] sm:min-h-[155px]">
-                                <div className="flex items-center justify-center gap-1.5 sm:gap-2 mb-1">
-                                    <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#0396A6]/15 flex items-center justify-center shrink-0">
-                                        <TrendingUp className="w-3.5 h-3.5 text-[#0396A6] stroke-[2.2]" />
-                                    </div>
-                                    <span className="text-[9.5px] sm:text-[10px] font-extrabold text-[#0396A6] tracking-wider uppercase font-sans">
+                            <div className="bg-white/90 backdrop-blur-sm border border-slate-200/80 rounded-xl sm:rounded-2xl p-2 sm:p-3.5 text-center flex flex-col items-center justify-between shadow-xs min-h-[120px] sm:min-h-[155px]">
+                                <div className="flex items-center justify-center gap-1 sm:gap-2 mb-1">
+                                    <TrendingUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#0396A6] stroke-[2.2] shrink-0" />
+                                    <span className="text-[8px] sm:text-[10px] font-extrabold text-[#0396A6] tracking-wider uppercase font-sans">
                                         QUALIFICATION
                                     </span>
                                 </div>
-                                <div className="text-2xl sm:text-3xl font-extrabold font-sans text-[#0396A6] leading-none my-1">
+                                <div className="text-xl sm:text-3xl font-extrabold font-sans text-[#0396A6] leading-none my-1">
                                     7x
                                 </div>
-                                <div className="text-[10px] sm:text-[11px] text-slate-600 leading-tight font-sans">
+                                <div className="text-[8.5px] sm:text-[11px] text-slate-600 leading-tight font-sans">
                                     more likely to qualify<br />the lead
                                 </div>
                             </div>
 
                             {/* Card 2: Advantage (Orange Shade 1: Bright Amber-Orange #F97316) */}
-                            <div className="bg-white/90 backdrop-blur-sm border border-slate-200/80 rounded-2xl p-3 sm:p-3.5 text-center flex flex-col items-center justify-between shadow-xs min-h-[145px] sm:min-h-[155px]">
-                                <div className="flex items-center justify-center gap-1.5 sm:gap-2 mb-1">
-                                    <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#F97316]/15 flex items-center justify-center shrink-0">
-                                        <Users className="w-3.5 h-3.5 text-[#F97316] stroke-[2.2]" />
-                                    </div>
-                                    <span className="text-[9.5px] sm:text-[10px] font-extrabold text-[#F97316] tracking-wider uppercase font-sans">
+                            <div className="bg-white/90 backdrop-blur-sm border border-slate-200/80 rounded-xl sm:rounded-2xl p-2 sm:p-3.5 text-center flex flex-col items-center justify-between shadow-xs min-h-[120px] sm:min-h-[155px]">
+                                <div className="flex items-center justify-center gap-1 sm:gap-2 mb-1">
+                                    <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F97316] stroke-[2.2] shrink-0" />
+                                    <span className="text-[8px] sm:text-[10px] font-extrabold text-[#F97316] tracking-wider uppercase font-sans">
                                         ADVANTAGE
                                     </span>
                                 </div>
-                                <div className="text-2xl sm:text-3xl font-extrabold font-sans text-[#F97316] leading-none my-1">
+                                <div className="text-xl sm:text-3xl font-extrabold font-sans text-[#F97316] leading-none my-1">
                                     60x
                                 </div>
-                                <div className="text-[10px] sm:text-[11px] text-slate-600 leading-tight font-sans">
+                                <div className="text-[8.5px] sm:text-[11px] text-slate-600 leading-tight font-sans">
                                     more likely to connect<br />before competitors
                                 </div>
                             </div>
 
                             {/* Card 3: Average (Orange Shade 2: Deep Crimson-Orange #EA580C) */}
-                            <div className="bg-white/90 backdrop-blur-sm border border-slate-200/80 rounded-2xl p-3 sm:p-3.5 text-center flex flex-col items-center justify-between shadow-xs min-h-[145px] sm:min-h-[155px]">
-                                <div className="flex items-center justify-center gap-1.5 sm:gap-2 mb-1">
-                                    <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#EA580C]/15 flex items-center justify-center shrink-0">
-                                        <Clock className="w-3.5 h-3.5 text-[#EA580C] stroke-[2.2]" />
-                                    </div>
-                                    <span className="text-[9.5px] sm:text-[10px] font-extrabold text-[#EA580C] tracking-wider uppercase font-sans">
+                            <div className="bg-white/90 backdrop-blur-sm border border-slate-200/80 rounded-xl sm:rounded-2xl p-2 sm:p-3.5 text-center flex flex-col items-center justify-between shadow-xs min-h-[120px] sm:min-h-[155px]">
+                                <div className="flex items-center justify-center gap-1 sm:gap-2 mb-1">
+                                    <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#EA580C] stroke-[2.2] shrink-0" />
+                                    <span className="text-[8px] sm:text-[10px] font-extrabold text-[#EA580C] tracking-wider uppercase font-sans">
                                         AVERAGE
                                     </span>
                                 </div>
-                                <div className="text-2xl sm:text-3xl font-extrabold font-sans text-[#EA580C] leading-none my-1">
+                                <div className="text-xl sm:text-3xl font-extrabold font-sans text-[#EA580C] leading-none my-1">
                                     0.4%
                                 </div>
-                                <div className="text-[10px] sm:text-[11px] text-slate-600 leading-tight font-sans">
+                                <div className="text-[8.5px] sm:text-[11px] text-slate-600 leading-tight font-sans">
                                     of leads get a fast<br />human response
                                 </div>
                             </div>

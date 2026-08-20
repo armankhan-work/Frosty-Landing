@@ -50,18 +50,18 @@ function SidebarIcon({ type, active }: { type: string; active?: boolean }) {
 
 function DashboardPanel() {
   return (
-    <div className="flex-1 flex flex-col min-h-[440px] sm:min-h-[480px] max-h-[540px] bg-white overflow-hidden">
-      <div className="px-4 sm:px-6 pt-5 pb-3 shrink-0 flex items-start justify-between">
+    <div className="flex-1 flex flex-col min-h-[420px] sm:min-h-[480px] max-h-[540px] bg-white overflow-hidden">
+      <div className="px-3 sm:px-6 pt-4 sm:pt-5 pb-2 sm:pb-3 shrink-0 flex items-start justify-between">
         <div>
-          <div className="text-[22px] font-sans font-bold !text-slate-900 leading-tight" style={{ fontFamily: "var(--sans, 'Outfit', sans-serif)" }}>Dashboard Overview</div>
-          <p className="text-[11px] font-medium !text-slate-500">Welcome back to your workspace overview</p>
+          <div className="text-[17px] sm:text-[22px] font-sans font-bold !text-slate-900 leading-tight" style={{ fontFamily: "var(--sans, 'Outfit', sans-serif)" }}>Dashboard Overview</div>
+          <p className="text-[10px] sm:text-[11px] font-medium !text-slate-500">Welcome back to your workspace</p>
         </div>
-        <span className="text-[9.5px] font-semibold text-slate-500 bg-teal-50/80 border border-teal-200/60 px-2 py-0.5 rounded-full mt-1">
-          Product preview · sample data
+        <span className="text-[8.5px] sm:text-[9.5px] font-semibold text-slate-500 bg-teal-50/80 border border-teal-200/60 px-1.5 sm:px-2 py-0.5 rounded-full mt-0.5">
+          Product preview
         </span>
       </div>
       
-      <div className="flex-1 px-4 sm:px-6 pb-5 overflow-y-auto flex flex-col gap-4 min-w-0">
+      <div className="flex-1 px-3 sm:px-6 pb-4 sm:pb-5 overflow-y-auto flex flex-col gap-3 sm:gap-4 min-w-0">
         {/* KPI Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           <div className="bg-white rounded-[14px] p-3 border border-[#CCFBF1] shadow-[0_2px_10px_rgba(3, 150, 166,0.03)] flex flex-col justify-between h-[86px]">

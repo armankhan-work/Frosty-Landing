@@ -77,7 +77,7 @@ export default function CRMLeadIntelligenceSection() {
 
     const runProfileAnim = async () => {
       const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-      await wait(800);
+      await wait(450);
       if (!isAlive) return;
       
       setInteractions(prev => [
@@ -85,11 +85,11 @@ export default function CRMLeadIntelligenceSection() {
         { id: '3', channel: 'Email', action: 'Requested proposal', time: '10:31 AM', icon: <img src="/gmail.png" alt="Email" className="w-4 h-4 object-contain" />, color: 'text-[#0396A6]', bgColor: 'bg-transparent' }
       ]);
       
-      await wait(600);
+      await wait(350);
       if (!isAlive) return;
       setCrmScore(78);
       
-      await wait(600);
+      await wait(350);
       if (!isAlive) return;
       setShowInsight(true);
     };
@@ -106,7 +106,7 @@ export default function CRMLeadIntelligenceSection() {
       const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
       while (isAlive) {
-        await wait(2400);
+        await wait(1400);
         if (!isAlive) break;
 
         const nextLeadData = INCOMING_LEADS[leadIndex.current % INCOMING_LEADS.length];
@@ -125,12 +125,12 @@ export default function CRMLeadIntelligenceSection() {
 
         setActiveLeads(prev => [newLead, ...prev.slice(0, 3)]);
 
-        await wait(600);
+        await wait(350);
         if (!isAlive) break;
 
         setActiveLeads(prev => prev.map(l => l.id === newId ? { ...l, state: 'scoring' } : l));
 
-        await wait(1000);
+        await wait(550);
         if (!isAlive) break;
 
         setActiveLeads(prev => prev.map(l => l.id === newId ? { ...l, state: 'segregating' } : l));
@@ -142,10 +142,10 @@ export default function CRMLeadIntelligenceSection() {
         if (nextLeadData.name === 'James Carter') {
           setTimeout(() => {
             if (isAlive) setShowProfile(true);
-          }, 300);
+          }, 150);
         }
 
-        await wait(700);
+        await wait(400);
         if (!isAlive) break;
 
         setActiveLeads(prev => prev.map(l => l.id === newId ? { ...l, state: 'done' } : l));
@@ -172,7 +172,7 @@ export default function CRMLeadIntelligenceSection() {
         </p>
       </div>
 
-      <div className="w-full flex flex-col items-center transform scale-[0.85] origin-top -mb-[100px] mt-4">
+      <div className="w-full flex flex-col items-center mt-2 sm:mt-4">
         
         <div className="mb-4">
           <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-slate-500 bg-white/90 border border-slate-200 px-3 py-1 rounded-full shadow-2xs">
@@ -183,7 +183,7 @@ export default function CRMLeadIntelligenceSection() {
         {/* DYNAMIC COLUMN LAYOUT */}
         <motion.div 
           layout
-          className={`relative z-10 w-full mx-auto px-6 grid grid-cols-1 gap-6 lg:gap-8 items-start ${showProfile ? 'max-w-[1280px] lg:grid-cols-[1.1fr_1fr_1.1fr]' : 'max-w-[900px] lg:grid-cols-2'}`}
+          className={`relative z-10 w-full mx-auto px-3 sm:px-6 grid grid-cols-1 gap-6 lg:gap-8 items-start ${showProfile ? 'max-w-[1280px] lg:grid-cols-[1.1fr_1fr_1.1fr]' : 'max-w-[900px] lg:grid-cols-2'}`}
           transition={{ type: 'spring', stiffness: 200, damping: 25 }}
         >
           
@@ -195,45 +195,45 @@ export default function CRMLeadIntelligenceSection() {
                 initial={{ opacity: 0, scale: 0.9, x: -30 }}
                 animate={{ opacity: 1, scale: 1, x: 0 }}
                 transition={{ type: 'spring', stiffness: 250, damping: 25 }}
-                className="bg-white/95 border border-slate-200 rounded-[24px] p-6 shadow-[0_20px_50px_rgba(0,0,0,0.06)] flex flex-col relative overflow-hidden"
+                className="bg-white/95 border border-slate-200 rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.06)] flex flex-col relative overflow-hidden"
               >
                 {/* Profile Header */}
-                <div className="flex items-start gap-4 mb-6 relative z-10">
-                  <div className="w-[68px] h-[68px] rounded-full bg-slate-100 border-[3px] border-slate-200 flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
+                <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6 relative z-10">
+                  <div className="w-[52px] h-[52px] sm:w-[68px] sm:h-[68px] rounded-full bg-slate-100 border-[3px] border-slate-200 flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
                      <img src="https://i.pravatar.cc/150?img=68" alt="James Carter" className="w-full h-full object-cover" />
                   </div>
-                  <div className="flex-1 pt-1">
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <h3 className="text-slate-900 font-bold text-[19px]">James Carter</h3>
-                      <div className="px-2 py-0.5 rounded text-[10px] font-bold bg-red-50 text-red-600 border border-red-200 flex items-center gap-1 shadow-sm">
-                        <Flame className="w-3 h-3" strokeWidth={2.5} /> High Intent
+                  <div className="flex-1 pt-0.5 min-w-0">
+                    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-1">
+                      <h3 className="text-slate-900 font-bold text-base sm:text-[19px] truncate">James Carter</h3>
+                      <div className="px-1.5 sm:px-2 py-0.5 rounded text-[9px] sm:text-[10px] font-bold bg-red-50 text-red-600 border border-red-200 flex items-center gap-1 shadow-sm shrink-0">
+                        <Flame className="w-2.5 h-2.5 sm:w-3 sm:h-3" strokeWidth={2.5} /> High Intent
                       </div>
                     </div>
-                    <p className="text-slate-500 text-[12px] font-medium">Bengaluru, India &nbsp;&bull;&nbsp; Repeat visitor</p>
+                    <p className="text-slate-500 text-[10.5px] sm:text-[12px] font-medium truncate">Bengaluru, India &bull; Repeat visitor</p>
                   </div>
-                  <div className="text-right">
-                    <div className="text-slate-500 text-[9px] font-bold uppercase tracking-wider mb-1">Lead Score</div>
+                  <div className="text-right shrink-0">
+                    <div className="text-slate-500 text-[8px] sm:text-[9px] font-bold uppercase tracking-wider mb-0.5">Lead Score</div>
                     <div className="flex flex-col items-end">
-                       <motion.div key={crmScore} className="text-[32px] font-bold text-slate-900 leading-none tracking-tight" animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 0.3 }}>
+                       <motion.div key={crmScore} className="text-2xl sm:text-[32px] font-bold text-slate-900 leading-none tracking-tight" animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 0.3 }}>
                          {crmScore}
                        </motion.div>
                        {crmScore > 72 ? (
-                         <motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="text-green-600 text-[11px] font-bold mt-1.5 flex items-center">
-                           <ArrowRight className="w-3 h-3 rotate-[-45deg] mr-0.5" /> +{crmScore - 72}
+                         <motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="text-green-600 text-[10px] sm:text-[11px] font-bold mt-1 flex items-center">
+                           <ArrowRight className="w-2.5 h-2.5 sm:w-3 sm:h-3 rotate-[-45deg] mr-0.5" /> +{crmScore - 72}
                          </motion.div>
                        ) : (
-                         <div className="h-[20px]" />
+                         <div className="h-[16px] sm:h-[20px]" />
                        )}
                     </div>
                   </div>
                 </div>
 
                 {/* Tabs */}
-                <div className="flex gap-6 border-b border-slate-200 mb-6 relative z-10">
-                  <div className="text-slate-900 text-[12px] font-bold pb-3 border-b-2 border-[#0396A6]">Overview</div>
-                  <div className="text-slate-500 hover:text-slate-700 text-[12px] font-semibold pb-3 cursor-pointer transition-colors">Conversations</div>
-                  <div className="text-slate-500 hover:text-slate-700 text-[12px] font-semibold pb-3 cursor-pointer transition-colors">Notes</div>
-                  <div className="text-slate-500 hover:text-slate-700 text-[12px] font-semibold pb-3 cursor-pointer transition-colors">Deals</div>
+                <div className="flex gap-4 sm:gap-6 border-b border-slate-200 mb-4 sm:mb-6 relative z-10 overflow-x-auto">
+                  <div className="text-slate-900 text-[11px] sm:text-[12px] font-bold pb-2.5 sm:pb-3 border-b-2 border-[#0396A6] shrink-0">Overview</div>
+                  <div className="text-slate-500 hover:text-slate-700 text-[11px] sm:text-[12px] font-semibold pb-2.5 sm:pb-3 cursor-pointer transition-colors shrink-0">Conversations</div>
+                  <div className="text-slate-500 hover:text-slate-700 text-[11px] sm:text-[12px] font-semibold pb-2.5 sm:pb-3 cursor-pointer transition-colors shrink-0">Notes</div>
+                  <div className="text-slate-500 hover:text-slate-700 text-[11px] sm:text-[12px] font-semibold pb-2.5 sm:pb-3 cursor-pointer transition-colors shrink-0">Deals</div>
                 </div>
 
                 <div className="flex-1 relative z-10">
@@ -298,12 +298,12 @@ export default function CRMLeadIntelligenceSection() {
                   </AnimatePresence>
                 </div>
 
-                <div className="flex gap-3 mt-8 relative z-10">
-                  <button className="flex-1 bg-[#0396A6] hover:bg-[#0A1A2F] text-white text-[12.5px] font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-sm">
-                    <MessageCircle className="w-4 h-4" /> Start Conversation
+                <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 mt-5 sm:mt-8 relative z-10">
+                  <button className="w-full sm:flex-1 bg-[#0396A6] hover:bg-[#0A1A2F] text-white text-[12px] sm:text-[12.5px] font-semibold py-2.5 sm:py-3 px-3 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-sm whitespace-nowrap">
+                    <MessageCircle className="w-4 h-4 shrink-0" /> Start Conversation
                   </button>
-                  <button className="flex-1 bg-slate-50 border border-slate-200 hover:bg-slate-100 text-slate-800 text-[12.5px] font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
-                    <NotebookPen className="w-4 h-4 text-slate-500" /> Add Note
+                  <button className="w-full sm:flex-1 bg-slate-50 border border-slate-200 hover:bg-slate-100 text-slate-800 text-[12px] sm:text-[12.5px] font-semibold py-2.5 sm:py-3 px-3 rounded-xl transition-colors flex items-center justify-center gap-2 whitespace-nowrap">
+                    <NotebookPen className="w-4 h-4 text-slate-500 shrink-0" /> Add Note
                   </button>
                 </div>
               </motion.div>
@@ -311,18 +311,18 @@ export default function CRMLeadIntelligenceSection() {
           </AnimatePresence>
 
           {/* CENTER: LIVE LEADS STREAM */}
-          <motion.div layout className="bg-white/95 backdrop-blur-xl border border-slate-200 rounded-[24px] p-6 flex flex-col relative overflow-hidden h-[600px] shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
+          <motion.div layout className="bg-white/95 backdrop-blur-xl border border-slate-200 rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 flex flex-col relative overflow-hidden h-auto min-h-[440px] sm:min-h-[500px] lg:h-[600px] shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
             
-            <div className="flex items-center justify-between mb-6 z-10 relative">
+            <div className="flex items-center justify-between mb-4 sm:mb-6 z-10 relative">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <h3 className="text-slate-900 font-bold text-[15px]">Live Leads</h3>
+                <h3 className="text-slate-900 font-bold text-sm sm:text-[15px]">Live Leads</h3>
               </div>
-              <div className="bg-teal-50 border border-[#0396A6]/25 px-3 py-1 rounded-full text-[#0396A6] text-[10px] font-bold tracking-wide">
+              <div className="bg-teal-50 border border-[#0396A6]/25 px-2.5 sm:px-3 py-1 rounded-full text-[#0396A6] text-[9px] sm:text-[10px] font-bold tracking-wide">
                 12 this hour
               </div>
             </div>
-            <p className="text-slate-500 text-[11.5px] mb-5 z-10 relative">New leads coming in</p>
+            <p className="text-slate-500 text-[10.5px] sm:text-[11.5px] mb-4 sm:mb-5 z-10 relative">New leads coming in</p>
 
             <div className="flex-1 relative z-10 w-full">
                <AnimatePresence initial={false}>
@@ -339,7 +339,7 @@ export default function CRMLeadIntelligenceSection() {
                       }}
                       exit={{ opacity: 0, scale: 0.9 }}
                       transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                      className={`mb-3 p-3 rounded-[16px] flex items-center gap-3 border transition-colors duration-300 relative overflow-visible ${
+                      className={`mb-2.5 sm:mb-3 p-2.5 sm:p-3 rounded-[14px] sm:rounded-[16px] flex items-center gap-2.5 sm:gap-3 border transition-colors duration-300 relative overflow-visible ${
                         lead.state === 'scoring' || lead.state === 'segregating'
                           ? (lead.category === 'hot' ? 'bg-red-50/80 border-red-200'
                              : lead.category === 'warm' ? 'bg-amber-50/80 border-amber-200'
@@ -347,16 +347,16 @@ export default function CRMLeadIntelligenceSection() {
                           : 'bg-slate-50/50 border-slate-100'
                       }`}
                    >
-                      <div className="w-[38px] h-[38px] rounded-full bg-slate-200 border border-slate-300 overflow-hidden shrink-0">
+                      <div className="w-[34px] h-[34px] sm:w-[38px] sm:h-[38px] rounded-full bg-slate-200 border border-slate-300 overflow-hidden shrink-0">
                         <img src={lead.avatar} alt={lead.name} className="w-full h-full object-cover" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="text-slate-900 text-[13px] font-bold truncate">{lead.name}</div>
-                        <div className="text-slate-500 text-[11px] truncate">{lead.action}</div>
+                        <div className="text-slate-900 text-xs sm:text-[13px] font-bold truncate">{lead.name}</div>
+                        <div className="text-slate-500 text-[10px] sm:text-[11px] truncate">{lead.action}</div>
                       </div>
-                      <div className="text-right pl-2 pr-2">
+                      <div className="text-right pl-1.5 sm:pl-2 pr-1.5 sm:pr-2 shrink-0">
                         <motion.div 
-                          className={`text-[18px] font-bold ${
+                          className={`text-base sm:text-[18px] font-bold ${
                             (lead.state === 'scoring' || lead.state === 'segregating') 
                                ? (lead.category === 'hot' ? 'text-red-600' : lead.category === 'warm' ? 'text-amber-600' : 'text-blue-600') 
                                : 'text-slate-400'
@@ -368,12 +368,12 @@ export default function CRMLeadIntelligenceSection() {
                         </motion.div>
                       </div>
 
-                      {/* Animated arrow shooting across */}
+                      {/* Animated arrow shooting across - Only visible on desktop when columns are side-by-side */}
                       {lead.state === 'scoring' && (
                         <motion.div 
                           initial={{ opacity: 0, width: 0 }}
                           animate={{ opacity: 1, width: 80 }}
-                          className="absolute right-[-80px] top-1/2 -translate-y-1/2 flex items-center z-50 pointer-events-none"
+                          className="hidden lg:flex absolute right-[-80px] top-1/2 -translate-y-1/2 items-center z-50 pointer-events-none"
                         >
                           <div className={`h-[1px] w-full opacity-50 ${lead.category === 'hot' ? 'bg-gradient-to-r from-red-500' : lead.category === 'warm' ? 'bg-gradient-to-r from-amber-500' : 'bg-gradient-to-r from-blue-500'} to-transparent`} />
                           <ArrowRight className={`w-5 h-5 absolute right-0 -translate-y-1/2 top-1/2 ${lead.category === 'hot' ? 'text-red-500' : lead.category === 'warm' ? 'text-amber-500' : 'text-blue-500'}`} />
@@ -385,40 +385,40 @@ export default function CRMLeadIntelligenceSection() {
             </div>
             
             {/* Bottom gradient fade */}
-            <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-white to-transparent pointer-events-none z-20" />
+            <div className="absolute bottom-0 left-0 right-0 h-32 sm:h-40 bg-gradient-to-t from-white to-transparent pointer-events-none z-20" />
           </motion.div>
 
           {/* RIGHT: LEAD SEGREGATION */}
-          <motion.div layout className="flex flex-col relative h-[600px]">
+          <motion.div layout className="flex flex-col relative h-auto min-h-[440px] sm:min-h-[480px] lg:h-[600px]">
             
-            <div className="flex items-center justify-between mb-8 px-2">
-              <h3 className="text-slate-900 font-bold text-[15px]">Smart Lead Segregation</h3>
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0396A6]/10 border border-[#0396A6]/25">
+            <div className="flex items-center justify-between mb-4 sm:mb-8 px-1 sm:px-2">
+              <h3 className="text-slate-900 font-bold text-sm sm:text-[15px]">Smart Lead Segregation</h3>
+              <div className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-[#0396A6]/10 border border-[#0396A6]/25">
                 <span className="w-3 h-3 text-[#0396A6]"><Flame className="w-full h-full" /></span>
-                <span className="text-[9px] text-[#0396A6] font-bold uppercase tracking-wider">Auto prioritizing</span>
+                <span className="text-[8.5px] sm:text-[9px] text-[#0396A6] font-bold uppercase tracking-wider">Auto prioritizing</span>
               </div>
             </div>
 
-            <div className="space-y-4 flex-1 flex flex-col">
+            <div className="space-y-3 sm:space-y-4 flex-1 flex flex-col">
               
               {/* HOT LEADS */}
               <motion.div 
-                className="relative p-5 rounded-[20px] border flex flex-col group overflow-hidden bg-red-50/80 border-red-200 shadow-sm"
+                className="relative p-3.5 sm:p-5 rounded-2xl sm:rounded-[20px] border flex flex-col group overflow-hidden bg-red-50/80 border-red-200 shadow-sm"
                 animate={activeLeads.some(l => l.state === 'segregating' && l.category === 'hot') ? { scale: 1.02, borderColor: 'rgba(239,68,68,0.6)', boxShadow: '0 8px 30px rgba(239,68,68,0.15)' } : { scale: 1, borderColor: '#FECACA' }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex items-start justify-between mb-3 relative z-10">
-                  <div className="flex items-center gap-4">
-                    <div className="w-[42px] h-[42px] rounded-full bg-white border border-red-200 flex items-center justify-center text-red-600 shadow-sm">
-                      <Flame className="w-[22px] h-[22px]" strokeWidth={2} />
+                <div className="flex items-start justify-between mb-2 sm:mb-3 relative z-10">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="w-[36px] h-[36px] sm:w-[42px] sm:h-[42px] rounded-full bg-white border border-red-200 flex items-center justify-center text-red-600 shadow-sm">
+                      <Flame className="w-5 h-5 sm:w-[22px] sm:h-[22px]" strokeWidth={2} />
                     </div>
                     <div>
-                      <div className="text-slate-900 font-bold text-[15px]">Hot Leads</div>
-                      <div className="text-slate-500 text-[11.5px] font-medium">Ready to engage</div>
+                      <div className="text-slate-900 font-bold text-sm sm:text-[15px]">Hot Leads</div>
+                      <div className="text-slate-500 text-[10.5px] sm:text-[11.5px] font-medium">Ready to engage</div>
                     </div>
                   </div>
                   <motion.div 
-                    className="text-[32px] font-bold text-slate-900 leading-none"
+                    className="text-2xl sm:text-[32px] font-bold text-slate-900 leading-none"
                     key={hotCount}
                     initial={{ scale: 1.3, color: '#DC2626' }}
                     animate={{ scale: 1, color: '#0F172A' }}
@@ -426,34 +426,34 @@ export default function CRMLeadIntelligenceSection() {
                     {hotCount}
                   </motion.div>
                 </div>
-                <div className="flex items-center gap-3 pl-[58px]">
+                <div className="flex items-center gap-3 pl-[48px] sm:pl-[58px]">
                    <div className="flex -space-x-2">
-                     <img className="w-6 h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=1" alt="avatar" />
-                     <img className="w-6 h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=2" alt="avatar" />
-                     <img className="w-6 h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=3" alt="avatar" />
+                     <img className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=1" alt="avatar" />
+                     <img className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=2" alt="avatar" />
+                     <img className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=3" alt="avatar" />
                    </div>
-                   <div className="text-[#0396A6] text-[10px] font-bold">+8</div>
+                   <div className="text-[#0396A6] text-[9.5px] sm:text-[10px] font-bold">+8</div>
                 </div>
               </motion.div>
 
               {/* WARM LEADS */}
               <motion.div 
-                className="relative p-5 rounded-[20px] border border-amber-200 bg-amber-50/80 shadow-sm flex flex-col group overflow-hidden"
+                className="relative p-3.5 sm:p-5 rounded-2xl sm:rounded-[20px] border border-amber-200 bg-amber-50/80 shadow-sm flex flex-col group overflow-hidden"
                 animate={activeLeads.some(l => l.state === 'segregating' && l.category === 'warm') ? { scale: 1.02, borderColor: 'rgba(245,158,11,0.6)', boxShadow: '0 8px 30px rgba(245,158,11,0.15)' } : { scale: 1, borderColor: '#FDE68A' }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex items-start justify-between mb-3 relative z-10">
-                  <div className="flex items-center gap-4">
-                    <div className="w-[42px] h-[42px] rounded-full bg-white border border-amber-200 flex items-center justify-center text-amber-600 shadow-sm">
-                      <Sun className="w-[22px] h-[22px]" strokeWidth={2} />
+                <div className="flex items-start justify-between mb-2 sm:mb-3 relative z-10">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="w-[36px] h-[36px] sm:w-[42px] sm:h-[42px] rounded-full bg-white border border-amber-200 flex items-center justify-center text-amber-600 shadow-sm">
+                      <Sun className="w-5 h-5 sm:w-[22px] sm:h-[22px]" strokeWidth={2} />
                     </div>
                     <div>
-                      <div className="text-slate-900 font-bold text-[15px]">Warm Leads</div>
-                      <div className="text-slate-500 text-[11.5px] font-medium">Showing interest</div>
+                      <div className="text-slate-900 font-bold text-sm sm:text-[15px]">Warm Leads</div>
+                      <div className="text-slate-500 text-[10.5px] sm:text-[11.5px] font-medium">Showing interest</div>
                     </div>
                   </div>
                   <motion.div 
-                    className="text-[32px] font-bold text-slate-900 leading-none"
+                    className="text-2xl sm:text-[32px] font-bold text-slate-900 leading-none"
                     key={warmCount}
                     initial={{ scale: 1.3, color: '#D97706' }}
                     animate={{ scale: 1, color: '#0F172A' }}
@@ -461,34 +461,34 @@ export default function CRMLeadIntelligenceSection() {
                     {warmCount}
                   </motion.div>
                 </div>
-                <div className="flex items-center gap-3 pl-[58px]">
+                <div className="flex items-center gap-3 pl-[48px] sm:pl-[58px]">
                    <div className="flex -space-x-2">
-                     <img className="w-6 h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=4" alt="avatar" />
-                     <img className="w-6 h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=5" alt="avatar" />
-                     <img className="w-6 h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=6" alt="avatar" />
+                     <img className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=4" alt="avatar" />
+                     <img className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=5" alt="avatar" />
+                     <img className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=6" alt="avatar" />
                    </div>
-                   <div className="text-[#0396A6] text-[10px] font-bold">+24</div>
+                   <div className="text-[#0396A6] text-[9.5px] sm:text-[10px] font-bold">+24</div>
                 </div>
               </motion.div>
 
               {/* COLD LEADS */}
               <motion.div 
-                className="relative p-5 rounded-[20px] border border-blue-200 bg-blue-50/80 shadow-sm flex flex-col group overflow-hidden"
+                className="relative p-3.5 sm:p-5 rounded-2xl sm:rounded-[20px] border border-blue-200 bg-blue-50/80 shadow-sm flex flex-col group overflow-hidden"
                 animate={activeLeads.some(l => l.state === 'segregating' && l.category === 'cold') ? { scale: 1.02, borderColor: 'rgba(59,130,246,0.6)', boxShadow: '0 8px 30px rgba(59,130,246,0.15)' } : { scale: 1, borderColor: '#BFDBFE' }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex items-start justify-between mb-3 relative z-10">
-                  <div className="flex items-center gap-4">
-                    <div className="w-[42px] h-[42px] rounded-full bg-white border border-blue-200 flex items-center justify-center text-blue-600 shadow-sm">
-                      <Snowflake className="w-[22px] h-[22px]" strokeWidth={2} />
+                <div className="flex items-start justify-between mb-2 sm:mb-3 relative z-10">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="w-[36px] h-[36px] sm:w-[42px] sm:h-[42px] rounded-full bg-white border border-blue-200 flex items-center justify-center text-blue-600 shadow-sm">
+                      <Snowflake className="w-5 h-5 sm:w-[22px] sm:h-[22px]" strokeWidth={2} />
                     </div>
                     <div>
-                      <div className="text-slate-900 font-bold text-[15px]">Cold Leads</div>
-                      <div className="text-slate-500 text-[11.5px] font-medium">Low intent</div>
+                      <div className="text-slate-900 font-bold text-sm sm:text-[15px]">Cold Leads</div>
+                      <div className="text-slate-500 text-[10.5px] sm:text-[11.5px] font-medium">Low intent</div>
                     </div>
                   </div>
                   <motion.div 
-                    className="text-[32px] font-bold text-slate-900 leading-none"
+                    className="text-2xl sm:text-[32px] font-bold text-slate-900 leading-none"
                     key={coldCount}
                     initial={{ scale: 1.3, color: '#FF7A5E' }}
                     animate={{ scale: 1, color: '#0F172A' }}
@@ -496,13 +496,13 @@ export default function CRMLeadIntelligenceSection() {
                     {coldCount}
                   </motion.div>
                 </div>
-                <div className="flex items-center gap-3 pl-[58px]">
+                <div className="flex items-center gap-3 pl-[48px] sm:pl-[58px]">
                    <div className="flex -space-x-2">
-                     <img className="w-6 h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=7" alt="avatar" />
-                     <img className="w-6 h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=8" alt="avatar" />
-                     <img className="w-6 h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=9" alt="avatar" />
+                     <img className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=7" alt="avatar" />
+                     <img className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=8" alt="avatar" />
+                     <img className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 border-white" src="https://i.pravatar.cc/150?img=9" alt="avatar" />
                    </div>
-                   <div className="text-[#0396A6] text-[10px] font-bold">+42</div>
+                   <div className="text-[#0396A6] text-[9.5px] sm:text-[10px] font-bold">+42</div>
                 </div>
               </motion.div>
 

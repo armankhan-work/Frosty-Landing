@@ -972,6 +972,7 @@ function FrostyIsolatedChat({
               bottom: 12,
               right: 12,
               width: 260,
+              maxWidth: 'calc(100% - 24px)',
               height: 355, // VERTICALLY BIG & TALL
               borderRadius: 14,
               overflow: 'hidden',
@@ -1687,7 +1688,7 @@ export default function FrostyEngineHero() {
               className="font-serif font-bold text-[#0F172A] tracking-tight"
               style={{
                 fontFamily: "'Cormorant Garamond', Georgia, serif",
-                fontSize: 'clamp(38px, 4.8vw, 62px)',
+                fontSize: 'clamp(28px, 6.2vw, 62px)',
                 fontWeight: 700,
                 lineHeight: 1.08,
                 margin: '0 0 14px',
@@ -1708,7 +1709,8 @@ export default function FrostyEngineHero() {
                 Your Business,
               </motion.span>
               <motion.span
-                style={{ display: 'block', position: 'relative', whiteSpace: 'nowrap' }}
+                style={{ display: 'block', position: 'relative' }}
+                className="whitespace-normal sm:whitespace-nowrap"
                 variants={{
                   initial: { opacity: 0, y: 18, filter: 'blur(6px)' },
                   animate: {
@@ -1727,7 +1729,7 @@ export default function FrostyEngineHero() {
                     display: 'inline-block',
                   }}
                 >
-                  powered by <span style={{ color: CORAL_ORANGE }}>AI</span>.
+                  powered by <span style={{ color: CORAL_ORANGE }}>AI.</span>
                   <HandDrawnCurve />
                 </span>
               </motion.span>
@@ -1771,22 +1773,22 @@ export default function FrostyEngineHero() {
                     window.location.href = '/login?mode=register';
                   }
                 }}
-                className="w-full p-1.5 pl-3 sm:pl-4 bg-white/95 backdrop-blur-md rounded-full border border-slate-200/90 shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_36px_rgba(3,150,166,0.12)] hover:border-[#0396A6]/60 focus-within:border-[#0396A6] focus-within:ring-2 focus-within:ring-[#0396A6]/20 focus-within:shadow-[0_12px_36px_rgba(3,150,166,0.18)] transition-all duration-300 flex items-center gap-2"
+                className="w-full p-1 sm:p-1.5 pl-2.5 sm:pl-4 bg-white/95 backdrop-blur-md rounded-full border border-slate-200/90 shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_36px_rgba(3,150,166,0.12)] hover:border-[#0396A6]/60 focus-within:border-[#0396A6] focus-within:ring-2 focus-within:ring-[#0396A6]/20 focus-within:shadow-[0_12px_36px_rgba(3,150,166,0.18)] transition-all duration-300 flex items-center gap-1.5 sm:gap-2"
               >
                 <input
                   type="text"
                   value={inputUrl}
                   onChange={(e) => setInputUrl(e.target.value)}
                   placeholder="https://yourbrand.com"
-                  className="flex-1 min-w-0 bg-transparent border-none outline-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 text-slate-800 placeholder:text-slate-400 font-sans text-[13.5px] sm:text-[14.5px] px-2 py-2 rounded-l-full shadow-none"
+                  className="flex-1 min-w-0 bg-transparent border-none outline-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 text-slate-800 placeholder:text-slate-400 font-sans text-[12.5px] sm:text-[14.5px] px-1.5 sm:px-2 py-1.5 sm:py-2 rounded-l-full shadow-none"
                   style={{ outline: 'none', border: 'none', boxShadow: 'none' }}
                 />
                 <button
                   type="submit"
-                  className="shrink-0 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-[#0396A6] to-[#028494] hover:from-[#028494] hover:to-[#026c7a] text-white text-[13px] sm:text-[14px] font-bold font-sans flex items-center gap-1.5 shadow-[0_4px_14px_rgba(3,150,166,0.35)] transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer border-none"
+                  className="shrink-0 px-3.5 sm:px-6 py-2 sm:py-3 rounded-full bg-gradient-to-r from-[#0396A6] to-[#028494] hover:from-[#028494] hover:to-[#026c7a] text-white text-[12px] sm:text-[14px] font-bold font-sans flex items-center gap-1 sm:gap-1.5 shadow-[0_4px_14px_rgba(3,150,166,0.35)] transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer border-none"
                 >
                   <span>Live Demo</span>
-                  <ArrowRight className="w-4 h-4" strokeWidth={2.2} />
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" strokeWidth={2.2} />
                 </button>
               </form>
             </motion.div>

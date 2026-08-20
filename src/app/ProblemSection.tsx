@@ -123,22 +123,22 @@ export default function ProblemSection() {
                         </motion.p>
 
                         {/* 3 Metric Stat Cards (Compact, Centered: SVG -> Name -> Text) */}
-                        <div className="grid grid-cols-3 gap-2.5 sm:gap-3 mb-4">
+                        <div className="grid grid-cols-3 gap-1.5 sm:gap-3 mb-4">
                             {/* Stat Card 1: 7X */}
                             <motion.div
                                 initial={{ opacity: 0, y: 12 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.1 }}
-                                className="min-h-[145px] sm:min-h-[155px] p-3 sm:p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs flex flex-col items-center justify-center text-center gap-1.5 hover:border-[#0396A6]/30 transition-colors"
+                                className="min-h-[120px] sm:min-h-[155px] p-2 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white border border-slate-200/80 shadow-2xs flex flex-col items-center justify-center text-center gap-1 sm:gap-1.5 hover:border-[#0396A6]/30 transition-colors"
                             >
-                                <div className="w-7 h-7 shrink-0 flex items-center justify-center mb-0.5">
-                                    <Clock className="w-[23px] h-[23px] text-[#0396A6] stroke-[1.85]" />
+                                <div className="w-6 h-6 sm:w-7 sm:h-7 shrink-0 flex items-center justify-center mb-0.5">
+                                    <Clock className="w-[20px] h-[20px] sm:w-[23px] sm:h-[23px] text-[#0396A6] stroke-[1.85]" />
                                 </div>
-                                <div className="text-2xl sm:text-3xl font-bold text-[#0396A6] leading-none font-sans">
+                                <div className="text-xl sm:text-3xl font-bold text-[#0396A6] leading-none font-sans">
                                     7X
                                 </div>
-                                <div className="text-[10px] sm:text-[11px] text-slate-600 leading-tight font-sans text-center">
+                                <div className="text-[8.5px] sm:text-[11px] text-slate-600 leading-tight font-sans text-center">
                                     more likely to convert if you respond in 5 mins
                                 </div>
                             </motion.div>
@@ -149,34 +149,34 @@ export default function ProblemSection() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.15 }}
-                                className="min-h-[145px] sm:min-h-[155px] p-3 sm:p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs flex flex-col items-center justify-center text-center gap-1.5 hover:border-[#EA580C]/30 transition-colors"
+                                className="min-h-[120px] sm:min-h-[155px] p-2 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white border border-slate-200/80 shadow-2xs flex flex-col items-center justify-center text-center gap-1 sm:gap-1.5 hover:border-[#EA580C]/30 transition-colors"
                             >
-                                <div className="w-7 h-7 shrink-0 flex items-center justify-center mb-0.5">
-                                    <MaskIcon src="/analytics.png" color="#EA580C" size={23} />
+                                <div className="w-6 h-6 sm:w-7 sm:h-7 shrink-0 flex items-center justify-center mb-0.5">
+                                    <MaskIcon src="/analytics.png" color="#EA580C" size={20} className="sm:scale-110" />
                                 </div>
-                                <div className="text-2xl sm:text-3xl font-bold text-[#EA580C] leading-none font-sans">
+                                <div className="text-xl sm:text-3xl font-bold text-[#EA580C] leading-none font-sans">
                                     80%
                                 </div>
-                                <div className="text-[10px] sm:text-[11px] text-slate-600 leading-tight font-sans text-center">
+                                <div className="text-[8.5px] sm:text-[11px] text-slate-600 leading-tight font-sans text-center">
                                     of leads choose competitors due to slow response
                                 </div>
                             </motion.div>
 
-                            {/* Stat Card 3: Lost (Dollar Icon from public/dollar.png in Teal, balanced optical size) */}
+                            {/* Stat Card 3: Lost (Coin Icon from public/coin.png in Teal) */}
                             <motion.div
                                 initial={{ opacity: 0, y: 12 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.2 }}
-                                className="min-h-[145px] sm:min-h-[155px] p-3 sm:p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs flex flex-col items-center justify-center text-center gap-1.5 hover:border-[#0396A6]/30 transition-colors"
+                                className="min-h-[120px] sm:min-h-[155px] p-2 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white border border-slate-200/80 shadow-2xs flex flex-col items-center justify-center text-center gap-1 sm:gap-1.5 hover:border-[#0396A6]/30 transition-colors"
                             >
-                                <div className="w-7 h-7 shrink-0 flex items-center justify-center mb-0.5 overflow-visible">
-                                    <MaskIcon src="/dollar.png" color="#0396A6" size={48} />
+                                <div className="w-6 h-6 sm:w-7 sm:h-7 shrink-0 flex items-center justify-center mb-0.5 overflow-visible">
+                                    <MaskIcon src="/coin.png" color="#0396A6" size={22} className="sm:scale-115" />
                                 </div>
-                                <div className="text-2xl sm:text-3xl font-bold text-[#0396A6] leading-none font-sans">
+                                <div className="text-xl sm:text-3xl font-bold text-[#0396A6] leading-none font-sans">
                                     Lost
                                 </div>
-                                <div className="text-[10px] sm:text-[11px] text-slate-600 leading-tight font-sans text-center">
+                                <div className="text-[8.5px] sm:text-[11px] text-slate-600 leading-tight font-sans text-center">
                                     revenue and time on every missed opportunity
                                 </div>
                             </motion.div>
@@ -212,30 +212,30 @@ export default function ProblemSection() {
                             
                             {/* ── TOP FLOW: WITHOUT FROSTY AGENT ── */}
                             <div className="relative">
-                                <div className="flex items-center justify-between mb-2.5">
+                                <div className="flex items-center justify-between mb-2 sm:mb-2.5">
                                     <span className="text-[11px] font-bold tracking-wider text-slate-800 uppercase">
                                         WITHOUT FROSTY AGENT
                                     </span>
                                 </div>
 
                                 {/* Flow Row Container */}
-                                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0 relative">
+                                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-1 sm:gap-0 relative">
                                     
-                                    {/* 1. Left Channel Column (3 pills: Website, WhatsApp, Email) */}
-                                    <div className="w-full sm:w-[130px] lg:w-[140px] flex flex-col gap-2 shrink-0 z-10">
+                                    {/* 1. Channel Pills (Compact 3-column row on mobile, vertical stack on desktop) */}
+                                    <div className="w-full sm:w-[136px] lg:w-[146px] grid grid-cols-3 sm:flex sm:flex-col gap-1.5 sm:gap-2.5 shrink-0 z-10">
                                         {channels.map((ch) => (
                                             <div
                                                 key={`without-${ch.name}`}
-                                                className="p-1.5 px-2.5 rounded-xl border border-slate-200/80 bg-white shadow-2xs flex items-center gap-2"
+                                                className="p-1.5 sm:p-2 sm:px-3 rounded-xl border border-slate-200/80 bg-white shadow-2xs flex flex-col sm:flex-row items-center gap-1 sm:gap-2.5 hover:border-[#0396A6]/30 transition-colors text-center sm:text-left"
                                             >
                                                 <div className="shrink-0 flex items-center justify-center">
-                                                    <img src={ch.img} alt={ch.name} className="w-4 h-4 object-contain" />
+                                                    <img src={ch.img} alt={ch.name} className="w-3.5 h-3.5 sm:w-4 sm:h-4 object-contain" />
                                                 </div>
                                                 <div className="min-w-0">
-                                                    <div className="text-[10.5px] font-bold text-slate-900 leading-none truncate">
+                                                    <div className="text-[10px] sm:text-[11px] font-bold text-slate-900 leading-none truncate">
                                                         {ch.name}
                                                     </div>
-                                                    <div className="text-[9px] text-slate-500 leading-none mt-0.5 truncate">
+                                                    <div className="text-[8px] sm:text-[9.5px] text-slate-500 leading-none mt-0.5 truncate">
                                                         {ch.sub}
                                                     </div>
                                                 </div>
@@ -243,30 +243,79 @@ export default function ProblemSection() {
                                         ))}
                                     </div>
 
-                                    {/* 2. SVG Wires Connector */}
-                                    <div className="hidden sm:flex items-center justify-center w-[34px] lg:w-[40px] h-[96px] shrink-0 relative">
-                                        <svg className="w-full h-full" viewBox="0 0 40 96" fill="none">
-                                            {/* 3 incoming branch lines from channel pills */}
-                                            <path d="M 0 16 H 20" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3" />
-                                            <path d="M 0 48 H 20" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3" />
-                                            <path d="M 0 80 H 20" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3" />
-                                            {/* Vertical bus wire */}
-                                            <path d="M 20 16 V 80" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3" />
-                                            {/* Main outgoing line with arrow */}
-                                            <path d="M 20 48 H 34" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3" />
-                                            <polyline points="31,44 37,48 31,52" fill="none" stroke="#0396A6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                    {/* Mobile Vertical Flow Connector Wire */}
+                                    <div className="flex sm:hidden items-center justify-center w-full h-[20px] my-0.5 relative overflow-visible">
+                                        <svg className="w-[120px] h-[20px] overflow-visible" viewBox="0 0 120 20" fill="none">
+                                            <path d="M 60 0 L 60 20" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3" strokeOpacity="0.75" markerEnd="url(#teal-arrow-without)" />
+                                            <circle r="2.5" fill="#0396A6" filter="url(#wire-glow-without)">
+                                                <animateMotion dur="1.5s" repeatCount="indefinite" path="M 60 0 L 60 20" keyPoints="0;1" keyTimes="0;1" />
+                                            </circle>
+                                        </svg>
+                                    </div>
+
+                                    {/* 2. Desktop SVG Wires Connector with Flowing Atoms */}
+                                    <div className="hidden sm:flex items-center justify-center w-[36px] lg:w-[44px] h-[106px] lg:h-[114px] shrink-0 relative overflow-visible">
+                                        <svg className="w-full h-full overflow-visible" viewBox="0 0 44 114" fill="none">
+                                            <defs>
+                                                <marker id="teal-arrow-without" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                                                    <path d="M 0 1.5 L 7 5 L 0 8.5 z" fill="#0396A6" />
+                                                </marker>
+                                                <filter id="wire-glow-without" x="-50%" y="-50%" width="200%" height="200%">
+                                                    <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+                                                    <feMerge>
+                                                        <feMergeNode in="coloredBlur" />
+                                                        <feMergeNode in="SourceGraphic" />
+                                                    </feMerge>
+                                                </filter>
+                                            </defs>
+
+                                            {/* 3 incoming branch paths - extending all the way to 44 to touch Box 1 border */}
+                                            <path d="M 0 19 L 22 19 Q 26 19 26 23 L 26 57 L 44 57" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3.5 3.5" strokeOpacity="0.75" markerEnd="url(#teal-arrow-without)" />
+                                            <path d="M 0 57 L 44 57" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3.5 3.5" strokeOpacity="0.75" markerEnd="url(#teal-arrow-without)" />
+                                            <path d="M 0 95 L 22 95 Q 26 95 26 91 L 26 57 L 44 57" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3.5 3.5" strokeOpacity="0.75" markerEnd="url(#teal-arrow-without)" />
+
+                                            {/* Flowing Atoms (Matching SS2 Meet Frosty Agent) */}
+                                            <circle r="2.8" fill="#0396A6" filter="url(#wire-glow-without)">
+                                                <animateMotion
+                                                    dur="2.4s"
+                                                    repeatCount="indefinite"
+                                                    path="M 0 19 L 22 19 Q 26 19 26 23 L 26 57 L 44 57"
+                                                    keyPoints="0;1"
+                                                    keyTimes="0;1"
+                                                />
+                                            </circle>
+                                            <circle r="2.8" fill="#0396A6" filter="url(#wire-glow-without)">
+                                                <animateMotion
+                                                    dur="2.4s"
+                                                    begin="0.6s"
+                                                    repeatCount="indefinite"
+                                                    path="M 0 57 L 44 57"
+                                                    keyPoints="0;1"
+                                                    keyTimes="0;1"
+                                                />
+                                            </circle>
+                                            <circle r="2.8" fill="#0396A6" filter="url(#wire-glow-without)">
+                                                <animateMotion
+                                                    dur="2.4s"
+                                                    begin="1.2s"
+                                                    repeatCount="indefinite"
+                                                    path="M 0 95 L 22 95 Q 26 95 26 91 L 26 57 L 44 57"
+                                                    keyPoints="0;1"
+                                                    keyTimes="0;1"
+                                                />
+                                            </circle>
                                         </svg>
                                     </div>
 
                                     {/* 3. Steps Pipeline */}
-                                    <div className="flex-1 flex flex-col justify-center relative sm:pl-1">
+                                    <div className="flex-1 flex flex-col justify-center relative sm:pl-0">
                                         
                                         {/* Overpass Arch Callout */}
                                         <div className="hidden sm:flex items-center justify-center mb-1.5 relative">
-                                            <svg className="absolute -top-1 w-full max-w-[340px] h-[20px] pointer-events-none" viewBox="0 0 340 20" fill="none">
-                                                <path d="M 15 18 Q 170 -4 325 18" stroke="#0396A6" strokeWidth="1.25" strokeDasharray="3 3" />
+                                            <svg className="absolute -top-1 w-full max-w-[350px] h-[20px] pointer-events-none" viewBox="0 0 350 20" fill="none">
+                                                <path d="M 15 18 Q 175 -4 335 18" stroke="#0396A6" strokeWidth="1.25" strokeDasharray="3 3" />
                                             </svg>
-                                            <div className="relative z-10 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-orange-50 border border-orange-200/80 text-orange-800 text-[9.5px] font-bold shadow-2xs">
+                                            <div className="relative z-10 inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-orange-50 border border-orange-200/80 text-orange-800 text-[9.5px] font-bold shadow-2xs">
                                                 <span className="w-2.5 h-2.5 rounded-full bg-orange-600 text-white flex items-center justify-center text-[8px] font-extrabold leading-none">
                                                     !
                                                 </span>
@@ -275,47 +324,66 @@ export default function ProblemSection() {
                                         </div>
 
                                         {/* 3 Balanced Squared Blocks */}
-                                        <div className="flex items-center justify-between sm:justify-start gap-2 sm:gap-3 lg:gap-3.5">
+                                        <div className="flex items-center justify-between sm:justify-start gap-1 sm:gap-0">
                                             
                                             {/* Block 1: Waiting for response */}
-                                            <div className="flex-1 sm:flex-initial w-full sm:w-[104px] lg:w-[112px] h-[98px] sm:h-[106px] lg:h-[110px] p-3 rounded-[16px] border border-slate-200/90 bg-white text-center flex flex-col items-center justify-center shadow-2xs shrink-0">
-                                                <Clock className="w-5 h-5 text-[#0396A6] stroke-[1.75] mb-1.5 shrink-0" />
-                                                <span className="text-[10.5px] sm:text-[11px] font-bold text-slate-800 leading-tight font-sans">
+                                            <div className="flex-1 sm:flex-initial w-full sm:w-[108px] lg:w-[118px] h-[96px] sm:h-[110px] lg:h-[115px] p-2 sm:p-3 rounded-xl sm:rounded-[16px] border border-slate-200/90 bg-white text-center flex flex-col items-center justify-center shadow-2xs shrink-0">
+                                                <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-[#0396A6] stroke-[1.75] mb-1 sm:mb-1.5 shrink-0" />
+                                                <span className="text-[9.5px] sm:text-[11px] font-bold text-slate-800 leading-tight font-sans">
                                                     Waiting for <br /> response
                                                 </span>
                                             </div>
 
-                                            {/* Arrow 1 */}
-                                            <ArrowRight className="w-4 h-4 text-[#0396A6] stroke-[1.75] shrink-0" />
+                                            {/* Wire Connector: Touching Box 1 and Box 2 */}
+                                            <div className="hidden sm:flex items-center justify-center w-[28px] lg:w-[34px] h-[20px] shrink-0 relative overflow-visible">
+                                                <svg className="w-full h-full overflow-visible" viewBox="0 0 34 20" fill="none">
+                                                    <path d="M 0 10 L 34 10" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3" strokeOpacity="0.75" markerEnd="url(#teal-arrow-without)" />
+                                                    <circle r="2.5" fill="#0396A6" filter="url(#wire-glow-without)">
+                                                        <animateMotion dur="1.8s" repeatCount="indefinite" path="M 0 10 L 34 10" keyPoints="0;1" keyTimes="0;1" />
+                                                    </circle>
+                                                </svg>
+                                            </div>
 
                                             {/* Block 2: Delayed follow up */}
-                                            <div className="flex-1 sm:flex-initial w-full sm:w-[104px] lg:w-[112px] h-[98px] sm:h-[106px] lg:h-[110px] p-3 rounded-[16px] border border-slate-200/90 bg-white text-center flex flex-col items-center justify-center shadow-2xs shrink-0">
-                                                <User className="w-5 h-5 text-[#0396A6] stroke-[1.75] mb-1.5 shrink-0" />
-                                                <span className="text-[10.5px] sm:text-[11px] font-bold text-slate-800 leading-tight font-sans">
+                                            <div className="flex-1 sm:flex-initial w-full sm:w-[108px] lg:w-[118px] h-[96px] sm:h-[110px] lg:h-[115px] p-2 sm:p-3 rounded-xl sm:rounded-[16px] border border-slate-200/90 bg-white text-center flex flex-col items-center justify-center shadow-2xs shrink-0">
+                                                <User className="w-4 h-4 sm:w-5 sm:h-5 text-[#0396A6] stroke-[1.75] mb-1 sm:mb-1.5 shrink-0" />
+                                                <span className="text-[9.5px] sm:text-[11px] font-bold text-slate-800 leading-tight font-sans">
                                                     Delayed <br /> follow up
                                                 </span>
                                             </div>
 
-                                            {/* Arrow 2 */}
-                                            <ArrowRight className="w-4 h-4 text-[#0396A6] stroke-[1.75] shrink-0" />
+                                            {/* Disconnected Gap: NO line leading into Box 3 */}
+                                            <div className="hidden sm:flex w-[28px] lg:w-[34px] h-[20px] shrink-0" />
 
-                                            {/* Block 3: Lead lost */}
-                                            <div className="flex-1 sm:flex-initial w-full sm:w-[104px] lg:w-[112px] h-[98px] sm:h-[106px] lg:h-[110px] p-3 rounded-[16px] border border-[#FED7AA] bg-[#FFF9F5] text-center flex flex-col items-center justify-center shadow-2xs shrink-0">
-                                                <X className="w-5 h-5 text-[#EA580C] stroke-[2.5] mb-1.5 shrink-0" />
-                                                <span className="text-[10.5px] sm:text-[11px] font-bold text-slate-900 leading-tight font-sans">
+                                            {/* Block 3: Lead lost - Shaking animation signifying lost lead */}
+                                            <motion.div
+                                                animate={{
+                                                    x: [0, -3, 3, -3, 3, -1.5, 1.5, 0],
+                                                    rotate: [0, -1, 1, -1, 1, 0],
+                                                }}
+                                                transition={{
+                                                    duration: 0.6,
+                                                    repeat: Infinity,
+                                                    repeatDelay: 2.2,
+                                                    ease: "easeInOut"
+                                                }}
+                                                className="flex-1 sm:flex-initial w-full sm:w-[108px] lg:w-[118px] h-[96px] sm:h-[110px] lg:h-[115px] p-2 sm:p-3 rounded-xl sm:rounded-[16px] border border-[#FED7AA] bg-[#FFF9F5] text-center flex flex-col items-center justify-center shadow-2xs shrink-0"
+                                            >
+                                                <X className="w-4 h-4 sm:w-5 sm:h-5 text-[#EA580C] stroke-[2.5] mb-1 sm:mb-1.5 shrink-0" />
+                                                <span className="text-[9.5px] sm:text-[11px] font-bold text-slate-900 leading-tight font-sans">
                                                     Lead lost
                                                 </span>
-                                                <span className="text-[8.5px] sm:text-[9px] font-semibold text-[#EA580C] leading-none mt-0.5 font-sans">
+                                                <span className="text-[8px] sm:text-[9px] font-semibold text-[#EA580C] leading-none mt-0.5 font-sans">
                                                     Opportunity <br /> gone forever
                                                 </span>
-                                            </div>
+                                            </motion.div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             {/* ── CENTRAL DIVIDER WITH MATCHING TEAL LINE & SOLID TEAL VS BADGE ── */}
-                            <div className="relative my-4.5 sm:my-5.5 flex items-center justify-center">
+                            <div className="relative my-3 sm:my-5 flex items-center justify-center">
                                 <div className="w-full h-[1.5px] bg-[#0396A6]/35" />
                                 <div className="absolute w-8 h-8 rounded-full bg-[#0396A6] text-white flex items-center justify-center font-bold text-[10.5px] tracking-wider shadow-sm ring-4 ring-white">
                                     VS
@@ -324,30 +392,30 @@ export default function ProblemSection() {
 
                             {/* ── BOTTOM FLOW: WITH FROSTY AGENT ── */}
                             <div className="relative">
-                                <div className="flex items-center justify-between mb-2.5">
+                                <div className="flex items-center justify-between mb-2 sm:mb-2.5">
                                     <span className="text-[11px] font-bold tracking-wider text-[#0396A6] uppercase">
                                         WITH FROSTY AGENT
                                     </span>
                                 </div>
 
                                 {/* Flow Row Container */}
-                                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0 relative">
+                                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-1 sm:gap-0 relative">
                                     
                                     {/* 1. Left Channel Column (3 pills: Website, WhatsApp, Email) */}
-                                    <div className="w-full sm:w-[130px] lg:w-[140px] flex flex-col gap-2 shrink-0 z-10">
+                                    <div className="w-full sm:w-[136px] lg:w-[146px] grid grid-cols-3 sm:flex sm:flex-col gap-1.5 sm:gap-2.5 shrink-0 z-10">
                                         {channels.map((ch) => (
                                             <div
                                                 key={`with-${ch.name}`}
-                                                className="p-1.5 px-2.5 rounded-xl border border-teal-200/80 bg-white shadow-2xs flex items-center gap-2"
+                                                className="p-1.5 sm:p-2 sm:px-3 rounded-xl border border-teal-200/80 bg-white shadow-2xs flex flex-col sm:flex-row items-center gap-1 sm:gap-2.5 hover:border-[#0396A6]/40 transition-colors text-center sm:text-left"
                                             >
                                                 <div className="shrink-0 flex items-center justify-center">
-                                                    <img src={ch.img} alt={ch.name} className="w-4 h-4 object-contain" />
+                                                    <img src={ch.img} alt={ch.name} className="w-3.5 h-3.5 sm:w-4 sm:h-4 object-contain" />
                                                 </div>
                                                 <div className="min-w-0">
-                                                    <div className="text-[10.5px] font-bold text-slate-900 leading-none truncate">
+                                                    <div className="text-[10px] sm:text-[11px] font-bold text-slate-900 leading-none truncate">
                                                         {ch.name}
                                                     </div>
-                                                    <div className="text-[9px] text-[#0396A6] font-semibold leading-none mt-0.5 truncate">
+                                                    <div className="text-[8px] sm:text-[9.5px] text-[#0396A6] font-semibold leading-none mt-0.5 truncate">
                                                         {ch.sub}
                                                     </div>
                                                 </div>
@@ -355,62 +423,140 @@ export default function ProblemSection() {
                                         ))}
                                     </div>
 
-                                    {/* 2. SVG Wires Connector (Solid Cyan with Animated Pulses) */}
-                                    <div className="hidden sm:flex items-center justify-center w-[34px] lg:w-[40px] h-[96px] shrink-0 relative">
-                                        <svg className="w-full h-full" viewBox="0 0 40 96" fill="none">
-                                            {/* 3 incoming branch lines from channel pills */}
-                                            <path d="M 0 16 H 20" stroke="#0396A6" strokeWidth="1.75" />
-                                            <path d="M 0 48 H 20" stroke="#0396A6" strokeWidth="1.75" />
-                                            <path d="M 0 80 H 20" stroke="#0396A6" strokeWidth="1.75" />
-                                            {/* Vertical bus wire */}
-                                            <path d="M 20 16 V 80" stroke="#0396A6" strokeWidth="1.75" />
-                                            {/* Main outgoing line with arrow */}
-                                            <path d="M 20 48 H 34" stroke="#0396A6" strokeWidth="1.75" />
-                                            <polyline points="31,44 37,48 31,52" fill="none" stroke="#0396A6" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
-                                            {/* Traveling particle */}
-                                            <circle cx={20} cy={16 + (pulse * 0.64) % 64} r="2.5" fill="#0396A6" />
+                                    {/* Mobile Vertical Flow Connector Wire */}
+                                    <div className="flex sm:hidden items-center justify-center w-full h-[20px] my-0.5 relative overflow-visible">
+                                        <svg className="w-[120px] h-[20px] overflow-visible" viewBox="0 0 120 20" fill="none">
+                                            <path d="M 60 0 L 60 20" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3" strokeOpacity="0.75" markerEnd="url(#teal-arrow-with)" />
+                                            <circle r="2.5" fill="#0396A6" filter="url(#wire-glow-with)">
+                                                <animateMotion dur="1.5s" repeatCount="indefinite" path="M 60 0 L 60 20" keyPoints="0;1" keyTimes="0;1" />
+                                            </circle>
+                                        </svg>
+                                    </div>
+
+                                    {/* 2. Desktop SVG Wires Connector with Flowing Atoms - Touching Frosty Agent card */}
+                                    <div className="hidden sm:flex items-center justify-center w-[36px] lg:w-[44px] h-[106px] lg:h-[114px] shrink-0 relative overflow-visible">
+                                        <svg className="w-full h-full overflow-visible" viewBox="0 0 44 114" fill="none">
+                                            <defs>
+                                                <marker id="teal-arrow-with" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                                                    <path d="M 0 1.5 L 7 5 L 0 8.5 z" fill="#0396A6" />
+                                                </marker>
+                                                <filter id="wire-glow-with" x="-50%" y="-50%" width="200%" height="200%">
+                                                    <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+                                                    <feMerge>
+                                                        <feMergeNode in="coloredBlur" />
+                                                        <feMergeNode in="SourceGraphic" />
+                                                    </feMerge>
+                                                </filter>
+                                            </defs>
+
+                                            {/* 3 incoming branch lines from channel pills - extending all the way to 44 to touch Frosty Agent border */}
+                                            <path d="M 0 19 L 22 19 Q 26 19 26 23 L 26 57 L 44 57" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3.5 3.5" strokeOpacity="0.75" markerEnd="url(#teal-arrow-with)" />
+                                            <path d="M 0 57 L 44 57" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3.5 3.5" strokeOpacity="0.75" markerEnd="url(#teal-arrow-with)" />
+                                            <path d="M 0 95 L 22 95 Q 26 95 26 91 L 26 57 L 44 57" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3.5 3.5" strokeOpacity="0.75" markerEnd="url(#teal-arrow-with)" />
+
+                                            {/* Flowing Atoms (Matching SS2 Meet Frosty Agent) */}
+                                            <circle r="2.8" fill="#0396A6" filter="url(#wire-glow-with)">
+                                                <animateMotion
+                                                    dur="2.4s"
+                                                    repeatCount="indefinite"
+                                                    path="M 0 19 L 22 19 Q 26 19 26 23 L 26 57 L 44 57"
+                                                    keyPoints="0;1"
+                                                    keyTimes="0;1"
+                                                />
+                                            </circle>
+                                            <circle r="2.8" fill="#0396A6" filter="url(#wire-glow-with)">
+                                                <animateMotion
+                                                    dur="2.4s"
+                                                    begin="0.6s"
+                                                    repeatCount="indefinite"
+                                                    path="M 0 57 L 44 57"
+                                                    keyPoints="0;1"
+                                                    keyTimes="0;1"
+                                                />
+                                            </circle>
+                                            <circle r="2.8" fill="#0396A6" filter="url(#wire-glow-with)">
+                                                <animateMotion
+                                                    dur="2.4s"
+                                                    begin="1.2s"
+                                                    repeatCount="indefinite"
+                                                    path="M 0 95 L 22 95 Q 26 95 26 91 L 26 57 L 44 57"
+                                                    keyPoints="0;1"
+                                                    keyTimes="0;1"
+                                                />
+                                            </circle>
                                         </svg>
                                     </div>
 
                                     {/* 3. Steps Pipeline (Frosty Agent Card & Qualified Lead Card) */}
-                                    <div className="flex-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 lg:gap-3.5 pl-0 sm:pl-1">
+                                    <div className="flex-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-0 pl-0">
                                         
                                         {/* Block 4: Frosty Agent Centerpiece Card with Sparkle Logo */}
-                                        <div className="flex-1 sm:max-w-[225px] lg:max-w-[245px] p-3.5 sm:p-4 rounded-[18px] border border-teal-200/90 bg-white shadow-2xs text-center flex flex-col items-center justify-center shrink-0">
-                                            <TwoSparklesIcon size={32} className="mb-2" />
+                                        <div className="flex-1 sm:max-w-[240px] lg:max-w-[260px] p-3 sm:p-4 rounded-2xl sm:rounded-[18px] border border-teal-200/90 bg-white shadow-2xs text-center flex flex-col items-center justify-center shrink-0">
+                                            <TwoSparklesIcon size={30} className="mb-1 sm:mb-1.5" />
                                             <div
                                                 className="text-xs sm:text-[13px] font-extrabold text-[#0396A6] tracking-wider uppercase leading-tight font-sans"
                                                 style={{ fontFamily: "'Outfit', -apple-system, sans-serif" }}
                                             >
                                                 FROSTY AGENT
                                             </div>
-                                            <p className="text-[10.5px] font-semibold text-slate-700 leading-tight mt-0.5 font-sans">
+                                            <p className="text-[10px] sm:text-[10.5px] font-semibold text-slate-700 leading-tight mt-0.5 font-sans">
                                                 Responds instantly in seconds
                                             </p>
-                                            <span className="mt-1.5 inline-block text-[9px] font-bold px-2.5 py-0.5 rounded-full bg-[#0396A6]/10 text-[#0396A6] border border-[#0396A6]/20 font-sans">
+                                            <span className="mt-1 sm:mt-1.5 inline-block text-[8.5px] sm:text-[9px] font-bold px-2 sm:px-2.5 py-0.5 rounded-full bg-[#0396A6]/10 text-[#0396A6] border border-[#0396A6]/20 font-sans">
                                                 24/7 • Instant • Accurate
                                             </span>
                                         </div>
 
-                                        {/* Arrow between Frosty and Lead */}
-                                        <div className="hidden sm:flex items-center justify-center shrink-0">
-                                            <ArrowRight className="w-5 h-5 text-[#0396A6] stroke-[2]" />
+                                        {/* Mobile Vertical Wire Connector (Between Frosty Agent & Qualified Lead) */}
+                                        <div className="flex sm:hidden items-center justify-center w-full h-[22px] my-0.5 relative overflow-visible">
+                                            <svg className="w-[120px] h-[22px] overflow-visible" viewBox="0 0 120 22" fill="none">
+                                                <path d="M 60 0 L 60 22" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3 3" strokeOpacity="0.75" markerEnd="url(#teal-arrow-with)" />
+                                                <circle r="2.5" fill="#0396A6" filter="url(#wire-glow-with)">
+                                                    <animateMotion dur="1.5s" repeatCount="indefinite" path="M 60 0 L 60 22" keyPoints="0;1" keyTimes="0;1" />
+                                                </circle>
+                                            </svg>
+                                        </div>
+
+                                        {/* Desktop Wire Connector with Animated Flowing Atoms - Touching Frosty Agent and Qualified Lead */}
+                                        <div className="hidden sm:flex items-center justify-center w-[36px] lg:w-[44px] h-[24px] shrink-0 relative overflow-visible">
+                                            <svg className="w-full h-full overflow-visible" viewBox="0 0 44 24" fill="none">
+                                                <path d="M 0 12 L 44 12" stroke="#0396A6" strokeWidth="1.5" strokeDasharray="3.5 3.5" strokeOpacity="0.75" markerEnd="url(#teal-arrow-with)" />
+                                                <circle r="3" fill="#0396A6" filter="url(#wire-glow-with)">
+                                                    <animateMotion
+                                                        dur="1.8s"
+                                                        repeatCount="indefinite"
+                                                        path="M 0 12 L 44 12"
+                                                        keyPoints="0;1"
+                                                        keyTimes="0;1"
+                                                    />
+                                                </circle>
+                                                <circle r="3" fill="#0396A6" filter="url(#wire-glow-with)">
+                                                    <animateMotion
+                                                        dur="1.8s"
+                                                        begin="0.9s"
+                                                        repeatCount="indefinite"
+                                                        path="M 0 12 L 44 12"
+                                                        keyPoints="0;1"
+                                                        keyTimes="0;1"
+                                                    />
+                                                </circle>
+                                            </svg>
                                         </div>
 
                                         {/* Block 5: Qualified Lead Card */}
-                                        <div className="flex-1 sm:max-w-[145px] lg:max-w-[160px] p-3.5 sm:p-4 rounded-[18px] border border-teal-200/90 bg-white shadow-2xs text-center flex flex-col items-center justify-center shrink-0">
-                                            <UserCheck className="w-5 h-5 text-[#0396A6] stroke-[1.75] mb-1.5" />
+                                        <div className="flex-1 sm:max-w-[150px] lg:max-w-[165px] p-3 sm:p-4 rounded-2xl sm:rounded-[18px] border border-teal-200/90 bg-white shadow-2xs text-center flex flex-col items-center justify-center shrink-0">
+                                            <UserCheck className="w-4 h-4 sm:w-5 sm:h-5 text-[#0396A6] stroke-[1.75] mb-1 sm:mb-1.5" />
                                             <div
                                                 className="text-xs sm:text-[12.5px] font-bold text-slate-900 leading-tight font-sans"
                                                 style={{ fontFamily: "'Outfit', -apple-system, sans-serif" }}
                                             >
                                                 Qualified Lead
                                             </div>
-                                            <p className="text-[9.5px] text-slate-600 leading-tight mt-0.5 font-sans">
+                                            <p className="text-[9px] sm:text-[9.5px] text-slate-600 leading-tight mt-0.5 font-sans">
                                                 Happy customer <br />
                                                 Higher conversions
                                             </p>
-                                            <span className="text-[10px] font-bold text-[#0396A6] mt-1 block font-sans">
+                                            <span className="text-[9.5px] sm:text-[10px] font-bold text-[#0396A6] mt-1 block font-sans">
                                                 More revenue
                                             </span>
                                         </div>

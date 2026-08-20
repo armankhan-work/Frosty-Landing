@@ -24,7 +24,8 @@ import {
     Building2,
     HelpCircle,
     CheckCircle2,
-    PlusCircle
+    PlusCircle,
+    Globe
 } from 'lucide-react';
 
 type Region = 'IN' | 'INTL';
@@ -147,12 +148,12 @@ function GuaranteeInfoTooltip() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 4, scale: 0.96 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute top-full mt-2 left-0 sm:left-0 -left-12 max-sm:-left-28 w-[300px] sm:w-[350px] max-w-[calc(100vw-2.5rem)] p-4 bg-white rounded-2xl border border-slate-200/90 shadow-[0_16px_36px_rgba(0,0,0,0.16)] z-50 text-left pointer-events-auto normal-case font-normal tracking-normal"
+                        className="absolute top-full mt-2 right-0 sm:right-auto sm:left-0 w-[290px] sm:w-[350px] max-w-[calc(100vw-2.5rem)] p-3.5 sm:p-4 bg-white rounded-2xl border border-slate-200/90 shadow-[0_16px_36px_rgba(0,0,0,0.16)] z-50 text-left pointer-events-auto normal-case font-normal tracking-normal"
                         onClick={(e) => e.stopPropagation()}
                     >
                         <div className="flex items-center gap-1.5 text-xs font-bold text-[#0396A6] mb-2 pb-1.5 border-b border-slate-100 normal-case tracking-normal">
                             <ShieldCheck className="w-4 h-4 shrink-0 text-[#0396A6]" />
-                            <span>Full Guarantee Terms (§6)</span>
+                            <span>Full Guarantee Terms & Policy</span>
                         </div>
                         <ul className="space-y-2 text-[11px] text-slate-600 font-normal leading-relaxed normal-case tracking-normal">
                             <li className="flex items-start gap-2">
@@ -185,6 +186,27 @@ function GuaranteeInfoTooltip() {
             </AnimatePresence>
         </div>
     );
+}
+
+/* ─── Anchor / Strikethrough Price Calculation (X - 30% = P => X = P / 0.7) ─── */
+function getOriginalStrikethroughPrice(priceStr: string): string {
+    if (!priceStr) return '';
+    const isRupee = priceStr.includes('₹');
+    const isDollar = priceStr.includes('$');
+    const cleanStr = priceStr.replace(/[^0-9.]/g, '');
+    const num = parseFloat(cleanStr);
+    if (isNaN(num) || num <= 0) return '';
+
+    // Formula: (x - 30% = price) => 0.7 * x = price => x = price / 0.7
+    const orig = Math.round(num / 0.7);
+
+    if (isRupee) {
+        return `₹${orig.toLocaleString('en-IN')}`;
+    }
+    if (isDollar) {
+        return `$${orig.toLocaleString('en-US')}`;
+    }
+    return `${orig}`;
 }
 
 export default function PricingSection() {
@@ -224,7 +246,7 @@ export default function PricingSection() {
     const indiaCorePlans: PlanDetails[] = [
         {
             tag: 'STARTER',
-            name: 'Core Starter',
+            name: 'Starter',
             conversations: '300 conversations',
             seats: '2 team seats',
             overage: '₹26 / extra conversation',
@@ -259,34 +281,34 @@ export default function PricingSection() {
         },
         {
             tag: 'GROWTH',
-            name: 'Core Growth',
+            name: 'Growth',
             conversations: '600 conversations',
             seats: '3 team seats',
-            overage: '₹22 / extra conversation',
+            overage: '₹20 / extra conversation',
             cta: 'Start 7-Day Free Trial',
             ctaLink: '/login?mode=register',
             highlighted: true,
             pricing: {
                 annual: {
-                    price: '₹8,479',
+                    price: '₹7,919',
                     period: '/mo',
-                    billingNote: 'Billed annually (₹1,01,748)',
-                    savings: 'Save ₹25,440'
+                    billingNote: 'Billed annually (₹95,028)',
+                    savings: 'Save ₹23,760'
                 },
                 biannual: {
-                    price: '₹9,499',
+                    price: '₹8,899',
                     period: '/mo',
-                    billingNote: 'Billed 6 months (₹56,994)',
-                    savings: 'Save ₹6,600'
+                    billingNote: 'Billed 6 months (₹53,394)',
+                    savings: 'Save ₹6,000'
                 },
                 quarterly: {
-                    price: '₹10,099',
+                    price: '₹9,399',
                     period: '/mo',
-                    billingNote: 'Billed quarterly (₹30,297)',
+                    billingNote: 'Billed quarterly (₹28,197)',
                     savings: 'Save ₹1,500'
                 },
                 monthly: {
-                    price: '₹10,599',
+                    price: '₹9,899',
                     period: '/mo',
                     billingNote: 'Billed monthly'
                 }
@@ -294,34 +316,34 @@ export default function PricingSection() {
         },
         {
             tag: 'SCALE',
-            name: 'Core Scale',
+            name: 'Scale',
             conversations: '1,600 conversations',
             seats: '4 team seats',
-            overage: '₹18 / extra conversation',
+            overage: '₹16 / extra conversation',
             cta: 'Start 7-Day Free Trial',
             ctaLink: '/login?mode=register',
             highlighted: false,
             pricing: {
                 annual: {
-                    price: '₹15,999',
+                    price: '₹17,599',
                     period: '/mo',
-                    billingNote: 'Billed annually (₹1,91,988)',
-                    savings: 'Save ₹48,000'
+                    billingNote: 'Billed annually (₹2,11,188)',
+                    savings: 'Save ₹52,800'
                 },
                 biannual: {
-                    price: '₹17,999',
+                    price: '₹19,799',
                     period: '/mo',
-                    billingNote: 'Billed 6 months (₹1,07,994)',
-                    savings: 'Save ₹12,000'
+                    billingNote: 'Billed 6 months (₹1,18,794)',
+                    savings: 'Save ₹13,200'
                 },
                 quarterly: {
-                    price: '₹19,199',
+                    price: '₹20,899',
                     period: '/mo',
-                    billingNote: 'Billed quarterly (₹57,597)',
-                    savings: 'Save ₹2,400'
+                    billingNote: 'Billed quarterly (₹62,697)',
+                    savings: 'Save ₹3,300'
                 },
                 monthly: {
-                    price: '₹19,999',
+                    price: '₹21,999',
                     period: '/mo',
                     billingNote: 'Billed monthly'
                 }
@@ -329,7 +351,7 @@ export default function PricingSection() {
         },
         {
             tag: 'MAX',
-            name: 'Core Max',
+            name: 'Max',
             conversations: '4,000 conversations',
             seats: '7 team seats',
             overage: '₹15 / extra conversation',
@@ -338,25 +360,25 @@ export default function PricingSection() {
             highlighted: false,
             pricing: {
                 annual: {
-                    price: '₹31,999',
+                    price: '₹40,479',
                     period: '/mo',
-                    billingNote: 'Billed annually (₹3,83,988)',
-                    savings: 'Save ₹96,000'
+                    billingNote: 'Billed annually (₹4,85,748)',
+                    savings: 'Save ₹1,21,440'
                 },
                 biannual: {
-                    price: '₹35,999',
+                    price: '₹45,499',
                     period: '/mo',
-                    billingNote: 'Billed 6 months (₹2,15,994)',
-                    savings: 'Save ₹24,000'
+                    billingNote: 'Billed 6 months (₹2,72,994)',
+                    savings: 'Save ₹30,600'
                 },
                 quarterly: {
-                    price: '₹38,399',
+                    price: '₹48,099',
                     period: '/mo',
-                    billingNote: 'Billed quarterly (₹1,15,197)',
-                    savings: 'Save ₹4,800'
+                    billingNote: 'Billed quarterly (₹1,44,297)',
+                    savings: 'Save ₹7,500'
                 },
                 monthly: {
-                    price: '₹39,999',
+                    price: '₹50,599',
                     period: '/mo',
                     billingNote: 'Billed monthly'
                 }
@@ -367,10 +389,10 @@ export default function PricingSection() {
     const indiaCommercePlans: PlanDetails[] = [
         {
             tag: 'STARTER',
-            name: 'Commerce Starter',
+            name: 'Starter',
             conversations: '500 conversations',
             seats: '2 team seats',
-            overage: '₹26 / extra conversation',
+            overage: '₹24 / extra conversation',
             cta: 'Start 7-Day Free Trial',
             ctaLink: '/login?mode=register',
             highlighted: false,
@@ -396,7 +418,7 @@ export default function PricingSection() {
         },
         {
             tag: 'GROWTH',
-            name: 'Commerce Growth',
+            name: 'Growth',
             conversations: '1,000 conversations',
             seats: '3 team seats',
             overage: '₹22 / extra conversation',
@@ -425,7 +447,7 @@ export default function PricingSection() {
         },
         {
             tag: 'SCALE',
-            name: 'Commerce Scale',
+            name: 'Scale',
             conversations: '2,000 conversations',
             seats: '4 team seats',
             overage: '₹18 / extra conversation',
@@ -454,30 +476,30 @@ export default function PricingSection() {
         },
         {
             tag: 'MAX',
-            name: 'Commerce Max',
+            name: 'Max',
             conversations: '5,000 conversations',
             seats: '7 team seats',
-            overage: '₹15 / extra conversation',
+            overage: '₹16 / extra conversation',
             cta: 'Start 7-Day Free Trial',
             ctaLink: '/login?mode=register',
             highlighted: false,
             pricing: {
                 annual: {
-                    price: '₹47,999',
-                    period: '/mo',
-                    billingNote: 'Billed annually (₹5,75,988)',
-                    savings: 'Save ₹1,44,000'
-                },
-                biannual: {
                     price: '₹53,999',
                     period: '/mo',
-                    billingNote: 'Billed 6 months (₹3,23,994)',
-                    savings: 'Save ₹36,000'
+                    billingNote: 'Billed annually (₹6,47,988)',
+                    savings: 'Save ₹1,62,000'
+                },
+                biannual: {
+                    price: '₹60,799',
+                    period: '/mo',
+                    billingNote: 'Billed 6 months (₹3,64,794)',
+                    savings: 'Save ₹40,200'
                 },
                 trimonthly: {
-                    price: '₹59,999',
+                    price: '₹67,499',
                     period: '/mo',
-                    billingNote: 'Billed 3 months (₹1,79,997) · Min Term'
+                    billingNote: 'Billed 3 months (₹2,02,497) · Min Term'
                 }
             }
         }
@@ -486,34 +508,34 @@ export default function PricingSection() {
     const intlCorePlans: PlanDetails[] = [
         {
             tag: 'STARTER',
-            name: 'Core Starter',
+            name: 'Starter',
             conversations: '300 conversations',
             seats: '2 team seats',
-            overage: '$0.88 / extra conversation',
+            overage: '$0.80 / extra conversation',
             cta: 'Start 7-Day Free Trial',
             ctaLink: '/login?mode=register',
             highlighted: false,
             pricing: {
                 annual: {
-                    price: '$189',
+                    price: '$159',
                     period: '/mo',
-                    billingNote: 'Billed annually ($2,268)',
-                    savings: 'Save $600'
+                    billingNote: 'Billed annually ($1,908)',
+                    savings: 'Save $480'
                 },
                 biannual: {
-                    price: '$215',
+                    price: '$179',
                     period: '/mo',
-                    billingNote: 'Billed 6 months ($1,290)',
-                    savings: 'Save $150'
+                    billingNote: 'Billed 6 months ($1,074)',
+                    savings: 'Save $120'
                 },
                 quarterly: {
-                    price: '$229',
+                    price: '$189',
                     period: '/mo',
-                    billingNote: 'Billed quarterly ($687)',
+                    billingNote: 'Billed quarterly ($567)',
                     savings: 'Save $30'
                 },
                 monthly: {
-                    price: '$239',
+                    price: '$199',
                     period: '/mo',
                     billingNote: 'Billed monthly'
                 }
@@ -521,34 +543,34 @@ export default function PricingSection() {
         },
         {
             tag: 'GROWTH',
-            name: 'Core Growth',
+            name: 'Growth',
             conversations: '600 conversations',
             seats: '3 team seats',
-            overage: '$0.75 / extra conversation',
+            overage: '$0.70 / extra conversation',
             cta: 'Start 7-Day Free Trial',
             ctaLink: '/login?mode=register',
             highlighted: true,
             pricing: {
                 annual: {
-                    price: '$309',
+                    price: '$279',
                     period: '/mo',
-                    billingNote: 'Billed annually ($3,708)',
-                    savings: 'Save $960'
+                    billingNote: 'Billed annually ($3,348)',
+                    savings: 'Save $840'
                 },
                 biannual: {
-                    price: '$349',
+                    price: '$319',
                     period: '/mo',
-                    billingNote: 'Billed 6 months ($2,094)',
-                    savings: 'Save $240'
+                    billingNote: 'Billed 6 months ($1,914)',
+                    savings: 'Save $180'
                 },
                 quarterly: {
-                    price: '$369',
+                    price: '$329',
                     period: '/mo',
-                    billingNote: 'Billed quarterly ($1,107)',
+                    billingNote: 'Billed quarterly ($987)',
                     savings: 'Save $60'
                 },
                 monthly: {
-                    price: '$389',
+                    price: '$349',
                     period: '/mo',
                     billingNote: 'Billed monthly'
                 }
@@ -556,34 +578,34 @@ export default function PricingSection() {
         },
         {
             tag: 'SCALE',
-            name: 'Core Scale',
+            name: 'Scale',
             conversations: '1,600 conversations',
             seats: '4 team seats',
-            overage: '$0.56 / extra conversation',
+            overage: '$0.52 / extra conversation',
             cta: 'Start 7-Day Free Trial',
             ctaLink: '/login?mode=register',
             highlighted: false,
             pricing: {
                 annual: {
-                    price: '$589',
+                    price: '$559',
                     period: '/mo',
-                    billingNote: 'Billed annually ($7,068)',
-                    savings: 'Save $1,800'
+                    billingNote: 'Billed annually ($6,708)',
+                    savings: 'Save $1,680'
                 },
                 biannual: {
-                    price: '$665',
+                    price: '$629',
                     period: '/mo',
-                    billingNote: 'Billed 6 months ($3,990)',
-                    savings: 'Save $450'
+                    billingNote: 'Billed 6 months ($3,774)',
+                    savings: 'Save $420'
                 },
                 quarterly: {
-                    price: '$705',
+                    price: '$669',
                     period: '/mo',
-                    billingNote: 'Billed quarterly ($2,115)',
-                    savings: 'Save $105'
+                    billingNote: 'Billed quarterly ($2,007)',
+                    savings: 'Save $90'
                 },
                 monthly: {
-                    price: '$739',
+                    price: '$699',
                     period: '/mo',
                     billingNote: 'Billed monthly'
                 }
@@ -591,7 +613,7 @@ export default function PricingSection() {
         },
         {
             tag: 'MAX',
-            name: 'Core Max',
+            name: 'Max',
             conversations: '4,000 conversations',
             seats: '7 team seats',
             overage: '$0.44 / extra conversation',
@@ -600,25 +622,25 @@ export default function PricingSection() {
             highlighted: false,
             pricing: {
                 annual: {
-                    price: '$1,299',
+                    price: '$1,179',
                     period: '/mo',
-                    billingNote: 'Billed annually ($15,588)',
-                    savings: 'Save $3,960'
+                    billingNote: 'Billed annually ($14,148)',
+                    savings: 'Save $3,600'
                 },
                 biannual: {
-                    price: '$1,469',
+                    price: '$1,329',
                     period: '/mo',
-                    billingNote: 'Billed 6 months ($8,814)',
-                    savings: 'Save $990'
+                    billingNote: 'Billed 6 months ($7,974)',
+                    savings: 'Save $900'
                 },
                 quarterly: {
-                    price: '$1,559',
+                    price: '$1,409',
                     period: '/mo',
-                    billingNote: 'Billed quarterly ($4,677)',
-                    savings: 'Save $240'
+                    billingNote: 'Billed quarterly ($4,227)',
+                    savings: 'Save $210'
                 },
                 monthly: {
-                    price: '$1,629',
+                    price: '$1,479',
                     period: '/mo',
                     billingNote: 'Billed monthly'
                 }
@@ -629,65 +651,65 @@ export default function PricingSection() {
     const intlCommercePlans: PlanDetails[] = [
         {
             tag: 'STARTER',
-            name: 'Commerce Starter',
+            name: 'Starter',
             conversations: '500 conversations',
             seats: '2 team seats',
-            overage: '$0.88 / extra conversation',
+            overage: '$0.81 / extra conversation',
             cta: 'Start 7-Day Free Trial',
             ctaLink: '/login?mode=register',
             highlighted: false,
             pricing: {
                 annual: {
-                    price: '$289',
+                    price: '$269',
                     period: '/mo',
-                    billingNote: 'Billed annually ($3,468)',
-                    savings: 'Save $960'
+                    billingNote: 'Billed annually ($3,228)',
+                    savings: 'Save $840'
                 },
                 biannual: {
-                    price: '$335',
+                    price: '$309',
                     period: '/mo',
-                    billingNote: 'Billed 6 months ($2,010)',
+                    billingNote: 'Billed 6 months ($1,854)',
                     savings: 'Save $180'
                 },
                 trimonthly: {
-                    price: '$369',
+                    price: '$339',
                     period: '/mo',
-                    billingNote: 'Billed 3 months ($1,107) · Min Term'
+                    billingNote: 'Billed 3 months ($1,017) · Min Term'
                 }
             }
         },
         {
             tag: 'GROWTH',
-            name: 'Commerce Growth',
+            name: 'Growth',
             conversations: '1,000 conversations',
             seats: '3 team seats',
-            overage: '$0.75 / extra conversation',
+            overage: '$0.72 / extra conversation',
             cta: 'Start 7-Day Free Trial',
             ctaLink: '/login?mode=register',
             highlighted: true,
             pricing: {
                 annual: {
-                    price: '$519',
+                    price: '$479',
                     period: '/mo',
-                    billingNote: 'Billed annually ($6,228)',
-                    savings: 'Save $1,800'
+                    billingNote: 'Billed annually ($5,748)',
+                    savings: 'Save $1,440'
                 },
                 biannual: {
-                    price: '$585',
+                    price: '$539',
                     period: '/mo',
-                    billingNote: 'Billed 6 months ($3,510)',
-                    savings: 'Save $450'
+                    billingNote: 'Billed 6 months ($3,234)',
+                    savings: 'Save $360'
                 },
                 trimonthly: {
-                    price: '$649',
+                    price: '$599',
                     period: '/mo',
-                    billingNote: 'Billed 3 months ($1,947) · Min Term'
+                    billingNote: 'Billed 3 months ($1,797) · Min Term'
                 }
             }
         },
         {
             tag: 'SCALE',
-            name: 'Commerce Scale',
+            name: 'Scale',
             conversations: '2,000 conversations',
             seats: '4 team seats',
             overage: '$0.56 / extra conversation',
@@ -696,50 +718,50 @@ export default function PricingSection() {
             highlighted: false,
             pricing: {
                 annual: {
-                    price: '$829',
+                    price: '$739',
                     period: '/mo',
-                    billingNote: 'Billed annually ($9,948)',
-                    savings: 'Save $2,760'
+                    billingNote: 'Billed annually ($8,868)',
+                    savings: 'Save $2,280'
                 },
                 biannual: {
-                    price: '$939',
+                    price: '$839',
                     period: '/mo',
-                    billingNote: 'Billed 6 months ($5,634)',
-                    savings: 'Save $720'
+                    billingNote: 'Billed 6 months ($5,034)',
+                    savings: 'Save $540'
                 },
                 trimonthly: {
-                    price: '$1,039',
+                    price: '$929',
                     period: '/mo',
-                    billingNote: 'Billed 3 months ($3,117) · Min Term'
+                    billingNote: 'Billed 3 months ($2,787) · Min Term'
                 }
             }
         },
         {
             tag: 'MAX',
-            name: 'Commerce Max',
+            name: 'Max',
             conversations: '5,000 conversations',
             seats: '7 team seats',
-            overage: '$0.44 / extra conversation',
+            overage: '$0.47 / extra conversation',
             cta: 'Start 7-Day Free Trial',
             ctaLink: '/login?mode=register',
             highlighted: false,
             pricing: {
                 annual: {
-                    price: '$1,759',
+                    price: '$1,579',
                     period: '/mo',
-                    billingNote: 'Billed annually ($21,108)',
-                    savings: 'Save $5,760'
+                    billingNote: 'Billed annually ($18,948)',
+                    savings: 'Save $2,400'
                 },
                 biannual: {
-                    price: '$1,979',
+                    price: '$1,779',
                     period: '/mo',
-                    billingNote: 'Billed 6 months ($11,874)',
-                    savings: 'Save $1,440'
+                    billingNote: 'Billed 6 months ($10,674)',
+                    savings: 'Save $1,200'
                 },
                 trimonthly: {
-                    price: '$2,199',
+                    price: '$1,979',
                     period: '/mo',
-                    billingNote: 'Billed 3 months ($6,597) · Min Term'
+                    billingNote: 'Billed 3 months ($5,937) · Min Term'
                 }
             }
         }
@@ -764,37 +786,37 @@ export default function PricingSection() {
             ctaLink: '/login?mode=register'
         },
         {
-            icon: <img src="/whatsapp.png" alt="WhatsApp" className="w-5 h-5 object-contain" />,
-            tag: 'OFFICIAL API',
-            name: 'WhatsApp Business Messaging',
-            badge: region === 'IN' ? 'Included in India' : 'Meta Direct',
-            price: region === 'IN' ? 'Included' : 'Meta + 5%',
-            period: region === 'IN' ? 'in all India plans' : 'per conversation',
-            billingNote: region === 'IN' ? 'Nothing extra to pay on India plans' : 'Meta official per-message pass-through',
-            desc: 'Connect your verified WhatsApp Business phone number with shared customer memory.',
+            icon: <Globe className="w-5 h-5 text-[#0396A6]" />,
+            tag: 'CHANNEL ADD-ON',
+            name: 'Additional Website Channel',
+            badge: '+50 Free Convos',
+            price: region === 'IN' ? '₹2,999' : '$85',
+            period: '/ website / mo',
+            billingNote: 'Includes 50 free conversations / mo',
+            desc: 'Deploy Frosty AI on an additional website domain or landing page with unified lead memory.',
             bullets: [
-                'Official Meta Cloud API integration',
-                'Zero extra platform markups on India plans',
-                'Voice notes audio transcription & replies'
+                '50 extra monthly conversations included',
+                'Custom embed widget & brand theme styling',
+                'Unified contextual memory across channels'
             ],
-            cta: 'Connect WhatsApp',
+            cta: 'Add Website Channel',
             ctaLink: '/login?mode=register'
         },
         {
-            icon: <Zap className="w-5 h-5 text-[#0396A6]" />,
-            tag: 'USAGE BUFFER',
-            name: 'Extra Conversation Overages',
-            badge: 'Zero Dropouts',
-            price: region === 'IN' ? 'From ₹15' : 'From $0.44',
-            period: '/ extra conversation',
-            billingNote: 'Tier-discounted overage rates',
-            desc: 'Never drop a high-intent customer. Real-time notifications as you approach quota limits.',
+            icon: <img src="/whatsapp.png" alt="WhatsApp" className="w-5 h-5 object-contain" />,
+            tag: 'CHANNEL ADD-ON',
+            name: 'Additional WhatsApp Channel',
+            badge: '+50 Free Convos',
+            price: region === 'IN' ? '₹2,999' : '$85',
+            period: '/ channel / mo',
+            billingNote: 'Includes 50 free conversations / mo',
+            desc: 'Connect an extra verified WhatsApp Business phone number with shared customer memory.',
             bullets: [
-                'Real-time alerts at 80% and 95% volume',
-                'Cheaper volume overage tiers (₹15–₹26)',
-                'Instant prorated plan upgrades anytime'
+                '50 extra monthly conversations included',
+                'Official Meta Cloud API integration',
+                'Voice notes audio transcription & replies'
             ],
-            cta: 'View Volume Tiers',
+            cta: 'Add WhatsApp Channel',
             ctaLink: '/login?mode=register'
         },
         {
@@ -914,47 +936,49 @@ export default function PricingSection() {
 
                     <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs font-semibold mt-1 shadow-2xs">
                         <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                        <span>No setup fee, no onboarding fee, no implementation fee — on any plan.</span>
+                        <span>No setup fee, no onboarding fee, no implementation fee — on any plan, in any market.</span>
                     </div>
 
-                    <div className="mt-8 flex justify-center">
-                        <div className="inline-flex p-1.5 rounded-2xl bg-slate-100/90 border border-slate-200 shadow-inner max-w-full flex-wrap justify-center gap-1">
+                    {/* Plan Family Switcher (Structured 3-column segmented bar on mobile, flex on desktop) */}
+                    <div className="mt-8 flex justify-center w-full px-2 sm:px-0">
+                        <div className="grid grid-cols-3 sm:flex p-1 sm:p-1.5 rounded-2xl bg-slate-100/90 border border-slate-200 shadow-inner w-full sm:w-auto max-w-md sm:max-w-none gap-1">
                             <button
                                 type="button"
                                 onClick={() => setPlanFamily('core')}
-                                className={`relative px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 flex items-center gap-2 cursor-pointer ${planFamily === 'core'
+                                className={`relative px-1.5 sm:px-6 py-2 sm:py-2 rounded-xl text-[11px] sm:text-sm font-bold transition-all duration-200 flex items-center justify-center gap-1 sm:gap-2 cursor-pointer whitespace-nowrap ${planFamily === 'core'
                                     ? 'bg-white text-slate-900 shadow-sm border border-slate-200/80'
                                     : 'text-slate-600 hover:text-slate-900'
                                     }`}
                             >
-                                <Bot className={`w-4 h-4 ${planFamily === 'core' ? 'text-[#0396A6]' : 'text-slate-400'}`} />
-                                <span>Core Plans</span>
+                                <Bot className={`w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 ${planFamily === 'core' ? 'text-[#0396A6]' : 'text-slate-400'}`} />
+                                <span>Core<span className="hidden min-[380px]:inline"> Plans</span></span>
                             </button>
 
                             <button
                                 type="button"
                                 onClick={() => setPlanFamily('commerce')}
-                                className={`relative px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 flex items-center gap-2 cursor-pointer ${planFamily === 'commerce'
+                                className={`relative px-1.5 sm:px-6 py-2 sm:py-2 rounded-xl text-[11px] sm:text-sm font-bold transition-all duration-200 flex items-center justify-center gap-1 sm:gap-2 cursor-pointer whitespace-nowrap ${planFamily === 'commerce'
                                     ? 'bg-white text-slate-900 shadow-sm border border-slate-200/80'
                                     : 'text-slate-600 hover:text-slate-900'
                                     }`}
                             >
-                                <ShoppingBag className={`w-4 h-4 ${planFamily === 'commerce' ? 'text-[#0396A6]' : 'text-slate-400'}`} />
-                                <span>Commerce Plans</span>
-                                <span className="hidden sm:inline text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-teal-50 text-[#0396A6] border border-teal-200/60">
+                                <ShoppingBag className={`w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 ${planFamily === 'commerce' ? 'text-[#0396A6]' : 'text-slate-400'}`} />
+                                <span>Commerce<span className="hidden min-[380px]:inline"> Plans</span></span>
+                                <span className="hidden lg:inline text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-teal-50 text-[#0396A6] border border-teal-200/60">
                                     Store Sync
                                 </span>
                             </button>
+
                             <button
                                 type="button"
                                 onClick={() => setPlanFamily('addons')}
-                                className={`relative px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 flex items-center gap-2 cursor-pointer ${planFamily === 'addons'
+                                className={`relative px-1.5 sm:px-6 py-2 sm:py-2 rounded-xl text-[11px] sm:text-sm font-bold transition-all duration-200 flex items-center justify-center gap-1 sm:gap-2 cursor-pointer whitespace-nowrap ${planFamily === 'addons'
                                     ? 'bg-white text-slate-900 shadow-sm border border-slate-200/80'
                                     : 'text-slate-600 hover:text-slate-900'
                                     }`}
                             >
-                                <PlusCircle className={`w-4 h-4 ${planFamily === 'addons' ? 'text-[#0396A6]' : 'text-slate-400'}`} />
-                                <span>Add-ons & Extras</span>
+                                <PlusCircle className={`w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 ${planFamily === 'addons' ? 'text-[#0396A6]' : 'text-slate-400'}`} />
+                                <span>Add-ons<span className="hidden min-[410px]:inline"> & Extras</span></span>
                             </button>
                         </div>
                     </div>
@@ -973,19 +997,20 @@ export default function PricingSection() {
                         )}
                     </div>
 
+                    {/* Billing Term Switcher (Partitioned grid on mobile, snug inline-flex pill on desktop) */}
                     {planFamily !== 'addons' && (
-                        <div className="mt-5 flex flex-wrap justify-center items-center gap-1.5 sm:gap-2">
-                            <div className="inline-flex p-1 rounded-2xl sm:rounded-full bg-slate-100/90 border border-slate-200/90 shadow-inner flex-wrap justify-center">
+                        <div className="mt-5 flex justify-center items-center w-full px-2 sm:px-0">
+                            <div className="grid grid-cols-2 divide-x divide-y divide-slate-200/90 rounded-2xl sm:rounded-full bg-slate-100/90 border border-slate-200/90 overflow-hidden w-full max-w-sm sm:w-auto sm:max-w-none sm:inline-flex sm:divide-x-0 sm:divide-y-0 sm:p-1 sm:gap-0.5 shadow-inner">
                                 <button
                                     type="button"
                                     onClick={() => (planFamily === 'core' ? setCoreTerm('annual') : setCommerceTerm('annual'))}
-                                    className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${currentTerm === 'annual'
-                                        ? 'bg-[#0396A6] !text-white shadow-sm'
-                                        : 'text-slate-600 hover:text-slate-900'
+                                    className={`relative py-2.5 sm:py-1.5 px-2.5 sm:px-4 rounded-none sm:rounded-full text-xs font-semibold transition-all duration-200 flex items-center justify-center gap-1 sm:gap-1.5 cursor-pointer whitespace-nowrap ${currentTerm === 'annual'
+                                        ? 'bg-[#0396A6] !text-white shadow-sm font-bold'
+                                        : 'text-slate-600 hover:text-slate-900 bg-slate-50/50 sm:bg-transparent'
                                         }`}
                                 >
-                                    <span className={currentTerm === 'annual' ? '!text-white font-bold' : ''}>Annual</span>
-                                    <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${currentTerm === 'annual' ? 'bg-white/20 !text-white' : 'bg-emerald-100 text-emerald-800'
+                                    <span>Annual</span>
+                                    <span className={`text-[9px] sm:text-[10px] font-bold px-1.5 py-0.2 rounded-full whitespace-nowrap ${currentTerm === 'annual' ? 'bg-white/20 !text-white' : 'bg-emerald-100 text-emerald-800'
                                         }`}>
                                         Save 20%
                                     </span>
@@ -994,15 +1019,15 @@ export default function PricingSection() {
                                 <button
                                     type="button"
                                     onClick={() => (planFamily === 'core' ? setCoreTerm('biannual') : setCommerceTerm('biannual'))}
-                                    className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${currentTerm === 'biannual'
-                                        ? 'bg-[#0396A6] !text-white shadow-sm'
-                                        : 'text-slate-600 hover:text-slate-900'
+                                    className={`relative py-2.5 sm:py-1.5 px-2.5 sm:px-4 rounded-none sm:rounded-full text-xs font-semibold transition-all duration-200 flex items-center justify-center gap-1 sm:gap-1.5 cursor-pointer whitespace-nowrap ${currentTerm === 'biannual'
+                                        ? 'bg-[#0396A6] !text-white shadow-sm font-bold'
+                                        : 'text-slate-600 hover:text-slate-900 bg-slate-50/50 sm:bg-transparent'
                                         }`}
                                 >
-                                    <span className={currentTerm === 'biannual' ? '!text-white font-bold' : ''}>6 Months</span>
-                                    <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${currentTerm === 'biannual' ? 'bg-white/20 !text-white' : 'bg-emerald-100 text-emerald-800'
+                                    <span>6 Months</span>
+                                    <span className={`text-[9px] sm:text-[10px] font-bold px-1.5 py-0.2 rounded-full whitespace-nowrap ${currentTerm === 'biannual' ? 'bg-white/20 !text-white' : 'bg-emerald-100 text-emerald-800'
                                         }`}>
-                                        {planFamily === 'commerce' ? 'Save 10%' : 'Save 10-15%'}
+                                        {planFamily === 'commerce' ? 'Save 10%' : 'Save 15%'}
                                     </span>
                                 </button>
 
@@ -1010,15 +1035,15 @@ export default function PricingSection() {
                                     <button
                                         type="button"
                                         onClick={() => setCoreTerm('quarterly')}
-                                        className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${currentTerm === 'quarterly'
-                                            ? 'bg-[#0396A6] !text-white shadow-sm'
-                                            : 'text-slate-600 hover:text-slate-900'
+                                        className={`relative py-2.5 sm:py-1.5 px-2.5 sm:px-4 rounded-none sm:rounded-full text-xs font-semibold transition-all duration-200 flex items-center justify-center gap-1 sm:gap-1.5 cursor-pointer whitespace-nowrap ${currentTerm === 'quarterly'
+                                            ? 'bg-[#0396A6] !text-white shadow-sm font-bold'
+                                            : 'text-slate-600 hover:text-slate-900 bg-slate-50/50 sm:bg-transparent'
                                             }`}
                                     >
-                                        <span className={currentTerm === 'quarterly' ? '!text-white font-bold' : ''}>Quarterly</span>
-                                        <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${currentTerm === 'quarterly' ? 'bg-white/20 !text-white' : 'bg-emerald-100 text-emerald-800'
+                                        <span>Quarterly</span>
+                                        <span className={`text-[9px] sm:text-[10px] font-bold px-1.5 py-0.2 rounded-full whitespace-nowrap ${currentTerm === 'quarterly' ? 'bg-white/20 !text-white' : 'bg-emerald-100 text-emerald-800'
                                             }`}>
-                                            Save ~5%
+                                            Save 5%
                                         </span>
                                     </button>
                                 )}
@@ -1027,12 +1052,12 @@ export default function PricingSection() {
                                     <button
                                         type="button"
                                         onClick={() => setCoreTerm('monthly')}
-                                        className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${currentTerm === 'monthly'
-                                            ? 'bg-[#0396A6] !text-white shadow-sm'
-                                            : 'text-slate-600 hover:text-slate-900'
+                                        className={`relative py-2.5 sm:py-1.5 px-2.5 sm:px-4 rounded-none sm:rounded-full text-xs font-semibold transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap ${currentTerm === 'monthly'
+                                            ? 'bg-[#0396A6] !text-white shadow-sm font-bold'
+                                            : 'text-slate-600 hover:text-slate-900 bg-slate-50/50 sm:bg-transparent'
                                             }`}
                                     >
-                                        <span className={currentTerm === 'monthly' ? '!text-white font-bold' : ''}>Monthly</span>
+                                        <span>Monthly</span>
                                     </button>
                                 )}
 
@@ -1040,13 +1065,13 @@ export default function PricingSection() {
                                     <button
                                         type="button"
                                         onClick={() => setCommerceTerm('trimonthly')}
-                                        className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${currentTerm === 'trimonthly'
-                                            ? 'bg-[#0396A6] !text-white shadow-sm'
-                                            : 'text-slate-600 hover:text-slate-900'
+                                        className={`relative py-2.5 sm:py-1.5 px-2.5 sm:px-4 rounded-none sm:rounded-full text-xs font-semibold transition-all duration-200 flex items-center justify-center gap-1 sm:gap-1.5 cursor-pointer col-span-2 sm:col-span-1 whitespace-nowrap ${currentTerm === 'trimonthly'
+                                            ? 'bg-[#0396A6] !text-white shadow-sm font-bold'
+                                            : 'text-slate-600 hover:text-slate-900 bg-slate-50/50 sm:bg-transparent'
                                             }`}
                                     >
-                                        <span className={currentTerm === 'trimonthly' ? '!text-white font-bold' : ''}>3 Months</span>
-                                        <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${currentTerm === 'trimonthly' ? 'bg-white/20 !text-white' : 'bg-slate-200 text-slate-700'}`}>
+                                        <span>3 Months</span>
+                                        <span className={`text-[9px] sm:text-[10px] font-bold px-1.5 py-0.2 rounded-full whitespace-nowrap ${currentTerm === 'trimonthly' ? 'bg-white/20 !text-white' : 'bg-slate-200 text-slate-700'}`}>
                                             Min Term · List Price
                                         </span>
                                     </button>
@@ -1085,6 +1110,13 @@ export default function PricingSection() {
                                 </h3>
                                 <div className="w-full h-px bg-slate-100 mb-4" />
                                 <div className="flex flex-col min-h-[54px] justify-center mb-3">
+                                    {getOriginalStrikethroughPrice(addon.price) && (
+                                        <div className="flex items-center gap-1.5 mb-0.5">
+                                            <span className="text-xs sm:text-sm font-semibold text-slate-400/80 line-through decoration-slate-400/80 tracking-tight decoration-[1.5px] select-none">
+                                                {getOriginalStrikethroughPrice(addon.price)}
+                                            </span>
+                                        </div>
+                                    )}
                                     <div className="flex items-baseline gap-1">
                                         <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-none">
                                             {addon.price}
@@ -1127,6 +1159,7 @@ export default function PricingSection() {
                         <AnimatePresence mode="wait">
                             {currentPlans.map((plan, index) => {
                                 const currentPricing = plan.pricing[currentTerm] || plan.pricing['annual'];
+                                const originalCutPrice = getOriginalStrikethroughPrice(currentPricing.price);
                                 return (
                                     <motion.div
                                         key={`${region}-${planFamily}-${plan.name}`}
@@ -1157,6 +1190,13 @@ export default function PricingSection() {
                                         </div>
                                         <div className={`w-full h-px mb-4 ${plan.highlighted ? 'bg-[#0396A6]/20' : 'bg-slate-100'}`} />
                                         <div className="flex flex-col min-h-[64px] justify-center mb-4">
+                                            {originalCutPrice && (
+                                                <div className="flex items-center gap-1.5 mb-0.5">
+                                                    <span className="text-sm sm:text-base font-semibold text-slate-400/80 line-through decoration-slate-400/80 tracking-tight decoration-[1.5px] select-none">
+                                                        {originalCutPrice}
+                                                    </span>
+                                                </div>
+                                            )}
                                             <div className="flex items-baseline gap-1">
                                                 <span className="text-3xl sm:text-[34px] xl:text-4xl font-extrabold text-slate-900 tracking-tight leading-none">
                                                     {currentPricing.price}
@@ -1171,55 +1211,58 @@ export default function PricingSection() {
                                                 {currentPricing.billingNote}
                                             </div>
                                         </div>
-                                        <div className="flex flex-col gap-2.5 mb-4 flex-1">
-                                            <div
-                                                className={`p-3 rounded-xl border flex flex-col gap-0.5 transition-colors duration-200 ${plan.highlighted
-                                                    ? 'bg-teal-50/60 border-teal-200/70'
-                                                    : 'bg-slate-50/80 border-slate-200/70'
-                                                    }`}
-                                            >
-                                                <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                                                    <span>Monthly Allowance</span>
+                                        <div className="flex flex-col gap-2 my-3 flex-1 text-xs text-slate-600">
+                                            {/* 1. Monthly Conversations */}
+                                            <div className="flex flex-col gap-0.5">
+                                                <div className="flex items-center justify-between gap-1">
+                                                    <div className="flex items-center gap-2">
+                                                        <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 stroke-[2.5]" />
+                                                        <span>{plan.conversations.replace(' conversations', '')} monthly conversations included</span>
+                                                    </div>
                                                     <ConversationInfoTooltip align={index === 0 ? 'left' : index === 3 ? 'right' : 'center'} />
                                                 </div>
-                                                <div className="text-[13.5px] sm:text-[14px] font-bold text-slate-900 leading-tight">
-                                                    {plan.conversations}
-                                                </div>
-                                                <div className="text-[11px] text-[#0396A6] font-semibold mt-0.5">
+                                                <div className="pl-[22px] text-[11px] text-[#0396A6] font-medium">
                                                     Extra: {plan.overage}
                                                 </div>
                                             </div>
-                                            <div className="p-2.5 px-3 rounded-xl border border-slate-200/70 bg-white flex items-center justify-between shadow-2xs">
-                                                <div className="flex items-center gap-1.5">
-                                                    <Users className="w-3.5 h-3.5 text-slate-500" />
-                                                    <span className="text-xs font-semibold text-slate-700">Team Seats</span>
-                                                </div>
-                                                <span className="text-xs font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded-md">
-                                                    {plan.seats}
+
+                                            {/* 2. Team Seats */}
+                                            <div className="flex items-center gap-2">
+                                                <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 stroke-[2.5]" />
+                                                <span>{plan.seats.replace(' team seats', '')} team seats included</span>
+                                            </div>
+
+                                            {/* 3. Website Channel */}
+                                            <div className="flex items-center gap-2">
+                                                <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 stroke-[2.5]" />
+                                                <span>1 website channel included</span>
+                                            </div>
+
+                                            {/* 4. WhatsApp Channel */}
+                                            <div className="flex items-center gap-2">
+                                                <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 stroke-[2.5]" />
+                                                <span>
+                                                    1 WhatsApp channel included
+                                                    {region === 'INTL' && <span className="text-[10.5px] text-slate-500 font-normal ml-1">(Meta + 5%)</span>}
                                                 </span>
                                             </div>
-                                            <div className="p-2.5 px-3 rounded-xl border border-slate-200/70 bg-white flex items-center justify-between shadow-2xs">
-                                                <div className="flex items-center gap-1.5">
-                                                    <img src="/whatsapp.png" alt="WhatsApp" className="w-3.5 h-3.5 object-contain shrink-0" />
-                                                    <span className="text-xs font-semibold text-slate-700">WhatsApp Channel</span>
-                                                </div>
-                                                <span className="text-[11px] font-bold text-slate-800">
-                                                    {region === 'IN' ? 'Included' : 'Meta + 5%'}
-                                                </span>
+
+                                            {/* 5. All platform features included */}
+                                            <div className="flex items-center gap-2">
+                                                <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 stroke-[2.5]" />
+                                                <span>All platform features included</span>
                                             </div>
-                                            <div className="my-2 flex flex-col gap-1.5 text-[11px] text-slate-600">
-                                                <div className="flex items-center gap-1.5">
-                                                    <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 stroke-[2.5]" />
-                                                    <span>All platform features included</span>
-                                                </div>
-                                                <div className="flex items-center gap-1.5">
-                                                    <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 stroke-[2.5]" />
-                                                    <span>Zero setup or onboarding fees</span>
-                                                </div>
-                                                <div className="flex items-center gap-1.5 text-slate-500">
-                                                    <Sparkles className="w-3.5 h-3.5 text-[#0396A6] shrink-0" />
-                                                    <span>7-day free trial (up to 50 convos)</span>
-                                                </div>
+
+                                            {/* 6. Zero setup or onboarding fees */}
+                                            <div className="flex items-center gap-2">
+                                                <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 stroke-[2.5]" />
+                                                <span>Zero setup or onboarding fees</span>
+                                            </div>
+
+                                            {/* 7. 7-day free trial */}
+                                            <div className="flex items-center gap-2 text-slate-500">
+                                                <Sparkles className="w-3.5 h-3.5 text-[#0396A6] shrink-0" />
+                                                <span>7-day free trial (up to 50 convos)</span>
                                             </div>
                                         </div>
                                         <div className="mt-auto pt-2 flex flex-col gap-2">
@@ -1240,6 +1283,15 @@ export default function PricingSection() {
                         </AnimatePresence>
                     </div>
                 )}
+
+                {/* Footnote matching official specification */}
+                <div className="mt-3.5 text-center text-xs text-slate-500 font-medium">
+                    {region === 'IN' ? (
+                        <span>All prices per month, in ₹. Longer terms are billed in advance for the full term. <strong>WhatsApp messaging is included in every India plan.</strong></span>
+                    ) : (
+                        <span>All prices per month, in USD. Longer terms are billed in advance for the full term. <strong>WhatsApp messages are billed separately</strong> at Meta&apos;s published rate + 5%.</span>
+                    )}
+                </div>
 
                 <div className="mt-6 p-6 sm:p-7 rounded-[22px] bg-white border border-slate-200/90 shadow-sm hover:border-[#0396A6]/40 transition-all duration-200 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-96 h-full bg-gradient-to-l from-teal-50/40 to-transparent pointer-events-none" />
@@ -1364,15 +1416,19 @@ export default function PricingSection() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.03, duration: 0.25 }}
-                                className="p-4 rounded-xl bg-white border border-slate-200/70 shadow-xs hover:border-[#0396A6]/30 transition-all duration-200 flex flex-col"
+                                whileHover={{ y: -4, scale: 1.015 }}
+                                className="group relative p-4.5 rounded-xl bg-white border border-slate-200/80 shadow-xs hover:border-[#0396A6]/50 hover:shadow-[0_12px_28px_-6px_rgba(3,150,166,0.12),0_4px_12px_rgba(0,0,0,0.03)] transition-all duration-300 flex flex-col cursor-pointer overflow-hidden"
                             >
-                                <div className="mb-2 text-[#0396A6] shrink-0">
+                                {/* Subtle Hover Background Gradient Glow */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-[#0396A6]/[0.04] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+                                <div className="mb-2.5 text-[#0396A6] shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:translate-x-0.5">
                                     {feat.icon}
                                 </div>
-                                <h4 className="text-[13.5px] font-bold text-slate-900 mb-1">
+                                <h4 className="text-[13.5px] font-bold text-slate-900 mb-1 transition-colors duration-200 group-hover:text-[#0396A6]">
                                     {feat.title}
                                 </h4>
-                                <p className="text-xs text-slate-500 leading-relaxed">
+                                <p className="text-xs text-slate-500 leading-relaxed group-hover:text-slate-600 transition-colors duration-200">
                                     {feat.desc}
                                 </p>
                             </motion.div>

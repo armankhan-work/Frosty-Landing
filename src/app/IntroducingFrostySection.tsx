@@ -251,12 +251,12 @@ export default function IntroducingFrostySection() {
                 </div>
 
                 {/* ── Right Column: Interactive Diagram Flow (3 Clean Channels) ── */}
-                <div className="lg:col-span-7 flex items-center justify-center w-full relative">
+                <div className="lg:col-span-7 flex items-center justify-center w-full relative overflow-visible py-2 sm:py-0">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.96 }}
                         animate={isInView ? { opacity: 1, scale: 1 } : {}}
                         transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
-                        className="relative w-full max-w-[660px] h-[340px] sm:h-[360px] mx-auto flex items-center"
+                        className="relative w-[660px] h-[340px] sm:h-[360px] mx-auto flex items-center shrink-0 origin-center scale-[0.45] min-[360px]:scale-[0.52] min-[400px]:scale-[0.58] sm:scale-[0.8] md:scale-[0.92] lg:scale-100 -my-18 min-[360px]:-my-14 sm:-my-6 lg:my-0 pointer-events-auto"
                     >
                         {/* 1. Left Sub-Column: 3 Input Cards */}
                         <div className="absolute left-0 top-0 bottom-0 w-[140px] sm:w-[155px] flex flex-col justify-between py-4 z-20">
@@ -305,13 +305,19 @@ export default function IntroducingFrostySection() {
                                 className="absolute w-[165px] h-[165px] sm:w-[185px] sm:h-[185px] rounded-full border border-[#0396A6]/40 pointer-events-none"
                             />
 
-                            {/* Frosty Agent Main Circular Card */}
+                            {/* Frosty Agent Main Circular Card with Vivid Teal Border on Hover (SS2) */}
                             <motion.div
-                                whileHover={{ scale: 1.03 }}
-                                className="relative w-[165px] h-[165px] sm:w-[185px] sm:h-[185px] rounded-full bg-white border border-[#0396A6]/25 shadow-[0_8px_32px_rgba(3,150,166,0.12)] flex flex-col items-center justify-center text-center p-3 cursor-pointer group"
+                                whileHover={{
+                                    scale: 1.04,
+                                    borderColor: '#0396A6',
+                                    borderWidth: '2.5px',
+                                    boxShadow: '0 0 28px rgba(3, 150, 166, 0.4), 0 8px 32px rgba(3, 150, 166, 0.2)'
+                                }}
+                                transition={{ duration: 0.25, ease: 'easeOut' }}
+                                className="relative w-[165px] h-[165px] sm:w-[185px] sm:h-[185px] rounded-full bg-white border-2 border-[#0396A6]/30 shadow-[0_8px_32px_rgba(3,150,166,0.12)] hover:border-[#0396A6] hover:shadow-[0_0_28px_rgba(3,150,166,0.4)] flex flex-col items-center justify-center text-center p-3 cursor-pointer group transition-all duration-300"
                             >
                                 <motion.div
-                                    whileHover={{ rotate: 90 }}
+                                    whileHover={{ rotate: 90, scale: 1.1 }}
                                     transition={{ duration: 0.4 }}
                                     className="mb-1"
                                 >
@@ -509,8 +515,8 @@ export default function IntroducingFrostySection() {
                 transition={{ duration: 0.5, delay: 0.35, ease: 'easeOut' }}
                 className="w-full relative z-10 mt-4 lg:mt-2"
             >
-                <div className="w-full rounded-2xl sm:rounded-3xl border border-slate-200/80 bg-white/60 backdrop-blur-xs px-4 sm:px-8 py-3.5 sm:py-4 shadow-2xs">
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-0 items-center divide-y lg:divide-y-0 lg:divide-x divide-slate-200/70">
+                <div className="w-full rounded-2xl sm:rounded-3xl border border-slate-200/80 bg-white/80 backdrop-blur-xs px-4 sm:px-8 py-3.5 sm:py-4 shadow-2xs">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 lg:gap-0 items-center lg:divide-x divide-slate-200/70">
                         
                         {/* Stat 1: Instant Response (Solid Filled Lightning Bolt) */}
                         <div className="flex items-center gap-3 sm:gap-3.5 lg:px-6 first:lg:pl-2">
@@ -518,55 +524,55 @@ export default function IntroducingFrostySection() {
                                 <SolidLightningIcon className="w-6 h-6 sm:w-7 sm:h-7" />
                             </div>
                             <div className="flex flex-col min-w-0">
-                                <span className="text-xs sm:text-[13px] font-bold text-slate-900 leading-tight truncate font-sans">
+                                <span className="text-xs sm:text-[13px] font-bold text-slate-900 leading-tight font-sans">
                                     Instant Response
                                 </span>
-                                <span className="text-[10px] sm:text-[11.5px] text-slate-500 font-normal leading-tight mt-0.5 truncate font-sans">
+                                <span className="text-[10.5px] sm:text-[11.5px] text-slate-500 font-normal leading-tight mt-0.5 font-sans">
                                     Engage in seconds
                                 </span>
                             </div>
                         </div>
 
                         {/* Stat 2: Never Miss a Lead (Outlined Shield with Checkmark) */}
-                        <div className="flex items-center gap-3 sm:gap-3.5 lg:px-6 pt-3 lg:pt-0">
+                        <div className="flex items-center gap-3 sm:gap-3.5 lg:px-6">
                             <div className="shrink-0 flex items-center justify-center">
                                 <ShieldCheckCustomIcon className="w-6 h-6 sm:w-7 sm:h-7" />
                             </div>
                             <div className="flex flex-col min-w-0">
-                                <span className="text-xs sm:text-[13px] font-bold text-slate-900 leading-tight truncate font-sans">
+                                <span className="text-xs sm:text-[13px] font-bold text-slate-900 leading-tight font-sans">
                                     Never Miss a Lead
                                 </span>
-                                <span className="text-[10px] sm:text-[11.5px] text-slate-500 font-normal leading-tight mt-0.5 truncate font-sans">
+                                <span className="text-[10.5px] sm:text-[11.5px] text-slate-500 font-normal leading-tight mt-0.5 font-sans">
                                     24/7 coverage
                                 </span>
                             </div>
                         </div>
 
                         {/* Stat 3: Higher Conversions (Concentric Archery Target with Arrow) */}
-                        <div className="flex items-center gap-3 sm:gap-3.5 lg:px-6 pt-3 lg:pt-0">
+                        <div className="flex items-center gap-3 sm:gap-3.5 lg:px-6">
                             <div className="shrink-0 flex items-center justify-center">
                                 <TargetCustomIcon className="w-6 h-6 sm:w-7 sm:h-7" />
                             </div>
                             <div className="flex flex-col min-w-0">
-                                <span className="text-xs sm:text-[13px] font-bold text-slate-900 leading-tight truncate font-sans">
+                                <span className="text-xs sm:text-[13px] font-bold text-slate-900 leading-tight font-sans">
                                     Higher Conversions
                                 </span>
-                                <span className="text-[10px] sm:text-[11.5px] text-slate-500 font-normal leading-tight mt-0.5 truncate font-sans">
+                                <span className="text-[10.5px] sm:text-[11.5px] text-slate-500 font-normal leading-tight mt-0.5 font-sans">
                                     Turn more leads into sales
                                 </span>
                             </div>
                         </div>
 
                         {/* Stat 4: More Revenue (Ascending Bar Chart with Trend Arrow) */}
-                        <div className="flex items-center gap-3 sm:gap-3.5 lg:px-6 last:lg:pr-2 pt-3 lg:pt-0">
+                        <div className="flex items-center gap-3 sm:gap-3.5 lg:px-6 last:lg:pr-2">
                             <div className="shrink-0 flex items-center justify-center">
                                 <RevenueChartCustomIcon className="w-6 h-6 sm:w-7 sm:h-7" />
                             </div>
                             <div className="flex flex-col min-w-0">
-                                <span className="text-xs sm:text-[13px] font-bold text-slate-900 leading-tight truncate font-sans">
+                                <span className="text-xs sm:text-[13px] font-bold text-slate-900 leading-tight font-sans">
                                     More Revenue
                                 </span>
-                                <span className="text-[10px] sm:text-[11.5px] text-slate-500 font-normal leading-tight mt-0.5 truncate font-sans">
+                                <span className="text-[10.5px] sm:text-[11.5px] text-slate-500 font-normal leading-tight mt-0.5 font-sans">
                                     Grow your business
                                 </span>
                             </div>

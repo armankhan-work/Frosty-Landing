@@ -7,8 +7,8 @@ import InteractiveDashboard from './InteractiveDashboard';
 export default function WhatIsFrostySection() {
     return (
         <section id="what-is-frosty" className="relative pt-8 sm:pt-12 pb-6 lg:pb-8 bg-transparent overflow-hidden">
-            <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 flex flex-col lg:flex-row items-center gap-8 sm:gap-12 lg:gap-8">
-                <div className="w-full lg:w-[50%] flex flex-col justify-center relative z-20 xl:pr-10">
+            <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 flex flex-col lg:flex-row items-start gap-8 sm:gap-12 lg:gap-8">
+                <div className="w-full lg:w-[50%] flex flex-col justify-start pt-1 sm:pt-2 relative z-20 xl:pr-10">
                     <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0396A6]/[0.08] border border-[#0396A6]/20 mb-6 backdrop-blur-sm shadow-xs w-fit">
                         <span className="w-4 h-4 rounded-full bg-[#0396A6]/20 flex items-center justify-center">
                             <Layers className="w-2.5 h-2.5 text-[#0396A6]" />
