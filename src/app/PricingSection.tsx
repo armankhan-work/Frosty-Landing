@@ -28,32 +28,17 @@ import {
     Globe
 } from 'lucide-react';
 
-type Region = 'IN' | 'INTL';
-type PlanFamily = 'core' | 'commerce' | 'addons';
-type CoreBillingTerm = 'annual' | 'biannual' | 'quarterly' | 'monthly';
-type CommerceBillingTerm = 'annual' | 'biannual' | 'trimonthly';
-type BillingTerm = CoreBillingTerm | CommerceBillingTerm;
-
-interface TierPricing {
-    price: string;
-    period: string;
-    billingNote: string;
-    savings?: string;
-}
-
-interface PlanDetails {
-    tag: string;
-    name: string;
-    conversations: string;
-    seats: string;
-    overage: string;
-    support?: string;
-    cta: string;
-    ctaLink: string;
-    highlighted?: boolean;
-    isEnterprise?: boolean;
-    pricing: Record<string, TierPricing>;
-}
+import {
+    Region,
+    PlanFamily,
+    CoreBillingTerm,
+    CommerceBillingTerm,
+    BillingTerm,
+    PlanDetails,
+    PricingCSVBundle,
+    getComputedPlans,
+    getComputedAddons
+} from '@/lib/pricingEngine';
 
 /* ─── Conversation Info Tooltip ─── */
 function ConversationInfoTooltip({ align = 'right' }: { align?: 'left' | 'center' | 'right' }) {
@@ -193,15 +178,15 @@ function LaunchRateBadge({ size = 'normal' }: { size?: 'normal' | 'small' }) {
     const [open, setOpen] = useState(false);
     return (
         <div
-            className="relative inline-flex items-center"
+            className="relative inline-flex items-center shrink-0"
             onMouseEnter={() => setOpen(true)}
             onMouseLeave={() => setOpen(false)}
         >
             <span
-                className={`inline-flex items-center font-bold bg-[#0396A6]/10 text-[#0396A6] border border-[#0396A6]/20 tracking-tight rounded-full cursor-default select-none transition-all duration-150 hover:bg-[#0396A6]/15 hover:border-[#0396A6]/35 ${
+                className={`inline-flex items-center font-bold bg-[#0396A6]/10 text-[#0396A6] border border-[#0396A6]/20 tracking-tight rounded-full cursor-default select-none transition-all duration-150 hover:bg-[#0396A6]/15 hover:border-[#0396A6]/35 whitespace-nowrap ${
                     size === 'small'
                         ? 'px-2 py-0.5 text-[9.5px]'
-                        : 'px-2.5 py-0.5 text-[10.5px] sm:text-xs shadow-2xs'
+                        : 'px-2 py-0.5 text-[10px] sm:text-[11px] shadow-2xs'
                 }`}
             >
                 Launch rate
@@ -254,6 +239,17 @@ export default function PricingSection() {
     const [commerceTerm, setCommerceTerm] = useState<CommerceBillingTerm>('annual');
     const [showGuaranteeModal, setShowGuaranteeModal] = useState(false);
 
+    // CSV data fetched fresh from disk on every page load via API route
+    // Save any CSV file → refresh browser → prices update instantly
+    const [csvData, setCsvData] = useState<PricingCSVBundle | null>(null);
+
+    useEffect(() => {
+        fetch('/api/pricing-data')
+            .then(r => r.json())
+            .then(data => setCsvData(data))
+            .catch(() => console.error('Failed to load pricing data'));
+    }, []);
+
     // Multi-tier Geo-Lock Detection
     useEffect(() => {
         try {
@@ -281,600 +277,29 @@ export default function PricingSection() {
         }
     }, []);
 
-    const indiaCorePlans: PlanDetails[] = [
-        {
-            tag: 'STARTER',
-            name: 'Starter',
-            conversations: '300 conversations',
-            seats: '2 team seats',
-            overage: '₹26 / extra conversation',
-            cta: 'Start 7-Day Free Trial',
-            ctaLink: '/login?mode=register',
-            highlighted: false,
-            pricing: {
-                annual: {
-                    price: '₹5,279',
-                    period: '/mo',
-                    billingNote: 'Billed annually (₹63,348)',
-                    savings: 'Save ₹15,840'
-                },
-                biannual: {
-                    price: '₹5,899',
-                    period: '/mo',
-                    billingNote: 'Billed 6 months (₹35,394)',
-                    savings: 'Save ₹4,200'
-                },
-                quarterly: {
-                    price: '₹6,299',
-                    period: '/mo',
-                    billingNote: 'Billed quarterly (₹18,897)',
-                    savings: 'Save ₹900'
-                },
-                monthly: {
-                    price: '₹6,599',
-                    period: '/mo',
-                    billingNote: 'Billed monthly'
-                }
-            }
-        },
-        {
-            tag: 'GROWTH',
-            name: 'Growth',
-            conversations: '600 conversations',
-            seats: '3 team seats',
-            overage: '₹20 / extra conversation',
-            cta: 'Start 7-Day Free Trial',
-            ctaLink: '/login?mode=register',
-            highlighted: true,
-            pricing: {
-                annual: {
-                    price: '₹7,919',
-                    period: '/mo',
-                    billingNote: 'Billed annually (₹95,028)',
-                    savings: 'Save ₹23,760'
-                },
-                biannual: {
-                    price: '₹8,899',
-                    period: '/mo',
-                    billingNote: 'Billed 6 months (₹53,394)',
-                    savings: 'Save ₹6,000'
-                },
-                quarterly: {
-                    price: '₹9,399',
-                    period: '/mo',
-                    billingNote: 'Billed quarterly (₹28,197)',
-                    savings: 'Save ₹1,500'
-                },
-                monthly: {
-                    price: '₹9,899',
-                    period: '/mo',
-                    billingNote: 'Billed monthly'
-                }
-            }
-        },
-        {
-            tag: 'SCALE',
-            name: 'Scale',
-            conversations: '1,600 conversations',
-            seats: '4 team seats',
-            overage: '₹16 / extra conversation',
-            cta: 'Start 7-Day Free Trial',
-            ctaLink: '/login?mode=register',
-            highlighted: false,
-            pricing: {
-                annual: {
-                    price: '₹17,599',
-                    period: '/mo',
-                    billingNote: 'Billed annually (₹2,11,188)',
-                    savings: 'Save ₹52,800'
-                },
-                biannual: {
-                    price: '₹19,799',
-                    period: '/mo',
-                    billingNote: 'Billed 6 months (₹1,18,794)',
-                    savings: 'Save ₹13,200'
-                },
-                quarterly: {
-                    price: '₹20,899',
-                    period: '/mo',
-                    billingNote: 'Billed quarterly (₹62,697)',
-                    savings: 'Save ₹3,300'
-                },
-                monthly: {
-                    price: '₹21,999',
-                    period: '/mo',
-                    billingNote: 'Billed monthly'
-                }
-            }
-        },
-        {
-            tag: 'MAX',
-            name: 'Max',
-            conversations: '4,000 conversations',
-            seats: '7 team seats',
-            overage: '₹15 / extra conversation',
-            cta: 'Start 7-Day Free Trial',
-            ctaLink: '/login?mode=register',
-            highlighted: false,
-            pricing: {
-                annual: {
-                    price: '₹40,479',
-                    period: '/mo',
-                    billingNote: 'Billed annually (₹4,85,748)',
-                    savings: 'Save ₹1,21,440'
-                },
-                biannual: {
-                    price: '₹45,499',
-                    period: '/mo',
-                    billingNote: 'Billed 6 months (₹2,72,994)',
-                    savings: 'Save ₹30,600'
-                },
-                quarterly: {
-                    price: '₹48,099',
-                    period: '/mo',
-                    billingNote: 'Billed quarterly (₹1,44,297)',
-                    savings: 'Save ₹7,500'
-                },
-                monthly: {
-                    price: '₹50,599',
-                    period: '/mo',
-                    billingNote: 'Billed monthly'
-                }
-            }
-        }
-    ];
+    // Build plans from fresh CSV data (empty arrays until API responds)
+    const plansCsv = csvData?.plans ?? '';
+    const addonsCsv = csvData?.addons ?? '';
 
-    const indiaCommercePlans: PlanDetails[] = [
-        {
-            tag: 'STARTER',
-            name: 'Starter',
-            conversations: '500 conversations',
-            seats: '2 team seats',
-            overage: '₹24 / extra conversation',
-            cta: 'Start 7-Day Free Trial',
-            ctaLink: '/login?mode=register',
-            highlighted: false,
-            pricing: {
-                annual: {
-                    price: '₹7,999',
-                    period: '/mo',
-                    billingNote: 'Billed annually (₹95,988)',
-                    savings: 'Save ₹24,000'
-                },
-                biannual: {
-                    price: '₹8,999',
-                    period: '/mo',
-                    billingNote: 'Billed 6 months (₹53,994)',
-                    savings: 'Save ₹6,000'
-                },
-                trimonthly: {
-                    price: '₹9,999',
-                    period: '/mo',
-                    billingNote: 'Billed 3 months (₹29,997) · Min Term'
-                }
-            }
-        },
-        {
-            tag: 'GROWTH',
-            name: 'Growth',
-            conversations: '1,000 conversations',
-            seats: '3 team seats',
-            overage: '₹22 / extra conversation',
-            cta: 'Start 7-Day Free Trial',
-            ctaLink: '/login?mode=register',
-            highlighted: true,
-            pricing: {
-                annual: {
-                    price: '₹14,399',
-                    period: '/mo',
-                    billingNote: 'Billed annually (₹1,72,788)',
-                    savings: 'Save ₹43,200'
-                },
-                biannual: {
-                    price: '₹16,199',
-                    period: '/mo',
-                    billingNote: 'Billed 6 months (₹97,194)',
-                    savings: 'Save ₹10,800'
-                },
-                trimonthly: {
-                    price: '₹17,999',
-                    period: '/mo',
-                    billingNote: 'Billed 3 months (₹53,997) · Min Term'
-                }
-            }
-        },
-        {
-            tag: 'SCALE',
-            name: 'Scale',
-            conversations: '2,000 conversations',
-            seats: '4 team seats',
-            overage: '₹18 / extra conversation',
-            cta: 'Start 7-Day Free Trial',
-            ctaLink: '/login?mode=register',
-            highlighted: false,
-            pricing: {
-                annual: {
-                    price: '₹23,999',
-                    period: '/mo',
-                    billingNote: 'Billed annually (₹2,87,988)',
-                    savings: 'Save ₹72,000'
-                },
-                biannual: {
-                    price: '₹26,999',
-                    period: '/mo',
-                    billingNote: 'Billed 6 months (₹1,61,994)',
-                    savings: 'Save ₹18,000'
-                },
-                trimonthly: {
-                    price: '₹29,999',
-                    period: '/mo',
-                    billingNote: 'Billed 3 months (₹89,997) · Min Term'
-                }
-            }
-        },
-        {
-            tag: 'MAX',
-            name: 'Max',
-            conversations: '5,000 conversations',
-            seats: '7 team seats',
-            overage: '₹16 / extra conversation',
-            cta: 'Start 7-Day Free Trial',
-            ctaLink: '/login?mode=register',
-            highlighted: false,
-            pricing: {
-                annual: {
-                    price: '₹53,999',
-                    period: '/mo',
-                    billingNote: 'Billed annually (₹6,47,988)',
-                    savings: 'Save ₹1,62,000'
-                },
-                biannual: {
-                    price: '₹60,799',
-                    period: '/mo',
-                    billingNote: 'Billed 6 months (₹3,64,794)',
-                    savings: 'Save ₹40,200'
-                },
-                trimonthly: {
-                    price: '₹67,499',
-                    period: '/mo',
-                    billingNote: 'Billed 3 months (₹2,02,497) · Min Term'
-                }
-            }
-        }
-    ];
+    const indiaCorePlans = plansCsv ? getComputedPlans(plansCsv, 'IN', 'core') : [];
+    const indiaCommercePlans = plansCsv ? getComputedPlans(plansCsv, 'IN', 'commerce') : [];
+    const intlCorePlans = plansCsv ? getComputedPlans(plansCsv, 'INTL', 'core') : [];
+    const intlCommercePlans = plansCsv ? getComputedPlans(plansCsv, 'INTL', 'commerce') : [];
 
-    const intlCorePlans: PlanDetails[] = [
-        {
-            tag: 'STARTER',
-            name: 'Starter',
-            conversations: '300 conversations',
-            seats: '2 team seats',
-            overage: '$0.80 / extra conversation',
-            cta: 'Start 7-Day Free Trial',
-            ctaLink: '/login?mode=register',
-            highlighted: false,
-            pricing: {
-                annual: {
-                    price: '$159',
-                    period: '/mo',
-                    billingNote: 'Billed annually ($1,908)',
-                    savings: 'Save $480'
-                },
-                biannual: {
-                    price: '$179',
-                    period: '/mo',
-                    billingNote: 'Billed 6 months ($1,074)',
-                    savings: 'Save $120'
-                },
-                quarterly: {
-                    price: '$189',
-                    period: '/mo',
-                    billingNote: 'Billed quarterly ($567)',
-                    savings: 'Save $30'
-                },
-                monthly: {
-                    price: '$199',
-                    period: '/mo',
-                    billingNote: 'Billed monthly'
-                }
-            }
-        },
-        {
-            tag: 'GROWTH',
-            name: 'Growth',
-            conversations: '600 conversations',
-            seats: '3 team seats',
-            overage: '$0.70 / extra conversation',
-            cta: 'Start 7-Day Free Trial',
-            ctaLink: '/login?mode=register',
-            highlighted: true,
-            pricing: {
-                annual: {
-                    price: '$279',
-                    period: '/mo',
-                    billingNote: 'Billed annually ($3,348)',
-                    savings: 'Save $840'
-                },
-                biannual: {
-                    price: '$319',
-                    period: '/mo',
-                    billingNote: 'Billed 6 months ($1,914)',
-                    savings: 'Save $180'
-                },
-                quarterly: {
-                    price: '$329',
-                    period: '/mo',
-                    billingNote: 'Billed quarterly ($987)',
-                    savings: 'Save $60'
-                },
-                monthly: {
-                    price: '$349',
-                    period: '/mo',
-                    billingNote: 'Billed monthly'
-                }
-            }
-        },
-        {
-            tag: 'SCALE',
-            name: 'Scale',
-            conversations: '1,600 conversations',
-            seats: '4 team seats',
-            overage: '$0.52 / extra conversation',
-            cta: 'Start 7-Day Free Trial',
-            ctaLink: '/login?mode=register',
-            highlighted: false,
-            pricing: {
-                annual: {
-                    price: '$559',
-                    period: '/mo',
-                    billingNote: 'Billed annually ($6,708)',
-                    savings: 'Save $1,680'
-                },
-                biannual: {
-                    price: '$629',
-                    period: '/mo',
-                    billingNote: 'Billed 6 months ($3,774)',
-                    savings: 'Save $420'
-                },
-                quarterly: {
-                    price: '$669',
-                    period: '/mo',
-                    billingNote: 'Billed quarterly ($2,007)',
-                    savings: 'Save $90'
-                },
-                monthly: {
-                    price: '$699',
-                    period: '/mo',
-                    billingNote: 'Billed monthly'
-                }
-            }
-        },
-        {
-            tag: 'MAX',
-            name: 'Max',
-            conversations: '4,000 conversations',
-            seats: '7 team seats',
-            overage: '$0.44 / extra conversation',
-            cta: 'Start 7-Day Free Trial',
-            ctaLink: '/login?mode=register',
-            highlighted: false,
-            pricing: {
-                annual: {
-                    price: '$1,179',
-                    period: '/mo',
-                    billingNote: 'Billed annually ($14,148)',
-                    savings: 'Save $3,600'
-                },
-                biannual: {
-                    price: '$1,329',
-                    period: '/mo',
-                    billingNote: 'Billed 6 months ($7,974)',
-                    savings: 'Save $900'
-                },
-                quarterly: {
-                    price: '$1,409',
-                    period: '/mo',
-                    billingNote: 'Billed quarterly ($4,227)',
-                    savings: 'Save $210'
-                },
-                monthly: {
-                    price: '$1,479',
-                    period: '/mo',
-                    billingNote: 'Billed monthly'
-                }
-            }
-        }
-    ];
-
-    const intlCommercePlans: PlanDetails[] = [
-        {
-            tag: 'STARTER',
-            name: 'Starter',
-            conversations: '500 conversations',
-            seats: '2 team seats',
-            overage: '$0.81 / extra conversation',
-            cta: 'Start 7-Day Free Trial',
-            ctaLink: '/login?mode=register',
-            highlighted: false,
-            pricing: {
-                annual: {
-                    price: '$269',
-                    period: '/mo',
-                    billingNote: 'Billed annually ($3,228)',
-                    savings: 'Save $840'
-                },
-                biannual: {
-                    price: '$309',
-                    period: '/mo',
-                    billingNote: 'Billed 6 months ($1,854)',
-                    savings: 'Save $180'
-                },
-                trimonthly: {
-                    price: '$339',
-                    period: '/mo',
-                    billingNote: 'Billed 3 months ($1,017) · Min Term'
-                }
-            }
-        },
-        {
-            tag: 'GROWTH',
-            name: 'Growth',
-            conversations: '1,000 conversations',
-            seats: '3 team seats',
-            overage: '$0.72 / extra conversation',
-            cta: 'Start 7-Day Free Trial',
-            ctaLink: '/login?mode=register',
-            highlighted: true,
-            pricing: {
-                annual: {
-                    price: '$479',
-                    period: '/mo',
-                    billingNote: 'Billed annually ($5,748)',
-                    savings: 'Save $1,440'
-                },
-                biannual: {
-                    price: '$539',
-                    period: '/mo',
-                    billingNote: 'Billed 6 months ($3,234)',
-                    savings: 'Save $360'
-                },
-                trimonthly: {
-                    price: '$599',
-                    period: '/mo',
-                    billingNote: 'Billed 3 months ($1,797) · Min Term'
-                }
-            }
-        },
-        {
-            tag: 'SCALE',
-            name: 'Scale',
-            conversations: '2,000 conversations',
-            seats: '4 team seats',
-            overage: '$0.56 / extra conversation',
-            cta: 'Start 7-Day Free Trial',
-            ctaLink: '/login?mode=register',
-            highlighted: false,
-            pricing: {
-                annual: {
-                    price: '$739',
-                    period: '/mo',
-                    billingNote: 'Billed annually ($8,868)',
-                    savings: 'Save $2,280'
-                },
-                biannual: {
-                    price: '$839',
-                    period: '/mo',
-                    billingNote: 'Billed 6 months ($5,034)',
-                    savings: 'Save $540'
-                },
-                trimonthly: {
-                    price: '$929',
-                    period: '/mo',
-                    billingNote: 'Billed 3 months ($2,787) · Min Term'
-                }
-            }
-        },
-        {
-            tag: 'MAX',
-            name: 'Max',
-            conversations: '5,000 conversations',
-            seats: '7 team seats',
-            overage: '$0.47 / extra conversation',
-            cta: 'Start 7-Day Free Trial',
-            ctaLink: '/login?mode=register',
-            highlighted: false,
-            pricing: {
-                annual: {
-                    price: '$1,579',
-                    period: '/mo',
-                    billingNote: 'Billed annually ($18,948)',
-                    savings: 'Save $2,400'
-                },
-                biannual: {
-                    price: '$1,779',
-                    period: '/mo',
-                    billingNote: 'Billed 6 months ($10,674)',
-                    savings: 'Save $1,200'
-                },
-                trimonthly: {
-                    price: '$1,979',
-                    period: '/mo',
-                    billingNote: 'Billed 3 months ($5,937) · Min Term'
-                }
-            }
-        }
-    ];
-
-    const addonsData = [
-        {
-            icon: <Users className="w-5 h-5 text-[#0396A6]" />,
-            tag: 'TEAM EXPANSION',
-            name: 'Additional Team Seats',
-            badge: 'Flexible Scale',
-            price: region === 'IN' ? '₹999' : '$19.99',
-            period: '/ seat / mo',
-            billingNote: 'Billed monthly with active plan',
-            desc: 'Expand your live dashboard access. Included seats are specified per tier (2 to 7 seats).',
-            bullets: [
-                'Full RBAC permissions (Owner, Manager, Agent)',
-                'Live conversation takeover & whisper notes',
-                'Individual performance & response audit logs'
-            ],
-            cta: 'Add to Plan',
-            ctaLink: '/login?mode=register'
-        },
-        {
-            icon: <Globe className="w-5 h-5 text-[#0396A6]" />,
-            tag: 'CHANNEL ADD-ON',
-            name: 'Additional Website Channel',
-            badge: '+50 Free Convos',
-            price: region === 'IN' ? '₹2,999' : '$85',
-            period: '/ website / mo',
-            billingNote: 'Includes 50 free conversations / mo',
-            desc: 'Deploy Frosty AI on an additional website domain or landing page with unified lead memory.',
-            bullets: [
-                '50 extra monthly conversations included',
-                'Custom embed widget & brand theme styling',
-                'Unified contextual memory across channels'
-            ],
-            cta: 'Add Website Channel',
-            ctaLink: '/login?mode=register'
-        },
-        {
-            icon: <img src="/whatsapp.png" alt="WhatsApp" className="w-5 h-5 object-contain" />,
-            tag: 'CHANNEL ADD-ON',
-            name: 'Additional WhatsApp Channel',
-            badge: '+50 Free Convos',
-            price: region === 'IN' ? '₹2,999' : '$85',
-            period: '/ channel / mo',
-            billingNote: 'Includes 50 free conversations / mo',
-            desc: 'Connect an extra verified WhatsApp Business phone number with shared customer memory.',
-            bullets: [
-                '50 extra monthly conversations included',
-                'Official Meta Cloud API integration',
-                'Voice notes audio transcription & replies'
-            ],
-            cta: 'Add WhatsApp Channel',
-            ctaLink: '/login?mode=register'
-        },
-        {
-            icon: <Sparkles className="w-5 h-5 text-[#0396A6]" />,
-            tag: 'CUSTOM PIPELINES',
-            name: 'Custom Integrations & CRM',
-            badge: 'Custom Setup',
-            price: 'Custom',
-            period: 'quote',
-            billingNote: 'Tailored to your tech stack',
-            desc: 'Connect Frosty directly into your custom ERP, proprietary databases, or internal workflows.',
-            bullets: [
-                'HubSpot, Salesforce, Zoho & Webhooks',
-                'Custom SQL database lookups & inventory',
-                'Dedicated staging sandbox & engineer bridge'
-            ],
-            cta: 'Talk to Sales',
-            ctaLink: 'https://www.frostrek.ai/contact'
-        }
-    ];
+    const rawAddons = addonsCsv ? getComputedAddons(addonsCsv, region) : [];
+    const addonsData = rawAddons.map(addon => ({
+        ...addon,
+        icon:
+            addon.id === 'seats' ? (
+                <Users className="w-5 h-5 text-[#0396A6]" />
+            ) : addon.id === 'website' ? (
+                <Globe className="w-5 h-5 text-[#0396A6]" />
+            ) : addon.id === 'whatsapp' ? (
+                <img src="/whatsapp.png" alt="WhatsApp" className="w-5 h-5 object-contain" />
+            ) : (
+                <Sparkles className="w-5 h-5 text-[#0396A6]" />
+            )
+    }));
 
     const currentPlans =
         planFamily === 'core'
@@ -1143,23 +568,25 @@ export default function PricingSection() {
                                         {addon.badge}
                                     </span>
                                 </div>
-                                <h3 className="text-lg sm:text-xl font-bold text-slate-900 leading-tight mb-2">
+                                <h3 className="text-lg sm:text-xl font-bold text-slate-900 leading-tight mb-2 min-h-[48px] sm:min-h-[54px] flex items-center">
                                     {addon.name}
                                 </h3>
                                 <div className="w-full h-px bg-slate-100 mb-4" />
-                                <div className="flex flex-col min-h-[54px] justify-center mb-3">
-                                    {getOriginalStrikethroughPrice(addon.price) && (
-                                        <div className="flex items-center gap-1.5 mb-0.5">
+                                <div className="flex flex-col mb-3">
+                                    {addon.strikethroughPrice ? (
+                                        <div className="flex items-center gap-1.5 mb-1 h-5">
                                             <span className="text-xs sm:text-sm font-semibold text-slate-400/80 line-through decoration-slate-400/80 tracking-tight decoration-[1.5px] select-none">
-                                                {getOriginalStrikethroughPrice(addon.price)}
+                                                {addon.strikethroughPrice}/mo
                                             </span>
                                             <span className="text-[10.5px] font-semibold text-slate-400/80 tracking-tight select-none">
                                                 Standard rate
                                             </span>
                                         </div>
+                                    ) : (
+                                        <div className="h-5 mb-1" />
                                     )}
-                                    <div className="flex items-center gap-2 flex-wrap">
-                                        <div className="flex items-baseline gap-1">
+                                    <div className="flex items-center gap-2 flex-nowrap">
+                                        <div className="flex items-baseline gap-1 shrink-0">
                                             <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-none">
                                                 {addon.price}
                                             </span>
@@ -1169,15 +596,15 @@ export default function PricingSection() {
                                                 </span>
                                             )}
                                         </div>
-                                        {getOriginalStrikethroughPrice(addon.price) && (
+                                        {addon.showLaunchBadge && (
                                             <LaunchRateBadge size="small" />
                                         )}
                                     </div>
-                                    <div className="text-xs text-slate-500 font-medium mt-1">
+                                    <div className="text-xs text-slate-500 font-medium mt-1 min-h-[16px]">
                                         {addon.billingNote}
                                     </div>
                                 </div>
-                                <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                                <p className="text-xs text-slate-600 leading-relaxed mb-4 min-h-[48px] sm:min-h-[52px]">
                                     {addon.desc}
                                 </p>
                                 <div className="my-2 flex flex-col gap-1.5 text-[11px] text-slate-600 flex-1">
@@ -1205,7 +632,6 @@ export default function PricingSection() {
                         <AnimatePresence mode="wait">
                             {currentPlans.map((plan, index) => {
                                 const currentPricing = plan.pricing[currentTerm] || plan.pricing['annual'];
-                                const originalCutPrice = getOriginalStrikethroughPrice(currentPricing.price);
                                 return (
                                     <motion.div
                                         key={`${region}-${planFamily}-${plan.name}`}
@@ -1236,18 +662,18 @@ export default function PricingSection() {
                                         </div>
                                         <div className={`w-full h-px mb-4 ${plan.highlighted ? 'bg-[#0396A6]/20' : 'bg-slate-100'}`} />
                                         <div className="flex flex-col min-h-[64px] justify-center mb-4">
-                                            {originalCutPrice && (
+                                            {plan.strikethroughPrice && (
                                                 <div className="flex items-center gap-1.5 mb-0.5">
                                                     <span className="text-sm sm:text-base font-semibold text-slate-400/80 line-through decoration-slate-400/80 tracking-tight decoration-[1.5px] select-none">
-                                                        {originalCutPrice}
+                                                        {plan.strikethroughPrice}/mo
                                                     </span>
                                                     <span className="text-xs sm:text-sm font-semibold text-slate-400/80 tracking-tight select-none">
                                                         Standard rate
                                                     </span>
                                                 </div>
                                             )}
-                                            <div className="flex items-center gap-2 flex-wrap">
-                                                <div className="flex items-baseline gap-1">
+                                            <div className="flex items-center gap-2 flex-nowrap">
+                                                <div className="flex items-baseline gap-1 shrink-0">
                                                     <span className="text-3xl sm:text-[34px] xl:text-4xl font-extrabold text-slate-900 tracking-tight leading-none">
                                                         {currentPricing.price}
                                                     </span>
@@ -1257,7 +683,9 @@ export default function PricingSection() {
                                                         </span>
                                                     )}
                                                 </div>
-                                                <LaunchRateBadge />
+                                                {plan.showLaunchBadge && (
+                                                    <LaunchRateBadge />
+                                                )}
                                             </div>
                                             <div className="text-xs text-slate-500 font-medium mt-1">
                                                 {currentPricing.billingNote}
@@ -1274,7 +702,7 @@ export default function PricingSection() {
                                                     <ConversationInfoTooltip align={index === 0 ? 'left' : index === 3 ? 'right' : 'center'} />
                                                 </div>
                                                 <div className="pl-[22px] text-[11px] text-[#0396A6] font-medium">
-                                                    Extra: {plan.overage}
+                                                    Extra: {plan.overage.includes('extra conversation') ? plan.overage : `${plan.overage} / extra conversation`}
                                                 </div>
                                             </div>
 
@@ -1287,14 +715,14 @@ export default function PricingSection() {
                                             {/* 3. Website Channel */}
                                             <div className="flex items-center gap-2">
                                                 <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 stroke-[2.5]" />
-                                                <span>1 website channel included</span>
+                                                <span>{plan.webChannels || 1} website channel included</span>
                                             </div>
 
                                             {/* 4. WhatsApp Channel */}
                                             <div className="flex items-center gap-2">
                                                 <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 stroke-[2.5]" />
                                                 <span>
-                                                    1 WhatsApp channel included
+                                                    {plan.waChannels || 1} WhatsApp channel included
                                                     {region === 'INTL' && <span className="text-[10.5px] text-slate-500 font-normal ml-1">(Meta + 5%)</span>}
                                                 </span>
                                             </div>

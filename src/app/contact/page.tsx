@@ -47,10 +47,10 @@ const CONTACT_INFO_CARDS = [
   {
     icon: Mail,
     label: 'EMAIL',
-    value: 'contact@frostrek.com',
-    subValue: 'sales@frostrek.com',
-    href: 'mailto:contact@frostrek.com',
-    subHref: 'mailto:sales@frostrek.com',
+    value: 'Info@frostyagent.com',
+    subValue: 'Direct 24/7 Response Support',
+    href: 'mailto:Info@frostyagent.com',
+    subHref: 'mailto:Info@frostyagent.com',
     color: 'text-[#027D8A] bg-[#027D8A]/10 border-[#027D8A]/20',
   },
   {

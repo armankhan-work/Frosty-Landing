@@ -28,8 +28,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false, error: 'Message description is required.' }, { status: 400 });
     }
 
-    const recipientEmail = process.env.CONTACT_RECIPIENT_EMAIL || 'contact@frostrek.com';
-    const senderEmail = process.env.RESEND_FROM_EMAIL || 'Frostrek AI Portal <contact@frostrek.com>';
+    const recipientEmail = process.env.CONTACT_RECIPIENT_EMAIL || 'Info@frostyagent.com';
+    const senderEmail = process.env.RESEND_FROM_EMAIL || 'Frosty Agent Portal <Info@frostyagent.com>';
     const resendApiKey = process.env.RESEND_API_KEY || '';
 
     // HTML Email Template adhering to Frostrek AI branding
