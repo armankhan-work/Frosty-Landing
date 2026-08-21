@@ -75,7 +75,7 @@ console.log('===================================================================
             const benchmark = (!isNaN(strikeNum) && strikeNum > 0) ? strikeNum : base;
 
             const annualBilled = annual * 12;
-            const annualSave = (benchmark * 12) - annualBilled;
+            const annualSave = (benchmark - annual) * 12;
             
             const popularTag = (p.is_popular === 'true' || p.is_popular === '1') ? ' [★ MOST POPULAR]' : '';
             
@@ -83,7 +83,7 @@ console.log('===================================================================
             console.log(`    Convos: ${p.convos} /mo (Extra: ${isINR ? p.overage_inr : p.overage_usd}) | Seats: ${p.seats} | Web: ${p.web_channels} | WA: ${p.wa_channels}`);
             console.log(`    Fixed Standard Strikethrough: ${standardRate}/mo`);
             console.log(`    ┌────────────────┬──────────────┬──────────────┬────────────────────────┬──────────────┐`);
-            console.log(`    │ Billing Term   │ Rate /mo     │ Standard     │ Billed Note            │ Savings      │`);
+            console.log(`    │ Billing Term   │ Rate /mo     │ Standard     │ Billed Note            │ Savings /yr  │`);
             console.log(`    ├────────────────┼──────────────┼──────────────┼────────────────────────┼──────────────┤`);
             
             // Annual
@@ -91,24 +91,25 @@ console.log('===================================================================
             
             // Biannual
             const biannualBilled = biannual * 6;
-            const biannualSave = (benchmark * 6) - biannualBilled;
+            const biannualSave = (benchmark - biannual) * 12;
             console.log(`    │ 6 Months       │ ${(curr + (isINR ? biannual.toLocaleString('en-IN') : biannual)).padEnd(12)} │ ${(standardRate === '-' ? '-' : standardRate + '/mo').padEnd(12)} │ ${(isINR ? formatINR(biannualBilled) : formatUSD(biannualBilled)) + '/6mo' + ' '.repeat(15 - (isINR ? formatINR(biannualBilled).length : formatUSD(biannualBilled).length))} │ ${(biannualSave > 0 ? (isINR ? formatINR(biannualSave) : formatUSD(biannualSave)) : '-').padEnd(12)} │`);
             
             if (category === 'core') {
                 // Quarterly
                 const qBilled = quarterly * 3;
-                const qSave = (benchmark * 3) - qBilled;
-                console.log(`    │ Quarterly      │ ${(curr + (isINR ? quarterly.toLocaleString('en-IN') : quarterly)).padEnd(12)} │ ${(standardRate === '-' ? '-' : standardRate + '/mo').padEnd(12)} │ ${(isINR ? formatINR(qBilled) : formatUSD(qBilled)) + '/3mo' + ' '.repeat(15 - (isINR ? formatINR(qBilled).length : formatUSD(qBilled).length))} │ ${(qSave > 0 ? (isINR ? formatINR(qSave) : formatUSD(qSave)) : '-').padEnd(12)} │`);
+                const qSave = (benchmark - quarterly) * 12;
+                console.log(`    │ Quarterly      │ ${(curr + (isINR ? quarterly.toLocaleString('en-IN') : quarterly)).padEnd(12)} │ ${(standardRate === '-' ? '-' : standardRate + '/mo').padEnd(12)} │ ${(isINR ? formatINR(qBilled) : formatUSD(qBilled)) + '/quarter' + ' '.repeat(13 - (isINR ? formatINR(qBilled).length : formatUSD(qBilled).length))} │ ${(qSave > 0 ? (isINR ? formatINR(qSave) : formatUSD(qSave)) : '-').padEnd(12)} │`);
                 
                 // Monthly
-                const mSave = (benchmark * 1) - base;
-                console.log(`    │ Monthly (Base) │ ${(curr + (isINR ? base.toLocaleString('en-IN') : base)).padEnd(12)} │ ${(standardRate === '-' ? '-' : standardRate + '/mo').padEnd(12)} │ Billed monthly         │ ${(mSave > 0 ? (isINR ? formatINR(mSave) : formatUSD(mSave)) : '-').padEnd(12)} │`);
+                const monthlySave = (benchmark - base) * 12;
+                console.log(`    │ Monthly        │ ${(curr + (isINR ? base.toLocaleString('en-IN') : base)).padEnd(12)} │ ${(standardRate === '-' ? '-' : standardRate + '/mo').padEnd(12)} │ ${(isINR ? formatINR(base) : formatUSD(base)) + '/mo' + ' '.repeat(17 - (isINR ? formatINR(base).length : formatUSD(base).length))} │ ${(monthlySave > 0 ? (isINR ? formatINR(monthlySave) : formatUSD(monthlySave)) : '-').padEnd(12)} │`);
             } else {
-                // Trimonthly min term
+                // 3 Months (Trimonthly)
                 const triBilled = base * 3;
-                const triSave = (benchmark * 3) - triBilled;
-                console.log(`    │ 3 Mo (Min Term)│ ${(curr + (isINR ? base.toLocaleString('en-IN') : base)).padEnd(12)} │ ${(standardRate === '-' ? '-' : standardRate + '/mo').padEnd(12)} │ ${(isINR ? formatINR(triBilled) : formatUSD(triBilled)) + '/3mo' + ' '.repeat(15 - (isINR ? formatINR(triBilled).length : formatUSD(triBilled).length))} │ ${(triSave > 0 ? (isINR ? formatINR(triSave) : formatUSD(triSave)) : '-').padEnd(12)} │`);
+                const triSave = (benchmark - base) * 12;
+                console.log(`    │ 3 Mo (Min Term)│ ${(curr + (isINR ? base.toLocaleString('en-IN') : base)).padEnd(12)} │ ${(standardRate === '-' ? '-' : standardRate + '/mo').padEnd(12)} │ ${(isINR ? formatINR(triBilled) : formatUSD(triBilled)) + '/3mo' + ' '.repeat(16 - (isINR ? formatINR(triBilled).length : formatUSD(triBilled).length))} │ ${(triSave > 0 ? (isINR ? formatINR(triSave) : formatUSD(triSave)) : '-').padEnd(12)} │`);
             }
+            
             console.log(`    └────────────────┴──────────────┴──────────────┴────────────────────────┴──────────────┘`);
         });
     });

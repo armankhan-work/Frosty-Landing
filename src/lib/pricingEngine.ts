@@ -129,53 +129,50 @@ export function getComputedPlans(rawPlansCsv: string, region: Region, category: 
             const quarterlyPrice = parseFloat(region === 'IN' ? r.inr_quarterly : r.usd_quarterly) || Math.round(basePrice * 0.955);
             const monthlyPrice = basePrice;
 
-            // Annual (12 mo): (benchmark × 12) - (annualPrice × 12)
+            // Annualized Savings: (benchmark - termPrice) × 12
             const annualBilled = annualPrice * 12;
-            const annualSavings = (benchmarkPrice * 12) - annualBilled;
+            const annualSavings = (benchmarkPrice - annualPrice) * 12;
             pricing['annual'] = {
                 price: formatCurrencyAmount(annualPrice, region),
                 rawPrice: annualPrice,
                 period: '/mo',
                 billingNote: `Billed annually (${formatCurrencyAmount(annualBilled, region)})`,
-                savings: annualSavings > 0 ? `Save ${formatCurrencyAmount(annualSavings, region)}` : undefined,
+                savings: annualSavings > 0 ? `Save ${formatCurrencyAmount(annualSavings, region)}/yr` : undefined,
                 totalBilled: annualBilled,
                 strikethroughPrice
             };
 
-            // 6 Months (6 mo): (benchmark × 6) - (biannualPrice × 6)
             const biannualBilled = biannualPrice * 6;
-            const biannualSavings = (benchmarkPrice * 6) - biannualBilled;
+            const biannualSavings = (benchmarkPrice - biannualPrice) * 12;
             pricing['biannual'] = {
                 price: formatCurrencyAmount(biannualPrice, region),
                 rawPrice: biannualPrice,
                 period: '/mo',
                 billingNote: `Billed 6 months (${formatCurrencyAmount(biannualBilled, region)})`,
-                savings: biannualSavings > 0 ? `Save ${formatCurrencyAmount(biannualSavings, region)}` : undefined,
+                savings: biannualSavings > 0 ? `Save ${formatCurrencyAmount(biannualSavings, region)}/yr` : undefined,
                 totalBilled: biannualBilled,
                 strikethroughPrice
             };
 
-            // Quarterly (3 mo): (benchmark × 3) - (quarterlyPrice × 3)
             const quarterlyBilled = quarterlyPrice * 3;
-            const quarterlySavings = (benchmarkPrice * 3) - quarterlyBilled;
+            const quarterlySavings = (benchmarkPrice - quarterlyPrice) * 12;
             pricing['quarterly'] = {
                 price: formatCurrencyAmount(quarterlyPrice, region),
                 rawPrice: quarterlyPrice,
                 period: '/mo',
                 billingNote: `Billed quarterly (${formatCurrencyAmount(quarterlyBilled, region)})`,
-                savings: quarterlySavings > 0 ? `Save ${formatCurrencyAmount(quarterlySavings, region)}` : undefined,
+                savings: quarterlySavings > 0 ? `Save ${formatCurrencyAmount(quarterlySavings, region)}/yr` : undefined,
                 totalBilled: quarterlyBilled,
                 strikethroughPrice
             };
 
-            // Monthly (1 mo): (benchmark × 1) - monthlyPrice
-            const monthlySavings = (benchmarkPrice * 1) - monthlyPrice;
+            const monthlySavings = (benchmarkPrice - monthlyPrice) * 12;
             pricing['monthly'] = {
                 price: formatCurrencyAmount(monthlyPrice, region),
                 rawPrice: monthlyPrice,
                 period: '/mo',
                 billingNote: 'Billed monthly',
-                savings: monthlySavings > 0 ? `Save ${formatCurrencyAmount(monthlySavings, region)}` : undefined,
+                savings: monthlySavings > 0 ? `Save ${formatCurrencyAmount(monthlySavings, region)}/yr` : undefined,
                 totalBilled: monthlyPrice,
                 strikethroughPrice
             };
@@ -186,41 +183,39 @@ export function getComputedPlans(rawPlansCsv: string, region: Region, category: 
             const biannualPrice = parseFloat(region === 'IN' ? r.inr_biannual : r.usd_biannual) || Math.round(basePrice * 0.90);
             const trimonthlyPrice = basePrice;
 
-            // Annual (12 mo)
+            // Annualized Savings: (benchmark - termPrice) × 12
             const annualBilled = annualPrice * 12;
-            const annualSavings = (benchmarkPrice * 12) - annualBilled;
+            const annualSavings = (benchmarkPrice - annualPrice) * 12;
             pricing['annual'] = {
                 price: formatCurrencyAmount(annualPrice, region),
                 rawPrice: annualPrice,
                 period: '/mo',
                 billingNote: `Billed annually (${formatCurrencyAmount(annualBilled, region)})`,
-                savings: annualSavings > 0 ? `Save ${formatCurrencyAmount(annualSavings, region)}` : undefined,
+                savings: annualSavings > 0 ? `Save ${formatCurrencyAmount(annualSavings, region)}/yr` : undefined,
                 totalBilled: annualBilled,
                 strikethroughPrice
             };
 
-            // 6 Months (6 mo)
             const biannualBilled = biannualPrice * 6;
-            const biannualSavings = (benchmarkPrice * 6) - biannualBilled;
+            const biannualSavings = (benchmarkPrice - biannualPrice) * 12;
             pricing['biannual'] = {
                 price: formatCurrencyAmount(biannualPrice, region),
                 rawPrice: biannualPrice,
                 period: '/mo',
                 billingNote: `Billed 6 months (${formatCurrencyAmount(biannualBilled, region)})`,
-                savings: biannualSavings > 0 ? `Save ${formatCurrencyAmount(biannualSavings, region)}` : undefined,
+                savings: biannualSavings > 0 ? `Save ${formatCurrencyAmount(biannualSavings, region)}/yr` : undefined,
                 totalBilled: biannualBilled,
                 strikethroughPrice
             };
 
-            // 3 Months (3 mo)
             const trimonthlyBilled = trimonthlyPrice * 3;
-            const trimonthlySavings = (benchmarkPrice * 3) - trimonthlyBilled;
+            const trimonthlySavings = (benchmarkPrice - trimonthlyPrice) * 12;
             pricing['trimonthly'] = {
                 price: formatCurrencyAmount(trimonthlyPrice, region),
                 rawPrice: trimonthlyPrice,
                 period: '/mo',
                 billingNote: `Billed 3 months (${formatCurrencyAmount(trimonthlyBilled, region)}) · Min Term`,
-                savings: trimonthlySavings > 0 ? `Save ${formatCurrencyAmount(trimonthlySavings, region)}` : undefined,
+                savings: trimonthlySavings > 0 ? `Save ${formatCurrencyAmount(trimonthlySavings, region)}/yr` : undefined,
                 totalBilled: trimonthlyBilled,
                 strikethroughPrice
             };
