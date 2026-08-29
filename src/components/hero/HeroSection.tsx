@@ -42,10 +42,10 @@ const PHASE_ORDER: AnimPhase[] = [
    CONVERSATION DATA
    ═══════════════════════════════════════════════════════════════ */
 const CONVERSATION = [
-  { role: 'user' as const, text: 'Do you have this in black?' },
-  { role: 'bot' as const, text: 'Yes! We have it in black in Medium and Large. Would you like to see the options?' },
+  { role: 'user' as const, text: 'Do you have this in Platinum Silver?' },
+  { role: 'bot' as const, text: 'Yes! We have it in Platinum Silver in stock. Would you like to see the options?' },
   { role: 'user' as const, text: 'Which one would you recommend?' },
-  { role: 'bot' as const, text: 'The Medium fits perfectly — it\'s our bestseller in black, rated 4.9★. Want me to add it to cart?' },
+  { role: 'bot' as const, text: 'The Platinum Silver edition looks stunning — rated 4.9★ by 2,400+ buyers. Want me to add it to cart?' },
 ];
 
 /* ═══════════════════════════════════════════════════════════════

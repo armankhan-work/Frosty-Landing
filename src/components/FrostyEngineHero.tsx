@@ -80,8 +80,8 @@ const INDUSTRY_DATA: IndustryConfig[] = [
     tagline: 'Electronics & Audio Gear',
     brandColor: '#FF7A5E',
     chat: {
-      q: 'Do you have these headphones in black?',
-      a: 'Yes! The Sony WH-1000XM5 is available in Matte Black with same-day express delivery and 1-year official warranty.',
+      q: 'Do you have these headphones in Platinum Silver?',
+      a: 'Yes! The Sony WH-1000XM5 is available in Platinum Silver with same-day express delivery and 1-year official warranty.',
     },
   },
 

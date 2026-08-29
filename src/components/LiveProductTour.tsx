@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Calendar,
@@ -136,6 +136,183 @@ const DX_NAV = [["layers", "Overview"], ["plug", "Services"], ["doc", "Knowledge
 const DX_STATS: [string, string, string][] = [["CONVERSATIONS", "214", "sessions"], ["MESSAGES", "1,480", "exchanged"], ["LEADS", "96", "captured"], ["CONVERSION", "45%", "lead rate"], ["AVG/SESSION", "6.9", "messages"], ["PEAK HOUR", "7pm", "Tue busiest"]];
 const DX_TOPICS: [string, number, string][] = [["Pricing", 11, TEAL], ["Delivery", 9, TEAL], ["Booking", 6, "#FFB09F"], ["Sizing", 6, "#2DD4BF"], ["Warranty", 5, "#5EEAD4"], ["Other", 3, "#99F6E4"]];
 const DX_SESSIONS: [string, string, string, string][] = [["AM", "Arjun Mehta", "Bulk order — 50 units Sony WH-1000XM5", "03:42 PM"], ["4C", "Visitor #4c1a", "Do you deliver to Pune?", "02:59 PM"], ["9B", "Visitor #9be3", "What's in the package?", "01:06 PM"], ["2D", "Visitor #2dd8", "Can I speak to someone?", "11:30 AM"]];
+
+/* ═══════════════════════════════════════════════════════════════════
+   DYNAMIC SCHEDULING & LIVE CLOCK HELPER (11:00 AM – 7:00 PM Engine)
+   ═══════════════════════════════════════════════════════════════════ */
+export interface DynamicScheduleData {
+  phoneClock: string;
+  msgTime1: string;
+  msgTime2: string;
+  msgTime3: string;
+  isTomorrow: boolean;
+  targetDayLabel: string;
+  dayTabs: { d: string; a: boolean }[];
+  slots: {
+    timeRange: string;
+    sub: string;
+    tag: string;
+    isRecommended: boolean;
+    shortLabel: string;
+  }[];
+  selectedSlot: {
+    timeRange: string;
+    shortLabel: string;
+    meetLabel: string;
+    userConfirmMsg: string;
+    lockMsg: string;
+    crmMeetingTag: string;
+    crmSummary: string;
+  };
+}
+
+function getDynamicSchedule(): DynamicScheduleData {
+  const now = new Date();
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+
+  // Format 12-hour clock for phone status bar e.g. "6:55"
+  const clockH = hours % 12 || 12;
+  const clockM = minutes < 10 ? `0${minutes}` : `${minutes}`;
+  const ampm = hours >= 12 ? "PM" : "AM";
+  const phoneClock = `${clockH}:${clockM}`;
+  const msgTime1 = `${clockH}:${clockM} ${ampm}`;
+
+  // Sequential minutes for replies
+  const m2 = (minutes + 1) % 60;
+  const h2 = minutes + 1 >= 60 ? (hours + 1) % 24 : hours;
+  const clockH2 = h2 % 12 || 12;
+  const clockM2 = m2 < 10 ? `0${m2}` : `${m2}`;
+  const ampm2 = h2 >= 12 ? "PM" : "AM";
+  const msgTime2 = `${clockH2}:${clockM2} ${ampm2}`;
+
+  const m3 = (minutes + 2) % 60;
+  const h3 = minutes + 2 >= 60 ? (hours + 1) % 24 : hours;
+  const clockH3 = h3 % 12 || 12;
+  const clockM3 = m3 < 10 ? `0${m3}` : `${m3}`;
+  const ampm3 = h3 >= 12 ? "PM" : "AM";
+  const msgTime3 = `${clockH3}:${clockM3} ${ampm3}`;
+
+  // Business hours logic: 11:00 AM - 7:00 PM IST
+  // If current time is past 5:30 PM (17:30) or early morning before 10:00 AM, today's business slots are over.
+  // Frosty intelligently offers Tomorrow's verified open slots!
+  const isLate = hours > 17 || (hours === 17 && minutes >= 30) || hours < 10;
+  const isTomorrow = isLate;
+  const targetDayLabel = isTomorrow ? "Tomorrow" : "Today";
+
+  // Day tabs computation matching the active day
+  const prev = new Date(now);
+  prev.setDate(now.getDate() - 1);
+  const next = new Date(now);
+  next.setDate(now.getDate() + 1);
+  const next2 = new Date(now);
+  next2.setDate(now.getDate() + 2);
+
+  const fmtDay = (d: Date, label?: string) => {
+    const weekday = d.toLocaleDateString("en-US", { weekday: "short" });
+    const dayNum = d.getDate();
+    return label ? `${weekday} ${dayNum} (${label})` : `${weekday} ${dayNum}`;
+  };
+
+  const dayTabs = isTomorrow
+    ? [
+        { d: fmtDay(now, "Today"), a: false },
+        { d: fmtDay(next, "Tomorrow"), a: true },
+        { d: fmtDay(next2), a: false },
+      ]
+    : [
+        { d: fmtDay(prev), a: false },
+        { d: fmtDay(now, "Today"), a: true },
+        { d: fmtDay(next), a: false },
+      ];
+
+  let slots;
+  let selectedSlot;
+
+  if (!isTomorrow) {
+    // Current time is during business day (before 5:30 PM)
+    slots = [
+      {
+        timeRange: "03:00 PM – 03:30 PM IST",
+        sub: "Available · 30m Video Call",
+        tag: "Open",
+        isRecommended: false,
+        shortLabel: "Today · 3:00 PM",
+      },
+      {
+        timeRange: "05:30 PM – 06:00 PM IST",
+        sub: "Optimal Time · 0 Calendar Conflicts",
+        tag: "RECOMMENDED",
+        isRecommended: true,
+        shortLabel: "Today · 5:30 PM",
+      },
+      {
+        timeRange: "Tomorrow · 11:00 AM IST",
+        sub: "Available · 30m Video Call",
+        tag: "Open",
+        isRecommended: false,
+        shortLabel: "Tomorrow · 11:00 AM",
+      },
+    ];
+
+    selectedSlot = {
+      timeRange: "05:30 PM – 06:00 PM IST",
+      shortLabel: "Today · 5:30 PM",
+      meetLabel: "Today · 5:30 PM – 6:00 PM IST",
+      userConfirmMsg: "Today at 5:30 PM works perfectly.",
+      lockMsg: "Locking today at 5:30 PM on the calendar right now!",
+      crmMeetingTag: "📅 Today 5:30 PM · Google Meet 🔗",
+      crmSummary: "Calculated 14% bulk tier. Google Meet scheduled for today 5:30 PM for final contract.",
+    };
+  } else {
+    // Current time is late evening (e.g. 6:55 PM) or night -> Offer tomorrow's slots
+    slots = [
+      {
+        timeRange: "11:30 AM – 12:00 PM IST",
+        sub: "Available · 30m Video Call",
+        tag: "Open",
+        isRecommended: false,
+        shortLabel: "Tomorrow · 11:30 AM",
+      },
+      {
+        timeRange: "03:30 PM – 04:00 PM IST",
+        sub: "Optimal Time · 0 Calendar Conflicts",
+        tag: "RECOMMENDED",
+        isRecommended: true,
+        shortLabel: "Tomorrow · 3:30 PM",
+      },
+      {
+        timeRange: "05:30 PM – 06:00 PM IST",
+        sub: "Available · 30m Video Call",
+        tag: "Open",
+        isRecommended: false,
+        shortLabel: "Tomorrow · 5:30 PM",
+      },
+    ];
+
+    selectedSlot = {
+      timeRange: "03:30 PM – 04:00 PM IST",
+      shortLabel: "Tomorrow · 3:30 PM",
+      meetLabel: "Tomorrow · 3:30 PM – 4:00 PM IST",
+      userConfirmMsg: "Tomorrow at 3:30 PM works perfectly.",
+      lockMsg: "Locking tomorrow at 3:30 PM on the calendar right now!",
+      crmMeetingTag: "📅 Tomorrow 3:30 PM · Google Meet 🔗",
+      crmSummary: "Calculated 14% bulk tier. Google Meet scheduled for tomorrow 3:30 PM for final contract.",
+    };
+  }
+
+  return {
+    phoneClock,
+    msgTime1,
+    msgTime2,
+    msgTime3,
+    isTomorrow,
+    targetDayLabel,
+    dayTabs,
+    slots,
+    selectedSlot,
+  };
+}
 
 /* ═══════════════════════════════════════════════════════════════════
    SIMULATED CURSOR
@@ -455,7 +632,7 @@ function BrowserGroupContent({ beat, phase }: { beat: number; phase: number }) {
   const siteVisible = beat > 0 || phase >= 3;
   const chatOpen = beat >= 1 && phase >= 1;
   const urlText = useTypingText("yourwebsite.com", beat === 0 && phase >= 1);
-  const questionText = useTypingText("Do you have these headphones in black?", beat === 1 && phase >= 2);
+  const questionText = useTypingText("Do you have these headphones in Platinum Silver?", beat === 1 && phase >= 2);
   const showTypingDots = beat === 1 && phase === 3;
   const showReply = beat === 1 && phase >= 4;
 
@@ -726,7 +903,7 @@ function BrowserGroupContent({ beat, phase }: { beat: number; phase: number }) {
 
                 {showReply && (
                   <ChatBubble side="left" variant="ai" delay={0} style={{ fontSize: 10.5, padding: "8px 12px" }}>
-                    <div>Yes! The Sony WH-1000XM5 is in stock in Matte Black — same-day delivery! ✅</div>
+                    <div>Yes! The Sony WH-1000XM5 is in stock in Platinum Silver — same-day delivery! ✅</div>
                     {/* The CTA button */}
                     <div style={{ marginTop: 8, background: "linear-gradient(135deg, #25D366, #128C7E)", color: "#FFF", padding: "6.5px 13px", borderRadius: 8, fontSize: 10, fontWeight: 800, display: "flex", alignItems: "center", gap: 6, cursor: "pointer", width: "fit-content", boxShadow: "0 3px 10px rgba(37,211,102,0.35)" }}>
                       <MessageCircle style={{ width: 12, height: 12 }} />
@@ -760,6 +937,8 @@ function WhatsAppGroupContent({ beat, phase }: { beat: number; phase: number }) 
   const b3 = beat === 3;
   const b5 = beat === 5;
 
+  const sched = useMemo(() => getDynamicSchedule(), []);
+
   const showWAThread = true;
   const showNewReply = (b2 && phase >= 3) || b3 || b5;
   const showComplexQ = (b3 && phase >= 0) || b5;
@@ -789,7 +968,7 @@ function WhatsAppGroupContent({ beat, phase }: { beat: number; phase: number }) 
         behavior: "smooth",
       });
     }
-  }, [beat, phase, showNewReply, showComplexQ, showHandoff, showHumanReply, showUserCounterQ, showPriyaCallReply, showSlotOptions, showUserConfirmedMsg, showPriyaLockingMsg]);
+  }, [phase, beat]);
 
   return (
     <div style={{
@@ -930,7 +1109,7 @@ function WhatsAppGroupContent({ beat, phase }: { beat: number; phase: number }) 
         <div style={{ flex: 1, borderRadius: 30, overflow: "hidden", display: "flex", flexDirection: "column", background: "#ECE5DD" }}>
           {/* Status Bar + Dynamic Island */}
           <div style={{ background: "#075E54", color: "#FFF", padding: "5px 16px 2px", display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 8.5, fontWeight: 700, flexShrink: 0 }}>
-            <span style={{ fontSize: 8.5 }}>9:41</span>
+            <span style={{ fontSize: 8.5 }}>{sched.phoneClock}</span>
             {/* Dynamic Island Notch */}
             <div style={{ width: 68, height: 13, background: "#000", borderRadius: 999, display: "flex", alignItems: "center", justifyContent: "flex-end", paddingRight: 6 }}>
               <div style={{ width: 4, height: 4, borderRadius: "50%", background: "#1E293B", border: "0.5px solid #334155" }} />
@@ -982,22 +1161,22 @@ function WhatsAppGroupContent({ beat, phase }: { beat: number; phase: number }) 
                     <span>Synced from website chat</span>
                   </div>
                   <div style={{ background: "#D9FDD3", border: "1px solid #C2EAB3", borderRadius: "10px 10px 2px 10px", padding: "6px 10px", color: DARK, fontSize: 9.5, lineHeight: 1.35, boxShadow: "0 1px 2px rgba(0,0,0,0.06)" }}>
-                    Do you have these headphones in black?
-                    <div style={{ fontSize: 6.5, color: "#166534", textAlign: "right", marginTop: 2, fontWeight: 600 }}>9:41 AM ✓✓</div>
+                    Do you have these headphones in Platinum Silver?
+                    <div style={{ fontSize: 6.5, color: "#166534", textAlign: "right", marginTop: 2, fontWeight: 600 }}>{sched.msgTime1} ✓✓</div>
                   </div>
                 </div>
 
                 {/* 2. Frosty answer */}
                 <div style={{ alignSelf: "flex-start", maxWidth: "86%", background: "#FFFFFF", borderRadius: "10px 10px 10px 2px", padding: "6px 10px", color: DARK, fontSize: 9.5, lineHeight: 1.35, boxShadow: "0 1px 2px rgba(0,0,0,0.06)" }}>
-                  Yes! Sony WH-1000XM5 in Matte Black is in stock.
-                  <div style={{ fontSize: 6.5, color: "#94A3B8", textAlign: "right", marginTop: 2 }}>9:41 AM</div>
+                  Yes! Sony WH-1000XM5 in Platinum Silver is in stock.
+                  <div style={{ fontSize: 6.5, color: "#94A3B8", textAlign: "right", marginTop: 2 }}>{sched.msgTime1}</div>
                 </div>
 
                 {/* 3. Follow up */}
                 {showNewReply && (
                   <div style={{ alignSelf: "flex-start", maxWidth: "86%", background: "#FFFFFF", borderRadius: "10px 10px 10px 2px", padding: "6px 10px", color: DARK, fontSize: 9.5, lineHeight: 1.35, boxShadow: "0 1px 2px rgba(0,0,0,0.06)" }}>
                     Want me to reserve one? I can share the checkout link directly.
-                    <div style={{ fontSize: 6.5, color: "#94A3B8", textAlign: "right", marginTop: 2 }}>9:41 AM</div>
+                    <div style={{ fontSize: 6.5, color: "#94A3B8", textAlign: "right", marginTop: 2 }}>{sched.msgTime1}</div>
                   </div>
                 )}
 
@@ -1005,7 +1184,7 @@ function WhatsAppGroupContent({ beat, phase }: { beat: number; phase: number }) 
                 {showComplexQ && (
                   <div style={{ alignSelf: "flex-end", maxWidth: "86%", background: "#D9FDD3", border: "1px solid #C2EAB3", borderRadius: "10px 10px 2px 10px", padding: "6px 10px", color: DARK, fontSize: 9.5, lineHeight: 1.35, boxShadow: "0 1px 2px rgba(0,0,0,0.06)" }}>
                     I want to negotiate a bulk order — 50 units. Can someone help with custom pricing?
-                    <div style={{ fontSize: 6.5, color: "#166534", textAlign: "right", marginTop: 2, fontWeight: 600 }}>9:42 AM ✓✓</div>
+                    <div style={{ fontSize: 6.5, color: "#166534", textAlign: "right", marginTop: 2, fontWeight: 600 }}>{sched.msgTime2} ✓✓</div>
                   </div>
                 )}
 
@@ -1032,7 +1211,7 @@ function WhatsAppGroupContent({ beat, phase }: { beat: number; phase: number }) 
                       <UserCheck style={{ width: 9, height: 9 }} /> Priya (Sales Lead)
                     </div>
                     Hi! For 50 units I can offer ₹21,500/unit — 14% off. Shall I send a formal quote?
-                    <div style={{ fontSize: 6.5, color: "#94A3B8", textAlign: "right", marginTop: 2 }}>9:42 AM</div>
+                    <div style={{ fontSize: 6.5, color: "#94A3B8", textAlign: "right", marginTop: 2 }}>{sched.msgTime2}</div>
                   </div>
                 )}
 
@@ -1040,7 +1219,7 @@ function WhatsAppGroupContent({ beat, phase }: { beat: number; phase: number }) 
                 {showUserCounterQ && (
                   <div style={{ alignSelf: "flex-end", maxWidth: "86%", background: "#D9FDD3", border: "1px solid #C2EAB3", borderRadius: "10px 10px 2px 10px", padding: "6px 10px", color: DARK, fontSize: 9.5, lineHeight: 1.35, boxShadow: "0 1px 2px rgba(0,0,0,0.06)" }}>
                     We&apos;re looking for 20% off (₹20,000/unit) for immediate procurement. Can we schedule a quick call today to finalize?
-                    <div style={{ fontSize: 6.5, color: "#166534", textAlign: "right", marginTop: 2, fontWeight: 600 }}>9:43 AM ✓✓</div>
+                    <div style={{ fontSize: 6.5, color: "#166534", textAlign: "right", marginTop: 2, fontWeight: 600 }}>{sched.msgTime3} ✓✓</div>
                   </div>
                 )}
 
@@ -1050,8 +1229,8 @@ function WhatsAppGroupContent({ beat, phase }: { beat: number; phase: number }) 
                     <div style={{ fontSize: 7, fontWeight: 800, color: "#2563EB", marginBottom: 2, display: "flex", alignItems: "center", gap: 3 }}>
                       <UserCheck style={{ width: 9, height: 9 }} /> Priya (Sales Lead)
                     </div>
-                    Let me check our VIP sales calendar for an open slot with me today…
-                    <div style={{ fontSize: 6.5, color: "#94A3B8", textAlign: "right", marginTop: 2 }}>9:43 AM</div>
+                    Let me check our VIP sales calendar for an open slot with me {sched.isTomorrow ? "tomorrow" : "today"}…
+                    <div style={{ fontSize: 6.5, color: "#94A3B8", textAlign: "right", marginTop: 2 }}>{sched.msgTime3}</div>
                   </div>
                 )}
 
@@ -1076,14 +1255,14 @@ function WhatsAppGroupContent({ beat, phase }: { beat: number; phase: number }) 
                     style={{ alignSelf: "flex-start", maxWidth: "90%", background: "#FFFFFF", borderRadius: "10px 10px 10px 2px", padding: "8px 10px", color: "#0F172A", fontSize: 9.5, lineHeight: 1.35, boxShadow: "0 2px 6px rgba(0,0,0,0.08)", borderLeft: `3px solid ${TEAL}` }}>
                     <div style={{ fontSize: 7.5, fontWeight: 800, color: TEAL, marginBottom: 4, display: "flex", alignItems: "center", gap: 3.5 }}>
                       <Calendar style={{ width: 10, height: 10 }} />
-                      <span>Available Slots Today</span>
+                      <span>Available Slots {sched.targetDayLabel}</span>
                     </div>
                     <div style={{ fontSize: 8.5, color: "#475569", marginBottom: 6 }}>Pick a convenient time for our VIP negotiation call:</div>
                     <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                       <div style={{ background: "#F8FAFC", border: "1px solid #E2E8F0", padding: "4.5px 8px", borderRadius: 6, fontSize: 8.5, fontWeight: 700, color: DARK, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                         <span style={{ display: "flex", alignItems: "center", gap: 4 }}>
                           <Clock style={{ width: 10, height: 10, color: "#64748B" }} />
-                          <span>Today · 3:00 PM</span>
+                          <span>{sched.slots[0].shortLabel}</span>
                         </span>
                         <span style={{ fontSize: 7, color: "#94A3B8" }}>30m</span>
                       </div>
@@ -1099,7 +1278,7 @@ function WhatsAppGroupContent({ beat, phase }: { beat: number; phase: number }) 
                       >
                         <span style={{ display: "flex", alignItems: "center", gap: 4 }}>
                           <Sparkles style={{ width: 11, height: 11, color: slotSelected ? "#FFF" : "#059669" }} />
-                          <span>Today · 5:30 PM (Recommended)</span>
+                          <span>{sched.slots[1].shortLabel} (Recommended)</span>
                         </span>
                         <span style={{ fontSize: 7, fontWeight: 800, display: "flex", alignItems: "center", gap: 2 }}>
                           {slotSelected ? <><Check style={{ width: 8, height: 8, strokeWidth: 3 }} /> SELECTED</> : <>SELECT <ArrowRight style={{ width: 8, height: 8 }} /></>}
@@ -1113,8 +1292,8 @@ function WhatsAppGroupContent({ beat, phase }: { beat: number; phase: number }) 
                 {showUserConfirmedMsg && (
                   <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}
                     style={{ alignSelf: "flex-end", maxWidth: "86%", background: "#D9FDD3", border: "1px solid #C2EAB3", borderRadius: "10px 10px 2px 10px", padding: "6px 10px", color: DARK, fontSize: 9.5, lineHeight: 1.35, boxShadow: "0 1px 2px rgba(0,0,0,0.06)" }}>
-                    Today at 5:30 PM works perfectly.
-                    <div style={{ fontSize: 6.5, color: "#166534", textAlign: "right", marginTop: 2, fontWeight: 600 }}>9:43 AM ✓✓</div>
+                    {sched.selectedSlot.userConfirmMsg}
+                    <div style={{ fontSize: 6.5, color: "#166534", textAlign: "right", marginTop: 2, fontWeight: 600 }}>{sched.msgTime3} ✓✓</div>
                   </motion.div>
                 )}
 
@@ -1125,8 +1304,8 @@ function WhatsAppGroupContent({ beat, phase }: { beat: number; phase: number }) 
                     <div style={{ fontSize: 7, fontWeight: 800, color: "#2563EB", marginBottom: 2, display: "flex", alignItems: "center", gap: 3 }}>
                       <UserCheck style={{ width: 9, height: 9 }} /> Priya (Sales Lead)
                     </div>
-                    Locking today at 5:30 PM on the calendar right now!
-                    <div style={{ fontSize: 6.5, color: "#94A3B8", textAlign: "right", marginTop: 2 }}>9:43 AM</div>
+                    {sched.selectedSlot.lockMsg}
+                    <div style={{ fontSize: 6.5, color: "#94A3B8", textAlign: "right", marginTop: 2 }}>{sched.msgTime3}</div>
                   </motion.div>
                 )}
               </motion.div>
@@ -1160,6 +1339,8 @@ function MeetingGroupContent({ beat, phase }: { beat: number; phase: number }) {
   const b4 = beat === 4;
   const b6 = beat === 6;
 
+  const sched = useMemo(() => getDynamicSchedule(), []);
+
   // In Beat 4 (Scanning slots):
   const showSlotsFound = b4 ? phase >= 1 : true;
   const showSlotHighlight = b4 ? phase >= 2 : b6;
@@ -1167,33 +1348,6 @@ function MeetingGroupContent({ beat, phase }: { beat: number; phase: number }) {
   // In Beat 6 (Meeting Confirmed & Locked):
   const showConfirmedCard = b6 && phase >= 1;
   const showCRMNotice = b6 && phase >= 2;
-
-  // Dynamic dates computed based on client's current date
-  const [dayTabs, setDayTabs] = useState<{ d: string; a: boolean }[]>([
-    { d: "Yesterday", a: false },
-    { d: "Today", a: true },
-    { d: "Tomorrow", a: false },
-  ]);
-
-  useEffect(() => {
-    const now = new Date();
-    const prev = new Date(now);
-    prev.setDate(now.getDate() - 1);
-    const next = new Date(now);
-    next.setDate(now.getDate() + 1);
-
-    const fmt = (d: Date, isToday?: boolean) => {
-      const weekday = d.toLocaleDateString("en-US", { weekday: "short" });
-      const dayNum = d.getDate();
-      return isToday ? `${weekday} ${dayNum} (Today)` : `${weekday} ${dayNum}`;
-    };
-
-    setDayTabs([
-      { d: fmt(prev), a: false },
-      { d: fmt(now, true), a: true },
-      { d: fmt(next), a: false },
-    ]);
-  }, []);
 
   return (
     <div style={{
@@ -1257,7 +1411,7 @@ function MeetingGroupContent({ beat, phase }: { beat: number; phase: number }) {
 
         {/* Dynamic Day selector tabs */}
         <div style={{ display: "flex", borderBottom: "1px solid #F1F5F9", background: "#F8FAFC", padding: "6px 10px", gap: 6, flexShrink: 0 }}>
-          {dayTabs.map((day) => (
+          {sched.dayTabs.map((day: { d: string; a: boolean }) => (
             <div
               key={day.d}
               style={{
@@ -1305,11 +1459,11 @@ function MeetingGroupContent({ beat, phase }: { beat: number; phase: number }) {
                     <Clock style={{ width: 13, height: 13 }} />
                   </div>
                   <div>
-                    <div style={{ fontSize: 9, fontWeight: 700, color: DARK }}>03:00 PM – 03:30 PM IST</div>
-                    <div style={{ fontSize: 7, color: "#94A3B8" }}>Available · 30m Video Call</div>
+                    <div style={{ fontSize: 9, fontWeight: 700, color: DARK }}>{sched.slots[0].timeRange}</div>
+                    <div style={{ fontSize: 7, color: "#94A3B8" }}>{sched.slots[0].sub}</div>
                   </div>
                 </div>
-                <span style={{ fontSize: 7.5, color: "#64748B", background: "#F1F5F9", padding: "2px 6px", borderRadius: 4, fontWeight: 600 }}>Open</span>
+                <span style={{ fontSize: 7.5, color: "#64748B", background: "#F1F5F9", padding: "2px 6px", borderRadius: 4, fontWeight: 600 }}>{sched.slots[0].tag}</span>
               </div>
 
               {/* Slot 2 (Selected & Locked) */}
@@ -1336,15 +1490,15 @@ function MeetingGroupContent({ beat, phase }: { beat: number; phase: number }) {
                   </div>
                   <div>
                     <div style={{ fontSize: 9.5, fontWeight: 800, color: b6 ? "#FFF" : DARK }}>
-                      05:30 PM – 06:00 PM IST
+                      {sched.slots[1].timeRange}
                     </div>
                     <div style={{ fontSize: 7, color: b6 ? "rgba(255,255,255,0.85)" : "#059669", fontWeight: 700 }}>
-                      {b6 ? "Selected by Arjun via WhatsApp" : "Optimal Time · 0 Calendar Conflicts"}
+                      {b6 ? "Selected by Arjun via WhatsApp" : sched.slots[1].sub}
                     </div>
                   </div>
                 </div>
                 <span style={{ fontSize: 7.5, fontWeight: 800, color: b6 ? "#FFF" : "#047857", background: b6 ? "rgba(255,255,255,0.2)" : "#D1FAE5", padding: "2px 7px", borderRadius: 4, display: "flex", alignItems: "center", gap: 3 }}>
-                  {b6 ? <><CheckCircle2 style={{ width: 9, height: 9 }} /> LOCKED</> : "RECOMMENDED"}
+                  {b6 ? <><CheckCircle2 style={{ width: 9, height: 9 }} /> LOCKED</> : sched.slots[1].tag}
                 </span>
               </motion.div>
 
@@ -1355,11 +1509,11 @@ function MeetingGroupContent({ beat, phase }: { beat: number; phase: number }) {
                     <Clock style={{ width: 13, height: 13 }} />
                   </div>
                   <div>
-                    <div style={{ fontSize: 9, fontWeight: 700, color: DARK }}>Tomorrow · 10:00 AM IST</div>
-                    <div style={{ fontSize: 7, color: "#94A3B8" }}>Available · 30m Video Call</div>
+                    <div style={{ fontSize: 9, fontWeight: 700, color: DARK }}>{sched.slots[2].timeRange}</div>
+                    <div style={{ fontSize: 7, color: "#94A3B8" }}>{sched.slots[2].sub}</div>
                   </div>
                 </div>
-                <span style={{ fontSize: 7.5, color: "#64748B", background: "#F1F5F9", padding: "2px 6px", borderRadius: 4, fontWeight: 600 }}>Open</span>
+                <span style={{ fontSize: 7.5, color: "#64748B", background: "#F1F5F9", padding: "2px 6px", borderRadius: 4, fontWeight: 600 }}>{sched.slots[2].tag}</span>
               </div>
             </div>
           )}
@@ -1397,7 +1551,7 @@ function MeetingGroupContent({ beat, phase }: { beat: number; phase: number }) {
                     <div style={{ width: 16, height: 16, borderRadius: 4, background: "#EFF6FF", color: "#2563EB", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <Calendar style={{ width: 9, height: 9 }} />
                     </div>
-                    <span><strong>Today · 5:30 PM – 6:00 PM IST</strong></span>
+                    <span><strong>{sched.selectedSlot.meetLabel}</strong></span>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
                     <div style={{ width: 16, height: 16, borderRadius: 4, background: "#F5F3FF", color: "#7C3AED", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -1513,16 +1667,19 @@ function MerchantChaosTransitionContent({ beat, phase }: { beat: number; phase: 
   const isCore = phase >= 2;
   const isZooming = phase === 3;
 
+  const sched = useMemo(() => getDynamicSchedule(), []);
+
   return (
     <div
       style={{
         height: "100%",
+        width: "100%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: "16px 18px 14px",
-        background: "radial-gradient(ellipse at 50% 25%, #F8FAFC 0%, #FFFFFF 100%)",
+        padding: "16px 18px 12px",
+        background: "radial-gradient(ellipse at 50% 30%, #F0FDFA 0%, #F8FAFC 55%, #FFFFFF 100%)",
         position: "relative",
         overflow: "hidden",
       }}
@@ -1540,7 +1697,13 @@ function MerchantChaosTransitionContent({ beat, phase }: { beat: number; phase: 
       />
 
       {/* ── Top Storytelling Typography ── */}
-      <div
+      <motion.div
+        animate={{
+          scale: isZooming ? 1.25 : 1,
+          opacity: isZooming ? 0 : 1,
+          filter: isZooming ? "blur(8px)" : "blur(0px)",
+        }}
+        transition={{ duration: 0.45, ease: [0.12, 0.8, 0.18, 1] }}
         style={{
           width: "100%",
           maxWidth: 540,
@@ -1550,10 +1713,6 @@ function MerchantChaosTransitionContent({ beat, phase }: { beat: number; phase: 
           flexDirection: "column",
           alignItems: "center",
           gap: 5,
-          transform: isZooming ? "scale(1.35)" : "scale(1)",
-          filter: isZooming ? "blur(10px)" : "blur(0px)",
-          opacity: isZooming ? 0 : 1,
-          transition: "transform 0.45s cubic-bezier(0.12, 0.8, 0.18, 1), filter 0.45s ease, opacity 0.45s ease",
         }}
       >
         <AnimatePresence mode="wait">
@@ -1658,7 +1817,7 @@ function MerchantChaosTransitionContent({ beat, phase }: { beat: number; phase: 
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </motion.div>
 
       {/* ── Center Stage: Scattered Organic Board OR Radiant Frosty Core ── */}
       <div
@@ -1670,7 +1829,6 @@ function MerchantChaosTransitionContent({ beat, phase }: { beat: number; phase: 
           alignItems: "center",
           justifyContent: "center",
           minHeight: 250,
-          overflow: "hidden",
         }}
       >
         {/* Phase 0 & 1: Scattered Organic Cards Canvas with Pan Shift */}
@@ -1682,9 +1840,8 @@ function MerchantChaosTransitionContent({ beat, phase }: { beat: number; phase: 
               animate={{ opacity: 1, scale: 1 }}
               exit={{
                 opacity: 0,
-                scale: 0,
-                rotate: 20,
-                transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+                scale: 0.85,
+                transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
               }}
               style={{
                 position: "absolute",
@@ -1859,21 +2016,21 @@ function MerchantChaosTransitionContent({ beat, phase }: { beat: number; phase: 
                       <div style={{ flex: 1, height: 3.5, background: "#BAE6FD", borderRadius: 2 }} />
                     </div>
                   </div>
-                  <div style={{ fontSize: 6.5, color: "#0369A1", fontWeight: 700, background: "#F0F9FF", padding: "2px 4px", borderRadius: 3, textAlign: "center" }}>
-                    2 Demos Scheduled
+                  <div style={{ fontSize: 6.5, color: "#64748B", fontWeight: 600, borderTop: "1px solid #F0F9FF", paddingTop: 3 }}>
+                    Auto-Synced Across Channels
                   </div>
                 </motion.div>
 
-                {/* ── Card 5: Real-Time Conversion Radar (Squarish, Tilted Right) ── */}
+                {/* ── Card 5: Conversion Rate Analytics (Squarish, Tilted Right) ── */}
                 <motion.div
                   animate={{ y: [0, -5, 0] }}
                   transition={{ duration: 3.1, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
                   style={{
                     position: "absolute",
                     left: 650,
-                    top: 12,
-                    width: 148,
-                    height: 136,
+                    top: 15,
+                    width: 145,
+                    height: 135,
                     background: "#FFFFFF",
                     borderRadius: 16,
                     border: "1px solid #FBCFE8",
@@ -2004,14 +2161,14 @@ function MerchantChaosTransitionContent({ beat, phase }: { beat: number; phase: 
                     <div style={{ fontSize: 7, color: "#0284C7", fontWeight: 700, marginTop: 2 }}>Google Meet &amp; Cal</div>
                   </div>
                   <div style={{ fontSize: 6.5, color: "#166534", fontWeight: 700, background: "#DCFCE7", padding: "2px 4px", borderRadius: 3, textAlign: "center" }}>
-                    5:30 PM Locked
+                    {sched.selectedSlot.shortLabel} Locked
                   </div>
                 </motion.div>
               </motion.div>
 
               {/* Edge Gradient Scrims for seamless fade */}
-              <div style={{ position: "absolute", top: 0, bottom: 0, left: 0, width: 35, background: "linear-gradient(to right, #FFF 0%, transparent 100%)", pointerEvents: "none", zIndex: 10 }} />
-              <div style={{ position: "absolute", top: 0, bottom: 0, right: 0, width: 35, background: "linear-gradient(to left, #FFF 0%, transparent 100%)", pointerEvents: "none", zIndex: 10 }} />
+              <div style={{ position: "absolute", top: 0, bottom: 0, left: 0, width: 35, background: "linear-gradient(to right, rgba(240,253,250,0.9) 0%, transparent 100%)", pointerEvents: "none", zIndex: 10 }} />
+              <div style={{ position: "absolute", top: 0, bottom: 0, right: 0, width: 35, background: "linear-gradient(to left, rgba(255,255,255,0.9) 0%, transparent 100%)", pointerEvents: "none", zIndex: 10 }} />
             </motion.div>
           )}
         </AnimatePresence>
@@ -2023,9 +2180,9 @@ function MerchantChaosTransitionContent({ beat, phase }: { beat: number; phase: 
               key="frosty-core-center"
               initial={{ scale: 0, opacity: 0 }}
               animate={{
-                scale: isZooming ? 7 : [0.94, 1.04, 0.94],
+                scale: isZooming ? 6.5 : [0.94, 1.04, 0.94],
                 opacity: isZooming ? 0 : 1,
-                filter: isZooming ? "blur(18px)" : "blur(0px)",
+                filter: isZooming ? "blur(14px)" : "blur(0px)",
               }}
               transition={{
                 scale: isZooming ? { duration: 0.45, ease: [0.12, 0.8, 0.18, 1] } : { duration: 2.4, repeat: Infinity, ease: "easeInOut" },
@@ -3310,11 +3467,11 @@ const CRM_DATABASE_ROWS = [
     intentBg: "#FEF2F2",
     dealValue: "₹10,75,000",
     dealDetail: "50 units Sony WH-1000XM5",
-    summary: "Calculated 14% bulk tier. Google Meet scheduled for today 5:30 PM for final contract.",
+    summary: "Calculated 14% bulk tier. Google Meet scheduled for final contract.",
     email: "arjun.mehta@apexretail.in",
     emailVerified: true,
     phone: "+91 98201 44819",
-    meeting: "📅 Today 5:30 PM · Google Meet 🔗",
+    meeting: "📅 Google Meet 🔗",
     stage: "Deal Won 🏆",
     stageColor: "#15803D",
     stageBg: "#DCFCE7",
@@ -3429,6 +3586,20 @@ const CRM_DATABASE_ROWS = [
 
 function EnterpriseCRMDatabaseBeat({ phase }: { phase: number }) {
   const tableRef = useRef<HTMLDivElement>(null);
+  const sched = useMemo(() => getDynamicSchedule(), []);
+
+  const dynamicCrmRows = useMemo(() => {
+    return CRM_DATABASE_ROWS.map((r) => {
+      if (r.id === "lead-1") {
+        return {
+          ...r,
+          meeting: sched.selectedSlot.crmMeetingTag,
+          summary: sched.selectedSlot.crmSummary,
+        };
+      }
+      return r;
+    });
+  }, [sched]);
 
   // Smooth horizontal scroll position according to phase
   useEffect(() => {
@@ -3500,16 +3671,15 @@ function EnterpriseCRMDatabaseBeat({ phase }: { phase: number }) {
                 fontSize="clamp(19px, 2.3vw, 24px)"
                 delay={0.12}
                 words={[
-                  { text: "Hot" },
-                  { text: "vs." },
-                  { text: "Cold" },
-                  { text: "Leads.", breakAfter: true },
-                  { text: "Instant", highlight: true },
-                  { text: "Priority", highlight: true },
-                  { text: "Routing.", highlight: true },
+                  { text: "High-Value" },
+                  { text: "Buyers" },
+                  { text: "Scored.", breakAfter: true },
+                  { text: "Zero", highlight: true },
+                  { text: "Pipeline", highlight: true },
+                  { text: "Drop-Offs.", highlight: true },
                 ]}
               />
-              <KineticDescription delay={0.25} text="High-ticket buyers get tagged instantly with deal values, buying intent, and ready carts." />
+              <KineticDescription delay={0.25} text="Hot B2B negotiations are automatically tagged, scored at 92%+, and prioritized for rapid close." />
             </motion.div>
           ) : phase === 2 ? (
             <motion.div
@@ -3611,7 +3781,7 @@ function EnterpriseCRMDatabaseBeat({ phase }: { phase: number }) {
               💬 WhatsApp (54)
             </span>
             <span style={{ fontSize: 7, fontWeight: 600, background: "#FFFFFF", color: "#64748B", border: "1px solid #E2E8F0", padding: "2px 6px", borderRadius: 4 }}>
-              🌐 Web (42)
+              🌐 Web Store (42)
             </span>
             <span style={{ fontSize: 7, fontWeight: 700, background: "#F0FDFA", color: TEAL, border: "1px solid #CCFBF1", padding: "2px 6px", borderRadius: 4, display: "flex", alignItems: "center", gap: 3 }}>
               ⚡ Auto-Enrich ON
