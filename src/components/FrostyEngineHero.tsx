@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Brain, Zap, Target, CheckCircle2, Clock, ArrowRight } from 'lucide-react';
+import LiveProductTour from './LiveProductTour';
 
 /* ─── ParallaxStarfield (Subtle background depth) ─────────────────── */
 export function ParallaxStarfield() {
@@ -1832,14 +1833,14 @@ export default function FrostyEngineHero() {
             </motion.div>
           </motion.div>
 
-          {/* ── RIGHT SIDE: Dense 2x2 Interactive Browser Demo ── */}
+          {/* ── RIGHT SIDE: Live Product Tour ── */}
           <motion.div
             initial={{ opacity: 0, x: 35, scale: 0.96 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 1.15, delay: 0.2, ease: EASE }}
             className="flex justify-center lg:justify-end w-full"
           >
-            <DominantInteractiveBrowser />
+            <LiveProductTour />
           </motion.div>
         </div>
       </div>
